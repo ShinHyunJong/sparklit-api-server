@@ -12,6 +12,6 @@ RUN npx prisma generate
 COPY . .
 RUN yarn build
 EXPOSE 3005
-CMD ["node", "dist/main"]
+CMD ["node", "dist/main.js"]
 
 
