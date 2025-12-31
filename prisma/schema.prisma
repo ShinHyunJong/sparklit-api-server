@@ -1,0 +1,163 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             Int          @id @default(autoincrement()) @db.UnsignedInt
+  email          String?      @unique(map: "email") @db.VarChar(255)
+  password       String?      @db.VarChar(255)
+  createdAt      DateTime?    @default(now()) @db.Timestamp(0)
+  updatedAt      DateTime?    @default(now()) @db.Timestamp(0)
+  invitationList Invitation[]
+}
+
+model Invitation {
+  id                       Int                    @id @default(autoincrement()) @db.UnsignedInt
+  templateNo               Int?                   @default(1)
+  uniqueId                 String?                @unique(map: "uniqueId") @db.VarChar(16)
+  date                     DateTime?              @db.Timestamp(0)
+  userId                   Int?                   @db.UnsignedInt
+  title                    String?                @db.VarChar(50)
+  pointColor               String?                @default("#f79e9e") @db.VarChar(16)
+  mainTextColor            String?                @default("#000000") @db.VarChar(10)
+  dressCodeGentleman       String?                @db.Text
+  dressCodeLady            String?                @db.Text
+  bgColor                  String?                @default("#f7f7f7") @db.VarChar(10)
+  musicKey                 String?                @db.VarChar(255)
+  musicFilename            String?                @db.VarChar(255)
+  musicFileKey             String?                @db.VarChar(255)
+  notice                   String?                @db.Text
+  brideFirstName           String?                @db.VarChar(20)
+  brideMiddleName          String?                @db.VarChar(20)
+  dressCodeMainColor       String?                @default("#57372A") @db.VarChar(7)
+  dressCodeSubColor        String?                @default("#91604F") @db.VarChar(7)
+  dressCodeThirdColor      String?                @default("#D2947B") @db.VarChar(7)
+  brideLastName            String?                @db.VarChar(20)
+  brideMomName             String?                @db.VarChar(20)
+  greetingTitle            String?                @db.Text
+  greetingContent          String?                @db.Text
+  brideDadName             String?                @db.VarChar(20)
+  bridePhone               String?                @db.VarChar(20)
+  groomFirstName           String?                @db.VarChar(20)
+  groomMiddleName          String?                @db.VarChar(20)
+  groomLastName            String?                @db.VarChar(20)
+  groomPhone               String?                @db.VarChar(20)
+  primarySponsor           String?                @db.Text
+  secondarySponsor         String?                @db.Text
+  maidOfHonor              String?                @db.Text
+  groomsMen                String?                @db.Text
+  bestMan                  String?                @db.Text
+  bridesMaids              String?                @db.Text
+  groomMomName             String?                @db.VarChar(20)
+  groomDadName             String?                @db.VarChar(20)
+  layoutOrder              Json?
+  endingText               String?                @db.Text
+  createdAt                DateTime?              @default(now()) @db.Timestamp(0)
+  updatedAt                DateTime?              @default(now()) @db.Timestamp(0)
+  user                     User?                  @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Invitation_ibfk_1")
+  invitationCoverPhotoList InvitationCoverPhoto[]
+  photoList                InvitationPhoto[]
+  placeList                InvitationPlace[]
+  invitationRSVP           InvitationRSVP[]
+
+  @@index([userId], map: "userId")
+}
+
+model InvitationPlace {
+  id           Int                   @id @default(autoincrement()) @db.UnsignedInt
+  invitationId Int?                  @db.UnsignedInt
+  order        Int?                  @db.UnsignedInt
+  placeId      Int?                  @db.UnsignedInt
+  placeDetail  String?               @db.Text
+  place        Place?                @relation(fields: [placeId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "InvitationPlace_ibfk_1")
+  invitation   Invitation?           @relation(fields: [invitationId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "InvitationPlace_ibfk_2")
+  timeList     InvitationPlaceTime[]
+
+  @@index([invitationId], map: "invitationId")
+  @@index([placeId], map: "placeId")
+}
+
+model Place {
+  id                  Int               @id @default(autoincrement()) @db.UnsignedInt
+  googlePlaceId       String?           @unique(map: "googlePlaceId") @db.VarChar(100)
+  name                String?           @db.VarChar(50)
+  address             String?           @db.VarChar(25)
+  lat                 Float?            @db.Float
+  lng                 Float?            @db.Float
+  invitationPlaceList InvitationPlace[]
+}
+
+model InvitationPlaceTime {
+  id                Int              @id @default(autoincrement()) @db.UnsignedInt
+  invitationPlaceId Int?             @db.UnsignedInt
+  time              DateTime?        @db.Time(0)
+  name              String?          @db.VarChar(100)
+  description       String?          @db.Text
+  invitationPlace   InvitationPlace? @relation(fields: [invitationPlaceId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "InvitationPlaceTime_ibfk_1")
+
+  @@index([invitationPlaceId], map: "invitationPlaceId")
+}
+
+model InvitationPhoto {
+  id           Int         @id @default(autoincrement()) @db.UnsignedInt
+  invitationId String?     @db.VarChar(16)
+  width        Int?
+  height       Int?
+  order        Int?        @db.UnsignedInt
+  originalKey  String?     @db.VarChar(255)
+  croppedKey   String?     @db.VarChar(255)
+  cropX        Int?
+  cropY        Int?
+  cropZoom     Float?      @db.Float
+  thumbKey     String?     @db.VarChar(255)
+  thumbX       Int?
+  thumbY       Int?
+  thumbZoom    Float?      @db.Float
+  Invitation   Invitation? @relation(fields: [invitationId], references: [uniqueId], onDelete: Cascade, onUpdate: NoAction, map: "InvitationPhoto_ibfk_1")
+
+  @@index([invitationId], map: "invitationId")
+}
+
+model InvitationCoverPhoto {
+  id           Int         @id @default(autoincrement()) @db.UnsignedInt
+  invitationId Int?        @db.UnsignedInt
+  originalKey  String?     @db.VarChar(255)
+  croppedKey   String?     @db.VarChar(255)
+  type         String?     @db.VarChar(10)
+  cropX        Float?      @db.Float
+  cropY        Float?      @db.Float
+  cropZoom     Float?      @db.Float
+  width        Float?      @db.Float
+  height       Float?      @db.Float
+  createdAt    DateTime?   @default(now()) @db.Timestamp(0)
+  updatedAt    DateTime?   @default(now()) @db.Timestamp(0)
+  invitation   Invitation? @relation(fields: [invitationId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "InvitationCoverPhoto_ibfk_1")
+
+  @@index([invitationId], map: "invitationId")
+}
+
+model InvitationRSVP {
+  id           Int         @id @default(autoincrement()) @db.UnsignedInt
+  invitationId Int?        @db.UnsignedInt
+  side         String?     @db.VarChar(10)
+  name         String?     @db.VarChar(10)
+  email        String?     @db.VarChar(50)
+  phone        String?     @db.VarChar(20)
+  attending    Boolean?
+  createdAt    DateTime?   @default(now()) @db.Timestamp(0)
+  Invitation   Invitation? @relation(fields: [invitationId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "InvitationRSVP_ibfk_1")
+
+  @@index([invitationId], map: "invitationId")
+}
+
+model InvitationMusic {
+  id    Int     @id @default(autoincrement()) @db.UnsignedInt
+  s3Key String? @db.VarChar(255)
+  name  String? @db.VarChar(20)
+}
