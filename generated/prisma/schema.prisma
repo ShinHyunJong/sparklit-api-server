@@ -58,6 +58,7 @@ model Invitation {
   groomDadName             String?                @db.VarChar(20)
   layoutOrder              Json?
   endingText               String?                @db.Text
+  ogImageKey               String?                @db.VarChar(255)
   createdAt                DateTime?              @default(now()) @db.Timestamp(0)
   updatedAt                DateTime?              @default(now()) @db.Timestamp(0)
   user                     User?                  @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Invitation_ibfk_1")

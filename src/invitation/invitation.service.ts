@@ -11,6 +11,7 @@ import { deleteFromS3, upload2S3 } from 'src/helpers/s3.helper';
 import { RsvpDto } from './dto/rsvp.dto';
 import { postRSVPmail } from 'src/utils/mailjet.util';
 import { MemoryStoredFile } from 'nestjs-form-data';
+import { makeOgImage } from 'src/helpers/image.helper';
 
 @Injectable()
 export class InvitationService {
@@ -133,12 +134,25 @@ export class InvitationService {
 
     // S3 경로 구성 (type에 따라 상위 폴더가 cover 또는 end로 분기)
     const folder = type === 'main' ? 'cover' : 'end';
+
     const originalKey = `invitations/${uniqueId}/${folder}/original/${originalName}.${originalExtension}`;
     const croppedKey = `invitations/${uniqueId}/${folder}/cropped/${croppedName}.${croppedExtension}`;
 
     // S3 업로드
     await upload2S3(originalKey, originalFile.buffer);
     await upload2S3(croppedKey, croppedFile.buffer);
+
+    if (type === 'main') {
+      const ogImageBuffer = await makeOgImage(croppedFile.buffer);
+      const ogImageKey = `invitations/${uniqueId}/og/main-og-image.jpg`;
+      await upload2S3(ogImageKey, ogImageBuffer);
+      await this.prismaService.invitation.update({
+        where: { uniqueId },
+        data: {
+          ogImageKey,
+        },
+      });
+    }
 
     // 해당 타입의 기존 데이터가 있는지 확인
     const invitationCover =

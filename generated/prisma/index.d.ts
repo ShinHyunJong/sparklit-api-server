@@ -2728,6 +2728,7 @@ export namespace Prisma {
     groomMomName: string | null
     groomDadName: string | null
     endingText: string | null
+    ogImageKey: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2772,6 +2773,7 @@ export namespace Prisma {
     groomMomName: string | null
     groomDadName: string | null
     endingText: string | null
+    ogImageKey: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2817,6 +2819,7 @@ export namespace Prisma {
     groomDadName: number
     layoutOrder: number
     endingText: number
+    ogImageKey: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2875,6 +2878,7 @@ export namespace Prisma {
     groomMomName?: true
     groomDadName?: true
     endingText?: true
+    ogImageKey?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2919,6 +2923,7 @@ export namespace Prisma {
     groomMomName?: true
     groomDadName?: true
     endingText?: true
+    ogImageKey?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2964,6 +2969,7 @@ export namespace Prisma {
     groomDadName?: true
     layoutOrder?: true
     endingText?: true
+    ogImageKey?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -3096,6 +3102,7 @@ export namespace Prisma {
     groomDadName: string | null
     layoutOrder: JsonValue | null
     endingText: string | null
+    ogImageKey: string | null
     createdAt: Date | null
     updatedAt: Date | null
     _count: InvitationCountAggregateOutputType | null
@@ -3160,6 +3167,7 @@ export namespace Prisma {
     groomDadName?: boolean
     layoutOrder?: boolean
     endingText?: boolean
+    ogImageKey?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | Invitation$userArgs<ExtArgs>
@@ -3213,11 +3221,12 @@ export namespace Prisma {
     groomDadName?: boolean
     layoutOrder?: boolean
     endingText?: boolean
+    ogImageKey?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "maidOfHonor" | "groomsMen" | "bestMan" | "bridesMaids" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
+  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "maidOfHonor" | "groomsMen" | "bestMan" | "bridesMaids" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
@@ -3277,6 +3286,7 @@ export namespace Prisma {
       groomDadName: string | null
       layoutOrder: Prisma.JsonValue | null
       endingText: string | null
+      ogImageKey: string | null
       createdAt: Date | null
       updatedAt: Date | null
     }, ExtArgs["result"]["invitation"]>
@@ -3693,6 +3703,7 @@ export namespace Prisma {
     readonly groomDadName: FieldRef<"Invitation", 'String'>
     readonly layoutOrder: FieldRef<"Invitation", 'Json'>
     readonly endingText: FieldRef<"Invitation", 'String'>
+    readonly ogImageKey: FieldRef<"Invitation", 'String'>
     readonly createdAt: FieldRef<"Invitation", 'DateTime'>
     readonly updatedAt: FieldRef<"Invitation", 'DateTime'>
   }
@@ -11391,6 +11402,7 @@ export namespace Prisma {
     groomDadName: 'groomDadName',
     layoutOrder: 'layoutOrder',
     endingText: 'endingText',
+    ogImageKey: 'ogImageKey',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -11577,7 +11589,8 @@ export namespace Prisma {
     bridesMaids: 'bridesMaids',
     groomMomName: 'groomMomName',
     groomDadName: 'groomDadName',
-    endingText: 'endingText'
+    endingText: 'endingText',
+    ogImageKey: 'ogImageKey'
   };
 
   export type InvitationOrderByRelevanceFieldEnum = (typeof InvitationOrderByRelevanceFieldEnum)[keyof typeof InvitationOrderByRelevanceFieldEnum]
@@ -11803,6 +11816,7 @@ export namespace Prisma {
     groomDadName?: StringNullableFilter<"Invitation"> | string | null
     layoutOrder?: JsonNullableFilter<"Invitation">
     endingText?: StringNullableFilter<"Invitation"> | string | null
+    ogImageKey?: StringNullableFilter<"Invitation"> | string | null
     createdAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     updatedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -11853,6 +11867,7 @@ export namespace Prisma {
     groomDadName?: SortOrderInput | SortOrder
     layoutOrder?: SortOrderInput | SortOrder
     endingText?: SortOrderInput | SortOrder
+    ogImageKey?: SortOrderInput | SortOrder
     createdAt?: SortOrderInput | SortOrder
     updatedAt?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
@@ -11907,6 +11922,7 @@ export namespace Prisma {
     groomDadName?: StringNullableFilter<"Invitation"> | string | null
     layoutOrder?: JsonNullableFilter<"Invitation">
     endingText?: StringNullableFilter<"Invitation"> | string | null
+    ogImageKey?: StringNullableFilter<"Invitation"> | string | null
     createdAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     updatedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -11957,6 +11973,7 @@ export namespace Prisma {
     groomDadName?: SortOrderInput | SortOrder
     layoutOrder?: SortOrderInput | SortOrder
     endingText?: SortOrderInput | SortOrder
+    ogImageKey?: SortOrderInput | SortOrder
     createdAt?: SortOrderInput | SortOrder
     updatedAt?: SortOrderInput | SortOrder
     _count?: InvitationCountOrderByAggregateInput
@@ -12010,6 +12027,7 @@ export namespace Prisma {
     groomDadName?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     layoutOrder?: JsonNullableWithAggregatesFilter<"Invitation">
     endingText?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    ogImageKey?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     createdAt?: DateTimeNullableWithAggregatesFilter<"Invitation"> | Date | string | null
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Invitation"> | Date | string | null
   }
@@ -12609,6 +12627,7 @@ export namespace Prisma {
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: string | null
+    ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
@@ -12659,6 +12678,7 @@ export namespace Prisma {
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: string | null
+    ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
@@ -12706,6 +12726,7 @@ export namespace Prisma {
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
@@ -12756,6 +12777,7 @@ export namespace Prisma {
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
@@ -12805,6 +12827,7 @@ export namespace Prisma {
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: string | null
+    ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
   }
@@ -12848,6 +12871,7 @@ export namespace Prisma {
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -12893,6 +12917,7 @@ export namespace Prisma {
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -13660,6 +13685,7 @@ export namespace Prisma {
     groomDadName?: SortOrder
     layoutOrder?: SortOrder
     endingText?: SortOrder
+    ogImageKey?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -13710,6 +13736,7 @@ export namespace Prisma {
     groomMomName?: SortOrder
     groomDadName?: SortOrder
     endingText?: SortOrder
+    ogImageKey?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -13754,6 +13781,7 @@ export namespace Prisma {
     groomMomName?: SortOrder
     groomDadName?: SortOrder
     endingText?: SortOrder
+    ogImageKey?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -14902,6 +14930,7 @@ export namespace Prisma {
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: string | null
+    ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
@@ -14950,6 +14979,7 @@ export namespace Prisma {
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: string | null
+    ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
@@ -15028,6 +15058,7 @@ export namespace Prisma {
     groomDadName?: StringNullableFilter<"Invitation"> | string | null
     layoutOrder?: JsonNullableFilter<"Invitation">
     endingText?: StringNullableFilter<"Invitation"> | string | null
+    ogImageKey?: StringNullableFilter<"Invitation"> | string | null
     createdAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     updatedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
   }
@@ -15398,6 +15429,7 @@ export namespace Prisma {
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: string | null
+    ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
@@ -15447,6 +15479,7 @@ export namespace Prisma {
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: string | null
+    ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
@@ -15560,6 +15593,7 @@ export namespace Prisma {
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
@@ -15609,6 +15643,7 @@ export namespace Prisma {
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
@@ -15769,6 +15804,7 @@ export namespace Prisma {
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: string | null
+    ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
@@ -15818,6 +15854,7 @@ export namespace Prisma {
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: string | null
+    ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
@@ -15880,6 +15917,7 @@ export namespace Prisma {
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
@@ -15929,6 +15967,7 @@ export namespace Prisma {
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
@@ -15975,6 +16014,7 @@ export namespace Prisma {
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: string | null
+    ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
@@ -16024,6 +16064,7 @@ export namespace Prisma {
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: string | null
+    ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
@@ -16086,6 +16127,7 @@ export namespace Prisma {
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
@@ -16135,6 +16177,7 @@ export namespace Prisma {
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
@@ -16181,6 +16224,7 @@ export namespace Prisma {
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: string | null
+    ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
@@ -16230,6 +16274,7 @@ export namespace Prisma {
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: string | null
+    ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
@@ -16292,6 +16337,7 @@ export namespace Prisma {
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
@@ -16341,6 +16387,7 @@ export namespace Prisma {
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
@@ -16388,6 +16435,7 @@ export namespace Prisma {
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: string | null
+    ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
   }
@@ -16431,6 +16479,7 @@ export namespace Prisma {
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
@@ -16479,6 +16528,7 @@ export namespace Prisma {
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
@@ -16527,6 +16577,7 @@ export namespace Prisma {
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
     endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
