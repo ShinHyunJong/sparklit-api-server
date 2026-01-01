@@ -144,7 +144,8 @@ export class InvitationService {
 
     if (type === 'main') {
       const ogImageBuffer = await makeOgImage(croppedFile.buffer);
-      const ogImageKey = `invitations/${uniqueId}/og/main-og-image.jpg`;
+      const ogImageName = cryptoRandomString({ length: 16 });
+      const ogImageKey = `invitations/${uniqueId}/og/${ogImageName}.jpg`;
       await upload2S3(ogImageKey, ogImageBuffer);
       await this.prismaService.invitation.update({
         where: { uniqueId },
