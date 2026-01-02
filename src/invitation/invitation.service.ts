@@ -331,7 +331,7 @@ export class InvitationService {
       guestEmail: body.email,
       guestPhone: body.phone,
       submittedAt: dayjs().format('YYYY-MM-DD HH:mm (Z)'),
-      rsvpDashboardUrl: `https://admin.sparklit.co/invitations/${uniqueId}/rsvps`,
+      rsvpDashboardUrl: `https://sparklit.co/rsvp?uid=${uniqueId}`,
     });
     return result;
   }
