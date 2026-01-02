@@ -91,26 +91,13 @@ export class InvitationService {
     uniqueId: string,
     updateInvitationDto: UpdateInvitationDto,
   ) {
-    const prevInvitation = await this.prismaService.invitation.findUnique({
-      where: { uniqueId },
-    });
-    const prevDate = dayjs(prevInvitation.date);
-
     const targetDate = dayjs(updateInvitationDto.date);
-    const targetYear = targetDate.get('year');
-    const targetMonth = targetDate.get('month');
-    const targetDay = targetDate.get('date');
-
-    const newDate = prevDate
-      .set('year', targetYear)
-      .set('month', targetMonth)
-      .set('date', targetDay);
 
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
         ...updateInvitationDto,
-        date: newDate.toDate(),
+        date: targetDate.toDate(),
       },
     });
     return updated;
