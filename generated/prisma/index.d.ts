@@ -9649,7 +9649,7 @@ export namespace Prisma {
     phone?: boolean
     attending?: boolean
     createdAt?: boolean
-    Invitation?: boolean | InvitationRSVP$InvitationArgs<ExtArgs>
+    invitation?: boolean | InvitationRSVP$invitationArgs<ExtArgs>
   }, ExtArgs["result"]["invitationRSVP"]>
 
 
@@ -9667,13 +9667,13 @@ export namespace Prisma {
 
   export type InvitationRSVPOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitationId" | "side" | "name" | "email" | "phone" | "attending" | "createdAt", ExtArgs["result"]["invitationRSVP"]>
   export type InvitationRSVPInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Invitation?: boolean | InvitationRSVP$InvitationArgs<ExtArgs>
+    invitation?: boolean | InvitationRSVP$invitationArgs<ExtArgs>
   }
 
   export type $InvitationRSVPPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "InvitationRSVP"
     objects: {
-      Invitation: Prisma.$InvitationPayload<ExtArgs> | null
+      invitation: Prisma.$InvitationPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -10024,7 +10024,7 @@ export namespace Prisma {
    */
   export interface Prisma__InvitationRSVPClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Invitation<T extends InvitationRSVP$InvitationArgs<ExtArgs> = {}>(args?: Subset<T, InvitationRSVP$InvitationArgs<ExtArgs>>): Prisma__InvitationClient<$Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    invitation<T extends InvitationRSVP$invitationArgs<ExtArgs> = {}>(args?: Subset<T, InvitationRSVP$invitationArgs<ExtArgs>>): Prisma__InvitationClient<$Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10405,9 +10405,9 @@ export namespace Prisma {
   }
 
   /**
-   * InvitationRSVP.Invitation
+   * InvitationRSVP.invitation
    */
-  export type InvitationRSVP$InvitationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InvitationRSVP$invitationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Invitation
      */
@@ -12425,7 +12425,7 @@ export namespace Prisma {
     phone?: StringNullableFilter<"InvitationRSVP"> | string | null
     attending?: BoolNullableFilter<"InvitationRSVP"> | boolean | null
     createdAt?: DateTimeNullableFilter<"InvitationRSVP"> | Date | string | null
-    Invitation?: XOR<InvitationNullableScalarRelationFilter, InvitationWhereInput> | null
+    invitation?: XOR<InvitationNullableScalarRelationFilter, InvitationWhereInput> | null
   }
 
   export type InvitationRSVPOrderByWithRelationInput = {
@@ -12437,7 +12437,7 @@ export namespace Prisma {
     phone?: SortOrderInput | SortOrder
     attending?: SortOrderInput | SortOrder
     createdAt?: SortOrderInput | SortOrder
-    Invitation?: InvitationOrderByWithRelationInput
+    invitation?: InvitationOrderByWithRelationInput
     _relevance?: InvitationRSVPOrderByRelevanceInput
   }
 
@@ -12453,7 +12453,7 @@ export namespace Prisma {
     phone?: StringNullableFilter<"InvitationRSVP"> | string | null
     attending?: BoolNullableFilter<"InvitationRSVP"> | boolean | null
     createdAt?: DateTimeNullableFilter<"InvitationRSVP"> | Date | string | null
-    Invitation?: XOR<InvitationNullableScalarRelationFilter, InvitationWhereInput> | null
+    invitation?: XOR<InvitationNullableScalarRelationFilter, InvitationWhereInput> | null
   }, "id">
 
   export type InvitationRSVPOrderByWithAggregationInput = {
@@ -13316,7 +13316,7 @@ export namespace Prisma {
     phone?: string | null
     attending?: boolean | null
     createdAt?: Date | string | null
-    Invitation?: InvitationCreateNestedOneWithoutInvitationRSVPInput
+    invitation?: InvitationCreateNestedOneWithoutInvitationRSVPInput
   }
 
   export type InvitationRSVPUncheckedCreateInput = {
@@ -13337,7 +13337,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     attending?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Invitation?: InvitationUpdateOneWithoutInvitationRSVPNestedInput
+    invitation?: InvitationUpdateOneWithoutInvitationRSVPNestedInput
   }
 
   export type InvitationRSVPUncheckedUpdateInput = {

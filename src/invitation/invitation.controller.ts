@@ -122,6 +122,11 @@ export class InvitationController {
     return this.invitationService.updateTemplateNo(uniqueId, body.templateNo);
   }
 
+  @Get('/rsvp/:uniqueId')
+  getRSVP(@Param('uniqueId') uniqueId: string) {
+    return this.invitationService.getRSVPlist(uniqueId);
+  }
+
   @Post('rsvp/:uniqueId')
   postRSVP(@Param('uniqueId') uniqueId: string, @Body() body: RsvpDto) {
     return this.invitationService.postRSVP(uniqueId, body);

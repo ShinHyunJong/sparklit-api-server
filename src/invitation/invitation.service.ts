@@ -336,6 +336,17 @@ export class InvitationService {
     return result;
   }
 
+  async getRSVPlist(uniqueId: string) {
+    const result = await this.prismaService.invitationRSVP.findMany({
+      where: {
+        invitation: {
+          uniqueId,
+        },
+      },
+    });
+    return result;
+  }
+
   async updateNotice(uniqueId: string, notice: string) {
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
