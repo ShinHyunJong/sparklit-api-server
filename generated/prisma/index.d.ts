@@ -58,6 +58,11 @@ export type InvitationRSVP = $Result.DefaultSelection<Prisma.$InvitationRSVPPayl
  * 
  */
 export type InvitationMusic = $Result.DefaultSelection<Prisma.$InvitationMusicPayload>
+/**
+ * Model InvitationView
+ * 
+ */
+export type InvitationView = $Result.DefaultSelection<Prisma.$InvitationViewPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -273,6 +278,16 @@ export class PrismaClient<
     * ```
     */
   get invitationMusic(): Prisma.InvitationMusicDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.invitationView`: Exposes CRUD operations for the **InvitationView** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more InvitationViews
+    * const invitationViews = await prisma.invitationView.findMany()
+    * ```
+    */
+  get invitationView(): Prisma.InvitationViewDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -721,7 +736,8 @@ export namespace Prisma {
     InvitationPhoto: 'InvitationPhoto',
     InvitationCoverPhoto: 'InvitationCoverPhoto',
     InvitationRSVP: 'InvitationRSVP',
-    InvitationMusic: 'InvitationMusic'
+    InvitationMusic: 'InvitationMusic',
+    InvitationView: 'InvitationView'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -740,7 +756,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "invitation" | "invitationPlace" | "place" | "invitationPlaceTime" | "invitationPhoto" | "invitationCoverPhoto" | "invitationRSVP" | "invitationMusic"
+      modelProps: "user" | "invitation" | "invitationPlace" | "place" | "invitationPlaceTime" | "invitationPhoto" | "invitationCoverPhoto" | "invitationRSVP" | "invitationMusic" | "invitationView"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1338,6 +1354,72 @@ export namespace Prisma {
           }
         }
       }
+      InvitationView: {
+        payload: Prisma.$InvitationViewPayload<ExtArgs>
+        fields: Prisma.InvitationViewFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.InvitationViewFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationViewPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.InvitationViewFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationViewPayload>
+          }
+          findFirst: {
+            args: Prisma.InvitationViewFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationViewPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.InvitationViewFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationViewPayload>
+          }
+          findMany: {
+            args: Prisma.InvitationViewFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationViewPayload>[]
+          }
+          create: {
+            args: Prisma.InvitationViewCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationViewPayload>
+          }
+          createMany: {
+            args: Prisma.InvitationViewCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.InvitationViewDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationViewPayload>
+          }
+          update: {
+            args: Prisma.InvitationViewUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationViewPayload>
+          }
+          deleteMany: {
+            args: Prisma.InvitationViewDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.InvitationViewUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.InvitationViewUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationViewPayload>
+          }
+          aggregate: {
+            args: Prisma.InvitationViewAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateInvitationView>
+          }
+          groupBy: {
+            args: Prisma.InvitationViewGroupByArgs<ExtArgs>
+            result: $Utils.Optional<InvitationViewGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.InvitationViewCountArgs<ExtArgs>
+            result: $Utils.Optional<InvitationViewCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1431,6 +1513,7 @@ export namespace Prisma {
     invitationCoverPhoto?: InvitationCoverPhotoOmit
     invitationRSVP?: InvitationRSVPOmit
     invitationMusic?: InvitationMusicOmit
+    invitationView?: InvitationViewOmit
   }
 
   /* Types for Logging */
@@ -2680,12 +2763,18 @@ export namespace Prisma {
     id: number | null
     templateNo: number | null
     userId: number | null
+    isGroomDadHidden: number | null
+    isBrideDadHidden: number | null
+    isBrideMomHidden: number | null
   }
 
   export type InvitationSumAggregateOutputType = {
     id: number | null
     templateNo: number | null
     userId: number | null
+    isGroomDadHidden: number | null
+    isBrideDadHidden: number | null
+    isBrideMomHidden: number | null
   }
 
   export type InvitationMinAggregateOutputType = {
@@ -2712,15 +2801,22 @@ export namespace Prisma {
     brideLastName: string | null
     brideMomName: string | null
     greetingTitle: string | null
+    isGroomMomHidden: boolean | null
+    isGroomDadHidden: number | null
+    isBrideDadHidden: number | null
+    isBrideMomHidden: number | null
     greetingContent: string | null
     brideDadName: string | null
     bridePhone: string | null
     groomFirstName: string | null
+    wishlistUrl: string | null
+    baseFont: string | null
     groomMiddleName: string | null
     groomLastName: string | null
     groomPhone: string | null
     primarySponsor: string | null
     secondarySponsor: string | null
+    bankAccount: string | null
     maidOfHonor: string | null
     groomsMen: string | null
     bestMan: string | null
@@ -2757,15 +2853,22 @@ export namespace Prisma {
     brideLastName: string | null
     brideMomName: string | null
     greetingTitle: string | null
+    isGroomMomHidden: boolean | null
+    isGroomDadHidden: number | null
+    isBrideDadHidden: number | null
+    isBrideMomHidden: number | null
     greetingContent: string | null
     brideDadName: string | null
     bridePhone: string | null
     groomFirstName: string | null
+    wishlistUrl: string | null
+    baseFont: string | null
     groomMiddleName: string | null
     groomLastName: string | null
     groomPhone: string | null
     primarySponsor: string | null
     secondarySponsor: string | null
+    bankAccount: string | null
     maidOfHonor: string | null
     groomsMen: string | null
     bestMan: string | null
@@ -2802,15 +2905,22 @@ export namespace Prisma {
     brideLastName: number
     brideMomName: number
     greetingTitle: number
+    isGroomMomHidden: number
+    isGroomDadHidden: number
+    isBrideDadHidden: number
+    isBrideMomHidden: number
     greetingContent: number
     brideDadName: number
     bridePhone: number
     groomFirstName: number
+    wishlistUrl: number
+    baseFont: number
     groomMiddleName: number
     groomLastName: number
     groomPhone: number
     primarySponsor: number
     secondarySponsor: number
+    bankAccount: number
     maidOfHonor: number
     groomsMen: number
     bestMan: number
@@ -2830,12 +2940,18 @@ export namespace Prisma {
     id?: true
     templateNo?: true
     userId?: true
+    isGroomDadHidden?: true
+    isBrideDadHidden?: true
+    isBrideMomHidden?: true
   }
 
   export type InvitationSumAggregateInputType = {
     id?: true
     templateNo?: true
     userId?: true
+    isGroomDadHidden?: true
+    isBrideDadHidden?: true
+    isBrideMomHidden?: true
   }
 
   export type InvitationMinAggregateInputType = {
@@ -2862,15 +2978,22 @@ export namespace Prisma {
     brideLastName?: true
     brideMomName?: true
     greetingTitle?: true
+    isGroomMomHidden?: true
+    isGroomDadHidden?: true
+    isBrideDadHidden?: true
+    isBrideMomHidden?: true
     greetingContent?: true
     brideDadName?: true
     bridePhone?: true
     groomFirstName?: true
+    wishlistUrl?: true
+    baseFont?: true
     groomMiddleName?: true
     groomLastName?: true
     groomPhone?: true
     primarySponsor?: true
     secondarySponsor?: true
+    bankAccount?: true
     maidOfHonor?: true
     groomsMen?: true
     bestMan?: true
@@ -2907,15 +3030,22 @@ export namespace Prisma {
     brideLastName?: true
     brideMomName?: true
     greetingTitle?: true
+    isGroomMomHidden?: true
+    isGroomDadHidden?: true
+    isBrideDadHidden?: true
+    isBrideMomHidden?: true
     greetingContent?: true
     brideDadName?: true
     bridePhone?: true
     groomFirstName?: true
+    wishlistUrl?: true
+    baseFont?: true
     groomMiddleName?: true
     groomLastName?: true
     groomPhone?: true
     primarySponsor?: true
     secondarySponsor?: true
+    bankAccount?: true
     maidOfHonor?: true
     groomsMen?: true
     bestMan?: true
@@ -2952,15 +3082,22 @@ export namespace Prisma {
     brideLastName?: true
     brideMomName?: true
     greetingTitle?: true
+    isGroomMomHidden?: true
+    isGroomDadHidden?: true
+    isBrideDadHidden?: true
+    isBrideMomHidden?: true
     greetingContent?: true
     brideDadName?: true
     bridePhone?: true
     groomFirstName?: true
+    wishlistUrl?: true
+    baseFont?: true
     groomMiddleName?: true
     groomLastName?: true
     groomPhone?: true
     primarySponsor?: true
     secondarySponsor?: true
+    bankAccount?: true
     maidOfHonor?: true
     groomsMen?: true
     bestMan?: true
@@ -3085,15 +3222,22 @@ export namespace Prisma {
     brideLastName: string | null
     brideMomName: string | null
     greetingTitle: string | null
+    isGroomMomHidden: boolean | null
+    isGroomDadHidden: number | null
+    isBrideDadHidden: number | null
+    isBrideMomHidden: number | null
     greetingContent: string | null
     brideDadName: string | null
     bridePhone: string | null
     groomFirstName: string | null
+    wishlistUrl: string | null
+    baseFont: string | null
     groomMiddleName: string | null
     groomLastName: string | null
     groomPhone: string | null
     primarySponsor: string | null
     secondarySponsor: string | null
+    bankAccount: string | null
     maidOfHonor: string | null
     groomsMen: string | null
     bestMan: string | null
@@ -3150,15 +3294,22 @@ export namespace Prisma {
     brideLastName?: boolean
     brideMomName?: boolean
     greetingTitle?: boolean
+    isGroomMomHidden?: boolean
+    isGroomDadHidden?: boolean
+    isBrideDadHidden?: boolean
+    isBrideMomHidden?: boolean
     greetingContent?: boolean
     brideDadName?: boolean
     bridePhone?: boolean
     groomFirstName?: boolean
+    wishlistUrl?: boolean
+    baseFont?: boolean
     groomMiddleName?: boolean
     groomLastName?: boolean
     groomPhone?: boolean
     primarySponsor?: boolean
     secondarySponsor?: boolean
+    bankAccount?: boolean
     maidOfHonor?: boolean
     groomsMen?: boolean
     bestMan?: boolean
@@ -3204,15 +3355,22 @@ export namespace Prisma {
     brideLastName?: boolean
     brideMomName?: boolean
     greetingTitle?: boolean
+    isGroomMomHidden?: boolean
+    isGroomDadHidden?: boolean
+    isBrideDadHidden?: boolean
+    isBrideMomHidden?: boolean
     greetingContent?: boolean
     brideDadName?: boolean
     bridePhone?: boolean
     groomFirstName?: boolean
+    wishlistUrl?: boolean
+    baseFont?: boolean
     groomMiddleName?: boolean
     groomLastName?: boolean
     groomPhone?: boolean
     primarySponsor?: boolean
     secondarySponsor?: boolean
+    bankAccount?: boolean
     maidOfHonor?: boolean
     groomsMen?: boolean
     bestMan?: boolean
@@ -3226,7 +3384,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "maidOfHonor" | "groomsMen" | "bestMan" | "bridesMaids" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
+  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "bestMan" | "bridesMaids" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
@@ -3269,15 +3427,22 @@ export namespace Prisma {
       brideLastName: string | null
       brideMomName: string | null
       greetingTitle: string | null
+      isGroomMomHidden: boolean | null
+      isGroomDadHidden: number | null
+      isBrideDadHidden: number | null
+      isBrideMomHidden: number | null
       greetingContent: string | null
       brideDadName: string | null
       bridePhone: string | null
       groomFirstName: string | null
+      wishlistUrl: string | null
+      baseFont: string | null
       groomMiddleName: string | null
       groomLastName: string | null
       groomPhone: string | null
       primarySponsor: string | null
       secondarySponsor: string | null
+      bankAccount: string | null
       maidOfHonor: string | null
       groomsMen: string | null
       bestMan: string | null
@@ -3686,15 +3851,22 @@ export namespace Prisma {
     readonly brideLastName: FieldRef<"Invitation", 'String'>
     readonly brideMomName: FieldRef<"Invitation", 'String'>
     readonly greetingTitle: FieldRef<"Invitation", 'String'>
+    readonly isGroomMomHidden: FieldRef<"Invitation", 'Boolean'>
+    readonly isGroomDadHidden: FieldRef<"Invitation", 'Int'>
+    readonly isBrideDadHidden: FieldRef<"Invitation", 'Int'>
+    readonly isBrideMomHidden: FieldRef<"Invitation", 'Int'>
     readonly greetingContent: FieldRef<"Invitation", 'String'>
     readonly brideDadName: FieldRef<"Invitation", 'String'>
     readonly bridePhone: FieldRef<"Invitation", 'String'>
     readonly groomFirstName: FieldRef<"Invitation", 'String'>
+    readonly wishlistUrl: FieldRef<"Invitation", 'String'>
+    readonly baseFont: FieldRef<"Invitation", 'String'>
     readonly groomMiddleName: FieldRef<"Invitation", 'String'>
     readonly groomLastName: FieldRef<"Invitation", 'String'>
     readonly groomPhone: FieldRef<"Invitation", 'String'>
     readonly primarySponsor: FieldRef<"Invitation", 'String'>
     readonly secondarySponsor: FieldRef<"Invitation", 'String'>
+    readonly bankAccount: FieldRef<"Invitation", 'String'>
     readonly maidOfHonor: FieldRef<"Invitation", 'String'>
     readonly groomsMen: FieldRef<"Invitation", 'String'>
     readonly bestMan: FieldRef<"Invitation", 'String'>
@@ -11337,6 +11509,878 @@ export namespace Prisma {
 
 
   /**
+   * Model InvitationView
+   */
+
+  export type AggregateInvitationView = {
+    _count: InvitationViewCountAggregateOutputType | null
+    _avg: InvitationViewAvgAggregateOutputType | null
+    _sum: InvitationViewSumAggregateOutputType | null
+    _min: InvitationViewMinAggregateOutputType | null
+    _max: InvitationViewMaxAggregateOutputType | null
+  }
+
+  export type InvitationViewAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type InvitationViewSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type InvitationViewMinAggregateOutputType = {
+    id: number | null
+  }
+
+  export type InvitationViewMaxAggregateOutputType = {
+    id: number | null
+  }
+
+  export type InvitationViewCountAggregateOutputType = {
+    id: number
+    _all: number
+  }
+
+
+  export type InvitationViewAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type InvitationViewSumAggregateInputType = {
+    id?: true
+  }
+
+  export type InvitationViewMinAggregateInputType = {
+    id?: true
+  }
+
+  export type InvitationViewMaxAggregateInputType = {
+    id?: true
+  }
+
+  export type InvitationViewCountAggregateInputType = {
+    id?: true
+    _all?: true
+  }
+
+  export type InvitationViewAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationView to aggregate.
+     */
+    where?: InvitationViewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationViews to fetch.
+     */
+    orderBy?: InvitationViewOrderByWithRelationInput | InvitationViewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: InvitationViewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationViews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned InvitationViews
+    **/
+    _count?: true | InvitationViewCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: InvitationViewAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: InvitationViewSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: InvitationViewMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: InvitationViewMaxAggregateInputType
+  }
+
+  export type GetInvitationViewAggregateType<T extends InvitationViewAggregateArgs> = {
+        [P in keyof T & keyof AggregateInvitationView]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateInvitationView[P]>
+      : GetScalarType<T[P], AggregateInvitationView[P]>
+  }
+
+
+
+
+  export type InvitationViewGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationViewWhereInput
+    orderBy?: InvitationViewOrderByWithAggregationInput | InvitationViewOrderByWithAggregationInput[]
+    by: InvitationViewScalarFieldEnum[] | InvitationViewScalarFieldEnum
+    having?: InvitationViewScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: InvitationViewCountAggregateInputType | true
+    _avg?: InvitationViewAvgAggregateInputType
+    _sum?: InvitationViewSumAggregateInputType
+    _min?: InvitationViewMinAggregateInputType
+    _max?: InvitationViewMaxAggregateInputType
+  }
+
+  export type InvitationViewGroupByOutputType = {
+    id: number
+    _count: InvitationViewCountAggregateOutputType | null
+    _avg: InvitationViewAvgAggregateOutputType | null
+    _sum: InvitationViewSumAggregateOutputType | null
+    _min: InvitationViewMinAggregateOutputType | null
+    _max: InvitationViewMaxAggregateOutputType | null
+  }
+
+  type GetInvitationViewGroupByPayload<T extends InvitationViewGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<InvitationViewGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof InvitationViewGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], InvitationViewGroupByOutputType[P]>
+            : GetScalarType<T[P], InvitationViewGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type InvitationViewSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+  }, ExtArgs["result"]["invitationView"]>
+
+
+
+  export type InvitationViewSelectScalar = {
+    id?: boolean
+  }
+
+  export type InvitationViewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id", ExtArgs["result"]["invitationView"]>
+
+  export type $InvitationViewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "InvitationView"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+    }, ExtArgs["result"]["invitationView"]>
+    composites: {}
+  }
+
+  type InvitationViewGetPayload<S extends boolean | null | undefined | InvitationViewDefaultArgs> = $Result.GetResult<Prisma.$InvitationViewPayload, S>
+
+  type InvitationViewCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<InvitationViewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: InvitationViewCountAggregateInputType | true
+    }
+
+  export interface InvitationViewDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['InvitationView'], meta: { name: 'InvitationView' } }
+    /**
+     * Find zero or one InvitationView that matches the filter.
+     * @param {InvitationViewFindUniqueArgs} args - Arguments to find a InvitationView
+     * @example
+     * // Get one InvitationView
+     * const invitationView = await prisma.invitationView.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends InvitationViewFindUniqueArgs>(args: SelectSubset<T, InvitationViewFindUniqueArgs<ExtArgs>>): Prisma__InvitationViewClient<$Result.GetResult<Prisma.$InvitationViewPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one InvitationView that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {InvitationViewFindUniqueOrThrowArgs} args - Arguments to find a InvitationView
+     * @example
+     * // Get one InvitationView
+     * const invitationView = await prisma.invitationView.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends InvitationViewFindUniqueOrThrowArgs>(args: SelectSubset<T, InvitationViewFindUniqueOrThrowArgs<ExtArgs>>): Prisma__InvitationViewClient<$Result.GetResult<Prisma.$InvitationViewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationView that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationViewFindFirstArgs} args - Arguments to find a InvitationView
+     * @example
+     * // Get one InvitationView
+     * const invitationView = await prisma.invitationView.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends InvitationViewFindFirstArgs>(args?: SelectSubset<T, InvitationViewFindFirstArgs<ExtArgs>>): Prisma__InvitationViewClient<$Result.GetResult<Prisma.$InvitationViewPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationView that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationViewFindFirstOrThrowArgs} args - Arguments to find a InvitationView
+     * @example
+     * // Get one InvitationView
+     * const invitationView = await prisma.invitationView.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends InvitationViewFindFirstOrThrowArgs>(args?: SelectSubset<T, InvitationViewFindFirstOrThrowArgs<ExtArgs>>): Prisma__InvitationViewClient<$Result.GetResult<Prisma.$InvitationViewPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more InvitationViews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationViewFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all InvitationViews
+     * const invitationViews = await prisma.invitationView.findMany()
+     * 
+     * // Get first 10 InvitationViews
+     * const invitationViews = await prisma.invitationView.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const invitationViewWithIdOnly = await prisma.invitationView.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends InvitationViewFindManyArgs>(args?: SelectSubset<T, InvitationViewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationViewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a InvitationView.
+     * @param {InvitationViewCreateArgs} args - Arguments to create a InvitationView.
+     * @example
+     * // Create one InvitationView
+     * const InvitationView = await prisma.invitationView.create({
+     *   data: {
+     *     // ... data to create a InvitationView
+     *   }
+     * })
+     * 
+     */
+    create<T extends InvitationViewCreateArgs>(args: SelectSubset<T, InvitationViewCreateArgs<ExtArgs>>): Prisma__InvitationViewClient<$Result.GetResult<Prisma.$InvitationViewPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many InvitationViews.
+     * @param {InvitationViewCreateManyArgs} args - Arguments to create many InvitationViews.
+     * @example
+     * // Create many InvitationViews
+     * const invitationView = await prisma.invitationView.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends InvitationViewCreateManyArgs>(args?: SelectSubset<T, InvitationViewCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a InvitationView.
+     * @param {InvitationViewDeleteArgs} args - Arguments to delete one InvitationView.
+     * @example
+     * // Delete one InvitationView
+     * const InvitationView = await prisma.invitationView.delete({
+     *   where: {
+     *     // ... filter to delete one InvitationView
+     *   }
+     * })
+     * 
+     */
+    delete<T extends InvitationViewDeleteArgs>(args: SelectSubset<T, InvitationViewDeleteArgs<ExtArgs>>): Prisma__InvitationViewClient<$Result.GetResult<Prisma.$InvitationViewPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one InvitationView.
+     * @param {InvitationViewUpdateArgs} args - Arguments to update one InvitationView.
+     * @example
+     * // Update one InvitationView
+     * const invitationView = await prisma.invitationView.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends InvitationViewUpdateArgs>(args: SelectSubset<T, InvitationViewUpdateArgs<ExtArgs>>): Prisma__InvitationViewClient<$Result.GetResult<Prisma.$InvitationViewPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more InvitationViews.
+     * @param {InvitationViewDeleteManyArgs} args - Arguments to filter InvitationViews to delete.
+     * @example
+     * // Delete a few InvitationViews
+     * const { count } = await prisma.invitationView.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends InvitationViewDeleteManyArgs>(args?: SelectSubset<T, InvitationViewDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more InvitationViews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationViewUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many InvitationViews
+     * const invitationView = await prisma.invitationView.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends InvitationViewUpdateManyArgs>(args: SelectSubset<T, InvitationViewUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one InvitationView.
+     * @param {InvitationViewUpsertArgs} args - Arguments to update or create a InvitationView.
+     * @example
+     * // Update or create a InvitationView
+     * const invitationView = await prisma.invitationView.upsert({
+     *   create: {
+     *     // ... data to create a InvitationView
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the InvitationView we want to update
+     *   }
+     * })
+     */
+    upsert<T extends InvitationViewUpsertArgs>(args: SelectSubset<T, InvitationViewUpsertArgs<ExtArgs>>): Prisma__InvitationViewClient<$Result.GetResult<Prisma.$InvitationViewPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of InvitationViews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationViewCountArgs} args - Arguments to filter InvitationViews to count.
+     * @example
+     * // Count the number of InvitationViews
+     * const count = await prisma.invitationView.count({
+     *   where: {
+     *     // ... the filter for the InvitationViews we want to count
+     *   }
+     * })
+    **/
+    count<T extends InvitationViewCountArgs>(
+      args?: Subset<T, InvitationViewCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], InvitationViewCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a InvitationView.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationViewAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends InvitationViewAggregateArgs>(args: Subset<T, InvitationViewAggregateArgs>): Prisma.PrismaPromise<GetInvitationViewAggregateType<T>>
+
+    /**
+     * Group by InvitationView.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationViewGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends InvitationViewGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: InvitationViewGroupByArgs['orderBy'] }
+        : { orderBy?: InvitationViewGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, InvitationViewGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInvitationViewGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the InvitationView model
+   */
+  readonly fields: InvitationViewFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for InvitationView.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__InvitationViewClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the InvitationView model
+   */
+  interface InvitationViewFieldRefs {
+    readonly id: FieldRef<"InvitationView", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * InvitationView findUnique
+   */
+  export type InvitationViewFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationView
+     */
+    select?: InvitationViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationView
+     */
+    omit?: InvitationViewOmit<ExtArgs> | null
+    /**
+     * Filter, which InvitationView to fetch.
+     */
+    where: InvitationViewWhereUniqueInput
+  }
+
+  /**
+   * InvitationView findUniqueOrThrow
+   */
+  export type InvitationViewFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationView
+     */
+    select?: InvitationViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationView
+     */
+    omit?: InvitationViewOmit<ExtArgs> | null
+    /**
+     * Filter, which InvitationView to fetch.
+     */
+    where: InvitationViewWhereUniqueInput
+  }
+
+  /**
+   * InvitationView findFirst
+   */
+  export type InvitationViewFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationView
+     */
+    select?: InvitationViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationView
+     */
+    omit?: InvitationViewOmit<ExtArgs> | null
+    /**
+     * Filter, which InvitationView to fetch.
+     */
+    where?: InvitationViewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationViews to fetch.
+     */
+    orderBy?: InvitationViewOrderByWithRelationInput | InvitationViewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationViews.
+     */
+    cursor?: InvitationViewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationViews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationViews.
+     */
+    distinct?: InvitationViewScalarFieldEnum | InvitationViewScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationView findFirstOrThrow
+   */
+  export type InvitationViewFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationView
+     */
+    select?: InvitationViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationView
+     */
+    omit?: InvitationViewOmit<ExtArgs> | null
+    /**
+     * Filter, which InvitationView to fetch.
+     */
+    where?: InvitationViewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationViews to fetch.
+     */
+    orderBy?: InvitationViewOrderByWithRelationInput | InvitationViewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationViews.
+     */
+    cursor?: InvitationViewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationViews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationViews.
+     */
+    distinct?: InvitationViewScalarFieldEnum | InvitationViewScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationView findMany
+   */
+  export type InvitationViewFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationView
+     */
+    select?: InvitationViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationView
+     */
+    omit?: InvitationViewOmit<ExtArgs> | null
+    /**
+     * Filter, which InvitationViews to fetch.
+     */
+    where?: InvitationViewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationViews to fetch.
+     */
+    orderBy?: InvitationViewOrderByWithRelationInput | InvitationViewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing InvitationViews.
+     */
+    cursor?: InvitationViewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationViews.
+     */
+    skip?: number
+    distinct?: InvitationViewScalarFieldEnum | InvitationViewScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationView create
+   */
+  export type InvitationViewCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationView
+     */
+    select?: InvitationViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationView
+     */
+    omit?: InvitationViewOmit<ExtArgs> | null
+    /**
+     * The data needed to create a InvitationView.
+     */
+    data?: XOR<InvitationViewCreateInput, InvitationViewUncheckedCreateInput>
+  }
+
+  /**
+   * InvitationView createMany
+   */
+  export type InvitationViewCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many InvitationViews.
+     */
+    data: InvitationViewCreateManyInput | InvitationViewCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * InvitationView update
+   */
+  export type InvitationViewUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationView
+     */
+    select?: InvitationViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationView
+     */
+    omit?: InvitationViewOmit<ExtArgs> | null
+    /**
+     * The data needed to update a InvitationView.
+     */
+    data: XOR<InvitationViewUpdateInput, InvitationViewUncheckedUpdateInput>
+    /**
+     * Choose, which InvitationView to update.
+     */
+    where: InvitationViewWhereUniqueInput
+  }
+
+  /**
+   * InvitationView updateMany
+   */
+  export type InvitationViewUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update InvitationViews.
+     */
+    data: XOR<InvitationViewUpdateManyMutationInput, InvitationViewUncheckedUpdateManyInput>
+    /**
+     * Filter which InvitationViews to update
+     */
+    where?: InvitationViewWhereInput
+    /**
+     * Limit how many InvitationViews to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationView upsert
+   */
+  export type InvitationViewUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationView
+     */
+    select?: InvitationViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationView
+     */
+    omit?: InvitationViewOmit<ExtArgs> | null
+    /**
+     * The filter to search for the InvitationView to update in case it exists.
+     */
+    where: InvitationViewWhereUniqueInput
+    /**
+     * In case the InvitationView found by the `where` argument doesn't exist, create a new InvitationView with this data.
+     */
+    create: XOR<InvitationViewCreateInput, InvitationViewUncheckedCreateInput>
+    /**
+     * In case the InvitationView was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<InvitationViewUpdateInput, InvitationViewUncheckedUpdateInput>
+  }
+
+  /**
+   * InvitationView delete
+   */
+  export type InvitationViewDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationView
+     */
+    select?: InvitationViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationView
+     */
+    omit?: InvitationViewOmit<ExtArgs> | null
+    /**
+     * Filter which InvitationView to delete.
+     */
+    where: InvitationViewWhereUniqueInput
+  }
+
+  /**
+   * InvitationView deleteMany
+   */
+  export type InvitationViewDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationViews to delete
+     */
+    where?: InvitationViewWhereInput
+    /**
+     * Limit how many InvitationViews to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationView without action
+   */
+  export type InvitationViewDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationView
+     */
+    select?: InvitationViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationView
+     */
+    omit?: InvitationViewOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -11385,15 +12429,22 @@ export namespace Prisma {
     brideLastName: 'brideLastName',
     brideMomName: 'brideMomName',
     greetingTitle: 'greetingTitle',
+    isGroomMomHidden: 'isGroomMomHidden',
+    isGroomDadHidden: 'isGroomDadHidden',
+    isBrideDadHidden: 'isBrideDadHidden',
+    isBrideMomHidden: 'isBrideMomHidden',
     greetingContent: 'greetingContent',
     brideDadName: 'brideDadName',
     bridePhone: 'bridePhone',
     groomFirstName: 'groomFirstName',
+    wishlistUrl: 'wishlistUrl',
+    baseFont: 'baseFont',
     groomMiddleName: 'groomMiddleName',
     groomLastName: 'groomLastName',
     groomPhone: 'groomPhone',
     primarySponsor: 'primarySponsor',
     secondarySponsor: 'secondarySponsor',
+    bankAccount: 'bankAccount',
     maidOfHonor: 'maidOfHonor',
     groomsMen: 'groomsMen',
     bestMan: 'bestMan',
@@ -11505,6 +12556,13 @@ export namespace Prisma {
   export type InvitationMusicScalarFieldEnum = (typeof InvitationMusicScalarFieldEnum)[keyof typeof InvitationMusicScalarFieldEnum]
 
 
+  export const InvitationViewScalarFieldEnum: {
+    id: 'id'
+  };
+
+  export type InvitationViewScalarFieldEnum = (typeof InvitationViewScalarFieldEnum)[keyof typeof InvitationViewScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -11578,11 +12636,14 @@ export namespace Prisma {
     brideDadName: 'brideDadName',
     bridePhone: 'bridePhone',
     groomFirstName: 'groomFirstName',
+    wishlistUrl: 'wishlistUrl',
+    baseFont: 'baseFont',
     groomMiddleName: 'groomMiddleName',
     groomLastName: 'groomLastName',
     groomPhone: 'groomPhone',
     primarySponsor: 'primarySponsor',
     secondarySponsor: 'secondarySponsor',
+    bankAccount: 'bankAccount',
     maidOfHonor: 'maidOfHonor',
     groomsMen: 'groomsMen',
     bestMan: 'bestMan',
@@ -11684,6 +12745,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Json'
    */
   export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
@@ -11701,13 +12769,6 @@ export namespace Prisma {
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
   /**
    * Deep Input Types
@@ -11799,15 +12860,22 @@ export namespace Prisma {
     brideLastName?: StringNullableFilter<"Invitation"> | string | null
     brideMomName?: StringNullableFilter<"Invitation"> | string | null
     greetingTitle?: StringNullableFilter<"Invitation"> | string | null
+    isGroomMomHidden?: BoolNullableFilter<"Invitation"> | boolean | null
+    isGroomDadHidden?: IntNullableFilter<"Invitation"> | number | null
+    isBrideDadHidden?: IntNullableFilter<"Invitation"> | number | null
+    isBrideMomHidden?: IntNullableFilter<"Invitation"> | number | null
     greetingContent?: StringNullableFilter<"Invitation"> | string | null
     brideDadName?: StringNullableFilter<"Invitation"> | string | null
     bridePhone?: StringNullableFilter<"Invitation"> | string | null
     groomFirstName?: StringNullableFilter<"Invitation"> | string | null
+    wishlistUrl?: StringNullableFilter<"Invitation"> | string | null
+    baseFont?: StringNullableFilter<"Invitation"> | string | null
     groomMiddleName?: StringNullableFilter<"Invitation"> | string | null
     groomLastName?: StringNullableFilter<"Invitation"> | string | null
     groomPhone?: StringNullableFilter<"Invitation"> | string | null
     primarySponsor?: StringNullableFilter<"Invitation"> | string | null
     secondarySponsor?: StringNullableFilter<"Invitation"> | string | null
+    bankAccount?: StringNullableFilter<"Invitation"> | string | null
     maidOfHonor?: StringNullableFilter<"Invitation"> | string | null
     groomsMen?: StringNullableFilter<"Invitation"> | string | null
     bestMan?: StringNullableFilter<"Invitation"> | string | null
@@ -11850,15 +12918,22 @@ export namespace Prisma {
     brideLastName?: SortOrderInput | SortOrder
     brideMomName?: SortOrderInput | SortOrder
     greetingTitle?: SortOrderInput | SortOrder
+    isGroomMomHidden?: SortOrderInput | SortOrder
+    isGroomDadHidden?: SortOrderInput | SortOrder
+    isBrideDadHidden?: SortOrderInput | SortOrder
+    isBrideMomHidden?: SortOrderInput | SortOrder
     greetingContent?: SortOrderInput | SortOrder
     brideDadName?: SortOrderInput | SortOrder
     bridePhone?: SortOrderInput | SortOrder
     groomFirstName?: SortOrderInput | SortOrder
+    wishlistUrl?: SortOrderInput | SortOrder
+    baseFont?: SortOrderInput | SortOrder
     groomMiddleName?: SortOrderInput | SortOrder
     groomLastName?: SortOrderInput | SortOrder
     groomPhone?: SortOrderInput | SortOrder
     primarySponsor?: SortOrderInput | SortOrder
     secondarySponsor?: SortOrderInput | SortOrder
+    bankAccount?: SortOrderInput | SortOrder
     maidOfHonor?: SortOrderInput | SortOrder
     groomsMen?: SortOrderInput | SortOrder
     bestMan?: SortOrderInput | SortOrder
@@ -11905,15 +12980,22 @@ export namespace Prisma {
     brideLastName?: StringNullableFilter<"Invitation"> | string | null
     brideMomName?: StringNullableFilter<"Invitation"> | string | null
     greetingTitle?: StringNullableFilter<"Invitation"> | string | null
+    isGroomMomHidden?: BoolNullableFilter<"Invitation"> | boolean | null
+    isGroomDadHidden?: IntNullableFilter<"Invitation"> | number | null
+    isBrideDadHidden?: IntNullableFilter<"Invitation"> | number | null
+    isBrideMomHidden?: IntNullableFilter<"Invitation"> | number | null
     greetingContent?: StringNullableFilter<"Invitation"> | string | null
     brideDadName?: StringNullableFilter<"Invitation"> | string | null
     bridePhone?: StringNullableFilter<"Invitation"> | string | null
     groomFirstName?: StringNullableFilter<"Invitation"> | string | null
+    wishlistUrl?: StringNullableFilter<"Invitation"> | string | null
+    baseFont?: StringNullableFilter<"Invitation"> | string | null
     groomMiddleName?: StringNullableFilter<"Invitation"> | string | null
     groomLastName?: StringNullableFilter<"Invitation"> | string | null
     groomPhone?: StringNullableFilter<"Invitation"> | string | null
     primarySponsor?: StringNullableFilter<"Invitation"> | string | null
     secondarySponsor?: StringNullableFilter<"Invitation"> | string | null
+    bankAccount?: StringNullableFilter<"Invitation"> | string | null
     maidOfHonor?: StringNullableFilter<"Invitation"> | string | null
     groomsMen?: StringNullableFilter<"Invitation"> | string | null
     bestMan?: StringNullableFilter<"Invitation"> | string | null
@@ -11956,15 +13038,22 @@ export namespace Prisma {
     brideLastName?: SortOrderInput | SortOrder
     brideMomName?: SortOrderInput | SortOrder
     greetingTitle?: SortOrderInput | SortOrder
+    isGroomMomHidden?: SortOrderInput | SortOrder
+    isGroomDadHidden?: SortOrderInput | SortOrder
+    isBrideDadHidden?: SortOrderInput | SortOrder
+    isBrideMomHidden?: SortOrderInput | SortOrder
     greetingContent?: SortOrderInput | SortOrder
     brideDadName?: SortOrderInput | SortOrder
     bridePhone?: SortOrderInput | SortOrder
     groomFirstName?: SortOrderInput | SortOrder
+    wishlistUrl?: SortOrderInput | SortOrder
+    baseFont?: SortOrderInput | SortOrder
     groomMiddleName?: SortOrderInput | SortOrder
     groomLastName?: SortOrderInput | SortOrder
     groomPhone?: SortOrderInput | SortOrder
     primarySponsor?: SortOrderInput | SortOrder
     secondarySponsor?: SortOrderInput | SortOrder
+    bankAccount?: SortOrderInput | SortOrder
     maidOfHonor?: SortOrderInput | SortOrder
     groomsMen?: SortOrderInput | SortOrder
     bestMan?: SortOrderInput | SortOrder
@@ -12010,15 +13099,22 @@ export namespace Prisma {
     brideLastName?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     brideMomName?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     greetingTitle?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    isGroomMomHidden?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
+    isGroomDadHidden?: IntNullableWithAggregatesFilter<"Invitation"> | number | null
+    isBrideDadHidden?: IntNullableWithAggregatesFilter<"Invitation"> | number | null
+    isBrideMomHidden?: IntNullableWithAggregatesFilter<"Invitation"> | number | null
     greetingContent?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     brideDadName?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     bridePhone?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     groomFirstName?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    wishlistUrl?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    baseFont?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     groomMiddleName?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     groomLastName?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     groomPhone?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     primarySponsor?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     secondarySponsor?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    bankAccount?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     maidOfHonor?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     groomsMen?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     bestMan?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
@@ -12531,6 +13627,40 @@ export namespace Prisma {
     name?: StringNullableWithAggregatesFilter<"InvitationMusic"> | string | null
   }
 
+  export type InvitationViewWhereInput = {
+    AND?: InvitationViewWhereInput | InvitationViewWhereInput[]
+    OR?: InvitationViewWhereInput[]
+    NOT?: InvitationViewWhereInput | InvitationViewWhereInput[]
+    id?: IntFilter<"InvitationView"> | number
+  }
+
+  export type InvitationViewOrderByWithRelationInput = {
+    id?: SortOrder
+  }
+
+  export type InvitationViewWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: InvitationViewWhereInput | InvitationViewWhereInput[]
+    OR?: InvitationViewWhereInput[]
+    NOT?: InvitationViewWhereInput | InvitationViewWhereInput[]
+  }, "id">
+
+  export type InvitationViewOrderByWithAggregationInput = {
+    id?: SortOrder
+    _count?: InvitationViewCountOrderByAggregateInput
+    _avg?: InvitationViewAvgOrderByAggregateInput
+    _max?: InvitationViewMaxOrderByAggregateInput
+    _min?: InvitationViewMinOrderByAggregateInput
+    _sum?: InvitationViewSumOrderByAggregateInput
+  }
+
+  export type InvitationViewScalarWhereWithAggregatesInput = {
+    AND?: InvitationViewScalarWhereWithAggregatesInput | InvitationViewScalarWhereWithAggregatesInput[]
+    OR?: InvitationViewScalarWhereWithAggregatesInput[]
+    NOT?: InvitationViewScalarWhereWithAggregatesInput | InvitationViewScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"InvitationView"> | number
+  }
+
   export type UserCreateInput = {
     email?: string | null
     password?: string | null
@@ -12610,15 +13740,22 @@ export namespace Prisma {
     brideLastName?: string | null
     brideMomName?: string | null
     greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
     greetingContent?: string | null
     brideDadName?: string | null
     bridePhone?: string | null
     groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
     groomMiddleName?: string | null
     groomLastName?: string | null
     groomPhone?: string | null
     primarySponsor?: string | null
     secondarySponsor?: string | null
+    bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
     bestMan?: string | null
@@ -12661,15 +13798,22 @@ export namespace Prisma {
     brideLastName?: string | null
     brideMomName?: string | null
     greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
     greetingContent?: string | null
     brideDadName?: string | null
     bridePhone?: string | null
     groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
     groomMiddleName?: string | null
     groomLastName?: string | null
     groomPhone?: string | null
     primarySponsor?: string | null
     secondarySponsor?: string | null
+    bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
     bestMan?: string | null
@@ -12709,15 +13853,22 @@ export namespace Prisma {
     brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
     brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
     greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
     greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
     brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
     bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
     groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
     groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
     groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
     groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
     primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12760,15 +13911,22 @@ export namespace Prisma {
     brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
     brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
     greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
     greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
     brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
     bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
     groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
     groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
     groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
     groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
     primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12810,15 +13968,22 @@ export namespace Prisma {
     brideLastName?: string | null
     brideMomName?: string | null
     greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
     greetingContent?: string | null
     brideDadName?: string | null
     bridePhone?: string | null
     groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
     groomMiddleName?: string | null
     groomLastName?: string | null
     groomPhone?: string | null
     primarySponsor?: string | null
     secondarySponsor?: string | null
+    bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
     bestMan?: string | null
@@ -12854,15 +14019,22 @@ export namespace Prisma {
     brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
     brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
     greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
     greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
     brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
     bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
     groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
     groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
     groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
     groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
     primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12900,15 +14072,22 @@ export namespace Prisma {
     brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
     brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
     greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
     greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
     brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
     bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
     groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
     groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
     groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
     groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
     primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13421,6 +14600,34 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type InvitationViewCreateInput = {
+
+  }
+
+  export type InvitationViewUncheckedCreateInput = {
+    id?: number
+  }
+
+  export type InvitationViewUpdateInput = {
+
+  }
+
+  export type InvitationViewUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type InvitationViewCreateManyInput = {
+    id?: number
+  }
+
+  export type InvitationViewUpdateManyMutationInput = {
+
+  }
+
+  export type InvitationViewUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -13569,6 +14776,11 @@ export namespace Prisma {
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
+
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
   export type JsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
@@ -13668,15 +14880,22 @@ export namespace Prisma {
     brideLastName?: SortOrder
     brideMomName?: SortOrder
     greetingTitle?: SortOrder
+    isGroomMomHidden?: SortOrder
+    isGroomDadHidden?: SortOrder
+    isBrideDadHidden?: SortOrder
+    isBrideMomHidden?: SortOrder
     greetingContent?: SortOrder
     brideDadName?: SortOrder
     bridePhone?: SortOrder
     groomFirstName?: SortOrder
+    wishlistUrl?: SortOrder
+    baseFont?: SortOrder
     groomMiddleName?: SortOrder
     groomLastName?: SortOrder
     groomPhone?: SortOrder
     primarySponsor?: SortOrder
     secondarySponsor?: SortOrder
+    bankAccount?: SortOrder
     maidOfHonor?: SortOrder
     groomsMen?: SortOrder
     bestMan?: SortOrder
@@ -13694,6 +14913,9 @@ export namespace Prisma {
     id?: SortOrder
     templateNo?: SortOrder
     userId?: SortOrder
+    isGroomDadHidden?: SortOrder
+    isBrideDadHidden?: SortOrder
+    isBrideMomHidden?: SortOrder
   }
 
   export type InvitationMaxOrderByAggregateInput = {
@@ -13720,15 +14942,22 @@ export namespace Prisma {
     brideLastName?: SortOrder
     brideMomName?: SortOrder
     greetingTitle?: SortOrder
+    isGroomMomHidden?: SortOrder
+    isGroomDadHidden?: SortOrder
+    isBrideDadHidden?: SortOrder
+    isBrideMomHidden?: SortOrder
     greetingContent?: SortOrder
     brideDadName?: SortOrder
     bridePhone?: SortOrder
     groomFirstName?: SortOrder
+    wishlistUrl?: SortOrder
+    baseFont?: SortOrder
     groomMiddleName?: SortOrder
     groomLastName?: SortOrder
     groomPhone?: SortOrder
     primarySponsor?: SortOrder
     secondarySponsor?: SortOrder
+    bankAccount?: SortOrder
     maidOfHonor?: SortOrder
     groomsMen?: SortOrder
     bestMan?: SortOrder
@@ -13765,15 +14994,22 @@ export namespace Prisma {
     brideLastName?: SortOrder
     brideMomName?: SortOrder
     greetingTitle?: SortOrder
+    isGroomMomHidden?: SortOrder
+    isGroomDadHidden?: SortOrder
+    isBrideDadHidden?: SortOrder
+    isBrideMomHidden?: SortOrder
     greetingContent?: SortOrder
     brideDadName?: SortOrder
     bridePhone?: SortOrder
     groomFirstName?: SortOrder
+    wishlistUrl?: SortOrder
+    baseFont?: SortOrder
     groomMiddleName?: SortOrder
     groomLastName?: SortOrder
     groomPhone?: SortOrder
     primarySponsor?: SortOrder
     secondarySponsor?: SortOrder
+    bankAccount?: SortOrder
     maidOfHonor?: SortOrder
     groomsMen?: SortOrder
     bestMan?: SortOrder
@@ -13790,6 +15026,9 @@ export namespace Prisma {
     id?: SortOrder
     templateNo?: SortOrder
     userId?: SortOrder
+    isGroomDadHidden?: SortOrder
+    isBrideDadHidden?: SortOrder
+    isBrideMomHidden?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -13806,6 +15045,14 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
   export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -14169,11 +15416,6 @@ export namespace Prisma {
     height?: SortOrder
   }
 
-  export type BoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-  }
-
   export type InvitationRSVPOrderByRelevanceInput = {
     fields: InvitationRSVPOrderByRelevanceFieldEnum | InvitationRSVPOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -14223,14 +15465,6 @@ export namespace Prisma {
     invitationId?: SortOrder
   }
 
-  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
-  }
-
   export type InvitationMusicOrderByRelevanceInput = {
     fields: InvitationMusicOrderByRelevanceFieldEnum | InvitationMusicOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -14260,6 +15494,26 @@ export namespace Prisma {
   }
 
   export type InvitationMusicSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type InvitationViewCountOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type InvitationViewAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type InvitationViewMaxOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type InvitationViewMinOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type InvitationViewSumOrderByAggregateInput = {
     id?: SortOrder
   }
 
@@ -14389,6 +15643,10 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
   }
 
   export type UserUpdateOneWithoutInvitationListNestedInput = {
@@ -14691,10 +15949,6 @@ export namespace Prisma {
     connect?: InvitationWhereUniqueInput
   }
 
-  export type NullableBoolFieldUpdateOperationsInput = {
-    set?: boolean | null
-  }
-
   export type InvitationUpdateOneWithoutInvitationRSVPNestedInput = {
     create?: XOR<InvitationCreateWithoutInvitationRSVPInput, InvitationUncheckedCreateWithoutInvitationRSVPInput>
     connectOrCreate?: InvitationCreateOrConnectWithoutInvitationRSVPInput
@@ -14812,6 +16066,11 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | null
@@ -14837,6 +16096,14 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
   export type NestedJsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -14878,19 +16145,6 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
-  export type NestedBoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-  }
-
-  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
-  }
-
   export type InvitationCreateWithoutUserInput = {
     templateNo?: number | null
     uniqueId?: string | null
@@ -14913,15 +16167,22 @@ export namespace Prisma {
     brideLastName?: string | null
     brideMomName?: string | null
     greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
     greetingContent?: string | null
     brideDadName?: string | null
     bridePhone?: string | null
     groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
     groomMiddleName?: string | null
     groomLastName?: string | null
     groomPhone?: string | null
     primarySponsor?: string | null
     secondarySponsor?: string | null
+    bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
     bestMan?: string | null
@@ -14962,15 +16223,22 @@ export namespace Prisma {
     brideLastName?: string | null
     brideMomName?: string | null
     greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
     greetingContent?: string | null
     brideDadName?: string | null
     bridePhone?: string | null
     groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
     groomMiddleName?: string | null
     groomLastName?: string | null
     groomPhone?: string | null
     primarySponsor?: string | null
     secondarySponsor?: string | null
+    bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
     bestMan?: string | null
@@ -15041,15 +16309,22 @@ export namespace Prisma {
     brideLastName?: StringNullableFilter<"Invitation"> | string | null
     brideMomName?: StringNullableFilter<"Invitation"> | string | null
     greetingTitle?: StringNullableFilter<"Invitation"> | string | null
+    isGroomMomHidden?: BoolNullableFilter<"Invitation"> | boolean | null
+    isGroomDadHidden?: IntNullableFilter<"Invitation"> | number | null
+    isBrideDadHidden?: IntNullableFilter<"Invitation"> | number | null
+    isBrideMomHidden?: IntNullableFilter<"Invitation"> | number | null
     greetingContent?: StringNullableFilter<"Invitation"> | string | null
     brideDadName?: StringNullableFilter<"Invitation"> | string | null
     bridePhone?: StringNullableFilter<"Invitation"> | string | null
     groomFirstName?: StringNullableFilter<"Invitation"> | string | null
+    wishlistUrl?: StringNullableFilter<"Invitation"> | string | null
+    baseFont?: StringNullableFilter<"Invitation"> | string | null
     groomMiddleName?: StringNullableFilter<"Invitation"> | string | null
     groomLastName?: StringNullableFilter<"Invitation"> | string | null
     groomPhone?: StringNullableFilter<"Invitation"> | string | null
     primarySponsor?: StringNullableFilter<"Invitation"> | string | null
     secondarySponsor?: StringNullableFilter<"Invitation"> | string | null
+    bankAccount?: StringNullableFilter<"Invitation"> | string | null
     maidOfHonor?: StringNullableFilter<"Invitation"> | string | null
     groomsMen?: StringNullableFilter<"Invitation"> | string | null
     bestMan?: StringNullableFilter<"Invitation"> | string | null
@@ -15412,15 +16687,22 @@ export namespace Prisma {
     brideLastName?: string | null
     brideMomName?: string | null
     greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
     greetingContent?: string | null
     brideDadName?: string | null
     bridePhone?: string | null
     groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
     groomMiddleName?: string | null
     groomLastName?: string | null
     groomPhone?: string | null
     primarySponsor?: string | null
     secondarySponsor?: string | null
+    bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
     bestMan?: string | null
@@ -15462,15 +16744,22 @@ export namespace Prisma {
     brideLastName?: string | null
     brideMomName?: string | null
     greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
     greetingContent?: string | null
     brideDadName?: string | null
     bridePhone?: string | null
     groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
     groomMiddleName?: string | null
     groomLastName?: string | null
     groomPhone?: string | null
     primarySponsor?: string | null
     secondarySponsor?: string | null
+    bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
     bestMan?: string | null
@@ -15576,15 +16865,22 @@ export namespace Prisma {
     brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
     brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
     greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
     greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
     brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
     bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
     groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
     groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
     groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
     groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
     primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15626,15 +16922,22 @@ export namespace Prisma {
     brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
     brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
     greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
     greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
     brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
     bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
     groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
     groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
     groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
     groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
     primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15787,15 +17090,22 @@ export namespace Prisma {
     brideLastName?: string | null
     brideMomName?: string | null
     greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
     greetingContent?: string | null
     brideDadName?: string | null
     bridePhone?: string | null
     groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
     groomMiddleName?: string | null
     groomLastName?: string | null
     groomPhone?: string | null
     primarySponsor?: string | null
     secondarySponsor?: string | null
+    bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
     bestMan?: string | null
@@ -15837,15 +17147,22 @@ export namespace Prisma {
     brideLastName?: string | null
     brideMomName?: string | null
     greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
     greetingContent?: string | null
     brideDadName?: string | null
     bridePhone?: string | null
     groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
     groomMiddleName?: string | null
     groomLastName?: string | null
     groomPhone?: string | null
     primarySponsor?: string | null
     secondarySponsor?: string | null
+    bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
     bestMan?: string | null
@@ -15900,15 +17217,22 @@ export namespace Prisma {
     brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
     brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
     greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
     greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
     brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
     bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
     groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
     groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
     groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
     groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
     primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15950,15 +17274,22 @@ export namespace Prisma {
     brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
     brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
     greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
     greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
     brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
     bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
     groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
     groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
     groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
     groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
     primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15997,15 +17328,22 @@ export namespace Prisma {
     brideLastName?: string | null
     brideMomName?: string | null
     greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
     greetingContent?: string | null
     brideDadName?: string | null
     bridePhone?: string | null
     groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
     groomMiddleName?: string | null
     groomLastName?: string | null
     groomPhone?: string | null
     primarySponsor?: string | null
     secondarySponsor?: string | null
+    bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
     bestMan?: string | null
@@ -16047,15 +17385,22 @@ export namespace Prisma {
     brideLastName?: string | null
     brideMomName?: string | null
     greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
     greetingContent?: string | null
     brideDadName?: string | null
     bridePhone?: string | null
     groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
     groomMiddleName?: string | null
     groomLastName?: string | null
     groomPhone?: string | null
     primarySponsor?: string | null
     secondarySponsor?: string | null
+    bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
     bestMan?: string | null
@@ -16110,15 +17455,22 @@ export namespace Prisma {
     brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
     brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
     greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
     greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
     brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
     bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
     groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
     groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
     groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
     groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
     primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16160,15 +17512,22 @@ export namespace Prisma {
     brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
     brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
     greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
     greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
     brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
     bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
     groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
     groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
     groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
     groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
     primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16207,15 +17566,22 @@ export namespace Prisma {
     brideLastName?: string | null
     brideMomName?: string | null
     greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
     greetingContent?: string | null
     brideDadName?: string | null
     bridePhone?: string | null
     groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
     groomMiddleName?: string | null
     groomLastName?: string | null
     groomPhone?: string | null
     primarySponsor?: string | null
     secondarySponsor?: string | null
+    bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
     bestMan?: string | null
@@ -16257,15 +17623,22 @@ export namespace Prisma {
     brideLastName?: string | null
     brideMomName?: string | null
     greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
     greetingContent?: string | null
     brideDadName?: string | null
     bridePhone?: string | null
     groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
     groomMiddleName?: string | null
     groomLastName?: string | null
     groomPhone?: string | null
     primarySponsor?: string | null
     secondarySponsor?: string | null
+    bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
     bestMan?: string | null
@@ -16320,15 +17693,22 @@ export namespace Prisma {
     brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
     brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
     greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
     greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
     brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
     bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
     groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
     groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
     groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
     groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
     primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16370,15 +17750,22 @@ export namespace Prisma {
     brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
     brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
     greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
     greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
     brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
     bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
     groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
     groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
     groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
     groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
     primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16418,15 +17805,22 @@ export namespace Prisma {
     brideLastName?: string | null
     brideMomName?: string | null
     greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
     greetingContent?: string | null
     brideDadName?: string | null
     bridePhone?: string | null
     groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
     groomMiddleName?: string | null
     groomLastName?: string | null
     groomPhone?: string | null
     primarySponsor?: string | null
     secondarySponsor?: string | null
+    bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
     bestMan?: string | null
@@ -16462,15 +17856,22 @@ export namespace Prisma {
     brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
     brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
     greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
     greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
     brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
     bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
     groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
     groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
     groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
     groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
     primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16511,15 +17912,22 @@ export namespace Prisma {
     brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
     brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
     greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
     greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
     brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
     bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
     groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
     groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
     groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
     groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
     primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16560,15 +17968,22 @@ export namespace Prisma {
     brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
     brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
     greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
     greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
     brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
     bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
     groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
     groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
     groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
     groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
     primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null

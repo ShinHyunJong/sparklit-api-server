@@ -132,6 +132,7 @@ export class InvitationController {
     return this.invitationService.postRSVP(uniqueId, body);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Put('/dressCode/:uniqueId')
   updateDressCode(
     @Param('uniqueId') uniqueId: string,
@@ -144,6 +145,7 @@ export class InvitationController {
     );
   }
 
+  @UseGuards(JwtAuthGuard)
   @Put('/dressCodeColor/:uniqueId')
   updateDressCodeColor(
     @Param('uniqueId') uniqueId: string,
@@ -157,6 +159,7 @@ export class InvitationController {
     );
   }
 
+  @UseGuards(JwtAuthGuard)
   @Put('/sponsor/:uniqueId')
   updateSponsor(
     @Param('uniqueId') uniqueId: string,
@@ -169,6 +172,7 @@ export class InvitationController {
     );
   }
 
+  @UseGuards(JwtAuthGuard)
   @Put('/entourage/:uniqueId')
   updateEntourage(
     @Param('uniqueId') uniqueId: string,
@@ -189,6 +193,7 @@ export class InvitationController {
     );
   }
 
+  @UseGuards(JwtAuthGuard)
   @Put('/layoutOrder/:uniqueId')
   layoutOrderUpdate(
     @Param('uniqueId') uniqueId: string,
@@ -197,6 +202,7 @@ export class InvitationController {
     return this.invitationService.layoutOrderUpdate(uniqueId, body.layoutOrder);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Put('/notice/:uniqueId')
   updateNotice(
     @Param('uniqueId') uniqueId: string,
@@ -205,12 +211,39 @@ export class InvitationController {
     return this.invitationService.updateNotice(uniqueId, body.notice);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Put('/endingText/:uniqueId')
   updateEndingText(
     @Param('uniqueId') uniqueId: string,
     @Body() body: { endingText: string },
   ) {
     return this.invitationService.updateEndingText(uniqueId, body.endingText);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('/monetaryGift/:uniqueId')
+  updateMonetaryGift(
+    @Param('uniqueId') uniqueId: string,
+    @Body()
+    body: {
+      bankAccount: string;
+      wishlistUrl: string;
+    },
+  ) {
+    return this.invitationService.updateMonetaryGift(
+      uniqueId,
+      body.bankAccount,
+      body.wishlistUrl,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('/font/:uniqueId')
+  updateFont(
+    @Param('uniqueId') uniqueId: string,
+    @Body() body: { font: string },
+  ) {
+    return this.invitationService.updateFont(uniqueId, body.font);
   }
 
   @Delete(':id')

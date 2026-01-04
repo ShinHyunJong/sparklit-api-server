@@ -152,15 +152,22 @@ exports.Prisma.InvitationScalarFieldEnum = {
   brideLastName: 'brideLastName',
   brideMomName: 'brideMomName',
   greetingTitle: 'greetingTitle',
+  isGroomMomHidden: 'isGroomMomHidden',
+  isGroomDadHidden: 'isGroomDadHidden',
+  isBrideDadHidden: 'isBrideDadHidden',
+  isBrideMomHidden: 'isBrideMomHidden',
   greetingContent: 'greetingContent',
   brideDadName: 'brideDadName',
   bridePhone: 'bridePhone',
   groomFirstName: 'groomFirstName',
+  wishlistUrl: 'wishlistUrl',
+  baseFont: 'baseFont',
   groomMiddleName: 'groomMiddleName',
   groomLastName: 'groomLastName',
   groomPhone: 'groomPhone',
   primarySponsor: 'primarySponsor',
   secondarySponsor: 'secondarySponsor',
+  bankAccount: 'bankAccount',
   maidOfHonor: 'maidOfHonor',
   groomsMen: 'groomsMen',
   bestMan: 'bestMan',
@@ -248,6 +255,10 @@ exports.Prisma.InvitationMusicScalarFieldEnum = {
   name: 'name'
 };
 
+exports.Prisma.InvitationViewScalarFieldEnum = {
+  id: 'id'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -303,11 +314,14 @@ exports.Prisma.InvitationOrderByRelevanceFieldEnum = {
   brideDadName: 'brideDadName',
   bridePhone: 'bridePhone',
   groomFirstName: 'groomFirstName',
+  wishlistUrl: 'wishlistUrl',
+  baseFont: 'baseFont',
   groomMiddleName: 'groomMiddleName',
   groomLastName: 'groomLastName',
   groomPhone: 'groomPhone',
   primarySponsor: 'primarySponsor',
   secondarySponsor: 'secondarySponsor',
+  bankAccount: 'bankAccount',
   maidOfHonor: 'maidOfHonor',
   groomsMen: 'groomsMen',
   bestMan: 'bestMan',
@@ -368,7 +382,8 @@ exports.Prisma.ModelName = {
   InvitationPhoto: 'InvitationPhoto',
   InvitationCoverPhoto: 'InvitationCoverPhoto',
   InvitationRSVP: 'InvitationRSVP',
-  InvitationMusic: 'InvitationMusic'
+  InvitationMusic: 'InvitationMusic',
+  InvitationView: 'InvitationView'
 };
 
 /**

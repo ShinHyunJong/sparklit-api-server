@@ -354,6 +354,31 @@ export class InvitationService {
     return updated;
   }
 
+  async updateMonetaryGift(
+    uniqueId: string,
+    bankAccount: string,
+    wishlistUrl: string,
+  ) {
+    const updated = await this.prismaService.invitation.update({
+      where: { uniqueId },
+      data: {
+        bankAccount,
+        wishlistUrl,
+      },
+    });
+    return updated;
+  }
+
+  async updateFont(uniqueId: string, font: string) {
+    const updated = await this.prismaService.invitation.update({
+      where: { uniqueId },
+      data: {
+        baseFont: font,
+      },
+    });
+    return updated;
+  }
+
   async updateEndingText(uniqueId: string, endingText: string) {
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },

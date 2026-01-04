@@ -41,15 +41,22 @@ model Invitation {
   brideLastName            String?                @db.VarChar(20)
   brideMomName             String?                @db.VarChar(20)
   greetingTitle            String?                @db.Text
+  isGroomMomHidden         Boolean?
+  isGroomDadHidden         Int?                   @db.TinyInt
+  isBrideDadHidden         Int?                   @db.TinyInt
+  isBrideMomHidden         Int?                   @db.TinyInt
   greetingContent          String?                @db.Text
   brideDadName             String?                @db.VarChar(20)
   bridePhone               String?                @db.VarChar(20)
   groomFirstName           String?                @db.VarChar(20)
+  wishlistUrl              String?                @db.VarChar(255)
+  baseFont                 String?                @db.VarChar(50)
   groomMiddleName          String?                @db.VarChar(20)
   groomLastName            String?                @db.VarChar(20)
   groomPhone               String?                @db.VarChar(20)
   primarySponsor           String?                @db.Text
   secondarySponsor         String?                @db.Text
+  bankAccount              String?                @db.Text
   maidOfHonor              String?                @db.Text
   groomsMen                String?                @db.Text
   bestMan                  String?                @db.Text
@@ -87,7 +94,7 @@ model InvitationPlace {
 model Place {
   id                  Int               @id @default(autoincrement()) @db.UnsignedInt
   googlePlaceId       String?           @unique(map: "googlePlaceId") @db.VarChar(100)
-  name                String?           @db.VarChar(50)
+  name                String?           @db.VarChar(255)
   address             String?           @db.VarChar(25)
   lat                 Float?            @db.Float
   lng                 Float?            @db.Float
@@ -161,4 +168,8 @@ model InvitationMusic {
   id    Int     @id @default(autoincrement()) @db.UnsignedInt
   s3Key String? @db.VarChar(255)
   name  String? @db.VarChar(20)
+}
+
+model InvitationView {
+  id Int @id @default(autoincrement()) @db.UnsignedInt
 }
