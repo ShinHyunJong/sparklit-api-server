@@ -38,27 +38,16 @@ export class PlacesController {
     @Param('timeId') timeId: number,
     @Body()
     {
-      hour,
-      minute,
-      ampm,
+      date,
       name,
       description,
     }: {
-      hour: number;
-      minute: number;
-      ampm: string;
+      date: string;
       name: string;
       description?: string;
     },
   ) {
-    return this.placesService.updatePlaceTime(
-      timeId,
-      hour,
-      minute,
-      ampm,
-      name,
-      description,
-    );
+    return this.placesService.updatePlaceTime(timeId, date, name, description);
   }
 
   @Delete('/:invitationPlaceId')

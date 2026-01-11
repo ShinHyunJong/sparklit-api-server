@@ -2821,6 +2821,7 @@ export namespace Prisma {
     groomsMen: string | null
     bestMan: string | null
     bridesMaids: string | null
+    wishlistText: string | null
     groomMomName: string | null
     groomDadName: string | null
     endingText: string | null
@@ -2873,6 +2874,7 @@ export namespace Prisma {
     groomsMen: string | null
     bestMan: string | null
     bridesMaids: string | null
+    wishlistText: string | null
     groomMomName: string | null
     groomDadName: string | null
     endingText: string | null
@@ -2925,6 +2927,7 @@ export namespace Prisma {
     groomsMen: number
     bestMan: number
     bridesMaids: number
+    wishlistText: number
     groomMomName: number
     groomDadName: number
     layoutOrder: number
@@ -2998,6 +3001,7 @@ export namespace Prisma {
     groomsMen?: true
     bestMan?: true
     bridesMaids?: true
+    wishlistText?: true
     groomMomName?: true
     groomDadName?: true
     endingText?: true
@@ -3050,6 +3054,7 @@ export namespace Prisma {
     groomsMen?: true
     bestMan?: true
     bridesMaids?: true
+    wishlistText?: true
     groomMomName?: true
     groomDadName?: true
     endingText?: true
@@ -3102,6 +3107,7 @@ export namespace Prisma {
     groomsMen?: true
     bestMan?: true
     bridesMaids?: true
+    wishlistText?: true
     groomMomName?: true
     groomDadName?: true
     layoutOrder?: true
@@ -3242,6 +3248,7 @@ export namespace Prisma {
     groomsMen: string | null
     bestMan: string | null
     bridesMaids: string | null
+    wishlistText: string | null
     groomMomName: string | null
     groomDadName: string | null
     layoutOrder: JsonValue | null
@@ -3314,6 +3321,7 @@ export namespace Prisma {
     groomsMen?: boolean
     bestMan?: boolean
     bridesMaids?: boolean
+    wishlistText?: boolean
     groomMomName?: boolean
     groomDadName?: boolean
     layoutOrder?: boolean
@@ -3375,6 +3383,7 @@ export namespace Prisma {
     groomsMen?: boolean
     bestMan?: boolean
     bridesMaids?: boolean
+    wishlistText?: boolean
     groomMomName?: boolean
     groomDadName?: boolean
     layoutOrder?: boolean
@@ -3384,7 +3393,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "bestMan" | "bridesMaids" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
+  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
@@ -3447,6 +3456,7 @@ export namespace Prisma {
       groomsMen: string | null
       bestMan: string | null
       bridesMaids: string | null
+      wishlistText: string | null
       groomMomName: string | null
       groomDadName: string | null
       layoutOrder: Prisma.JsonValue | null
@@ -3871,6 +3881,7 @@ export namespace Prisma {
     readonly groomsMen: FieldRef<"Invitation", 'String'>
     readonly bestMan: FieldRef<"Invitation", 'String'>
     readonly bridesMaids: FieldRef<"Invitation", 'String'>
+    readonly wishlistText: FieldRef<"Invitation", 'String'>
     readonly groomMomName: FieldRef<"Invitation", 'String'>
     readonly groomDadName: FieldRef<"Invitation", 'String'>
     readonly layoutOrder: FieldRef<"Invitation", 'Json'>
@@ -12449,6 +12460,7 @@ export namespace Prisma {
     groomsMen: 'groomsMen',
     bestMan: 'bestMan',
     bridesMaids: 'bridesMaids',
+    wishlistText: 'wishlistText',
     groomMomName: 'groomMomName',
     groomDadName: 'groomDadName',
     layoutOrder: 'layoutOrder',
@@ -12648,6 +12660,7 @@ export namespace Prisma {
     groomsMen: 'groomsMen',
     bestMan: 'bestMan',
     bridesMaids: 'bridesMaids',
+    wishlistText: 'wishlistText',
     groomMomName: 'groomMomName',
     groomDadName: 'groomDadName',
     endingText: 'endingText',
@@ -12880,6 +12893,7 @@ export namespace Prisma {
     groomsMen?: StringNullableFilter<"Invitation"> | string | null
     bestMan?: StringNullableFilter<"Invitation"> | string | null
     bridesMaids?: StringNullableFilter<"Invitation"> | string | null
+    wishlistText?: StringNullableFilter<"Invitation"> | string | null
     groomMomName?: StringNullableFilter<"Invitation"> | string | null
     groomDadName?: StringNullableFilter<"Invitation"> | string | null
     layoutOrder?: JsonNullableFilter<"Invitation">
@@ -12938,6 +12952,7 @@ export namespace Prisma {
     groomsMen?: SortOrderInput | SortOrder
     bestMan?: SortOrderInput | SortOrder
     bridesMaids?: SortOrderInput | SortOrder
+    wishlistText?: SortOrderInput | SortOrder
     groomMomName?: SortOrderInput | SortOrder
     groomDadName?: SortOrderInput | SortOrder
     layoutOrder?: SortOrderInput | SortOrder
@@ -13000,6 +13015,7 @@ export namespace Prisma {
     groomsMen?: StringNullableFilter<"Invitation"> | string | null
     bestMan?: StringNullableFilter<"Invitation"> | string | null
     bridesMaids?: StringNullableFilter<"Invitation"> | string | null
+    wishlistText?: StringNullableFilter<"Invitation"> | string | null
     groomMomName?: StringNullableFilter<"Invitation"> | string | null
     groomDadName?: StringNullableFilter<"Invitation"> | string | null
     layoutOrder?: JsonNullableFilter<"Invitation">
@@ -13058,6 +13074,7 @@ export namespace Prisma {
     groomsMen?: SortOrderInput | SortOrder
     bestMan?: SortOrderInput | SortOrder
     bridesMaids?: SortOrderInput | SortOrder
+    wishlistText?: SortOrderInput | SortOrder
     groomMomName?: SortOrderInput | SortOrder
     groomDadName?: SortOrderInput | SortOrder
     layoutOrder?: SortOrderInput | SortOrder
@@ -13119,6 +13136,7 @@ export namespace Prisma {
     groomsMen?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     bestMan?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     bridesMaids?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    wishlistText?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     groomMomName?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     groomDadName?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     layoutOrder?: JsonNullableWithAggregatesFilter<"Invitation">
@@ -13760,6 +13778,7 @@ export namespace Prisma {
     groomsMen?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
+    wishlistText?: string | null
     groomMomName?: string | null
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -13818,6 +13837,7 @@ export namespace Prisma {
     groomsMen?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
+    wishlistText?: string | null
     groomMomName?: string | null
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -13873,6 +13893,7 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
     groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -13931,6 +13952,7 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
     groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -13988,6 +14010,7 @@ export namespace Prisma {
     groomsMen?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
+    wishlistText?: string | null
     groomMomName?: string | null
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -14039,6 +14062,7 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
     groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -14092,6 +14116,7 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
     groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -14900,6 +14925,7 @@ export namespace Prisma {
     groomsMen?: SortOrder
     bestMan?: SortOrder
     bridesMaids?: SortOrder
+    wishlistText?: SortOrder
     groomMomName?: SortOrder
     groomDadName?: SortOrder
     layoutOrder?: SortOrder
@@ -14962,6 +14988,7 @@ export namespace Prisma {
     groomsMen?: SortOrder
     bestMan?: SortOrder
     bridesMaids?: SortOrder
+    wishlistText?: SortOrder
     groomMomName?: SortOrder
     groomDadName?: SortOrder
     endingText?: SortOrder
@@ -15014,6 +15041,7 @@ export namespace Prisma {
     groomsMen?: SortOrder
     bestMan?: SortOrder
     bridesMaids?: SortOrder
+    wishlistText?: SortOrder
     groomMomName?: SortOrder
     groomDadName?: SortOrder
     endingText?: SortOrder
@@ -16187,6 +16215,7 @@ export namespace Prisma {
     groomsMen?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
+    wishlistText?: string | null
     groomMomName?: string | null
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -16243,6 +16272,7 @@ export namespace Prisma {
     groomsMen?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
+    wishlistText?: string | null
     groomMomName?: string | null
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -16329,6 +16359,7 @@ export namespace Prisma {
     groomsMen?: StringNullableFilter<"Invitation"> | string | null
     bestMan?: StringNullableFilter<"Invitation"> | string | null
     bridesMaids?: StringNullableFilter<"Invitation"> | string | null
+    wishlistText?: StringNullableFilter<"Invitation"> | string | null
     groomMomName?: StringNullableFilter<"Invitation"> | string | null
     groomDadName?: StringNullableFilter<"Invitation"> | string | null
     layoutOrder?: JsonNullableFilter<"Invitation">
@@ -16707,6 +16738,7 @@ export namespace Prisma {
     groomsMen?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
+    wishlistText?: string | null
     groomMomName?: string | null
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -16764,6 +16796,7 @@ export namespace Prisma {
     groomsMen?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
+    wishlistText?: string | null
     groomMomName?: string | null
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -16885,6 +16918,7 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
     groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -16942,6 +16976,7 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
     groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -17110,6 +17145,7 @@ export namespace Prisma {
     groomsMen?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
+    wishlistText?: string | null
     groomMomName?: string | null
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -17167,6 +17203,7 @@ export namespace Prisma {
     groomsMen?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
+    wishlistText?: string | null
     groomMomName?: string | null
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -17237,6 +17274,7 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
     groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -17294,6 +17332,7 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
     groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -17348,6 +17387,7 @@ export namespace Prisma {
     groomsMen?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
+    wishlistText?: string | null
     groomMomName?: string | null
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -17405,6 +17445,7 @@ export namespace Prisma {
     groomsMen?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
+    wishlistText?: string | null
     groomMomName?: string | null
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -17475,6 +17516,7 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
     groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -17532,6 +17574,7 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
     groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -17586,6 +17629,7 @@ export namespace Prisma {
     groomsMen?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
+    wishlistText?: string | null
     groomMomName?: string | null
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -17643,6 +17687,7 @@ export namespace Prisma {
     groomsMen?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
+    wishlistText?: string | null
     groomMomName?: string | null
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -17713,6 +17758,7 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
     groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -17770,6 +17816,7 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
     groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -17825,6 +17872,7 @@ export namespace Prisma {
     groomsMen?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
+    wishlistText?: string | null
     groomMomName?: string | null
     groomDadName?: string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -17876,6 +17924,7 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
     groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -17932,6 +17981,7 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
     groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue
@@ -17988,6 +18038,7 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
     groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
     groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
     layoutOrder?: NullableJsonNullValueInput | InputJsonValue

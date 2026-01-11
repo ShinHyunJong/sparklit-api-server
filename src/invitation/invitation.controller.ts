@@ -227,12 +227,14 @@ export class InvitationController {
     @Body()
     body: {
       bankAccount: string;
+      wishlistText: string;
       wishlistUrl: string;
     },
   ) {
     return this.invitationService.updateMonetaryGift(
       uniqueId,
       body.bankAccount,
+      body.wishlistText,
       body.wishlistUrl,
     );
   }

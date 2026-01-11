@@ -357,12 +357,14 @@ export class InvitationService {
   async updateMonetaryGift(
     uniqueId: string,
     bankAccount: string,
+    wishlistText: string,
     wishlistUrl: string,
   ) {
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
         bankAccount,
+        wishlistText,
         wishlistUrl,
       },
     });

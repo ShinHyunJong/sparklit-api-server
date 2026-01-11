@@ -61,6 +61,7 @@ model Invitation {
   groomsMen                String?                @db.Text
   bestMan                  String?                @db.Text
   bridesMaids              String?                @db.Text
+  wishlistText             String?                @db.VarChar(255)
   groomMomName             String?                @db.VarChar(20)
   groomDadName             String?                @db.VarChar(20)
   layoutOrder              Json?

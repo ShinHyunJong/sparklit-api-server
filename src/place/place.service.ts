@@ -111,24 +111,18 @@ export class PlacesService {
 
   async updatePlaceTime(
     timeId: number,
-    hour: number,
-    minute: number,
-    ampm: string,
+    date: string,
     name: string,
     description?: string,
   ) {
-    const ispm = ampm.toLowerCase() === 'pm';
-    if (ispm && hour < 12) {
-      hour += 12;
-    } else if (!ispm && hour === 12) {
-      hour = 0;
-    }
+    const targetDate = dayjs(date);
+
     await this.prismaService.invitationPlaceTime.update({
       where: {
         id: timeId,
       },
       data: {
-        time: dayjs().hour(hour).minute(minute).second(0).toDate(),
+        time: targetDate.toDate(),
         name,
         description,
       },
