@@ -12,16 +12,23 @@ import { RsvpDto } from './dto/rsvp.dto';
 import { postRSVPmail } from 'src/utils/mailjet.util';
 import { MemoryStoredFile } from 'nestjs-form-data';
 import { makeOgImage } from 'src/helpers/image.helper';
+import { getTimezoneByCountry } from 'src/helpers/timezone.helper';
 
 @Injectable()
 export class InvitationService {
   constructor(private readonly prismaService: PrismaService) {}
   async create(userId: number) {
     const uniqueId = cryptoRandomString({ length: 16 });
+    const user = await this.prismaService.user.findUnique({
+      where: { id: userId },
+      select: { country: true },
+    });
+    const timezone = getTimezoneByCountry(user?.country);
     const created = await this.prismaService.invitation.create({
       data: {
         userId,
         uniqueId,
+        timezone,
       },
     });
     return created;
@@ -38,6 +45,11 @@ export class InvitationService {
     const invitation = await this.prismaService.invitation.findUnique({
       where: { uniqueId },
       include: {
+        user: {
+          select: {
+            country: true,
+          },
+        },
         placeList: {
           include: {
             place: true,
@@ -52,7 +64,22 @@ export class InvitationService {
         },
       },
     });
-    return invitation;
+    if (!invitation) return null;
+    const timezone =
+      invitation.timezone ?? getTimezoneByCountry(invitation.user?.country);
+
+    if (!invitation.timezone && timezone !== 'UTC') {
+      await this.prismaService.invitation.update({
+        where: { uniqueId },
+        data: { timezone },
+      });
+    }
+
+    const { user, ...rest } = invitation;
+    return {
+      ...rest,
+      timezone,
+    };
   }
 
   async updateDressCodeColor(

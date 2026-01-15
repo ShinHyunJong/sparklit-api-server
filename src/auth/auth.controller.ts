@@ -26,10 +26,14 @@ export class AuthController {
   }
 
   @Post('register')
-  register(@Body() registerBody: { email: string; password: string }) {
+  register(
+    @Body()
+    registerBody: { email: string; password: string; country?: string },
+  ) {
     return this.authSerivice.registerUser(
       registerBody.email,
       registerBody.password,
+      registerBody.country,
     );
   }
 

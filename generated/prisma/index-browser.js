@@ -125,7 +125,8 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   password: 'password',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  country: 'country'
 };
 
 exports.Prisma.InvitationScalarFieldEnum = {
@@ -170,6 +171,7 @@ exports.Prisma.InvitationScalarFieldEnum = {
   bankAccount: 'bankAccount',
   maidOfHonor: 'maidOfHonor',
   groomsMen: 'groomsMen',
+  timezone: 'timezone',
   bestMan: 'bestMan',
   bridesMaids: 'bridesMaids',
   wishlistText: 'wishlistText',
@@ -277,7 +279,8 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.UserOrderByRelevanceFieldEnum = {
   email: 'email',
-  password: 'password'
+  password: 'password',
+  country: 'country'
 };
 
 exports.Prisma.JsonNullValueFilter = {
@@ -325,6 +328,7 @@ exports.Prisma.InvitationOrderByRelevanceFieldEnum = {
   bankAccount: 'bankAccount',
   maidOfHonor: 'maidOfHonor',
   groomsMen: 'groomsMen',
+  timezone: 'timezone',
   bestMan: 'bestMan',
   bridesMaids: 'bridesMaids',
   wishlistText: 'wishlistText',

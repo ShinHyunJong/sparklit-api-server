@@ -48,6 +48,7 @@ export class AuthService {
       select: {
         id: true,
         email: true,
+        country: true,
         createdAt: true,
         updatedAt: true,
       },
@@ -65,6 +66,7 @@ export class AuthService {
         id: true,
         password: true,
         email: true,
+        country: true,
       },
     });
     if (!user) throw new HttpException('not exist', 406);
@@ -75,27 +77,31 @@ export class AuthService {
       user: {
         id: user.id,
         email: user.email,
+        country: user.country,
       },
       tokens,
     };
   }
 
-  async registerUser(email: string, password: string) {
+  async registerUser(email: string, password: string, country?: string) {
     const user = await this.prismaService.user.findUnique({
       where: {
         email,
       },
     });
     if (user) throw new HttpException('already exist', 406);
+    const normalizedCountry = country ? country.trim().toUpperCase() : null;
     const hashed = hash(password);
     const newUser = await this.prismaService.user.create({
       data: {
         email,
         password: hashed,
+        country: normalizedCountry,
       },
       select: {
         id: true,
         email: true,
+        country: true,
       },
     });
     const tokens = await this.getTokens(newUser.id, newUser.email);
@@ -103,6 +109,7 @@ export class AuthService {
       user: {
         id: newUser.id,
         email: newUser.email,
+        country: newUser.country,
       },
       tokens,
     };
