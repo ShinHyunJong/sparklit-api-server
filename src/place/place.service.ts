@@ -6,7 +6,7 @@ import { lastValueFrom } from 'rxjs';
 import { GOOGLE_PLACES_API_KEY } from 'src/constants';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { PlaceDto } from './dto/place.dto';
-import dayjs from 'dayjs';
+import { buildTimeDate, normalizeTimeString } from 'src/helpers/time.helper';
 
 @Injectable()
 export class PlacesService {
@@ -85,7 +85,7 @@ export class PlacesService {
     await this.prismaService.invitationPlaceTime.create({
       data: {
         invitationPlaceId: invitationPlace.id,
-        time: dayjs().hour(12).minute(0).second(0).toDate(),
+        time: buildTimeDate('12:00:00'),
       },
     });
 
@@ -96,7 +96,7 @@ export class PlacesService {
     return this.prismaService.invitationPlaceTime.create({
       data: {
         invitationPlaceId: invitationPlaceId,
-        time: dayjs().hour(12).minute(0).second(0).toDate(),
+        time: buildTimeDate('12:00:00'),
       },
     });
   }
@@ -111,22 +111,18 @@ export class PlacesService {
 
   async updatePlaceTime(
     timeId: number,
-    date: string,
+    time: string,
     name: string,
     description?: string,
   ) {
-    const targetDate = dayjs(date);
-
-    await this.prismaService.invitationPlaceTime.update({
-      where: {
-        id: timeId,
-      },
-      data: {
-        time: targetDate.toDate(),
-        name,
-        description,
-      },
-    });
+    const normalizedTime = normalizeTimeString(time);
+    await this.prismaService.$executeRaw`
+      UPDATE InvitationPlaceTime
+      SET time = ${normalizedTime},
+          name = ${name},
+          description = ${description ?? null}
+      WHERE id = ${timeId}
+    `;
   }
 
   async deletePlace(placeId: number) {

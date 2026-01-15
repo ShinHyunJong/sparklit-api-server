@@ -13,6 +13,7 @@ import { postRSVPmail } from 'src/utils/mailjet.util';
 import { MemoryStoredFile } from 'nestjs-form-data';
 import { makeOgImage } from 'src/helpers/image.helper';
 import { getTimezoneByCountry } from 'src/helpers/timezone.helper';
+import { formatTimeValue } from 'src/helpers/time.helper';
 
 @Injectable()
 export class InvitationService {
@@ -76,8 +77,16 @@ export class InvitationService {
     }
 
     const { user, ...rest } = invitation;
+    const placeList = rest.placeList?.map((place) => ({
+      ...place,
+      timeList: place.timeList?.map((timeItem) => ({
+        ...timeItem,
+        time: formatTimeValue(timeItem.time),
+      })),
+    }));
     return {
       ...rest,
+      placeList,
       timezone,
     };
   }
