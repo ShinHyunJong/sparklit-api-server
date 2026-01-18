@@ -59,6 +59,7 @@ export class PlacesService {
       await this.prismaService.invitationPlace.findFirst({
         where: {
           placeId: place.id,
+          invitationId: invitation.id,
         },
       });
 
