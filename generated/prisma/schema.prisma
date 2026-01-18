@@ -60,7 +60,8 @@ model Invitation {
   bankAccount              String?                @db.Text
   maidOfHonor              String?                @db.Text
   groomsMen                String?                @db.Text
-  timezone                 String?                @db.VarChar(10)
+  textColor                String?                @db.VarChar(10)
+  timezone                 String?                @db.VarChar(50)
   bestMan                  String?                @db.Text
   bridesMaids              String?                @db.Text
   wishlistText             String?                @default("We’ve put together a small wishlist at [Name] for those who would like to help us fill our new home.") @db.VarChar(255)
@@ -140,7 +141,7 @@ model InvitationCoverPhoto {
   invitationId Int?        @db.UnsignedInt
   originalKey  String?     @db.VarChar(255)
   croppedKey   String?     @db.VarChar(255)
-  type         String?     @db.VarChar(10)
+  type         String?     @db.VarChar(30)
   cropX        Float?      @db.Float
   cropY        Float?      @db.Float
   cropZoom     Float?      @db.Float

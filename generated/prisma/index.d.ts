@@ -2830,6 +2830,7 @@ export namespace Prisma {
     bankAccount: string | null
     maidOfHonor: string | null
     groomsMen: string | null
+    textColor: string | null
     timezone: string | null
     bestMan: string | null
     bridesMaids: string | null
@@ -2884,6 +2885,7 @@ export namespace Prisma {
     bankAccount: string | null
     maidOfHonor: string | null
     groomsMen: string | null
+    textColor: string | null
     timezone: string | null
     bestMan: string | null
     bridesMaids: string | null
@@ -2938,6 +2940,7 @@ export namespace Prisma {
     bankAccount: number
     maidOfHonor: number
     groomsMen: number
+    textColor: number
     timezone: number
     bestMan: number
     bridesMaids: number
@@ -3013,6 +3016,7 @@ export namespace Prisma {
     bankAccount?: true
     maidOfHonor?: true
     groomsMen?: true
+    textColor?: true
     timezone?: true
     bestMan?: true
     bridesMaids?: true
@@ -3067,6 +3071,7 @@ export namespace Prisma {
     bankAccount?: true
     maidOfHonor?: true
     groomsMen?: true
+    textColor?: true
     timezone?: true
     bestMan?: true
     bridesMaids?: true
@@ -3121,6 +3126,7 @@ export namespace Prisma {
     bankAccount?: true
     maidOfHonor?: true
     groomsMen?: true
+    textColor?: true
     timezone?: true
     bestMan?: true
     bridesMaids?: true
@@ -3263,6 +3269,7 @@ export namespace Prisma {
     bankAccount: string | null
     maidOfHonor: string | null
     groomsMen: string | null
+    textColor: string | null
     timezone: string | null
     bestMan: string | null
     bridesMaids: string | null
@@ -3337,6 +3344,7 @@ export namespace Prisma {
     bankAccount?: boolean
     maidOfHonor?: boolean
     groomsMen?: boolean
+    textColor?: boolean
     timezone?: boolean
     bestMan?: boolean
     bridesMaids?: boolean
@@ -3400,6 +3408,7 @@ export namespace Prisma {
     bankAccount?: boolean
     maidOfHonor?: boolean
     groomsMen?: boolean
+    textColor?: boolean
     timezone?: boolean
     bestMan?: boolean
     bridesMaids?: boolean
@@ -3413,7 +3422,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "timezone" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
+  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
@@ -3474,6 +3483,7 @@ export namespace Prisma {
       bankAccount: string | null
       maidOfHonor: string | null
       groomsMen: string | null
+      textColor: string | null
       timezone: string | null
       bestMan: string | null
       bridesMaids: string | null
@@ -3900,6 +3910,7 @@ export namespace Prisma {
     readonly bankAccount: FieldRef<"Invitation", 'String'>
     readonly maidOfHonor: FieldRef<"Invitation", 'String'>
     readonly groomsMen: FieldRef<"Invitation", 'String'>
+    readonly textColor: FieldRef<"Invitation", 'String'>
     readonly timezone: FieldRef<"Invitation", 'String'>
     readonly bestMan: FieldRef<"Invitation", 'String'>
     readonly bridesMaids: FieldRef<"Invitation", 'String'>
@@ -12481,6 +12492,7 @@ export namespace Prisma {
     bankAccount: 'bankAccount',
     maidOfHonor: 'maidOfHonor',
     groomsMen: 'groomsMen',
+    textColor: 'textColor',
     timezone: 'timezone',
     bestMan: 'bestMan',
     bridesMaids: 'bridesMaids',
@@ -12683,6 +12695,7 @@ export namespace Prisma {
     bankAccount: 'bankAccount',
     maidOfHonor: 'maidOfHonor',
     groomsMen: 'groomsMen',
+    textColor: 'textColor',
     timezone: 'timezone',
     bestMan: 'bestMan',
     bridesMaids: 'bridesMaids',
@@ -12922,6 +12935,7 @@ export namespace Prisma {
     bankAccount?: StringNullableFilter<"Invitation"> | string | null
     maidOfHonor?: StringNullableFilter<"Invitation"> | string | null
     groomsMen?: StringNullableFilter<"Invitation"> | string | null
+    textColor?: StringNullableFilter<"Invitation"> | string | null
     timezone?: StringNullableFilter<"Invitation"> | string | null
     bestMan?: StringNullableFilter<"Invitation"> | string | null
     bridesMaids?: StringNullableFilter<"Invitation"> | string | null
@@ -12982,6 +12996,7 @@ export namespace Prisma {
     bankAccount?: SortOrderInput | SortOrder
     maidOfHonor?: SortOrderInput | SortOrder
     groomsMen?: SortOrderInput | SortOrder
+    textColor?: SortOrderInput | SortOrder
     timezone?: SortOrderInput | SortOrder
     bestMan?: SortOrderInput | SortOrder
     bridesMaids?: SortOrderInput | SortOrder
@@ -13046,6 +13061,7 @@ export namespace Prisma {
     bankAccount?: StringNullableFilter<"Invitation"> | string | null
     maidOfHonor?: StringNullableFilter<"Invitation"> | string | null
     groomsMen?: StringNullableFilter<"Invitation"> | string | null
+    textColor?: StringNullableFilter<"Invitation"> | string | null
     timezone?: StringNullableFilter<"Invitation"> | string | null
     bestMan?: StringNullableFilter<"Invitation"> | string | null
     bridesMaids?: StringNullableFilter<"Invitation"> | string | null
@@ -13106,6 +13122,7 @@ export namespace Prisma {
     bankAccount?: SortOrderInput | SortOrder
     maidOfHonor?: SortOrderInput | SortOrder
     groomsMen?: SortOrderInput | SortOrder
+    textColor?: SortOrderInput | SortOrder
     timezone?: SortOrderInput | SortOrder
     bestMan?: SortOrderInput | SortOrder
     bridesMaids?: SortOrderInput | SortOrder
@@ -13169,6 +13186,7 @@ export namespace Prisma {
     bankAccount?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     maidOfHonor?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     groomsMen?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    textColor?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     timezone?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     bestMan?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     bridesMaids?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
@@ -13819,6 +13837,7 @@ export namespace Prisma {
     bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
+    textColor?: string | null
     timezone?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
@@ -13879,6 +13898,7 @@ export namespace Prisma {
     bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
+    textColor?: string | null
     timezone?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
@@ -13936,6 +13956,7 @@ export namespace Prisma {
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13996,6 +14017,7 @@ export namespace Prisma {
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14055,6 +14077,7 @@ export namespace Prisma {
     bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
+    textColor?: string | null
     timezone?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
@@ -14108,6 +14131,7 @@ export namespace Prisma {
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14163,6 +14187,7 @@ export namespace Prisma {
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14976,6 +15001,7 @@ export namespace Prisma {
     bankAccount?: SortOrder
     maidOfHonor?: SortOrder
     groomsMen?: SortOrder
+    textColor?: SortOrder
     timezone?: SortOrder
     bestMan?: SortOrder
     bridesMaids?: SortOrder
@@ -15040,6 +15066,7 @@ export namespace Prisma {
     bankAccount?: SortOrder
     maidOfHonor?: SortOrder
     groomsMen?: SortOrder
+    textColor?: SortOrder
     timezone?: SortOrder
     bestMan?: SortOrder
     bridesMaids?: SortOrder
@@ -15094,6 +15121,7 @@ export namespace Prisma {
     bankAccount?: SortOrder
     maidOfHonor?: SortOrder
     groomsMen?: SortOrder
+    textColor?: SortOrder
     timezone?: SortOrder
     bestMan?: SortOrder
     bridesMaids?: SortOrder
@@ -16269,6 +16297,7 @@ export namespace Prisma {
     bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
+    textColor?: string | null
     timezone?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
@@ -16327,6 +16356,7 @@ export namespace Prisma {
     bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
+    textColor?: string | null
     timezone?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
@@ -16415,6 +16445,7 @@ export namespace Prisma {
     bankAccount?: StringNullableFilter<"Invitation"> | string | null
     maidOfHonor?: StringNullableFilter<"Invitation"> | string | null
     groomsMen?: StringNullableFilter<"Invitation"> | string | null
+    textColor?: StringNullableFilter<"Invitation"> | string | null
     timezone?: StringNullableFilter<"Invitation"> | string | null
     bestMan?: StringNullableFilter<"Invitation"> | string | null
     bridesMaids?: StringNullableFilter<"Invitation"> | string | null
@@ -16799,6 +16830,7 @@ export namespace Prisma {
     bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
+    textColor?: string | null
     timezone?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
@@ -16858,6 +16890,7 @@ export namespace Prisma {
     bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
+    textColor?: string | null
     timezone?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
@@ -16981,6 +17014,7 @@ export namespace Prisma {
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17040,6 +17074,7 @@ export namespace Prisma {
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17210,6 +17245,7 @@ export namespace Prisma {
     bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
+    textColor?: string | null
     timezone?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
@@ -17269,6 +17305,7 @@ export namespace Prisma {
     bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
+    textColor?: string | null
     timezone?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
@@ -17341,6 +17378,7 @@ export namespace Prisma {
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17400,6 +17438,7 @@ export namespace Prisma {
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17456,6 +17495,7 @@ export namespace Prisma {
     bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
+    textColor?: string | null
     timezone?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
@@ -17515,6 +17555,7 @@ export namespace Prisma {
     bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
+    textColor?: string | null
     timezone?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
@@ -17587,6 +17628,7 @@ export namespace Prisma {
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17646,6 +17688,7 @@ export namespace Prisma {
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17702,6 +17745,7 @@ export namespace Prisma {
     bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
+    textColor?: string | null
     timezone?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
@@ -17761,6 +17805,7 @@ export namespace Prisma {
     bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
+    textColor?: string | null
     timezone?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
@@ -17833,6 +17878,7 @@ export namespace Prisma {
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17892,6 +17938,7 @@ export namespace Prisma {
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17949,6 +17996,7 @@ export namespace Prisma {
     bankAccount?: string | null
     maidOfHonor?: string | null
     groomsMen?: string | null
+    textColor?: string | null
     timezone?: string | null
     bestMan?: string | null
     bridesMaids?: string | null
@@ -18002,6 +18050,7 @@ export namespace Prisma {
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18060,6 +18109,7 @@ export namespace Prisma {
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18118,6 +18168,7 @@ export namespace Prisma {
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
