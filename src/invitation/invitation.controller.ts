@@ -114,6 +114,20 @@ export class InvitationController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Delete('/cover-photo/:uniqueId')
+  deleteCoverPhoto(
+    @Req() req,
+    @Param('uniqueId') uniqueId: string,
+    @Query('type') type: string,
+  ) {
+    return this.invitationService.deleteCoverPhoto(
+      uniqueId,
+      type,
+      req.user.id,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Put('/templateNo/:uniqueId')
   updateTemplateNo(
     @Param('uniqueId') uniqueId: string,

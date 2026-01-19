@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateInvitationDto } from './dto/create-invitation.dto';
 import cryptoRandomString from 'crypto-random-string';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -214,6 +218,56 @@ export class InvitationService {
       await deleteFromS3(invitationCover.croppedKey);
       return updated;
     }
+  }
+
+  async deleteCoverPhoto(uniqueId: string, type: string, userId: number) {
+    const allowedTypes = new Set([
+      'main',
+      'end',
+      'dressCodeGentleman',
+      'dressCodeLady',
+    ]);
+    if (!allowedTypes.has(type)) {
+      throw new BadRequestException('Invalid cover photo type');
+    }
+
+    const invitation = await this.prismaService.invitation.findFirst({
+      where: { uniqueId, userId },
+    });
+    if (!invitation) {
+      throw new NotFoundException('Invitation not found');
+    }
+
+    const coverPhoto = await this.prismaService.invitationCoverPhoto.findFirst(
+      {
+        where: { type, invitationId: invitation.id },
+      },
+    );
+
+    if (!coverPhoto) {
+      return { deleted: 0 };
+    }
+
+    if (coverPhoto.originalKey) {
+      await deleteFromS3(coverPhoto.originalKey);
+    }
+    if (coverPhoto.croppedKey) {
+      await deleteFromS3(coverPhoto.croppedKey);
+    }
+
+    if (type === 'main' && invitation.ogImageKey) {
+      await deleteFromS3(invitation.ogImageKey);
+      await this.prismaService.invitation.update({
+        where: { id: invitation.id },
+        data: { ogImageKey: null },
+      });
+    }
+
+    await this.prismaService.invitationCoverPhoto.delete({
+      where: { id: coverPhoto.id },
+    });
+
+    return { deleted: 1 };
   }
 
   async updateGreeting(uniqueId: string, title: string, content: string) {
