@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateInvitationDto } from './dto/create-invitation.dto';
 import cryptoRandomString from 'crypto-random-string';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -359,15 +359,56 @@ export class InvitationService {
     return result;
   }
 
-  async getRSVPlist(uniqueId: string) {
+  async getRSVPlist(uniqueId: string, userId: number) {
+    const invitation = await this.prismaService.invitation.findFirst({
+      where: {
+        uniqueId,
+        userId,
+      },
+      select: {
+        id: true,
+      },
+    });
+
+    if (!invitation) {
+      throw new NotFoundException('Invitation not found.');
+    }
+
     const result = await this.prismaService.invitationRSVP.findMany({
       where: {
-        invitation: {
-          uniqueId,
-        },
+        invitationId: invitation.id,
       },
     });
     return result;
+  }
+
+  async deleteRSVP(uniqueId: string, rsvpId: number, userId: number) {
+    const invitation = await this.prismaService.invitation.findFirst({
+      where: {
+        uniqueId,
+        userId,
+      },
+      select: {
+        id: true,
+      },
+    });
+
+    if (!invitation) {
+      throw new NotFoundException('Invitation not found.');
+    }
+
+    const result = await this.prismaService.invitationRSVP.deleteMany({
+      where: {
+        id: rsvpId,
+        invitationId: invitation.id,
+      },
+    });
+
+    if (result.count === 0) {
+      throw new NotFoundException('RSVP not found.');
+    }
+
+    return { deleted: result.count };
   }
 
   async updateNotice(uniqueId: string, notice: string) {

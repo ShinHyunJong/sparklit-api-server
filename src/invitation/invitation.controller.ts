@@ -122,14 +122,29 @@ export class InvitationController {
     return this.invitationService.updateTemplateNo(uniqueId, body.templateNo);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('/rsvp/:uniqueId')
-  getRSVP(@Param('uniqueId') uniqueId: string) {
-    return this.invitationService.getRSVPlist(uniqueId);
+  getRSVP(@Req() req, @Param('uniqueId') uniqueId: string) {
+    return this.invitationService.getRSVPlist(uniqueId, req.user.id);
   }
 
   @Post('rsvp/:uniqueId')
   postRSVP(@Param('uniqueId') uniqueId: string, @Body() body: RsvpDto) {
     return this.invitationService.postRSVP(uniqueId, body);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete('rsvp/:uniqueId/:rsvpId')
+  deleteRSVP(
+    @Req() req,
+    @Param('uniqueId') uniqueId: string,
+    @Param('rsvpId') rsvpId: string,
+  ) {
+    return this.invitationService.deleteRSVP(
+      uniqueId,
+      Number(rsvpId),
+      req.user.id,
+    );
   }
 
   @UseGuards(JwtAuthGuard)
