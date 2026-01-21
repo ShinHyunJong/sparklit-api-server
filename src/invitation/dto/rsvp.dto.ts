@@ -1,4 +1,4 @@
-import { IsBoolean, IsOptional, IsString } from 'class-validator';
+import { IsBoolean, IsInt, IsOptional, IsString, Min } from 'class-validator';
 
 export class RsvpDto {
   @IsString()
@@ -16,4 +16,17 @@ export class RsvpDto {
 
   @IsBoolean()
   attending: boolean;
+
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  pax?: number;
+
+  @IsOptional()
+  @IsString()
+  remark?: string;
+
+  @IsOptional()
+  @IsString()
+  food?: string;
 }

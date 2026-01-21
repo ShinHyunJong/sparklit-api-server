@@ -241,6 +241,39 @@ export class InvitationController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Put('/rsvpTitle/:uniqueId')
+  updateRsvpTitle(
+    @Param('uniqueId') uniqueId: string,
+    @Body() body: { rsvpTitle: string },
+  ) {
+    return this.invitationService.updateRsvpTitle(uniqueId, body.rsvpTitle);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('/rsvpMaxPax/:uniqueId')
+  updateRsvpMaxPax(
+    @Param('uniqueId') uniqueId: string,
+    @Body() body: { rsvpMaxPax: number },
+  ) {
+    return this.invitationService.updateRsvpMaxPax(
+      uniqueId,
+      body.rsvpMaxPax,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('/rsvpHasFood/:uniqueId')
+  updateRsvpHasFood(
+    @Param('uniqueId') uniqueId: string,
+    @Body() body: { rsvpHasFood: boolean },
+  ) {
+    return this.invitationService.updateRsvpHasFood(
+      uniqueId,
+      body.rsvpHasFood,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Put('/endingText/:uniqueId')
   updateEndingText(
     @Param('uniqueId') uniqueId: string,

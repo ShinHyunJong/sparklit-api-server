@@ -62,6 +62,9 @@ model Invitation {
   groomsMen                String?                @db.Text
   textColor                String?                @db.VarChar(10)
   timezone                 String?                @db.VarChar(50)
+  rsvpTitle                String?                @db.VarChar(255)
+  rsvpMaxPax               Int?
+  rsvpHasFood              Boolean?
   bestMan                  String?                @db.Text
   bridesMaids              String?                @db.Text
   wishlistText             String?                @default("We’ve put together a small wishlist at [Name] for those who would like to help us fill our new home.") @db.VarChar(255)
@@ -161,6 +164,9 @@ model InvitationRSVP {
   name         String?     @db.VarChar(10)
   email        String?     @db.VarChar(50)
   phone        String?     @db.VarChar(20)
+  remark       String?     @db.Text
+  food         String?     @db.Text
+  pax          Int?
   attending    Boolean?
   createdAt    DateTime?   @default(now()) @db.Timestamp(0)
   invitation   Invitation? @relation(fields: [invitationId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "InvitationRSVP_ibfk_1")

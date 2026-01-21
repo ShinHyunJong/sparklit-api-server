@@ -173,6 +173,9 @@ exports.Prisma.InvitationScalarFieldEnum = {
   groomsMen: 'groomsMen',
   textColor: 'textColor',
   timezone: 'timezone',
+  rsvpTitle: 'rsvpTitle',
+  rsvpMaxPax: 'rsvpMaxPax',
+  rsvpHasFood: 'rsvpHasFood',
   bestMan: 'bestMan',
   bridesMaids: 'bridesMaids',
   wishlistText: 'wishlistText',
@@ -249,6 +252,9 @@ exports.Prisma.InvitationRSVPScalarFieldEnum = {
   name: 'name',
   email: 'email',
   phone: 'phone',
+  remark: 'remark',
+  food: 'food',
+  pax: 'pax',
   attending: 'attending',
   createdAt: 'createdAt'
 };
@@ -331,6 +337,7 @@ exports.Prisma.InvitationOrderByRelevanceFieldEnum = {
   groomsMen: 'groomsMen',
   textColor: 'textColor',
   timezone: 'timezone',
+  rsvpTitle: 'rsvpTitle',
   bestMan: 'bestMan',
   bridesMaids: 'bridesMaids',
   wishlistText: 'wishlistText',
@@ -372,7 +379,9 @@ exports.Prisma.InvitationRSVPOrderByRelevanceFieldEnum = {
   side: 'side',
   name: 'name',
   email: 'email',
-  phone: 'phone'
+  phone: 'phone',
+  remark: 'remark',
+  food: 'food'
 };
 
 exports.Prisma.InvitationMusicOrderByRelevanceFieldEnum = {

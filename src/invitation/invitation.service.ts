@@ -238,11 +238,9 @@ export class InvitationService {
       throw new NotFoundException('Invitation not found');
     }
 
-    const coverPhoto = await this.prismaService.invitationCoverPhoto.findFirst(
-      {
-        where: { type, invitationId: invitation.id },
-      },
-    );
+    const coverPhoto = await this.prismaService.invitationCoverPhoto.findFirst({
+      where: { type, invitationId: invitation.id },
+    });
 
     if (!coverPhoto) {
       return { deleted: 0 };
@@ -399,6 +397,9 @@ export class InvitationService {
         side: body.side,
         phone: body.phone,
         attending: body.attending,
+        pax: body.pax ?? null,
+        remark: body.remark ?? null,
+        food: body.food ?? null,
       },
     });
     const name = `${invitation.groomFirstName} & ${invitation.brideFirstName}`;
@@ -470,6 +471,36 @@ export class InvitationService {
       where: { uniqueId },
       data: {
         notice,
+      },
+    });
+    return updated;
+  }
+
+  async updateRsvpTitle(uniqueId: string, rsvpTitle: string) {
+    const updated = await this.prismaService.invitation.update({
+      where: { uniqueId },
+      data: {
+        rsvpTitle,
+      },
+    });
+    return updated;
+  }
+
+  async updateRsvpMaxPax(uniqueId: string, rsvpMaxPax: number) {
+    const updated = await this.prismaService.invitation.update({
+      where: { uniqueId },
+      data: {
+        rsvpMaxPax,
+      },
+    });
+    return updated;
+  }
+
+  async updateRsvpHasFood(uniqueId: string, rsvpHasFood: boolean) {
+    const updated = await this.prismaService.invitation.update({
+      where: { uniqueId },
+      data: {
+        rsvpHasFood,
       },
     });
     return updated;

@@ -2777,6 +2777,7 @@ export namespace Prisma {
     isGroomDadHidden: number | null
     isBrideDadHidden: number | null
     isBrideMomHidden: number | null
+    rsvpMaxPax: number | null
   }
 
   export type InvitationSumAggregateOutputType = {
@@ -2786,6 +2787,7 @@ export namespace Prisma {
     isGroomDadHidden: number | null
     isBrideDadHidden: number | null
     isBrideMomHidden: number | null
+    rsvpMaxPax: number | null
   }
 
   export type InvitationMinAggregateOutputType = {
@@ -2832,6 +2834,9 @@ export namespace Prisma {
     groomsMen: string | null
     textColor: string | null
     timezone: string | null
+    rsvpTitle: string | null
+    rsvpMaxPax: number | null
+    rsvpHasFood: boolean | null
     bestMan: string | null
     bridesMaids: string | null
     wishlistText: string | null
@@ -2887,6 +2892,9 @@ export namespace Prisma {
     groomsMen: string | null
     textColor: string | null
     timezone: string | null
+    rsvpTitle: string | null
+    rsvpMaxPax: number | null
+    rsvpHasFood: boolean | null
     bestMan: string | null
     bridesMaids: string | null
     wishlistText: string | null
@@ -2942,6 +2950,9 @@ export namespace Prisma {
     groomsMen: number
     textColor: number
     timezone: number
+    rsvpTitle: number
+    rsvpMaxPax: number
+    rsvpHasFood: number
     bestMan: number
     bridesMaids: number
     wishlistText: number
@@ -2963,6 +2974,7 @@ export namespace Prisma {
     isGroomDadHidden?: true
     isBrideDadHidden?: true
     isBrideMomHidden?: true
+    rsvpMaxPax?: true
   }
 
   export type InvitationSumAggregateInputType = {
@@ -2972,6 +2984,7 @@ export namespace Prisma {
     isGroomDadHidden?: true
     isBrideDadHidden?: true
     isBrideMomHidden?: true
+    rsvpMaxPax?: true
   }
 
   export type InvitationMinAggregateInputType = {
@@ -3018,6 +3031,9 @@ export namespace Prisma {
     groomsMen?: true
     textColor?: true
     timezone?: true
+    rsvpTitle?: true
+    rsvpMaxPax?: true
+    rsvpHasFood?: true
     bestMan?: true
     bridesMaids?: true
     wishlistText?: true
@@ -3073,6 +3089,9 @@ export namespace Prisma {
     groomsMen?: true
     textColor?: true
     timezone?: true
+    rsvpTitle?: true
+    rsvpMaxPax?: true
+    rsvpHasFood?: true
     bestMan?: true
     bridesMaids?: true
     wishlistText?: true
@@ -3128,6 +3147,9 @@ export namespace Prisma {
     groomsMen?: true
     textColor?: true
     timezone?: true
+    rsvpTitle?: true
+    rsvpMaxPax?: true
+    rsvpHasFood?: true
     bestMan?: true
     bridesMaids?: true
     wishlistText?: true
@@ -3271,6 +3293,9 @@ export namespace Prisma {
     groomsMen: string | null
     textColor: string | null
     timezone: string | null
+    rsvpTitle: string | null
+    rsvpMaxPax: number | null
+    rsvpHasFood: boolean | null
     bestMan: string | null
     bridesMaids: string | null
     wishlistText: string | null
@@ -3346,6 +3371,9 @@ export namespace Prisma {
     groomsMen?: boolean
     textColor?: boolean
     timezone?: boolean
+    rsvpTitle?: boolean
+    rsvpMaxPax?: boolean
+    rsvpHasFood?: boolean
     bestMan?: boolean
     bridesMaids?: boolean
     wishlistText?: boolean
@@ -3410,6 +3438,9 @@ export namespace Prisma {
     groomsMen?: boolean
     textColor?: boolean
     timezone?: boolean
+    rsvpTitle?: boolean
+    rsvpMaxPax?: boolean
+    rsvpHasFood?: boolean
     bestMan?: boolean
     bridesMaids?: boolean
     wishlistText?: boolean
@@ -3422,7 +3453,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
+  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpHasFood" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
@@ -3485,6 +3516,9 @@ export namespace Prisma {
       groomsMen: string | null
       textColor: string | null
       timezone: string | null
+      rsvpTitle: string | null
+      rsvpMaxPax: number | null
+      rsvpHasFood: boolean | null
       bestMan: string | null
       bridesMaids: string | null
       wishlistText: string | null
@@ -3912,6 +3946,9 @@ export namespace Prisma {
     readonly groomsMen: FieldRef<"Invitation", 'String'>
     readonly textColor: FieldRef<"Invitation", 'String'>
     readonly timezone: FieldRef<"Invitation", 'String'>
+    readonly rsvpTitle: FieldRef<"Invitation", 'String'>
+    readonly rsvpMaxPax: FieldRef<"Invitation", 'Int'>
+    readonly rsvpHasFood: FieldRef<"Invitation", 'Boolean'>
     readonly bestMan: FieldRef<"Invitation", 'String'>
     readonly bridesMaids: FieldRef<"Invitation", 'String'>
     readonly wishlistText: FieldRef<"Invitation", 'String'>
@@ -9654,11 +9691,13 @@ export namespace Prisma {
   export type InvitationRSVPAvgAggregateOutputType = {
     id: number | null
     invitationId: number | null
+    pax: number | null
   }
 
   export type InvitationRSVPSumAggregateOutputType = {
     id: number | null
     invitationId: number | null
+    pax: number | null
   }
 
   export type InvitationRSVPMinAggregateOutputType = {
@@ -9668,6 +9707,9 @@ export namespace Prisma {
     name: string | null
     email: string | null
     phone: string | null
+    remark: string | null
+    food: string | null
+    pax: number | null
     attending: boolean | null
     createdAt: Date | null
   }
@@ -9679,6 +9721,9 @@ export namespace Prisma {
     name: string | null
     email: string | null
     phone: string | null
+    remark: string | null
+    food: string | null
+    pax: number | null
     attending: boolean | null
     createdAt: Date | null
   }
@@ -9690,6 +9735,9 @@ export namespace Prisma {
     name: number
     email: number
     phone: number
+    remark: number
+    food: number
+    pax: number
     attending: number
     createdAt: number
     _all: number
@@ -9699,11 +9747,13 @@ export namespace Prisma {
   export type InvitationRSVPAvgAggregateInputType = {
     id?: true
     invitationId?: true
+    pax?: true
   }
 
   export type InvitationRSVPSumAggregateInputType = {
     id?: true
     invitationId?: true
+    pax?: true
   }
 
   export type InvitationRSVPMinAggregateInputType = {
@@ -9713,6 +9763,9 @@ export namespace Prisma {
     name?: true
     email?: true
     phone?: true
+    remark?: true
+    food?: true
+    pax?: true
     attending?: true
     createdAt?: true
   }
@@ -9724,6 +9777,9 @@ export namespace Prisma {
     name?: true
     email?: true
     phone?: true
+    remark?: true
+    food?: true
+    pax?: true
     attending?: true
     createdAt?: true
   }
@@ -9735,6 +9791,9 @@ export namespace Prisma {
     name?: true
     email?: true
     phone?: true
+    remark?: true
+    food?: true
+    pax?: true
     attending?: true
     createdAt?: true
     _all?: true
@@ -9833,6 +9892,9 @@ export namespace Prisma {
     name: string | null
     email: string | null
     phone: string | null
+    remark: string | null
+    food: string | null
+    pax: number | null
     attending: boolean | null
     createdAt: Date | null
     _count: InvitationRSVPCountAggregateOutputType | null
@@ -9863,6 +9925,9 @@ export namespace Prisma {
     name?: boolean
     email?: boolean
     phone?: boolean
+    remark?: boolean
+    food?: boolean
+    pax?: boolean
     attending?: boolean
     createdAt?: boolean
     invitation?: boolean | InvitationRSVP$invitationArgs<ExtArgs>
@@ -9877,11 +9942,14 @@ export namespace Prisma {
     name?: boolean
     email?: boolean
     phone?: boolean
+    remark?: boolean
+    food?: boolean
+    pax?: boolean
     attending?: boolean
     createdAt?: boolean
   }
 
-  export type InvitationRSVPOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitationId" | "side" | "name" | "email" | "phone" | "attending" | "createdAt", ExtArgs["result"]["invitationRSVP"]>
+  export type InvitationRSVPOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitationId" | "side" | "name" | "email" | "phone" | "remark" | "food" | "pax" | "attending" | "createdAt", ExtArgs["result"]["invitationRSVP"]>
   export type InvitationRSVPInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     invitation?: boolean | InvitationRSVP$invitationArgs<ExtArgs>
   }
@@ -9898,6 +9966,9 @@ export namespace Prisma {
       name: string | null
       email: string | null
       phone: string | null
+      remark: string | null
+      food: string | null
+      pax: number | null
       attending: boolean | null
       createdAt: Date | null
     }, ExtArgs["result"]["invitationRSVP"]>
@@ -10276,6 +10347,9 @@ export namespace Prisma {
     readonly name: FieldRef<"InvitationRSVP", 'String'>
     readonly email: FieldRef<"InvitationRSVP", 'String'>
     readonly phone: FieldRef<"InvitationRSVP", 'String'>
+    readonly remark: FieldRef<"InvitationRSVP", 'String'>
+    readonly food: FieldRef<"InvitationRSVP", 'String'>
+    readonly pax: FieldRef<"InvitationRSVP", 'Int'>
     readonly attending: FieldRef<"InvitationRSVP", 'Boolean'>
     readonly createdAt: FieldRef<"InvitationRSVP", 'DateTime'>
   }
@@ -12494,6 +12568,9 @@ export namespace Prisma {
     groomsMen: 'groomsMen',
     textColor: 'textColor',
     timezone: 'timezone',
+    rsvpTitle: 'rsvpTitle',
+    rsvpMaxPax: 'rsvpMaxPax',
+    rsvpHasFood: 'rsvpHasFood',
     bestMan: 'bestMan',
     bridesMaids: 'bridesMaids',
     wishlistText: 'wishlistText',
@@ -12588,6 +12665,9 @@ export namespace Prisma {
     name: 'name',
     email: 'email',
     phone: 'phone',
+    remark: 'remark',
+    food: 'food',
+    pax: 'pax',
     attending: 'attending',
     createdAt: 'createdAt'
   };
@@ -12697,6 +12777,7 @@ export namespace Prisma {
     groomsMen: 'groomsMen',
     textColor: 'textColor',
     timezone: 'timezone',
+    rsvpTitle: 'rsvpTitle',
     bestMan: 'bestMan',
     bridesMaids: 'bridesMaids',
     wishlistText: 'wishlistText',
@@ -12756,7 +12837,9 @@ export namespace Prisma {
     side: 'side',
     name: 'name',
     email: 'email',
-    phone: 'phone'
+    phone: 'phone',
+    remark: 'remark',
+    food: 'food'
   };
 
   export type InvitationRSVPOrderByRelevanceFieldEnum = (typeof InvitationRSVPOrderByRelevanceFieldEnum)[keyof typeof InvitationRSVPOrderByRelevanceFieldEnum]
@@ -12937,6 +13020,9 @@ export namespace Prisma {
     groomsMen?: StringNullableFilter<"Invitation"> | string | null
     textColor?: StringNullableFilter<"Invitation"> | string | null
     timezone?: StringNullableFilter<"Invitation"> | string | null
+    rsvpTitle?: StringNullableFilter<"Invitation"> | string | null
+    rsvpMaxPax?: IntNullableFilter<"Invitation"> | number | null
+    rsvpHasFood?: BoolNullableFilter<"Invitation"> | boolean | null
     bestMan?: StringNullableFilter<"Invitation"> | string | null
     bridesMaids?: StringNullableFilter<"Invitation"> | string | null
     wishlistText?: StringNullableFilter<"Invitation"> | string | null
@@ -12998,6 +13084,9 @@ export namespace Prisma {
     groomsMen?: SortOrderInput | SortOrder
     textColor?: SortOrderInput | SortOrder
     timezone?: SortOrderInput | SortOrder
+    rsvpTitle?: SortOrderInput | SortOrder
+    rsvpMaxPax?: SortOrderInput | SortOrder
+    rsvpHasFood?: SortOrderInput | SortOrder
     bestMan?: SortOrderInput | SortOrder
     bridesMaids?: SortOrderInput | SortOrder
     wishlistText?: SortOrderInput | SortOrder
@@ -13063,6 +13152,9 @@ export namespace Prisma {
     groomsMen?: StringNullableFilter<"Invitation"> | string | null
     textColor?: StringNullableFilter<"Invitation"> | string | null
     timezone?: StringNullableFilter<"Invitation"> | string | null
+    rsvpTitle?: StringNullableFilter<"Invitation"> | string | null
+    rsvpMaxPax?: IntNullableFilter<"Invitation"> | number | null
+    rsvpHasFood?: BoolNullableFilter<"Invitation"> | boolean | null
     bestMan?: StringNullableFilter<"Invitation"> | string | null
     bridesMaids?: StringNullableFilter<"Invitation"> | string | null
     wishlistText?: StringNullableFilter<"Invitation"> | string | null
@@ -13124,6 +13216,9 @@ export namespace Prisma {
     groomsMen?: SortOrderInput | SortOrder
     textColor?: SortOrderInput | SortOrder
     timezone?: SortOrderInput | SortOrder
+    rsvpTitle?: SortOrderInput | SortOrder
+    rsvpMaxPax?: SortOrderInput | SortOrder
+    rsvpHasFood?: SortOrderInput | SortOrder
     bestMan?: SortOrderInput | SortOrder
     bridesMaids?: SortOrderInput | SortOrder
     wishlistText?: SortOrderInput | SortOrder
@@ -13188,6 +13283,9 @@ export namespace Prisma {
     groomsMen?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     textColor?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     timezone?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    rsvpTitle?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    rsvpMaxPax?: IntNullableWithAggregatesFilter<"Invitation"> | number | null
+    rsvpHasFood?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
     bestMan?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     bridesMaids?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     wishlistText?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
@@ -13591,6 +13689,9 @@ export namespace Prisma {
     name?: StringNullableFilter<"InvitationRSVP"> | string | null
     email?: StringNullableFilter<"InvitationRSVP"> | string | null
     phone?: StringNullableFilter<"InvitationRSVP"> | string | null
+    remark?: StringNullableFilter<"InvitationRSVP"> | string | null
+    food?: StringNullableFilter<"InvitationRSVP"> | string | null
+    pax?: IntNullableFilter<"InvitationRSVP"> | number | null
     attending?: BoolNullableFilter<"InvitationRSVP"> | boolean | null
     createdAt?: DateTimeNullableFilter<"InvitationRSVP"> | Date | string | null
     invitation?: XOR<InvitationNullableScalarRelationFilter, InvitationWhereInput> | null
@@ -13603,6 +13704,9 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
+    remark?: SortOrderInput | SortOrder
+    food?: SortOrderInput | SortOrder
+    pax?: SortOrderInput | SortOrder
     attending?: SortOrderInput | SortOrder
     createdAt?: SortOrderInput | SortOrder
     invitation?: InvitationOrderByWithRelationInput
@@ -13619,6 +13723,9 @@ export namespace Prisma {
     name?: StringNullableFilter<"InvitationRSVP"> | string | null
     email?: StringNullableFilter<"InvitationRSVP"> | string | null
     phone?: StringNullableFilter<"InvitationRSVP"> | string | null
+    remark?: StringNullableFilter<"InvitationRSVP"> | string | null
+    food?: StringNullableFilter<"InvitationRSVP"> | string | null
+    pax?: IntNullableFilter<"InvitationRSVP"> | number | null
     attending?: BoolNullableFilter<"InvitationRSVP"> | boolean | null
     createdAt?: DateTimeNullableFilter<"InvitationRSVP"> | Date | string | null
     invitation?: XOR<InvitationNullableScalarRelationFilter, InvitationWhereInput> | null
@@ -13631,6 +13738,9 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
+    remark?: SortOrderInput | SortOrder
+    food?: SortOrderInput | SortOrder
+    pax?: SortOrderInput | SortOrder
     attending?: SortOrderInput | SortOrder
     createdAt?: SortOrderInput | SortOrder
     _count?: InvitationRSVPCountOrderByAggregateInput
@@ -13650,6 +13760,9 @@ export namespace Prisma {
     name?: StringNullableWithAggregatesFilter<"InvitationRSVP"> | string | null
     email?: StringNullableWithAggregatesFilter<"InvitationRSVP"> | string | null
     phone?: StringNullableWithAggregatesFilter<"InvitationRSVP"> | string | null
+    remark?: StringNullableWithAggregatesFilter<"InvitationRSVP"> | string | null
+    food?: StringNullableWithAggregatesFilter<"InvitationRSVP"> | string | null
+    pax?: IntNullableWithAggregatesFilter<"InvitationRSVP"> | number | null
     attending?: BoolNullableWithAggregatesFilter<"InvitationRSVP"> | boolean | null
     createdAt?: DateTimeNullableWithAggregatesFilter<"InvitationRSVP"> | Date | string | null
   }
@@ -13839,6 +13952,9 @@ export namespace Prisma {
     groomsMen?: string | null
     textColor?: string | null
     timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpHasFood?: boolean | null
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -13900,6 +14016,9 @@ export namespace Prisma {
     groomsMen?: string | null
     textColor?: string | null
     timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpHasFood?: boolean | null
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -13958,6 +14077,9 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14019,6 +14141,9 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14079,6 +14204,9 @@ export namespace Prisma {
     groomsMen?: string | null
     textColor?: string | null
     timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpHasFood?: boolean | null
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -14133,6 +14261,9 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14189,6 +14320,9 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14593,6 +14727,9 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     phone?: string | null
+    remark?: string | null
+    food?: string | null
+    pax?: number | null
     attending?: boolean | null
     createdAt?: Date | string | null
     invitation?: InvitationCreateNestedOneWithoutInvitationRSVPInput
@@ -14605,6 +14742,9 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     phone?: string | null
+    remark?: string | null
+    food?: string | null
+    pax?: number | null
     attending?: boolean | null
     createdAt?: Date | string | null
   }
@@ -14614,6 +14754,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    food?: NullableStringFieldUpdateOperationsInput | string | null
+    pax?: NullableIntFieldUpdateOperationsInput | number | null
     attending?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitation?: InvitationUpdateOneWithoutInvitationRSVPNestedInput
@@ -14626,6 +14769,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    food?: NullableStringFieldUpdateOperationsInput | string | null
+    pax?: NullableIntFieldUpdateOperationsInput | number | null
     attending?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -14637,6 +14783,9 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     phone?: string | null
+    remark?: string | null
+    food?: string | null
+    pax?: number | null
     attending?: boolean | null
     createdAt?: Date | string | null
   }
@@ -14646,6 +14795,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    food?: NullableStringFieldUpdateOperationsInput | string | null
+    pax?: NullableIntFieldUpdateOperationsInput | number | null
     attending?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -14657,6 +14809,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    food?: NullableStringFieldUpdateOperationsInput | string | null
+    pax?: NullableIntFieldUpdateOperationsInput | number | null
     attending?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -15003,6 +15158,9 @@ export namespace Prisma {
     groomsMen?: SortOrder
     textColor?: SortOrder
     timezone?: SortOrder
+    rsvpTitle?: SortOrder
+    rsvpMaxPax?: SortOrder
+    rsvpHasFood?: SortOrder
     bestMan?: SortOrder
     bridesMaids?: SortOrder
     wishlistText?: SortOrder
@@ -15022,6 +15180,7 @@ export namespace Prisma {
     isGroomDadHidden?: SortOrder
     isBrideDadHidden?: SortOrder
     isBrideMomHidden?: SortOrder
+    rsvpMaxPax?: SortOrder
   }
 
   export type InvitationMaxOrderByAggregateInput = {
@@ -15068,6 +15227,9 @@ export namespace Prisma {
     groomsMen?: SortOrder
     textColor?: SortOrder
     timezone?: SortOrder
+    rsvpTitle?: SortOrder
+    rsvpMaxPax?: SortOrder
+    rsvpHasFood?: SortOrder
     bestMan?: SortOrder
     bridesMaids?: SortOrder
     wishlistText?: SortOrder
@@ -15123,6 +15285,9 @@ export namespace Prisma {
     groomsMen?: SortOrder
     textColor?: SortOrder
     timezone?: SortOrder
+    rsvpTitle?: SortOrder
+    rsvpMaxPax?: SortOrder
+    rsvpHasFood?: SortOrder
     bestMan?: SortOrder
     bridesMaids?: SortOrder
     wishlistText?: SortOrder
@@ -15141,6 +15306,7 @@ export namespace Prisma {
     isGroomDadHidden?: SortOrder
     isBrideDadHidden?: SortOrder
     isBrideMomHidden?: SortOrder
+    rsvpMaxPax?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -15541,6 +15707,9 @@ export namespace Prisma {
     name?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    remark?: SortOrder
+    food?: SortOrder
+    pax?: SortOrder
     attending?: SortOrder
     createdAt?: SortOrder
   }
@@ -15548,6 +15717,7 @@ export namespace Prisma {
   export type InvitationRSVPAvgOrderByAggregateInput = {
     id?: SortOrder
     invitationId?: SortOrder
+    pax?: SortOrder
   }
 
   export type InvitationRSVPMaxOrderByAggregateInput = {
@@ -15557,6 +15727,9 @@ export namespace Prisma {
     name?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    remark?: SortOrder
+    food?: SortOrder
+    pax?: SortOrder
     attending?: SortOrder
     createdAt?: SortOrder
   }
@@ -15568,6 +15741,9 @@ export namespace Prisma {
     name?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    remark?: SortOrder
+    food?: SortOrder
+    pax?: SortOrder
     attending?: SortOrder
     createdAt?: SortOrder
   }
@@ -15575,6 +15751,7 @@ export namespace Prisma {
   export type InvitationRSVPSumOrderByAggregateInput = {
     id?: SortOrder
     invitationId?: SortOrder
+    pax?: SortOrder
   }
 
   export type InvitationMusicOrderByRelevanceInput = {
@@ -16299,6 +16476,9 @@ export namespace Prisma {
     groomsMen?: string | null
     textColor?: string | null
     timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpHasFood?: boolean | null
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -16358,6 +16538,9 @@ export namespace Prisma {
     groomsMen?: string | null
     textColor?: string | null
     timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpHasFood?: boolean | null
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -16447,6 +16630,9 @@ export namespace Prisma {
     groomsMen?: StringNullableFilter<"Invitation"> | string | null
     textColor?: StringNullableFilter<"Invitation"> | string | null
     timezone?: StringNullableFilter<"Invitation"> | string | null
+    rsvpTitle?: StringNullableFilter<"Invitation"> | string | null
+    rsvpMaxPax?: IntNullableFilter<"Invitation"> | number | null
+    rsvpHasFood?: BoolNullableFilter<"Invitation"> | boolean | null
     bestMan?: StringNullableFilter<"Invitation"> | string | null
     bridesMaids?: StringNullableFilter<"Invitation"> | string | null
     wishlistText?: StringNullableFilter<"Invitation"> | string | null
@@ -16589,6 +16775,9 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     phone?: string | null
+    remark?: string | null
+    food?: string | null
+    pax?: number | null
     attending?: boolean | null
     createdAt?: Date | string | null
   }
@@ -16599,6 +16788,9 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     phone?: string | null
+    remark?: string | null
+    food?: string | null
+    pax?: number | null
     attending?: boolean | null
     createdAt?: Date | string | null
   }
@@ -16764,6 +16956,9 @@ export namespace Prisma {
     name?: StringNullableFilter<"InvitationRSVP"> | string | null
     email?: StringNullableFilter<"InvitationRSVP"> | string | null
     phone?: StringNullableFilter<"InvitationRSVP"> | string | null
+    remark?: StringNullableFilter<"InvitationRSVP"> | string | null
+    food?: StringNullableFilter<"InvitationRSVP"> | string | null
+    pax?: IntNullableFilter<"InvitationRSVP"> | number | null
     attending?: BoolNullableFilter<"InvitationRSVP"> | boolean | null
     createdAt?: DateTimeNullableFilter<"InvitationRSVP"> | Date | string | null
   }
@@ -16832,6 +17027,9 @@ export namespace Prisma {
     groomsMen?: string | null
     textColor?: string | null
     timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpHasFood?: boolean | null
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -16892,6 +17090,9 @@ export namespace Prisma {
     groomsMen?: string | null
     textColor?: string | null
     timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpHasFood?: boolean | null
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -17016,6 +17217,9 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17076,6 +17280,9 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17247,6 +17454,9 @@ export namespace Prisma {
     groomsMen?: string | null
     textColor?: string | null
     timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpHasFood?: boolean | null
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -17307,6 +17517,9 @@ export namespace Prisma {
     groomsMen?: string | null
     textColor?: string | null
     timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpHasFood?: boolean | null
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -17380,6 +17593,9 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17440,6 +17656,9 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17497,6 +17716,9 @@ export namespace Prisma {
     groomsMen?: string | null
     textColor?: string | null
     timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpHasFood?: boolean | null
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -17557,6 +17779,9 @@ export namespace Prisma {
     groomsMen?: string | null
     textColor?: string | null
     timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpHasFood?: boolean | null
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -17630,6 +17855,9 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17690,6 +17918,9 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17747,6 +17978,9 @@ export namespace Prisma {
     groomsMen?: string | null
     textColor?: string | null
     timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpHasFood?: boolean | null
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -17807,6 +18041,9 @@ export namespace Prisma {
     groomsMen?: string | null
     textColor?: string | null
     timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpHasFood?: boolean | null
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -17880,6 +18117,9 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17940,6 +18180,9 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17998,6 +18241,9 @@ export namespace Prisma {
     groomsMen?: string | null
     textColor?: string | null
     timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpHasFood?: boolean | null
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -18052,6 +18298,9 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18111,6 +18360,9 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18170,6 +18422,9 @@ export namespace Prisma {
     groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
     textColor?: NullableStringFieldUpdateOperationsInput | string | null
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18225,6 +18480,9 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     phone?: string | null
+    remark?: string | null
+    food?: string | null
+    pax?: number | null
     attending?: boolean | null
     createdAt?: Date | string | null
   }
@@ -18344,6 +18602,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    food?: NullableStringFieldUpdateOperationsInput | string | null
+    pax?: NullableIntFieldUpdateOperationsInput | number | null
     attending?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -18354,6 +18615,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    food?: NullableStringFieldUpdateOperationsInput | string | null
+    pax?: NullableIntFieldUpdateOperationsInput | number | null
     attending?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -18364,6 +18628,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    food?: NullableStringFieldUpdateOperationsInput | string | null
+    pax?: NullableIntFieldUpdateOperationsInput | number | null
     attending?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
