@@ -506,6 +506,16 @@ export class InvitationService {
     return updated;
   }
 
+  async updateRsvpPopup(uniqueId: string, isRsvpPopup: boolean) {
+    const updated = await this.prismaService.invitation.update({
+      where: { uniqueId },
+      data: {
+        isRsvpPopup,
+      },
+    });
+    return updated;
+  }
+
   async layoutOrderUpdate(uniqueId: string, layoutOrder: string) {
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },

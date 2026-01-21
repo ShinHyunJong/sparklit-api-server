@@ -176,6 +176,7 @@ exports.Prisma.InvitationScalarFieldEnum = {
   rsvpTitle: 'rsvpTitle',
   rsvpMaxPax: 'rsvpMaxPax',
   rsvpHasFood: 'rsvpHasFood',
+  isRsvpPopup: 'isRsvpPopup',
   bestMan: 'bestMan',
   bridesMaids: 'bridesMaids',
   wishlistText: 'wishlistText',

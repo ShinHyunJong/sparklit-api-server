@@ -274,6 +274,18 @@ export class InvitationController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Put('/rsvpPopup/:uniqueId')
+  updateRsvpPopup(
+    @Param('uniqueId') uniqueId: string,
+    @Body() body: { isRsvpPopup: boolean },
+  ) {
+    return this.invitationService.updateRsvpPopup(
+      uniqueId,
+      body.isRsvpPopup,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Put('/endingText/:uniqueId')
   updateEndingText(
     @Param('uniqueId') uniqueId: string,
