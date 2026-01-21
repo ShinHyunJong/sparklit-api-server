@@ -64,8 +64,8 @@ model Invitation {
   timezone                 String?                @db.VarChar(50)
   rsvpTitle                String?                @db.VarChar(255)
   rsvpMaxPax               Int?
-  rsvpHasFood              Int?                   @db.UnsignedTinyInt
-  isRsvpPopup              Boolean?
+  rsvpHasFood              Boolean?
+  isRsvpPopup              Boolean?               @default(false)
   bestMan                  String?                @db.Text
   bridesMaids              String?                @db.Text
   wishlistText             String?                @default("We’ve put together a small wishlist at [Name] for those who would like to help us fill our new home.") @db.VarChar(255)
