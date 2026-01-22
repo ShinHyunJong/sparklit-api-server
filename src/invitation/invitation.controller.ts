@@ -19,7 +19,7 @@ import {
   UpdateMainPhotoDto,
 } from './dto/update-invitation.dto';
 import { FormDataRequest, MemoryStoredFile } from 'nestjs-form-data';
-import { RsvpDto } from './dto/rsvp.dto';
+import { RsvpDto, UpdateRsvpDto } from './dto/rsvp.dto';
 
 @Controller('invitation')
 export class InvitationController {
@@ -158,6 +158,22 @@ export class InvitationController {
       uniqueId,
       Number(rsvpId),
       req.user.id,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('rsvp/:uniqueId/:rsvpId')
+  updateRSVP(
+    @Req() req,
+    @Param('uniqueId') uniqueId: string,
+    @Param('rsvpId') rsvpId: string,
+    @Body() body: UpdateRsvpDto,
+  ) {
+    return this.invitationService.updateRSVP(
+      uniqueId,
+      Number(rsvpId),
+      req.user.id,
+      body,
     );
   }
 

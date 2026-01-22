@@ -30,3 +30,34 @@ export class RsvpDto {
   @IsString()
   food?: string;
 }
+
+export class UpdateRsvpDto {
+  @IsOptional()
+  @IsString()
+  name?: string;
+
+  @IsOptional()
+  @IsString()
+  phone?: string;
+
+  @IsOptional()
+  @IsString()
+  email?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  attending?: boolean;
+
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  pax?: number | null;
+
+  @IsOptional()
+  @IsString()
+  remark?: string | null;
+
+  @IsOptional()
+  @IsString()
+  food?: string | null;
+}

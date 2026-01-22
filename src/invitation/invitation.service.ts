@@ -12,7 +12,7 @@ import {
 } from './dto/update-invitation.dto';
 import dayjs from 'dayjs';
 import { deleteFromS3, upload2S3 } from 'src/helpers/s3.helper';
-import { RsvpDto } from './dto/rsvp.dto';
+import { RsvpDto, UpdateRsvpDto } from './dto/rsvp.dto';
 import { postRSVPmail } from 'src/utils/mailjet.util';
 import { MemoryStoredFile } from 'nestjs-form-data';
 import { makeOgImage } from 'src/helpers/image.helper';
@@ -464,6 +464,71 @@ export class InvitationService {
     }
 
     return { deleted: result.count };
+  }
+
+  async updateRSVP(
+    uniqueId: string,
+    rsvpId: number,
+    userId: number,
+    body: UpdateRsvpDto,
+  ) {
+    const invitation = await this.prismaService.invitation.findFirst({
+      where: {
+        uniqueId,
+        userId,
+      },
+      select: {
+        id: true,
+      },
+    });
+
+    if (!invitation) {
+      throw new NotFoundException('Invitation not found.');
+    }
+
+    const updateData = {
+      name: body.name,
+      phone: body.phone,
+      email: body.email,
+      attending:
+        typeof body.attending === 'boolean' ? body.attending : undefined,
+      pax:
+        body.pax === null || typeof body.pax === 'number'
+          ? body.pax
+          : undefined,
+      remark: body.remark,
+      food: body.food,
+    };
+
+    const hasUpdates = Object.values(updateData).some(
+      (value) => value !== undefined,
+    );
+
+    if (!hasUpdates) {
+      return this.prismaService.invitationRSVP.findUnique({
+        where: {
+          id: rsvpId,
+        },
+      });
+    }
+
+    const result = await this.prismaService.invitationRSVP.updateMany({
+      where: {
+        id: rsvpId,
+        invitationId: invitation.id,
+      },
+      data: updateData,
+    });
+
+    if (result.count === 0) {
+      throw new NotFoundException('RSVP not found.');
+    }
+
+    return this.prismaService.invitationRSVP.findUnique({
+      where: {
+        id: rsvpId,
+      },
+    });
   }
 
   async updateNotice(uniqueId: string, notice: string) {
