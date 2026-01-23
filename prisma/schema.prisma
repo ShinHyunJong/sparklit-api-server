@@ -78,6 +78,7 @@ model Invitation {
   updatedAt                DateTime?              @default(now()) @db.Timestamp(0)
   user                     User?                  @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Invitation_ibfk_1")
   invitationCoverPhotoList InvitationCoverPhoto[]
+  InvitationDressColor     InvitationDressColor[]
   photoList                InvitationPhoto[]
   placeList                InvitationPlace[]
   invitationRSVP           InvitationRSVP[]
@@ -162,8 +163,8 @@ model InvitationRSVP {
   id           Int         @id @default(autoincrement()) @db.UnsignedInt
   invitationId Int?        @db.UnsignedInt
   side         String?     @db.VarChar(10)
-  name         String?     @db.VarChar(10)
-  email        String?     @db.VarChar(50)
+  name         String?     @db.VarChar(100)
+  email        String?     @db.VarChar(255)
   phone        String?     @db.VarChar(20)
   remark       String?     @db.Text
   food         String?     @db.Text
@@ -183,4 +184,20 @@ model InvitationMusic {
 
 model InvitationView {
   id Int @id @default(autoincrement()) @db.UnsignedInt
+}
+
+model InvitationDressColor {
+  id           Int         @id @default(autoincrement()) @db.UnsignedInt
+  invitationId Int?        @db.UnsignedInt
+  color        String?     @db.VarChar(10)
+  order        Int?        @db.UnsignedInt
+  type         String?     @db.VarChar(20)
+  Invitation   Invitation? @relation(fields: [invitationId], references: [id], onDelete: Cascade, map: "InvitationDressColor_ibfk_1")
+
+  @@index([invitationId], map: "invitationId")
+}
+
+model InvitationGuest {
+  id   Int     @id @default(autoincrement()) @db.UnsignedInt
+  name String? @db.VarChar(50)
 }

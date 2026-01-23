@@ -270,6 +270,19 @@ exports.Prisma.InvitationViewScalarFieldEnum = {
   id: 'id'
 };
 
+exports.Prisma.InvitationDressColorScalarFieldEnum = {
+  id: 'id',
+  invitationId: 'invitationId',
+  color: 'color',
+  order: 'order',
+  type: 'type'
+};
+
+exports.Prisma.InvitationGuestScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -390,6 +403,15 @@ exports.Prisma.InvitationMusicOrderByRelevanceFieldEnum = {
   name: 'name'
 };
 
+exports.Prisma.InvitationDressColorOrderByRelevanceFieldEnum = {
+  color: 'color',
+  type: 'type'
+};
+
+exports.Prisma.InvitationGuestOrderByRelevanceFieldEnum = {
+  name: 'name'
+};
+
 
 exports.Prisma.ModelName = {
   User: 'User',
@@ -401,7 +423,9 @@ exports.Prisma.ModelName = {
   InvitationCoverPhoto: 'InvitationCoverPhoto',
   InvitationRSVP: 'InvitationRSVP',
   InvitationMusic: 'InvitationMusic',
-  InvitationView: 'InvitationView'
+  InvitationView: 'InvitationView',
+  InvitationDressColor: 'InvitationDressColor',
+  InvitationGuest: 'InvitationGuest'
 };
 
 /**

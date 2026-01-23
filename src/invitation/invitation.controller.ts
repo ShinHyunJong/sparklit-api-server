@@ -20,6 +20,7 @@ import {
 } from './dto/update-invitation.dto';
 import { FormDataRequest, MemoryStoredFile } from 'nestjs-form-data';
 import { RsvpDto, UpdateRsvpDto } from './dto/rsvp.dto';
+import { CheckUniqueIdDto, UpdateUniqueIdDto } from './dto/unique-id.dto';
 
 @Controller('invitation')
 export class InvitationController {
@@ -35,6 +36,29 @@ export class InvitationController {
   @Get()
   findAll(@Req() req) {
     return this.invitationService.findAll(req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('/uniqueId/check')
+  checkUniqueId(@Query() query: CheckUniqueIdDto) {
+    return this.invitationService.checkUniqueIdAvailability(
+      query.value,
+      query.currentUniqueId,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('/uniqueId/:uniqueId')
+  updateUniqueId(
+    @Req() req,
+    @Param('uniqueId') uniqueId: string,
+    @Body() body: UpdateUniqueIdDto,
+  ) {
+    return this.invitationService.updateUniqueId(
+      uniqueId,
+      body.newUniqueId,
+      req.user.id,
+    );
   }
 
   @Get(':uniqueId')

@@ -22,6 +22,59 @@ import { formatTimeValue } from 'src/helpers/time.helper';
 @Injectable()
 export class InvitationService {
   constructor(private readonly prismaService: PrismaService) {}
+  private normalizeUniqueId(value: string) {
+    return value.trim().toLowerCase();
+  }
+
+  async checkUniqueIdAvailability(value: string, currentUniqueId?: string) {
+    const normalized = this.normalizeUniqueId(value);
+    const normalizedCurrent = currentUniqueId
+      ? this.normalizeUniqueId(currentUniqueId)
+      : undefined;
+    if (normalizedCurrent && normalized === normalizedCurrent) {
+      return { available: true, uniqueId: normalized };
+    }
+
+    const existing = await this.prismaService.invitation.findUnique({
+      where: { uniqueId: normalized },
+      select: { id: true },
+    });
+    return { available: !existing, uniqueId: normalized };
+  }
+
+  async updateUniqueId(
+    uniqueId: string,
+    newUniqueId: string,
+    userId: number,
+  ) {
+    const normalized = this.normalizeUniqueId(newUniqueId);
+    if (normalized === this.normalizeUniqueId(uniqueId)) {
+      return { uniqueId: normalized };
+    }
+
+    const invitation = await this.prismaService.invitation.findFirst({
+      where: { uniqueId, userId },
+      select: { id: true },
+    });
+    if (!invitation) {
+      throw new NotFoundException('Invitation not found');
+    }
+
+    const existing = await this.prismaService.invitation.findUnique({
+      where: { uniqueId: normalized },
+      select: { id: true },
+    });
+    if (existing) {
+      throw new BadRequestException('UniqueId already exists');
+    }
+
+    await this.prismaService.invitation.update({
+      where: { id: invitation.id },
+      data: { uniqueId: normalized },
+    });
+
+    return { uniqueId: normalized };
+  }
   async create(userId: number) {
     const uniqueId = cryptoRandomString({ length: 16 });
     const user = await this.prismaService.user.findUnique({
@@ -62,6 +115,9 @@ export class InvitationService {
           },
         },
         invitationCoverPhotoList: true,
+        InvitationDressColor: {
+          orderBy: [{ type: 'asc' }, { order: 'asc' }, { id: 'asc' }],
+        },
         photoList: {
           orderBy: {
             order: 'asc',
@@ -80,7 +136,7 @@ export class InvitationService {
       });
     }
 
-    const { user, ...rest } = invitation;
+    const { user, InvitationDressColor, ...rest } = invitation;
     const placeList = rest.placeList?.map((place) => ({
       ...place,
       timeList: place.timeList?.map((timeItem) => ({
@@ -91,6 +147,7 @@ export class InvitationService {
     return {
       ...rest,
       placeList,
+      dressCodeColorList: InvitationDressColor ?? [],
       timezone,
     };
   }

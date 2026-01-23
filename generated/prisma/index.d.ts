@@ -63,6 +63,16 @@ export type InvitationMusic = $Result.DefaultSelection<Prisma.$InvitationMusicPa
  * 
  */
 export type InvitationView = $Result.DefaultSelection<Prisma.$InvitationViewPayload>
+/**
+ * Model InvitationDressColor
+ * 
+ */
+export type InvitationDressColor = $Result.DefaultSelection<Prisma.$InvitationDressColorPayload>
+/**
+ * Model InvitationGuest
+ * 
+ */
+export type InvitationGuest = $Result.DefaultSelection<Prisma.$InvitationGuestPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -288,6 +298,26 @@ export class PrismaClient<
     * ```
     */
   get invitationView(): Prisma.InvitationViewDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.invitationDressColor`: Exposes CRUD operations for the **InvitationDressColor** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more InvitationDressColors
+    * const invitationDressColors = await prisma.invitationDressColor.findMany()
+    * ```
+    */
+  get invitationDressColor(): Prisma.InvitationDressColorDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.invitationGuest`: Exposes CRUD operations for the **InvitationGuest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more InvitationGuests
+    * const invitationGuests = await prisma.invitationGuest.findMany()
+    * ```
+    */
+  get invitationGuest(): Prisma.InvitationGuestDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -737,7 +767,9 @@ export namespace Prisma {
     InvitationCoverPhoto: 'InvitationCoverPhoto',
     InvitationRSVP: 'InvitationRSVP',
     InvitationMusic: 'InvitationMusic',
-    InvitationView: 'InvitationView'
+    InvitationView: 'InvitationView',
+    InvitationDressColor: 'InvitationDressColor',
+    InvitationGuest: 'InvitationGuest'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -756,7 +788,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "invitation" | "invitationPlace" | "place" | "invitationPlaceTime" | "invitationPhoto" | "invitationCoverPhoto" | "invitationRSVP" | "invitationMusic" | "invitationView"
+      modelProps: "user" | "invitation" | "invitationPlace" | "place" | "invitationPlaceTime" | "invitationPhoto" | "invitationCoverPhoto" | "invitationRSVP" | "invitationMusic" | "invitationView" | "invitationDressColor" | "invitationGuest"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1420,6 +1452,138 @@ export namespace Prisma {
           }
         }
       }
+      InvitationDressColor: {
+        payload: Prisma.$InvitationDressColorPayload<ExtArgs>
+        fields: Prisma.InvitationDressColorFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.InvitationDressColorFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationDressColorPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.InvitationDressColorFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationDressColorPayload>
+          }
+          findFirst: {
+            args: Prisma.InvitationDressColorFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationDressColorPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.InvitationDressColorFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationDressColorPayload>
+          }
+          findMany: {
+            args: Prisma.InvitationDressColorFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationDressColorPayload>[]
+          }
+          create: {
+            args: Prisma.InvitationDressColorCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationDressColorPayload>
+          }
+          createMany: {
+            args: Prisma.InvitationDressColorCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.InvitationDressColorDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationDressColorPayload>
+          }
+          update: {
+            args: Prisma.InvitationDressColorUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationDressColorPayload>
+          }
+          deleteMany: {
+            args: Prisma.InvitationDressColorDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.InvitationDressColorUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.InvitationDressColorUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationDressColorPayload>
+          }
+          aggregate: {
+            args: Prisma.InvitationDressColorAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateInvitationDressColor>
+          }
+          groupBy: {
+            args: Prisma.InvitationDressColorGroupByArgs<ExtArgs>
+            result: $Utils.Optional<InvitationDressColorGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.InvitationDressColorCountArgs<ExtArgs>
+            result: $Utils.Optional<InvitationDressColorCountAggregateOutputType> | number
+          }
+        }
+      }
+      InvitationGuest: {
+        payload: Prisma.$InvitationGuestPayload<ExtArgs>
+        fields: Prisma.InvitationGuestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.InvitationGuestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.InvitationGuestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestPayload>
+          }
+          findFirst: {
+            args: Prisma.InvitationGuestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.InvitationGuestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestPayload>
+          }
+          findMany: {
+            args: Prisma.InvitationGuestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestPayload>[]
+          }
+          create: {
+            args: Prisma.InvitationGuestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestPayload>
+          }
+          createMany: {
+            args: Prisma.InvitationGuestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.InvitationGuestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestPayload>
+          }
+          update: {
+            args: Prisma.InvitationGuestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestPayload>
+          }
+          deleteMany: {
+            args: Prisma.InvitationGuestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.InvitationGuestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.InvitationGuestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestPayload>
+          }
+          aggregate: {
+            args: Prisma.InvitationGuestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateInvitationGuest>
+          }
+          groupBy: {
+            args: Prisma.InvitationGuestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<InvitationGuestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.InvitationGuestCountArgs<ExtArgs>
+            result: $Utils.Optional<InvitationGuestCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1514,6 +1678,8 @@ export namespace Prisma {
     invitationRSVP?: InvitationRSVPOmit
     invitationMusic?: InvitationMusicOmit
     invitationView?: InvitationViewOmit
+    invitationDressColor?: InvitationDressColorOmit
+    invitationGuest?: InvitationGuestOmit
   }
 
   /* Types for Logging */
@@ -1640,6 +1806,7 @@ export namespace Prisma {
 
   export type InvitationCountOutputType = {
     invitationCoverPhotoList: number
+    InvitationDressColor: number
     photoList: number
     placeList: number
     invitationRSVP: number
@@ -1647,6 +1814,7 @@ export namespace Prisma {
 
   export type InvitationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     invitationCoverPhotoList?: boolean | InvitationCountOutputTypeCountInvitationCoverPhotoListArgs
+    InvitationDressColor?: boolean | InvitationCountOutputTypeCountInvitationDressColorArgs
     photoList?: boolean | InvitationCountOutputTypeCountPhotoListArgs
     placeList?: boolean | InvitationCountOutputTypeCountPlaceListArgs
     invitationRSVP?: boolean | InvitationCountOutputTypeCountInvitationRSVPArgs
@@ -1668,6 +1836,13 @@ export namespace Prisma {
    */
   export type InvitationCountOutputTypeCountInvitationCoverPhotoListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InvitationCoverPhotoWhereInput
+  }
+
+  /**
+   * InvitationCountOutputType without action
+   */
+  export type InvitationCountOutputTypeCountInvitationDressColorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationDressColorWhereInput
   }
 
   /**
@@ -3394,6 +3569,7 @@ export namespace Prisma {
     updatedAt?: boolean
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
+    InvitationDressColor?: boolean | Invitation$InvitationDressColorArgs<ExtArgs>
     photoList?: boolean | Invitation$photoListArgs<ExtArgs>
     placeList?: boolean | Invitation$placeListArgs<ExtArgs>
     invitationRSVP?: boolean | Invitation$invitationRSVPArgs<ExtArgs>
@@ -3466,6 +3642,7 @@ export namespace Prisma {
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
+    InvitationDressColor?: boolean | Invitation$InvitationDressColorArgs<ExtArgs>
     photoList?: boolean | Invitation$photoListArgs<ExtArgs>
     placeList?: boolean | Invitation$placeListArgs<ExtArgs>
     invitationRSVP?: boolean | Invitation$invitationRSVPArgs<ExtArgs>
@@ -3477,6 +3654,7 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs> | null
       invitationCoverPhotoList: Prisma.$InvitationCoverPhotoPayload<ExtArgs>[]
+      InvitationDressColor: Prisma.$InvitationDressColorPayload<ExtArgs>[]
       photoList: Prisma.$InvitationPhotoPayload<ExtArgs>[]
       placeList: Prisma.$InvitationPlacePayload<ExtArgs>[]
       invitationRSVP: Prisma.$InvitationRSVPPayload<ExtArgs>[]
@@ -3881,6 +4059,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends Invitation$userArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     invitationCoverPhotoList<T extends Invitation$invitationCoverPhotoListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$invitationCoverPhotoListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationCoverPhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    InvitationDressColor<T extends Invitation$InvitationDressColorArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$InvitationDressColorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationDressColorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     photoList<T extends Invitation$photoListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$photoListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     placeList<T extends Invitation$placeListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$placeListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPlacePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     invitationRSVP<T extends Invitation$invitationRSVPArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$invitationRSVPArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationRSVPPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -4353,6 +4532,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: InvitationCoverPhotoScalarFieldEnum | InvitationCoverPhotoScalarFieldEnum[]
+  }
+
+  /**
+   * Invitation.InvitationDressColor
+   */
+  export type Invitation$InvitationDressColorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationDressColor
+     */
+    select?: InvitationDressColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationDressColor
+     */
+    omit?: InvitationDressColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationDressColorInclude<ExtArgs> | null
+    where?: InvitationDressColorWhereInput
+    orderBy?: InvitationDressColorOrderByWithRelationInput | InvitationDressColorOrderByWithRelationInput[]
+    cursor?: InvitationDressColorWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvitationDressColorScalarFieldEnum | InvitationDressColorScalarFieldEnum[]
   }
 
   /**
@@ -12510,6 +12713,1879 @@ export namespace Prisma {
 
 
   /**
+   * Model InvitationDressColor
+   */
+
+  export type AggregateInvitationDressColor = {
+    _count: InvitationDressColorCountAggregateOutputType | null
+    _avg: InvitationDressColorAvgAggregateOutputType | null
+    _sum: InvitationDressColorSumAggregateOutputType | null
+    _min: InvitationDressColorMinAggregateOutputType | null
+    _max: InvitationDressColorMaxAggregateOutputType | null
+  }
+
+  export type InvitationDressColorAvgAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    order: number | null
+  }
+
+  export type InvitationDressColorSumAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    order: number | null
+  }
+
+  export type InvitationDressColorMinAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    color: string | null
+    order: number | null
+    type: string | null
+  }
+
+  export type InvitationDressColorMaxAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    color: string | null
+    order: number | null
+    type: string | null
+  }
+
+  export type InvitationDressColorCountAggregateOutputType = {
+    id: number
+    invitationId: number
+    color: number
+    order: number
+    type: number
+    _all: number
+  }
+
+
+  export type InvitationDressColorAvgAggregateInputType = {
+    id?: true
+    invitationId?: true
+    order?: true
+  }
+
+  export type InvitationDressColorSumAggregateInputType = {
+    id?: true
+    invitationId?: true
+    order?: true
+  }
+
+  export type InvitationDressColorMinAggregateInputType = {
+    id?: true
+    invitationId?: true
+    color?: true
+    order?: true
+    type?: true
+  }
+
+  export type InvitationDressColorMaxAggregateInputType = {
+    id?: true
+    invitationId?: true
+    color?: true
+    order?: true
+    type?: true
+  }
+
+  export type InvitationDressColorCountAggregateInputType = {
+    id?: true
+    invitationId?: true
+    color?: true
+    order?: true
+    type?: true
+    _all?: true
+  }
+
+  export type InvitationDressColorAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationDressColor to aggregate.
+     */
+    where?: InvitationDressColorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationDressColors to fetch.
+     */
+    orderBy?: InvitationDressColorOrderByWithRelationInput | InvitationDressColorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: InvitationDressColorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationDressColors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationDressColors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned InvitationDressColors
+    **/
+    _count?: true | InvitationDressColorCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: InvitationDressColorAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: InvitationDressColorSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: InvitationDressColorMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: InvitationDressColorMaxAggregateInputType
+  }
+
+  export type GetInvitationDressColorAggregateType<T extends InvitationDressColorAggregateArgs> = {
+        [P in keyof T & keyof AggregateInvitationDressColor]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateInvitationDressColor[P]>
+      : GetScalarType<T[P], AggregateInvitationDressColor[P]>
+  }
+
+
+
+
+  export type InvitationDressColorGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationDressColorWhereInput
+    orderBy?: InvitationDressColorOrderByWithAggregationInput | InvitationDressColorOrderByWithAggregationInput[]
+    by: InvitationDressColorScalarFieldEnum[] | InvitationDressColorScalarFieldEnum
+    having?: InvitationDressColorScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: InvitationDressColorCountAggregateInputType | true
+    _avg?: InvitationDressColorAvgAggregateInputType
+    _sum?: InvitationDressColorSumAggregateInputType
+    _min?: InvitationDressColorMinAggregateInputType
+    _max?: InvitationDressColorMaxAggregateInputType
+  }
+
+  export type InvitationDressColorGroupByOutputType = {
+    id: number
+    invitationId: number | null
+    color: string | null
+    order: number | null
+    type: string | null
+    _count: InvitationDressColorCountAggregateOutputType | null
+    _avg: InvitationDressColorAvgAggregateOutputType | null
+    _sum: InvitationDressColorSumAggregateOutputType | null
+    _min: InvitationDressColorMinAggregateOutputType | null
+    _max: InvitationDressColorMaxAggregateOutputType | null
+  }
+
+  type GetInvitationDressColorGroupByPayload<T extends InvitationDressColorGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<InvitationDressColorGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof InvitationDressColorGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], InvitationDressColorGroupByOutputType[P]>
+            : GetScalarType<T[P], InvitationDressColorGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type InvitationDressColorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    invitationId?: boolean
+    color?: boolean
+    order?: boolean
+    type?: boolean
+    Invitation?: boolean | InvitationDressColor$InvitationArgs<ExtArgs>
+  }, ExtArgs["result"]["invitationDressColor"]>
+
+
+
+  export type InvitationDressColorSelectScalar = {
+    id?: boolean
+    invitationId?: boolean
+    color?: boolean
+    order?: boolean
+    type?: boolean
+  }
+
+  export type InvitationDressColorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitationId" | "color" | "order" | "type", ExtArgs["result"]["invitationDressColor"]>
+  export type InvitationDressColorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Invitation?: boolean | InvitationDressColor$InvitationArgs<ExtArgs>
+  }
+
+  export type $InvitationDressColorPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "InvitationDressColor"
+    objects: {
+      Invitation: Prisma.$InvitationPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      invitationId: number | null
+      color: string | null
+      order: number | null
+      type: string | null
+    }, ExtArgs["result"]["invitationDressColor"]>
+    composites: {}
+  }
+
+  type InvitationDressColorGetPayload<S extends boolean | null | undefined | InvitationDressColorDefaultArgs> = $Result.GetResult<Prisma.$InvitationDressColorPayload, S>
+
+  type InvitationDressColorCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<InvitationDressColorFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: InvitationDressColorCountAggregateInputType | true
+    }
+
+  export interface InvitationDressColorDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['InvitationDressColor'], meta: { name: 'InvitationDressColor' } }
+    /**
+     * Find zero or one InvitationDressColor that matches the filter.
+     * @param {InvitationDressColorFindUniqueArgs} args - Arguments to find a InvitationDressColor
+     * @example
+     * // Get one InvitationDressColor
+     * const invitationDressColor = await prisma.invitationDressColor.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends InvitationDressColorFindUniqueArgs>(args: SelectSubset<T, InvitationDressColorFindUniqueArgs<ExtArgs>>): Prisma__InvitationDressColorClient<$Result.GetResult<Prisma.$InvitationDressColorPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one InvitationDressColor that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {InvitationDressColorFindUniqueOrThrowArgs} args - Arguments to find a InvitationDressColor
+     * @example
+     * // Get one InvitationDressColor
+     * const invitationDressColor = await prisma.invitationDressColor.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends InvitationDressColorFindUniqueOrThrowArgs>(args: SelectSubset<T, InvitationDressColorFindUniqueOrThrowArgs<ExtArgs>>): Prisma__InvitationDressColorClient<$Result.GetResult<Prisma.$InvitationDressColorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationDressColor that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationDressColorFindFirstArgs} args - Arguments to find a InvitationDressColor
+     * @example
+     * // Get one InvitationDressColor
+     * const invitationDressColor = await prisma.invitationDressColor.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends InvitationDressColorFindFirstArgs>(args?: SelectSubset<T, InvitationDressColorFindFirstArgs<ExtArgs>>): Prisma__InvitationDressColorClient<$Result.GetResult<Prisma.$InvitationDressColorPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationDressColor that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationDressColorFindFirstOrThrowArgs} args - Arguments to find a InvitationDressColor
+     * @example
+     * // Get one InvitationDressColor
+     * const invitationDressColor = await prisma.invitationDressColor.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends InvitationDressColorFindFirstOrThrowArgs>(args?: SelectSubset<T, InvitationDressColorFindFirstOrThrowArgs<ExtArgs>>): Prisma__InvitationDressColorClient<$Result.GetResult<Prisma.$InvitationDressColorPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more InvitationDressColors that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationDressColorFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all InvitationDressColors
+     * const invitationDressColors = await prisma.invitationDressColor.findMany()
+     * 
+     * // Get first 10 InvitationDressColors
+     * const invitationDressColors = await prisma.invitationDressColor.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const invitationDressColorWithIdOnly = await prisma.invitationDressColor.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends InvitationDressColorFindManyArgs>(args?: SelectSubset<T, InvitationDressColorFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationDressColorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a InvitationDressColor.
+     * @param {InvitationDressColorCreateArgs} args - Arguments to create a InvitationDressColor.
+     * @example
+     * // Create one InvitationDressColor
+     * const InvitationDressColor = await prisma.invitationDressColor.create({
+     *   data: {
+     *     // ... data to create a InvitationDressColor
+     *   }
+     * })
+     * 
+     */
+    create<T extends InvitationDressColorCreateArgs>(args: SelectSubset<T, InvitationDressColorCreateArgs<ExtArgs>>): Prisma__InvitationDressColorClient<$Result.GetResult<Prisma.$InvitationDressColorPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many InvitationDressColors.
+     * @param {InvitationDressColorCreateManyArgs} args - Arguments to create many InvitationDressColors.
+     * @example
+     * // Create many InvitationDressColors
+     * const invitationDressColor = await prisma.invitationDressColor.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends InvitationDressColorCreateManyArgs>(args?: SelectSubset<T, InvitationDressColorCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a InvitationDressColor.
+     * @param {InvitationDressColorDeleteArgs} args - Arguments to delete one InvitationDressColor.
+     * @example
+     * // Delete one InvitationDressColor
+     * const InvitationDressColor = await prisma.invitationDressColor.delete({
+     *   where: {
+     *     // ... filter to delete one InvitationDressColor
+     *   }
+     * })
+     * 
+     */
+    delete<T extends InvitationDressColorDeleteArgs>(args: SelectSubset<T, InvitationDressColorDeleteArgs<ExtArgs>>): Prisma__InvitationDressColorClient<$Result.GetResult<Prisma.$InvitationDressColorPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one InvitationDressColor.
+     * @param {InvitationDressColorUpdateArgs} args - Arguments to update one InvitationDressColor.
+     * @example
+     * // Update one InvitationDressColor
+     * const invitationDressColor = await prisma.invitationDressColor.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends InvitationDressColorUpdateArgs>(args: SelectSubset<T, InvitationDressColorUpdateArgs<ExtArgs>>): Prisma__InvitationDressColorClient<$Result.GetResult<Prisma.$InvitationDressColorPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more InvitationDressColors.
+     * @param {InvitationDressColorDeleteManyArgs} args - Arguments to filter InvitationDressColors to delete.
+     * @example
+     * // Delete a few InvitationDressColors
+     * const { count } = await prisma.invitationDressColor.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends InvitationDressColorDeleteManyArgs>(args?: SelectSubset<T, InvitationDressColorDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more InvitationDressColors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationDressColorUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many InvitationDressColors
+     * const invitationDressColor = await prisma.invitationDressColor.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends InvitationDressColorUpdateManyArgs>(args: SelectSubset<T, InvitationDressColorUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one InvitationDressColor.
+     * @param {InvitationDressColorUpsertArgs} args - Arguments to update or create a InvitationDressColor.
+     * @example
+     * // Update or create a InvitationDressColor
+     * const invitationDressColor = await prisma.invitationDressColor.upsert({
+     *   create: {
+     *     // ... data to create a InvitationDressColor
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the InvitationDressColor we want to update
+     *   }
+     * })
+     */
+    upsert<T extends InvitationDressColorUpsertArgs>(args: SelectSubset<T, InvitationDressColorUpsertArgs<ExtArgs>>): Prisma__InvitationDressColorClient<$Result.GetResult<Prisma.$InvitationDressColorPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of InvitationDressColors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationDressColorCountArgs} args - Arguments to filter InvitationDressColors to count.
+     * @example
+     * // Count the number of InvitationDressColors
+     * const count = await prisma.invitationDressColor.count({
+     *   where: {
+     *     // ... the filter for the InvitationDressColors we want to count
+     *   }
+     * })
+    **/
+    count<T extends InvitationDressColorCountArgs>(
+      args?: Subset<T, InvitationDressColorCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], InvitationDressColorCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a InvitationDressColor.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationDressColorAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends InvitationDressColorAggregateArgs>(args: Subset<T, InvitationDressColorAggregateArgs>): Prisma.PrismaPromise<GetInvitationDressColorAggregateType<T>>
+
+    /**
+     * Group by InvitationDressColor.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationDressColorGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends InvitationDressColorGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: InvitationDressColorGroupByArgs['orderBy'] }
+        : { orderBy?: InvitationDressColorGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, InvitationDressColorGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInvitationDressColorGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the InvitationDressColor model
+   */
+  readonly fields: InvitationDressColorFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for InvitationDressColor.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__InvitationDressColorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Invitation<T extends InvitationDressColor$InvitationArgs<ExtArgs> = {}>(args?: Subset<T, InvitationDressColor$InvitationArgs<ExtArgs>>): Prisma__InvitationClient<$Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the InvitationDressColor model
+   */
+  interface InvitationDressColorFieldRefs {
+    readonly id: FieldRef<"InvitationDressColor", 'Int'>
+    readonly invitationId: FieldRef<"InvitationDressColor", 'Int'>
+    readonly color: FieldRef<"InvitationDressColor", 'String'>
+    readonly order: FieldRef<"InvitationDressColor", 'Int'>
+    readonly type: FieldRef<"InvitationDressColor", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * InvitationDressColor findUnique
+   */
+  export type InvitationDressColorFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationDressColor
+     */
+    select?: InvitationDressColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationDressColor
+     */
+    omit?: InvitationDressColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationDressColorInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationDressColor to fetch.
+     */
+    where: InvitationDressColorWhereUniqueInput
+  }
+
+  /**
+   * InvitationDressColor findUniqueOrThrow
+   */
+  export type InvitationDressColorFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationDressColor
+     */
+    select?: InvitationDressColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationDressColor
+     */
+    omit?: InvitationDressColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationDressColorInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationDressColor to fetch.
+     */
+    where: InvitationDressColorWhereUniqueInput
+  }
+
+  /**
+   * InvitationDressColor findFirst
+   */
+  export type InvitationDressColorFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationDressColor
+     */
+    select?: InvitationDressColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationDressColor
+     */
+    omit?: InvitationDressColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationDressColorInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationDressColor to fetch.
+     */
+    where?: InvitationDressColorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationDressColors to fetch.
+     */
+    orderBy?: InvitationDressColorOrderByWithRelationInput | InvitationDressColorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationDressColors.
+     */
+    cursor?: InvitationDressColorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationDressColors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationDressColors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationDressColors.
+     */
+    distinct?: InvitationDressColorScalarFieldEnum | InvitationDressColorScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationDressColor findFirstOrThrow
+   */
+  export type InvitationDressColorFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationDressColor
+     */
+    select?: InvitationDressColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationDressColor
+     */
+    omit?: InvitationDressColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationDressColorInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationDressColor to fetch.
+     */
+    where?: InvitationDressColorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationDressColors to fetch.
+     */
+    orderBy?: InvitationDressColorOrderByWithRelationInput | InvitationDressColorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationDressColors.
+     */
+    cursor?: InvitationDressColorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationDressColors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationDressColors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationDressColors.
+     */
+    distinct?: InvitationDressColorScalarFieldEnum | InvitationDressColorScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationDressColor findMany
+   */
+  export type InvitationDressColorFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationDressColor
+     */
+    select?: InvitationDressColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationDressColor
+     */
+    omit?: InvitationDressColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationDressColorInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationDressColors to fetch.
+     */
+    where?: InvitationDressColorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationDressColors to fetch.
+     */
+    orderBy?: InvitationDressColorOrderByWithRelationInput | InvitationDressColorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing InvitationDressColors.
+     */
+    cursor?: InvitationDressColorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationDressColors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationDressColors.
+     */
+    skip?: number
+    distinct?: InvitationDressColorScalarFieldEnum | InvitationDressColorScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationDressColor create
+   */
+  export type InvitationDressColorCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationDressColor
+     */
+    select?: InvitationDressColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationDressColor
+     */
+    omit?: InvitationDressColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationDressColorInclude<ExtArgs> | null
+    /**
+     * The data needed to create a InvitationDressColor.
+     */
+    data?: XOR<InvitationDressColorCreateInput, InvitationDressColorUncheckedCreateInput>
+  }
+
+  /**
+   * InvitationDressColor createMany
+   */
+  export type InvitationDressColorCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many InvitationDressColors.
+     */
+    data: InvitationDressColorCreateManyInput | InvitationDressColorCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * InvitationDressColor update
+   */
+  export type InvitationDressColorUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationDressColor
+     */
+    select?: InvitationDressColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationDressColor
+     */
+    omit?: InvitationDressColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationDressColorInclude<ExtArgs> | null
+    /**
+     * The data needed to update a InvitationDressColor.
+     */
+    data: XOR<InvitationDressColorUpdateInput, InvitationDressColorUncheckedUpdateInput>
+    /**
+     * Choose, which InvitationDressColor to update.
+     */
+    where: InvitationDressColorWhereUniqueInput
+  }
+
+  /**
+   * InvitationDressColor updateMany
+   */
+  export type InvitationDressColorUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update InvitationDressColors.
+     */
+    data: XOR<InvitationDressColorUpdateManyMutationInput, InvitationDressColorUncheckedUpdateManyInput>
+    /**
+     * Filter which InvitationDressColors to update
+     */
+    where?: InvitationDressColorWhereInput
+    /**
+     * Limit how many InvitationDressColors to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationDressColor upsert
+   */
+  export type InvitationDressColorUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationDressColor
+     */
+    select?: InvitationDressColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationDressColor
+     */
+    omit?: InvitationDressColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationDressColorInclude<ExtArgs> | null
+    /**
+     * The filter to search for the InvitationDressColor to update in case it exists.
+     */
+    where: InvitationDressColorWhereUniqueInput
+    /**
+     * In case the InvitationDressColor found by the `where` argument doesn't exist, create a new InvitationDressColor with this data.
+     */
+    create: XOR<InvitationDressColorCreateInput, InvitationDressColorUncheckedCreateInput>
+    /**
+     * In case the InvitationDressColor was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<InvitationDressColorUpdateInput, InvitationDressColorUncheckedUpdateInput>
+  }
+
+  /**
+   * InvitationDressColor delete
+   */
+  export type InvitationDressColorDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationDressColor
+     */
+    select?: InvitationDressColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationDressColor
+     */
+    omit?: InvitationDressColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationDressColorInclude<ExtArgs> | null
+    /**
+     * Filter which InvitationDressColor to delete.
+     */
+    where: InvitationDressColorWhereUniqueInput
+  }
+
+  /**
+   * InvitationDressColor deleteMany
+   */
+  export type InvitationDressColorDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationDressColors to delete
+     */
+    where?: InvitationDressColorWhereInput
+    /**
+     * Limit how many InvitationDressColors to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationDressColor.Invitation
+   */
+  export type InvitationDressColor$InvitationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Invitation
+     */
+    select?: InvitationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Invitation
+     */
+    omit?: InvitationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationInclude<ExtArgs> | null
+    where?: InvitationWhereInput
+  }
+
+  /**
+   * InvitationDressColor without action
+   */
+  export type InvitationDressColorDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationDressColor
+     */
+    select?: InvitationDressColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationDressColor
+     */
+    omit?: InvitationDressColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationDressColorInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model InvitationGuest
+   */
+
+  export type AggregateInvitationGuest = {
+    _count: InvitationGuestCountAggregateOutputType | null
+    _avg: InvitationGuestAvgAggregateOutputType | null
+    _sum: InvitationGuestSumAggregateOutputType | null
+    _min: InvitationGuestMinAggregateOutputType | null
+    _max: InvitationGuestMaxAggregateOutputType | null
+  }
+
+  export type InvitationGuestAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type InvitationGuestSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type InvitationGuestMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type InvitationGuestMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type InvitationGuestCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type InvitationGuestAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type InvitationGuestSumAggregateInputType = {
+    id?: true
+  }
+
+  export type InvitationGuestMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type InvitationGuestMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type InvitationGuestCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type InvitationGuestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationGuest to aggregate.
+     */
+    where?: InvitationGuestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationGuests to fetch.
+     */
+    orderBy?: InvitationGuestOrderByWithRelationInput | InvitationGuestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: InvitationGuestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationGuests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationGuests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned InvitationGuests
+    **/
+    _count?: true | InvitationGuestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: InvitationGuestAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: InvitationGuestSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: InvitationGuestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: InvitationGuestMaxAggregateInputType
+  }
+
+  export type GetInvitationGuestAggregateType<T extends InvitationGuestAggregateArgs> = {
+        [P in keyof T & keyof AggregateInvitationGuest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateInvitationGuest[P]>
+      : GetScalarType<T[P], AggregateInvitationGuest[P]>
+  }
+
+
+
+
+  export type InvitationGuestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationGuestWhereInput
+    orderBy?: InvitationGuestOrderByWithAggregationInput | InvitationGuestOrderByWithAggregationInput[]
+    by: InvitationGuestScalarFieldEnum[] | InvitationGuestScalarFieldEnum
+    having?: InvitationGuestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: InvitationGuestCountAggregateInputType | true
+    _avg?: InvitationGuestAvgAggregateInputType
+    _sum?: InvitationGuestSumAggregateInputType
+    _min?: InvitationGuestMinAggregateInputType
+    _max?: InvitationGuestMaxAggregateInputType
+  }
+
+  export type InvitationGuestGroupByOutputType = {
+    id: number
+    name: string | null
+    _count: InvitationGuestCountAggregateOutputType | null
+    _avg: InvitationGuestAvgAggregateOutputType | null
+    _sum: InvitationGuestSumAggregateOutputType | null
+    _min: InvitationGuestMinAggregateOutputType | null
+    _max: InvitationGuestMaxAggregateOutputType | null
+  }
+
+  type GetInvitationGuestGroupByPayload<T extends InvitationGuestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<InvitationGuestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof InvitationGuestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], InvitationGuestGroupByOutputType[P]>
+            : GetScalarType<T[P], InvitationGuestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type InvitationGuestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["invitationGuest"]>
+
+
+
+  export type InvitationGuestSelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type InvitationGuestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["invitationGuest"]>
+
+  export type $InvitationGuestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "InvitationGuest"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string | null
+    }, ExtArgs["result"]["invitationGuest"]>
+    composites: {}
+  }
+
+  type InvitationGuestGetPayload<S extends boolean | null | undefined | InvitationGuestDefaultArgs> = $Result.GetResult<Prisma.$InvitationGuestPayload, S>
+
+  type InvitationGuestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<InvitationGuestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: InvitationGuestCountAggregateInputType | true
+    }
+
+  export interface InvitationGuestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['InvitationGuest'], meta: { name: 'InvitationGuest' } }
+    /**
+     * Find zero or one InvitationGuest that matches the filter.
+     * @param {InvitationGuestFindUniqueArgs} args - Arguments to find a InvitationGuest
+     * @example
+     * // Get one InvitationGuest
+     * const invitationGuest = await prisma.invitationGuest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends InvitationGuestFindUniqueArgs>(args: SelectSubset<T, InvitationGuestFindUniqueArgs<ExtArgs>>): Prisma__InvitationGuestClient<$Result.GetResult<Prisma.$InvitationGuestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one InvitationGuest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {InvitationGuestFindUniqueOrThrowArgs} args - Arguments to find a InvitationGuest
+     * @example
+     * // Get one InvitationGuest
+     * const invitationGuest = await prisma.invitationGuest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends InvitationGuestFindUniqueOrThrowArgs>(args: SelectSubset<T, InvitationGuestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__InvitationGuestClient<$Result.GetResult<Prisma.$InvitationGuestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationGuest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationGuestFindFirstArgs} args - Arguments to find a InvitationGuest
+     * @example
+     * // Get one InvitationGuest
+     * const invitationGuest = await prisma.invitationGuest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends InvitationGuestFindFirstArgs>(args?: SelectSubset<T, InvitationGuestFindFirstArgs<ExtArgs>>): Prisma__InvitationGuestClient<$Result.GetResult<Prisma.$InvitationGuestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationGuest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationGuestFindFirstOrThrowArgs} args - Arguments to find a InvitationGuest
+     * @example
+     * // Get one InvitationGuest
+     * const invitationGuest = await prisma.invitationGuest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends InvitationGuestFindFirstOrThrowArgs>(args?: SelectSubset<T, InvitationGuestFindFirstOrThrowArgs<ExtArgs>>): Prisma__InvitationGuestClient<$Result.GetResult<Prisma.$InvitationGuestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more InvitationGuests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationGuestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all InvitationGuests
+     * const invitationGuests = await prisma.invitationGuest.findMany()
+     * 
+     * // Get first 10 InvitationGuests
+     * const invitationGuests = await prisma.invitationGuest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const invitationGuestWithIdOnly = await prisma.invitationGuest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends InvitationGuestFindManyArgs>(args?: SelectSubset<T, InvitationGuestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationGuestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a InvitationGuest.
+     * @param {InvitationGuestCreateArgs} args - Arguments to create a InvitationGuest.
+     * @example
+     * // Create one InvitationGuest
+     * const InvitationGuest = await prisma.invitationGuest.create({
+     *   data: {
+     *     // ... data to create a InvitationGuest
+     *   }
+     * })
+     * 
+     */
+    create<T extends InvitationGuestCreateArgs>(args: SelectSubset<T, InvitationGuestCreateArgs<ExtArgs>>): Prisma__InvitationGuestClient<$Result.GetResult<Prisma.$InvitationGuestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many InvitationGuests.
+     * @param {InvitationGuestCreateManyArgs} args - Arguments to create many InvitationGuests.
+     * @example
+     * // Create many InvitationGuests
+     * const invitationGuest = await prisma.invitationGuest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends InvitationGuestCreateManyArgs>(args?: SelectSubset<T, InvitationGuestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a InvitationGuest.
+     * @param {InvitationGuestDeleteArgs} args - Arguments to delete one InvitationGuest.
+     * @example
+     * // Delete one InvitationGuest
+     * const InvitationGuest = await prisma.invitationGuest.delete({
+     *   where: {
+     *     // ... filter to delete one InvitationGuest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends InvitationGuestDeleteArgs>(args: SelectSubset<T, InvitationGuestDeleteArgs<ExtArgs>>): Prisma__InvitationGuestClient<$Result.GetResult<Prisma.$InvitationGuestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one InvitationGuest.
+     * @param {InvitationGuestUpdateArgs} args - Arguments to update one InvitationGuest.
+     * @example
+     * // Update one InvitationGuest
+     * const invitationGuest = await prisma.invitationGuest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends InvitationGuestUpdateArgs>(args: SelectSubset<T, InvitationGuestUpdateArgs<ExtArgs>>): Prisma__InvitationGuestClient<$Result.GetResult<Prisma.$InvitationGuestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more InvitationGuests.
+     * @param {InvitationGuestDeleteManyArgs} args - Arguments to filter InvitationGuests to delete.
+     * @example
+     * // Delete a few InvitationGuests
+     * const { count } = await prisma.invitationGuest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends InvitationGuestDeleteManyArgs>(args?: SelectSubset<T, InvitationGuestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more InvitationGuests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationGuestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many InvitationGuests
+     * const invitationGuest = await prisma.invitationGuest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends InvitationGuestUpdateManyArgs>(args: SelectSubset<T, InvitationGuestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one InvitationGuest.
+     * @param {InvitationGuestUpsertArgs} args - Arguments to update or create a InvitationGuest.
+     * @example
+     * // Update or create a InvitationGuest
+     * const invitationGuest = await prisma.invitationGuest.upsert({
+     *   create: {
+     *     // ... data to create a InvitationGuest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the InvitationGuest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends InvitationGuestUpsertArgs>(args: SelectSubset<T, InvitationGuestUpsertArgs<ExtArgs>>): Prisma__InvitationGuestClient<$Result.GetResult<Prisma.$InvitationGuestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of InvitationGuests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationGuestCountArgs} args - Arguments to filter InvitationGuests to count.
+     * @example
+     * // Count the number of InvitationGuests
+     * const count = await prisma.invitationGuest.count({
+     *   where: {
+     *     // ... the filter for the InvitationGuests we want to count
+     *   }
+     * })
+    **/
+    count<T extends InvitationGuestCountArgs>(
+      args?: Subset<T, InvitationGuestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], InvitationGuestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a InvitationGuest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationGuestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends InvitationGuestAggregateArgs>(args: Subset<T, InvitationGuestAggregateArgs>): Prisma.PrismaPromise<GetInvitationGuestAggregateType<T>>
+
+    /**
+     * Group by InvitationGuest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationGuestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends InvitationGuestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: InvitationGuestGroupByArgs['orderBy'] }
+        : { orderBy?: InvitationGuestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, InvitationGuestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInvitationGuestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the InvitationGuest model
+   */
+  readonly fields: InvitationGuestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for InvitationGuest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__InvitationGuestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the InvitationGuest model
+   */
+  interface InvitationGuestFieldRefs {
+    readonly id: FieldRef<"InvitationGuest", 'Int'>
+    readonly name: FieldRef<"InvitationGuest", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * InvitationGuest findUnique
+   */
+  export type InvitationGuestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuest
+     */
+    select?: InvitationGuestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuest
+     */
+    omit?: InvitationGuestOmit<ExtArgs> | null
+    /**
+     * Filter, which InvitationGuest to fetch.
+     */
+    where: InvitationGuestWhereUniqueInput
+  }
+
+  /**
+   * InvitationGuest findUniqueOrThrow
+   */
+  export type InvitationGuestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuest
+     */
+    select?: InvitationGuestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuest
+     */
+    omit?: InvitationGuestOmit<ExtArgs> | null
+    /**
+     * Filter, which InvitationGuest to fetch.
+     */
+    where: InvitationGuestWhereUniqueInput
+  }
+
+  /**
+   * InvitationGuest findFirst
+   */
+  export type InvitationGuestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuest
+     */
+    select?: InvitationGuestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuest
+     */
+    omit?: InvitationGuestOmit<ExtArgs> | null
+    /**
+     * Filter, which InvitationGuest to fetch.
+     */
+    where?: InvitationGuestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationGuests to fetch.
+     */
+    orderBy?: InvitationGuestOrderByWithRelationInput | InvitationGuestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationGuests.
+     */
+    cursor?: InvitationGuestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationGuests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationGuests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationGuests.
+     */
+    distinct?: InvitationGuestScalarFieldEnum | InvitationGuestScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationGuest findFirstOrThrow
+   */
+  export type InvitationGuestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuest
+     */
+    select?: InvitationGuestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuest
+     */
+    omit?: InvitationGuestOmit<ExtArgs> | null
+    /**
+     * Filter, which InvitationGuest to fetch.
+     */
+    where?: InvitationGuestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationGuests to fetch.
+     */
+    orderBy?: InvitationGuestOrderByWithRelationInput | InvitationGuestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationGuests.
+     */
+    cursor?: InvitationGuestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationGuests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationGuests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationGuests.
+     */
+    distinct?: InvitationGuestScalarFieldEnum | InvitationGuestScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationGuest findMany
+   */
+  export type InvitationGuestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuest
+     */
+    select?: InvitationGuestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuest
+     */
+    omit?: InvitationGuestOmit<ExtArgs> | null
+    /**
+     * Filter, which InvitationGuests to fetch.
+     */
+    where?: InvitationGuestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationGuests to fetch.
+     */
+    orderBy?: InvitationGuestOrderByWithRelationInput | InvitationGuestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing InvitationGuests.
+     */
+    cursor?: InvitationGuestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationGuests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationGuests.
+     */
+    skip?: number
+    distinct?: InvitationGuestScalarFieldEnum | InvitationGuestScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationGuest create
+   */
+  export type InvitationGuestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuest
+     */
+    select?: InvitationGuestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuest
+     */
+    omit?: InvitationGuestOmit<ExtArgs> | null
+    /**
+     * The data needed to create a InvitationGuest.
+     */
+    data?: XOR<InvitationGuestCreateInput, InvitationGuestUncheckedCreateInput>
+  }
+
+  /**
+   * InvitationGuest createMany
+   */
+  export type InvitationGuestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many InvitationGuests.
+     */
+    data: InvitationGuestCreateManyInput | InvitationGuestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * InvitationGuest update
+   */
+  export type InvitationGuestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuest
+     */
+    select?: InvitationGuestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuest
+     */
+    omit?: InvitationGuestOmit<ExtArgs> | null
+    /**
+     * The data needed to update a InvitationGuest.
+     */
+    data: XOR<InvitationGuestUpdateInput, InvitationGuestUncheckedUpdateInput>
+    /**
+     * Choose, which InvitationGuest to update.
+     */
+    where: InvitationGuestWhereUniqueInput
+  }
+
+  /**
+   * InvitationGuest updateMany
+   */
+  export type InvitationGuestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update InvitationGuests.
+     */
+    data: XOR<InvitationGuestUpdateManyMutationInput, InvitationGuestUncheckedUpdateManyInput>
+    /**
+     * Filter which InvitationGuests to update
+     */
+    where?: InvitationGuestWhereInput
+    /**
+     * Limit how many InvitationGuests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationGuest upsert
+   */
+  export type InvitationGuestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuest
+     */
+    select?: InvitationGuestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuest
+     */
+    omit?: InvitationGuestOmit<ExtArgs> | null
+    /**
+     * The filter to search for the InvitationGuest to update in case it exists.
+     */
+    where: InvitationGuestWhereUniqueInput
+    /**
+     * In case the InvitationGuest found by the `where` argument doesn't exist, create a new InvitationGuest with this data.
+     */
+    create: XOR<InvitationGuestCreateInput, InvitationGuestUncheckedCreateInput>
+    /**
+     * In case the InvitationGuest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<InvitationGuestUpdateInput, InvitationGuestUncheckedUpdateInput>
+  }
+
+  /**
+   * InvitationGuest delete
+   */
+  export type InvitationGuestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuest
+     */
+    select?: InvitationGuestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuest
+     */
+    omit?: InvitationGuestOmit<ExtArgs> | null
+    /**
+     * Filter which InvitationGuest to delete.
+     */
+    where: InvitationGuestWhereUniqueInput
+  }
+
+  /**
+   * InvitationGuest deleteMany
+   */
+  export type InvitationGuestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationGuests to delete
+     */
+    where?: InvitationGuestWhereInput
+    /**
+     * Limit how many InvitationGuests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationGuest without action
+   */
+  export type InvitationGuestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuest
+     */
+    select?: InvitationGuestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuest
+     */
+    omit?: InvitationGuestOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -12703,6 +14779,25 @@ export namespace Prisma {
   export type InvitationViewScalarFieldEnum = (typeof InvitationViewScalarFieldEnum)[keyof typeof InvitationViewScalarFieldEnum]
 
 
+  export const InvitationDressColorScalarFieldEnum: {
+    id: 'id',
+    invitationId: 'invitationId',
+    color: 'color',
+    order: 'order',
+    type: 'type'
+  };
+
+  export type InvitationDressColorScalarFieldEnum = (typeof InvitationDressColorScalarFieldEnum)[keyof typeof InvitationDressColorScalarFieldEnum]
+
+
+  export const InvitationGuestScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type InvitationGuestScalarFieldEnum = (typeof InvitationGuestScalarFieldEnum)[keyof typeof InvitationGuestScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -12863,6 +14958,21 @@ export namespace Prisma {
   };
 
   export type InvitationMusicOrderByRelevanceFieldEnum = (typeof InvitationMusicOrderByRelevanceFieldEnum)[keyof typeof InvitationMusicOrderByRelevanceFieldEnum]
+
+
+  export const InvitationDressColorOrderByRelevanceFieldEnum: {
+    color: 'color',
+    type: 'type'
+  };
+
+  export type InvitationDressColorOrderByRelevanceFieldEnum = (typeof InvitationDressColorOrderByRelevanceFieldEnum)[keyof typeof InvitationDressColorOrderByRelevanceFieldEnum]
+
+
+  export const InvitationGuestOrderByRelevanceFieldEnum: {
+    name: 'name'
+  };
+
+  export type InvitationGuestOrderByRelevanceFieldEnum = (typeof InvitationGuestOrderByRelevanceFieldEnum)[keyof typeof InvitationGuestOrderByRelevanceFieldEnum]
 
 
   /**
@@ -13048,6 +15158,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     invitationCoverPhotoList?: InvitationCoverPhotoListRelationFilter
+    InvitationDressColor?: InvitationDressColorListRelationFilter
     photoList?: InvitationPhotoListRelationFilter
     placeList?: InvitationPlaceListRelationFilter
     invitationRSVP?: InvitationRSVPListRelationFilter
@@ -13113,6 +15224,7 @@ export namespace Prisma {
     updatedAt?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     invitationCoverPhotoList?: InvitationCoverPhotoOrderByRelationAggregateInput
+    InvitationDressColor?: InvitationDressColorOrderByRelationAggregateInput
     photoList?: InvitationPhotoOrderByRelationAggregateInput
     placeList?: InvitationPlaceOrderByRelationAggregateInput
     invitationRSVP?: InvitationRSVPOrderByRelationAggregateInput
@@ -13182,6 +15294,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     invitationCoverPhotoList?: InvitationCoverPhotoListRelationFilter
+    InvitationDressColor?: InvitationDressColorListRelationFilter
     photoList?: InvitationPhotoListRelationFilter
     placeList?: InvitationPlaceListRelationFilter
     invitationRSVP?: InvitationRSVPListRelationFilter
@@ -13863,6 +15976,104 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"InvitationView"> | number
   }
 
+  export type InvitationDressColorWhereInput = {
+    AND?: InvitationDressColorWhereInput | InvitationDressColorWhereInput[]
+    OR?: InvitationDressColorWhereInput[]
+    NOT?: InvitationDressColorWhereInput | InvitationDressColorWhereInput[]
+    id?: IntFilter<"InvitationDressColor"> | number
+    invitationId?: IntNullableFilter<"InvitationDressColor"> | number | null
+    color?: StringNullableFilter<"InvitationDressColor"> | string | null
+    order?: IntNullableFilter<"InvitationDressColor"> | number | null
+    type?: StringNullableFilter<"InvitationDressColor"> | string | null
+    Invitation?: XOR<InvitationNullableScalarRelationFilter, InvitationWhereInput> | null
+  }
+
+  export type InvitationDressColorOrderByWithRelationInput = {
+    id?: SortOrder
+    invitationId?: SortOrderInput | SortOrder
+    color?: SortOrderInput | SortOrder
+    order?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
+    Invitation?: InvitationOrderByWithRelationInput
+    _relevance?: InvitationDressColorOrderByRelevanceInput
+  }
+
+  export type InvitationDressColorWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: InvitationDressColorWhereInput | InvitationDressColorWhereInput[]
+    OR?: InvitationDressColorWhereInput[]
+    NOT?: InvitationDressColorWhereInput | InvitationDressColorWhereInput[]
+    invitationId?: IntNullableFilter<"InvitationDressColor"> | number | null
+    color?: StringNullableFilter<"InvitationDressColor"> | string | null
+    order?: IntNullableFilter<"InvitationDressColor"> | number | null
+    type?: StringNullableFilter<"InvitationDressColor"> | string | null
+    Invitation?: XOR<InvitationNullableScalarRelationFilter, InvitationWhereInput> | null
+  }, "id">
+
+  export type InvitationDressColorOrderByWithAggregationInput = {
+    id?: SortOrder
+    invitationId?: SortOrderInput | SortOrder
+    color?: SortOrderInput | SortOrder
+    order?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
+    _count?: InvitationDressColorCountOrderByAggregateInput
+    _avg?: InvitationDressColorAvgOrderByAggregateInput
+    _max?: InvitationDressColorMaxOrderByAggregateInput
+    _min?: InvitationDressColorMinOrderByAggregateInput
+    _sum?: InvitationDressColorSumOrderByAggregateInput
+  }
+
+  export type InvitationDressColorScalarWhereWithAggregatesInput = {
+    AND?: InvitationDressColorScalarWhereWithAggregatesInput | InvitationDressColorScalarWhereWithAggregatesInput[]
+    OR?: InvitationDressColorScalarWhereWithAggregatesInput[]
+    NOT?: InvitationDressColorScalarWhereWithAggregatesInput | InvitationDressColorScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"InvitationDressColor"> | number
+    invitationId?: IntNullableWithAggregatesFilter<"InvitationDressColor"> | number | null
+    color?: StringNullableWithAggregatesFilter<"InvitationDressColor"> | string | null
+    order?: IntNullableWithAggregatesFilter<"InvitationDressColor"> | number | null
+    type?: StringNullableWithAggregatesFilter<"InvitationDressColor"> | string | null
+  }
+
+  export type InvitationGuestWhereInput = {
+    AND?: InvitationGuestWhereInput | InvitationGuestWhereInput[]
+    OR?: InvitationGuestWhereInput[]
+    NOT?: InvitationGuestWhereInput | InvitationGuestWhereInput[]
+    id?: IntFilter<"InvitationGuest"> | number
+    name?: StringNullableFilter<"InvitationGuest"> | string | null
+  }
+
+  export type InvitationGuestOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrderInput | SortOrder
+    _relevance?: InvitationGuestOrderByRelevanceInput
+  }
+
+  export type InvitationGuestWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: InvitationGuestWhereInput | InvitationGuestWhereInput[]
+    OR?: InvitationGuestWhereInput[]
+    NOT?: InvitationGuestWhereInput | InvitationGuestWhereInput[]
+    name?: StringNullableFilter<"InvitationGuest"> | string | null
+  }, "id">
+
+  export type InvitationGuestOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrderInput | SortOrder
+    _count?: InvitationGuestCountOrderByAggregateInput
+    _avg?: InvitationGuestAvgOrderByAggregateInput
+    _max?: InvitationGuestMaxOrderByAggregateInput
+    _min?: InvitationGuestMinOrderByAggregateInput
+    _sum?: InvitationGuestSumOrderByAggregateInput
+  }
+
+  export type InvitationGuestScalarWhereWithAggregatesInput = {
+    AND?: InvitationGuestScalarWhereWithAggregatesInput | InvitationGuestScalarWhereWithAggregatesInput[]
+    OR?: InvitationGuestScalarWhereWithAggregatesInput[]
+    NOT?: InvitationGuestScalarWhereWithAggregatesInput | InvitationGuestScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"InvitationGuest"> | number
+    name?: StringNullableWithAggregatesFilter<"InvitationGuest"> | string | null
+  }
+
   export type UserCreateInput = {
     email?: string | null
     password?: string | null
@@ -13985,6 +16196,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -14049,6 +16261,7 @@ export namespace Prisma {
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -14112,6 +16325,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -14176,6 +16390,7 @@ export namespace Prisma {
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -14907,6 +17122,90 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
   }
 
+  export type InvitationDressColorCreateInput = {
+    color?: string | null
+    order?: number | null
+    type?: string | null
+    Invitation?: InvitationCreateNestedOneWithoutInvitationDressColorInput
+  }
+
+  export type InvitationDressColorUncheckedCreateInput = {
+    id?: number
+    invitationId?: number | null
+    color?: string | null
+    order?: number | null
+    type?: string | null
+  }
+
+  export type InvitationDressColorUpdateInput = {
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    Invitation?: InvitationUpdateOneWithoutInvitationDressColorNestedInput
+  }
+
+  export type InvitationDressColorUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: NullableIntFieldUpdateOperationsInput | number | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvitationDressColorCreateManyInput = {
+    id?: number
+    invitationId?: number | null
+    color?: string | null
+    order?: number | null
+    type?: string | null
+  }
+
+  export type InvitationDressColorUpdateManyMutationInput = {
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvitationDressColorUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: NullableIntFieldUpdateOperationsInput | number | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvitationGuestCreateInput = {
+    name?: string | null
+  }
+
+  export type InvitationGuestUncheckedCreateInput = {
+    id?: number
+    name?: string | null
+  }
+
+  export type InvitationGuestUpdateInput = {
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvitationGuestUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvitationGuestCreateManyInput = {
+    id?: number
+    name?: string | null
+  }
+
+  export type InvitationGuestUpdateManyMutationInput = {
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvitationGuestUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -15098,6 +17397,12 @@ export namespace Prisma {
     none?: InvitationCoverPhotoWhereInput
   }
 
+  export type InvitationDressColorListRelationFilter = {
+    every?: InvitationDressColorWhereInput
+    some?: InvitationDressColorWhereInput
+    none?: InvitationDressColorWhereInput
+  }
+
   export type InvitationPhotoListRelationFilter = {
     every?: InvitationPhotoWhereInput
     some?: InvitationPhotoWhereInput
@@ -15117,6 +17422,10 @@ export namespace Prisma {
   }
 
   export type InvitationCoverPhotoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type InvitationDressColorOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -15833,6 +18142,77 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type InvitationDressColorOrderByRelevanceInput = {
+    fields: InvitationDressColorOrderByRelevanceFieldEnum | InvitationDressColorOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type InvitationDressColorCountOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    color?: SortOrder
+    order?: SortOrder
+    type?: SortOrder
+  }
+
+  export type InvitationDressColorAvgOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    order?: SortOrder
+  }
+
+  export type InvitationDressColorMaxOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    color?: SortOrder
+    order?: SortOrder
+    type?: SortOrder
+  }
+
+  export type InvitationDressColorMinOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    color?: SortOrder
+    order?: SortOrder
+    type?: SortOrder
+  }
+
+  export type InvitationDressColorSumOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    order?: SortOrder
+  }
+
+  export type InvitationGuestOrderByRelevanceInput = {
+    fields: InvitationGuestOrderByRelevanceFieldEnum | InvitationGuestOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type InvitationGuestCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type InvitationGuestAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type InvitationGuestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type InvitationGuestMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type InvitationGuestSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type InvitationCreateNestedManyWithoutUserInput = {
     create?: XOR<InvitationCreateWithoutUserInput, InvitationUncheckedCreateWithoutUserInput> | InvitationCreateWithoutUserInput[] | InvitationUncheckedCreateWithoutUserInput[]
     connectOrCreate?: InvitationCreateOrConnectWithoutUserInput | InvitationCreateOrConnectWithoutUserInput[]
@@ -15904,6 +18284,13 @@ export namespace Prisma {
     connect?: InvitationCoverPhotoWhereUniqueInput | InvitationCoverPhotoWhereUniqueInput[]
   }
 
+  export type InvitationDressColorCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<InvitationDressColorCreateWithoutInvitationInput, InvitationDressColorUncheckedCreateWithoutInvitationInput> | InvitationDressColorCreateWithoutInvitationInput[] | InvitationDressColorUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationDressColorCreateOrConnectWithoutInvitationInput | InvitationDressColorCreateOrConnectWithoutInvitationInput[]
+    createMany?: InvitationDressColorCreateManyInvitationInputEnvelope
+    connect?: InvitationDressColorWhereUniqueInput | InvitationDressColorWhereUniqueInput[]
+  }
+
   export type InvitationPhotoCreateNestedManyWithoutInvitationInput = {
     create?: XOR<InvitationPhotoCreateWithoutInvitationInput, InvitationPhotoUncheckedCreateWithoutInvitationInput> | InvitationPhotoCreateWithoutInvitationInput[] | InvitationPhotoUncheckedCreateWithoutInvitationInput[]
     connectOrCreate?: InvitationPhotoCreateOrConnectWithoutInvitationInput | InvitationPhotoCreateOrConnectWithoutInvitationInput[]
@@ -15930,6 +18317,13 @@ export namespace Prisma {
     connectOrCreate?: InvitationCoverPhotoCreateOrConnectWithoutInvitationInput | InvitationCoverPhotoCreateOrConnectWithoutInvitationInput[]
     createMany?: InvitationCoverPhotoCreateManyInvitationInputEnvelope
     connect?: InvitationCoverPhotoWhereUniqueInput | InvitationCoverPhotoWhereUniqueInput[]
+  }
+
+  export type InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<InvitationDressColorCreateWithoutInvitationInput, InvitationDressColorUncheckedCreateWithoutInvitationInput> | InvitationDressColorCreateWithoutInvitationInput[] | InvitationDressColorUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationDressColorCreateOrConnectWithoutInvitationInput | InvitationDressColorCreateOrConnectWithoutInvitationInput[]
+    createMany?: InvitationDressColorCreateManyInvitationInputEnvelope
+    connect?: InvitationDressColorWhereUniqueInput | InvitationDressColorWhereUniqueInput[]
   }
 
   export type InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput = {
@@ -15989,6 +18383,20 @@ export namespace Prisma {
     deleteMany?: InvitationCoverPhotoScalarWhereInput | InvitationCoverPhotoScalarWhereInput[]
   }
 
+  export type InvitationDressColorUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<InvitationDressColorCreateWithoutInvitationInput, InvitationDressColorUncheckedCreateWithoutInvitationInput> | InvitationDressColorCreateWithoutInvitationInput[] | InvitationDressColorUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationDressColorCreateOrConnectWithoutInvitationInput | InvitationDressColorCreateOrConnectWithoutInvitationInput[]
+    upsert?: InvitationDressColorUpsertWithWhereUniqueWithoutInvitationInput | InvitationDressColorUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: InvitationDressColorCreateManyInvitationInputEnvelope
+    set?: InvitationDressColorWhereUniqueInput | InvitationDressColorWhereUniqueInput[]
+    disconnect?: InvitationDressColorWhereUniqueInput | InvitationDressColorWhereUniqueInput[]
+    delete?: InvitationDressColorWhereUniqueInput | InvitationDressColorWhereUniqueInput[]
+    connect?: InvitationDressColorWhereUniqueInput | InvitationDressColorWhereUniqueInput[]
+    update?: InvitationDressColorUpdateWithWhereUniqueWithoutInvitationInput | InvitationDressColorUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: InvitationDressColorUpdateManyWithWhereWithoutInvitationInput | InvitationDressColorUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: InvitationDressColorScalarWhereInput | InvitationDressColorScalarWhereInput[]
+  }
+
   export type InvitationPhotoUpdateManyWithoutInvitationNestedInput = {
     create?: XOR<InvitationPhotoCreateWithoutInvitationInput, InvitationPhotoUncheckedCreateWithoutInvitationInput> | InvitationPhotoCreateWithoutInvitationInput[] | InvitationPhotoUncheckedCreateWithoutInvitationInput[]
     connectOrCreate?: InvitationPhotoCreateOrConnectWithoutInvitationInput | InvitationPhotoCreateOrConnectWithoutInvitationInput[]
@@ -16043,6 +18451,20 @@ export namespace Prisma {
     update?: InvitationCoverPhotoUpdateWithWhereUniqueWithoutInvitationInput | InvitationCoverPhotoUpdateWithWhereUniqueWithoutInvitationInput[]
     updateMany?: InvitationCoverPhotoUpdateManyWithWhereWithoutInvitationInput | InvitationCoverPhotoUpdateManyWithWhereWithoutInvitationInput[]
     deleteMany?: InvitationCoverPhotoScalarWhereInput | InvitationCoverPhotoScalarWhereInput[]
+  }
+
+  export type InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<InvitationDressColorCreateWithoutInvitationInput, InvitationDressColorUncheckedCreateWithoutInvitationInput> | InvitationDressColorCreateWithoutInvitationInput[] | InvitationDressColorUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationDressColorCreateOrConnectWithoutInvitationInput | InvitationDressColorCreateOrConnectWithoutInvitationInput[]
+    upsert?: InvitationDressColorUpsertWithWhereUniqueWithoutInvitationInput | InvitationDressColorUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: InvitationDressColorCreateManyInvitationInputEnvelope
+    set?: InvitationDressColorWhereUniqueInput | InvitationDressColorWhereUniqueInput[]
+    disconnect?: InvitationDressColorWhereUniqueInput | InvitationDressColorWhereUniqueInput[]
+    delete?: InvitationDressColorWhereUniqueInput | InvitationDressColorWhereUniqueInput[]
+    connect?: InvitationDressColorWhereUniqueInput | InvitationDressColorWhereUniqueInput[]
+    update?: InvitationDressColorUpdateWithWhereUniqueWithoutInvitationInput | InvitationDressColorUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: InvitationDressColorUpdateManyWithWhereWithoutInvitationInput | InvitationDressColorUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: InvitationDressColorScalarWhereInput | InvitationDressColorScalarWhereInput[]
   }
 
   export type InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput = {
@@ -16273,6 +18695,22 @@ export namespace Prisma {
     delete?: InvitationWhereInput | boolean
     connect?: InvitationWhereUniqueInput
     update?: XOR<XOR<InvitationUpdateToOneWithWhereWithoutInvitationRSVPInput, InvitationUpdateWithoutInvitationRSVPInput>, InvitationUncheckedUpdateWithoutInvitationRSVPInput>
+  }
+
+  export type InvitationCreateNestedOneWithoutInvitationDressColorInput = {
+    create?: XOR<InvitationCreateWithoutInvitationDressColorInput, InvitationUncheckedCreateWithoutInvitationDressColorInput>
+    connectOrCreate?: InvitationCreateOrConnectWithoutInvitationDressColorInput
+    connect?: InvitationWhereUniqueInput
+  }
+
+  export type InvitationUpdateOneWithoutInvitationDressColorNestedInput = {
+    create?: XOR<InvitationCreateWithoutInvitationDressColorInput, InvitationUncheckedCreateWithoutInvitationDressColorInput>
+    connectOrCreate?: InvitationCreateOrConnectWithoutInvitationDressColorInput
+    upsert?: InvitationUpsertWithoutInvitationDressColorInput
+    disconnect?: InvitationWhereInput | boolean
+    delete?: InvitationWhereInput | boolean
+    connect?: InvitationWhereUniqueInput
+    update?: XOR<XOR<InvitationUpdateToOneWithWhereWithoutInvitationDressColorInput, InvitationUpdateWithoutInvitationDressColorInput>, InvitationUncheckedUpdateWithoutInvitationDressColorInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -16518,6 +18956,7 @@ export namespace Prisma {
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -16581,6 +19020,7 @@ export namespace Prisma {
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -16731,6 +19171,29 @@ export namespace Prisma {
 
   export type InvitationCoverPhotoCreateManyInvitationInputEnvelope = {
     data: InvitationCoverPhotoCreateManyInvitationInput | InvitationCoverPhotoCreateManyInvitationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type InvitationDressColorCreateWithoutInvitationInput = {
+    color?: string | null
+    order?: number | null
+    type?: string | null
+  }
+
+  export type InvitationDressColorUncheckedCreateWithoutInvitationInput = {
+    id?: number
+    color?: string | null
+    order?: number | null
+    type?: string | null
+  }
+
+  export type InvitationDressColorCreateOrConnectWithoutInvitationInput = {
+    where: InvitationDressColorWhereUniqueInput
+    create: XOR<InvitationDressColorCreateWithoutInvitationInput, InvitationDressColorUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type InvitationDressColorCreateManyInvitationInputEnvelope = {
+    data: InvitationDressColorCreateManyInvitationInput | InvitationDressColorCreateManyInvitationInput[]
     skipDuplicates?: boolean
   }
 
@@ -16895,6 +19358,33 @@ export namespace Prisma {
     height?: FloatNullableFilter<"InvitationCoverPhoto"> | number | null
     createdAt?: DateTimeNullableFilter<"InvitationCoverPhoto"> | Date | string | null
     updatedAt?: DateTimeNullableFilter<"InvitationCoverPhoto"> | Date | string | null
+  }
+
+  export type InvitationDressColorUpsertWithWhereUniqueWithoutInvitationInput = {
+    where: InvitationDressColorWhereUniqueInput
+    update: XOR<InvitationDressColorUpdateWithoutInvitationInput, InvitationDressColorUncheckedUpdateWithoutInvitationInput>
+    create: XOR<InvitationDressColorCreateWithoutInvitationInput, InvitationDressColorUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type InvitationDressColorUpdateWithWhereUniqueWithoutInvitationInput = {
+    where: InvitationDressColorWhereUniqueInput
+    data: XOR<InvitationDressColorUpdateWithoutInvitationInput, InvitationDressColorUncheckedUpdateWithoutInvitationInput>
+  }
+
+  export type InvitationDressColorUpdateManyWithWhereWithoutInvitationInput = {
+    where: InvitationDressColorScalarWhereInput
+    data: XOR<InvitationDressColorUpdateManyMutationInput, InvitationDressColorUncheckedUpdateManyWithoutInvitationInput>
+  }
+
+  export type InvitationDressColorScalarWhereInput = {
+    AND?: InvitationDressColorScalarWhereInput | InvitationDressColorScalarWhereInput[]
+    OR?: InvitationDressColorScalarWhereInput[]
+    NOT?: InvitationDressColorScalarWhereInput | InvitationDressColorScalarWhereInput[]
+    id?: IntFilter<"InvitationDressColor"> | number
+    invitationId?: IntNullableFilter<"InvitationDressColor"> | number | null
+    color?: StringNullableFilter<"InvitationDressColor"> | string | null
+    order?: IntNullableFilter<"InvitationDressColor"> | number | null
+    type?: StringNullableFilter<"InvitationDressColor"> | string | null
   }
 
   export type InvitationPhotoUpsertWithWhereUniqueWithoutInvitationInput = {
@@ -17073,6 +19563,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
   }
@@ -17136,6 +19627,7 @@ export namespace Prisma {
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
   }
@@ -17265,6 +19757,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
   }
@@ -17328,6 +19821,7 @@ export namespace Prisma {
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
   }
@@ -17504,6 +19998,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
   }
@@ -17567,6 +20062,7 @@ export namespace Prisma {
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
   }
@@ -17645,6 +20141,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
   }
@@ -17708,6 +20205,7 @@ export namespace Prisma {
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
   }
@@ -17769,6 +20267,7 @@ export namespace Prisma {
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
+    InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -17832,6 +20331,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -17910,6 +20410,7 @@ export namespace Prisma {
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
+    InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -17973,6 +20474,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -18036,6 +20538,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
   }
@@ -18099,6 +20602,7 @@ export namespace Prisma {
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
   }
@@ -18177,6 +20681,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
   }
@@ -18240,8 +20745,279 @@ export namespace Prisma {
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type InvitationCreateWithoutInvitationDressColorInput = {
+    templateNo?: number | null
+    uniqueId?: string | null
+    date?: Date | string | null
+    title?: string | null
+    pointColor?: string | null
+    mainTextColor?: string | null
+    dressCodeGentleman?: string | null
+    dressCodeLady?: string | null
+    bgColor?: string | null
+    musicKey?: string | null
+    musicFilename?: string | null
+    musicFileKey?: string | null
+    notice?: string | null
+    brideFirstName?: string | null
+    brideMiddleName?: string | null
+    dressCodeMainColor?: string | null
+    dressCodeSubColor?: string | null
+    dressCodeThirdColor?: string | null
+    brideLastName?: string | null
+    brideMomName?: string | null
+    greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
+    greetingContent?: string | null
+    brideDadName?: string | null
+    bridePhone?: string | null
+    groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
+    groomMiddleName?: string | null
+    groomLastName?: string | null
+    groomPhone?: string | null
+    primarySponsor?: string | null
+    secondarySponsor?: string | null
+    bankAccount?: string | null
+    maidOfHonor?: string | null
+    groomsMen?: string | null
+    textColor?: string | null
+    timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpHasFood?: boolean | null
+    isRsvpPopup?: boolean | null
+    bestMan?: string | null
+    bridesMaids?: string | null
+    wishlistText?: string | null
+    groomMomName?: string | null
+    groomDadName?: string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: string | null
+    ogImageKey?: string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    user?: UserCreateNestedOneWithoutInvitationListInput
+    invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
+    photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
+    placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
+    invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
+  }
+
+  export type InvitationUncheckedCreateWithoutInvitationDressColorInput = {
+    id?: number
+    templateNo?: number | null
+    uniqueId?: string | null
+    date?: Date | string | null
+    userId?: number | null
+    title?: string | null
+    pointColor?: string | null
+    mainTextColor?: string | null
+    dressCodeGentleman?: string | null
+    dressCodeLady?: string | null
+    bgColor?: string | null
+    musicKey?: string | null
+    musicFilename?: string | null
+    musicFileKey?: string | null
+    notice?: string | null
+    brideFirstName?: string | null
+    brideMiddleName?: string | null
+    dressCodeMainColor?: string | null
+    dressCodeSubColor?: string | null
+    dressCodeThirdColor?: string | null
+    brideLastName?: string | null
+    brideMomName?: string | null
+    greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
+    greetingContent?: string | null
+    brideDadName?: string | null
+    bridePhone?: string | null
+    groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
+    groomMiddleName?: string | null
+    groomLastName?: string | null
+    groomPhone?: string | null
+    primarySponsor?: string | null
+    secondarySponsor?: string | null
+    bankAccount?: string | null
+    maidOfHonor?: string | null
+    groomsMen?: string | null
+    textColor?: string | null
+    timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpHasFood?: boolean | null
+    isRsvpPopup?: boolean | null
+    bestMan?: string | null
+    bridesMaids?: string | null
+    wishlistText?: string | null
+    groomMomName?: string | null
+    groomDadName?: string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: string | null
+    ogImageKey?: string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
+    invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
+  }
+
+  export type InvitationCreateOrConnectWithoutInvitationDressColorInput = {
+    where: InvitationWhereUniqueInput
+    create: XOR<InvitationCreateWithoutInvitationDressColorInput, InvitationUncheckedCreateWithoutInvitationDressColorInput>
+  }
+
+  export type InvitationUpsertWithoutInvitationDressColorInput = {
+    update: XOR<InvitationUpdateWithoutInvitationDressColorInput, InvitationUncheckedUpdateWithoutInvitationDressColorInput>
+    create: XOR<InvitationCreateWithoutInvitationDressColorInput, InvitationUncheckedCreateWithoutInvitationDressColorInput>
+    where?: InvitationWhereInput
+  }
+
+  export type InvitationUpdateToOneWithWhereWithoutInvitationDressColorInput = {
+    where?: InvitationWhereInput
+    data: XOR<InvitationUpdateWithoutInvitationDressColorInput, InvitationUncheckedUpdateWithoutInvitationDressColorInput>
+  }
+
+  export type InvitationUpdateWithoutInvitationDressColorInput = {
+    templateNo?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    pointColor?: NullableStringFieldUpdateOperationsInput | string | null
+    mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeLady?: NullableStringFieldUpdateOperationsInput | string | null
+    bgColor?: NullableStringFieldUpdateOperationsInput | string | null
+    musicKey?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFileKey?: NullableStringFieldUpdateOperationsInput | string | null
+    notice?: NullableStringFieldUpdateOperationsInput | string | null
+    brideFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeMainColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeSubColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeThirdColor?: NullableStringFieldUpdateOperationsInput | string | null
+    brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
+    brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    bestMan?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UserUpdateOneWithoutInvitationListNestedInput
+    invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
+    photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
+    placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
+    invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type InvitationUncheckedUpdateWithoutInvitationDressColorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    templateNo?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    pointColor?: NullableStringFieldUpdateOperationsInput | string | null
+    mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeLady?: NullableStringFieldUpdateOperationsInput | string | null
+    bgColor?: NullableStringFieldUpdateOperationsInput | string | null
+    musicKey?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFileKey?: NullableStringFieldUpdateOperationsInput | string | null
+    notice?: NullableStringFieldUpdateOperationsInput | string | null
+    brideFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeMainColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeSubColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeThirdColor?: NullableStringFieldUpdateOperationsInput | string | null
+    brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
+    brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    bestMan?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationCreateManyUserInput = {
@@ -18360,6 +21136,7 @@ export namespace Prisma {
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -18423,6 +21200,7 @@ export namespace Prisma {
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -18501,6 +21279,13 @@ export namespace Prisma {
     updatedAt?: Date | string | null
   }
 
+  export type InvitationDressColorCreateManyInvitationInput = {
+    id?: number
+    color?: string | null
+    order?: number | null
+    type?: string | null
+  }
+
   export type InvitationPhotoCreateManyInvitationInput = {
     id?: number
     width?: number | null
@@ -18576,6 +21361,26 @@ export namespace Prisma {
     height?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationDressColorUpdateWithoutInvitationInput = {
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvitationDressColorUncheckedUpdateWithoutInvitationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvitationDressColorUncheckedUpdateManyWithoutInvitationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type InvitationPhotoUpdateWithoutInvitationInput = {
