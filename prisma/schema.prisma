@@ -136,7 +136,7 @@ model InvitationPhoto {
   thumbX       Int?
   thumbY       Int?
   thumbZoom    Float?      @db.Float
-  Invitation   Invitation? @relation(fields: [invitationId], references: [uniqueId], onDelete: Cascade, onUpdate: NoAction, map: "InvitationPhoto_ibfk_1")
+  Invitation   Invitation? @relation(fields: [invitationId], references: [uniqueId], onDelete: Cascade, map: "InvitationPhoto_ibfk_1")
 
   @@index([invitationId], map: "invitationId")
 }
