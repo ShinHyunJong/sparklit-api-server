@@ -104,7 +104,7 @@ model Place {
   id                  Int               @id @default(autoincrement()) @db.UnsignedInt
   googlePlaceId       String?           @unique(map: "googlePlaceId") @db.VarChar(100)
   name                String?           @db.VarChar(255)
-  address             String?           @db.VarChar(25)
+  address             String?           @db.VarChar(255)
   lat                 Float?            @db.Float
   lng                 Float?            @db.Float
   invitationPlaceList InvitationPlace[]

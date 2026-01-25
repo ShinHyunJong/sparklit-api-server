@@ -10,9 +10,10 @@ import { JwtService } from '@nestjs/jwt';
 import { InvitationModule } from './invitation/invitation.module';
 import { PlacesModule } from './place/place.module';
 import { PhotoModule } from './photo/photo.module';
+import { MigrationModule } from './migration/migration.module';
 
 @Module({
-  imports: [InvitationModule, PlacesModule, PhotoModule],
+  imports: [InvitationModule, PlacesModule, PhotoModule, MigrationModule],
   controllers: [AppController, AuthController],
   providers: [
     AppService,
