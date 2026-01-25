@@ -9,7 +9,7 @@ import {
 export class UpdateUniqueIdDto {
   @IsString()
   @MinLength(2)
-  @MaxLength(16)
+  @MaxLength(100)
   @Matches(/^[a-z0-9._-]+$/)
   newUniqueId: string;
 }
@@ -17,7 +17,7 @@ export class UpdateUniqueIdDto {
 export class CheckUniqueIdDto {
   @IsString()
   @MinLength(2)
-  @MaxLength(16)
+  @MaxLength(100)
   @Matches(/^[a-z0-9._-]+$/)
   value: string;
 
