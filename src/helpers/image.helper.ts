@@ -5,7 +5,11 @@ import sharp from 'sharp';
  */
 export async function makeOgImage(inputBuffer: Buffer) {
   return sharp(inputBuffer)
-    .resize(1200, 630, { fit: 'cover', position: 'center' })
+    .resize(1200, 630, {
+      fit: 'cover',
+      position: 'center',
+      withoutEnlargement: true,
+    })
     .jpeg({ quality: 82, mozjpeg: true })
     .toBuffer();
 }

@@ -15,7 +15,6 @@ import { deleteFromS3, upload2S3 } from 'src/helpers/s3.helper';
 import { RsvpDto, UpdateRsvpDto } from './dto/rsvp.dto';
 import { postRSVPmail } from 'src/utils/mailjet.util';
 import { MemoryStoredFile } from 'nestjs-form-data';
-import { makeOgImage } from 'src/helpers/image.helper';
 import { getTimezoneByCountry } from 'src/helpers/timezone.helper';
 import { formatTimeValue } from 'src/helpers/time.helper';
 
@@ -205,6 +204,14 @@ export class InvitationService {
     body: UpdateMainPhotoDto,
     type: string, // 인자로 구분
   ) {
+    const invitation = await this.prismaService.invitation.findUnique({
+      where: { uniqueId },
+      select: { id: true, ogImageKey: true },
+    });
+    if (!invitation) {
+      throw new NotFoundException('Invitation not found');
+    }
+
     const originalFile = body.originalFile;
     const croppedFile = body.croppedFile;
     const photoJSON = JSON.parse(body.photoJSON);
@@ -226,24 +233,15 @@ export class InvitationService {
     await upload2S3(originalKey, originalFile.buffer);
     await upload2S3(croppedKey, croppedFile.buffer);
 
-    if (type === 'main') {
-      const ogImageBuffer = await makeOgImage(croppedFile.buffer);
-      const ogImageName = cryptoRandomString({ length: 16 });
-      const ogImageKey = `invitations/${uniqueId}/og/${ogImageName}.jpg`;
-      await upload2S3(ogImageKey, ogImageBuffer);
-      await this.prismaService.invitation.update({
-        where: { uniqueId },
-        data: {
-          ogImageKey,
-        },
-      });
-    }
-
     // 해당 타입의 기존 데이터가 있는지 확인
     const invitationCover =
       await this.prismaService.invitationCoverPhoto.findFirst({
         where: { type, invitation: { uniqueId } },
       });
+    const shouldSyncOgWithMain =
+      type === 'main' &&
+      (!invitation.ogImageKey ||
+        invitationCover?.croppedKey === invitation.ogImageKey);
 
     const photoData = {
       originalKey,
@@ -257,13 +255,20 @@ export class InvitationService {
 
     if (!invitationCover) {
       // 신규 생성
-      return await this.prismaService.invitationCoverPhoto.create({
+      const created = await this.prismaService.invitationCoverPhoto.create({
         data: {
           invitation: { connect: { uniqueId } },
           type,
           ...photoData,
         },
       });
+      if (shouldSyncOgWithMain) {
+        await this.prismaService.invitation.update({
+          where: { id: invitation.id },
+          data: { ogImageKey: created.croppedKey },
+        });
+      }
+      return created;
     } else {
       // 기존 데이터 업데이트
       const updated = await this.prismaService.invitationCoverPhoto.update({
@@ -273,6 +278,12 @@ export class InvitationService {
 
       // 기존 크롭 이미지는 S3에서 삭제하여 용량 관리
       await deleteFromS3(invitationCover.croppedKey);
+      if (shouldSyncOgWithMain) {
+        await this.prismaService.invitation.update({
+          where: { id: invitation.id },
+          data: { ogImageKey: updated.croppedKey },
+        });
+      }
       return updated;
     }
   }
@@ -309,9 +320,7 @@ export class InvitationService {
     if (coverPhoto.croppedKey) {
       await deleteFromS3(coverPhoto.croppedKey);
     }
-
-    if (type === 'main' && invitation.ogImageKey) {
-      await deleteFromS3(invitation.ogImageKey);
+    if (type === 'main' && invitation.ogImageKey === coverPhoto.croppedKey) {
       await this.prismaService.invitation.update({
         where: { id: invitation.id },
         data: { ogImageKey: null },
@@ -371,6 +380,51 @@ export class InvitationService {
         musicKey: s3Key,
       },
     });
+  }
+
+  async uploadOgImage(uniqueId: string, file: MemoryStoredFile) {
+    const invitation = await this.prismaService.invitation.findUnique({
+      where: { uniqueId },
+      select: { id: true, ogImageKey: true },
+    });
+    if (!invitation) {
+      throw new NotFoundException('Invitation not found');
+    }
+
+    const ogImageName = cryptoRandomString({ length: 16 });
+    const ogImageKey = `invitations/${uniqueId}/og/custom/${ogImageName}.jpg`;
+    await upload2S3(ogImageKey, file.buffer);
+
+    if (invitation.ogImageKey && invitation.ogImageKey !== ogImageKey) {
+      await deleteFromS3(invitation.ogImageKey);
+    }
+
+    await this.prismaService.invitation.update({
+      where: { id: invitation.id },
+      data: { ogImageKey },
+    });
+
+    return { ogImageKey };
+  }
+
+  async deleteOgImage(uniqueId: string, userId: number) {
+    const invitation = await this.prismaService.invitation.findFirst({
+      where: { uniqueId, userId },
+      select: { id: true, ogImageKey: true },
+    });
+    if (!invitation) {
+      throw new NotFoundException('Invitation not found');
+    }
+    if (!invitation.ogImageKey) {
+      return { deleted: 0 };
+    }
+
+    await deleteFromS3(invitation.ogImageKey);
+    await this.prismaService.invitation.update({
+      where: { id: invitation.id },
+      data: { ogImageKey: null },
+    });
+    return { deleted: 1 };
   }
 
   async uploadMusic(uniqueId: string, file: MemoryStoredFile) {
@@ -593,6 +647,21 @@ export class InvitationService {
       where: { uniqueId },
       data: {
         notice,
+      },
+    });
+    return updated;
+  }
+
+  async updateMeta(
+    uniqueId: string,
+    title?: string,
+    description?: string,
+  ) {
+    const updated = await this.prismaService.invitation.update({
+      where: { uniqueId },
+      data: {
+        ...(title !== undefined ? { title } : {}),
+        ...(description !== undefined ? { description } : {}),
       },
     });
     return updated;

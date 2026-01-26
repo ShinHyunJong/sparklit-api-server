@@ -21,6 +21,7 @@ import {
 import { FormDataRequest, MemoryStoredFile } from 'nestjs-form-data';
 import { RsvpDto, UpdateRsvpDto } from './dto/rsvp.dto';
 import { CheckUniqueIdDto, UpdateUniqueIdDto } from './dto/unique-id.dto';
+import { UpdateInvitationMetaDto } from './dto/update-meta.dto';
 
 @Controller('invitation')
 export class InvitationController {
@@ -100,6 +101,27 @@ export class InvitationController {
     },
   ) {
     return this.invitationService.uploadMusic(invitationId, file);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('/og-image/:uniqueId')
+  @FormDataRequest({ storage: MemoryStoredFile })
+  uploadOgImage(
+    @Param('uniqueId') uniqueId: string,
+    @Body()
+    {
+      file,
+    }: {
+      file: MemoryStoredFile;
+    },
+  ) {
+    return this.invitationService.uploadOgImage(uniqueId, file);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete('/og-image/:uniqueId')
+  deleteOgImage(@Req() req, @Param('uniqueId') uniqueId: string) {
+    return this.invitationService.deleteOgImage(uniqueId, req.user.id);
   }
 
   @UseGuards(JwtAuthGuard)
@@ -278,6 +300,19 @@ export class InvitationController {
     @Body() body: { notice: string },
   ) {
     return this.invitationService.updateNotice(uniqueId, body.notice);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('/meta/:uniqueId')
+  updateMeta(
+    @Param('uniqueId') uniqueId: string,
+    @Body() body: UpdateInvitationMetaDto,
+  ) {
+    return this.invitationService.updateMeta(
+      uniqueId,
+      body.title,
+      body.description,
+    );
   }
 
   @UseGuards(JwtAuthGuard)
