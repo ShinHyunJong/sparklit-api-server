@@ -2972,6 +2972,7 @@ export namespace Prisma {
     date: Date | null
     userId: number | null
     title: string | null
+    description: string | null
     pointColor: string | null
     mainTextColor: string | null
     dressCodeGentleman: string | null
@@ -3031,6 +3032,7 @@ export namespace Prisma {
     date: Date | null
     userId: number | null
     title: string | null
+    description: string | null
     pointColor: string | null
     mainTextColor: string | null
     dressCodeGentleman: string | null
@@ -3090,6 +3092,7 @@ export namespace Prisma {
     date: number
     userId: number
     title: number
+    description: number
     pointColor: number
     mainTextColor: number
     dressCodeGentleman: number
@@ -3172,6 +3175,7 @@ export namespace Prisma {
     date?: true
     userId?: true
     title?: true
+    description?: true
     pointColor?: true
     mainTextColor?: true
     dressCodeGentleman?: true
@@ -3231,6 +3235,7 @@ export namespace Prisma {
     date?: true
     userId?: true
     title?: true
+    description?: true
     pointColor?: true
     mainTextColor?: true
     dressCodeGentleman?: true
@@ -3290,6 +3295,7 @@ export namespace Prisma {
     date?: true
     userId?: true
     title?: true
+    description?: true
     pointColor?: true
     mainTextColor?: true
     dressCodeGentleman?: true
@@ -3437,6 +3443,7 @@ export namespace Prisma {
     date: Date | null
     userId: number | null
     title: string | null
+    description: string | null
     pointColor: string | null
     mainTextColor: string | null
     dressCodeGentleman: string | null
@@ -3516,6 +3523,7 @@ export namespace Prisma {
     date?: boolean
     userId?: boolean
     title?: boolean
+    description?: boolean
     pointColor?: boolean
     mainTextColor?: boolean
     dressCodeGentleman?: boolean
@@ -3585,6 +3593,7 @@ export namespace Prisma {
     date?: boolean
     userId?: boolean
     title?: boolean
+    description?: boolean
     pointColor?: boolean
     mainTextColor?: boolean
     dressCodeGentleman?: boolean
@@ -3638,7 +3647,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpHasFood" | "isRsvpPopup" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
+  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpHasFood" | "isRsvpPopup" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
@@ -3666,6 +3675,7 @@ export namespace Prisma {
       date: Date | null
       userId: number | null
       title: string | null
+      description: string | null
       pointColor: string | null
       mainTextColor: string | null
       dressCodeGentleman: string | null
@@ -4098,6 +4108,7 @@ export namespace Prisma {
     readonly date: FieldRef<"Invitation", 'DateTime'>
     readonly userId: FieldRef<"Invitation", 'Int'>
     readonly title: FieldRef<"Invitation", 'String'>
+    readonly description: FieldRef<"Invitation", 'String'>
     readonly pointColor: FieldRef<"Invitation", 'String'>
     readonly mainTextColor: FieldRef<"Invitation", 'String'>
     readonly dressCodeGentleman: FieldRef<"Invitation", 'String'>
@@ -14618,6 +14629,7 @@ export namespace Prisma {
     date: 'date',
     userId: 'userId',
     title: 'title',
+    description: 'description',
     pointColor: 'pointColor',
     mainTextColor: 'mainTextColor',
     dressCodeGentleman: 'dressCodeGentleman',
@@ -14851,6 +14863,7 @@ export namespace Prisma {
   export const InvitationOrderByRelevanceFieldEnum: {
     uniqueId: 'uniqueId',
     title: 'title',
+    description: 'description',
     pointColor: 'pointColor',
     mainTextColor: 'mainTextColor',
     dressCodeGentleman: 'dressCodeGentleman',
@@ -15105,6 +15118,7 @@ export namespace Prisma {
     date?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     userId?: IntNullableFilter<"Invitation"> | number | null
     title?: StringNullableFilter<"Invitation"> | string | null
+    description?: StringNullableFilter<"Invitation"> | string | null
     pointColor?: StringNullableFilter<"Invitation"> | string | null
     mainTextColor?: StringNullableFilter<"Invitation"> | string | null
     dressCodeGentleman?: StringNullableFilter<"Invitation"> | string | null
@@ -15171,6 +15185,7 @@ export namespace Prisma {
     date?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
     title?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     pointColor?: SortOrderInput | SortOrder
     mainTextColor?: SortOrderInput | SortOrder
     dressCodeGentleman?: SortOrderInput | SortOrder
@@ -15241,6 +15256,7 @@ export namespace Prisma {
     date?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     userId?: IntNullableFilter<"Invitation"> | number | null
     title?: StringNullableFilter<"Invitation"> | string | null
+    description?: StringNullableFilter<"Invitation"> | string | null
     pointColor?: StringNullableFilter<"Invitation"> | string | null
     mainTextColor?: StringNullableFilter<"Invitation"> | string | null
     dressCodeGentleman?: StringNullableFilter<"Invitation"> | string | null
@@ -15307,6 +15323,7 @@ export namespace Prisma {
     date?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
     title?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     pointColor?: SortOrderInput | SortOrder
     mainTextColor?: SortOrderInput | SortOrder
     dressCodeGentleman?: SortOrderInput | SortOrder
@@ -15375,6 +15392,7 @@ export namespace Prisma {
     date?: DateTimeNullableWithAggregatesFilter<"Invitation"> | Date | string | null
     userId?: IntNullableWithAggregatesFilter<"Invitation"> | number | null
     title?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    description?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     pointColor?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     mainTextColor?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     dressCodeGentleman?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
@@ -16143,6 +16161,7 @@ export namespace Prisma {
     uniqueId?: string | null
     date?: Date | string | null
     title?: string | null
+    description?: string | null
     pointColor?: string | null
     mainTextColor?: string | null
     dressCodeGentleman?: string | null
@@ -16209,6 +16228,7 @@ export namespace Prisma {
     date?: Date | string | null
     userId?: number | null
     title?: string | null
+    description?: string | null
     pointColor?: string | null
     mainTextColor?: string | null
     dressCodeGentleman?: string | null
@@ -16272,6 +16292,7 @@ export namespace Prisma {
     uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     pointColor?: NullableStringFieldUpdateOperationsInput | string | null
     mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
     dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16338,6 +16359,7 @@ export namespace Prisma {
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     pointColor?: NullableStringFieldUpdateOperationsInput | string | null
     mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
     dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16403,6 +16425,7 @@ export namespace Prisma {
     date?: Date | string | null
     userId?: number | null
     title?: string | null
+    description?: string | null
     pointColor?: string | null
     mainTextColor?: string | null
     dressCodeGentleman?: string | null
@@ -16461,6 +16484,7 @@ export namespace Prisma {
     uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     pointColor?: NullableStringFieldUpdateOperationsInput | string | null
     mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
     dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16521,6 +16545,7 @@ export namespace Prisma {
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     pointColor?: NullableStringFieldUpdateOperationsInput | string | null
     mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
     dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17454,6 +17479,7 @@ export namespace Prisma {
     date?: SortOrder
     userId?: SortOrder
     title?: SortOrder
+    description?: SortOrder
     pointColor?: SortOrder
     mainTextColor?: SortOrder
     dressCodeGentleman?: SortOrder
@@ -17524,6 +17550,7 @@ export namespace Prisma {
     date?: SortOrder
     userId?: SortOrder
     title?: SortOrder
+    description?: SortOrder
     pointColor?: SortOrder
     mainTextColor?: SortOrder
     dressCodeGentleman?: SortOrder
@@ -17583,6 +17610,7 @@ export namespace Prisma {
     date?: SortOrder
     userId?: SortOrder
     title?: SortOrder
+    description?: SortOrder
     pointColor?: SortOrder
     mainTextColor?: SortOrder
     dressCodeGentleman?: SortOrder
@@ -18904,6 +18932,7 @@ export namespace Prisma {
     uniqueId?: string | null
     date?: Date | string | null
     title?: string | null
+    description?: string | null
     pointColor?: string | null
     mainTextColor?: string | null
     dressCodeGentleman?: string | null
@@ -18968,6 +18997,7 @@ export namespace Prisma {
     uniqueId?: string | null
     date?: Date | string | null
     title?: string | null
+    description?: string | null
     pointColor?: string | null
     mainTextColor?: string | null
     dressCodeGentleman?: string | null
@@ -19062,6 +19092,7 @@ export namespace Prisma {
     date?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     userId?: IntNullableFilter<"Invitation"> | number | null
     title?: StringNullableFilter<"Invitation"> | string | null
+    description?: StringNullableFilter<"Invitation"> | string | null
     pointColor?: StringNullableFilter<"Invitation"> | string | null
     mainTextColor?: StringNullableFilter<"Invitation"> | string | null
     dressCodeGentleman?: StringNullableFilter<"Invitation"> | string | null
@@ -19510,6 +19541,7 @@ export namespace Prisma {
     uniqueId?: string | null
     date?: Date | string | null
     title?: string | null
+    description?: string | null
     pointColor?: string | null
     mainTextColor?: string | null
     dressCodeGentleman?: string | null
@@ -19575,6 +19607,7 @@ export namespace Prisma {
     date?: Date | string | null
     userId?: number | null
     title?: string | null
+    description?: string | null
     pointColor?: string | null
     mainTextColor?: string | null
     dressCodeGentleman?: string | null
@@ -19704,6 +19737,7 @@ export namespace Prisma {
     uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     pointColor?: NullableStringFieldUpdateOperationsInput | string | null
     mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
     dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19769,6 +19803,7 @@ export namespace Prisma {
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     pointColor?: NullableStringFieldUpdateOperationsInput | string | null
     mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
     dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19945,6 +19980,7 @@ export namespace Prisma {
     uniqueId?: string | null
     date?: Date | string | null
     title?: string | null
+    description?: string | null
     pointColor?: string | null
     mainTextColor?: string | null
     dressCodeGentleman?: string | null
@@ -20010,6 +20046,7 @@ export namespace Prisma {
     date?: Date | string | null
     userId?: number | null
     title?: string | null
+    description?: string | null
     pointColor?: string | null
     mainTextColor?: string | null
     dressCodeGentleman?: string | null
@@ -20088,6 +20125,7 @@ export namespace Prisma {
     uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     pointColor?: NullableStringFieldUpdateOperationsInput | string | null
     mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
     dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20153,6 +20191,7 @@ export namespace Prisma {
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     pointColor?: NullableStringFieldUpdateOperationsInput | string | null
     mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
     dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20215,6 +20254,7 @@ export namespace Prisma {
     uniqueId?: string | null
     date?: Date | string | null
     title?: string | null
+    description?: string | null
     pointColor?: string | null
     mainTextColor?: string | null
     dressCodeGentleman?: string | null
@@ -20280,6 +20320,7 @@ export namespace Prisma {
     date?: Date | string | null
     userId?: number | null
     title?: string | null
+    description?: string | null
     pointColor?: string | null
     mainTextColor?: string | null
     dressCodeGentleman?: string | null
@@ -20358,6 +20399,7 @@ export namespace Prisma {
     uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     pointColor?: NullableStringFieldUpdateOperationsInput | string | null
     mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
     dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20423,6 +20465,7 @@ export namespace Prisma {
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     pointColor?: NullableStringFieldUpdateOperationsInput | string | null
     mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
     dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20485,6 +20528,7 @@ export namespace Prisma {
     uniqueId?: string | null
     date?: Date | string | null
     title?: string | null
+    description?: string | null
     pointColor?: string | null
     mainTextColor?: string | null
     dressCodeGentleman?: string | null
@@ -20550,6 +20594,7 @@ export namespace Prisma {
     date?: Date | string | null
     userId?: number | null
     title?: string | null
+    description?: string | null
     pointColor?: string | null
     mainTextColor?: string | null
     dressCodeGentleman?: string | null
@@ -20628,6 +20673,7 @@ export namespace Prisma {
     uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     pointColor?: NullableStringFieldUpdateOperationsInput | string | null
     mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
     dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20693,6 +20739,7 @@ export namespace Prisma {
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     pointColor?: NullableStringFieldUpdateOperationsInput | string | null
     mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
     dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20755,6 +20802,7 @@ export namespace Prisma {
     uniqueId?: string | null
     date?: Date | string | null
     title?: string | null
+    description?: string | null
     pointColor?: string | null
     mainTextColor?: string | null
     dressCodeGentleman?: string | null
@@ -20820,6 +20868,7 @@ export namespace Prisma {
     date?: Date | string | null
     userId?: number | null
     title?: string | null
+    description?: string | null
     pointColor?: string | null
     mainTextColor?: string | null
     dressCodeGentleman?: string | null
@@ -20898,6 +20947,7 @@ export namespace Prisma {
     uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     pointColor?: NullableStringFieldUpdateOperationsInput | string | null
     mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
     dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20963,6 +21013,7 @@ export namespace Prisma {
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     pointColor?: NullableStringFieldUpdateOperationsInput | string | null
     mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
     dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21026,6 +21077,7 @@ export namespace Prisma {
     uniqueId?: string | null
     date?: Date | string | null
     title?: string | null
+    description?: string | null
     pointColor?: string | null
     mainTextColor?: string | null
     dressCodeGentleman?: string | null
@@ -21084,6 +21136,7 @@ export namespace Prisma {
     uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     pointColor?: NullableStringFieldUpdateOperationsInput | string | null
     mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
     dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21148,6 +21201,7 @@ export namespace Prisma {
     uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     pointColor?: NullableStringFieldUpdateOperationsInput | string | null
     mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
     dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21212,6 +21266,7 @@ export namespace Prisma {
     uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     pointColor?: NullableStringFieldUpdateOperationsInput | string | null
     mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
     dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null

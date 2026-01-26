@@ -136,6 +136,7 @@ exports.Prisma.InvitationScalarFieldEnum = {
   date: 'date',
   userId: 'userId',
   title: 'title',
+  description: 'description',
   pointColor: 'pointColor',
   mainTextColor: 'mainTextColor',
   dressCodeGentleman: 'dressCodeGentleman',
@@ -318,6 +319,7 @@ exports.Prisma.QueryMode = {
 exports.Prisma.InvitationOrderByRelevanceFieldEnum = {
   uniqueId: 'uniqueId',
   title: 'title',
+  description: 'description',
   pointColor: 'pointColor',
   mainTextColor: 'mainTextColor',
   dressCodeGentleman: 'dressCodeGentleman',

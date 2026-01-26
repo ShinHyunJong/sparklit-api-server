@@ -24,7 +24,8 @@ model Invitation {
   uniqueId                 String?                @unique(map: "uniqueId") @db.VarChar(100)
   date                     DateTime?              @db.Timestamp(0)
   userId                   Int?                   @db.UnsignedInt
-  title                    String?                @db.VarChar(50)
+  title                    String?                @db.VarChar(60)
+  description              String?                @db.VarChar(160)
   pointColor               String?                @default("#f79e9e") @db.VarChar(16)
   mainTextColor            String?                @default("#000000") @db.VarChar(10)
   dressCodeGentleman       String?                @db.Text
