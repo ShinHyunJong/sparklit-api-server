@@ -21,7 +21,7 @@ model User {
 model Invitation {
   id                       Int                    @id @default(autoincrement()) @db.UnsignedInt
   templateNo               Int?                   @default(1)
-  uniqueId                 String?                @unique(map: "uniqueId") @db.VarChar(16)
+  uniqueId                 String?                @unique(map: "uniqueId") @db.VarChar(100)
   date                     DateTime?              @db.Timestamp(0)
   userId                   Int?                   @db.UnsignedInt
   title                    String?                @db.VarChar(50)
@@ -34,27 +34,27 @@ model Invitation {
   musicFilename            String?                @db.VarChar(255)
   musicFileKey             String?                @db.VarChar(255)
   notice                   String?                @db.Text
-  brideFirstName           String?                @db.VarChar(20)
-  brideMiddleName          String?                @db.VarChar(20)
+  brideFirstName           String?                @db.VarChar(50)
+  brideMiddleName          String?                @db.VarChar(50)
   dressCodeMainColor       String?                @default("#57372A") @db.VarChar(7)
   dressCodeSubColor        String?                @default("#91604F") @db.VarChar(7)
   dressCodeThirdColor      String?                @default("#D2947B") @db.VarChar(7)
-  brideLastName            String?                @db.VarChar(20)
-  brideMomName             String?                @db.VarChar(20)
+  brideLastName            String?                @db.VarChar(50)
+  brideMomName             String?                @db.VarChar(50)
   greetingTitle            String?                @db.Text
   isGroomMomHidden         Boolean?
   isGroomDadHidden         Int?                   @db.TinyInt
   isBrideDadHidden         Int?                   @db.TinyInt
   isBrideMomHidden         Int?                   @db.TinyInt
   greetingContent          String?                @db.Text
-  brideDadName             String?                @db.VarChar(20)
-  bridePhone               String?                @db.VarChar(20)
-  groomFirstName           String?                @db.VarChar(20)
+  brideDadName             String?                @db.VarChar(50)
+  bridePhone               String?                @db.VarChar(50)
+  groomFirstName           String?                @db.VarChar(50)
   wishlistUrl              String?                @db.VarChar(255)
   baseFont                 String?                @db.VarChar(50)
-  groomMiddleName          String?                @db.VarChar(20)
-  groomLastName            String?                @db.VarChar(20)
-  groomPhone               String?                @db.VarChar(20)
+  groomMiddleName          String?                @db.VarChar(50)
+  groomLastName            String?                @db.VarChar(50)
+  groomPhone               String?                @db.VarChar(50)
   primarySponsor           String?                @db.Text
   secondarySponsor         String?                @db.Text
   bankAccount              String?                @db.Text
@@ -69,8 +69,8 @@ model Invitation {
   bestMan                  String?                @db.Text
   bridesMaids              String?                @db.Text
   wishlistText             String?                @default("We’ve put together a small wishlist at [Name] for those who would like to help us fill our new home.") @db.VarChar(255)
-  groomMomName             String?                @db.VarChar(20)
-  groomDadName             String?                @db.VarChar(20)
+  groomMomName             String?                @db.VarChar(50)
+  groomDadName             String?                @db.VarChar(50)
   layoutOrder              Json?
   endingText               String?                @db.Text
   ogImageKey               String?                @db.VarChar(255)
@@ -123,7 +123,7 @@ model InvitationPlaceTime {
 
 model InvitationPhoto {
   id           Int         @id @default(autoincrement()) @db.UnsignedInt
-  invitationId String?     @db.VarChar(16)
+  invitationId String?     @db.VarChar(100)
   width        Int?
   height       Int?
   order        Int?        @db.UnsignedInt
