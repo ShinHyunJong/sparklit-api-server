@@ -337,6 +337,30 @@ export class InvitationController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Put('/rsvpDeadline/:uniqueId')
+  updateRsvpDeadline(
+    @Param('uniqueId') uniqueId: string,
+    @Body() body: { rsvpDeadline: string | null },
+  ) {
+    return this.invitationService.updateRsvpDeadline(
+      uniqueId,
+      body.rsvpDeadline,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('/rsvpDeadlineDesc/:uniqueId')
+  updateRsvpDeadlineDesc(
+    @Param('uniqueId') uniqueId: string,
+    @Body() body: { rsvpDeadlineDesc: string },
+  ) {
+    return this.invitationService.updateRsvpDeadlineDesc(
+      uniqueId,
+      body.rsvpDeadlineDesc,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Put('/rsvpHasFood/:uniqueId')
   updateRsvpHasFood(
     @Param('uniqueId') uniqueId: string,

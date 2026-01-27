@@ -687,6 +687,26 @@ export class InvitationService {
     return updated;
   }
 
+  async updateRsvpDeadline(uniqueId: string, rsvpDeadline: string | null) {
+    const updated = await this.prismaService.invitation.update({
+      where: { uniqueId },
+      data: {
+        rsvpDeadline: rsvpDeadline ? new Date(rsvpDeadline) : null,
+      },
+    });
+    return updated;
+  }
+
+  async updateRsvpDeadlineDesc(uniqueId: string, rsvpDeadlineDesc: string) {
+    const updated = await this.prismaService.invitation.update({
+      where: { uniqueId },
+      data: {
+        rsvpDeadlineDesc,
+      },
+    });
+    return updated;
+  }
+
   async updateRsvpHasFood(uniqueId: string, rsvpHasFood: boolean) {
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },

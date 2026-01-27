@@ -65,6 +65,8 @@ model Invitation {
   timezone                 String?                @db.VarChar(50)
   rsvpTitle                String?                @db.VarChar(255)
   rsvpMaxPax               Int?
+  rsvpDeadline             DateTime?              @db.Timestamp(0)
+  rsvpDeadlineDesc         String?                @db.Text
   rsvpHasFood              Boolean?
   isRsvpPopup              Boolean?               @default(false)
   bestMan                  String?                @db.Text
@@ -201,4 +203,11 @@ model InvitationDressColor {
 model InvitationGuest {
   id   Int     @id @default(autoincrement()) @db.UnsignedInt
   name String? @db.VarChar(50)
+}
+
+model InvitationFaq {
+  id           Int     @id @default(autoincrement()) @db.UnsignedInt
+  invitationId Int?    @db.UnsignedInt
+  question     String? @db.VarChar(255)
+  answer       String? @db.Text
 }

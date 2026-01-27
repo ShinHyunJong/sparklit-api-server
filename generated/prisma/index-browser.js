@@ -176,6 +176,8 @@ exports.Prisma.InvitationScalarFieldEnum = {
   timezone: 'timezone',
   rsvpTitle: 'rsvpTitle',
   rsvpMaxPax: 'rsvpMaxPax',
+  rsvpDeadline: 'rsvpDeadline',
+  rsvpDeadlineDesc: 'rsvpDeadlineDesc',
   rsvpHasFood: 'rsvpHasFood',
   isRsvpPopup: 'isRsvpPopup',
   bestMan: 'bestMan',
@@ -284,6 +286,13 @@ exports.Prisma.InvitationGuestScalarFieldEnum = {
   name: 'name'
 };
 
+exports.Prisma.InvitationFaqScalarFieldEnum = {
+  id: 'id',
+  invitationId: 'invitationId',
+  question: 'question',
+  answer: 'answer'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -354,6 +363,7 @@ exports.Prisma.InvitationOrderByRelevanceFieldEnum = {
   textColor: 'textColor',
   timezone: 'timezone',
   rsvpTitle: 'rsvpTitle',
+  rsvpDeadlineDesc: 'rsvpDeadlineDesc',
   bestMan: 'bestMan',
   bridesMaids: 'bridesMaids',
   wishlistText: 'wishlistText',
@@ -414,6 +424,11 @@ exports.Prisma.InvitationGuestOrderByRelevanceFieldEnum = {
   name: 'name'
 };
 
+exports.Prisma.InvitationFaqOrderByRelevanceFieldEnum = {
+  question: 'question',
+  answer: 'answer'
+};
+
 
 exports.Prisma.ModelName = {
   User: 'User',
@@ -427,7 +442,8 @@ exports.Prisma.ModelName = {
   InvitationMusic: 'InvitationMusic',
   InvitationView: 'InvitationView',
   InvitationDressColor: 'InvitationDressColor',
-  InvitationGuest: 'InvitationGuest'
+  InvitationGuest: 'InvitationGuest',
+  InvitationFaq: 'InvitationFaq'
 };
 
 /**

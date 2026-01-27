@@ -73,6 +73,11 @@ export type InvitationDressColor = $Result.DefaultSelection<Prisma.$InvitationDr
  * 
  */
 export type InvitationGuest = $Result.DefaultSelection<Prisma.$InvitationGuestPayload>
+/**
+ * Model InvitationFaq
+ * 
+ */
+export type InvitationFaq = $Result.DefaultSelection<Prisma.$InvitationFaqPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -318,6 +323,16 @@ export class PrismaClient<
     * ```
     */
   get invitationGuest(): Prisma.InvitationGuestDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.invitationFaq`: Exposes CRUD operations for the **InvitationFaq** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more InvitationFaqs
+    * const invitationFaqs = await prisma.invitationFaq.findMany()
+    * ```
+    */
+  get invitationFaq(): Prisma.InvitationFaqDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -769,7 +784,8 @@ export namespace Prisma {
     InvitationMusic: 'InvitationMusic',
     InvitationView: 'InvitationView',
     InvitationDressColor: 'InvitationDressColor',
-    InvitationGuest: 'InvitationGuest'
+    InvitationGuest: 'InvitationGuest',
+    InvitationFaq: 'InvitationFaq'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -788,7 +804,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "invitation" | "invitationPlace" | "place" | "invitationPlaceTime" | "invitationPhoto" | "invitationCoverPhoto" | "invitationRSVP" | "invitationMusic" | "invitationView" | "invitationDressColor" | "invitationGuest"
+      modelProps: "user" | "invitation" | "invitationPlace" | "place" | "invitationPlaceTime" | "invitationPhoto" | "invitationCoverPhoto" | "invitationRSVP" | "invitationMusic" | "invitationView" | "invitationDressColor" | "invitationGuest" | "invitationFaq"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1584,6 +1600,72 @@ export namespace Prisma {
           }
         }
       }
+      InvitationFaq: {
+        payload: Prisma.$InvitationFaqPayload<ExtArgs>
+        fields: Prisma.InvitationFaqFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.InvitationFaqFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationFaqPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.InvitationFaqFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationFaqPayload>
+          }
+          findFirst: {
+            args: Prisma.InvitationFaqFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationFaqPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.InvitationFaqFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationFaqPayload>
+          }
+          findMany: {
+            args: Prisma.InvitationFaqFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationFaqPayload>[]
+          }
+          create: {
+            args: Prisma.InvitationFaqCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationFaqPayload>
+          }
+          createMany: {
+            args: Prisma.InvitationFaqCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.InvitationFaqDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationFaqPayload>
+          }
+          update: {
+            args: Prisma.InvitationFaqUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationFaqPayload>
+          }
+          deleteMany: {
+            args: Prisma.InvitationFaqDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.InvitationFaqUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.InvitationFaqUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationFaqPayload>
+          }
+          aggregate: {
+            args: Prisma.InvitationFaqAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateInvitationFaq>
+          }
+          groupBy: {
+            args: Prisma.InvitationFaqGroupByArgs<ExtArgs>
+            result: $Utils.Optional<InvitationFaqGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.InvitationFaqCountArgs<ExtArgs>
+            result: $Utils.Optional<InvitationFaqCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1680,6 +1762,7 @@ export namespace Prisma {
     invitationView?: InvitationViewOmit
     invitationDressColor?: InvitationDressColorOmit
     invitationGuest?: InvitationGuestOmit
+    invitationFaq?: InvitationFaqOmit
   }
 
   /* Types for Logging */
@@ -3012,6 +3095,8 @@ export namespace Prisma {
     timezone: string | null
     rsvpTitle: string | null
     rsvpMaxPax: number | null
+    rsvpDeadline: Date | null
+    rsvpDeadlineDesc: string | null
     rsvpHasFood: boolean | null
     isRsvpPopup: boolean | null
     bestMan: string | null
@@ -3072,6 +3157,8 @@ export namespace Prisma {
     timezone: string | null
     rsvpTitle: string | null
     rsvpMaxPax: number | null
+    rsvpDeadline: Date | null
+    rsvpDeadlineDesc: string | null
     rsvpHasFood: boolean | null
     isRsvpPopup: boolean | null
     bestMan: string | null
@@ -3132,6 +3219,8 @@ export namespace Prisma {
     timezone: number
     rsvpTitle: number
     rsvpMaxPax: number
+    rsvpDeadline: number
+    rsvpDeadlineDesc: number
     rsvpHasFood: number
     isRsvpPopup: number
     bestMan: number
@@ -3215,6 +3304,8 @@ export namespace Prisma {
     timezone?: true
     rsvpTitle?: true
     rsvpMaxPax?: true
+    rsvpDeadline?: true
+    rsvpDeadlineDesc?: true
     rsvpHasFood?: true
     isRsvpPopup?: true
     bestMan?: true
@@ -3275,6 +3366,8 @@ export namespace Prisma {
     timezone?: true
     rsvpTitle?: true
     rsvpMaxPax?: true
+    rsvpDeadline?: true
+    rsvpDeadlineDesc?: true
     rsvpHasFood?: true
     isRsvpPopup?: true
     bestMan?: true
@@ -3335,6 +3428,8 @@ export namespace Prisma {
     timezone?: true
     rsvpTitle?: true
     rsvpMaxPax?: true
+    rsvpDeadline?: true
+    rsvpDeadlineDesc?: true
     rsvpHasFood?: true
     isRsvpPopup?: true
     bestMan?: true
@@ -3483,6 +3578,8 @@ export namespace Prisma {
     timezone: string | null
     rsvpTitle: string | null
     rsvpMaxPax: number | null
+    rsvpDeadline: Date | null
+    rsvpDeadlineDesc: string | null
     rsvpHasFood: boolean | null
     isRsvpPopup: boolean | null
     bestMan: string | null
@@ -3563,6 +3660,8 @@ export namespace Prisma {
     timezone?: boolean
     rsvpTitle?: boolean
     rsvpMaxPax?: boolean
+    rsvpDeadline?: boolean
+    rsvpDeadlineDesc?: boolean
     rsvpHasFood?: boolean
     isRsvpPopup?: boolean
     bestMan?: boolean
@@ -3633,6 +3732,8 @@ export namespace Prisma {
     timezone?: boolean
     rsvpTitle?: boolean
     rsvpMaxPax?: boolean
+    rsvpDeadline?: boolean
+    rsvpDeadlineDesc?: boolean
     rsvpHasFood?: boolean
     isRsvpPopup?: boolean
     bestMan?: boolean
@@ -3647,7 +3748,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpHasFood" | "isRsvpPopup" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
+  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpDeadline" | "rsvpDeadlineDesc" | "rsvpHasFood" | "isRsvpPopup" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
@@ -3715,6 +3816,8 @@ export namespace Prisma {
       timezone: string | null
       rsvpTitle: string | null
       rsvpMaxPax: number | null
+      rsvpDeadline: Date | null
+      rsvpDeadlineDesc: string | null
       rsvpHasFood: boolean | null
       isRsvpPopup: boolean | null
       bestMan: string | null
@@ -4148,6 +4251,8 @@ export namespace Prisma {
     readonly timezone: FieldRef<"Invitation", 'String'>
     readonly rsvpTitle: FieldRef<"Invitation", 'String'>
     readonly rsvpMaxPax: FieldRef<"Invitation", 'Int'>
+    readonly rsvpDeadline: FieldRef<"Invitation", 'DateTime'>
+    readonly rsvpDeadlineDesc: FieldRef<"Invitation", 'String'>
     readonly rsvpHasFood: FieldRef<"Invitation", 'Boolean'>
     readonly isRsvpPopup: FieldRef<"Invitation", 'Boolean'>
     readonly bestMan: FieldRef<"Invitation", 'String'>
@@ -14597,6 +14702,915 @@ export namespace Prisma {
 
 
   /**
+   * Model InvitationFaq
+   */
+
+  export type AggregateInvitationFaq = {
+    _count: InvitationFaqCountAggregateOutputType | null
+    _avg: InvitationFaqAvgAggregateOutputType | null
+    _sum: InvitationFaqSumAggregateOutputType | null
+    _min: InvitationFaqMinAggregateOutputType | null
+    _max: InvitationFaqMaxAggregateOutputType | null
+  }
+
+  export type InvitationFaqAvgAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+  }
+
+  export type InvitationFaqSumAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+  }
+
+  export type InvitationFaqMinAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    question: string | null
+    answer: string | null
+  }
+
+  export type InvitationFaqMaxAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    question: string | null
+    answer: string | null
+  }
+
+  export type InvitationFaqCountAggregateOutputType = {
+    id: number
+    invitationId: number
+    question: number
+    answer: number
+    _all: number
+  }
+
+
+  export type InvitationFaqAvgAggregateInputType = {
+    id?: true
+    invitationId?: true
+  }
+
+  export type InvitationFaqSumAggregateInputType = {
+    id?: true
+    invitationId?: true
+  }
+
+  export type InvitationFaqMinAggregateInputType = {
+    id?: true
+    invitationId?: true
+    question?: true
+    answer?: true
+  }
+
+  export type InvitationFaqMaxAggregateInputType = {
+    id?: true
+    invitationId?: true
+    question?: true
+    answer?: true
+  }
+
+  export type InvitationFaqCountAggregateInputType = {
+    id?: true
+    invitationId?: true
+    question?: true
+    answer?: true
+    _all?: true
+  }
+
+  export type InvitationFaqAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationFaq to aggregate.
+     */
+    where?: InvitationFaqWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationFaqs to fetch.
+     */
+    orderBy?: InvitationFaqOrderByWithRelationInput | InvitationFaqOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: InvitationFaqWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationFaqs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationFaqs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned InvitationFaqs
+    **/
+    _count?: true | InvitationFaqCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: InvitationFaqAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: InvitationFaqSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: InvitationFaqMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: InvitationFaqMaxAggregateInputType
+  }
+
+  export type GetInvitationFaqAggregateType<T extends InvitationFaqAggregateArgs> = {
+        [P in keyof T & keyof AggregateInvitationFaq]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateInvitationFaq[P]>
+      : GetScalarType<T[P], AggregateInvitationFaq[P]>
+  }
+
+
+
+
+  export type InvitationFaqGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationFaqWhereInput
+    orderBy?: InvitationFaqOrderByWithAggregationInput | InvitationFaqOrderByWithAggregationInput[]
+    by: InvitationFaqScalarFieldEnum[] | InvitationFaqScalarFieldEnum
+    having?: InvitationFaqScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: InvitationFaqCountAggregateInputType | true
+    _avg?: InvitationFaqAvgAggregateInputType
+    _sum?: InvitationFaqSumAggregateInputType
+    _min?: InvitationFaqMinAggregateInputType
+    _max?: InvitationFaqMaxAggregateInputType
+  }
+
+  export type InvitationFaqGroupByOutputType = {
+    id: number
+    invitationId: number | null
+    question: string | null
+    answer: string | null
+    _count: InvitationFaqCountAggregateOutputType | null
+    _avg: InvitationFaqAvgAggregateOutputType | null
+    _sum: InvitationFaqSumAggregateOutputType | null
+    _min: InvitationFaqMinAggregateOutputType | null
+    _max: InvitationFaqMaxAggregateOutputType | null
+  }
+
+  type GetInvitationFaqGroupByPayload<T extends InvitationFaqGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<InvitationFaqGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof InvitationFaqGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], InvitationFaqGroupByOutputType[P]>
+            : GetScalarType<T[P], InvitationFaqGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type InvitationFaqSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    invitationId?: boolean
+    question?: boolean
+    answer?: boolean
+  }, ExtArgs["result"]["invitationFaq"]>
+
+
+
+  export type InvitationFaqSelectScalar = {
+    id?: boolean
+    invitationId?: boolean
+    question?: boolean
+    answer?: boolean
+  }
+
+  export type InvitationFaqOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitationId" | "question" | "answer", ExtArgs["result"]["invitationFaq"]>
+
+  export type $InvitationFaqPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "InvitationFaq"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      invitationId: number | null
+      question: string | null
+      answer: string | null
+    }, ExtArgs["result"]["invitationFaq"]>
+    composites: {}
+  }
+
+  type InvitationFaqGetPayload<S extends boolean | null | undefined | InvitationFaqDefaultArgs> = $Result.GetResult<Prisma.$InvitationFaqPayload, S>
+
+  type InvitationFaqCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<InvitationFaqFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: InvitationFaqCountAggregateInputType | true
+    }
+
+  export interface InvitationFaqDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['InvitationFaq'], meta: { name: 'InvitationFaq' } }
+    /**
+     * Find zero or one InvitationFaq that matches the filter.
+     * @param {InvitationFaqFindUniqueArgs} args - Arguments to find a InvitationFaq
+     * @example
+     * // Get one InvitationFaq
+     * const invitationFaq = await prisma.invitationFaq.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends InvitationFaqFindUniqueArgs>(args: SelectSubset<T, InvitationFaqFindUniqueArgs<ExtArgs>>): Prisma__InvitationFaqClient<$Result.GetResult<Prisma.$InvitationFaqPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one InvitationFaq that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {InvitationFaqFindUniqueOrThrowArgs} args - Arguments to find a InvitationFaq
+     * @example
+     * // Get one InvitationFaq
+     * const invitationFaq = await prisma.invitationFaq.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends InvitationFaqFindUniqueOrThrowArgs>(args: SelectSubset<T, InvitationFaqFindUniqueOrThrowArgs<ExtArgs>>): Prisma__InvitationFaqClient<$Result.GetResult<Prisma.$InvitationFaqPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationFaq that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationFaqFindFirstArgs} args - Arguments to find a InvitationFaq
+     * @example
+     * // Get one InvitationFaq
+     * const invitationFaq = await prisma.invitationFaq.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends InvitationFaqFindFirstArgs>(args?: SelectSubset<T, InvitationFaqFindFirstArgs<ExtArgs>>): Prisma__InvitationFaqClient<$Result.GetResult<Prisma.$InvitationFaqPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationFaq that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationFaqFindFirstOrThrowArgs} args - Arguments to find a InvitationFaq
+     * @example
+     * // Get one InvitationFaq
+     * const invitationFaq = await prisma.invitationFaq.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends InvitationFaqFindFirstOrThrowArgs>(args?: SelectSubset<T, InvitationFaqFindFirstOrThrowArgs<ExtArgs>>): Prisma__InvitationFaqClient<$Result.GetResult<Prisma.$InvitationFaqPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more InvitationFaqs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationFaqFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all InvitationFaqs
+     * const invitationFaqs = await prisma.invitationFaq.findMany()
+     * 
+     * // Get first 10 InvitationFaqs
+     * const invitationFaqs = await prisma.invitationFaq.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const invitationFaqWithIdOnly = await prisma.invitationFaq.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends InvitationFaqFindManyArgs>(args?: SelectSubset<T, InvitationFaqFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationFaqPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a InvitationFaq.
+     * @param {InvitationFaqCreateArgs} args - Arguments to create a InvitationFaq.
+     * @example
+     * // Create one InvitationFaq
+     * const InvitationFaq = await prisma.invitationFaq.create({
+     *   data: {
+     *     // ... data to create a InvitationFaq
+     *   }
+     * })
+     * 
+     */
+    create<T extends InvitationFaqCreateArgs>(args: SelectSubset<T, InvitationFaqCreateArgs<ExtArgs>>): Prisma__InvitationFaqClient<$Result.GetResult<Prisma.$InvitationFaqPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many InvitationFaqs.
+     * @param {InvitationFaqCreateManyArgs} args - Arguments to create many InvitationFaqs.
+     * @example
+     * // Create many InvitationFaqs
+     * const invitationFaq = await prisma.invitationFaq.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends InvitationFaqCreateManyArgs>(args?: SelectSubset<T, InvitationFaqCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a InvitationFaq.
+     * @param {InvitationFaqDeleteArgs} args - Arguments to delete one InvitationFaq.
+     * @example
+     * // Delete one InvitationFaq
+     * const InvitationFaq = await prisma.invitationFaq.delete({
+     *   where: {
+     *     // ... filter to delete one InvitationFaq
+     *   }
+     * })
+     * 
+     */
+    delete<T extends InvitationFaqDeleteArgs>(args: SelectSubset<T, InvitationFaqDeleteArgs<ExtArgs>>): Prisma__InvitationFaqClient<$Result.GetResult<Prisma.$InvitationFaqPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one InvitationFaq.
+     * @param {InvitationFaqUpdateArgs} args - Arguments to update one InvitationFaq.
+     * @example
+     * // Update one InvitationFaq
+     * const invitationFaq = await prisma.invitationFaq.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends InvitationFaqUpdateArgs>(args: SelectSubset<T, InvitationFaqUpdateArgs<ExtArgs>>): Prisma__InvitationFaqClient<$Result.GetResult<Prisma.$InvitationFaqPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more InvitationFaqs.
+     * @param {InvitationFaqDeleteManyArgs} args - Arguments to filter InvitationFaqs to delete.
+     * @example
+     * // Delete a few InvitationFaqs
+     * const { count } = await prisma.invitationFaq.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends InvitationFaqDeleteManyArgs>(args?: SelectSubset<T, InvitationFaqDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more InvitationFaqs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationFaqUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many InvitationFaqs
+     * const invitationFaq = await prisma.invitationFaq.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends InvitationFaqUpdateManyArgs>(args: SelectSubset<T, InvitationFaqUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one InvitationFaq.
+     * @param {InvitationFaqUpsertArgs} args - Arguments to update or create a InvitationFaq.
+     * @example
+     * // Update or create a InvitationFaq
+     * const invitationFaq = await prisma.invitationFaq.upsert({
+     *   create: {
+     *     // ... data to create a InvitationFaq
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the InvitationFaq we want to update
+     *   }
+     * })
+     */
+    upsert<T extends InvitationFaqUpsertArgs>(args: SelectSubset<T, InvitationFaqUpsertArgs<ExtArgs>>): Prisma__InvitationFaqClient<$Result.GetResult<Prisma.$InvitationFaqPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of InvitationFaqs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationFaqCountArgs} args - Arguments to filter InvitationFaqs to count.
+     * @example
+     * // Count the number of InvitationFaqs
+     * const count = await prisma.invitationFaq.count({
+     *   where: {
+     *     // ... the filter for the InvitationFaqs we want to count
+     *   }
+     * })
+    **/
+    count<T extends InvitationFaqCountArgs>(
+      args?: Subset<T, InvitationFaqCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], InvitationFaqCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a InvitationFaq.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationFaqAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends InvitationFaqAggregateArgs>(args: Subset<T, InvitationFaqAggregateArgs>): Prisma.PrismaPromise<GetInvitationFaqAggregateType<T>>
+
+    /**
+     * Group by InvitationFaq.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationFaqGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends InvitationFaqGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: InvitationFaqGroupByArgs['orderBy'] }
+        : { orderBy?: InvitationFaqGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, InvitationFaqGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInvitationFaqGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the InvitationFaq model
+   */
+  readonly fields: InvitationFaqFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for InvitationFaq.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__InvitationFaqClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the InvitationFaq model
+   */
+  interface InvitationFaqFieldRefs {
+    readonly id: FieldRef<"InvitationFaq", 'Int'>
+    readonly invitationId: FieldRef<"InvitationFaq", 'Int'>
+    readonly question: FieldRef<"InvitationFaq", 'String'>
+    readonly answer: FieldRef<"InvitationFaq", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * InvitationFaq findUnique
+   */
+  export type InvitationFaqFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationFaq
+     */
+    select?: InvitationFaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationFaq
+     */
+    omit?: InvitationFaqOmit<ExtArgs> | null
+    /**
+     * Filter, which InvitationFaq to fetch.
+     */
+    where: InvitationFaqWhereUniqueInput
+  }
+
+  /**
+   * InvitationFaq findUniqueOrThrow
+   */
+  export type InvitationFaqFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationFaq
+     */
+    select?: InvitationFaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationFaq
+     */
+    omit?: InvitationFaqOmit<ExtArgs> | null
+    /**
+     * Filter, which InvitationFaq to fetch.
+     */
+    where: InvitationFaqWhereUniqueInput
+  }
+
+  /**
+   * InvitationFaq findFirst
+   */
+  export type InvitationFaqFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationFaq
+     */
+    select?: InvitationFaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationFaq
+     */
+    omit?: InvitationFaqOmit<ExtArgs> | null
+    /**
+     * Filter, which InvitationFaq to fetch.
+     */
+    where?: InvitationFaqWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationFaqs to fetch.
+     */
+    orderBy?: InvitationFaqOrderByWithRelationInput | InvitationFaqOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationFaqs.
+     */
+    cursor?: InvitationFaqWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationFaqs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationFaqs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationFaqs.
+     */
+    distinct?: InvitationFaqScalarFieldEnum | InvitationFaqScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationFaq findFirstOrThrow
+   */
+  export type InvitationFaqFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationFaq
+     */
+    select?: InvitationFaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationFaq
+     */
+    omit?: InvitationFaqOmit<ExtArgs> | null
+    /**
+     * Filter, which InvitationFaq to fetch.
+     */
+    where?: InvitationFaqWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationFaqs to fetch.
+     */
+    orderBy?: InvitationFaqOrderByWithRelationInput | InvitationFaqOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationFaqs.
+     */
+    cursor?: InvitationFaqWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationFaqs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationFaqs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationFaqs.
+     */
+    distinct?: InvitationFaqScalarFieldEnum | InvitationFaqScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationFaq findMany
+   */
+  export type InvitationFaqFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationFaq
+     */
+    select?: InvitationFaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationFaq
+     */
+    omit?: InvitationFaqOmit<ExtArgs> | null
+    /**
+     * Filter, which InvitationFaqs to fetch.
+     */
+    where?: InvitationFaqWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationFaqs to fetch.
+     */
+    orderBy?: InvitationFaqOrderByWithRelationInput | InvitationFaqOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing InvitationFaqs.
+     */
+    cursor?: InvitationFaqWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationFaqs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationFaqs.
+     */
+    skip?: number
+    distinct?: InvitationFaqScalarFieldEnum | InvitationFaqScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationFaq create
+   */
+  export type InvitationFaqCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationFaq
+     */
+    select?: InvitationFaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationFaq
+     */
+    omit?: InvitationFaqOmit<ExtArgs> | null
+    /**
+     * The data needed to create a InvitationFaq.
+     */
+    data?: XOR<InvitationFaqCreateInput, InvitationFaqUncheckedCreateInput>
+  }
+
+  /**
+   * InvitationFaq createMany
+   */
+  export type InvitationFaqCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many InvitationFaqs.
+     */
+    data: InvitationFaqCreateManyInput | InvitationFaqCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * InvitationFaq update
+   */
+  export type InvitationFaqUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationFaq
+     */
+    select?: InvitationFaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationFaq
+     */
+    omit?: InvitationFaqOmit<ExtArgs> | null
+    /**
+     * The data needed to update a InvitationFaq.
+     */
+    data: XOR<InvitationFaqUpdateInput, InvitationFaqUncheckedUpdateInput>
+    /**
+     * Choose, which InvitationFaq to update.
+     */
+    where: InvitationFaqWhereUniqueInput
+  }
+
+  /**
+   * InvitationFaq updateMany
+   */
+  export type InvitationFaqUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update InvitationFaqs.
+     */
+    data: XOR<InvitationFaqUpdateManyMutationInput, InvitationFaqUncheckedUpdateManyInput>
+    /**
+     * Filter which InvitationFaqs to update
+     */
+    where?: InvitationFaqWhereInput
+    /**
+     * Limit how many InvitationFaqs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationFaq upsert
+   */
+  export type InvitationFaqUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationFaq
+     */
+    select?: InvitationFaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationFaq
+     */
+    omit?: InvitationFaqOmit<ExtArgs> | null
+    /**
+     * The filter to search for the InvitationFaq to update in case it exists.
+     */
+    where: InvitationFaqWhereUniqueInput
+    /**
+     * In case the InvitationFaq found by the `where` argument doesn't exist, create a new InvitationFaq with this data.
+     */
+    create: XOR<InvitationFaqCreateInput, InvitationFaqUncheckedCreateInput>
+    /**
+     * In case the InvitationFaq was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<InvitationFaqUpdateInput, InvitationFaqUncheckedUpdateInput>
+  }
+
+  /**
+   * InvitationFaq delete
+   */
+  export type InvitationFaqDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationFaq
+     */
+    select?: InvitationFaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationFaq
+     */
+    omit?: InvitationFaqOmit<ExtArgs> | null
+    /**
+     * Filter which InvitationFaq to delete.
+     */
+    where: InvitationFaqWhereUniqueInput
+  }
+
+  /**
+   * InvitationFaq deleteMany
+   */
+  export type InvitationFaqDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationFaqs to delete
+     */
+    where?: InvitationFaqWhereInput
+    /**
+     * Limit how many InvitationFaqs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationFaq without action
+   */
+  export type InvitationFaqDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationFaq
+     */
+    select?: InvitationFaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationFaq
+     */
+    omit?: InvitationFaqOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -14669,6 +15683,8 @@ export namespace Prisma {
     timezone: 'timezone',
     rsvpTitle: 'rsvpTitle',
     rsvpMaxPax: 'rsvpMaxPax',
+    rsvpDeadline: 'rsvpDeadline',
+    rsvpDeadlineDesc: 'rsvpDeadlineDesc',
     rsvpHasFood: 'rsvpHasFood',
     isRsvpPopup: 'isRsvpPopup',
     bestMan: 'bestMan',
@@ -14810,6 +15826,16 @@ export namespace Prisma {
   export type InvitationGuestScalarFieldEnum = (typeof InvitationGuestScalarFieldEnum)[keyof typeof InvitationGuestScalarFieldEnum]
 
 
+  export const InvitationFaqScalarFieldEnum: {
+    id: 'id',
+    invitationId: 'invitationId',
+    question: 'question',
+    answer: 'answer'
+  };
+
+  export type InvitationFaqScalarFieldEnum = (typeof InvitationFaqScalarFieldEnum)[keyof typeof InvitationFaqScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -14898,6 +15924,7 @@ export namespace Prisma {
     textColor: 'textColor',
     timezone: 'timezone',
     rsvpTitle: 'rsvpTitle',
+    rsvpDeadlineDesc: 'rsvpDeadlineDesc',
     bestMan: 'bestMan',
     bridesMaids: 'bridesMaids',
     wishlistText: 'wishlistText',
@@ -14986,6 +16013,14 @@ export namespace Prisma {
   };
 
   export type InvitationGuestOrderByRelevanceFieldEnum = (typeof InvitationGuestOrderByRelevanceFieldEnum)[keyof typeof InvitationGuestOrderByRelevanceFieldEnum]
+
+
+  export const InvitationFaqOrderByRelevanceFieldEnum: {
+    question: 'question',
+    answer: 'answer'
+  };
+
+  export type InvitationFaqOrderByRelevanceFieldEnum = (typeof InvitationFaqOrderByRelevanceFieldEnum)[keyof typeof InvitationFaqOrderByRelevanceFieldEnum]
 
 
   /**
@@ -15158,6 +16193,8 @@ export namespace Prisma {
     timezone?: StringNullableFilter<"Invitation"> | string | null
     rsvpTitle?: StringNullableFilter<"Invitation"> | string | null
     rsvpMaxPax?: IntNullableFilter<"Invitation"> | number | null
+    rsvpDeadline?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    rsvpDeadlineDesc?: StringNullableFilter<"Invitation"> | string | null
     rsvpHasFood?: BoolNullableFilter<"Invitation"> | boolean | null
     isRsvpPopup?: BoolNullableFilter<"Invitation"> | boolean | null
     bestMan?: StringNullableFilter<"Invitation"> | string | null
@@ -15225,6 +16262,8 @@ export namespace Prisma {
     timezone?: SortOrderInput | SortOrder
     rsvpTitle?: SortOrderInput | SortOrder
     rsvpMaxPax?: SortOrderInput | SortOrder
+    rsvpDeadline?: SortOrderInput | SortOrder
+    rsvpDeadlineDesc?: SortOrderInput | SortOrder
     rsvpHasFood?: SortOrderInput | SortOrder
     isRsvpPopup?: SortOrderInput | SortOrder
     bestMan?: SortOrderInput | SortOrder
@@ -15296,6 +16335,8 @@ export namespace Prisma {
     timezone?: StringNullableFilter<"Invitation"> | string | null
     rsvpTitle?: StringNullableFilter<"Invitation"> | string | null
     rsvpMaxPax?: IntNullableFilter<"Invitation"> | number | null
+    rsvpDeadline?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    rsvpDeadlineDesc?: StringNullableFilter<"Invitation"> | string | null
     rsvpHasFood?: BoolNullableFilter<"Invitation"> | boolean | null
     isRsvpPopup?: BoolNullableFilter<"Invitation"> | boolean | null
     bestMan?: StringNullableFilter<"Invitation"> | string | null
@@ -15363,6 +16404,8 @@ export namespace Prisma {
     timezone?: SortOrderInput | SortOrder
     rsvpTitle?: SortOrderInput | SortOrder
     rsvpMaxPax?: SortOrderInput | SortOrder
+    rsvpDeadline?: SortOrderInput | SortOrder
+    rsvpDeadlineDesc?: SortOrderInput | SortOrder
     rsvpHasFood?: SortOrderInput | SortOrder
     isRsvpPopup?: SortOrderInput | SortOrder
     bestMan?: SortOrderInput | SortOrder
@@ -15432,6 +16475,8 @@ export namespace Prisma {
     timezone?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     rsvpTitle?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     rsvpMaxPax?: IntNullableWithAggregatesFilter<"Invitation"> | number | null
+    rsvpDeadline?: DateTimeNullableWithAggregatesFilter<"Invitation"> | Date | string | null
+    rsvpDeadlineDesc?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     rsvpHasFood?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
     isRsvpPopup?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
     bestMan?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
@@ -16092,6 +17137,56 @@ export namespace Prisma {
     name?: StringNullableWithAggregatesFilter<"InvitationGuest"> | string | null
   }
 
+  export type InvitationFaqWhereInput = {
+    AND?: InvitationFaqWhereInput | InvitationFaqWhereInput[]
+    OR?: InvitationFaqWhereInput[]
+    NOT?: InvitationFaqWhereInput | InvitationFaqWhereInput[]
+    id?: IntFilter<"InvitationFaq"> | number
+    invitationId?: IntNullableFilter<"InvitationFaq"> | number | null
+    question?: StringNullableFilter<"InvitationFaq"> | string | null
+    answer?: StringNullableFilter<"InvitationFaq"> | string | null
+  }
+
+  export type InvitationFaqOrderByWithRelationInput = {
+    id?: SortOrder
+    invitationId?: SortOrderInput | SortOrder
+    question?: SortOrderInput | SortOrder
+    answer?: SortOrderInput | SortOrder
+    _relevance?: InvitationFaqOrderByRelevanceInput
+  }
+
+  export type InvitationFaqWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: InvitationFaqWhereInput | InvitationFaqWhereInput[]
+    OR?: InvitationFaqWhereInput[]
+    NOT?: InvitationFaqWhereInput | InvitationFaqWhereInput[]
+    invitationId?: IntNullableFilter<"InvitationFaq"> | number | null
+    question?: StringNullableFilter<"InvitationFaq"> | string | null
+    answer?: StringNullableFilter<"InvitationFaq"> | string | null
+  }, "id">
+
+  export type InvitationFaqOrderByWithAggregationInput = {
+    id?: SortOrder
+    invitationId?: SortOrderInput | SortOrder
+    question?: SortOrderInput | SortOrder
+    answer?: SortOrderInput | SortOrder
+    _count?: InvitationFaqCountOrderByAggregateInput
+    _avg?: InvitationFaqAvgOrderByAggregateInput
+    _max?: InvitationFaqMaxOrderByAggregateInput
+    _min?: InvitationFaqMinOrderByAggregateInput
+    _sum?: InvitationFaqSumOrderByAggregateInput
+  }
+
+  export type InvitationFaqScalarWhereWithAggregatesInput = {
+    AND?: InvitationFaqScalarWhereWithAggregatesInput | InvitationFaqScalarWhereWithAggregatesInput[]
+    OR?: InvitationFaqScalarWhereWithAggregatesInput[]
+    NOT?: InvitationFaqScalarWhereWithAggregatesInput | InvitationFaqScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"InvitationFaq"> | number
+    invitationId?: IntNullableWithAggregatesFilter<"InvitationFaq"> | number | null
+    question?: StringNullableWithAggregatesFilter<"InvitationFaq"> | string | null
+    answer?: StringNullableWithAggregatesFilter<"InvitationFaq"> | string | null
+  }
+
   export type UserCreateInput = {
     email?: string | null
     password?: string | null
@@ -16201,6 +17296,8 @@ export namespace Prisma {
     timezone?: string | null
     rsvpTitle?: string | null
     rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     bestMan?: string | null
@@ -16268,6 +17365,8 @@ export namespace Prisma {
     timezone?: string | null
     rsvpTitle?: string | null
     rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     bestMan?: string | null
@@ -16332,6 +17431,8 @@ export namespace Prisma {
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16399,6 +17500,8 @@ export namespace Prisma {
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16465,6 +17568,8 @@ export namespace Prisma {
     timezone?: string | null
     rsvpTitle?: string | null
     rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     bestMan?: string | null
@@ -16524,6 +17629,8 @@ export namespace Prisma {
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16585,6 +17692,8 @@ export namespace Prisma {
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17231,6 +18340,52 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type InvitationFaqCreateInput = {
+    invitationId?: number | null
+    question?: string | null
+    answer?: string | null
+  }
+
+  export type InvitationFaqUncheckedCreateInput = {
+    id?: number
+    invitationId?: number | null
+    question?: string | null
+    answer?: string | null
+  }
+
+  export type InvitationFaqUpdateInput = {
+    invitationId?: NullableIntFieldUpdateOperationsInput | number | null
+    question?: NullableStringFieldUpdateOperationsInput | string | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvitationFaqUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: NullableIntFieldUpdateOperationsInput | number | null
+    question?: NullableStringFieldUpdateOperationsInput | string | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvitationFaqCreateManyInput = {
+    id?: number
+    invitationId?: number | null
+    question?: string | null
+    answer?: string | null
+  }
+
+  export type InvitationFaqUpdateManyMutationInput = {
+    invitationId?: NullableIntFieldUpdateOperationsInput | number | null
+    question?: NullableStringFieldUpdateOperationsInput | string | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvitationFaqUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: NullableIntFieldUpdateOperationsInput | number | null
+    question?: NullableStringFieldUpdateOperationsInput | string | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -17519,6 +18674,8 @@ export namespace Prisma {
     timezone?: SortOrder
     rsvpTitle?: SortOrder
     rsvpMaxPax?: SortOrder
+    rsvpDeadline?: SortOrder
+    rsvpDeadlineDesc?: SortOrder
     rsvpHasFood?: SortOrder
     isRsvpPopup?: SortOrder
     bestMan?: SortOrder
@@ -17590,6 +18747,8 @@ export namespace Prisma {
     timezone?: SortOrder
     rsvpTitle?: SortOrder
     rsvpMaxPax?: SortOrder
+    rsvpDeadline?: SortOrder
+    rsvpDeadlineDesc?: SortOrder
     rsvpHasFood?: SortOrder
     isRsvpPopup?: SortOrder
     bestMan?: SortOrder
@@ -17650,6 +18809,8 @@ export namespace Prisma {
     timezone?: SortOrder
     rsvpTitle?: SortOrder
     rsvpMaxPax?: SortOrder
+    rsvpDeadline?: SortOrder
+    rsvpDeadlineDesc?: SortOrder
     rsvpHasFood?: SortOrder
     isRsvpPopup?: SortOrder
     bestMan?: SortOrder
@@ -18239,6 +19400,43 @@ export namespace Prisma {
 
   export type InvitationGuestSumOrderByAggregateInput = {
     id?: SortOrder
+  }
+
+  export type InvitationFaqOrderByRelevanceInput = {
+    fields: InvitationFaqOrderByRelevanceFieldEnum | InvitationFaqOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type InvitationFaqCountOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    question?: SortOrder
+    answer?: SortOrder
+  }
+
+  export type InvitationFaqAvgOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+  }
+
+  export type InvitationFaqMaxOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    question?: SortOrder
+    answer?: SortOrder
+  }
+
+  export type InvitationFaqMinOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    question?: SortOrder
+    answer?: SortOrder
+  }
+
+  export type InvitationFaqSumOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
   }
 
   export type InvitationCreateNestedManyWithoutUserInput = {
@@ -18972,6 +20170,8 @@ export namespace Prisma {
     timezone?: string | null
     rsvpTitle?: string | null
     rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     bestMan?: string | null
@@ -19037,6 +20237,8 @@ export namespace Prisma {
     timezone?: string | null
     rsvpTitle?: string | null
     rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     bestMan?: string | null
@@ -19132,6 +20334,8 @@ export namespace Prisma {
     timezone?: StringNullableFilter<"Invitation"> | string | null
     rsvpTitle?: StringNullableFilter<"Invitation"> | string | null
     rsvpMaxPax?: IntNullableFilter<"Invitation"> | number | null
+    rsvpDeadline?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    rsvpDeadlineDesc?: StringNullableFilter<"Invitation"> | string | null
     rsvpHasFood?: BoolNullableFilter<"Invitation"> | boolean | null
     isRsvpPopup?: BoolNullableFilter<"Invitation"> | boolean | null
     bestMan?: StringNullableFilter<"Invitation"> | string | null
@@ -19581,6 +20785,8 @@ export namespace Prisma {
     timezone?: string | null
     rsvpTitle?: string | null
     rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     bestMan?: string | null
@@ -19647,6 +20853,8 @@ export namespace Prisma {
     timezone?: string | null
     rsvpTitle?: string | null
     rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     bestMan?: string | null
@@ -19777,6 +20985,8 @@ export namespace Prisma {
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19843,6 +21053,8 @@ export namespace Prisma {
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20020,6 +21232,8 @@ export namespace Prisma {
     timezone?: string | null
     rsvpTitle?: string | null
     rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     bestMan?: string | null
@@ -20086,6 +21300,8 @@ export namespace Prisma {
     timezone?: string | null
     rsvpTitle?: string | null
     rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     bestMan?: string | null
@@ -20165,6 +21381,8 @@ export namespace Prisma {
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20231,6 +21449,8 @@ export namespace Prisma {
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20294,6 +21514,8 @@ export namespace Prisma {
     timezone?: string | null
     rsvpTitle?: string | null
     rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     bestMan?: string | null
@@ -20360,6 +21582,8 @@ export namespace Prisma {
     timezone?: string | null
     rsvpTitle?: string | null
     rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     bestMan?: string | null
@@ -20439,6 +21663,8 @@ export namespace Prisma {
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20505,6 +21731,8 @@ export namespace Prisma {
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20568,6 +21796,8 @@ export namespace Prisma {
     timezone?: string | null
     rsvpTitle?: string | null
     rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     bestMan?: string | null
@@ -20634,6 +21864,8 @@ export namespace Prisma {
     timezone?: string | null
     rsvpTitle?: string | null
     rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     bestMan?: string | null
@@ -20713,6 +21945,8 @@ export namespace Prisma {
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20779,6 +22013,8 @@ export namespace Prisma {
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20842,6 +22078,8 @@ export namespace Prisma {
     timezone?: string | null
     rsvpTitle?: string | null
     rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     bestMan?: string | null
@@ -20908,6 +22146,8 @@ export namespace Prisma {
     timezone?: string | null
     rsvpTitle?: string | null
     rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     bestMan?: string | null
@@ -20987,6 +22227,8 @@ export namespace Prisma {
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21053,6 +22295,8 @@ export namespace Prisma {
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21117,6 +22361,8 @@ export namespace Prisma {
     timezone?: string | null
     rsvpTitle?: string | null
     rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     bestMan?: string | null
@@ -21176,6 +22422,8 @@ export namespace Prisma {
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21241,6 +22489,8 @@ export namespace Prisma {
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21306,6 +22556,8 @@ export namespace Prisma {
     timezone?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
