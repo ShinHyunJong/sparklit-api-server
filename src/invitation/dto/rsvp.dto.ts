@@ -1,4 +1,11 @@
-import { IsBoolean, IsInt, IsOptional, IsString, Min } from 'class-validator';
+import {
+  IsArray,
+  IsBoolean,
+  IsInt,
+  IsOptional,
+  IsString,
+  Min,
+} from 'class-validator';
 
 export class RsvpDto {
   @IsString()
@@ -29,6 +36,11 @@ export class RsvpDto {
   @IsOptional()
   @IsString()
   food?: string;
+
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  guestNameList?: string[];
 }
 
 export class UpdateRsvpDto {
@@ -60,4 +72,9 @@ export class UpdateRsvpDto {
   @IsOptional()
   @IsString()
   food?: string | null;
+
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  guestNameList?: string[] | null;
 }

@@ -25,6 +25,37 @@ export class InvitationService {
     return value.trim().toLowerCase();
   }
 
+  private serializeGuestNameList(list?: string[] | null) {
+    if (!list) return null;
+    const normalized = list.map((name) => name.trim()).filter(Boolean);
+    if (normalized.length === 0) return null;
+    return JSON.stringify(normalized);
+  }
+
+  private parseGuestNameList(value?: string | null) {
+    if (!value) return [];
+    try {
+      const parsed = JSON.parse(value);
+      if (!Array.isArray(parsed)) return [];
+      return parsed.map((name) => String(name).trim()).filter(Boolean);
+    } catch {
+      return value
+        .split(/[\n,]+/)
+        .map((name) => name.trim())
+        .filter(Boolean);
+    }
+  }
+
+  private withGuestNameList<T extends { guestNameList?: string | null }>(
+    rsvp: T | null,
+  ) {
+    if (!rsvp) return rsvp;
+    return {
+      ...rsvp,
+      guestNameList: this.parseGuestNameList(rsvp.guestNameList),
+    };
+  }
+
   async checkUniqueIdAvailability(value: string, currentUniqueId?: string) {
     const normalized = this.normalizeUniqueId(value);
     const normalizedCurrent = currentUniqueId
@@ -511,6 +542,7 @@ export class InvitationService {
         pax: body.pax ?? null,
         remark: body.remark ?? null,
         food: body.food ?? null,
+        guestNameList: this.serializeGuestNameList(body.guestNameList),
       },
     });
     const name = `${invitation.groomFirstName} & ${invitation.brideFirstName}`;
@@ -545,7 +577,7 @@ export class InvitationService {
         invitationId: invitation.id,
       },
     });
-    return result;
+    return result.map((item) => this.withGuestNameList(item));
   }
 
   async deleteRSVP(uniqueId: string, rsvpId: number, userId: number) {
@@ -609,6 +641,12 @@ export class InvitationService {
           : undefined,
       remark: body.remark,
       food: body.food,
+      guestNameList:
+        body.guestNameList === undefined
+          ? undefined
+          : body.guestNameList === null
+            ? null
+            : this.serializeGuestNameList(body.guestNameList),
     };
 
     const hasUpdates = Object.values(updateData).some(
@@ -616,11 +654,12 @@ export class InvitationService {
     );
 
     if (!hasUpdates) {
-      return this.prismaService.invitationRSVP.findUnique({
+      const existing = await this.prismaService.invitationRSVP.findUnique({
         where: {
           id: rsvpId,
         },
       });
+      return this.withGuestNameList(existing);
     }
 
     const result = await this.prismaService.invitationRSVP.updateMany({
@@ -635,11 +674,12 @@ export class InvitationService {
       throw new NotFoundException('RSVP not found.');
     }
 
-    return this.prismaService.invitationRSVP.findUnique({
+    const updated = await this.prismaService.invitationRSVP.findUnique({
       where: {
         id: rsvpId,
       },
     });
+    return this.withGuestNameList(updated);
   }
 
   async updateNotice(uniqueId: string, notice: string) {

@@ -254,6 +254,7 @@ exports.Prisma.InvitationRSVPScalarFieldEnum = {
   invitationId: 'invitationId',
   side: 'side',
   name: 'name',
+  guestNameList: 'guestNameList',
   email: 'email',
   phone: 'phone',
   remark: 'remark',
@@ -404,6 +405,7 @@ exports.Prisma.InvitationCoverPhotoOrderByRelevanceFieldEnum = {
 exports.Prisma.InvitationRSVPOrderByRelevanceFieldEnum = {
   side: 'side',
   name: 'name',
+  guestNameList: 'guestNameList',
   email: 'email',
   phone: 'phone',
   remark: 'remark',

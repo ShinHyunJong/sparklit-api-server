@@ -10035,6 +10035,7 @@ export namespace Prisma {
     invitationId: number | null
     side: string | null
     name: string | null
+    guestNameList: string | null
     email: string | null
     phone: string | null
     remark: string | null
@@ -10049,6 +10050,7 @@ export namespace Prisma {
     invitationId: number | null
     side: string | null
     name: string | null
+    guestNameList: string | null
     email: string | null
     phone: string | null
     remark: string | null
@@ -10063,6 +10065,7 @@ export namespace Prisma {
     invitationId: number
     side: number
     name: number
+    guestNameList: number
     email: number
     phone: number
     remark: number
@@ -10091,6 +10094,7 @@ export namespace Prisma {
     invitationId?: true
     side?: true
     name?: true
+    guestNameList?: true
     email?: true
     phone?: true
     remark?: true
@@ -10105,6 +10109,7 @@ export namespace Prisma {
     invitationId?: true
     side?: true
     name?: true
+    guestNameList?: true
     email?: true
     phone?: true
     remark?: true
@@ -10119,6 +10124,7 @@ export namespace Prisma {
     invitationId?: true
     side?: true
     name?: true
+    guestNameList?: true
     email?: true
     phone?: true
     remark?: true
@@ -10220,6 +10226,7 @@ export namespace Prisma {
     invitationId: number | null
     side: string | null
     name: string | null
+    guestNameList: string | null
     email: string | null
     phone: string | null
     remark: string | null
@@ -10253,6 +10260,7 @@ export namespace Prisma {
     invitationId?: boolean
     side?: boolean
     name?: boolean
+    guestNameList?: boolean
     email?: boolean
     phone?: boolean
     remark?: boolean
@@ -10270,6 +10278,7 @@ export namespace Prisma {
     invitationId?: boolean
     side?: boolean
     name?: boolean
+    guestNameList?: boolean
     email?: boolean
     phone?: boolean
     remark?: boolean
@@ -10279,7 +10288,7 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type InvitationRSVPOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitationId" | "side" | "name" | "email" | "phone" | "remark" | "food" | "pax" | "attending" | "createdAt", ExtArgs["result"]["invitationRSVP"]>
+  export type InvitationRSVPOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitationId" | "side" | "name" | "guestNameList" | "email" | "phone" | "remark" | "food" | "pax" | "attending" | "createdAt", ExtArgs["result"]["invitationRSVP"]>
   export type InvitationRSVPInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     invitation?: boolean | InvitationRSVP$invitationArgs<ExtArgs>
   }
@@ -10294,6 +10303,7 @@ export namespace Prisma {
       invitationId: number | null
       side: string | null
       name: string | null
+      guestNameList: string | null
       email: string | null
       phone: string | null
       remark: string | null
@@ -10675,6 +10685,7 @@ export namespace Prisma {
     readonly invitationId: FieldRef<"InvitationRSVP", 'Int'>
     readonly side: FieldRef<"InvitationRSVP", 'String'>
     readonly name: FieldRef<"InvitationRSVP", 'String'>
+    readonly guestNameList: FieldRef<"InvitationRSVP", 'String'>
     readonly email: FieldRef<"InvitationRSVP", 'String'>
     readonly phone: FieldRef<"InvitationRSVP", 'String'>
     readonly remark: FieldRef<"InvitationRSVP", 'String'>
@@ -15779,6 +15790,7 @@ export namespace Prisma {
     invitationId: 'invitationId',
     side: 'side',
     name: 'name',
+    guestNameList: 'guestNameList',
     email: 'email',
     phone: 'phone',
     remark: 'remark',
@@ -15983,6 +15995,7 @@ export namespace Prisma {
   export const InvitationRSVPOrderByRelevanceFieldEnum: {
     side: 'side',
     name: 'name',
+    guestNameList: 'guestNameList',
     email: 'email',
     phone: 'phone',
     remark: 'remark',
@@ -16880,6 +16893,7 @@ export namespace Prisma {
     invitationId?: IntNullableFilter<"InvitationRSVP"> | number | null
     side?: StringNullableFilter<"InvitationRSVP"> | string | null
     name?: StringNullableFilter<"InvitationRSVP"> | string | null
+    guestNameList?: StringNullableFilter<"InvitationRSVP"> | string | null
     email?: StringNullableFilter<"InvitationRSVP"> | string | null
     phone?: StringNullableFilter<"InvitationRSVP"> | string | null
     remark?: StringNullableFilter<"InvitationRSVP"> | string | null
@@ -16895,6 +16909,7 @@ export namespace Prisma {
     invitationId?: SortOrderInput | SortOrder
     side?: SortOrderInput | SortOrder
     name?: SortOrderInput | SortOrder
+    guestNameList?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
     remark?: SortOrderInput | SortOrder
@@ -16914,6 +16929,7 @@ export namespace Prisma {
     invitationId?: IntNullableFilter<"InvitationRSVP"> | number | null
     side?: StringNullableFilter<"InvitationRSVP"> | string | null
     name?: StringNullableFilter<"InvitationRSVP"> | string | null
+    guestNameList?: StringNullableFilter<"InvitationRSVP"> | string | null
     email?: StringNullableFilter<"InvitationRSVP"> | string | null
     phone?: StringNullableFilter<"InvitationRSVP"> | string | null
     remark?: StringNullableFilter<"InvitationRSVP"> | string | null
@@ -16929,6 +16945,7 @@ export namespace Prisma {
     invitationId?: SortOrderInput | SortOrder
     side?: SortOrderInput | SortOrder
     name?: SortOrderInput | SortOrder
+    guestNameList?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
     remark?: SortOrderInput | SortOrder
@@ -16951,6 +16968,7 @@ export namespace Prisma {
     invitationId?: IntNullableWithAggregatesFilter<"InvitationRSVP"> | number | null
     side?: StringNullableWithAggregatesFilter<"InvitationRSVP"> | string | null
     name?: StringNullableWithAggregatesFilter<"InvitationRSVP"> | string | null
+    guestNameList?: StringNullableWithAggregatesFilter<"InvitationRSVP"> | string | null
     email?: StringNullableWithAggregatesFilter<"InvitationRSVP"> | string | null
     phone?: StringNullableWithAggregatesFilter<"InvitationRSVP"> | string | null
     remark?: StringNullableWithAggregatesFilter<"InvitationRSVP"> | string | null
@@ -18098,6 +18116,7 @@ export namespace Prisma {
   export type InvitationRSVPCreateInput = {
     side?: string | null
     name?: string | null
+    guestNameList?: string | null
     email?: string | null
     phone?: string | null
     remark?: string | null
@@ -18113,6 +18132,7 @@ export namespace Prisma {
     invitationId?: number | null
     side?: string | null
     name?: string | null
+    guestNameList?: string | null
     email?: string | null
     phone?: string | null
     remark?: string | null
@@ -18125,6 +18145,7 @@ export namespace Prisma {
   export type InvitationRSVPUpdateInput = {
     side?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    guestNameList?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     remark?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18140,6 +18161,7 @@ export namespace Prisma {
     invitationId?: NullableIntFieldUpdateOperationsInput | number | null
     side?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    guestNameList?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     remark?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18154,6 +18176,7 @@ export namespace Prisma {
     invitationId?: number | null
     side?: string | null
     name?: string | null
+    guestNameList?: string | null
     email?: string | null
     phone?: string | null
     remark?: string | null
@@ -18166,6 +18189,7 @@ export namespace Prisma {
   export type InvitationRSVPUpdateManyMutationInput = {
     side?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    guestNameList?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     remark?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18180,6 +18204,7 @@ export namespace Prisma {
     invitationId?: NullableIntFieldUpdateOperationsInput | number | null
     side?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    guestNameList?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     remark?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19230,6 +19255,7 @@ export namespace Prisma {
     invitationId?: SortOrder
     side?: SortOrder
     name?: SortOrder
+    guestNameList?: SortOrder
     email?: SortOrder
     phone?: SortOrder
     remark?: SortOrder
@@ -19250,6 +19276,7 @@ export namespace Prisma {
     invitationId?: SortOrder
     side?: SortOrder
     name?: SortOrder
+    guestNameList?: SortOrder
     email?: SortOrder
     phone?: SortOrder
     remark?: SortOrder
@@ -19264,6 +19291,7 @@ export namespace Prisma {
     invitationId?: SortOrder
     side?: SortOrder
     name?: SortOrder
+    guestNameList?: SortOrder
     email?: SortOrder
     phone?: SortOrder
     remark?: SortOrder
@@ -20501,6 +20529,7 @@ export namespace Prisma {
   export type InvitationRSVPCreateWithoutInvitationInput = {
     side?: string | null
     name?: string | null
+    guestNameList?: string | null
     email?: string | null
     phone?: string | null
     remark?: string | null
@@ -20514,6 +20543,7 @@ export namespace Prisma {
     id?: number
     side?: string | null
     name?: string | null
+    guestNameList?: string | null
     email?: string | null
     phone?: string | null
     remark?: string | null
@@ -20709,6 +20739,7 @@ export namespace Prisma {
     invitationId?: IntNullableFilter<"InvitationRSVP"> | number | null
     side?: StringNullableFilter<"InvitationRSVP"> | string | null
     name?: StringNullableFilter<"InvitationRSVP"> | string | null
+    guestNameList?: StringNullableFilter<"InvitationRSVP"> | string | null
     email?: StringNullableFilter<"InvitationRSVP"> | string | null
     phone?: StringNullableFilter<"InvitationRSVP"> | string | null
     remark?: StringNullableFilter<"InvitationRSVP"> | string | null
@@ -22620,6 +22651,7 @@ export namespace Prisma {
     id?: number
     side?: string | null
     name?: string | null
+    guestNameList?: string | null
     email?: string | null
     phone?: string | null
     remark?: string | null
@@ -22762,6 +22794,7 @@ export namespace Prisma {
   export type InvitationRSVPUpdateWithoutInvitationInput = {
     side?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    guestNameList?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     remark?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22775,6 +22808,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     side?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    guestNameList?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     remark?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22788,6 +22822,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     side?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    guestNameList?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     remark?: NullableStringFieldUpdateOperationsInput | string | null
