@@ -1890,6 +1890,7 @@ export namespace Prisma {
   export type InvitationCountOutputType = {
     invitationCoverPhotoList: number
     InvitationDressColor: number
+    faqList: number
     photoList: number
     placeList: number
     invitationRSVP: number
@@ -1898,6 +1899,7 @@ export namespace Prisma {
   export type InvitationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     invitationCoverPhotoList?: boolean | InvitationCountOutputTypeCountInvitationCoverPhotoListArgs
     InvitationDressColor?: boolean | InvitationCountOutputTypeCountInvitationDressColorArgs
+    faqList?: boolean | InvitationCountOutputTypeCountFaqListArgs
     photoList?: boolean | InvitationCountOutputTypeCountPhotoListArgs
     placeList?: boolean | InvitationCountOutputTypeCountPlaceListArgs
     invitationRSVP?: boolean | InvitationCountOutputTypeCountInvitationRSVPArgs
@@ -1926,6 +1928,13 @@ export namespace Prisma {
    */
   export type InvitationCountOutputTypeCountInvitationDressColorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InvitationDressColorWhereInput
+  }
+
+  /**
+   * InvitationCountOutputType without action
+   */
+  export type InvitationCountOutputTypeCountFaqListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationFaqWhereInput
   }
 
   /**
@@ -3677,6 +3686,7 @@ export namespace Prisma {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
     InvitationDressColor?: boolean | Invitation$InvitationDressColorArgs<ExtArgs>
+    faqList?: boolean | Invitation$faqListArgs<ExtArgs>
     photoList?: boolean | Invitation$photoListArgs<ExtArgs>
     placeList?: boolean | Invitation$placeListArgs<ExtArgs>
     invitationRSVP?: boolean | Invitation$invitationRSVPArgs<ExtArgs>
@@ -3753,6 +3763,7 @@ export namespace Prisma {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
     InvitationDressColor?: boolean | Invitation$InvitationDressColorArgs<ExtArgs>
+    faqList?: boolean | Invitation$faqListArgs<ExtArgs>
     photoList?: boolean | Invitation$photoListArgs<ExtArgs>
     placeList?: boolean | Invitation$placeListArgs<ExtArgs>
     invitationRSVP?: boolean | Invitation$invitationRSVPArgs<ExtArgs>
@@ -3765,6 +3776,7 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs> | null
       invitationCoverPhotoList: Prisma.$InvitationCoverPhotoPayload<ExtArgs>[]
       InvitationDressColor: Prisma.$InvitationDressColorPayload<ExtArgs>[]
+      faqList: Prisma.$InvitationFaqPayload<ExtArgs>[]
       photoList: Prisma.$InvitationPhotoPayload<ExtArgs>[]
       placeList: Prisma.$InvitationPlacePayload<ExtArgs>[]
       invitationRSVP: Prisma.$InvitationRSVPPayload<ExtArgs>[]
@@ -4173,6 +4185,7 @@ export namespace Prisma {
     user<T extends Invitation$userArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     invitationCoverPhotoList<T extends Invitation$invitationCoverPhotoListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$invitationCoverPhotoListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationCoverPhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     InvitationDressColor<T extends Invitation$InvitationDressColorArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$InvitationDressColorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationDressColorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    faqList<T extends Invitation$faqListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$faqListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationFaqPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     photoList<T extends Invitation$photoListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$photoListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     placeList<T extends Invitation$placeListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$placeListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPlacePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     invitationRSVP<T extends Invitation$invitationRSVPArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$invitationRSVPArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationRSVPPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -4672,6 +4685,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: InvitationDressColorScalarFieldEnum | InvitationDressColorScalarFieldEnum[]
+  }
+
+  /**
+   * Invitation.faqList
+   */
+  export type Invitation$faqListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationFaq
+     */
+    select?: InvitationFaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationFaq
+     */
+    omit?: InvitationFaqOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationFaqInclude<ExtArgs> | null
+    where?: InvitationFaqWhereInput
+    orderBy?: InvitationFaqOrderByWithRelationInput | InvitationFaqOrderByWithRelationInput[]
+    cursor?: InvitationFaqWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvitationFaqScalarFieldEnum | InvitationFaqScalarFieldEnum[]
   }
 
   /**
@@ -14906,6 +14943,7 @@ export namespace Prisma {
     invitationId?: boolean
     question?: boolean
     answer?: boolean
+    Invitation?: boolean | InvitationFaq$InvitationArgs<ExtArgs>
   }, ExtArgs["result"]["invitationFaq"]>
 
 
@@ -14918,10 +14956,15 @@ export namespace Prisma {
   }
 
   export type InvitationFaqOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitationId" | "question" | "answer", ExtArgs["result"]["invitationFaq"]>
+  export type InvitationFaqInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Invitation?: boolean | InvitationFaq$InvitationArgs<ExtArgs>
+  }
 
   export type $InvitationFaqPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "InvitationFaq"
-    objects: {}
+    objects: {
+      Invitation: Prisma.$InvitationPayload<ExtArgs> | null
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       invitationId: number | null
@@ -15267,6 +15310,7 @@ export namespace Prisma {
    */
   export interface Prisma__InvitationFaqClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    Invitation<T extends InvitationFaq$InvitationArgs<ExtArgs> = {}>(args?: Subset<T, InvitationFaq$InvitationArgs<ExtArgs>>): Prisma__InvitationClient<$Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15317,6 +15361,10 @@ export namespace Prisma {
      */
     omit?: InvitationFaqOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationFaqInclude<ExtArgs> | null
+    /**
      * Filter, which InvitationFaq to fetch.
      */
     where: InvitationFaqWhereUniqueInput
@@ -15335,6 +15383,10 @@ export namespace Prisma {
      */
     omit?: InvitationFaqOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationFaqInclude<ExtArgs> | null
+    /**
      * Filter, which InvitationFaq to fetch.
      */
     where: InvitationFaqWhereUniqueInput
@@ -15352,6 +15404,10 @@ export namespace Prisma {
      * Omit specific fields from the InvitationFaq
      */
     omit?: InvitationFaqOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationFaqInclude<ExtArgs> | null
     /**
      * Filter, which InvitationFaq to fetch.
      */
@@ -15401,6 +15457,10 @@ export namespace Prisma {
      */
     omit?: InvitationFaqOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationFaqInclude<ExtArgs> | null
+    /**
      * Filter, which InvitationFaq to fetch.
      */
     where?: InvitationFaqWhereInput
@@ -15449,6 +15509,10 @@ export namespace Prisma {
      */
     omit?: InvitationFaqOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationFaqInclude<ExtArgs> | null
+    /**
      * Filter, which InvitationFaqs to fetch.
      */
     where?: InvitationFaqWhereInput
@@ -15492,6 +15556,10 @@ export namespace Prisma {
      */
     omit?: InvitationFaqOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationFaqInclude<ExtArgs> | null
+    /**
      * The data needed to create a InvitationFaq.
      */
     data?: XOR<InvitationFaqCreateInput, InvitationFaqUncheckedCreateInput>
@@ -15520,6 +15588,10 @@ export namespace Prisma {
      * Omit specific fields from the InvitationFaq
      */
     omit?: InvitationFaqOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationFaqInclude<ExtArgs> | null
     /**
      * The data needed to update a InvitationFaq.
      */
@@ -15561,6 +15633,10 @@ export namespace Prisma {
      */
     omit?: InvitationFaqOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationFaqInclude<ExtArgs> | null
+    /**
      * The filter to search for the InvitationFaq to update in case it exists.
      */
     where: InvitationFaqWhereUniqueInput
@@ -15587,6 +15663,10 @@ export namespace Prisma {
      */
     omit?: InvitationFaqOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationFaqInclude<ExtArgs> | null
+    /**
      * Filter which InvitationFaq to delete.
      */
     where: InvitationFaqWhereUniqueInput
@@ -15607,6 +15687,25 @@ export namespace Prisma {
   }
 
   /**
+   * InvitationFaq.Invitation
+   */
+  export type InvitationFaq$InvitationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Invitation
+     */
+    select?: InvitationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Invitation
+     */
+    omit?: InvitationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationInclude<ExtArgs> | null
+    where?: InvitationWhereInput
+  }
+
+  /**
    * InvitationFaq without action
    */
   export type InvitationFaqDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -15618,6 +15717,10 @@ export namespace Prisma {
      * Omit specific fields from the InvitationFaq
      */
     omit?: InvitationFaqOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationFaqInclude<ExtArgs> | null
   }
 
 
@@ -16223,6 +16326,7 @@ export namespace Prisma {
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     invitationCoverPhotoList?: InvitationCoverPhotoListRelationFilter
     InvitationDressColor?: InvitationDressColorListRelationFilter
+    faqList?: InvitationFaqListRelationFilter
     photoList?: InvitationPhotoListRelationFilter
     placeList?: InvitationPlaceListRelationFilter
     invitationRSVP?: InvitationRSVPListRelationFilter
@@ -16292,6 +16396,7 @@ export namespace Prisma {
     user?: UserOrderByWithRelationInput
     invitationCoverPhotoList?: InvitationCoverPhotoOrderByRelationAggregateInput
     InvitationDressColor?: InvitationDressColorOrderByRelationAggregateInput
+    faqList?: InvitationFaqOrderByRelationAggregateInput
     photoList?: InvitationPhotoOrderByRelationAggregateInput
     placeList?: InvitationPlaceOrderByRelationAggregateInput
     invitationRSVP?: InvitationRSVPOrderByRelationAggregateInput
@@ -16365,6 +16470,7 @@ export namespace Prisma {
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     invitationCoverPhotoList?: InvitationCoverPhotoListRelationFilter
     InvitationDressColor?: InvitationDressColorListRelationFilter
+    faqList?: InvitationFaqListRelationFilter
     photoList?: InvitationPhotoListRelationFilter
     placeList?: InvitationPlaceListRelationFilter
     invitationRSVP?: InvitationRSVPListRelationFilter
@@ -17163,6 +17269,7 @@ export namespace Prisma {
     invitationId?: IntNullableFilter<"InvitationFaq"> | number | null
     question?: StringNullableFilter<"InvitationFaq"> | string | null
     answer?: StringNullableFilter<"InvitationFaq"> | string | null
+    Invitation?: XOR<InvitationNullableScalarRelationFilter, InvitationWhereInput> | null
   }
 
   export type InvitationFaqOrderByWithRelationInput = {
@@ -17170,6 +17277,7 @@ export namespace Prisma {
     invitationId?: SortOrderInput | SortOrder
     question?: SortOrderInput | SortOrder
     answer?: SortOrderInput | SortOrder
+    Invitation?: InvitationOrderByWithRelationInput
     _relevance?: InvitationFaqOrderByRelevanceInput
   }
 
@@ -17181,6 +17289,7 @@ export namespace Prisma {
     invitationId?: IntNullableFilter<"InvitationFaq"> | number | null
     question?: StringNullableFilter<"InvitationFaq"> | string | null
     answer?: StringNullableFilter<"InvitationFaq"> | string | null
+    Invitation?: XOR<InvitationNullableScalarRelationFilter, InvitationWhereInput> | null
   }, "id">
 
   export type InvitationFaqOrderByWithAggregationInput = {
@@ -17331,6 +17440,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -17399,6 +17509,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -17466,6 +17577,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -17534,6 +17646,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -18366,9 +18479,9 @@ export namespace Prisma {
   }
 
   export type InvitationFaqCreateInput = {
-    invitationId?: number | null
     question?: string | null
     answer?: string | null
+    Invitation?: InvitationCreateNestedOneWithoutFaqListInput
   }
 
   export type InvitationFaqUncheckedCreateInput = {
@@ -18379,9 +18492,9 @@ export namespace Prisma {
   }
 
   export type InvitationFaqUpdateInput = {
-    invitationId?: NullableIntFieldUpdateOperationsInput | number | null
     question?: NullableStringFieldUpdateOperationsInput | string | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
+    Invitation?: InvitationUpdateOneWithoutFaqListNestedInput
   }
 
   export type InvitationFaqUncheckedUpdateInput = {
@@ -18399,7 +18512,6 @@ export namespace Prisma {
   }
 
   export type InvitationFaqUpdateManyMutationInput = {
-    invitationId?: NullableIntFieldUpdateOperationsInput | number | null
     question?: NullableStringFieldUpdateOperationsInput | string | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -18608,6 +18720,12 @@ export namespace Prisma {
     none?: InvitationDressColorWhereInput
   }
 
+  export type InvitationFaqListRelationFilter = {
+    every?: InvitationFaqWhereInput
+    some?: InvitationFaqWhereInput
+    none?: InvitationFaqWhereInput
+  }
+
   export type InvitationPhotoListRelationFilter = {
     every?: InvitationPhotoWhereInput
     some?: InvitationPhotoWhereInput
@@ -18631,6 +18749,10 @@ export namespace Prisma {
   }
 
   export type InvitationDressColorOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type InvitationFaqOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -19545,6 +19667,13 @@ export namespace Prisma {
     connect?: InvitationDressColorWhereUniqueInput | InvitationDressColorWhereUniqueInput[]
   }
 
+  export type InvitationFaqCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<InvitationFaqCreateWithoutInvitationInput, InvitationFaqUncheckedCreateWithoutInvitationInput> | InvitationFaqCreateWithoutInvitationInput[] | InvitationFaqUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationFaqCreateOrConnectWithoutInvitationInput | InvitationFaqCreateOrConnectWithoutInvitationInput[]
+    createMany?: InvitationFaqCreateManyInvitationInputEnvelope
+    connect?: InvitationFaqWhereUniqueInput | InvitationFaqWhereUniqueInput[]
+  }
+
   export type InvitationPhotoCreateNestedManyWithoutInvitationInput = {
     create?: XOR<InvitationPhotoCreateWithoutInvitationInput, InvitationPhotoUncheckedCreateWithoutInvitationInput> | InvitationPhotoCreateWithoutInvitationInput[] | InvitationPhotoUncheckedCreateWithoutInvitationInput[]
     connectOrCreate?: InvitationPhotoCreateOrConnectWithoutInvitationInput | InvitationPhotoCreateOrConnectWithoutInvitationInput[]
@@ -19578,6 +19707,13 @@ export namespace Prisma {
     connectOrCreate?: InvitationDressColorCreateOrConnectWithoutInvitationInput | InvitationDressColorCreateOrConnectWithoutInvitationInput[]
     createMany?: InvitationDressColorCreateManyInvitationInputEnvelope
     connect?: InvitationDressColorWhereUniqueInput | InvitationDressColorWhereUniqueInput[]
+  }
+
+  export type InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<InvitationFaqCreateWithoutInvitationInput, InvitationFaqUncheckedCreateWithoutInvitationInput> | InvitationFaqCreateWithoutInvitationInput[] | InvitationFaqUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationFaqCreateOrConnectWithoutInvitationInput | InvitationFaqCreateOrConnectWithoutInvitationInput[]
+    createMany?: InvitationFaqCreateManyInvitationInputEnvelope
+    connect?: InvitationFaqWhereUniqueInput | InvitationFaqWhereUniqueInput[]
   }
 
   export type InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput = {
@@ -19651,6 +19787,20 @@ export namespace Prisma {
     deleteMany?: InvitationDressColorScalarWhereInput | InvitationDressColorScalarWhereInput[]
   }
 
+  export type InvitationFaqUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<InvitationFaqCreateWithoutInvitationInput, InvitationFaqUncheckedCreateWithoutInvitationInput> | InvitationFaqCreateWithoutInvitationInput[] | InvitationFaqUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationFaqCreateOrConnectWithoutInvitationInput | InvitationFaqCreateOrConnectWithoutInvitationInput[]
+    upsert?: InvitationFaqUpsertWithWhereUniqueWithoutInvitationInput | InvitationFaqUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: InvitationFaqCreateManyInvitationInputEnvelope
+    set?: InvitationFaqWhereUniqueInput | InvitationFaqWhereUniqueInput[]
+    disconnect?: InvitationFaqWhereUniqueInput | InvitationFaqWhereUniqueInput[]
+    delete?: InvitationFaqWhereUniqueInput | InvitationFaqWhereUniqueInput[]
+    connect?: InvitationFaqWhereUniqueInput | InvitationFaqWhereUniqueInput[]
+    update?: InvitationFaqUpdateWithWhereUniqueWithoutInvitationInput | InvitationFaqUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: InvitationFaqUpdateManyWithWhereWithoutInvitationInput | InvitationFaqUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: InvitationFaqScalarWhereInput | InvitationFaqScalarWhereInput[]
+  }
+
   export type InvitationPhotoUpdateManyWithoutInvitationNestedInput = {
     create?: XOR<InvitationPhotoCreateWithoutInvitationInput, InvitationPhotoUncheckedCreateWithoutInvitationInput> | InvitationPhotoCreateWithoutInvitationInput[] | InvitationPhotoUncheckedCreateWithoutInvitationInput[]
     connectOrCreate?: InvitationPhotoCreateOrConnectWithoutInvitationInput | InvitationPhotoCreateOrConnectWithoutInvitationInput[]
@@ -19719,6 +19869,20 @@ export namespace Prisma {
     update?: InvitationDressColorUpdateWithWhereUniqueWithoutInvitationInput | InvitationDressColorUpdateWithWhereUniqueWithoutInvitationInput[]
     updateMany?: InvitationDressColorUpdateManyWithWhereWithoutInvitationInput | InvitationDressColorUpdateManyWithWhereWithoutInvitationInput[]
     deleteMany?: InvitationDressColorScalarWhereInput | InvitationDressColorScalarWhereInput[]
+  }
+
+  export type InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<InvitationFaqCreateWithoutInvitationInput, InvitationFaqUncheckedCreateWithoutInvitationInput> | InvitationFaqCreateWithoutInvitationInput[] | InvitationFaqUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationFaqCreateOrConnectWithoutInvitationInput | InvitationFaqCreateOrConnectWithoutInvitationInput[]
+    upsert?: InvitationFaqUpsertWithWhereUniqueWithoutInvitationInput | InvitationFaqUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: InvitationFaqCreateManyInvitationInputEnvelope
+    set?: InvitationFaqWhereUniqueInput | InvitationFaqWhereUniqueInput[]
+    disconnect?: InvitationFaqWhereUniqueInput | InvitationFaqWhereUniqueInput[]
+    delete?: InvitationFaqWhereUniqueInput | InvitationFaqWhereUniqueInput[]
+    connect?: InvitationFaqWhereUniqueInput | InvitationFaqWhereUniqueInput[]
+    update?: InvitationFaqUpdateWithWhereUniqueWithoutInvitationInput | InvitationFaqUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: InvitationFaqUpdateManyWithWhereWithoutInvitationInput | InvitationFaqUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: InvitationFaqScalarWhereInput | InvitationFaqScalarWhereInput[]
   }
 
   export type InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput = {
@@ -19965,6 +20129,22 @@ export namespace Prisma {
     delete?: InvitationWhereInput | boolean
     connect?: InvitationWhereUniqueInput
     update?: XOR<XOR<InvitationUpdateToOneWithWhereWithoutInvitationDressColorInput, InvitationUpdateWithoutInvitationDressColorInput>, InvitationUncheckedUpdateWithoutInvitationDressColorInput>
+  }
+
+  export type InvitationCreateNestedOneWithoutFaqListInput = {
+    create?: XOR<InvitationCreateWithoutFaqListInput, InvitationUncheckedCreateWithoutFaqListInput>
+    connectOrCreate?: InvitationCreateOrConnectWithoutFaqListInput
+    connect?: InvitationWhereUniqueInput
+  }
+
+  export type InvitationUpdateOneWithoutFaqListNestedInput = {
+    create?: XOR<InvitationCreateWithoutFaqListInput, InvitationUncheckedCreateWithoutFaqListInput>
+    connectOrCreate?: InvitationCreateOrConnectWithoutFaqListInput
+    upsert?: InvitationUpsertWithoutFaqListInput
+    disconnect?: InvitationWhereInput | boolean
+    delete?: InvitationWhereInput | boolean
+    connect?: InvitationWhereUniqueInput
+    update?: XOR<XOR<InvitationUpdateToOneWithWhereWithoutFaqListInput, InvitationUpdateWithoutFaqListInput>, InvitationUncheckedUpdateWithoutFaqListInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -20214,6 +20394,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -20281,6 +20462,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -20457,6 +20639,27 @@ export namespace Prisma {
 
   export type InvitationDressColorCreateManyInvitationInputEnvelope = {
     data: InvitationDressColorCreateManyInvitationInput | InvitationDressColorCreateManyInvitationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type InvitationFaqCreateWithoutInvitationInput = {
+    question?: string | null
+    answer?: string | null
+  }
+
+  export type InvitationFaqUncheckedCreateWithoutInvitationInput = {
+    id?: number
+    question?: string | null
+    answer?: string | null
+  }
+
+  export type InvitationFaqCreateOrConnectWithoutInvitationInput = {
+    where: InvitationFaqWhereUniqueInput
+    create: XOR<InvitationFaqCreateWithoutInvitationInput, InvitationFaqUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type InvitationFaqCreateManyInvitationInputEnvelope = {
+    data: InvitationFaqCreateManyInvitationInput | InvitationFaqCreateManyInvitationInput[]
     skipDuplicates?: boolean
   }
 
@@ -20652,6 +20855,32 @@ export namespace Prisma {
     type?: StringNullableFilter<"InvitationDressColor"> | string | null
   }
 
+  export type InvitationFaqUpsertWithWhereUniqueWithoutInvitationInput = {
+    where: InvitationFaqWhereUniqueInput
+    update: XOR<InvitationFaqUpdateWithoutInvitationInput, InvitationFaqUncheckedUpdateWithoutInvitationInput>
+    create: XOR<InvitationFaqCreateWithoutInvitationInput, InvitationFaqUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type InvitationFaqUpdateWithWhereUniqueWithoutInvitationInput = {
+    where: InvitationFaqWhereUniqueInput
+    data: XOR<InvitationFaqUpdateWithoutInvitationInput, InvitationFaqUncheckedUpdateWithoutInvitationInput>
+  }
+
+  export type InvitationFaqUpdateManyWithWhereWithoutInvitationInput = {
+    where: InvitationFaqScalarWhereInput
+    data: XOR<InvitationFaqUpdateManyMutationInput, InvitationFaqUncheckedUpdateManyWithoutInvitationInput>
+  }
+
+  export type InvitationFaqScalarWhereInput = {
+    AND?: InvitationFaqScalarWhereInput | InvitationFaqScalarWhereInput[]
+    OR?: InvitationFaqScalarWhereInput[]
+    NOT?: InvitationFaqScalarWhereInput | InvitationFaqScalarWhereInput[]
+    id?: IntFilter<"InvitationFaq"> | number
+    invitationId?: IntNullableFilter<"InvitationFaq"> | number | null
+    question?: StringNullableFilter<"InvitationFaq"> | string | null
+    answer?: StringNullableFilter<"InvitationFaq"> | string | null
+  }
+
   export type InvitationPhotoUpsertWithWhereUniqueWithoutInvitationInput = {
     where: InvitationPhotoWhereUniqueInput
     update: XOR<InvitationPhotoUpdateWithoutInvitationInput, InvitationPhotoUncheckedUpdateWithoutInvitationInput>
@@ -20833,6 +21062,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
   }
@@ -20900,6 +21130,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
   }
@@ -21033,6 +21264,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
   }
@@ -21100,6 +21332,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
   }
@@ -21280,6 +21513,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
   }
@@ -21347,6 +21581,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
   }
@@ -21429,6 +21664,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
   }
@@ -21496,6 +21732,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
   }
@@ -21561,6 +21798,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -21628,6 +21866,7 @@ export namespace Prisma {
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -21710,6 +21949,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -21777,6 +22017,7 @@ export namespace Prisma {
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -21844,6 +22085,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
   }
@@ -21911,6 +22153,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
   }
@@ -21993,6 +22236,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
   }
@@ -22060,6 +22304,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
   }
@@ -22125,6 +22370,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -22192,6 +22438,7 @@ export namespace Prisma {
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -22274,6 +22521,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -22341,6 +22589,293 @@ export namespace Prisma {
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type InvitationCreateWithoutFaqListInput = {
+    templateNo?: number | null
+    uniqueId?: string | null
+    date?: Date | string | null
+    title?: string | null
+    description?: string | null
+    pointColor?: string | null
+    mainTextColor?: string | null
+    dressCodeGentleman?: string | null
+    dressCodeLady?: string | null
+    bgColor?: string | null
+    musicKey?: string | null
+    musicFilename?: string | null
+    musicFileKey?: string | null
+    notice?: string | null
+    brideFirstName?: string | null
+    brideMiddleName?: string | null
+    dressCodeMainColor?: string | null
+    dressCodeSubColor?: string | null
+    dressCodeThirdColor?: string | null
+    brideLastName?: string | null
+    brideMomName?: string | null
+    greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
+    greetingContent?: string | null
+    brideDadName?: string | null
+    bridePhone?: string | null
+    groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
+    groomMiddleName?: string | null
+    groomLastName?: string | null
+    groomPhone?: string | null
+    primarySponsor?: string | null
+    secondarySponsor?: string | null
+    bankAccount?: string | null
+    maidOfHonor?: string | null
+    groomsMen?: string | null
+    textColor?: string | null
+    timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
+    rsvpHasFood?: boolean | null
+    isRsvpPopup?: boolean | null
+    bestMan?: string | null
+    bridesMaids?: string | null
+    wishlistText?: string | null
+    groomMomName?: string | null
+    groomDadName?: string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: string | null
+    ogImageKey?: string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    user?: UserCreateNestedOneWithoutInvitationListInput
+    invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
+    placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
+    invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
+  }
+
+  export type InvitationUncheckedCreateWithoutFaqListInput = {
+    id?: number
+    templateNo?: number | null
+    uniqueId?: string | null
+    date?: Date | string | null
+    userId?: number | null
+    title?: string | null
+    description?: string | null
+    pointColor?: string | null
+    mainTextColor?: string | null
+    dressCodeGentleman?: string | null
+    dressCodeLady?: string | null
+    bgColor?: string | null
+    musicKey?: string | null
+    musicFilename?: string | null
+    musicFileKey?: string | null
+    notice?: string | null
+    brideFirstName?: string | null
+    brideMiddleName?: string | null
+    dressCodeMainColor?: string | null
+    dressCodeSubColor?: string | null
+    dressCodeThirdColor?: string | null
+    brideLastName?: string | null
+    brideMomName?: string | null
+    greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
+    greetingContent?: string | null
+    brideDadName?: string | null
+    bridePhone?: string | null
+    groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
+    groomMiddleName?: string | null
+    groomLastName?: string | null
+    groomPhone?: string | null
+    primarySponsor?: string | null
+    secondarySponsor?: string | null
+    bankAccount?: string | null
+    maidOfHonor?: string | null
+    groomsMen?: string | null
+    textColor?: string | null
+    timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
+    rsvpHasFood?: boolean | null
+    isRsvpPopup?: boolean | null
+    bestMan?: string | null
+    bridesMaids?: string | null
+    wishlistText?: string | null
+    groomMomName?: string | null
+    groomDadName?: string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: string | null
+    ogImageKey?: string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
+    invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
+  }
+
+  export type InvitationCreateOrConnectWithoutFaqListInput = {
+    where: InvitationWhereUniqueInput
+    create: XOR<InvitationCreateWithoutFaqListInput, InvitationUncheckedCreateWithoutFaqListInput>
+  }
+
+  export type InvitationUpsertWithoutFaqListInput = {
+    update: XOR<InvitationUpdateWithoutFaqListInput, InvitationUncheckedUpdateWithoutFaqListInput>
+    create: XOR<InvitationCreateWithoutFaqListInput, InvitationUncheckedCreateWithoutFaqListInput>
+    where?: InvitationWhereInput
+  }
+
+  export type InvitationUpdateToOneWithWhereWithoutFaqListInput = {
+    where?: InvitationWhereInput
+    data: XOR<InvitationUpdateWithoutFaqListInput, InvitationUncheckedUpdateWithoutFaqListInput>
+  }
+
+  export type InvitationUpdateWithoutFaqListInput = {
+    templateNo?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    pointColor?: NullableStringFieldUpdateOperationsInput | string | null
+    mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeLady?: NullableStringFieldUpdateOperationsInput | string | null
+    bgColor?: NullableStringFieldUpdateOperationsInput | string | null
+    musicKey?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFileKey?: NullableStringFieldUpdateOperationsInput | string | null
+    notice?: NullableStringFieldUpdateOperationsInput | string | null
+    brideFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeMainColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeSubColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeThirdColor?: NullableStringFieldUpdateOperationsInput | string | null
+    brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
+    brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    bestMan?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UserUpdateOneWithoutInvitationListNestedInput
+    invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
+    placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
+    invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type InvitationUncheckedUpdateWithoutFaqListInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    templateNo?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    pointColor?: NullableStringFieldUpdateOperationsInput | string | null
+    mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeLady?: NullableStringFieldUpdateOperationsInput | string | null
+    bgColor?: NullableStringFieldUpdateOperationsInput | string | null
+    musicKey?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFileKey?: NullableStringFieldUpdateOperationsInput | string | null
+    notice?: NullableStringFieldUpdateOperationsInput | string | null
+    brideFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeMainColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeSubColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeThirdColor?: NullableStringFieldUpdateOperationsInput | string | null
+    brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
+    brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    bestMan?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -22469,6 +23004,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -22536,6 +23072,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -22622,6 +23159,12 @@ export namespace Prisma {
     color?: string | null
     order?: number | null
     type?: string | null
+  }
+
+  export type InvitationFaqCreateManyInvitationInput = {
+    id?: number
+    question?: string | null
+    answer?: string | null
   }
 
   export type InvitationPhotoCreateManyInvitationInput = {
@@ -22720,6 +23263,23 @@ export namespace Prisma {
     color?: NullableStringFieldUpdateOperationsInput | string | null
     order?: NullableIntFieldUpdateOperationsInput | number | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvitationFaqUpdateWithoutInvitationInput = {
+    question?: NullableStringFieldUpdateOperationsInput | string | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvitationFaqUncheckedUpdateWithoutInvitationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    question?: NullableStringFieldUpdateOperationsInput | string | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvitationFaqUncheckedUpdateManyWithoutInvitationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    question?: NullableStringFieldUpdateOperationsInput | string | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type InvitationPhotoUpdateWithoutInvitationInput = {

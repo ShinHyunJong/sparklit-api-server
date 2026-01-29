@@ -82,6 +82,7 @@ model Invitation {
   user                     User?                  @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Invitation_ibfk_1")
   invitationCoverPhotoList InvitationCoverPhoto[]
   InvitationDressColor     InvitationDressColor[]
+  faqList                  InvitationFaq[]
   photoList                InvitationPhoto[]
   placeList                InvitationPlace[]
   invitationRSVP           InvitationRSVP[]
@@ -207,8 +208,11 @@ model InvitationGuest {
 }
 
 model InvitationFaq {
-  id           Int     @id @default(autoincrement()) @db.UnsignedInt
-  invitationId Int?    @db.UnsignedInt
-  question     String? @db.VarChar(255)
-  answer       String? @db.Text
+  id           Int         @id @default(autoincrement()) @db.UnsignedInt
+  invitationId Int?        @db.UnsignedInt
+  question     String?     @db.VarChar(255)
+  answer       String?     @db.Text
+  Invitation   Invitation? @relation(fields: [invitationId], references: [id], onDelete: Cascade, map: "InvitationFaq_ibfk_1")
+
+  @@index([invitationId], map: "invitationId")
 }

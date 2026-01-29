@@ -148,6 +148,9 @@ export class InvitationService {
         InvitationDressColor: {
           orderBy: [{ type: 'asc' }, { order: 'asc' }, { id: 'asc' }],
         },
+        faqList: {
+          orderBy: { id: 'asc' },
+        },
         photoList: {
           orderBy: {
             order: 'asc',
@@ -167,10 +170,6 @@ export class InvitationService {
     }
 
     const { user, InvitationDressColor, ...rest } = invitation;
-    const faqList = await this.prismaService.invitationFaq.findMany({
-      where: { invitationId: invitation.id },
-      orderBy: { id: 'asc' },
-    });
     const placeList = rest.placeList?.map((place) => ({
       ...place,
       timeList: place.timeList?.map((timeItem) => ({
@@ -182,7 +181,6 @@ export class InvitationService {
       ...rest,
       placeList,
       dressCodeColorList: InvitationDressColor ?? [],
-      faqList,
       timezone,
     };
   }
