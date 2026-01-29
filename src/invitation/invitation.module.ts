@@ -3,6 +3,8 @@ import { InvitationService } from './invitation.service';
 import { InvitationController } from './invitation.controller';
 import { InvitationColorController } from './invitation.color.controller';
 import { InvitationColorService } from './invitation.color.service';
+import { InvitationFaqController } from './invitation.faq.controller';
+import { InvitationFaqService } from './invitation.faq.service';
 import { InvitationMigrationController } from './invitation.migration.controller';
 import { InvitationMigrationService } from './invitation.migration.service';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -13,11 +15,13 @@ import { NestjsFormDataModule, MemoryStoredFile } from 'nestjs-form-data';
   controllers: [
     InvitationController,
     InvitationColorController,
+    InvitationFaqController,
     InvitationMigrationController,
   ],
   providers: [
     InvitationService,
     InvitationColorService,
+    InvitationFaqService,
     InvitationMigrationService,
     PrismaService,
   ],
