@@ -149,7 +149,7 @@ export class InvitationService {
           orderBy: [{ type: 'asc' }, { order: 'asc' }, { id: 'asc' }],
         },
         faqList: {
-          orderBy: { id: 'asc' },
+          orderBy: [{ order: 'asc' }, { id: 'asc' }],
         },
         photoList: {
           orderBy: {

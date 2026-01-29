@@ -22,7 +22,7 @@ export class InvitationFaqService {
     const invitation = await this.getInvitationByUniqueId(uniqueId, userId);
     return this.prismaService.invitationFaq.findMany({
       where: { invitationId: invitation.id },
-      orderBy: { id: 'asc' },
+      orderBy: [{ order: 'asc' }, { id: 'asc' }],
     });
   }
 
@@ -33,11 +33,17 @@ export class InvitationFaqService {
     answer: string,
   ) {
     const invitation = await this.getInvitationByUniqueId(uniqueId, userId);
+    const { _max } = await this.prismaService.invitationFaq.aggregate({
+      where: { invitationId: invitation.id },
+      _max: { order: true },
+    });
+    const nextOrder = (_max.order ?? 0) + 1;
     return this.prismaService.invitationFaq.create({
       data: {
         invitationId: invitation.id,
         question,
         answer,
+        order: nextOrder,
       },
     });
   }
@@ -75,5 +81,25 @@ export class InvitationFaqService {
     }
 
     return { deleted: result.count };
+  }
+
+  async updateFaqOrder(
+    uniqueId: string,
+    userId: number,
+    faqIds: number[],
+  ) {
+    if (faqIds.length === 0) return { updated: 0 };
+    const invitation = await this.getInvitationByUniqueId(uniqueId, userId);
+
+    const updates = faqIds.map((faqId, index) =>
+      this.prismaService.invitationFaq.updateMany({
+        where: { id: faqId, invitationId: invitation.id },
+        data: { order: index + 1 },
+      }),
+    );
+
+    const results = await this.prismaService.$transaction(updates);
+    const updated = results.reduce((sum, item) => sum + item.count, 0);
+    return { updated };
   }
 }

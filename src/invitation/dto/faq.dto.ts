@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsArray, IsInt, IsString } from 'class-validator';
 
 export class CreateFaqDto {
   @IsString()
@@ -14,4 +14,10 @@ export class UpdateFaqDto {
 
   @IsString()
   answer: string;
+}
+
+export class UpdateFaqOrderDto {
+  @IsArray()
+  @IsInt({ each: true })
+  faqIds: number[];
 }

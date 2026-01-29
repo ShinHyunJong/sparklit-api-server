@@ -11,7 +11,11 @@ import {
 } from '@nestjs/common';
 
 import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
-import { CreateFaqDto, UpdateFaqDto } from './dto/faq.dto';
+import {
+  CreateFaqDto,
+  UpdateFaqDto,
+  UpdateFaqOrderDto,
+} from './dto/faq.dto';
 import { InvitationFaqService } from './invitation.faq.service';
 
 @Controller('invitation/faq')
@@ -36,6 +40,20 @@ export class InvitationFaqController {
       req.user.id,
       body.question,
       body.answer,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('/:uniqueId/order')
+  updateFaqOrder(
+    @Req() req,
+    @Param('uniqueId') uniqueId: string,
+    @Body() body: UpdateFaqOrderDto,
+  ) {
+    return this.invitationFaqService.updateFaqOrder(
+      uniqueId,
+      req.user.id,
+      body.faqIds,
     );
   }
 

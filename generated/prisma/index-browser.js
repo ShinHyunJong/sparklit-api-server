@@ -291,7 +291,13 @@ exports.Prisma.InvitationFaqScalarFieldEnum = {
   id: 'id',
   invitationId: 'invitationId',
   question: 'question',
-  answer: 'answer'
+  answer: 'answer',
+  order: 'order'
+};
+
+exports.Prisma.AdminScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
 };
 
 exports.Prisma.SortOrder = {
@@ -431,6 +437,10 @@ exports.Prisma.InvitationFaqOrderByRelevanceFieldEnum = {
   answer: 'answer'
 };
 
+exports.Prisma.AdminOrderByRelevanceFieldEnum = {
+  name: 'name'
+};
+
 
 exports.Prisma.ModelName = {
   User: 'User',
@@ -445,7 +455,8 @@ exports.Prisma.ModelName = {
   InvitationView: 'InvitationView',
   InvitationDressColor: 'InvitationDressColor',
   InvitationGuest: 'InvitationGuest',
-  InvitationFaq: 'InvitationFaq'
+  InvitationFaq: 'InvitationFaq',
+  Admin: 'Admin'
 };
 
 /**
