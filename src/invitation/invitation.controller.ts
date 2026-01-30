@@ -67,6 +67,12 @@ export class InvitationController {
     return this.invitationService.findOne(uniqueId);
   }
 
+  @UseGuards(JwtAuthGuard)
+  @Delete(':uniqueId')
+  deleteInvitation(@Req() req, @Param('uniqueId') uniqueId: string) {
+    return this.invitationService.deleteInvitation(uniqueId, req.user.id);
+  }
+
   @Put(':uniqueId')
   update(
     @Param('uniqueId') uniqueId: string,

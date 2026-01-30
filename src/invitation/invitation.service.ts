@@ -112,11 +112,15 @@ export class InvitationService {
       select: { country: true },
     });
     const timezone = getTimezoneByCountry(user?.country);
+    const weddingDate = dayjs().add(3, 'month').toDate();
+    const rsvpDeadline = dayjs(weddingDate).subtract(1, 'day').toDate();
     const created = await this.prismaService.invitation.create({
       data: {
         userId,
         uniqueId,
         timezone,
+        date: weddingDate,
+        rsvpDeadline,
       },
     });
     return created;
@@ -731,6 +735,12 @@ export class InvitationService {
   }
 
   async updateRsvpDeadline(uniqueId: string, rsvpDeadline: string | null) {
+    if (rsvpDeadline) {
+      const nextDate = new Date(rsvpDeadline);
+      if (Number.isNaN(nextDate.getTime())) {
+        throw new BadRequestException('Invalid rsvpDeadline value.');
+      }
+    }
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
@@ -738,6 +748,43 @@ export class InvitationService {
       },
     });
     return updated;
+  }
+
+  async deleteInvitation(uniqueId: string, userId: number) {
+    const invitation = await this.prismaService.invitation.findFirst({
+      where: { uniqueId, userId },
+      include: {
+        photoList: true,
+        invitationCoverPhotoList: true,
+      },
+    });
+
+    if (!invitation) {
+      throw new NotFoundException('Invitation not found.');
+    }
+
+    const rawKeys = [
+      invitation.ogImageKey,
+      invitation.musicKey,
+      invitation.musicFileKey,
+      ...invitation.photoList.flatMap((photo) => [
+        photo.originalKey,
+        photo.croppedKey,
+        photo.thumbKey,
+      ]),
+      ...invitation.invitationCoverPhotoList.flatMap((photo) => [
+        photo.originalKey,
+        photo.croppedKey,
+      ]),
+    ];
+
+    const keysToDelete = rawKeys.filter(
+      (key): key is string => Boolean(key && !key.startsWith('assets/')),
+    );
+
+    await Promise.all(keysToDelete.map((key) => deleteFromS3(key)));
+    await this.prismaService.invitation.delete({ where: { id: invitation.id } });
+    return { deleted: 1 };
   }
 
   async updateRsvpDeadlineDesc(uniqueId: string, rsvpDeadlineDesc: string) {
