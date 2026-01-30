@@ -113,7 +113,7 @@ export class InvitationService {
     });
     const timezone = getTimezoneByCountry(user?.country);
     const weddingDate = dayjs().add(3, 'month').toDate();
-    const rsvpDeadline = dayjs(weddingDate).subtract(1, 'day').toDate();
+    const rsvpDeadline = dayjs(weddingDate).startOf('day').toDate();
     const created = await this.prismaService.invitation.create({
       data: {
         userId,
