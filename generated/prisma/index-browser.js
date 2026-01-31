@@ -300,6 +300,18 @@ exports.Prisma.AdminScalarFieldEnum = {
   name: 'name'
 };
 
+exports.Prisma.EmailVerificationScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  code: 'code',
+  purpose: 'purpose',
+  expiresAt: 'expiresAt',
+  verifiedAt: 'verifiedAt',
+  attemptCount: 'attemptCount',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -441,6 +453,12 @@ exports.Prisma.AdminOrderByRelevanceFieldEnum = {
   name: 'name'
 };
 
+exports.Prisma.EmailVerificationOrderByRelevanceFieldEnum = {
+  email: 'email',
+  code: 'code',
+  purpose: 'purpose'
+};
+
 
 exports.Prisma.ModelName = {
   User: 'User',
@@ -456,7 +474,8 @@ exports.Prisma.ModelName = {
   InvitationDressColor: 'InvitationDressColor',
   InvitationGuest: 'InvitationGuest',
   InvitationFaq: 'InvitationFaq',
-  Admin: 'Admin'
+  Admin: 'Admin',
+  EmailVerification: 'EmailVerification'
 };
 
 /**

@@ -40,17 +40,30 @@ export class AuthController {
   }
 
   @Post('/verification/verify')
-  verifyCode(@Body() body: { email: string; code: string }) {
-    return this.authSerivice.verifyEmailCode(body.email, body.code);
+  verifyCode(
+    @Body() body: { email: string; code: string; verificationId: number },
+  ) {
+    return this.authSerivice.verifyEmailCode(
+      body.email,
+      body.code,
+      body.verificationId,
+    );
   }
 
   @Post('/verification/password')
   changePasswordWithCode(
-    @Body() body: { email: string; code: string; newPassword: string },
+    @Body()
+    body: {
+      email: string;
+      code: string;
+      verificationId: number;
+      newPassword: string;
+    },
   ) {
     return this.authSerivice.changePasswordWithCode(
       body.email,
       body.code,
+      body.verificationId,
       body.newPassword,
     );
   }

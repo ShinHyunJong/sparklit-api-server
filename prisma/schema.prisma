@@ -168,7 +168,7 @@ model InvitationRSVP {
   invitationId  Int?        @db.UnsignedInt
   side          String?     @db.VarChar(10)
   name          String?     @db.VarChar(100)
-  guestNameList String?     @db.VarChar(255)
+  guestNameList String?     @db.Text
   email         String?     @db.VarChar(255)
   phone         String?     @db.VarChar(20)
   remark        String?     @db.Text
@@ -221,4 +221,19 @@ model InvitationFaq {
 model Admin {
   id   Int     @id @default(autoincrement()) @db.UnsignedInt
   name String? @db.VarChar(20)
+}
+
+model EmailVerification {
+  id           Int       @id @default(autoincrement())
+  email        String    @db.VarChar(255)
+  code         String    @db.VarChar(10)
+  purpose      String    @db.VarChar(30)
+  expiresAt    DateTime  @db.DateTime(0)
+  verifiedAt   DateTime? @db.DateTime(0)
+  attemptCount Int       @default(0)
+  createdAt    DateTime  @default(now()) @db.DateTime(0)
+  updatedAt    DateTime  @default(now()) @db.DateTime(0)
+
+  @@index([email], map: "idx_email")
+  @@index([email, purpose], map: "idx_email_purpose")
 }

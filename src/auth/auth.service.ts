@@ -21,29 +21,50 @@ export class AuthService {
     private readonly jwtService: JwtService,
     private readonly prismaService: PrismaService,
   ) {}
-  private readonly verificationCodeStore = new Map<
-    string,
-    { code: string; expiresAt: number }
-  >();
   private readonly verificationExpiresMs = 3 * 60 * 1000;
   private readonly verificationServiceName = 'Sparklit';
+  private readonly verificationPurpose = 'password_reset';
 
   private generateVerificationCode() {
     return String(Math.floor(100000 + Math.random() * 900000));
   }
 
-  private validateVerificationCode(email: string, code: string) {
-    const stored = this.verificationCodeStore.get(email);
-    if (!stored) {
+  private async validateVerificationCode(
+    email: string,
+    code: string,
+    verificationId: number,
+  ) {
+    const record = await this.prismaService.emailVerification.findFirst({
+      where: {
+        id: verificationId,
+        email,
+        purpose: this.verificationPurpose,
+      },
+    });
+    if (!record) {
       throw new HttpException('verification code not found', 404);
     }
-    if (Date.now() > stored.expiresAt) {
-      this.verificationCodeStore.delete(email);
+    if (Date.now() > record.expiresAt.getTime()) {
+      await this.prismaService.emailVerification.deleteMany({
+        where: {
+          email,
+          purpose: this.verificationPurpose,
+        },
+      });
       throw new HttpException('verification code expired', 410);
     }
-    if (stored.code !== code) {
+    if (record.code !== code) {
+      await this.prismaService.emailVerification.update({
+        where: {
+          id: record.id,
+        },
+        data: {
+          attemptCount: record.attemptCount + 1,
+        },
+      });
       throw new HttpException('verification code mismatch', 400);
     }
+    return record;
   }
 
   /**
@@ -165,29 +186,59 @@ export class AuthService {
       throw new HttpException('not exist', 404);
     }
     const code = this.generateVerificationCode();
-    this.verificationCodeStore.set(email, {
-      code,
-      expiresAt: Date.now() + this.verificationExpiresMs,
+    const expiresAt = new Date(Date.now() + this.verificationExpiresMs);
+    await this.prismaService.emailVerification.deleteMany({
+      where: {
+        email,
+        purpose: this.verificationPurpose,
+      },
+    });
+    const verification = await this.prismaService.emailVerification.create({
+      data: {
+        email,
+        code,
+        purpose: this.verificationPurpose,
+        expiresAt,
+      },
     });
     await postVerificationEmail(email, {
       verificationCode: code,
       expiresIn: '3 minutes',
       serviceName: this.verificationServiceName,
     });
-    return { sent: true, expiresInSeconds: this.verificationExpiresMs / 1000 };
+    return {
+      sent: true,
+      expiresInSeconds: this.verificationExpiresMs / 1000,
+      verificationId: verification.id,
+    };
   }
 
-  async verifyEmailCode(email: string, code: string) {
-    this.validateVerificationCode(email, code);
+  async verifyEmailCode(email: string, code: string, verificationId: number) {
+    const record = await this.validateVerificationCode(
+      email,
+      code,
+      verificationId,
+    );
+    if (!record.verifiedAt) {
+      await this.prismaService.emailVerification.update({
+        where: {
+          id: record.id,
+        },
+        data: {
+          verifiedAt: new Date(),
+        },
+      });
+    }
     return { verified: true };
   }
 
   async changePasswordWithCode(
     email: string,
     code: string,
+    verificationId: number,
     newPassword: string,
   ) {
-    this.validateVerificationCode(email, code);
+    await this.validateVerificationCode(email, code, verificationId);
     const hashed = hash(newPassword);
     await this.prismaService.user.update({
       where: {
@@ -197,7 +248,12 @@ export class AuthService {
         password: hashed,
       },
     });
-    this.verificationCodeStore.delete(email);
+    await this.prismaService.emailVerification.deleteMany({
+      where: {
+        email,
+        purpose: this.verificationPurpose,
+      },
+    });
     return { updated: true };
   }
 }
