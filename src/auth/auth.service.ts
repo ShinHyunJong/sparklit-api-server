@@ -256,4 +256,34 @@ export class AuthService {
     });
     return { updated: true };
   }
+
+  async changePasswordWithCurrent(
+    userId: number,
+    currentPassword: string,
+    newPassword: string,
+  ) {
+    const user = await this.prismaService.user.findUnique({
+      where: {
+        id: userId,
+      },
+      select: {
+        password: true,
+      },
+    });
+    if (!user) throw new HttpException('not exist', 404);
+    const hashedCurrent = hash(currentPassword);
+    if (user.password !== hashedCurrent) {
+      throw new HttpException('invalid password', 400);
+    }
+    const hashed = hash(newPassword);
+    await this.prismaService.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        password: hashed,
+      },
+    });
+    return { updated: true };
+  }
 }

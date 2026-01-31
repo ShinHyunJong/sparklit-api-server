@@ -67,4 +67,17 @@ export class AuthController {
       body.newPassword,
     );
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('/password/change')
+  changePasswordWithCurrent(
+    @Req() req,
+    @Body() body: { currentPassword: string; newPassword: string },
+  ) {
+    return this.authSerivice.changePasswordWithCurrent(
+      req.user.id,
+      body.currentPassword,
+      body.newPassword,
+    );
+  }
 }

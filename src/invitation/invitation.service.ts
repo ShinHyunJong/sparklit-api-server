@@ -21,8 +21,22 @@ import { formatTimeValue } from 'src/helpers/time.helper';
 @Injectable()
 export class InvitationService {
   constructor(private readonly prismaService: PrismaService) {}
+  private readonly reservedUniqueIds = [
+    'studio',
+    'auth',
+    'my',
+    'api',
+    'rsvp',
+    'invitation',
+    'admin',
+    '_next',
+    'assets',
+  ];
   private normalizeUniqueId(value: string) {
     return value.trim().toLowerCase();
+  }
+  private isReservedUniqueId(value: string) {
+    return this.reservedUniqueIds.includes(this.normalizeUniqueId(value));
   }
 
   private serializeGuestNameList(list?: string[] | null) {
@@ -64,6 +78,9 @@ export class InvitationService {
     if (normalizedCurrent && normalized === normalizedCurrent) {
       return { available: true, uniqueId: normalized };
     }
+    if (this.isReservedUniqueId(normalized)) {
+      return { available: false, uniqueId: normalized };
+    }
 
     const existing = await this.prismaService.invitation.findUnique({
       where: { uniqueId: normalized },
@@ -80,6 +97,9 @@ export class InvitationService {
     const normalized = this.normalizeUniqueId(newUniqueId);
     if (normalized === this.normalizeUniqueId(uniqueId)) {
       return { uniqueId: normalized };
+    }
+    if (this.isReservedUniqueId(normalized)) {
+      throw new BadRequestException('UniqueId reserved');
     }
 
     const invitation = await this.prismaService.invitation.findFirst({
