@@ -354,6 +354,17 @@ export class InvitationController {
     );
   }
 
+  @Put('/rsvpDeadlineEnabled/:uniqueId')
+  updateRsvpDeadlineEnabled(
+    @Param('uniqueId') uniqueId: string,
+    @Body() body: { hasRsvpDeadline: boolean },
+  ) {
+    return this.invitationService.updateHasRsvpDeadline(
+      uniqueId,
+      body.hasRsvpDeadline,
+    );
+  }
+
   @UseGuards(JwtAuthGuard)
   @Put('/rsvpDeadlineDesc/:uniqueId')
   updateRsvpDeadlineDesc(

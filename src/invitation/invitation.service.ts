@@ -121,6 +121,7 @@ export class InvitationService {
         timezone,
         date: weddingDate,
         rsvpDeadline,
+        hasRsvpDeadline: true,
       },
     });
     return created;
@@ -745,6 +746,17 @@ export class InvitationService {
       where: { uniqueId },
       data: {
         rsvpDeadline: rsvpDeadline ? new Date(rsvpDeadline) : null,
+        hasRsvpDeadline: rsvpDeadline ? true : false,
+      },
+    });
+    return updated;
+  }
+
+  async updateHasRsvpDeadline(uniqueId: string, hasRsvpDeadline: boolean) {
+    const updated = await this.prismaService.invitation.update({
+      where: { uniqueId },
+      data: {
+        hasRsvpDeadline,
       },
     });
     return updated;

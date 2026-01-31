@@ -3283,6 +3283,7 @@ export namespace Prisma {
     ogImageKey: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    hasRsvpDeadline: boolean | null
   }
 
   export type InvitationMaxAggregateOutputType = {
@@ -3345,6 +3346,7 @@ export namespace Prisma {
     ogImageKey: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    hasRsvpDeadline: boolean | null
   }
 
   export type InvitationCountAggregateOutputType = {
@@ -3408,6 +3410,7 @@ export namespace Prisma {
     ogImageKey: number
     createdAt: number
     updatedAt: number
+    hasRsvpDeadline: number
     _all: number
   }
 
@@ -3492,6 +3495,7 @@ export namespace Prisma {
     ogImageKey?: true
     createdAt?: true
     updatedAt?: true
+    hasRsvpDeadline?: true
   }
 
   export type InvitationMaxAggregateInputType = {
@@ -3554,6 +3558,7 @@ export namespace Prisma {
     ogImageKey?: true
     createdAt?: true
     updatedAt?: true
+    hasRsvpDeadline?: true
   }
 
   export type InvitationCountAggregateInputType = {
@@ -3617,6 +3622,7 @@ export namespace Prisma {
     ogImageKey?: true
     createdAt?: true
     updatedAt?: true
+    hasRsvpDeadline?: true
     _all?: true
   }
 
@@ -3767,6 +3773,7 @@ export namespace Prisma {
     ogImageKey: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    hasRsvpDeadline: boolean | null
     _count: InvitationCountAggregateOutputType | null
     _avg: InvitationAvgAggregateOutputType | null
     _sum: InvitationSumAggregateOutputType | null
@@ -3849,6 +3856,7 @@ export namespace Prisma {
     ogImageKey?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    hasRsvpDeadline?: boolean
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
     InvitationDressColor?: boolean | Invitation$InvitationDressColorArgs<ExtArgs>
@@ -3922,9 +3930,10 @@ export namespace Prisma {
     ogImageKey?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    hasRsvpDeadline?: boolean
   }
 
-  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpDeadline" | "rsvpDeadlineDesc" | "rsvpHasFood" | "isRsvpPopup" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
+  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpDeadline" | "rsvpDeadlineDesc" | "rsvpHasFood" | "isRsvpPopup" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt" | "hasRsvpDeadline", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
@@ -4008,6 +4017,7 @@ export namespace Prisma {
       ogImageKey: string | null
       createdAt: Date | null
       updatedAt: Date | null
+      hasRsvpDeadline: boolean | null
     }, ExtArgs["result"]["invitation"]>
     composites: {}
   }
@@ -4444,6 +4454,7 @@ export namespace Prisma {
     readonly ogImageKey: FieldRef<"Invitation", 'String'>
     readonly createdAt: FieldRef<"Invitation", 'DateTime'>
     readonly updatedAt: FieldRef<"Invitation", 'DateTime'>
+    readonly hasRsvpDeadline: FieldRef<"Invitation", 'Boolean'>
   }
     
 
@@ -17838,7 +17849,8 @@ export namespace Prisma {
     endingText: 'endingText',
     ogImageKey: 'ogImageKey',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    hasRsvpDeadline: 'hasRsvpDeadline'
   };
 
   export type InvitationScalarFieldEnum = (typeof InvitationScalarFieldEnum)[keyof typeof InvitationScalarFieldEnum]
@@ -18391,6 +18403,7 @@ export namespace Prisma {
     ogImageKey?: StringNullableFilter<"Invitation"> | string | null
     createdAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     updatedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     invitationCoverPhotoList?: InvitationCoverPhotoListRelationFilter
     InvitationDressColor?: InvitationDressColorListRelationFilter
@@ -18461,6 +18474,7 @@ export namespace Prisma {
     ogImageKey?: SortOrderInput | SortOrder
     createdAt?: SortOrderInput | SortOrder
     updatedAt?: SortOrderInput | SortOrder
+    hasRsvpDeadline?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     invitationCoverPhotoList?: InvitationCoverPhotoOrderByRelationAggregateInput
     InvitationDressColor?: InvitationDressColorOrderByRelationAggregateInput
@@ -18535,6 +18549,7 @@ export namespace Prisma {
     ogImageKey?: StringNullableFilter<"Invitation"> | string | null
     createdAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     updatedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     invitationCoverPhotoList?: InvitationCoverPhotoListRelationFilter
     InvitationDressColor?: InvitationDressColorListRelationFilter
@@ -18605,6 +18620,7 @@ export namespace Prisma {
     ogImageKey?: SortOrderInput | SortOrder
     createdAt?: SortOrderInput | SortOrder
     updatedAt?: SortOrderInput | SortOrder
+    hasRsvpDeadline?: SortOrderInput | SortOrder
     _count?: InvitationCountOrderByAggregateInput
     _avg?: InvitationAvgOrderByAggregateInput
     _max?: InvitationMaxOrderByAggregateInput
@@ -18676,6 +18692,7 @@ export namespace Prisma {
     ogImageKey?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     createdAt?: DateTimeNullableWithAggregatesFilter<"Invitation"> | Date | string | null
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Invitation"> | Date | string | null
+    hasRsvpDeadline?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
   }
 
   export type InvitationPlaceWhereInput = {
@@ -19625,6 +19642,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -19695,6 +19713,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
@@ -19762,6 +19781,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -19832,6 +19852,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
@@ -19901,6 +19922,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
   }
 
   export type InvitationUpdateManyMutationInput = {
@@ -19962,6 +19984,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type InvitationUncheckedUpdateManyInput = {
@@ -20025,6 +20048,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type InvitationPlaceCreateInput = {
@@ -21143,6 +21167,7 @@ export namespace Prisma {
     ogImageKey?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    hasRsvpDeadline?: SortOrder
   }
 
   export type InvitationAvgOrderByAggregateInput = {
@@ -21215,6 +21240,7 @@ export namespace Prisma {
     ogImageKey?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    hasRsvpDeadline?: SortOrder
   }
 
   export type InvitationMinOrderByAggregateInput = {
@@ -21277,6 +21303,7 @@ export namespace Prisma {
     ogImageKey?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    hasRsvpDeadline?: SortOrder
   }
 
   export type InvitationSumOrderByAggregateInput = {
@@ -22910,6 +22937,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
@@ -22978,6 +23006,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
@@ -23076,6 +23105,7 @@ export namespace Prisma {
     ogImageKey?: StringNullableFilter<"Invitation"> | string | null
     createdAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     updatedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
   }
 
   export type UserCreateWithoutInvitationListInput = {
@@ -23580,6 +23610,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -23649,6 +23680,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
@@ -23782,6 +23814,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -23851,6 +23884,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
@@ -24031,6 +24065,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -24100,6 +24135,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
@@ -24182,6 +24218,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -24251,6 +24288,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
@@ -24317,6 +24355,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
@@ -24386,6 +24425,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
@@ -24468,6 +24508,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
@@ -24537,6 +24578,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
@@ -24603,6 +24645,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -24672,6 +24715,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
@@ -24754,6 +24798,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -24823,6 +24868,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
@@ -24889,6 +24935,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
@@ -24958,6 +25005,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
@@ -25040,6 +25088,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
@@ -25109,6 +25158,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
@@ -25175,6 +25225,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -25244,6 +25295,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
@@ -25326,6 +25378,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -25395,6 +25448,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
@@ -25462,6 +25516,7 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    hasRsvpDeadline?: boolean | null
   }
 
   export type InvitationUpdateWithoutUserInput = {
@@ -25523,6 +25578,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
@@ -25591,6 +25647,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
@@ -25659,6 +25716,7 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type InvitationCoverPhotoCreateManyInvitationInput = {

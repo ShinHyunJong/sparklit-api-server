@@ -189,7 +189,8 @@ exports.Prisma.InvitationScalarFieldEnum = {
   endingText: 'endingText',
   ogImageKey: 'ogImageKey',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  hasRsvpDeadline: 'hasRsvpDeadline'
 };
 
 exports.Prisma.InvitationPlaceScalarFieldEnum = {
