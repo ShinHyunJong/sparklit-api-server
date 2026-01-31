@@ -14,6 +14,12 @@ export type RsvpEmailVars = {
   submittedAt: string; // e.g. "2025-12-16 18:12 (KST)"
 };
 
+export type VerificationEmailVars = {
+  verificationCode: string;
+  expiresIn: string;
+  serviceName: string;
+};
+
 export const postRSVPmail = async (
   email: string,
   name: string,
@@ -36,6 +42,44 @@ export const postRSVPmail = async (
           TemplateID: 7587543,
           TemplateLanguage: true,
           Subject: `New Wedding RSVP Arrived!`,
+          Variables: {
+            ...input,
+          },
+          TemplateErrorReporting: {
+            Email: 'pleiade9638@gmail.com',
+            Name: 'Ian',
+          },
+        },
+      ],
+    });
+    const result = await request;
+    console.log(JSON.stringify(result.response.data));
+    return result.response.data;
+  } catch (error) {
+    console.log('Mailjet Error: ', error);
+  }
+};
+
+export const postVerificationEmail = async (
+  email: string,
+  input: VerificationEmailVars,
+) => {
+  try {
+    const request = mailjet.post('send', { version: 'v3.1' }).request({
+      Messages: [
+        {
+          From: {
+            Email: 'notice@sparklit.co',
+            Name: 'Sparklit',
+          },
+          To: [
+            {
+              Email: email,
+            },
+          ],
+          TemplateID: 7709331,
+          TemplateLanguage: true,
+          Subject: 'Verify your email address',
           Variables: {
             ...input,
           },

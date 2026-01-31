@@ -1,12 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-  UseGuards,
-  Req,
-  Put,
-} from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards, Req } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
 import { AuthService } from './auth.service';
 
@@ -40,5 +32,26 @@ export class AuthController {
   @Post('/check/email')
   checkEmail(@Body() body: { email: string }) {
     return this.authSerivice.checkEmail(body.email);
+  }
+
+  @Post('/verification/send')
+  sendVerification(@Body() body: { email: string }) {
+    return this.authSerivice.sendVerificationEmail(body.email);
+  }
+
+  @Post('/verification/verify')
+  verifyCode(@Body() body: { email: string; code: string }) {
+    return this.authSerivice.verifyEmailCode(body.email, body.code);
+  }
+
+  @Post('/verification/password')
+  changePasswordWithCode(
+    @Body() body: { email: string; code: string; newPassword: string },
+  ) {
+    return this.authSerivice.changePasswordWithCode(
+      body.email,
+      body.code,
+      body.newPassword,
+    );
   }
 }

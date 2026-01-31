@@ -3,6 +3,7 @@ import { HASH_KEY } from 'src/constants/index';
 import { JwtService } from '@nestjs/jwt';
 import { hash } from 'src/helpers/security';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { postVerificationEmail } from 'src/utils/mailjet.util';
 
 export type TokenInfo = {
   id: number;
@@ -20,6 +21,30 @@ export class AuthService {
     private readonly jwtService: JwtService,
     private readonly prismaService: PrismaService,
   ) {}
+  private readonly verificationCodeStore = new Map<
+    string,
+    { code: string; expiresAt: number }
+  >();
+  private readonly verificationExpiresMs = 3 * 60 * 1000;
+  private readonly verificationServiceName = 'Sparklit';
+
+  private generateVerificationCode() {
+    return String(Math.floor(100000 + Math.random() * 900000));
+  }
+
+  private validateVerificationCode(email: string, code: string) {
+    const stored = this.verificationCodeStore.get(email);
+    if (!stored) {
+      throw new HttpException('verification code not found', 404);
+    }
+    if (Date.now() > stored.expiresAt) {
+      this.verificationCodeStore.delete(email);
+      throw new HttpException('verification code expired', 410);
+    }
+    if (stored.code !== code) {
+      throw new HttpException('verification code mismatch', 400);
+    }
+  }
 
   /**
    *
@@ -125,5 +150,54 @@ export class AuthService {
       return { exists: true };
     }
     return { exists: false };
+  }
+
+  async sendVerificationEmail(email: string) {
+    const user = await this.prismaService.user.findUnique({
+      where: {
+        email,
+      },
+      select: {
+        email: true,
+      },
+    });
+    if (!user) {
+      throw new HttpException('not exist', 404);
+    }
+    const code = this.generateVerificationCode();
+    this.verificationCodeStore.set(email, {
+      code,
+      expiresAt: Date.now() + this.verificationExpiresMs,
+    });
+    await postVerificationEmail(email, {
+      verificationCode: code,
+      expiresIn: '3 minutes',
+      serviceName: this.verificationServiceName,
+    });
+    return { sent: true, expiresInSeconds: this.verificationExpiresMs / 1000 };
+  }
+
+  async verifyEmailCode(email: string, code: string) {
+    this.validateVerificationCode(email, code);
+    return { verified: true };
+  }
+
+  async changePasswordWithCode(
+    email: string,
+    code: string,
+    newPassword: string,
+  ) {
+    this.validateVerificationCode(email, code);
+    const hashed = hash(newPassword);
+    await this.prismaService.user.update({
+      where: {
+        email,
+      },
+      data: {
+        password: hashed,
+      },
+    });
+    this.verificationCodeStore.delete(email);
+    return { updated: true };
   }
 }
