@@ -83,11 +83,7 @@ export class InvitationFaqService {
     return { deleted: result.count };
   }
 
-  async updateFaqOrder(
-    uniqueId: string,
-    userId: number,
-    faqIds: number[],
-  ) {
+  async updateFaqOrder(uniqueId: string, userId: number, faqIds: number[]) {
     if (faqIds.length === 0) return { updated: 0 };
     const invitation = await this.getInvitationByUniqueId(uniqueId, userId);
 

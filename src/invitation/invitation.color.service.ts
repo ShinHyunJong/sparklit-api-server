@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { DressColorType } from './dto/dress-color.dto';
 
@@ -22,18 +26,18 @@ export class InvitationColorService {
     return invitation;
   }
 
-  async getDressColors(uniqueId: string, userId: number, type?: DressColorType) {
+  async getDressColors(
+    uniqueId: string,
+    userId: number,
+    type?: DressColorType,
+  ) {
     const invitation = await this.getInvitation(uniqueId, userId);
     return this.prismaService.invitationDressColor.findMany({
       where: {
         invitationId: invitation.id,
         ...(type ? { type } : {}),
       },
-      orderBy: [
-        { type: 'asc' },
-        { order: 'asc' },
-        { id: 'asc' },
-      ],
+      orderBy: [{ type: 'asc' }, { order: 'asc' }, { id: 'asc' }],
     });
   }
 

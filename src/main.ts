@@ -7,7 +7,7 @@ import { AppModule } from './app.module';
   return Number(this.toString());
 };
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { rawBody: true });
   const port = process.env.PORT || 3005;
 
   app.useGlobalPipes(

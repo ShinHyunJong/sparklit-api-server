@@ -22,7 +22,9 @@ import { InvitationColorService } from './invitation.color.service';
 
 @Controller('invitation/color')
 export class InvitationColorController {
-  constructor(private readonly invitationColorService: InvitationColorService) {}
+  constructor(
+    private readonly invitationColorService: InvitationColorService,
+  ) {}
 
   @UseGuards(JwtAuthGuard)
   @Get('/dress/:uniqueId')

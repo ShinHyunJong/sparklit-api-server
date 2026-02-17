@@ -180,6 +180,13 @@ exports.Prisma.InvitationScalarFieldEnum = {
   rsvpDeadlineDesc: 'rsvpDeadlineDesc',
   rsvpHasFood: 'rsvpHasFood',
   isRsvpPopup: 'isRsvpPopup',
+  hasRsvpDeadline: 'hasRsvpDeadline',
+  billingStatus: 'billingStatus',
+  trialEndsAt: 'trialEndsAt',
+  currentPlanCode: 'currentPlanCode',
+  accessStartedAt: 'accessStartedAt',
+  accessEndsAt: 'accessEndsAt',
+  watermarkEnabled: 'watermarkEnabled',
   bestMan: 'bestMan',
   bridesMaids: 'bridesMaids',
   wishlistText: 'wishlistText',
@@ -189,8 +196,7 @@ exports.Prisma.InvitationScalarFieldEnum = {
   endingText: 'endingText',
   ogImageKey: 'ogImageKey',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  hasRsvpDeadline: 'hasRsvpDeadline'
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.InvitationPlaceScalarFieldEnum = {
@@ -309,6 +315,41 @@ exports.Prisma.EmailVerificationScalarFieldEnum = {
   expiresAt: 'expiresAt',
   verifiedAt: 'verifiedAt',
   attemptCount: 'attemptCount',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.InvitationOrderScalarFieldEnum = {
+  id: 'id',
+  invitationId: 'invitationId',
+  userId: 'userId',
+  pricePlanId: 'pricePlanId',
+  orderNo: 'orderNo',
+  planCode: 'planCode',
+  amountPhp: 'amountPhp',
+  currency: 'currency',
+  durationDays: 'durationDays',
+  status: 'status',
+  paidAt: 'paidAt',
+  expiresAt: 'expiresAt',
+  provider: 'provider',
+  providerPaymentId: 'providerPaymentId',
+  providerEventId: 'providerEventId',
+  rawPayload: 'rawPayload',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PricePlanScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
+  description: 'description',
+  amountPhp: 'amountPhp',
+  currency: 'currency',
+  durationDays: 'durationDays',
+  isActive: 'isActive',
+  displayOrder: 'displayOrder',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -460,6 +501,45 @@ exports.Prisma.EmailVerificationOrderByRelevanceFieldEnum = {
   purpose: 'purpose'
 };
 
+exports.Prisma.InvitationOrderOrderByRelevanceFieldEnum = {
+  orderNo: 'orderNo',
+  currency: 'currency',
+  provider: 'provider',
+  providerPaymentId: 'providerPaymentId',
+  providerEventId: 'providerEventId'
+};
+
+exports.Prisma.PricePlanOrderByRelevanceFieldEnum = {
+  code: 'code',
+  name: 'name',
+  description: 'description',
+  currency: 'currency'
+};
+exports.Invitation_billingStatus = exports.$Enums.Invitation_billingStatus = {
+  TRIAL: 'TRIAL',
+  PENDING: 'PENDING',
+  PAID: 'PAID',
+  EXPIRED: 'EXPIRED',
+  CANCELED: 'CANCELED'
+};
+
+exports.Invitation_currentPlanCode = exports.$Enums.Invitation_currentPlanCode = {
+  KEEPSAKE: 'KEEPSAKE',
+  HEIRLOOM: 'HEIRLOOM'
+};
+
+exports.InvitationOrder_planCode = exports.$Enums.InvitationOrder_planCode = {
+  KEEPSAKE: 'KEEPSAKE',
+  HEIRLOOM: 'HEIRLOOM'
+};
+
+exports.InvitationOrder_status = exports.$Enums.InvitationOrder_status = {
+  PENDING: 'PENDING',
+  PAID: 'PAID',
+  FAILED: 'FAILED',
+  CANCELED: 'CANCELED',
+  EXPIRED: 'EXPIRED'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
@@ -476,7 +556,9 @@ exports.Prisma.ModelName = {
   InvitationGuest: 'InvitationGuest',
   InvitationFaq: 'InvitationFaq',
   Admin: 'Admin',
-  EmailVerification: 'EmailVerification'
+  EmailVerification: 'EmailVerification',
+  InvitationOrder: 'InvitationOrder',
+  PricePlan: 'PricePlan'
 };
 
 /**

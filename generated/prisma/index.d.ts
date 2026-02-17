@@ -88,6 +88,75 @@ export type Admin = $Result.DefaultSelection<Prisma.$AdminPayload>
  * 
  */
 export type EmailVerification = $Result.DefaultSelection<Prisma.$EmailVerificationPayload>
+/**
+ * Model InvitationOrder
+ * 
+ */
+export type InvitationOrder = $Result.DefaultSelection<Prisma.$InvitationOrderPayload>
+/**
+ * Model PricePlan
+ * 
+ */
+export type PricePlan = $Result.DefaultSelection<Prisma.$PricePlanPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const InvitationOrder_planCode: {
+  KEEPSAKE: 'KEEPSAKE',
+  HEIRLOOM: 'HEIRLOOM'
+};
+
+export type InvitationOrder_planCode = (typeof InvitationOrder_planCode)[keyof typeof InvitationOrder_planCode]
+
+
+export const InvitationOrder_status: {
+  PENDING: 'PENDING',
+  PAID: 'PAID',
+  FAILED: 'FAILED',
+  CANCELED: 'CANCELED',
+  EXPIRED: 'EXPIRED'
+};
+
+export type InvitationOrder_status = (typeof InvitationOrder_status)[keyof typeof InvitationOrder_status]
+
+
+export const Invitation_billingStatus: {
+  TRIAL: 'TRIAL',
+  PENDING: 'PENDING',
+  PAID: 'PAID',
+  EXPIRED: 'EXPIRED',
+  CANCELED: 'CANCELED'
+};
+
+export type Invitation_billingStatus = (typeof Invitation_billingStatus)[keyof typeof Invitation_billingStatus]
+
+
+export const Invitation_currentPlanCode: {
+  KEEPSAKE: 'KEEPSAKE',
+  HEIRLOOM: 'HEIRLOOM'
+};
+
+export type Invitation_currentPlanCode = (typeof Invitation_currentPlanCode)[keyof typeof Invitation_currentPlanCode]
+
+}
+
+export type InvitationOrder_planCode = $Enums.InvitationOrder_planCode
+
+export const InvitationOrder_planCode: typeof $Enums.InvitationOrder_planCode
+
+export type InvitationOrder_status = $Enums.InvitationOrder_status
+
+export const InvitationOrder_status: typeof $Enums.InvitationOrder_status
+
+export type Invitation_billingStatus = $Enums.Invitation_billingStatus
+
+export const Invitation_billingStatus: typeof $Enums.Invitation_billingStatus
+
+export type Invitation_currentPlanCode = $Enums.Invitation_currentPlanCode
+
+export const Invitation_currentPlanCode: typeof $Enums.Invitation_currentPlanCode
 
 /**
  * ##  Prisma Client ʲˢ
@@ -363,6 +432,26 @@ export class PrismaClient<
     * ```
     */
   get emailVerification(): Prisma.EmailVerificationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.invitationOrder`: Exposes CRUD operations for the **InvitationOrder** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more InvitationOrders
+    * const invitationOrders = await prisma.invitationOrder.findMany()
+    * ```
+    */
+  get invitationOrder(): Prisma.InvitationOrderDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.pricePlan`: Exposes CRUD operations for the **PricePlan** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PricePlans
+    * const pricePlans = await prisma.pricePlan.findMany()
+    * ```
+    */
+  get pricePlan(): Prisma.PricePlanDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -817,7 +906,9 @@ export namespace Prisma {
     InvitationGuest: 'InvitationGuest',
     InvitationFaq: 'InvitationFaq',
     Admin: 'Admin',
-    EmailVerification: 'EmailVerification'
+    EmailVerification: 'EmailVerification',
+    InvitationOrder: 'InvitationOrder',
+    PricePlan: 'PricePlan'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -836,7 +927,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "invitation" | "invitationPlace" | "place" | "invitationPlaceTime" | "invitationPhoto" | "invitationCoverPhoto" | "invitationRSVP" | "invitationMusic" | "invitationView" | "invitationDressColor" | "invitationGuest" | "invitationFaq" | "admin" | "emailVerification"
+      modelProps: "user" | "invitation" | "invitationPlace" | "place" | "invitationPlaceTime" | "invitationPhoto" | "invitationCoverPhoto" | "invitationRSVP" | "invitationMusic" | "invitationView" | "invitationDressColor" | "invitationGuest" | "invitationFaq" | "admin" | "emailVerification" | "invitationOrder" | "pricePlan"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1830,6 +1921,138 @@ export namespace Prisma {
           }
         }
       }
+      InvitationOrder: {
+        payload: Prisma.$InvitationOrderPayload<ExtArgs>
+        fields: Prisma.InvitationOrderFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.InvitationOrderFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationOrderPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.InvitationOrderFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationOrderPayload>
+          }
+          findFirst: {
+            args: Prisma.InvitationOrderFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationOrderPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.InvitationOrderFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationOrderPayload>
+          }
+          findMany: {
+            args: Prisma.InvitationOrderFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationOrderPayload>[]
+          }
+          create: {
+            args: Prisma.InvitationOrderCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationOrderPayload>
+          }
+          createMany: {
+            args: Prisma.InvitationOrderCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.InvitationOrderDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationOrderPayload>
+          }
+          update: {
+            args: Prisma.InvitationOrderUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationOrderPayload>
+          }
+          deleteMany: {
+            args: Prisma.InvitationOrderDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.InvitationOrderUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.InvitationOrderUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationOrderPayload>
+          }
+          aggregate: {
+            args: Prisma.InvitationOrderAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateInvitationOrder>
+          }
+          groupBy: {
+            args: Prisma.InvitationOrderGroupByArgs<ExtArgs>
+            result: $Utils.Optional<InvitationOrderGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.InvitationOrderCountArgs<ExtArgs>
+            result: $Utils.Optional<InvitationOrderCountAggregateOutputType> | number
+          }
+        }
+      }
+      PricePlan: {
+        payload: Prisma.$PricePlanPayload<ExtArgs>
+        fields: Prisma.PricePlanFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PricePlanFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePlanPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PricePlanFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePlanPayload>
+          }
+          findFirst: {
+            args: Prisma.PricePlanFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePlanPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PricePlanFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePlanPayload>
+          }
+          findMany: {
+            args: Prisma.PricePlanFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePlanPayload>[]
+          }
+          create: {
+            args: Prisma.PricePlanCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePlanPayload>
+          }
+          createMany: {
+            args: Prisma.PricePlanCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.PricePlanDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePlanPayload>
+          }
+          update: {
+            args: Prisma.PricePlanUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePlanPayload>
+          }
+          deleteMany: {
+            args: Prisma.PricePlanDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PricePlanUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.PricePlanUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePlanPayload>
+          }
+          aggregate: {
+            args: Prisma.PricePlanAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePricePlan>
+          }
+          groupBy: {
+            args: Prisma.PricePlanGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PricePlanGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PricePlanCountArgs<ExtArgs>
+            result: $Utils.Optional<PricePlanCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1929,6 +2152,8 @@ export namespace Prisma {
     invitationFaq?: InvitationFaqOmit
     admin?: AdminOmit
     emailVerification?: EmailVerificationOmit
+    invitationOrder?: InvitationOrderOmit
+    pricePlan?: PricePlanOmit
   }
 
   /* Types for Logging */
@@ -2024,10 +2249,12 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     invitationList: number
+    InvitationOrder: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     invitationList?: boolean | UserCountOutputTypeCountInvitationListArgs
+    InvitationOrder?: boolean | UserCountOutputTypeCountInvitationOrderArgs
   }
 
   // Custom InputTypes
@@ -2048,6 +2275,13 @@ export namespace Prisma {
     where?: InvitationWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountInvitationOrderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationOrderWhereInput
+  }
+
 
   /**
    * Count Type InvitationCountOutputType
@@ -2057,6 +2291,7 @@ export namespace Prisma {
     invitationCoverPhotoList: number
     InvitationDressColor: number
     faqList: number
+    InvitationOrder: number
     photoList: number
     placeList: number
     invitationRSVP: number
@@ -2066,6 +2301,7 @@ export namespace Prisma {
     invitationCoverPhotoList?: boolean | InvitationCountOutputTypeCountInvitationCoverPhotoListArgs
     InvitationDressColor?: boolean | InvitationCountOutputTypeCountInvitationDressColorArgs
     faqList?: boolean | InvitationCountOutputTypeCountFaqListArgs
+    InvitationOrder?: boolean | InvitationCountOutputTypeCountInvitationOrderArgs
     photoList?: boolean | InvitationCountOutputTypeCountPhotoListArgs
     placeList?: boolean | InvitationCountOutputTypeCountPlaceListArgs
     invitationRSVP?: boolean | InvitationCountOutputTypeCountInvitationRSVPArgs
@@ -2101,6 +2337,13 @@ export namespace Prisma {
    */
   export type InvitationCountOutputTypeCountFaqListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InvitationFaqWhereInput
+  }
+
+  /**
+   * InvitationCountOutputType without action
+   */
+  export type InvitationCountOutputTypeCountInvitationOrderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationOrderWhereInput
   }
 
   /**
@@ -2184,6 +2427,37 @@ export namespace Prisma {
    */
   export type PlaceCountOutputTypeCountInvitationPlaceListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InvitationPlaceWhereInput
+  }
+
+
+  /**
+   * Count Type PricePlanCountOutputType
+   */
+
+  export type PricePlanCountOutputType = {
+    InvitationOrder: number
+  }
+
+  export type PricePlanCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    InvitationOrder?: boolean | PricePlanCountOutputTypeCountInvitationOrderArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PricePlanCountOutputType without action
+   */
+  export type PricePlanCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PricePlanCountOutputType
+     */
+    select?: PricePlanCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PricePlanCountOutputType without action
+   */
+  export type PricePlanCountOutputTypeCountInvitationOrderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationOrderWhereInput
   }
 
 
@@ -2398,6 +2672,7 @@ export namespace Prisma {
     updatedAt?: boolean
     country?: boolean
     invitationList?: boolean | User$invitationListArgs<ExtArgs>
+    InvitationOrder?: boolean | User$InvitationOrderArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2415,6 +2690,7 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "createdAt" | "updatedAt" | "country", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     invitationList?: boolean | User$invitationListArgs<ExtArgs>
+    InvitationOrder?: boolean | User$InvitationOrderArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -2422,6 +2698,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       invitationList: Prisma.$InvitationPayload<ExtArgs>[]
+      InvitationOrder: Prisma.$InvitationOrderPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2771,6 +3048,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     invitationList<T extends User$invitationListArgs<ExtArgs> = {}>(args?: Subset<T, User$invitationListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    InvitationOrder<T extends User$InvitationOrderArgs<ExtArgs> = {}>(args?: Subset<T, User$InvitationOrderArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3173,6 +3451,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.InvitationOrder
+   */
+  export type User$InvitationOrderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationOrder
+     */
+    select?: InvitationOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationOrder
+     */
+    omit?: InvitationOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationOrderInclude<ExtArgs> | null
+    where?: InvitationOrderWhereInput
+    orderBy?: InvitationOrderOrderByWithRelationInput | InvitationOrderOrderByWithRelationInput[]
+    cursor?: InvitationOrderWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvitationOrderScalarFieldEnum | InvitationOrderScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3274,6 +3576,13 @@ export namespace Prisma {
     rsvpDeadlineDesc: string | null
     rsvpHasFood: boolean | null
     isRsvpPopup: boolean | null
+    hasRsvpDeadline: boolean | null
+    billingStatus: $Enums.Invitation_billingStatus | null
+    trialEndsAt: Date | null
+    currentPlanCode: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt: Date | null
+    accessEndsAt: Date | null
+    watermarkEnabled: boolean | null
     bestMan: string | null
     bridesMaids: string | null
     wishlistText: string | null
@@ -3283,7 +3592,6 @@ export namespace Prisma {
     ogImageKey: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    hasRsvpDeadline: boolean | null
   }
 
   export type InvitationMaxAggregateOutputType = {
@@ -3337,6 +3645,13 @@ export namespace Prisma {
     rsvpDeadlineDesc: string | null
     rsvpHasFood: boolean | null
     isRsvpPopup: boolean | null
+    hasRsvpDeadline: boolean | null
+    billingStatus: $Enums.Invitation_billingStatus | null
+    trialEndsAt: Date | null
+    currentPlanCode: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt: Date | null
+    accessEndsAt: Date | null
+    watermarkEnabled: boolean | null
     bestMan: string | null
     bridesMaids: string | null
     wishlistText: string | null
@@ -3346,7 +3661,6 @@ export namespace Prisma {
     ogImageKey: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    hasRsvpDeadline: boolean | null
   }
 
   export type InvitationCountAggregateOutputType = {
@@ -3400,6 +3714,13 @@ export namespace Prisma {
     rsvpDeadlineDesc: number
     rsvpHasFood: number
     isRsvpPopup: number
+    hasRsvpDeadline: number
+    billingStatus: number
+    trialEndsAt: number
+    currentPlanCode: number
+    accessStartedAt: number
+    accessEndsAt: number
+    watermarkEnabled: number
     bestMan: number
     bridesMaids: number
     wishlistText: number
@@ -3410,7 +3731,6 @@ export namespace Prisma {
     ogImageKey: number
     createdAt: number
     updatedAt: number
-    hasRsvpDeadline: number
     _all: number
   }
 
@@ -3486,6 +3806,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: true
     rsvpHasFood?: true
     isRsvpPopup?: true
+    hasRsvpDeadline?: true
+    billingStatus?: true
+    trialEndsAt?: true
+    currentPlanCode?: true
+    accessStartedAt?: true
+    accessEndsAt?: true
+    watermarkEnabled?: true
     bestMan?: true
     bridesMaids?: true
     wishlistText?: true
@@ -3495,7 +3822,6 @@ export namespace Prisma {
     ogImageKey?: true
     createdAt?: true
     updatedAt?: true
-    hasRsvpDeadline?: true
   }
 
   export type InvitationMaxAggregateInputType = {
@@ -3549,6 +3875,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: true
     rsvpHasFood?: true
     isRsvpPopup?: true
+    hasRsvpDeadline?: true
+    billingStatus?: true
+    trialEndsAt?: true
+    currentPlanCode?: true
+    accessStartedAt?: true
+    accessEndsAt?: true
+    watermarkEnabled?: true
     bestMan?: true
     bridesMaids?: true
     wishlistText?: true
@@ -3558,7 +3891,6 @@ export namespace Prisma {
     ogImageKey?: true
     createdAt?: true
     updatedAt?: true
-    hasRsvpDeadline?: true
   }
 
   export type InvitationCountAggregateInputType = {
@@ -3612,6 +3944,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: true
     rsvpHasFood?: true
     isRsvpPopup?: true
+    hasRsvpDeadline?: true
+    billingStatus?: true
+    trialEndsAt?: true
+    currentPlanCode?: true
+    accessStartedAt?: true
+    accessEndsAt?: true
+    watermarkEnabled?: true
     bestMan?: true
     bridesMaids?: true
     wishlistText?: true
@@ -3622,7 +3961,6 @@ export namespace Prisma {
     ogImageKey?: true
     createdAt?: true
     updatedAt?: true
-    hasRsvpDeadline?: true
     _all?: true
   }
 
@@ -3763,6 +4101,13 @@ export namespace Prisma {
     rsvpDeadlineDesc: string | null
     rsvpHasFood: boolean | null
     isRsvpPopup: boolean | null
+    hasRsvpDeadline: boolean | null
+    billingStatus: $Enums.Invitation_billingStatus
+    trialEndsAt: Date | null
+    currentPlanCode: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt: Date | null
+    accessEndsAt: Date | null
+    watermarkEnabled: boolean
     bestMan: string | null
     bridesMaids: string | null
     wishlistText: string | null
@@ -3773,7 +4118,6 @@ export namespace Prisma {
     ogImageKey: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    hasRsvpDeadline: boolean | null
     _count: InvitationCountAggregateOutputType | null
     _avg: InvitationAvgAggregateOutputType | null
     _sum: InvitationSumAggregateOutputType | null
@@ -3846,6 +4190,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: boolean
     rsvpHasFood?: boolean
     isRsvpPopup?: boolean
+    hasRsvpDeadline?: boolean
+    billingStatus?: boolean
+    trialEndsAt?: boolean
+    currentPlanCode?: boolean
+    accessStartedAt?: boolean
+    accessEndsAt?: boolean
+    watermarkEnabled?: boolean
     bestMan?: boolean
     bridesMaids?: boolean
     wishlistText?: boolean
@@ -3856,11 +4207,11 @@ export namespace Prisma {
     ogImageKey?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    hasRsvpDeadline?: boolean
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
     InvitationDressColor?: boolean | Invitation$InvitationDressColorArgs<ExtArgs>
     faqList?: boolean | Invitation$faqListArgs<ExtArgs>
+    InvitationOrder?: boolean | Invitation$InvitationOrderArgs<ExtArgs>
     photoList?: boolean | Invitation$photoListArgs<ExtArgs>
     placeList?: boolean | Invitation$placeListArgs<ExtArgs>
     invitationRSVP?: boolean | Invitation$invitationRSVPArgs<ExtArgs>
@@ -3920,6 +4271,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: boolean
     rsvpHasFood?: boolean
     isRsvpPopup?: boolean
+    hasRsvpDeadline?: boolean
+    billingStatus?: boolean
+    trialEndsAt?: boolean
+    currentPlanCode?: boolean
+    accessStartedAt?: boolean
+    accessEndsAt?: boolean
+    watermarkEnabled?: boolean
     bestMan?: boolean
     bridesMaids?: boolean
     wishlistText?: boolean
@@ -3930,15 +4288,15 @@ export namespace Prisma {
     ogImageKey?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    hasRsvpDeadline?: boolean
   }
 
-  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpDeadline" | "rsvpDeadlineDesc" | "rsvpHasFood" | "isRsvpPopup" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt" | "hasRsvpDeadline", ExtArgs["result"]["invitation"]>
+  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpDeadline" | "rsvpDeadlineDesc" | "rsvpHasFood" | "isRsvpPopup" | "hasRsvpDeadline" | "billingStatus" | "trialEndsAt" | "currentPlanCode" | "accessStartedAt" | "accessEndsAt" | "watermarkEnabled" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
     InvitationDressColor?: boolean | Invitation$InvitationDressColorArgs<ExtArgs>
     faqList?: boolean | Invitation$faqListArgs<ExtArgs>
+    InvitationOrder?: boolean | Invitation$InvitationOrderArgs<ExtArgs>
     photoList?: boolean | Invitation$photoListArgs<ExtArgs>
     placeList?: boolean | Invitation$placeListArgs<ExtArgs>
     invitationRSVP?: boolean | Invitation$invitationRSVPArgs<ExtArgs>
@@ -3952,6 +4310,7 @@ export namespace Prisma {
       invitationCoverPhotoList: Prisma.$InvitationCoverPhotoPayload<ExtArgs>[]
       InvitationDressColor: Prisma.$InvitationDressColorPayload<ExtArgs>[]
       faqList: Prisma.$InvitationFaqPayload<ExtArgs>[]
+      InvitationOrder: Prisma.$InvitationOrderPayload<ExtArgs>[]
       photoList: Prisma.$InvitationPhotoPayload<ExtArgs>[]
       placeList: Prisma.$InvitationPlacePayload<ExtArgs>[]
       invitationRSVP: Prisma.$InvitationRSVPPayload<ExtArgs>[]
@@ -4007,6 +4366,13 @@ export namespace Prisma {
       rsvpDeadlineDesc: string | null
       rsvpHasFood: boolean | null
       isRsvpPopup: boolean | null
+      hasRsvpDeadline: boolean | null
+      billingStatus: $Enums.Invitation_billingStatus
+      trialEndsAt: Date | null
+      currentPlanCode: $Enums.Invitation_currentPlanCode | null
+      accessStartedAt: Date | null
+      accessEndsAt: Date | null
+      watermarkEnabled: boolean
       bestMan: string | null
       bridesMaids: string | null
       wishlistText: string | null
@@ -4017,7 +4383,6 @@ export namespace Prisma {
       ogImageKey: string | null
       createdAt: Date | null
       updatedAt: Date | null
-      hasRsvpDeadline: boolean | null
     }, ExtArgs["result"]["invitation"]>
     composites: {}
   }
@@ -4362,6 +4727,7 @@ export namespace Prisma {
     invitationCoverPhotoList<T extends Invitation$invitationCoverPhotoListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$invitationCoverPhotoListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationCoverPhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     InvitationDressColor<T extends Invitation$InvitationDressColorArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$InvitationDressColorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationDressColorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     faqList<T extends Invitation$faqListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$faqListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationFaqPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    InvitationOrder<T extends Invitation$InvitationOrderArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$InvitationOrderArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     photoList<T extends Invitation$photoListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$photoListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     placeList<T extends Invitation$placeListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$placeListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPlacePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     invitationRSVP<T extends Invitation$invitationRSVPArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$invitationRSVPArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationRSVPPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -4444,6 +4810,13 @@ export namespace Prisma {
     readonly rsvpDeadlineDesc: FieldRef<"Invitation", 'String'>
     readonly rsvpHasFood: FieldRef<"Invitation", 'Boolean'>
     readonly isRsvpPopup: FieldRef<"Invitation", 'Boolean'>
+    readonly hasRsvpDeadline: FieldRef<"Invitation", 'Boolean'>
+    readonly billingStatus: FieldRef<"Invitation", 'Invitation_billingStatus'>
+    readonly trialEndsAt: FieldRef<"Invitation", 'DateTime'>
+    readonly currentPlanCode: FieldRef<"Invitation", 'Invitation_currentPlanCode'>
+    readonly accessStartedAt: FieldRef<"Invitation", 'DateTime'>
+    readonly accessEndsAt: FieldRef<"Invitation", 'DateTime'>
+    readonly watermarkEnabled: FieldRef<"Invitation", 'Boolean'>
     readonly bestMan: FieldRef<"Invitation", 'String'>
     readonly bridesMaids: FieldRef<"Invitation", 'String'>
     readonly wishlistText: FieldRef<"Invitation", 'String'>
@@ -4454,7 +4827,6 @@ export namespace Prisma {
     readonly ogImageKey: FieldRef<"Invitation", 'String'>
     readonly createdAt: FieldRef<"Invitation", 'DateTime'>
     readonly updatedAt: FieldRef<"Invitation", 'DateTime'>
-    readonly hasRsvpDeadline: FieldRef<"Invitation", 'Boolean'>
   }
     
 
@@ -4886,6 +5258,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: InvitationFaqScalarFieldEnum | InvitationFaqScalarFieldEnum[]
+  }
+
+  /**
+   * Invitation.InvitationOrder
+   */
+  export type Invitation$InvitationOrderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationOrder
+     */
+    select?: InvitationOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationOrder
+     */
+    omit?: InvitationOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationOrderInclude<ExtArgs> | null
+    where?: InvitationOrderWhereInput
+    orderBy?: InvitationOrderOrderByWithRelationInput | InvitationOrderOrderByWithRelationInput[]
+    cursor?: InvitationOrderWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvitationOrderScalarFieldEnum | InvitationOrderScalarFieldEnum[]
   }
 
   /**
@@ -17764,6 +18160,2222 @@ export namespace Prisma {
 
 
   /**
+   * Model InvitationOrder
+   */
+
+  export type AggregateInvitationOrder = {
+    _count: InvitationOrderCountAggregateOutputType | null
+    _avg: InvitationOrderAvgAggregateOutputType | null
+    _sum: InvitationOrderSumAggregateOutputType | null
+    _min: InvitationOrderMinAggregateOutputType | null
+    _max: InvitationOrderMaxAggregateOutputType | null
+  }
+
+  export type InvitationOrderAvgAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    userId: number | null
+    pricePlanId: number | null
+    amountPhp: number | null
+    durationDays: number | null
+  }
+
+  export type InvitationOrderSumAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    userId: number | null
+    pricePlanId: number | null
+    amountPhp: number | null
+    durationDays: number | null
+  }
+
+  export type InvitationOrderMinAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    userId: number | null
+    pricePlanId: number | null
+    orderNo: string | null
+    planCode: $Enums.InvitationOrder_planCode | null
+    amountPhp: number | null
+    currency: string | null
+    durationDays: number | null
+    status: $Enums.InvitationOrder_status | null
+    paidAt: Date | null
+    expiresAt: Date | null
+    provider: string | null
+    providerPaymentId: string | null
+    providerEventId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type InvitationOrderMaxAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    userId: number | null
+    pricePlanId: number | null
+    orderNo: string | null
+    planCode: $Enums.InvitationOrder_planCode | null
+    amountPhp: number | null
+    currency: string | null
+    durationDays: number | null
+    status: $Enums.InvitationOrder_status | null
+    paidAt: Date | null
+    expiresAt: Date | null
+    provider: string | null
+    providerPaymentId: string | null
+    providerEventId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type InvitationOrderCountAggregateOutputType = {
+    id: number
+    invitationId: number
+    userId: number
+    pricePlanId: number
+    orderNo: number
+    planCode: number
+    amountPhp: number
+    currency: number
+    durationDays: number
+    status: number
+    paidAt: number
+    expiresAt: number
+    provider: number
+    providerPaymentId: number
+    providerEventId: number
+    rawPayload: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type InvitationOrderAvgAggregateInputType = {
+    id?: true
+    invitationId?: true
+    userId?: true
+    pricePlanId?: true
+    amountPhp?: true
+    durationDays?: true
+  }
+
+  export type InvitationOrderSumAggregateInputType = {
+    id?: true
+    invitationId?: true
+    userId?: true
+    pricePlanId?: true
+    amountPhp?: true
+    durationDays?: true
+  }
+
+  export type InvitationOrderMinAggregateInputType = {
+    id?: true
+    invitationId?: true
+    userId?: true
+    pricePlanId?: true
+    orderNo?: true
+    planCode?: true
+    amountPhp?: true
+    currency?: true
+    durationDays?: true
+    status?: true
+    paidAt?: true
+    expiresAt?: true
+    provider?: true
+    providerPaymentId?: true
+    providerEventId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type InvitationOrderMaxAggregateInputType = {
+    id?: true
+    invitationId?: true
+    userId?: true
+    pricePlanId?: true
+    orderNo?: true
+    planCode?: true
+    amountPhp?: true
+    currency?: true
+    durationDays?: true
+    status?: true
+    paidAt?: true
+    expiresAt?: true
+    provider?: true
+    providerPaymentId?: true
+    providerEventId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type InvitationOrderCountAggregateInputType = {
+    id?: true
+    invitationId?: true
+    userId?: true
+    pricePlanId?: true
+    orderNo?: true
+    planCode?: true
+    amountPhp?: true
+    currency?: true
+    durationDays?: true
+    status?: true
+    paidAt?: true
+    expiresAt?: true
+    provider?: true
+    providerPaymentId?: true
+    providerEventId?: true
+    rawPayload?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type InvitationOrderAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationOrder to aggregate.
+     */
+    where?: InvitationOrderWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationOrders to fetch.
+     */
+    orderBy?: InvitationOrderOrderByWithRelationInput | InvitationOrderOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: InvitationOrderWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationOrders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationOrders.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned InvitationOrders
+    **/
+    _count?: true | InvitationOrderCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: InvitationOrderAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: InvitationOrderSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: InvitationOrderMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: InvitationOrderMaxAggregateInputType
+  }
+
+  export type GetInvitationOrderAggregateType<T extends InvitationOrderAggregateArgs> = {
+        [P in keyof T & keyof AggregateInvitationOrder]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateInvitationOrder[P]>
+      : GetScalarType<T[P], AggregateInvitationOrder[P]>
+  }
+
+
+
+
+  export type InvitationOrderGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationOrderWhereInput
+    orderBy?: InvitationOrderOrderByWithAggregationInput | InvitationOrderOrderByWithAggregationInput[]
+    by: InvitationOrderScalarFieldEnum[] | InvitationOrderScalarFieldEnum
+    having?: InvitationOrderScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: InvitationOrderCountAggregateInputType | true
+    _avg?: InvitationOrderAvgAggregateInputType
+    _sum?: InvitationOrderSumAggregateInputType
+    _min?: InvitationOrderMinAggregateInputType
+    _max?: InvitationOrderMaxAggregateInputType
+  }
+
+  export type InvitationOrderGroupByOutputType = {
+    id: number
+    invitationId: number
+    userId: number
+    pricePlanId: number | null
+    orderNo: string
+    planCode: $Enums.InvitationOrder_planCode
+    amountPhp: number
+    currency: string
+    durationDays: number | null
+    status: $Enums.InvitationOrder_status
+    paidAt: Date | null
+    expiresAt: Date | null
+    provider: string
+    providerPaymentId: string | null
+    providerEventId: string | null
+    rawPayload: JsonValue | null
+    createdAt: Date
+    updatedAt: Date
+    _count: InvitationOrderCountAggregateOutputType | null
+    _avg: InvitationOrderAvgAggregateOutputType | null
+    _sum: InvitationOrderSumAggregateOutputType | null
+    _min: InvitationOrderMinAggregateOutputType | null
+    _max: InvitationOrderMaxAggregateOutputType | null
+  }
+
+  type GetInvitationOrderGroupByPayload<T extends InvitationOrderGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<InvitationOrderGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof InvitationOrderGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], InvitationOrderGroupByOutputType[P]>
+            : GetScalarType<T[P], InvitationOrderGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type InvitationOrderSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    invitationId?: boolean
+    userId?: boolean
+    pricePlanId?: boolean
+    orderNo?: boolean
+    planCode?: boolean
+    amountPhp?: boolean
+    currency?: boolean
+    durationDays?: boolean
+    status?: boolean
+    paidAt?: boolean
+    expiresAt?: boolean
+    provider?: boolean
+    providerPaymentId?: boolean
+    providerEventId?: boolean
+    rawPayload?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    Invitation?: boolean | InvitationDefaultArgs<ExtArgs>
+    PricePlan?: boolean | InvitationOrder$PricePlanArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["invitationOrder"]>
+
+
+
+  export type InvitationOrderSelectScalar = {
+    id?: boolean
+    invitationId?: boolean
+    userId?: boolean
+    pricePlanId?: boolean
+    orderNo?: boolean
+    planCode?: boolean
+    amountPhp?: boolean
+    currency?: boolean
+    durationDays?: boolean
+    status?: boolean
+    paidAt?: boolean
+    expiresAt?: boolean
+    provider?: boolean
+    providerPaymentId?: boolean
+    providerEventId?: boolean
+    rawPayload?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type InvitationOrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitationId" | "userId" | "pricePlanId" | "orderNo" | "planCode" | "amountPhp" | "currency" | "durationDays" | "status" | "paidAt" | "expiresAt" | "provider" | "providerPaymentId" | "providerEventId" | "rawPayload" | "createdAt" | "updatedAt", ExtArgs["result"]["invitationOrder"]>
+  export type InvitationOrderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Invitation?: boolean | InvitationDefaultArgs<ExtArgs>
+    PricePlan?: boolean | InvitationOrder$PricePlanArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $InvitationOrderPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "InvitationOrder"
+    objects: {
+      Invitation: Prisma.$InvitationPayload<ExtArgs>
+      PricePlan: Prisma.$PricePlanPayload<ExtArgs> | null
+      User: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      invitationId: number
+      userId: number
+      pricePlanId: number | null
+      orderNo: string
+      planCode: $Enums.InvitationOrder_planCode
+      amountPhp: number
+      currency: string
+      durationDays: number | null
+      status: $Enums.InvitationOrder_status
+      paidAt: Date | null
+      expiresAt: Date | null
+      provider: string
+      providerPaymentId: string | null
+      providerEventId: string | null
+      rawPayload: Prisma.JsonValue | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["invitationOrder"]>
+    composites: {}
+  }
+
+  type InvitationOrderGetPayload<S extends boolean | null | undefined | InvitationOrderDefaultArgs> = $Result.GetResult<Prisma.$InvitationOrderPayload, S>
+
+  type InvitationOrderCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<InvitationOrderFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: InvitationOrderCountAggregateInputType | true
+    }
+
+  export interface InvitationOrderDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['InvitationOrder'], meta: { name: 'InvitationOrder' } }
+    /**
+     * Find zero or one InvitationOrder that matches the filter.
+     * @param {InvitationOrderFindUniqueArgs} args - Arguments to find a InvitationOrder
+     * @example
+     * // Get one InvitationOrder
+     * const invitationOrder = await prisma.invitationOrder.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends InvitationOrderFindUniqueArgs>(args: SelectSubset<T, InvitationOrderFindUniqueArgs<ExtArgs>>): Prisma__InvitationOrderClient<$Result.GetResult<Prisma.$InvitationOrderPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one InvitationOrder that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {InvitationOrderFindUniqueOrThrowArgs} args - Arguments to find a InvitationOrder
+     * @example
+     * // Get one InvitationOrder
+     * const invitationOrder = await prisma.invitationOrder.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends InvitationOrderFindUniqueOrThrowArgs>(args: SelectSubset<T, InvitationOrderFindUniqueOrThrowArgs<ExtArgs>>): Prisma__InvitationOrderClient<$Result.GetResult<Prisma.$InvitationOrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationOrder that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationOrderFindFirstArgs} args - Arguments to find a InvitationOrder
+     * @example
+     * // Get one InvitationOrder
+     * const invitationOrder = await prisma.invitationOrder.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends InvitationOrderFindFirstArgs>(args?: SelectSubset<T, InvitationOrderFindFirstArgs<ExtArgs>>): Prisma__InvitationOrderClient<$Result.GetResult<Prisma.$InvitationOrderPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationOrder that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationOrderFindFirstOrThrowArgs} args - Arguments to find a InvitationOrder
+     * @example
+     * // Get one InvitationOrder
+     * const invitationOrder = await prisma.invitationOrder.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends InvitationOrderFindFirstOrThrowArgs>(args?: SelectSubset<T, InvitationOrderFindFirstOrThrowArgs<ExtArgs>>): Prisma__InvitationOrderClient<$Result.GetResult<Prisma.$InvitationOrderPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more InvitationOrders that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationOrderFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all InvitationOrders
+     * const invitationOrders = await prisma.invitationOrder.findMany()
+     * 
+     * // Get first 10 InvitationOrders
+     * const invitationOrders = await prisma.invitationOrder.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const invitationOrderWithIdOnly = await prisma.invitationOrder.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends InvitationOrderFindManyArgs>(args?: SelectSubset<T, InvitationOrderFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a InvitationOrder.
+     * @param {InvitationOrderCreateArgs} args - Arguments to create a InvitationOrder.
+     * @example
+     * // Create one InvitationOrder
+     * const InvitationOrder = await prisma.invitationOrder.create({
+     *   data: {
+     *     // ... data to create a InvitationOrder
+     *   }
+     * })
+     * 
+     */
+    create<T extends InvitationOrderCreateArgs>(args: SelectSubset<T, InvitationOrderCreateArgs<ExtArgs>>): Prisma__InvitationOrderClient<$Result.GetResult<Prisma.$InvitationOrderPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many InvitationOrders.
+     * @param {InvitationOrderCreateManyArgs} args - Arguments to create many InvitationOrders.
+     * @example
+     * // Create many InvitationOrders
+     * const invitationOrder = await prisma.invitationOrder.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends InvitationOrderCreateManyArgs>(args?: SelectSubset<T, InvitationOrderCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a InvitationOrder.
+     * @param {InvitationOrderDeleteArgs} args - Arguments to delete one InvitationOrder.
+     * @example
+     * // Delete one InvitationOrder
+     * const InvitationOrder = await prisma.invitationOrder.delete({
+     *   where: {
+     *     // ... filter to delete one InvitationOrder
+     *   }
+     * })
+     * 
+     */
+    delete<T extends InvitationOrderDeleteArgs>(args: SelectSubset<T, InvitationOrderDeleteArgs<ExtArgs>>): Prisma__InvitationOrderClient<$Result.GetResult<Prisma.$InvitationOrderPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one InvitationOrder.
+     * @param {InvitationOrderUpdateArgs} args - Arguments to update one InvitationOrder.
+     * @example
+     * // Update one InvitationOrder
+     * const invitationOrder = await prisma.invitationOrder.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends InvitationOrderUpdateArgs>(args: SelectSubset<T, InvitationOrderUpdateArgs<ExtArgs>>): Prisma__InvitationOrderClient<$Result.GetResult<Prisma.$InvitationOrderPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more InvitationOrders.
+     * @param {InvitationOrderDeleteManyArgs} args - Arguments to filter InvitationOrders to delete.
+     * @example
+     * // Delete a few InvitationOrders
+     * const { count } = await prisma.invitationOrder.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends InvitationOrderDeleteManyArgs>(args?: SelectSubset<T, InvitationOrderDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more InvitationOrders.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationOrderUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many InvitationOrders
+     * const invitationOrder = await prisma.invitationOrder.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends InvitationOrderUpdateManyArgs>(args: SelectSubset<T, InvitationOrderUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one InvitationOrder.
+     * @param {InvitationOrderUpsertArgs} args - Arguments to update or create a InvitationOrder.
+     * @example
+     * // Update or create a InvitationOrder
+     * const invitationOrder = await prisma.invitationOrder.upsert({
+     *   create: {
+     *     // ... data to create a InvitationOrder
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the InvitationOrder we want to update
+     *   }
+     * })
+     */
+    upsert<T extends InvitationOrderUpsertArgs>(args: SelectSubset<T, InvitationOrderUpsertArgs<ExtArgs>>): Prisma__InvitationOrderClient<$Result.GetResult<Prisma.$InvitationOrderPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of InvitationOrders.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationOrderCountArgs} args - Arguments to filter InvitationOrders to count.
+     * @example
+     * // Count the number of InvitationOrders
+     * const count = await prisma.invitationOrder.count({
+     *   where: {
+     *     // ... the filter for the InvitationOrders we want to count
+     *   }
+     * })
+    **/
+    count<T extends InvitationOrderCountArgs>(
+      args?: Subset<T, InvitationOrderCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], InvitationOrderCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a InvitationOrder.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationOrderAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends InvitationOrderAggregateArgs>(args: Subset<T, InvitationOrderAggregateArgs>): Prisma.PrismaPromise<GetInvitationOrderAggregateType<T>>
+
+    /**
+     * Group by InvitationOrder.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationOrderGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends InvitationOrderGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: InvitationOrderGroupByArgs['orderBy'] }
+        : { orderBy?: InvitationOrderGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, InvitationOrderGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInvitationOrderGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the InvitationOrder model
+   */
+  readonly fields: InvitationOrderFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for InvitationOrder.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__InvitationOrderClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Invitation<T extends InvitationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InvitationDefaultArgs<ExtArgs>>): Prisma__InvitationClient<$Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    PricePlan<T extends InvitationOrder$PricePlanArgs<ExtArgs> = {}>(args?: Subset<T, InvitationOrder$PricePlanArgs<ExtArgs>>): Prisma__PricePlanClient<$Result.GetResult<Prisma.$PricePlanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    User<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the InvitationOrder model
+   */
+  interface InvitationOrderFieldRefs {
+    readonly id: FieldRef<"InvitationOrder", 'Int'>
+    readonly invitationId: FieldRef<"InvitationOrder", 'Int'>
+    readonly userId: FieldRef<"InvitationOrder", 'Int'>
+    readonly pricePlanId: FieldRef<"InvitationOrder", 'Int'>
+    readonly orderNo: FieldRef<"InvitationOrder", 'String'>
+    readonly planCode: FieldRef<"InvitationOrder", 'InvitationOrder_planCode'>
+    readonly amountPhp: FieldRef<"InvitationOrder", 'Int'>
+    readonly currency: FieldRef<"InvitationOrder", 'String'>
+    readonly durationDays: FieldRef<"InvitationOrder", 'Int'>
+    readonly status: FieldRef<"InvitationOrder", 'InvitationOrder_status'>
+    readonly paidAt: FieldRef<"InvitationOrder", 'DateTime'>
+    readonly expiresAt: FieldRef<"InvitationOrder", 'DateTime'>
+    readonly provider: FieldRef<"InvitationOrder", 'String'>
+    readonly providerPaymentId: FieldRef<"InvitationOrder", 'String'>
+    readonly providerEventId: FieldRef<"InvitationOrder", 'String'>
+    readonly rawPayload: FieldRef<"InvitationOrder", 'Json'>
+    readonly createdAt: FieldRef<"InvitationOrder", 'DateTime'>
+    readonly updatedAt: FieldRef<"InvitationOrder", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * InvitationOrder findUnique
+   */
+  export type InvitationOrderFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationOrder
+     */
+    select?: InvitationOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationOrder
+     */
+    omit?: InvitationOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationOrderInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationOrder to fetch.
+     */
+    where: InvitationOrderWhereUniqueInput
+  }
+
+  /**
+   * InvitationOrder findUniqueOrThrow
+   */
+  export type InvitationOrderFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationOrder
+     */
+    select?: InvitationOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationOrder
+     */
+    omit?: InvitationOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationOrderInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationOrder to fetch.
+     */
+    where: InvitationOrderWhereUniqueInput
+  }
+
+  /**
+   * InvitationOrder findFirst
+   */
+  export type InvitationOrderFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationOrder
+     */
+    select?: InvitationOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationOrder
+     */
+    omit?: InvitationOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationOrderInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationOrder to fetch.
+     */
+    where?: InvitationOrderWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationOrders to fetch.
+     */
+    orderBy?: InvitationOrderOrderByWithRelationInput | InvitationOrderOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationOrders.
+     */
+    cursor?: InvitationOrderWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationOrders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationOrders.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationOrders.
+     */
+    distinct?: InvitationOrderScalarFieldEnum | InvitationOrderScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationOrder findFirstOrThrow
+   */
+  export type InvitationOrderFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationOrder
+     */
+    select?: InvitationOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationOrder
+     */
+    omit?: InvitationOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationOrderInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationOrder to fetch.
+     */
+    where?: InvitationOrderWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationOrders to fetch.
+     */
+    orderBy?: InvitationOrderOrderByWithRelationInput | InvitationOrderOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationOrders.
+     */
+    cursor?: InvitationOrderWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationOrders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationOrders.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationOrders.
+     */
+    distinct?: InvitationOrderScalarFieldEnum | InvitationOrderScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationOrder findMany
+   */
+  export type InvitationOrderFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationOrder
+     */
+    select?: InvitationOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationOrder
+     */
+    omit?: InvitationOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationOrderInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationOrders to fetch.
+     */
+    where?: InvitationOrderWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationOrders to fetch.
+     */
+    orderBy?: InvitationOrderOrderByWithRelationInput | InvitationOrderOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing InvitationOrders.
+     */
+    cursor?: InvitationOrderWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationOrders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationOrders.
+     */
+    skip?: number
+    distinct?: InvitationOrderScalarFieldEnum | InvitationOrderScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationOrder create
+   */
+  export type InvitationOrderCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationOrder
+     */
+    select?: InvitationOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationOrder
+     */
+    omit?: InvitationOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationOrderInclude<ExtArgs> | null
+    /**
+     * The data needed to create a InvitationOrder.
+     */
+    data: XOR<InvitationOrderCreateInput, InvitationOrderUncheckedCreateInput>
+  }
+
+  /**
+   * InvitationOrder createMany
+   */
+  export type InvitationOrderCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many InvitationOrders.
+     */
+    data: InvitationOrderCreateManyInput | InvitationOrderCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * InvitationOrder update
+   */
+  export type InvitationOrderUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationOrder
+     */
+    select?: InvitationOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationOrder
+     */
+    omit?: InvitationOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationOrderInclude<ExtArgs> | null
+    /**
+     * The data needed to update a InvitationOrder.
+     */
+    data: XOR<InvitationOrderUpdateInput, InvitationOrderUncheckedUpdateInput>
+    /**
+     * Choose, which InvitationOrder to update.
+     */
+    where: InvitationOrderWhereUniqueInput
+  }
+
+  /**
+   * InvitationOrder updateMany
+   */
+  export type InvitationOrderUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update InvitationOrders.
+     */
+    data: XOR<InvitationOrderUpdateManyMutationInput, InvitationOrderUncheckedUpdateManyInput>
+    /**
+     * Filter which InvitationOrders to update
+     */
+    where?: InvitationOrderWhereInput
+    /**
+     * Limit how many InvitationOrders to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationOrder upsert
+   */
+  export type InvitationOrderUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationOrder
+     */
+    select?: InvitationOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationOrder
+     */
+    omit?: InvitationOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationOrderInclude<ExtArgs> | null
+    /**
+     * The filter to search for the InvitationOrder to update in case it exists.
+     */
+    where: InvitationOrderWhereUniqueInput
+    /**
+     * In case the InvitationOrder found by the `where` argument doesn't exist, create a new InvitationOrder with this data.
+     */
+    create: XOR<InvitationOrderCreateInput, InvitationOrderUncheckedCreateInput>
+    /**
+     * In case the InvitationOrder was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<InvitationOrderUpdateInput, InvitationOrderUncheckedUpdateInput>
+  }
+
+  /**
+   * InvitationOrder delete
+   */
+  export type InvitationOrderDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationOrder
+     */
+    select?: InvitationOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationOrder
+     */
+    omit?: InvitationOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationOrderInclude<ExtArgs> | null
+    /**
+     * Filter which InvitationOrder to delete.
+     */
+    where: InvitationOrderWhereUniqueInput
+  }
+
+  /**
+   * InvitationOrder deleteMany
+   */
+  export type InvitationOrderDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationOrders to delete
+     */
+    where?: InvitationOrderWhereInput
+    /**
+     * Limit how many InvitationOrders to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationOrder.PricePlan
+   */
+  export type InvitationOrder$PricePlanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PricePlan
+     */
+    select?: PricePlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PricePlan
+     */
+    omit?: PricePlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricePlanInclude<ExtArgs> | null
+    where?: PricePlanWhereInput
+  }
+
+  /**
+   * InvitationOrder without action
+   */
+  export type InvitationOrderDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationOrder
+     */
+    select?: InvitationOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationOrder
+     */
+    omit?: InvitationOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationOrderInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PricePlan
+   */
+
+  export type AggregatePricePlan = {
+    _count: PricePlanCountAggregateOutputType | null
+    _avg: PricePlanAvgAggregateOutputType | null
+    _sum: PricePlanSumAggregateOutputType | null
+    _min: PricePlanMinAggregateOutputType | null
+    _max: PricePlanMaxAggregateOutputType | null
+  }
+
+  export type PricePlanAvgAggregateOutputType = {
+    id: number | null
+    amountPhp: number | null
+    durationDays: number | null
+    displayOrder: number | null
+  }
+
+  export type PricePlanSumAggregateOutputType = {
+    id: number | null
+    amountPhp: number | null
+    durationDays: number | null
+    displayOrder: number | null
+  }
+
+  export type PricePlanMinAggregateOutputType = {
+    id: number | null
+    code: string | null
+    name: string | null
+    description: string | null
+    amountPhp: number | null
+    currency: string | null
+    durationDays: number | null
+    isActive: boolean | null
+    displayOrder: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PricePlanMaxAggregateOutputType = {
+    id: number | null
+    code: string | null
+    name: string | null
+    description: string | null
+    amountPhp: number | null
+    currency: string | null
+    durationDays: number | null
+    isActive: boolean | null
+    displayOrder: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PricePlanCountAggregateOutputType = {
+    id: number
+    code: number
+    name: number
+    description: number
+    amountPhp: number
+    currency: number
+    durationDays: number
+    isActive: number
+    displayOrder: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PricePlanAvgAggregateInputType = {
+    id?: true
+    amountPhp?: true
+    durationDays?: true
+    displayOrder?: true
+  }
+
+  export type PricePlanSumAggregateInputType = {
+    id?: true
+    amountPhp?: true
+    durationDays?: true
+    displayOrder?: true
+  }
+
+  export type PricePlanMinAggregateInputType = {
+    id?: true
+    code?: true
+    name?: true
+    description?: true
+    amountPhp?: true
+    currency?: true
+    durationDays?: true
+    isActive?: true
+    displayOrder?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PricePlanMaxAggregateInputType = {
+    id?: true
+    code?: true
+    name?: true
+    description?: true
+    amountPhp?: true
+    currency?: true
+    durationDays?: true
+    isActive?: true
+    displayOrder?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PricePlanCountAggregateInputType = {
+    id?: true
+    code?: true
+    name?: true
+    description?: true
+    amountPhp?: true
+    currency?: true
+    durationDays?: true
+    isActive?: true
+    displayOrder?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PricePlanAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PricePlan to aggregate.
+     */
+    where?: PricePlanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PricePlans to fetch.
+     */
+    orderBy?: PricePlanOrderByWithRelationInput | PricePlanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PricePlanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PricePlans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PricePlans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PricePlans
+    **/
+    _count?: true | PricePlanCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PricePlanAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PricePlanSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PricePlanMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PricePlanMaxAggregateInputType
+  }
+
+  export type GetPricePlanAggregateType<T extends PricePlanAggregateArgs> = {
+        [P in keyof T & keyof AggregatePricePlan]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePricePlan[P]>
+      : GetScalarType<T[P], AggregatePricePlan[P]>
+  }
+
+
+
+
+  export type PricePlanGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PricePlanWhereInput
+    orderBy?: PricePlanOrderByWithAggregationInput | PricePlanOrderByWithAggregationInput[]
+    by: PricePlanScalarFieldEnum[] | PricePlanScalarFieldEnum
+    having?: PricePlanScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PricePlanCountAggregateInputType | true
+    _avg?: PricePlanAvgAggregateInputType
+    _sum?: PricePlanSumAggregateInputType
+    _min?: PricePlanMinAggregateInputType
+    _max?: PricePlanMaxAggregateInputType
+  }
+
+  export type PricePlanGroupByOutputType = {
+    id: number
+    code: string
+    name: string
+    description: string | null
+    amountPhp: number
+    currency: string
+    durationDays: number | null
+    isActive: boolean
+    displayOrder: number
+    createdAt: Date
+    updatedAt: Date
+    _count: PricePlanCountAggregateOutputType | null
+    _avg: PricePlanAvgAggregateOutputType | null
+    _sum: PricePlanSumAggregateOutputType | null
+    _min: PricePlanMinAggregateOutputType | null
+    _max: PricePlanMaxAggregateOutputType | null
+  }
+
+  type GetPricePlanGroupByPayload<T extends PricePlanGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PricePlanGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PricePlanGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PricePlanGroupByOutputType[P]>
+            : GetScalarType<T[P], PricePlanGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PricePlanSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    code?: boolean
+    name?: boolean
+    description?: boolean
+    amountPhp?: boolean
+    currency?: boolean
+    durationDays?: boolean
+    isActive?: boolean
+    displayOrder?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    InvitationOrder?: boolean | PricePlan$InvitationOrderArgs<ExtArgs>
+    _count?: boolean | PricePlanCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["pricePlan"]>
+
+
+
+  export type PricePlanSelectScalar = {
+    id?: boolean
+    code?: boolean
+    name?: boolean
+    description?: boolean
+    amountPhp?: boolean
+    currency?: boolean
+    durationDays?: boolean
+    isActive?: boolean
+    displayOrder?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type PricePlanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "code" | "name" | "description" | "amountPhp" | "currency" | "durationDays" | "isActive" | "displayOrder" | "createdAt" | "updatedAt", ExtArgs["result"]["pricePlan"]>
+  export type PricePlanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    InvitationOrder?: boolean | PricePlan$InvitationOrderArgs<ExtArgs>
+    _count?: boolean | PricePlanCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $PricePlanPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PricePlan"
+    objects: {
+      InvitationOrder: Prisma.$InvitationOrderPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      code: string
+      name: string
+      description: string | null
+      amountPhp: number
+      currency: string
+      durationDays: number | null
+      isActive: boolean
+      displayOrder: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["pricePlan"]>
+    composites: {}
+  }
+
+  type PricePlanGetPayload<S extends boolean | null | undefined | PricePlanDefaultArgs> = $Result.GetResult<Prisma.$PricePlanPayload, S>
+
+  type PricePlanCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PricePlanFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PricePlanCountAggregateInputType | true
+    }
+
+  export interface PricePlanDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PricePlan'], meta: { name: 'PricePlan' } }
+    /**
+     * Find zero or one PricePlan that matches the filter.
+     * @param {PricePlanFindUniqueArgs} args - Arguments to find a PricePlan
+     * @example
+     * // Get one PricePlan
+     * const pricePlan = await prisma.pricePlan.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PricePlanFindUniqueArgs>(args: SelectSubset<T, PricePlanFindUniqueArgs<ExtArgs>>): Prisma__PricePlanClient<$Result.GetResult<Prisma.$PricePlanPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PricePlan that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PricePlanFindUniqueOrThrowArgs} args - Arguments to find a PricePlan
+     * @example
+     * // Get one PricePlan
+     * const pricePlan = await prisma.pricePlan.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PricePlanFindUniqueOrThrowArgs>(args: SelectSubset<T, PricePlanFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PricePlanClient<$Result.GetResult<Prisma.$PricePlanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PricePlan that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PricePlanFindFirstArgs} args - Arguments to find a PricePlan
+     * @example
+     * // Get one PricePlan
+     * const pricePlan = await prisma.pricePlan.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PricePlanFindFirstArgs>(args?: SelectSubset<T, PricePlanFindFirstArgs<ExtArgs>>): Prisma__PricePlanClient<$Result.GetResult<Prisma.$PricePlanPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PricePlan that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PricePlanFindFirstOrThrowArgs} args - Arguments to find a PricePlan
+     * @example
+     * // Get one PricePlan
+     * const pricePlan = await prisma.pricePlan.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PricePlanFindFirstOrThrowArgs>(args?: SelectSubset<T, PricePlanFindFirstOrThrowArgs<ExtArgs>>): Prisma__PricePlanClient<$Result.GetResult<Prisma.$PricePlanPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PricePlans that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PricePlanFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PricePlans
+     * const pricePlans = await prisma.pricePlan.findMany()
+     * 
+     * // Get first 10 PricePlans
+     * const pricePlans = await prisma.pricePlan.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const pricePlanWithIdOnly = await prisma.pricePlan.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PricePlanFindManyArgs>(args?: SelectSubset<T, PricePlanFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PricePlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PricePlan.
+     * @param {PricePlanCreateArgs} args - Arguments to create a PricePlan.
+     * @example
+     * // Create one PricePlan
+     * const PricePlan = await prisma.pricePlan.create({
+     *   data: {
+     *     // ... data to create a PricePlan
+     *   }
+     * })
+     * 
+     */
+    create<T extends PricePlanCreateArgs>(args: SelectSubset<T, PricePlanCreateArgs<ExtArgs>>): Prisma__PricePlanClient<$Result.GetResult<Prisma.$PricePlanPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PricePlans.
+     * @param {PricePlanCreateManyArgs} args - Arguments to create many PricePlans.
+     * @example
+     * // Create many PricePlans
+     * const pricePlan = await prisma.pricePlan.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PricePlanCreateManyArgs>(args?: SelectSubset<T, PricePlanCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a PricePlan.
+     * @param {PricePlanDeleteArgs} args - Arguments to delete one PricePlan.
+     * @example
+     * // Delete one PricePlan
+     * const PricePlan = await prisma.pricePlan.delete({
+     *   where: {
+     *     // ... filter to delete one PricePlan
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PricePlanDeleteArgs>(args: SelectSubset<T, PricePlanDeleteArgs<ExtArgs>>): Prisma__PricePlanClient<$Result.GetResult<Prisma.$PricePlanPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PricePlan.
+     * @param {PricePlanUpdateArgs} args - Arguments to update one PricePlan.
+     * @example
+     * // Update one PricePlan
+     * const pricePlan = await prisma.pricePlan.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PricePlanUpdateArgs>(args: SelectSubset<T, PricePlanUpdateArgs<ExtArgs>>): Prisma__PricePlanClient<$Result.GetResult<Prisma.$PricePlanPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PricePlans.
+     * @param {PricePlanDeleteManyArgs} args - Arguments to filter PricePlans to delete.
+     * @example
+     * // Delete a few PricePlans
+     * const { count } = await prisma.pricePlan.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PricePlanDeleteManyArgs>(args?: SelectSubset<T, PricePlanDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PricePlans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PricePlanUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PricePlans
+     * const pricePlan = await prisma.pricePlan.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PricePlanUpdateManyArgs>(args: SelectSubset<T, PricePlanUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one PricePlan.
+     * @param {PricePlanUpsertArgs} args - Arguments to update or create a PricePlan.
+     * @example
+     * // Update or create a PricePlan
+     * const pricePlan = await prisma.pricePlan.upsert({
+     *   create: {
+     *     // ... data to create a PricePlan
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PricePlan we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PricePlanUpsertArgs>(args: SelectSubset<T, PricePlanUpsertArgs<ExtArgs>>): Prisma__PricePlanClient<$Result.GetResult<Prisma.$PricePlanPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PricePlans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PricePlanCountArgs} args - Arguments to filter PricePlans to count.
+     * @example
+     * // Count the number of PricePlans
+     * const count = await prisma.pricePlan.count({
+     *   where: {
+     *     // ... the filter for the PricePlans we want to count
+     *   }
+     * })
+    **/
+    count<T extends PricePlanCountArgs>(
+      args?: Subset<T, PricePlanCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PricePlanCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PricePlan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PricePlanAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PricePlanAggregateArgs>(args: Subset<T, PricePlanAggregateArgs>): Prisma.PrismaPromise<GetPricePlanAggregateType<T>>
+
+    /**
+     * Group by PricePlan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PricePlanGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PricePlanGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PricePlanGroupByArgs['orderBy'] }
+        : { orderBy?: PricePlanGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PricePlanGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPricePlanGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PricePlan model
+   */
+  readonly fields: PricePlanFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PricePlan.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PricePlanClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    InvitationOrder<T extends PricePlan$InvitationOrderArgs<ExtArgs> = {}>(args?: Subset<T, PricePlan$InvitationOrderArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PricePlan model
+   */
+  interface PricePlanFieldRefs {
+    readonly id: FieldRef<"PricePlan", 'Int'>
+    readonly code: FieldRef<"PricePlan", 'String'>
+    readonly name: FieldRef<"PricePlan", 'String'>
+    readonly description: FieldRef<"PricePlan", 'String'>
+    readonly amountPhp: FieldRef<"PricePlan", 'Int'>
+    readonly currency: FieldRef<"PricePlan", 'String'>
+    readonly durationDays: FieldRef<"PricePlan", 'Int'>
+    readonly isActive: FieldRef<"PricePlan", 'Boolean'>
+    readonly displayOrder: FieldRef<"PricePlan", 'Int'>
+    readonly createdAt: FieldRef<"PricePlan", 'DateTime'>
+    readonly updatedAt: FieldRef<"PricePlan", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PricePlan findUnique
+   */
+  export type PricePlanFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PricePlan
+     */
+    select?: PricePlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PricePlan
+     */
+    omit?: PricePlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricePlanInclude<ExtArgs> | null
+    /**
+     * Filter, which PricePlan to fetch.
+     */
+    where: PricePlanWhereUniqueInput
+  }
+
+  /**
+   * PricePlan findUniqueOrThrow
+   */
+  export type PricePlanFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PricePlan
+     */
+    select?: PricePlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PricePlan
+     */
+    omit?: PricePlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricePlanInclude<ExtArgs> | null
+    /**
+     * Filter, which PricePlan to fetch.
+     */
+    where: PricePlanWhereUniqueInput
+  }
+
+  /**
+   * PricePlan findFirst
+   */
+  export type PricePlanFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PricePlan
+     */
+    select?: PricePlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PricePlan
+     */
+    omit?: PricePlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricePlanInclude<ExtArgs> | null
+    /**
+     * Filter, which PricePlan to fetch.
+     */
+    where?: PricePlanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PricePlans to fetch.
+     */
+    orderBy?: PricePlanOrderByWithRelationInput | PricePlanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PricePlans.
+     */
+    cursor?: PricePlanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PricePlans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PricePlans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PricePlans.
+     */
+    distinct?: PricePlanScalarFieldEnum | PricePlanScalarFieldEnum[]
+  }
+
+  /**
+   * PricePlan findFirstOrThrow
+   */
+  export type PricePlanFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PricePlan
+     */
+    select?: PricePlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PricePlan
+     */
+    omit?: PricePlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricePlanInclude<ExtArgs> | null
+    /**
+     * Filter, which PricePlan to fetch.
+     */
+    where?: PricePlanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PricePlans to fetch.
+     */
+    orderBy?: PricePlanOrderByWithRelationInput | PricePlanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PricePlans.
+     */
+    cursor?: PricePlanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PricePlans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PricePlans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PricePlans.
+     */
+    distinct?: PricePlanScalarFieldEnum | PricePlanScalarFieldEnum[]
+  }
+
+  /**
+   * PricePlan findMany
+   */
+  export type PricePlanFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PricePlan
+     */
+    select?: PricePlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PricePlan
+     */
+    omit?: PricePlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricePlanInclude<ExtArgs> | null
+    /**
+     * Filter, which PricePlans to fetch.
+     */
+    where?: PricePlanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PricePlans to fetch.
+     */
+    orderBy?: PricePlanOrderByWithRelationInput | PricePlanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PricePlans.
+     */
+    cursor?: PricePlanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PricePlans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PricePlans.
+     */
+    skip?: number
+    distinct?: PricePlanScalarFieldEnum | PricePlanScalarFieldEnum[]
+  }
+
+  /**
+   * PricePlan create
+   */
+  export type PricePlanCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PricePlan
+     */
+    select?: PricePlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PricePlan
+     */
+    omit?: PricePlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricePlanInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PricePlan.
+     */
+    data: XOR<PricePlanCreateInput, PricePlanUncheckedCreateInput>
+  }
+
+  /**
+   * PricePlan createMany
+   */
+  export type PricePlanCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PricePlans.
+     */
+    data: PricePlanCreateManyInput | PricePlanCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PricePlan update
+   */
+  export type PricePlanUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PricePlan
+     */
+    select?: PricePlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PricePlan
+     */
+    omit?: PricePlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricePlanInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PricePlan.
+     */
+    data: XOR<PricePlanUpdateInput, PricePlanUncheckedUpdateInput>
+    /**
+     * Choose, which PricePlan to update.
+     */
+    where: PricePlanWhereUniqueInput
+  }
+
+  /**
+   * PricePlan updateMany
+   */
+  export type PricePlanUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PricePlans.
+     */
+    data: XOR<PricePlanUpdateManyMutationInput, PricePlanUncheckedUpdateManyInput>
+    /**
+     * Filter which PricePlans to update
+     */
+    where?: PricePlanWhereInput
+    /**
+     * Limit how many PricePlans to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PricePlan upsert
+   */
+  export type PricePlanUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PricePlan
+     */
+    select?: PricePlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PricePlan
+     */
+    omit?: PricePlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricePlanInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PricePlan to update in case it exists.
+     */
+    where: PricePlanWhereUniqueInput
+    /**
+     * In case the PricePlan found by the `where` argument doesn't exist, create a new PricePlan with this data.
+     */
+    create: XOR<PricePlanCreateInput, PricePlanUncheckedCreateInput>
+    /**
+     * In case the PricePlan was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PricePlanUpdateInput, PricePlanUncheckedUpdateInput>
+  }
+
+  /**
+   * PricePlan delete
+   */
+  export type PricePlanDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PricePlan
+     */
+    select?: PricePlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PricePlan
+     */
+    omit?: PricePlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricePlanInclude<ExtArgs> | null
+    /**
+     * Filter which PricePlan to delete.
+     */
+    where: PricePlanWhereUniqueInput
+  }
+
+  /**
+   * PricePlan deleteMany
+   */
+  export type PricePlanDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PricePlans to delete
+     */
+    where?: PricePlanWhereInput
+    /**
+     * Limit how many PricePlans to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PricePlan.InvitationOrder
+   */
+  export type PricePlan$InvitationOrderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationOrder
+     */
+    select?: InvitationOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationOrder
+     */
+    omit?: InvitationOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationOrderInclude<ExtArgs> | null
+    where?: InvitationOrderWhereInput
+    orderBy?: InvitationOrderOrderByWithRelationInput | InvitationOrderOrderByWithRelationInput[]
+    cursor?: InvitationOrderWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvitationOrderScalarFieldEnum | InvitationOrderScalarFieldEnum[]
+  }
+
+  /**
+   * PricePlan without action
+   */
+  export type PricePlanDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PricePlan
+     */
+    select?: PricePlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PricePlan
+     */
+    omit?: PricePlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricePlanInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -17840,6 +20452,13 @@ export namespace Prisma {
     rsvpDeadlineDesc: 'rsvpDeadlineDesc',
     rsvpHasFood: 'rsvpHasFood',
     isRsvpPopup: 'isRsvpPopup',
+    hasRsvpDeadline: 'hasRsvpDeadline',
+    billingStatus: 'billingStatus',
+    trialEndsAt: 'trialEndsAt',
+    currentPlanCode: 'currentPlanCode',
+    accessStartedAt: 'accessStartedAt',
+    accessEndsAt: 'accessEndsAt',
+    watermarkEnabled: 'watermarkEnabled',
     bestMan: 'bestMan',
     bridesMaids: 'bridesMaids',
     wishlistText: 'wishlistText',
@@ -17849,8 +20468,7 @@ export namespace Prisma {
     endingText: 'endingText',
     ogImageKey: 'ogImageKey',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    hasRsvpDeadline: 'hasRsvpDeadline'
+    updatedAt: 'updatedAt'
   };
 
   export type InvitationScalarFieldEnum = (typeof InvitationScalarFieldEnum)[keyof typeof InvitationScalarFieldEnum]
@@ -18013,6 +20631,47 @@ export namespace Prisma {
   };
 
   export type EmailVerificationScalarFieldEnum = (typeof EmailVerificationScalarFieldEnum)[keyof typeof EmailVerificationScalarFieldEnum]
+
+
+  export const InvitationOrderScalarFieldEnum: {
+    id: 'id',
+    invitationId: 'invitationId',
+    userId: 'userId',
+    pricePlanId: 'pricePlanId',
+    orderNo: 'orderNo',
+    planCode: 'planCode',
+    amountPhp: 'amountPhp',
+    currency: 'currency',
+    durationDays: 'durationDays',
+    status: 'status',
+    paidAt: 'paidAt',
+    expiresAt: 'expiresAt',
+    provider: 'provider',
+    providerPaymentId: 'providerPaymentId',
+    providerEventId: 'providerEventId',
+    rawPayload: 'rawPayload',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type InvitationOrderScalarFieldEnum = (typeof InvitationOrderScalarFieldEnum)[keyof typeof InvitationOrderScalarFieldEnum]
+
+
+  export const PricePlanScalarFieldEnum: {
+    id: 'id',
+    code: 'code',
+    name: 'name',
+    description: 'description',
+    amountPhp: 'amountPhp',
+    currency: 'currency',
+    durationDays: 'durationDays',
+    isActive: 'isActive',
+    displayOrder: 'displayOrder',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PricePlanScalarFieldEnum = (typeof PricePlanScalarFieldEnum)[keyof typeof PricePlanScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -18219,6 +20878,27 @@ export namespace Prisma {
   export type EmailVerificationOrderByRelevanceFieldEnum = (typeof EmailVerificationOrderByRelevanceFieldEnum)[keyof typeof EmailVerificationOrderByRelevanceFieldEnum]
 
 
+  export const InvitationOrderOrderByRelevanceFieldEnum: {
+    orderNo: 'orderNo',
+    currency: 'currency',
+    provider: 'provider',
+    providerPaymentId: 'providerPaymentId',
+    providerEventId: 'providerEventId'
+  };
+
+  export type InvitationOrderOrderByRelevanceFieldEnum = (typeof InvitationOrderOrderByRelevanceFieldEnum)[keyof typeof InvitationOrderOrderByRelevanceFieldEnum]
+
+
+  export const PricePlanOrderByRelevanceFieldEnum: {
+    code: 'code',
+    name: 'name',
+    description: 'description',
+    currency: 'currency'
+  };
+
+  export type PricePlanOrderByRelevanceFieldEnum = (typeof PricePlanOrderByRelevanceFieldEnum)[keyof typeof PricePlanOrderByRelevanceFieldEnum]
+
+
   /**
    * Field references
    */
@@ -18253,6 +20933,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Invitation_billingStatus'
+   */
+  export type EnumInvitation_billingStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Invitation_billingStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'Invitation_currentPlanCode'
+   */
+  export type EnumInvitation_currentPlanCodeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Invitation_currentPlanCode'>
+    
+
+
+  /**
    * Reference to a field of type 'Json'
    */
   export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
@@ -18271,6 +20965,20 @@ export namespace Prisma {
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
     
+
+
+  /**
+   * Reference to a field of type 'InvitationOrder_planCode'
+   */
+  export type EnumInvitationOrder_planCodeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvitationOrder_planCode'>
+    
+
+
+  /**
+   * Reference to a field of type 'InvitationOrder_status'
+   */
+  export type EnumInvitationOrder_statusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvitationOrder_status'>
+    
   /**
    * Deep Input Types
    */
@@ -18287,6 +20995,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     country?: StringNullableFilter<"User"> | string | null
     invitationList?: InvitationListRelationFilter
+    InvitationOrder?: InvitationOrderListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -18297,6 +21006,7 @@ export namespace Prisma {
     updatedAt?: SortOrderInput | SortOrder
     country?: SortOrderInput | SortOrder
     invitationList?: InvitationOrderByRelationAggregateInput
+    InvitationOrder?: InvitationOrderOrderByRelationAggregateInput
     _relevance?: UserOrderByRelevanceInput
   }
 
@@ -18311,6 +21021,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     country?: StringNullableFilter<"User"> | string | null
     invitationList?: InvitationListRelationFilter
+    InvitationOrder?: InvitationOrderListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -18393,6 +21104,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: StringNullableFilter<"Invitation"> | string | null
     rsvpHasFood?: BoolNullableFilter<"Invitation"> | boolean | null
     isRsvpPopup?: BoolNullableFilter<"Invitation"> | boolean | null
+    hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFilter<"Invitation"> | $Enums.Invitation_billingStatus
+    trialEndsAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    currentPlanCode?: EnumInvitation_currentPlanCodeNullableFilter<"Invitation"> | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    accessEndsAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    watermarkEnabled?: BoolFilter<"Invitation"> | boolean
     bestMan?: StringNullableFilter<"Invitation"> | string | null
     bridesMaids?: StringNullableFilter<"Invitation"> | string | null
     wishlistText?: StringNullableFilter<"Invitation"> | string | null
@@ -18403,11 +21121,11 @@ export namespace Prisma {
     ogImageKey?: StringNullableFilter<"Invitation"> | string | null
     createdAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     updatedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
-    hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     invitationCoverPhotoList?: InvitationCoverPhotoListRelationFilter
     InvitationDressColor?: InvitationDressColorListRelationFilter
     faqList?: InvitationFaqListRelationFilter
+    InvitationOrder?: InvitationOrderListRelationFilter
     photoList?: InvitationPhotoListRelationFilter
     placeList?: InvitationPlaceListRelationFilter
     invitationRSVP?: InvitationRSVPListRelationFilter
@@ -18464,6 +21182,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: SortOrderInput | SortOrder
     rsvpHasFood?: SortOrderInput | SortOrder
     isRsvpPopup?: SortOrderInput | SortOrder
+    hasRsvpDeadline?: SortOrderInput | SortOrder
+    billingStatus?: SortOrder
+    trialEndsAt?: SortOrderInput | SortOrder
+    currentPlanCode?: SortOrderInput | SortOrder
+    accessStartedAt?: SortOrderInput | SortOrder
+    accessEndsAt?: SortOrderInput | SortOrder
+    watermarkEnabled?: SortOrder
     bestMan?: SortOrderInput | SortOrder
     bridesMaids?: SortOrderInput | SortOrder
     wishlistText?: SortOrderInput | SortOrder
@@ -18474,11 +21199,11 @@ export namespace Prisma {
     ogImageKey?: SortOrderInput | SortOrder
     createdAt?: SortOrderInput | SortOrder
     updatedAt?: SortOrderInput | SortOrder
-    hasRsvpDeadline?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     invitationCoverPhotoList?: InvitationCoverPhotoOrderByRelationAggregateInput
     InvitationDressColor?: InvitationDressColorOrderByRelationAggregateInput
     faqList?: InvitationFaqOrderByRelationAggregateInput
+    InvitationOrder?: InvitationOrderOrderByRelationAggregateInput
     photoList?: InvitationPhotoOrderByRelationAggregateInput
     placeList?: InvitationPlaceOrderByRelationAggregateInput
     invitationRSVP?: InvitationRSVPOrderByRelationAggregateInput
@@ -18539,6 +21264,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: StringNullableFilter<"Invitation"> | string | null
     rsvpHasFood?: BoolNullableFilter<"Invitation"> | boolean | null
     isRsvpPopup?: BoolNullableFilter<"Invitation"> | boolean | null
+    hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFilter<"Invitation"> | $Enums.Invitation_billingStatus
+    trialEndsAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    currentPlanCode?: EnumInvitation_currentPlanCodeNullableFilter<"Invitation"> | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    accessEndsAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    watermarkEnabled?: BoolFilter<"Invitation"> | boolean
     bestMan?: StringNullableFilter<"Invitation"> | string | null
     bridesMaids?: StringNullableFilter<"Invitation"> | string | null
     wishlistText?: StringNullableFilter<"Invitation"> | string | null
@@ -18549,11 +21281,11 @@ export namespace Prisma {
     ogImageKey?: StringNullableFilter<"Invitation"> | string | null
     createdAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     updatedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
-    hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     invitationCoverPhotoList?: InvitationCoverPhotoListRelationFilter
     InvitationDressColor?: InvitationDressColorListRelationFilter
     faqList?: InvitationFaqListRelationFilter
+    InvitationOrder?: InvitationOrderListRelationFilter
     photoList?: InvitationPhotoListRelationFilter
     placeList?: InvitationPlaceListRelationFilter
     invitationRSVP?: InvitationRSVPListRelationFilter
@@ -18610,6 +21342,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: SortOrderInput | SortOrder
     rsvpHasFood?: SortOrderInput | SortOrder
     isRsvpPopup?: SortOrderInput | SortOrder
+    hasRsvpDeadline?: SortOrderInput | SortOrder
+    billingStatus?: SortOrder
+    trialEndsAt?: SortOrderInput | SortOrder
+    currentPlanCode?: SortOrderInput | SortOrder
+    accessStartedAt?: SortOrderInput | SortOrder
+    accessEndsAt?: SortOrderInput | SortOrder
+    watermarkEnabled?: SortOrder
     bestMan?: SortOrderInput | SortOrder
     bridesMaids?: SortOrderInput | SortOrder
     wishlistText?: SortOrderInput | SortOrder
@@ -18620,7 +21359,6 @@ export namespace Prisma {
     ogImageKey?: SortOrderInput | SortOrder
     createdAt?: SortOrderInput | SortOrder
     updatedAt?: SortOrderInput | SortOrder
-    hasRsvpDeadline?: SortOrderInput | SortOrder
     _count?: InvitationCountOrderByAggregateInput
     _avg?: InvitationAvgOrderByAggregateInput
     _max?: InvitationMaxOrderByAggregateInput
@@ -18682,6 +21420,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     rsvpHasFood?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
     isRsvpPopup?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
+    hasRsvpDeadline?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
+    billingStatus?: EnumInvitation_billingStatusWithAggregatesFilter<"Invitation"> | $Enums.Invitation_billingStatus
+    trialEndsAt?: DateTimeNullableWithAggregatesFilter<"Invitation"> | Date | string | null
+    currentPlanCode?: EnumInvitation_currentPlanCodeNullableWithAggregatesFilter<"Invitation"> | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: DateTimeNullableWithAggregatesFilter<"Invitation"> | Date | string | null
+    accessEndsAt?: DateTimeNullableWithAggregatesFilter<"Invitation"> | Date | string | null
+    watermarkEnabled?: BoolWithAggregatesFilter<"Invitation"> | boolean
     bestMan?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     bridesMaids?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     wishlistText?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
@@ -18692,7 +21437,6 @@ export namespace Prisma {
     ogImageKey?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     createdAt?: DateTimeNullableWithAggregatesFilter<"Invitation"> | Date | string | null
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Invitation"> | Date | string | null
-    hasRsvpDeadline?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
   }
 
   export type InvitationPlaceWhereInput = {
@@ -19519,6 +22263,223 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"EmailVerification"> | Date | string
   }
 
+  export type InvitationOrderWhereInput = {
+    AND?: InvitationOrderWhereInput | InvitationOrderWhereInput[]
+    OR?: InvitationOrderWhereInput[]
+    NOT?: InvitationOrderWhereInput | InvitationOrderWhereInput[]
+    id?: IntFilter<"InvitationOrder"> | number
+    invitationId?: IntFilter<"InvitationOrder"> | number
+    userId?: IntFilter<"InvitationOrder"> | number
+    pricePlanId?: IntNullableFilter<"InvitationOrder"> | number | null
+    orderNo?: StringFilter<"InvitationOrder"> | string
+    planCode?: EnumInvitationOrder_planCodeFilter<"InvitationOrder"> | $Enums.InvitationOrder_planCode
+    amountPhp?: IntFilter<"InvitationOrder"> | number
+    currency?: StringFilter<"InvitationOrder"> | string
+    durationDays?: IntNullableFilter<"InvitationOrder"> | number | null
+    status?: EnumInvitationOrder_statusFilter<"InvitationOrder"> | $Enums.InvitationOrder_status
+    paidAt?: DateTimeNullableFilter<"InvitationOrder"> | Date | string | null
+    expiresAt?: DateTimeNullableFilter<"InvitationOrder"> | Date | string | null
+    provider?: StringFilter<"InvitationOrder"> | string
+    providerPaymentId?: StringNullableFilter<"InvitationOrder"> | string | null
+    providerEventId?: StringNullableFilter<"InvitationOrder"> | string | null
+    rawPayload?: JsonNullableFilter<"InvitationOrder">
+    createdAt?: DateTimeFilter<"InvitationOrder"> | Date | string
+    updatedAt?: DateTimeFilter<"InvitationOrder"> | Date | string
+    Invitation?: XOR<InvitationScalarRelationFilter, InvitationWhereInput>
+    PricePlan?: XOR<PricePlanNullableScalarRelationFilter, PricePlanWhereInput> | null
+    User?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type InvitationOrderOrderByWithRelationInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    userId?: SortOrder
+    pricePlanId?: SortOrderInput | SortOrder
+    orderNo?: SortOrder
+    planCode?: SortOrder
+    amountPhp?: SortOrder
+    currency?: SortOrder
+    durationDays?: SortOrderInput | SortOrder
+    status?: SortOrder
+    paidAt?: SortOrderInput | SortOrder
+    expiresAt?: SortOrderInput | SortOrder
+    provider?: SortOrder
+    providerPaymentId?: SortOrderInput | SortOrder
+    providerEventId?: SortOrderInput | SortOrder
+    rawPayload?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    Invitation?: InvitationOrderByWithRelationInput
+    PricePlan?: PricePlanOrderByWithRelationInput
+    User?: UserOrderByWithRelationInput
+    _relevance?: InvitationOrderOrderByRelevanceInput
+  }
+
+  export type InvitationOrderWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    orderNo?: string
+    AND?: InvitationOrderWhereInput | InvitationOrderWhereInput[]
+    OR?: InvitationOrderWhereInput[]
+    NOT?: InvitationOrderWhereInput | InvitationOrderWhereInput[]
+    invitationId?: IntFilter<"InvitationOrder"> | number
+    userId?: IntFilter<"InvitationOrder"> | number
+    pricePlanId?: IntNullableFilter<"InvitationOrder"> | number | null
+    planCode?: EnumInvitationOrder_planCodeFilter<"InvitationOrder"> | $Enums.InvitationOrder_planCode
+    amountPhp?: IntFilter<"InvitationOrder"> | number
+    currency?: StringFilter<"InvitationOrder"> | string
+    durationDays?: IntNullableFilter<"InvitationOrder"> | number | null
+    status?: EnumInvitationOrder_statusFilter<"InvitationOrder"> | $Enums.InvitationOrder_status
+    paidAt?: DateTimeNullableFilter<"InvitationOrder"> | Date | string | null
+    expiresAt?: DateTimeNullableFilter<"InvitationOrder"> | Date | string | null
+    provider?: StringFilter<"InvitationOrder"> | string
+    providerPaymentId?: StringNullableFilter<"InvitationOrder"> | string | null
+    providerEventId?: StringNullableFilter<"InvitationOrder"> | string | null
+    rawPayload?: JsonNullableFilter<"InvitationOrder">
+    createdAt?: DateTimeFilter<"InvitationOrder"> | Date | string
+    updatedAt?: DateTimeFilter<"InvitationOrder"> | Date | string
+    Invitation?: XOR<InvitationScalarRelationFilter, InvitationWhereInput>
+    PricePlan?: XOR<PricePlanNullableScalarRelationFilter, PricePlanWhereInput> | null
+    User?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "orderNo">
+
+  export type InvitationOrderOrderByWithAggregationInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    userId?: SortOrder
+    pricePlanId?: SortOrderInput | SortOrder
+    orderNo?: SortOrder
+    planCode?: SortOrder
+    amountPhp?: SortOrder
+    currency?: SortOrder
+    durationDays?: SortOrderInput | SortOrder
+    status?: SortOrder
+    paidAt?: SortOrderInput | SortOrder
+    expiresAt?: SortOrderInput | SortOrder
+    provider?: SortOrder
+    providerPaymentId?: SortOrderInput | SortOrder
+    providerEventId?: SortOrderInput | SortOrder
+    rawPayload?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: InvitationOrderCountOrderByAggregateInput
+    _avg?: InvitationOrderAvgOrderByAggregateInput
+    _max?: InvitationOrderMaxOrderByAggregateInput
+    _min?: InvitationOrderMinOrderByAggregateInput
+    _sum?: InvitationOrderSumOrderByAggregateInput
+  }
+
+  export type InvitationOrderScalarWhereWithAggregatesInput = {
+    AND?: InvitationOrderScalarWhereWithAggregatesInput | InvitationOrderScalarWhereWithAggregatesInput[]
+    OR?: InvitationOrderScalarWhereWithAggregatesInput[]
+    NOT?: InvitationOrderScalarWhereWithAggregatesInput | InvitationOrderScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"InvitationOrder"> | number
+    invitationId?: IntWithAggregatesFilter<"InvitationOrder"> | number
+    userId?: IntWithAggregatesFilter<"InvitationOrder"> | number
+    pricePlanId?: IntNullableWithAggregatesFilter<"InvitationOrder"> | number | null
+    orderNo?: StringWithAggregatesFilter<"InvitationOrder"> | string
+    planCode?: EnumInvitationOrder_planCodeWithAggregatesFilter<"InvitationOrder"> | $Enums.InvitationOrder_planCode
+    amountPhp?: IntWithAggregatesFilter<"InvitationOrder"> | number
+    currency?: StringWithAggregatesFilter<"InvitationOrder"> | string
+    durationDays?: IntNullableWithAggregatesFilter<"InvitationOrder"> | number | null
+    status?: EnumInvitationOrder_statusWithAggregatesFilter<"InvitationOrder"> | $Enums.InvitationOrder_status
+    paidAt?: DateTimeNullableWithAggregatesFilter<"InvitationOrder"> | Date | string | null
+    expiresAt?: DateTimeNullableWithAggregatesFilter<"InvitationOrder"> | Date | string | null
+    provider?: StringWithAggregatesFilter<"InvitationOrder"> | string
+    providerPaymentId?: StringNullableWithAggregatesFilter<"InvitationOrder"> | string | null
+    providerEventId?: StringNullableWithAggregatesFilter<"InvitationOrder"> | string | null
+    rawPayload?: JsonNullableWithAggregatesFilter<"InvitationOrder">
+    createdAt?: DateTimeWithAggregatesFilter<"InvitationOrder"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"InvitationOrder"> | Date | string
+  }
+
+  export type PricePlanWhereInput = {
+    AND?: PricePlanWhereInput | PricePlanWhereInput[]
+    OR?: PricePlanWhereInput[]
+    NOT?: PricePlanWhereInput | PricePlanWhereInput[]
+    id?: IntFilter<"PricePlan"> | number
+    code?: StringFilter<"PricePlan"> | string
+    name?: StringFilter<"PricePlan"> | string
+    description?: StringNullableFilter<"PricePlan"> | string | null
+    amountPhp?: IntFilter<"PricePlan"> | number
+    currency?: StringFilter<"PricePlan"> | string
+    durationDays?: IntNullableFilter<"PricePlan"> | number | null
+    isActive?: BoolFilter<"PricePlan"> | boolean
+    displayOrder?: IntFilter<"PricePlan"> | number
+    createdAt?: DateTimeFilter<"PricePlan"> | Date | string
+    updatedAt?: DateTimeFilter<"PricePlan"> | Date | string
+    InvitationOrder?: InvitationOrderListRelationFilter
+  }
+
+  export type PricePlanOrderByWithRelationInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    amountPhp?: SortOrder
+    currency?: SortOrder
+    durationDays?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    InvitationOrder?: InvitationOrderOrderByRelationAggregateInput
+    _relevance?: PricePlanOrderByRelevanceInput
+  }
+
+  export type PricePlanWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    code?: string
+    AND?: PricePlanWhereInput | PricePlanWhereInput[]
+    OR?: PricePlanWhereInput[]
+    NOT?: PricePlanWhereInput | PricePlanWhereInput[]
+    name?: StringFilter<"PricePlan"> | string
+    description?: StringNullableFilter<"PricePlan"> | string | null
+    amountPhp?: IntFilter<"PricePlan"> | number
+    currency?: StringFilter<"PricePlan"> | string
+    durationDays?: IntNullableFilter<"PricePlan"> | number | null
+    isActive?: BoolFilter<"PricePlan"> | boolean
+    displayOrder?: IntFilter<"PricePlan"> | number
+    createdAt?: DateTimeFilter<"PricePlan"> | Date | string
+    updatedAt?: DateTimeFilter<"PricePlan"> | Date | string
+    InvitationOrder?: InvitationOrderListRelationFilter
+  }, "id" | "code">
+
+  export type PricePlanOrderByWithAggregationInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    amountPhp?: SortOrder
+    currency?: SortOrder
+    durationDays?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PricePlanCountOrderByAggregateInput
+    _avg?: PricePlanAvgOrderByAggregateInput
+    _max?: PricePlanMaxOrderByAggregateInput
+    _min?: PricePlanMinOrderByAggregateInput
+    _sum?: PricePlanSumOrderByAggregateInput
+  }
+
+  export type PricePlanScalarWhereWithAggregatesInput = {
+    AND?: PricePlanScalarWhereWithAggregatesInput | PricePlanScalarWhereWithAggregatesInput[]
+    OR?: PricePlanScalarWhereWithAggregatesInput[]
+    NOT?: PricePlanScalarWhereWithAggregatesInput | PricePlanScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"PricePlan"> | number
+    code?: StringWithAggregatesFilter<"PricePlan"> | string
+    name?: StringWithAggregatesFilter<"PricePlan"> | string
+    description?: StringNullableWithAggregatesFilter<"PricePlan"> | string | null
+    amountPhp?: IntWithAggregatesFilter<"PricePlan"> | number
+    currency?: StringWithAggregatesFilter<"PricePlan"> | string
+    durationDays?: IntNullableWithAggregatesFilter<"PricePlan"> | number | null
+    isActive?: BoolWithAggregatesFilter<"PricePlan"> | boolean
+    displayOrder?: IntWithAggregatesFilter<"PricePlan"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"PricePlan"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"PricePlan"> | Date | string
+  }
+
   export type UserCreateInput = {
     email?: string | null
     password?: string | null
@@ -19526,6 +22487,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     country?: string | null
     invitationList?: InvitationCreateNestedManyWithoutUserInput
+    InvitationOrder?: InvitationOrderCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -19536,6 +22498,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     country?: string | null
     invitationList?: InvitationUncheckedCreateNestedManyWithoutUserInput
+    InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -19545,6 +22508,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     invitationList?: InvitationUpdateManyWithoutUserNestedInput
+    InvitationOrder?: InvitationOrderUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -19555,6 +22519,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     invitationList?: InvitationUncheckedUpdateManyWithoutUserNestedInput
+    InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -19632,6 +22597,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -19642,11 +22614,11 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -19703,6 +22675,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -19713,10 +22692,10 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -19771,6 +22750,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19781,11 +22767,11 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -19842,6 +22828,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19852,10 +22845,10 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -19912,6 +22905,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -19922,7 +22922,6 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
   }
 
   export type InvitationUpdateManyMutationInput = {
@@ -19974,6 +22973,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19984,7 +22990,6 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type InvitationUncheckedUpdateManyInput = {
@@ -20038,6 +23043,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20048,7 +23060,6 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type InvitationPlaceCreateInput = {
@@ -20855,6 +23866,246 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type InvitationOrderCreateInput = {
+    orderNo: string
+    planCode: $Enums.InvitationOrder_planCode
+    amountPhp: number
+    currency?: string
+    durationDays?: number | null
+    status?: $Enums.InvitationOrder_status
+    paidAt?: Date | string | null
+    expiresAt?: Date | string | null
+    provider?: string
+    providerPaymentId?: string | null
+    providerEventId?: string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Invitation: InvitationCreateNestedOneWithoutInvitationOrderInput
+    PricePlan?: PricePlanCreateNestedOneWithoutInvitationOrderInput
+    User: UserCreateNestedOneWithoutInvitationOrderInput
+  }
+
+  export type InvitationOrderUncheckedCreateInput = {
+    id?: number
+    invitationId: number
+    userId: number
+    pricePlanId?: number | null
+    orderNo: string
+    planCode: $Enums.InvitationOrder_planCode
+    amountPhp: number
+    currency?: string
+    durationDays?: number | null
+    status?: $Enums.InvitationOrder_status
+    paidAt?: Date | string | null
+    expiresAt?: Date | string | null
+    provider?: string
+    providerPaymentId?: string | null
+    providerEventId?: string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InvitationOrderUpdateInput = {
+    orderNo?: StringFieldUpdateOperationsInput | string
+    planCode?: EnumInvitationOrder_planCodeFieldUpdateOperationsInput | $Enums.InvitationOrder_planCode
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumInvitationOrder_statusFieldUpdateOperationsInput | $Enums.InvitationOrder_status
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: StringFieldUpdateOperationsInput | string
+    providerPaymentId?: NullableStringFieldUpdateOperationsInput | string | null
+    providerEventId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Invitation?: InvitationUpdateOneRequiredWithoutInvitationOrderNestedInput
+    PricePlan?: PricePlanUpdateOneWithoutInvitationOrderNestedInput
+    User?: UserUpdateOneRequiredWithoutInvitationOrderNestedInput
+  }
+
+  export type InvitationOrderUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    pricePlanId?: NullableIntFieldUpdateOperationsInput | number | null
+    orderNo?: StringFieldUpdateOperationsInput | string
+    planCode?: EnumInvitationOrder_planCodeFieldUpdateOperationsInput | $Enums.InvitationOrder_planCode
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumInvitationOrder_statusFieldUpdateOperationsInput | $Enums.InvitationOrder_status
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: StringFieldUpdateOperationsInput | string
+    providerPaymentId?: NullableStringFieldUpdateOperationsInput | string | null
+    providerEventId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InvitationOrderCreateManyInput = {
+    id?: number
+    invitationId: number
+    userId: number
+    pricePlanId?: number | null
+    orderNo: string
+    planCode: $Enums.InvitationOrder_planCode
+    amountPhp: number
+    currency?: string
+    durationDays?: number | null
+    status?: $Enums.InvitationOrder_status
+    paidAt?: Date | string | null
+    expiresAt?: Date | string | null
+    provider?: string
+    providerPaymentId?: string | null
+    providerEventId?: string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InvitationOrderUpdateManyMutationInput = {
+    orderNo?: StringFieldUpdateOperationsInput | string
+    planCode?: EnumInvitationOrder_planCodeFieldUpdateOperationsInput | $Enums.InvitationOrder_planCode
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumInvitationOrder_statusFieldUpdateOperationsInput | $Enums.InvitationOrder_status
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: StringFieldUpdateOperationsInput | string
+    providerPaymentId?: NullableStringFieldUpdateOperationsInput | string | null
+    providerEventId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InvitationOrderUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    pricePlanId?: NullableIntFieldUpdateOperationsInput | number | null
+    orderNo?: StringFieldUpdateOperationsInput | string
+    planCode?: EnumInvitationOrder_planCodeFieldUpdateOperationsInput | $Enums.InvitationOrder_planCode
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumInvitationOrder_statusFieldUpdateOperationsInput | $Enums.InvitationOrder_status
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: StringFieldUpdateOperationsInput | string
+    providerPaymentId?: NullableStringFieldUpdateOperationsInput | string | null
+    providerEventId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PricePlanCreateInput = {
+    code: string
+    name: string
+    description?: string | null
+    amountPhp: number
+    currency?: string
+    durationDays?: number | null
+    isActive?: boolean
+    displayOrder?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    InvitationOrder?: InvitationOrderCreateNestedManyWithoutPricePlanInput
+  }
+
+  export type PricePlanUncheckedCreateInput = {
+    id?: number
+    code: string
+    name: string
+    description?: string | null
+    amountPhp: number
+    currency?: string
+    durationDays?: number | null
+    isActive?: boolean
+    displayOrder?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutPricePlanInput
+  }
+
+  export type PricePlanUpdateInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    InvitationOrder?: InvitationOrderUpdateManyWithoutPricePlanNestedInput
+  }
+
+  export type PricePlanUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutPricePlanNestedInput
+  }
+
+  export type PricePlanCreateManyInput = {
+    id?: number
+    code: string
+    name: string
+    description?: string | null
+    amountPhp: number
+    currency?: string
+    durationDays?: number | null
+    isActive?: boolean
+    displayOrder?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PricePlanUpdateManyMutationInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PricePlanUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -20898,12 +24149,22 @@ export namespace Prisma {
     none?: InvitationWhereInput
   }
 
+  export type InvitationOrderListRelationFilter = {
+    every?: InvitationOrderWhereInput
+    some?: InvitationOrderWhereInput
+    none?: InvitationOrderWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type InvitationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type InvitationOrderOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -21010,6 +24271,25 @@ export namespace Prisma {
   export type BoolNullableFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type EnumInvitation_billingStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.Invitation_billingStatus | EnumInvitation_billingStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Invitation_billingStatus[]
+    notIn?: $Enums.Invitation_billingStatus[]
+    not?: NestedEnumInvitation_billingStatusFilter<$PrismaModel> | $Enums.Invitation_billingStatus
+  }
+
+  export type EnumInvitation_currentPlanCodeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.Invitation_currentPlanCode | EnumInvitation_currentPlanCodeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Invitation_currentPlanCode[] | null
+    notIn?: $Enums.Invitation_currentPlanCode[] | null
+    not?: NestedEnumInvitation_currentPlanCodeNullableFilter<$PrismaModel> | $Enums.Invitation_currentPlanCode | null
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
   export type JsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -21157,6 +24437,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: SortOrder
     rsvpHasFood?: SortOrder
     isRsvpPopup?: SortOrder
+    hasRsvpDeadline?: SortOrder
+    billingStatus?: SortOrder
+    trialEndsAt?: SortOrder
+    currentPlanCode?: SortOrder
+    accessStartedAt?: SortOrder
+    accessEndsAt?: SortOrder
+    watermarkEnabled?: SortOrder
     bestMan?: SortOrder
     bridesMaids?: SortOrder
     wishlistText?: SortOrder
@@ -21167,7 +24454,6 @@ export namespace Prisma {
     ogImageKey?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    hasRsvpDeadline?: SortOrder
   }
 
   export type InvitationAvgOrderByAggregateInput = {
@@ -21231,6 +24517,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: SortOrder
     rsvpHasFood?: SortOrder
     isRsvpPopup?: SortOrder
+    hasRsvpDeadline?: SortOrder
+    billingStatus?: SortOrder
+    trialEndsAt?: SortOrder
+    currentPlanCode?: SortOrder
+    accessStartedAt?: SortOrder
+    accessEndsAt?: SortOrder
+    watermarkEnabled?: SortOrder
     bestMan?: SortOrder
     bridesMaids?: SortOrder
     wishlistText?: SortOrder
@@ -21240,7 +24533,6 @@ export namespace Prisma {
     ogImageKey?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    hasRsvpDeadline?: SortOrder
   }
 
   export type InvitationMinOrderByAggregateInput = {
@@ -21294,6 +24586,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: SortOrder
     rsvpHasFood?: SortOrder
     isRsvpPopup?: SortOrder
+    hasRsvpDeadline?: SortOrder
+    billingStatus?: SortOrder
+    trialEndsAt?: SortOrder
+    currentPlanCode?: SortOrder
+    accessStartedAt?: SortOrder
+    accessEndsAt?: SortOrder
+    watermarkEnabled?: SortOrder
     bestMan?: SortOrder
     bridesMaids?: SortOrder
     wishlistText?: SortOrder
@@ -21303,7 +24602,6 @@ export namespace Prisma {
     ogImageKey?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    hasRsvpDeadline?: SortOrder
   }
 
   export type InvitationSumOrderByAggregateInput = {
@@ -21338,6 +24636,34 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedBoolNullableFilter<$PrismaModel>
     _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type EnumInvitation_billingStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Invitation_billingStatus | EnumInvitation_billingStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Invitation_billingStatus[]
+    notIn?: $Enums.Invitation_billingStatus[]
+    not?: NestedEnumInvitation_billingStatusWithAggregatesFilter<$PrismaModel> | $Enums.Invitation_billingStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumInvitation_billingStatusFilter<$PrismaModel>
+    _max?: NestedEnumInvitation_billingStatusFilter<$PrismaModel>
+  }
+
+  export type EnumInvitation_currentPlanCodeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Invitation_currentPlanCode | EnumInvitation_currentPlanCodeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Invitation_currentPlanCode[] | null
+    notIn?: $Enums.Invitation_currentPlanCode[] | null
+    not?: NestedEnumInvitation_currentPlanCodeNullableWithAggregatesFilter<$PrismaModel> | $Enums.Invitation_currentPlanCode | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumInvitation_currentPlanCodeNullableFilter<$PrismaModel>
+    _max?: NestedEnumInvitation_currentPlanCodeNullableFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
   export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -22068,6 +25394,202 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type EnumInvitationOrder_planCodeFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationOrder_planCode | EnumInvitationOrder_planCodeFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationOrder_planCode[]
+    notIn?: $Enums.InvitationOrder_planCode[]
+    not?: NestedEnumInvitationOrder_planCodeFilter<$PrismaModel> | $Enums.InvitationOrder_planCode
+  }
+
+  export type EnumInvitationOrder_statusFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationOrder_status | EnumInvitationOrder_statusFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationOrder_status[]
+    notIn?: $Enums.InvitationOrder_status[]
+    not?: NestedEnumInvitationOrder_statusFilter<$PrismaModel> | $Enums.InvitationOrder_status
+  }
+
+  export type InvitationScalarRelationFilter = {
+    is?: InvitationWhereInput
+    isNot?: InvitationWhereInput
+  }
+
+  export type PricePlanNullableScalarRelationFilter = {
+    is?: PricePlanWhereInput | null
+    isNot?: PricePlanWhereInput | null
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type InvitationOrderOrderByRelevanceInput = {
+    fields: InvitationOrderOrderByRelevanceFieldEnum | InvitationOrderOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type InvitationOrderCountOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    userId?: SortOrder
+    pricePlanId?: SortOrder
+    orderNo?: SortOrder
+    planCode?: SortOrder
+    amountPhp?: SortOrder
+    currency?: SortOrder
+    durationDays?: SortOrder
+    status?: SortOrder
+    paidAt?: SortOrder
+    expiresAt?: SortOrder
+    provider?: SortOrder
+    providerPaymentId?: SortOrder
+    providerEventId?: SortOrder
+    rawPayload?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type InvitationOrderAvgOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    userId?: SortOrder
+    pricePlanId?: SortOrder
+    amountPhp?: SortOrder
+    durationDays?: SortOrder
+  }
+
+  export type InvitationOrderMaxOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    userId?: SortOrder
+    pricePlanId?: SortOrder
+    orderNo?: SortOrder
+    planCode?: SortOrder
+    amountPhp?: SortOrder
+    currency?: SortOrder
+    durationDays?: SortOrder
+    status?: SortOrder
+    paidAt?: SortOrder
+    expiresAt?: SortOrder
+    provider?: SortOrder
+    providerPaymentId?: SortOrder
+    providerEventId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type InvitationOrderMinOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    userId?: SortOrder
+    pricePlanId?: SortOrder
+    orderNo?: SortOrder
+    planCode?: SortOrder
+    amountPhp?: SortOrder
+    currency?: SortOrder
+    durationDays?: SortOrder
+    status?: SortOrder
+    paidAt?: SortOrder
+    expiresAt?: SortOrder
+    provider?: SortOrder
+    providerPaymentId?: SortOrder
+    providerEventId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type InvitationOrderSumOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    userId?: SortOrder
+    pricePlanId?: SortOrder
+    amountPhp?: SortOrder
+    durationDays?: SortOrder
+  }
+
+  export type EnumInvitationOrder_planCodeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationOrder_planCode | EnumInvitationOrder_planCodeFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationOrder_planCode[]
+    notIn?: $Enums.InvitationOrder_planCode[]
+    not?: NestedEnumInvitationOrder_planCodeWithAggregatesFilter<$PrismaModel> | $Enums.InvitationOrder_planCode
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumInvitationOrder_planCodeFilter<$PrismaModel>
+    _max?: NestedEnumInvitationOrder_planCodeFilter<$PrismaModel>
+  }
+
+  export type EnumInvitationOrder_statusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationOrder_status | EnumInvitationOrder_statusFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationOrder_status[]
+    notIn?: $Enums.InvitationOrder_status[]
+    not?: NestedEnumInvitationOrder_statusWithAggregatesFilter<$PrismaModel> | $Enums.InvitationOrder_status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumInvitationOrder_statusFilter<$PrismaModel>
+    _max?: NestedEnumInvitationOrder_statusFilter<$PrismaModel>
+  }
+
+  export type PricePlanOrderByRelevanceInput = {
+    fields: PricePlanOrderByRelevanceFieldEnum | PricePlanOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type PricePlanCountOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    amountPhp?: SortOrder
+    currency?: SortOrder
+    durationDays?: SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PricePlanAvgOrderByAggregateInput = {
+    id?: SortOrder
+    amountPhp?: SortOrder
+    durationDays?: SortOrder
+    displayOrder?: SortOrder
+  }
+
+  export type PricePlanMaxOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    amountPhp?: SortOrder
+    currency?: SortOrder
+    durationDays?: SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PricePlanMinOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    amountPhp?: SortOrder
+    currency?: SortOrder
+    durationDays?: SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PricePlanSumOrderByAggregateInput = {
+    id?: SortOrder
+    amountPhp?: SortOrder
+    durationDays?: SortOrder
+    displayOrder?: SortOrder
+  }
+
   export type InvitationCreateNestedManyWithoutUserInput = {
     create?: XOR<InvitationCreateWithoutUserInput, InvitationUncheckedCreateWithoutUserInput> | InvitationCreateWithoutUserInput[] | InvitationUncheckedCreateWithoutUserInput[]
     connectOrCreate?: InvitationCreateOrConnectWithoutUserInput | InvitationCreateOrConnectWithoutUserInput[]
@@ -22075,11 +25597,25 @@ export namespace Prisma {
     connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
   }
 
+  export type InvitationOrderCreateNestedManyWithoutUserInput = {
+    create?: XOR<InvitationOrderCreateWithoutUserInput, InvitationOrderUncheckedCreateWithoutUserInput> | InvitationOrderCreateWithoutUserInput[] | InvitationOrderUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: InvitationOrderCreateOrConnectWithoutUserInput | InvitationOrderCreateOrConnectWithoutUserInput[]
+    createMany?: InvitationOrderCreateManyUserInputEnvelope
+    connect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+  }
+
   export type InvitationUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<InvitationCreateWithoutUserInput, InvitationUncheckedCreateWithoutUserInput> | InvitationCreateWithoutUserInput[] | InvitationUncheckedCreateWithoutUserInput[]
     connectOrCreate?: InvitationCreateOrConnectWithoutUserInput | InvitationCreateOrConnectWithoutUserInput[]
     createMany?: InvitationCreateManyUserInputEnvelope
     connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+  }
+
+  export type InvitationOrderUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<InvitationOrderCreateWithoutUserInput, InvitationOrderUncheckedCreateWithoutUserInput> | InvitationOrderCreateWithoutUserInput[] | InvitationOrderUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: InvitationOrderCreateOrConnectWithoutUserInput | InvitationOrderCreateOrConnectWithoutUserInput[]
+    createMany?: InvitationOrderCreateManyUserInputEnvelope
+    connect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -22104,6 +25640,20 @@ export namespace Prisma {
     deleteMany?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
   }
 
+  export type InvitationOrderUpdateManyWithoutUserNestedInput = {
+    create?: XOR<InvitationOrderCreateWithoutUserInput, InvitationOrderUncheckedCreateWithoutUserInput> | InvitationOrderCreateWithoutUserInput[] | InvitationOrderUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: InvitationOrderCreateOrConnectWithoutUserInput | InvitationOrderCreateOrConnectWithoutUserInput[]
+    upsert?: InvitationOrderUpsertWithWhereUniqueWithoutUserInput | InvitationOrderUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: InvitationOrderCreateManyUserInputEnvelope
+    set?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    disconnect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    delete?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    connect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    update?: InvitationOrderUpdateWithWhereUniqueWithoutUserInput | InvitationOrderUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: InvitationOrderUpdateManyWithWhereWithoutUserInput | InvitationOrderUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: InvitationOrderScalarWhereInput | InvitationOrderScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -22124,6 +25674,20 @@ export namespace Prisma {
     update?: InvitationUpdateWithWhereUniqueWithoutUserInput | InvitationUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: InvitationUpdateManyWithWhereWithoutUserInput | InvitationUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
+  }
+
+  export type InvitationOrderUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<InvitationOrderCreateWithoutUserInput, InvitationOrderUncheckedCreateWithoutUserInput> | InvitationOrderCreateWithoutUserInput[] | InvitationOrderUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: InvitationOrderCreateOrConnectWithoutUserInput | InvitationOrderCreateOrConnectWithoutUserInput[]
+    upsert?: InvitationOrderUpsertWithWhereUniqueWithoutUserInput | InvitationOrderUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: InvitationOrderCreateManyUserInputEnvelope
+    set?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    disconnect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    delete?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    connect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    update?: InvitationOrderUpdateWithWhereUniqueWithoutUserInput | InvitationOrderUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: InvitationOrderUpdateManyWithWhereWithoutUserInput | InvitationOrderUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: InvitationOrderScalarWhereInput | InvitationOrderScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutInvitationListInput = {
@@ -22151,6 +25715,13 @@ export namespace Prisma {
     connectOrCreate?: InvitationFaqCreateOrConnectWithoutInvitationInput | InvitationFaqCreateOrConnectWithoutInvitationInput[]
     createMany?: InvitationFaqCreateManyInvitationInputEnvelope
     connect?: InvitationFaqWhereUniqueInput | InvitationFaqWhereUniqueInput[]
+  }
+
+  export type InvitationOrderCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<InvitationOrderCreateWithoutInvitationInput, InvitationOrderUncheckedCreateWithoutInvitationInput> | InvitationOrderCreateWithoutInvitationInput[] | InvitationOrderUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationOrderCreateOrConnectWithoutInvitationInput | InvitationOrderCreateOrConnectWithoutInvitationInput[]
+    createMany?: InvitationOrderCreateManyInvitationInputEnvelope
+    connect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
   }
 
   export type InvitationPhotoCreateNestedManyWithoutInvitationInput = {
@@ -22195,6 +25766,13 @@ export namespace Prisma {
     connect?: InvitationFaqWhereUniqueInput | InvitationFaqWhereUniqueInput[]
   }
 
+  export type InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<InvitationOrderCreateWithoutInvitationInput, InvitationOrderUncheckedCreateWithoutInvitationInput> | InvitationOrderCreateWithoutInvitationInput[] | InvitationOrderUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationOrderCreateOrConnectWithoutInvitationInput | InvitationOrderCreateOrConnectWithoutInvitationInput[]
+    createMany?: InvitationOrderCreateManyInvitationInputEnvelope
+    connect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+  }
+
   export type InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput = {
     create?: XOR<InvitationPhotoCreateWithoutInvitationInput, InvitationPhotoUncheckedCreateWithoutInvitationInput> | InvitationPhotoCreateWithoutInvitationInput[] | InvitationPhotoUncheckedCreateWithoutInvitationInput[]
     connectOrCreate?: InvitationPhotoCreateOrConnectWithoutInvitationInput | InvitationPhotoCreateOrConnectWithoutInvitationInput[]
@@ -22226,6 +25804,18 @@ export namespace Prisma {
 
   export type NullableBoolFieldUpdateOperationsInput = {
     set?: boolean | null
+  }
+
+  export type EnumInvitation_billingStatusFieldUpdateOperationsInput = {
+    set?: $Enums.Invitation_billingStatus
+  }
+
+  export type NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput = {
+    set?: $Enums.Invitation_currentPlanCode | null
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type UserUpdateOneWithoutInvitationListNestedInput = {
@@ -22278,6 +25868,20 @@ export namespace Prisma {
     update?: InvitationFaqUpdateWithWhereUniqueWithoutInvitationInput | InvitationFaqUpdateWithWhereUniqueWithoutInvitationInput[]
     updateMany?: InvitationFaqUpdateManyWithWhereWithoutInvitationInput | InvitationFaqUpdateManyWithWhereWithoutInvitationInput[]
     deleteMany?: InvitationFaqScalarWhereInput | InvitationFaqScalarWhereInput[]
+  }
+
+  export type InvitationOrderUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<InvitationOrderCreateWithoutInvitationInput, InvitationOrderUncheckedCreateWithoutInvitationInput> | InvitationOrderCreateWithoutInvitationInput[] | InvitationOrderUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationOrderCreateOrConnectWithoutInvitationInput | InvitationOrderCreateOrConnectWithoutInvitationInput[]
+    upsert?: InvitationOrderUpsertWithWhereUniqueWithoutInvitationInput | InvitationOrderUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: InvitationOrderCreateManyInvitationInputEnvelope
+    set?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    disconnect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    delete?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    connect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    update?: InvitationOrderUpdateWithWhereUniqueWithoutInvitationInput | InvitationOrderUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: InvitationOrderUpdateManyWithWhereWithoutInvitationInput | InvitationOrderUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: InvitationOrderScalarWhereInput | InvitationOrderScalarWhereInput[]
   }
 
   export type InvitationPhotoUpdateManyWithoutInvitationNestedInput = {
@@ -22362,6 +25966,20 @@ export namespace Prisma {
     update?: InvitationFaqUpdateWithWhereUniqueWithoutInvitationInput | InvitationFaqUpdateWithWhereUniqueWithoutInvitationInput[]
     updateMany?: InvitationFaqUpdateManyWithWhereWithoutInvitationInput | InvitationFaqUpdateManyWithWhereWithoutInvitationInput[]
     deleteMany?: InvitationFaqScalarWhereInput | InvitationFaqScalarWhereInput[]
+  }
+
+  export type InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<InvitationOrderCreateWithoutInvitationInput, InvitationOrderUncheckedCreateWithoutInvitationInput> | InvitationOrderCreateWithoutInvitationInput[] | InvitationOrderUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationOrderCreateOrConnectWithoutInvitationInput | InvitationOrderCreateOrConnectWithoutInvitationInput[]
+    upsert?: InvitationOrderUpsertWithWhereUniqueWithoutInvitationInput | InvitationOrderUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: InvitationOrderCreateManyInvitationInputEnvelope
+    set?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    disconnect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    delete?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    connect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    update?: InvitationOrderUpdateWithWhereUniqueWithoutInvitationInput | InvitationOrderUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: InvitationOrderUpdateManyWithWhereWithoutInvitationInput | InvitationOrderUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: InvitationOrderScalarWhereInput | InvitationOrderScalarWhereInput[]
   }
 
   export type InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput = {
@@ -22634,6 +26252,100 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type InvitationCreateNestedOneWithoutInvitationOrderInput = {
+    create?: XOR<InvitationCreateWithoutInvitationOrderInput, InvitationUncheckedCreateWithoutInvitationOrderInput>
+    connectOrCreate?: InvitationCreateOrConnectWithoutInvitationOrderInput
+    connect?: InvitationWhereUniqueInput
+  }
+
+  export type PricePlanCreateNestedOneWithoutInvitationOrderInput = {
+    create?: XOR<PricePlanCreateWithoutInvitationOrderInput, PricePlanUncheckedCreateWithoutInvitationOrderInput>
+    connectOrCreate?: PricePlanCreateOrConnectWithoutInvitationOrderInput
+    connect?: PricePlanWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutInvitationOrderInput = {
+    create?: XOR<UserCreateWithoutInvitationOrderInput, UserUncheckedCreateWithoutInvitationOrderInput>
+    connectOrCreate?: UserCreateOrConnectWithoutInvitationOrderInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type EnumInvitationOrder_planCodeFieldUpdateOperationsInput = {
+    set?: $Enums.InvitationOrder_planCode
+  }
+
+  export type EnumInvitationOrder_statusFieldUpdateOperationsInput = {
+    set?: $Enums.InvitationOrder_status
+  }
+
+  export type InvitationUpdateOneRequiredWithoutInvitationOrderNestedInput = {
+    create?: XOR<InvitationCreateWithoutInvitationOrderInput, InvitationUncheckedCreateWithoutInvitationOrderInput>
+    connectOrCreate?: InvitationCreateOrConnectWithoutInvitationOrderInput
+    upsert?: InvitationUpsertWithoutInvitationOrderInput
+    connect?: InvitationWhereUniqueInput
+    update?: XOR<XOR<InvitationUpdateToOneWithWhereWithoutInvitationOrderInput, InvitationUpdateWithoutInvitationOrderInput>, InvitationUncheckedUpdateWithoutInvitationOrderInput>
+  }
+
+  export type PricePlanUpdateOneWithoutInvitationOrderNestedInput = {
+    create?: XOR<PricePlanCreateWithoutInvitationOrderInput, PricePlanUncheckedCreateWithoutInvitationOrderInput>
+    connectOrCreate?: PricePlanCreateOrConnectWithoutInvitationOrderInput
+    upsert?: PricePlanUpsertWithoutInvitationOrderInput
+    disconnect?: PricePlanWhereInput | boolean
+    delete?: PricePlanWhereInput | boolean
+    connect?: PricePlanWhereUniqueInput
+    update?: XOR<XOR<PricePlanUpdateToOneWithWhereWithoutInvitationOrderInput, PricePlanUpdateWithoutInvitationOrderInput>, PricePlanUncheckedUpdateWithoutInvitationOrderInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutInvitationOrderNestedInput = {
+    create?: XOR<UserCreateWithoutInvitationOrderInput, UserUncheckedCreateWithoutInvitationOrderInput>
+    connectOrCreate?: UserCreateOrConnectWithoutInvitationOrderInput
+    upsert?: UserUpsertWithoutInvitationOrderInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutInvitationOrderInput, UserUpdateWithoutInvitationOrderInput>, UserUncheckedUpdateWithoutInvitationOrderInput>
+  }
+
+  export type InvitationOrderCreateNestedManyWithoutPricePlanInput = {
+    create?: XOR<InvitationOrderCreateWithoutPricePlanInput, InvitationOrderUncheckedCreateWithoutPricePlanInput> | InvitationOrderCreateWithoutPricePlanInput[] | InvitationOrderUncheckedCreateWithoutPricePlanInput[]
+    connectOrCreate?: InvitationOrderCreateOrConnectWithoutPricePlanInput | InvitationOrderCreateOrConnectWithoutPricePlanInput[]
+    createMany?: InvitationOrderCreateManyPricePlanInputEnvelope
+    connect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+  }
+
+  export type InvitationOrderUncheckedCreateNestedManyWithoutPricePlanInput = {
+    create?: XOR<InvitationOrderCreateWithoutPricePlanInput, InvitationOrderUncheckedCreateWithoutPricePlanInput> | InvitationOrderCreateWithoutPricePlanInput[] | InvitationOrderUncheckedCreateWithoutPricePlanInput[]
+    connectOrCreate?: InvitationOrderCreateOrConnectWithoutPricePlanInput | InvitationOrderCreateOrConnectWithoutPricePlanInput[]
+    createMany?: InvitationOrderCreateManyPricePlanInputEnvelope
+    connect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+  }
+
+  export type InvitationOrderUpdateManyWithoutPricePlanNestedInput = {
+    create?: XOR<InvitationOrderCreateWithoutPricePlanInput, InvitationOrderUncheckedCreateWithoutPricePlanInput> | InvitationOrderCreateWithoutPricePlanInput[] | InvitationOrderUncheckedCreateWithoutPricePlanInput[]
+    connectOrCreate?: InvitationOrderCreateOrConnectWithoutPricePlanInput | InvitationOrderCreateOrConnectWithoutPricePlanInput[]
+    upsert?: InvitationOrderUpsertWithWhereUniqueWithoutPricePlanInput | InvitationOrderUpsertWithWhereUniqueWithoutPricePlanInput[]
+    createMany?: InvitationOrderCreateManyPricePlanInputEnvelope
+    set?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    disconnect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    delete?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    connect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    update?: InvitationOrderUpdateWithWhereUniqueWithoutPricePlanInput | InvitationOrderUpdateWithWhereUniqueWithoutPricePlanInput[]
+    updateMany?: InvitationOrderUpdateManyWithWhereWithoutPricePlanInput | InvitationOrderUpdateManyWithWhereWithoutPricePlanInput[]
+    deleteMany?: InvitationOrderScalarWhereInput | InvitationOrderScalarWhereInput[]
+  }
+
+  export type InvitationOrderUncheckedUpdateManyWithoutPricePlanNestedInput = {
+    create?: XOR<InvitationOrderCreateWithoutPricePlanInput, InvitationOrderUncheckedCreateWithoutPricePlanInput> | InvitationOrderCreateWithoutPricePlanInput[] | InvitationOrderUncheckedCreateWithoutPricePlanInput[]
+    connectOrCreate?: InvitationOrderCreateOrConnectWithoutPricePlanInput | InvitationOrderCreateOrConnectWithoutPricePlanInput[]
+    upsert?: InvitationOrderUpsertWithWhereUniqueWithoutPricePlanInput | InvitationOrderUpsertWithWhereUniqueWithoutPricePlanInput[]
+    createMany?: InvitationOrderCreateManyPricePlanInputEnvelope
+    set?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    disconnect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    delete?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    connect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+    update?: InvitationOrderUpdateWithWhereUniqueWithoutPricePlanInput | InvitationOrderUpdateWithWhereUniqueWithoutPricePlanInput[]
+    updateMany?: InvitationOrderUpdateManyWithWhereWithoutPricePlanInput | InvitationOrderUpdateManyWithWhereWithoutPricePlanInput[]
+    deleteMany?: InvitationOrderScalarWhereInput | InvitationOrderScalarWhereInput[]
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -22746,6 +26458,25 @@ export namespace Prisma {
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
+  export type NestedEnumInvitation_billingStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.Invitation_billingStatus | EnumInvitation_billingStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Invitation_billingStatus[]
+    notIn?: $Enums.Invitation_billingStatus[]
+    not?: NestedEnumInvitation_billingStatusFilter<$PrismaModel> | $Enums.Invitation_billingStatus
+  }
+
+  export type NestedEnumInvitation_currentPlanCodeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.Invitation_currentPlanCode | EnumInvitation_currentPlanCodeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Invitation_currentPlanCode[] | null
+    notIn?: $Enums.Invitation_currentPlanCode[] | null
+    not?: NestedEnumInvitation_currentPlanCodeNullableFilter<$PrismaModel> | $Enums.Invitation_currentPlanCode | null
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | null
@@ -22779,6 +26510,34 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedBoolNullableFilter<$PrismaModel>
     _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumInvitation_billingStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Invitation_billingStatus | EnumInvitation_billingStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Invitation_billingStatus[]
+    notIn?: $Enums.Invitation_billingStatus[]
+    not?: NestedEnumInvitation_billingStatusWithAggregatesFilter<$PrismaModel> | $Enums.Invitation_billingStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumInvitation_billingStatusFilter<$PrismaModel>
+    _max?: NestedEnumInvitation_billingStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumInvitation_currentPlanCodeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Invitation_currentPlanCode | EnumInvitation_currentPlanCodeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Invitation_currentPlanCode[] | null
+    notIn?: $Enums.Invitation_currentPlanCode[] | null
+    not?: NestedEnumInvitation_currentPlanCodeNullableWithAggregatesFilter<$PrismaModel> | $Enums.Invitation_currentPlanCode | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumInvitation_currentPlanCodeNullableFilter<$PrismaModel>
+    _max?: NestedEnumInvitation_currentPlanCodeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
   export type NestedJsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -22878,6 +26637,40 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedEnumInvitationOrder_planCodeFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationOrder_planCode | EnumInvitationOrder_planCodeFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationOrder_planCode[]
+    notIn?: $Enums.InvitationOrder_planCode[]
+    not?: NestedEnumInvitationOrder_planCodeFilter<$PrismaModel> | $Enums.InvitationOrder_planCode
+  }
+
+  export type NestedEnumInvitationOrder_statusFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationOrder_status | EnumInvitationOrder_statusFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationOrder_status[]
+    notIn?: $Enums.InvitationOrder_status[]
+    not?: NestedEnumInvitationOrder_statusFilter<$PrismaModel> | $Enums.InvitationOrder_status
+  }
+
+  export type NestedEnumInvitationOrder_planCodeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationOrder_planCode | EnumInvitationOrder_planCodeFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationOrder_planCode[]
+    notIn?: $Enums.InvitationOrder_planCode[]
+    not?: NestedEnumInvitationOrder_planCodeWithAggregatesFilter<$PrismaModel> | $Enums.InvitationOrder_planCode
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumInvitationOrder_planCodeFilter<$PrismaModel>
+    _max?: NestedEnumInvitationOrder_planCodeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumInvitationOrder_statusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationOrder_status | EnumInvitationOrder_statusFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationOrder_status[]
+    notIn?: $Enums.InvitationOrder_status[]
+    not?: NestedEnumInvitationOrder_statusWithAggregatesFilter<$PrismaModel> | $Enums.InvitationOrder_status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumInvitationOrder_statusFilter<$PrismaModel>
+    _max?: NestedEnumInvitationOrder_statusFilter<$PrismaModel>
+  }
+
   export type InvitationCreateWithoutUserInput = {
     templateNo?: number | null
     uniqueId?: string | null
@@ -22927,6 +26720,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -22937,10 +26737,10 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -22996,6 +26796,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -23006,10 +26813,10 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -23022,6 +26829,55 @@ export namespace Prisma {
 
   export type InvitationCreateManyUserInputEnvelope = {
     data: InvitationCreateManyUserInput | InvitationCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type InvitationOrderCreateWithoutUserInput = {
+    orderNo: string
+    planCode: $Enums.InvitationOrder_planCode
+    amountPhp: number
+    currency?: string
+    durationDays?: number | null
+    status?: $Enums.InvitationOrder_status
+    paidAt?: Date | string | null
+    expiresAt?: Date | string | null
+    provider?: string
+    providerPaymentId?: string | null
+    providerEventId?: string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Invitation: InvitationCreateNestedOneWithoutInvitationOrderInput
+    PricePlan?: PricePlanCreateNestedOneWithoutInvitationOrderInput
+  }
+
+  export type InvitationOrderUncheckedCreateWithoutUserInput = {
+    id?: number
+    invitationId: number
+    pricePlanId?: number | null
+    orderNo: string
+    planCode: $Enums.InvitationOrder_planCode
+    amountPhp: number
+    currency?: string
+    durationDays?: number | null
+    status?: $Enums.InvitationOrder_status
+    paidAt?: Date | string | null
+    expiresAt?: Date | string | null
+    provider?: string
+    providerPaymentId?: string | null
+    providerEventId?: string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InvitationOrderCreateOrConnectWithoutUserInput = {
+    where: InvitationOrderWhereUniqueInput
+    create: XOR<InvitationOrderCreateWithoutUserInput, InvitationOrderUncheckedCreateWithoutUserInput>
+  }
+
+  export type InvitationOrderCreateManyUserInputEnvelope = {
+    data: InvitationOrderCreateManyUserInput | InvitationOrderCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -23095,6 +26951,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: StringNullableFilter<"Invitation"> | string | null
     rsvpHasFood?: BoolNullableFilter<"Invitation"> | boolean | null
     isRsvpPopup?: BoolNullableFilter<"Invitation"> | boolean | null
+    hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFilter<"Invitation"> | $Enums.Invitation_billingStatus
+    trialEndsAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    currentPlanCode?: EnumInvitation_currentPlanCodeNullableFilter<"Invitation"> | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    accessEndsAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    watermarkEnabled?: BoolFilter<"Invitation"> | boolean
     bestMan?: StringNullableFilter<"Invitation"> | string | null
     bridesMaids?: StringNullableFilter<"Invitation"> | string | null
     wishlistText?: StringNullableFilter<"Invitation"> | string | null
@@ -23105,7 +26968,46 @@ export namespace Prisma {
     ogImageKey?: StringNullableFilter<"Invitation"> | string | null
     createdAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     updatedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
-    hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
+  }
+
+  export type InvitationOrderUpsertWithWhereUniqueWithoutUserInput = {
+    where: InvitationOrderWhereUniqueInput
+    update: XOR<InvitationOrderUpdateWithoutUserInput, InvitationOrderUncheckedUpdateWithoutUserInput>
+    create: XOR<InvitationOrderCreateWithoutUserInput, InvitationOrderUncheckedCreateWithoutUserInput>
+  }
+
+  export type InvitationOrderUpdateWithWhereUniqueWithoutUserInput = {
+    where: InvitationOrderWhereUniqueInput
+    data: XOR<InvitationOrderUpdateWithoutUserInput, InvitationOrderUncheckedUpdateWithoutUserInput>
+  }
+
+  export type InvitationOrderUpdateManyWithWhereWithoutUserInput = {
+    where: InvitationOrderScalarWhereInput
+    data: XOR<InvitationOrderUpdateManyMutationInput, InvitationOrderUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type InvitationOrderScalarWhereInput = {
+    AND?: InvitationOrderScalarWhereInput | InvitationOrderScalarWhereInput[]
+    OR?: InvitationOrderScalarWhereInput[]
+    NOT?: InvitationOrderScalarWhereInput | InvitationOrderScalarWhereInput[]
+    id?: IntFilter<"InvitationOrder"> | number
+    invitationId?: IntFilter<"InvitationOrder"> | number
+    userId?: IntFilter<"InvitationOrder"> | number
+    pricePlanId?: IntNullableFilter<"InvitationOrder"> | number | null
+    orderNo?: StringFilter<"InvitationOrder"> | string
+    planCode?: EnumInvitationOrder_planCodeFilter<"InvitationOrder"> | $Enums.InvitationOrder_planCode
+    amountPhp?: IntFilter<"InvitationOrder"> | number
+    currency?: StringFilter<"InvitationOrder"> | string
+    durationDays?: IntNullableFilter<"InvitationOrder"> | number | null
+    status?: EnumInvitationOrder_statusFilter<"InvitationOrder"> | $Enums.InvitationOrder_status
+    paidAt?: DateTimeNullableFilter<"InvitationOrder"> | Date | string | null
+    expiresAt?: DateTimeNullableFilter<"InvitationOrder"> | Date | string | null
+    provider?: StringFilter<"InvitationOrder"> | string
+    providerPaymentId?: StringNullableFilter<"InvitationOrder"> | string | null
+    providerEventId?: StringNullableFilter<"InvitationOrder"> | string | null
+    rawPayload?: JsonNullableFilter<"InvitationOrder">
+    createdAt?: DateTimeFilter<"InvitationOrder"> | Date | string
+    updatedAt?: DateTimeFilter<"InvitationOrder"> | Date | string
   }
 
   export type UserCreateWithoutInvitationListInput = {
@@ -23114,6 +27016,7 @@ export namespace Prisma {
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     country?: string | null
+    InvitationOrder?: InvitationOrderCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutInvitationListInput = {
@@ -23123,6 +27026,7 @@ export namespace Prisma {
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     country?: string | null
+    InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutInvitationListInput = {
@@ -23210,6 +27114,55 @@ export namespace Prisma {
 
   export type InvitationFaqCreateManyInvitationInputEnvelope = {
     data: InvitationFaqCreateManyInvitationInput | InvitationFaqCreateManyInvitationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type InvitationOrderCreateWithoutInvitationInput = {
+    orderNo: string
+    planCode: $Enums.InvitationOrder_planCode
+    amountPhp: number
+    currency?: string
+    durationDays?: number | null
+    status?: $Enums.InvitationOrder_status
+    paidAt?: Date | string | null
+    expiresAt?: Date | string | null
+    provider?: string
+    providerPaymentId?: string | null
+    providerEventId?: string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    PricePlan?: PricePlanCreateNestedOneWithoutInvitationOrderInput
+    User: UserCreateNestedOneWithoutInvitationOrderInput
+  }
+
+  export type InvitationOrderUncheckedCreateWithoutInvitationInput = {
+    id?: number
+    userId: number
+    pricePlanId?: number | null
+    orderNo: string
+    planCode: $Enums.InvitationOrder_planCode
+    amountPhp: number
+    currency?: string
+    durationDays?: number | null
+    status?: $Enums.InvitationOrder_status
+    paidAt?: Date | string | null
+    expiresAt?: Date | string | null
+    provider?: string
+    providerPaymentId?: string | null
+    providerEventId?: string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InvitationOrderCreateOrConnectWithoutInvitationInput = {
+    where: InvitationOrderWhereUniqueInput
+    create: XOR<InvitationOrderCreateWithoutInvitationInput, InvitationOrderUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type InvitationOrderCreateManyInvitationInputEnvelope = {
+    data: InvitationOrderCreateManyInvitationInput | InvitationOrderCreateManyInvitationInput[]
     skipDuplicates?: boolean
   }
 
@@ -23333,6 +27286,7 @@ export namespace Prisma {
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
+    InvitationOrder?: InvitationOrderUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutInvitationListInput = {
@@ -23342,6 +27296,7 @@ export namespace Prisma {
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
+    InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type InvitationCoverPhotoUpsertWithWhereUniqueWithoutInvitationInput = {
@@ -23430,6 +27385,22 @@ export namespace Prisma {
     question?: StringNullableFilter<"InvitationFaq"> | string | null
     answer?: StringNullableFilter<"InvitationFaq"> | string | null
     order?: IntNullableFilter<"InvitationFaq"> | number | null
+  }
+
+  export type InvitationOrderUpsertWithWhereUniqueWithoutInvitationInput = {
+    where: InvitationOrderWhereUniqueInput
+    update: XOR<InvitationOrderUpdateWithoutInvitationInput, InvitationOrderUncheckedUpdateWithoutInvitationInput>
+    create: XOR<InvitationOrderCreateWithoutInvitationInput, InvitationOrderUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type InvitationOrderUpdateWithWhereUniqueWithoutInvitationInput = {
+    where: InvitationOrderWhereUniqueInput
+    data: XOR<InvitationOrderUpdateWithoutInvitationInput, InvitationOrderUncheckedUpdateWithoutInvitationInput>
+  }
+
+  export type InvitationOrderUpdateManyWithWhereWithoutInvitationInput = {
+    where: InvitationOrderScalarWhereInput
+    data: XOR<InvitationOrderUpdateManyMutationInput, InvitationOrderUncheckedUpdateManyWithoutInvitationInput>
   }
 
   export type InvitationPhotoUpsertWithWhereUniqueWithoutInvitationInput = {
@@ -23600,6 +27571,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -23610,11 +27588,11 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
   }
@@ -23670,6 +27648,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -23680,10 +27665,10 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
   }
@@ -23804,6 +27789,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23814,11 +27806,11 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
   }
@@ -23874,6 +27866,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23884,10 +27883,10 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
   }
@@ -24055,6 +28054,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -24065,11 +28071,11 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
   }
@@ -24125,6 +28131,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -24135,10 +28148,10 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
   }
@@ -24208,6 +28221,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -24218,11 +28238,11 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
   }
@@ -24278,6 +28298,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -24288,10 +28315,10 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
   }
@@ -24345,6 +28372,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -24355,10 +28389,10 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -24415,6 +28449,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -24425,9 +28466,9 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -24498,6 +28539,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -24508,10 +28556,10 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -24568,6 +28616,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -24578,9 +28633,9 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -24635,6 +28690,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -24645,11 +28707,11 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
   }
@@ -24705,6 +28767,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -24715,10 +28784,10 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
   }
@@ -24788,6 +28857,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -24798,11 +28874,11 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
   }
@@ -24858,6 +28934,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -24868,10 +28951,10 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
   }
@@ -24925,6 +29008,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -24935,10 +29025,10 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -24995,6 +29085,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -25005,9 +29102,9 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -25078,6 +29175,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -25088,10 +29192,10 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -25148,6 +29252,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -25158,9 +29269,9 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -25215,6 +29326,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -25225,10 +29343,10 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -25285,6 +29403,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -25295,9 +29420,9 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -25368,6 +29493,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -25378,10 +29510,10 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -25438,6 +29570,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -25448,12 +29587,519 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type InvitationCreateWithoutInvitationOrderInput = {
+    templateNo?: number | null
+    uniqueId?: string | null
+    date?: Date | string | null
+    title?: string | null
+    description?: string | null
+    pointColor?: string | null
+    mainTextColor?: string | null
+    dressCodeGentleman?: string | null
+    dressCodeLady?: string | null
+    bgColor?: string | null
+    musicKey?: string | null
+    musicFilename?: string | null
+    musicFileKey?: string | null
+    notice?: string | null
+    brideFirstName?: string | null
+    brideMiddleName?: string | null
+    dressCodeMainColor?: string | null
+    dressCodeSubColor?: string | null
+    dressCodeThirdColor?: string | null
+    brideLastName?: string | null
+    brideMomName?: string | null
+    greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
+    greetingContent?: string | null
+    brideDadName?: string | null
+    bridePhone?: string | null
+    groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
+    groomMiddleName?: string | null
+    groomLastName?: string | null
+    groomPhone?: string | null
+    primarySponsor?: string | null
+    secondarySponsor?: string | null
+    bankAccount?: string | null
+    maidOfHonor?: string | null
+    groomsMen?: string | null
+    textColor?: string | null
+    timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
+    rsvpHasFood?: boolean | null
+    isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
+    bestMan?: string | null
+    bridesMaids?: string | null
+    wishlistText?: string | null
+    groomMomName?: string | null
+    groomDadName?: string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: string | null
+    ogImageKey?: string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    user?: UserCreateNestedOneWithoutInvitationListInput
+    invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
+    placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
+    invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
+  }
+
+  export type InvitationUncheckedCreateWithoutInvitationOrderInput = {
+    id?: number
+    templateNo?: number | null
+    uniqueId?: string | null
+    date?: Date | string | null
+    userId?: number | null
+    title?: string | null
+    description?: string | null
+    pointColor?: string | null
+    mainTextColor?: string | null
+    dressCodeGentleman?: string | null
+    dressCodeLady?: string | null
+    bgColor?: string | null
+    musicKey?: string | null
+    musicFilename?: string | null
+    musicFileKey?: string | null
+    notice?: string | null
+    brideFirstName?: string | null
+    brideMiddleName?: string | null
+    dressCodeMainColor?: string | null
+    dressCodeSubColor?: string | null
+    dressCodeThirdColor?: string | null
+    brideLastName?: string | null
+    brideMomName?: string | null
+    greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
+    greetingContent?: string | null
+    brideDadName?: string | null
+    bridePhone?: string | null
+    groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
+    groomMiddleName?: string | null
+    groomLastName?: string | null
+    groomPhone?: string | null
+    primarySponsor?: string | null
+    secondarySponsor?: string | null
+    bankAccount?: string | null
+    maidOfHonor?: string | null
+    groomsMen?: string | null
+    textColor?: string | null
+    timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
+    rsvpHasFood?: boolean | null
+    isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
+    bestMan?: string | null
+    bridesMaids?: string | null
+    wishlistText?: string | null
+    groomMomName?: string | null
+    groomDadName?: string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: string | null
+    ogImageKey?: string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
+    invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
+  }
+
+  export type InvitationCreateOrConnectWithoutInvitationOrderInput = {
+    where: InvitationWhereUniqueInput
+    create: XOR<InvitationCreateWithoutInvitationOrderInput, InvitationUncheckedCreateWithoutInvitationOrderInput>
+  }
+
+  export type PricePlanCreateWithoutInvitationOrderInput = {
+    code: string
+    name: string
+    description?: string | null
+    amountPhp: number
+    currency?: string
+    durationDays?: number | null
+    isActive?: boolean
+    displayOrder?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PricePlanUncheckedCreateWithoutInvitationOrderInput = {
+    id?: number
+    code: string
+    name: string
+    description?: string | null
+    amountPhp: number
+    currency?: string
+    durationDays?: number | null
+    isActive?: boolean
+    displayOrder?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PricePlanCreateOrConnectWithoutInvitationOrderInput = {
+    where: PricePlanWhereUniqueInput
+    create: XOR<PricePlanCreateWithoutInvitationOrderInput, PricePlanUncheckedCreateWithoutInvitationOrderInput>
+  }
+
+  export type UserCreateWithoutInvitationOrderInput = {
+    email?: string | null
+    password?: string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    country?: string | null
+    invitationList?: InvitationCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutInvitationOrderInput = {
+    id?: number
+    email?: string | null
+    password?: string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    country?: string | null
+    invitationList?: InvitationUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutInvitationOrderInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutInvitationOrderInput, UserUncheckedCreateWithoutInvitationOrderInput>
+  }
+
+  export type InvitationUpsertWithoutInvitationOrderInput = {
+    update: XOR<InvitationUpdateWithoutInvitationOrderInput, InvitationUncheckedUpdateWithoutInvitationOrderInput>
+    create: XOR<InvitationCreateWithoutInvitationOrderInput, InvitationUncheckedCreateWithoutInvitationOrderInput>
+    where?: InvitationWhereInput
+  }
+
+  export type InvitationUpdateToOneWithWhereWithoutInvitationOrderInput = {
+    where?: InvitationWhereInput
+    data: XOR<InvitationUpdateWithoutInvitationOrderInput, InvitationUncheckedUpdateWithoutInvitationOrderInput>
+  }
+
+  export type InvitationUpdateWithoutInvitationOrderInput = {
+    templateNo?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    pointColor?: NullableStringFieldUpdateOperationsInput | string | null
+    mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeLady?: NullableStringFieldUpdateOperationsInput | string | null
+    bgColor?: NullableStringFieldUpdateOperationsInput | string | null
+    musicKey?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFileKey?: NullableStringFieldUpdateOperationsInput | string | null
+    notice?: NullableStringFieldUpdateOperationsInput | string | null
+    brideFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeMainColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeSubColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeThirdColor?: NullableStringFieldUpdateOperationsInput | string | null
+    brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
+    brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
+    bestMan?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UserUpdateOneWithoutInvitationListNestedInput
+    invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
+    placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
+    invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type InvitationUncheckedUpdateWithoutInvitationOrderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    templateNo?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    pointColor?: NullableStringFieldUpdateOperationsInput | string | null
+    mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeLady?: NullableStringFieldUpdateOperationsInput | string | null
+    bgColor?: NullableStringFieldUpdateOperationsInput | string | null
+    musicKey?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFileKey?: NullableStringFieldUpdateOperationsInput | string | null
+    notice?: NullableStringFieldUpdateOperationsInput | string | null
+    brideFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeMainColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeSubColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeThirdColor?: NullableStringFieldUpdateOperationsInput | string | null
+    brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
+    brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
+    bestMan?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type PricePlanUpsertWithoutInvitationOrderInput = {
+    update: XOR<PricePlanUpdateWithoutInvitationOrderInput, PricePlanUncheckedUpdateWithoutInvitationOrderInput>
+    create: XOR<PricePlanCreateWithoutInvitationOrderInput, PricePlanUncheckedCreateWithoutInvitationOrderInput>
+    where?: PricePlanWhereInput
+  }
+
+  export type PricePlanUpdateToOneWithWhereWithoutInvitationOrderInput = {
+    where?: PricePlanWhereInput
+    data: XOR<PricePlanUpdateWithoutInvitationOrderInput, PricePlanUncheckedUpdateWithoutInvitationOrderInput>
+  }
+
+  export type PricePlanUpdateWithoutInvitationOrderInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PricePlanUncheckedUpdateWithoutInvitationOrderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpsertWithoutInvitationOrderInput = {
+    update: XOR<UserUpdateWithoutInvitationOrderInput, UserUncheckedUpdateWithoutInvitationOrderInput>
+    create: XOR<UserCreateWithoutInvitationOrderInput, UserUncheckedCreateWithoutInvitationOrderInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutInvitationOrderInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutInvitationOrderInput, UserUncheckedUpdateWithoutInvitationOrderInput>
+  }
+
+  export type UserUpdateWithoutInvitationOrderInput = {
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    invitationList?: InvitationUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutInvitationOrderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    invitationList?: InvitationUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type InvitationOrderCreateWithoutPricePlanInput = {
+    orderNo: string
+    planCode: $Enums.InvitationOrder_planCode
+    amountPhp: number
+    currency?: string
+    durationDays?: number | null
+    status?: $Enums.InvitationOrder_status
+    paidAt?: Date | string | null
+    expiresAt?: Date | string | null
+    provider?: string
+    providerPaymentId?: string | null
+    providerEventId?: string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Invitation: InvitationCreateNestedOneWithoutInvitationOrderInput
+    User: UserCreateNestedOneWithoutInvitationOrderInput
+  }
+
+  export type InvitationOrderUncheckedCreateWithoutPricePlanInput = {
+    id?: number
+    invitationId: number
+    userId: number
+    orderNo: string
+    planCode: $Enums.InvitationOrder_planCode
+    amountPhp: number
+    currency?: string
+    durationDays?: number | null
+    status?: $Enums.InvitationOrder_status
+    paidAt?: Date | string | null
+    expiresAt?: Date | string | null
+    provider?: string
+    providerPaymentId?: string | null
+    providerEventId?: string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InvitationOrderCreateOrConnectWithoutPricePlanInput = {
+    where: InvitationOrderWhereUniqueInput
+    create: XOR<InvitationOrderCreateWithoutPricePlanInput, InvitationOrderUncheckedCreateWithoutPricePlanInput>
+  }
+
+  export type InvitationOrderCreateManyPricePlanInputEnvelope = {
+    data: InvitationOrderCreateManyPricePlanInput | InvitationOrderCreateManyPricePlanInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type InvitationOrderUpsertWithWhereUniqueWithoutPricePlanInput = {
+    where: InvitationOrderWhereUniqueInput
+    update: XOR<InvitationOrderUpdateWithoutPricePlanInput, InvitationOrderUncheckedUpdateWithoutPricePlanInput>
+    create: XOR<InvitationOrderCreateWithoutPricePlanInput, InvitationOrderUncheckedCreateWithoutPricePlanInput>
+  }
+
+  export type InvitationOrderUpdateWithWhereUniqueWithoutPricePlanInput = {
+    where: InvitationOrderWhereUniqueInput
+    data: XOR<InvitationOrderUpdateWithoutPricePlanInput, InvitationOrderUncheckedUpdateWithoutPricePlanInput>
+  }
+
+  export type InvitationOrderUpdateManyWithWhereWithoutPricePlanInput = {
+    where: InvitationOrderScalarWhereInput
+    data: XOR<InvitationOrderUpdateManyMutationInput, InvitationOrderUncheckedUpdateManyWithoutPricePlanInput>
   }
 
   export type InvitationCreateManyUserInput = {
@@ -25506,6 +30152,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: string | null
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
     bestMan?: string | null
     bridesMaids?: string | null
     wishlistText?: string | null
@@ -25516,7 +30169,26 @@ export namespace Prisma {
     ogImageKey?: string | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
-    hasRsvpDeadline?: boolean | null
+  }
+
+  export type InvitationOrderCreateManyUserInput = {
+    id?: number
+    invitationId: number
+    pricePlanId?: number | null
+    orderNo: string
+    planCode: $Enums.InvitationOrder_planCode
+    amountPhp: number
+    currency?: string
+    durationDays?: number | null
+    status?: $Enums.InvitationOrder_status
+    paidAt?: Date | string | null
+    expiresAt?: Date | string | null
+    provider?: string
+    providerPaymentId?: string | null
+    providerEventId?: string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type InvitationUpdateWithoutUserInput = {
@@ -25568,6 +30240,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -25578,10 +30257,10 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -25637,6 +30316,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -25647,10 +30333,10 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -25706,6 +30392,13 @@ export namespace Prisma {
     rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
     bestMan?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
     wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -25716,7 +30409,65 @@ export namespace Prisma {
     ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type InvitationOrderUpdateWithoutUserInput = {
+    orderNo?: StringFieldUpdateOperationsInput | string
+    planCode?: EnumInvitationOrder_planCodeFieldUpdateOperationsInput | $Enums.InvitationOrder_planCode
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumInvitationOrder_statusFieldUpdateOperationsInput | $Enums.InvitationOrder_status
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: StringFieldUpdateOperationsInput | string
+    providerPaymentId?: NullableStringFieldUpdateOperationsInput | string | null
+    providerEventId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Invitation?: InvitationUpdateOneRequiredWithoutInvitationOrderNestedInput
+    PricePlan?: PricePlanUpdateOneWithoutInvitationOrderNestedInput
+  }
+
+  export type InvitationOrderUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: IntFieldUpdateOperationsInput | number
+    pricePlanId?: NullableIntFieldUpdateOperationsInput | number | null
+    orderNo?: StringFieldUpdateOperationsInput | string
+    planCode?: EnumInvitationOrder_planCodeFieldUpdateOperationsInput | $Enums.InvitationOrder_planCode
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumInvitationOrder_statusFieldUpdateOperationsInput | $Enums.InvitationOrder_status
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: StringFieldUpdateOperationsInput | string
+    providerPaymentId?: NullableStringFieldUpdateOperationsInput | string | null
+    providerEventId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InvitationOrderUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: IntFieldUpdateOperationsInput | number
+    pricePlanId?: NullableIntFieldUpdateOperationsInput | number | null
+    orderNo?: StringFieldUpdateOperationsInput | string
+    planCode?: EnumInvitationOrder_planCodeFieldUpdateOperationsInput | $Enums.InvitationOrder_planCode
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumInvitationOrder_statusFieldUpdateOperationsInput | $Enums.InvitationOrder_status
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: StringFieldUpdateOperationsInput | string
+    providerPaymentId?: NullableStringFieldUpdateOperationsInput | string | null
+    providerEventId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InvitationCoverPhotoCreateManyInvitationInput = {
@@ -25745,6 +30496,26 @@ export namespace Prisma {
     question?: string | null
     answer?: string | null
     order?: number | null
+  }
+
+  export type InvitationOrderCreateManyInvitationInput = {
+    id?: number
+    userId: number
+    pricePlanId?: number | null
+    orderNo: string
+    planCode: $Enums.InvitationOrder_planCode
+    amountPhp: number
+    currency?: string
+    durationDays?: number | null
+    status?: $Enums.InvitationOrder_status
+    paidAt?: Date | string | null
+    expiresAt?: Date | string | null
+    provider?: string
+    providerPaymentId?: string | null
+    providerEventId?: string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type InvitationPhotoCreateManyInvitationInput = {
@@ -25863,6 +30634,65 @@ export namespace Prisma {
     question?: NullableStringFieldUpdateOperationsInput | string | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     order?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type InvitationOrderUpdateWithoutInvitationInput = {
+    orderNo?: StringFieldUpdateOperationsInput | string
+    planCode?: EnumInvitationOrder_planCodeFieldUpdateOperationsInput | $Enums.InvitationOrder_planCode
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumInvitationOrder_statusFieldUpdateOperationsInput | $Enums.InvitationOrder_status
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: StringFieldUpdateOperationsInput | string
+    providerPaymentId?: NullableStringFieldUpdateOperationsInput | string | null
+    providerEventId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    PricePlan?: PricePlanUpdateOneWithoutInvitationOrderNestedInput
+    User?: UserUpdateOneRequiredWithoutInvitationOrderNestedInput
+  }
+
+  export type InvitationOrderUncheckedUpdateWithoutInvitationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    pricePlanId?: NullableIntFieldUpdateOperationsInput | number | null
+    orderNo?: StringFieldUpdateOperationsInput | string
+    planCode?: EnumInvitationOrder_planCodeFieldUpdateOperationsInput | $Enums.InvitationOrder_planCode
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumInvitationOrder_statusFieldUpdateOperationsInput | $Enums.InvitationOrder_status
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: StringFieldUpdateOperationsInput | string
+    providerPaymentId?: NullableStringFieldUpdateOperationsInput | string | null
+    providerEventId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InvitationOrderUncheckedUpdateManyWithoutInvitationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    pricePlanId?: NullableIntFieldUpdateOperationsInput | number | null
+    orderNo?: StringFieldUpdateOperationsInput | string
+    planCode?: EnumInvitationOrder_planCodeFieldUpdateOperationsInput | $Enums.InvitationOrder_planCode
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumInvitationOrder_statusFieldUpdateOperationsInput | $Enums.InvitationOrder_status
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: StringFieldUpdateOperationsInput | string
+    providerPaymentId?: NullableStringFieldUpdateOperationsInput | string | null
+    providerEventId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InvitationPhotoUpdateWithoutInvitationInput = {
@@ -26029,6 +30859,85 @@ export namespace Prisma {
     invitationId?: NullableIntFieldUpdateOperationsInput | number | null
     order?: NullableIntFieldUpdateOperationsInput | number | null
     placeDetail?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvitationOrderCreateManyPricePlanInput = {
+    id?: number
+    invitationId: number
+    userId: number
+    orderNo: string
+    planCode: $Enums.InvitationOrder_planCode
+    amountPhp: number
+    currency?: string
+    durationDays?: number | null
+    status?: $Enums.InvitationOrder_status
+    paidAt?: Date | string | null
+    expiresAt?: Date | string | null
+    provider?: string
+    providerPaymentId?: string | null
+    providerEventId?: string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InvitationOrderUpdateWithoutPricePlanInput = {
+    orderNo?: StringFieldUpdateOperationsInput | string
+    planCode?: EnumInvitationOrder_planCodeFieldUpdateOperationsInput | $Enums.InvitationOrder_planCode
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumInvitationOrder_statusFieldUpdateOperationsInput | $Enums.InvitationOrder_status
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: StringFieldUpdateOperationsInput | string
+    providerPaymentId?: NullableStringFieldUpdateOperationsInput | string | null
+    providerEventId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Invitation?: InvitationUpdateOneRequiredWithoutInvitationOrderNestedInput
+    User?: UserUpdateOneRequiredWithoutInvitationOrderNestedInput
+  }
+
+  export type InvitationOrderUncheckedUpdateWithoutPricePlanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    orderNo?: StringFieldUpdateOperationsInput | string
+    planCode?: EnumInvitationOrder_planCodeFieldUpdateOperationsInput | $Enums.InvitationOrder_planCode
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumInvitationOrder_statusFieldUpdateOperationsInput | $Enums.InvitationOrder_status
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: StringFieldUpdateOperationsInput | string
+    providerPaymentId?: NullableStringFieldUpdateOperationsInput | string | null
+    providerEventId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InvitationOrderUncheckedUpdateManyWithoutPricePlanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    orderNo?: StringFieldUpdateOperationsInput | string
+    planCode?: EnumInvitationOrder_planCodeFieldUpdateOperationsInput | $Enums.InvitationOrder_planCode
+    amountPhp?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    durationDays?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumInvitationOrder_statusFieldUpdateOperationsInput | $Enums.InvitationOrder_status
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: StringFieldUpdateOperationsInput | string
+    providerPaymentId?: NullableStringFieldUpdateOperationsInput | string | null
+    providerEventId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

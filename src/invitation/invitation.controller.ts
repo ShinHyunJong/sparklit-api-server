@@ -172,11 +172,7 @@ export class InvitationController {
     @Param('uniqueId') uniqueId: string,
     @Query('type') type: string,
   ) {
-    return this.invitationService.deleteCoverPhoto(
-      uniqueId,
-      type,
-      req.user.id,
-    );
+    return this.invitationService.deleteCoverPhoto(uniqueId, type, req.user.id);
   }
 
   @UseGuards(JwtAuthGuard)
@@ -336,10 +332,7 @@ export class InvitationController {
     @Param('uniqueId') uniqueId: string,
     @Body() body: { rsvpMaxPax: number },
   ) {
-    return this.invitationService.updateRsvpMaxPax(
-      uniqueId,
-      body.rsvpMaxPax,
-    );
+    return this.invitationService.updateRsvpMaxPax(uniqueId, body.rsvpMaxPax);
   }
 
   @UseGuards(JwtAuthGuard)
@@ -383,10 +376,7 @@ export class InvitationController {
     @Param('uniqueId') uniqueId: string,
     @Body() body: { rsvpHasFood: boolean },
   ) {
-    return this.invitationService.updateRsvpHasFood(
-      uniqueId,
-      body.rsvpHasFood,
-    );
+    return this.invitationService.updateRsvpHasFood(uniqueId, body.rsvpHasFood);
   }
 
   @UseGuards(JwtAuthGuard)
@@ -395,10 +385,7 @@ export class InvitationController {
     @Param('uniqueId') uniqueId: string,
     @Body() body: { isRsvpPopup: boolean },
   ) {
-    return this.invitationService.updateRsvpPopup(
-      uniqueId,
-      body.isRsvpPopup,
-    );
+    return this.invitationService.updateRsvpPopup(uniqueId, body.isRsvpPopup);
   }
 
   @UseGuards(JwtAuthGuard)

@@ -89,11 +89,7 @@ export class InvitationService {
     return { available: !existing, uniqueId: normalized };
   }
 
-  async updateUniqueId(
-    uniqueId: string,
-    newUniqueId: string,
-    userId: number,
-  ) {
+  async updateUniqueId(uniqueId: string, newUniqueId: string, userId: number) {
     const normalized = this.normalizeUniqueId(newUniqueId);
     if (normalized === this.normalizeUniqueId(uniqueId)) {
       return { uniqueId: normalized };
@@ -720,11 +716,7 @@ export class InvitationService {
     return updated;
   }
 
-  async updateMeta(
-    uniqueId: string,
-    title?: string,
-    description?: string,
-  ) {
+  async updateMeta(uniqueId: string, title?: string, description?: string) {
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
@@ -810,12 +802,14 @@ export class InvitationService {
       ]),
     ];
 
-    const keysToDelete = rawKeys.filter(
-      (key): key is string => Boolean(key && !key.startsWith('assets/')),
+    const keysToDelete = rawKeys.filter((key): key is string =>
+      Boolean(key && !key.startsWith('assets/')),
     );
 
     await Promise.all(keysToDelete.map((key) => deleteFromS3(key)));
-    await this.prismaService.invitation.delete({ where: { id: invitation.id } });
+    await this.prismaService.invitation.delete({
+      where: { id: invitation.id },
+    });
     return { deleted: 1 };
   }
 

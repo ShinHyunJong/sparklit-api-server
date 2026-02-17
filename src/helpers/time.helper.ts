@@ -4,8 +4,7 @@ const parseTimePart = (value: string, fallback: number) => {
 };
 
 export const buildTimeDate = (time: string) => {
-  const [hourPart = '0', minutePart = '0', secondPart = '0'] =
-    time.split(':');
+  const [hourPart = '0', minutePart = '0', secondPart = '0'] = time.split(':');
   const hour = parseTimePart(hourPart, 0);
   const minute = parseTimePart(minutePart, 0);
   const second = parseTimePart(secondPart, 0);

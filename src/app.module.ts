@@ -11,9 +11,16 @@ import { InvitationModule } from './invitation/invitation.module';
 import { PlacesModule } from './place/place.module';
 import { PhotoModule } from './photo/photo.module';
 import { MigrationModule } from './migration/migration.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
-  imports: [InvitationModule, PlacesModule, PhotoModule, MigrationModule],
+  imports: [
+    InvitationModule,
+    PlacesModule,
+    PhotoModule,
+    MigrationModule,
+    PaymentModule,
+  ],
   controllers: [AppController, AuthController],
   providers: [
     AppService,

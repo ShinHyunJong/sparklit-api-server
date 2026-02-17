@@ -11,11 +11,7 @@ import {
 } from '@nestjs/common';
 
 import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
-import {
-  CreateFaqDto,
-  UpdateFaqDto,
-  UpdateFaqOrderDto,
-} from './dto/faq.dto';
+import { CreateFaqDto, UpdateFaqDto, UpdateFaqOrderDto } from './dto/faq.dto';
 import { InvitationFaqService } from './invitation.faq.service';
 
 @Controller('invitation/faq')

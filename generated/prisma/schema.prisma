@@ -9,86 +9,96 @@ datasource db {
 }
 
 model User {
-  id             Int          @id @default(autoincrement()) @db.UnsignedInt
-  email          String?      @unique(map: "email") @db.VarChar(255)
-  password       String?      @db.VarChar(255)
-  createdAt      DateTime?    @default(now()) @db.Timestamp(0)
-  updatedAt      DateTime?    @default(now()) @db.Timestamp(0)
-  country        String?      @db.VarChar(2)
-  invitationList Invitation[]
+  id              Int               @id @default(autoincrement()) @db.UnsignedInt
+  email           String?           @unique(map: "email") @db.VarChar(255)
+  password        String?           @db.VarChar(255)
+  createdAt       DateTime?         @default(now()) @db.Timestamp(0)
+  updatedAt       DateTime?         @default(now()) @db.Timestamp(0)
+  country         String?           @db.VarChar(2)
+  invitationList  Invitation[]
+  InvitationOrder InvitationOrder[]
 }
 
 model Invitation {
-  id                       Int                    @id @default(autoincrement()) @db.UnsignedInt
-  templateNo               Int?                   @default(1)
-  uniqueId                 String?                @unique(map: "uniqueId") @db.VarChar(100)
-  date                     DateTime?              @db.Timestamp(0)
-  userId                   Int?                   @db.UnsignedInt
-  title                    String?                @db.VarChar(60)
-  description              String?                @db.VarChar(160)
-  pointColor               String?                @default("#f79e9e") @db.VarChar(16)
-  mainTextColor            String?                @default("#000000") @db.VarChar(10)
-  dressCodeGentleman       String?                @db.Text
-  dressCodeLady            String?                @db.Text
-  bgColor                  String?                @default("#f7f7f7") @db.VarChar(10)
-  musicKey                 String?                @db.VarChar(255)
-  musicFilename            String?                @db.VarChar(255)
-  musicFileKey             String?                @db.VarChar(255)
-  notice                   String?                @db.Text
-  brideFirstName           String?                @db.VarChar(50)
-  brideMiddleName          String?                @db.VarChar(50)
-  dressCodeMainColor       String?                @default("#57372A") @db.VarChar(7)
-  dressCodeSubColor        String?                @default("#91604F") @db.VarChar(7)
-  dressCodeThirdColor      String?                @default("#D2947B") @db.VarChar(7)
-  brideLastName            String?                @db.VarChar(50)
-  brideMomName             String?                @db.VarChar(50)
-  greetingTitle            String?                @db.Text
+  id                       Int                         @id @default(autoincrement()) @db.UnsignedInt
+  templateNo               Int?                        @default(1)
+  uniqueId                 String?                     @unique(map: "uniqueId") @db.VarChar(100)
+  date                     DateTime?                   @db.Timestamp(0)
+  userId                   Int?                        @db.UnsignedInt
+  title                    String?                     @db.VarChar(60)
+  description              String?                     @db.VarChar(160)
+  pointColor               String?                     @default("#f79e9e") @db.VarChar(16)
+  mainTextColor            String?                     @default("#000000") @db.VarChar(10)
+  dressCodeGentleman       String?                     @db.Text
+  dressCodeLady            String?                     @db.Text
+  bgColor                  String?                     @default("#f7f7f7") @db.VarChar(10)
+  musicKey                 String?                     @db.VarChar(255)
+  musicFilename            String?                     @db.VarChar(255)
+  musicFileKey             String?                     @db.VarChar(255)
+  notice                   String?                     @db.Text
+  brideFirstName           String?                     @db.VarChar(50)
+  brideMiddleName          String?                     @db.VarChar(50)
+  dressCodeMainColor       String?                     @default("#57372A") @db.VarChar(7)
+  dressCodeSubColor        String?                     @default("#91604F") @db.VarChar(7)
+  dressCodeThirdColor      String?                     @default("#D2947B") @db.VarChar(7)
+  brideLastName            String?                     @db.VarChar(50)
+  brideMomName             String?                     @db.VarChar(50)
+  greetingTitle            String?                     @db.Text
   isGroomMomHidden         Boolean?
-  isGroomDadHidden         Int?                   @db.TinyInt
-  isBrideDadHidden         Int?                   @db.TinyInt
-  isBrideMomHidden         Int?                   @db.TinyInt
-  greetingContent          String?                @db.Text
-  brideDadName             String?                @db.VarChar(50)
-  bridePhone               String?                @db.VarChar(50)
-  groomFirstName           String?                @db.VarChar(50)
-  wishlistUrl              String?                @db.VarChar(255)
-  baseFont                 String?                @db.VarChar(50)
-  groomMiddleName          String?                @db.VarChar(50)
-  groomLastName            String?                @db.VarChar(50)
-  groomPhone               String?                @db.VarChar(50)
-  primarySponsor           String?                @db.Text
-  secondarySponsor         String?                @db.Text
-  bankAccount              String?                @db.Text
-  maidOfHonor              String?                @db.Text
-  groomsMen                String?                @db.Text
-  textColor                String?                @db.VarChar(10)
-  timezone                 String?                @db.VarChar(50)
-  rsvpTitle                String?                @db.VarChar(255)
+  isGroomDadHidden         Int?                        @db.TinyInt
+  isBrideDadHidden         Int?                        @db.TinyInt
+  isBrideMomHidden         Int?                        @db.TinyInt
+  greetingContent          String?                     @db.Text
+  brideDadName             String?                     @db.VarChar(50)
+  bridePhone               String?                     @db.VarChar(50)
+  groomFirstName           String?                     @db.VarChar(50)
+  wishlistUrl              String?                     @db.VarChar(255)
+  baseFont                 String?                     @db.VarChar(50)
+  groomMiddleName          String?                     @db.VarChar(50)
+  groomLastName            String?                     @db.VarChar(50)
+  groomPhone               String?                     @db.VarChar(50)
+  primarySponsor           String?                     @db.Text
+  secondarySponsor         String?                     @db.Text
+  bankAccount              String?                     @db.Text
+  maidOfHonor              String?                     @db.Text
+  groomsMen                String?                     @db.Text
+  textColor                String?                     @db.VarChar(10)
+  timezone                 String?                     @db.VarChar(50)
+  rsvpTitle                String?                     @db.VarChar(255)
   rsvpMaxPax               Int?
-  rsvpDeadline             DateTime?              @db.Timestamp(0)
-  rsvpDeadlineDesc         String?                @db.Text
+  rsvpDeadline             DateTime?                   @db.Timestamp(0)
+  rsvpDeadlineDesc         String?                     @db.Text
   rsvpHasFood              Boolean?
-  isRsvpPopup              Boolean?               @default(false)
-  bestMan                  String?                @db.Text
-  bridesMaids              String?                @db.Text
-  wishlistText             String?                @default("We’ve put together a small wishlist at [Name] for those who would like to help us fill our new home.") @db.VarChar(255)
-  groomMomName             String?                @db.VarChar(50)
-  groomDadName             String?                @db.VarChar(50)
+  isRsvpPopup              Boolean?                    @default(false)
+  hasRsvpDeadline          Boolean?                    @default(true)
+  billingStatus            Invitation_billingStatus    @default(TRIAL)
+  trialEndsAt              DateTime?                   @db.DateTime(0)
+  currentPlanCode          Invitation_currentPlanCode?
+  accessStartedAt          DateTime?                   @db.DateTime(0)
+  accessEndsAt             DateTime?                   @db.DateTime(0)
+  watermarkEnabled         Boolean                     @default(true)
+  bestMan                  String?                     @db.Text
+  bridesMaids              String?                     @db.Text
+  wishlistText             String?                     @default("We’ve put together a small wishlist at [Name] for those who would like to help us fill our new home.") @db.VarChar(255)
+  groomMomName             String?                     @db.VarChar(50)
+  groomDadName             String?                     @db.VarChar(50)
   layoutOrder              Json?
-  endingText               String?                @db.Text
-  ogImageKey               String?                @db.VarChar(255)
-  createdAt                DateTime?              @default(now()) @db.Timestamp(0)
-  updatedAt                DateTime?              @default(now()) @db.Timestamp(0)
-  hasRsvpDeadline          Boolean?
-  user                     User?                  @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Invitation_ibfk_1")
+  endingText               String?                     @db.Text
+  ogImageKey               String?                     @db.VarChar(255)
+  createdAt                DateTime?                   @default(now()) @db.Timestamp(0)
+  updatedAt                DateTime?                   @default(now()) @db.Timestamp(0)
+  user                     User?                       @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Invitation_ibfk_1")
   invitationCoverPhotoList InvitationCoverPhoto[]
   InvitationDressColor     InvitationDressColor[]
   faqList                  InvitationFaq[]
+  InvitationOrder          InvitationOrder[]
   photoList                InvitationPhoto[]
   placeList                InvitationPlace[]
   invitationRSVP           InvitationRSVP[]
 
   @@index([userId], map: "userId")
+  @@index([billingStatus], map: "idx_invitation_billing_status")
+  @@index([trialEndsAt], map: "idx_invitation_trial_ends_at")
 }
 
 model InvitationPlace {
@@ -237,4 +247,77 @@ model EmailVerification {
 
   @@index([email], map: "idx_email")
   @@index([email, purpose], map: "idx_email_purpose")
+}
+
+model InvitationOrder {
+  id                Int                      @id @default(autoincrement()) @db.UnsignedInt
+  invitationId      Int                      @db.UnsignedInt
+  userId            Int                      @db.UnsignedInt
+  pricePlanId       Int?                     @db.UnsignedInt
+  orderNo           String                   @unique(map: "uk_invitation_order_order_no") @db.VarChar(40)
+  planCode          InvitationOrder_planCode
+  amountPhp         Int
+  currency          String                   @default("PHP") @db.VarChar(3)
+  durationDays      Int?
+  status            InvitationOrder_status   @default(PENDING)
+  paidAt            DateTime?                @db.DateTime(0)
+  expiresAt         DateTime?                @db.DateTime(0)
+  provider          String                   @default("paymongo") @db.VarChar(20)
+  providerPaymentId String?                  @db.VarChar(100)
+  providerEventId   String?                  @db.VarChar(100)
+  rawPayload        Json?
+  createdAt         DateTime                 @default(now()) @db.DateTime(0)
+  updatedAt         DateTime                 @default(now()) @db.DateTime(0)
+  Invitation        Invitation               @relation(fields: [invitationId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_invitation_order_invitation")
+  PricePlan         PricePlan?               @relation(fields: [pricePlanId], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "fk_invitation_order_price_plan")
+  User              User                     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_invitation_order_user")
+
+  @@index([invitationId, status], map: "idx_order_invitation_status")
+  @@index([provider, providerEventId], map: "idx_order_provider_event")
+  @@index([provider, providerPaymentId], map: "idx_order_provider_payment")
+  @@index([userId, createdAt], map: "idx_order_user_created_at")
+  @@index([pricePlanId], map: "idx_order_price_plan")
+}
+
+model PricePlan {
+  id              Int               @id @default(autoincrement()) @db.UnsignedInt
+  code            String            @unique(map: "uk_price_plan_code") @db.VarChar(30)
+  name            String            @db.VarChar(60)
+  description     String?           @db.Text
+  amountPhp       Int
+  currency        String            @default("PHP") @db.VarChar(3)
+  durationDays    Int?
+  isActive        Boolean           @default(true)
+  displayOrder    Int               @default(0) @db.UnsignedInt
+  createdAt       DateTime          @default(now()) @db.DateTime(0)
+  updatedAt       DateTime          @default(now()) @db.DateTime(0)
+  InvitationOrder InvitationOrder[]
+
+  @@index([isActive, displayOrder], map: "idx_price_plan_active_order")
+}
+
+enum InvitationOrder_planCode {
+  KEEPSAKE
+  HEIRLOOM
+}
+
+enum InvitationOrder_status {
+  PENDING
+  PAID
+  FAILED
+  CANCELED
+  EXPIRED
+}
+
+enum Invitation_billingStatus {
+  TRIAL
+  PENDING
+  PAID
+  EXPIRED
+  CANCELED
+}
+
+enum Invitation_currentPlanCode {
+  KEEPSAKE
+  HEIRLOOM
 }
