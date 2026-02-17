@@ -211,6 +211,7 @@ export class PaymentService {
       eventType === 'payment.canceled';
 
     let finalStatus = order.status;
+    let shouldNotifySlack = false;
 
     await this.prismaService.$transaction(async (tx) => {
       if (paidEvent) {
@@ -244,6 +245,7 @@ export class PaymentService {
           },
         });
         finalStatus = 'PAID';
+        shouldNotifySlack = true;
         return;
       }
 
@@ -258,6 +260,7 @@ export class PaymentService {
             },
           });
           finalStatus = 'FAILED';
+          shouldNotifySlack = true;
         }
         return;
       }
@@ -270,6 +273,10 @@ export class PaymentService {
         },
       });
     });
+
+    if (!shouldNotifySlack) {
+      return { ok: true, skippedSlack: true };
+    }
 
     await this.notifyWebhookToSlack({
       eventType,
