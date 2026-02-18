@@ -90,6 +90,33 @@ export class PaymentService {
       }, {});
   }
 
+  private resolveRedirectUrl(input: {
+    frontendOrigin?: string;
+    fallbackUrl: string;
+    path: '/payment/success' | '/payment/cancel';
+    orderNo: string;
+  }) {
+    const fallback = new URL(input.fallbackUrl);
+    fallback.searchParams.set('orderNo', input.orderNo);
+
+    if (!input.frontendOrigin) {
+      return fallback.toString();
+    }
+
+    try {
+      const originUrl = new URL(input.frontendOrigin);
+      if (originUrl.protocol !== 'http:' && originUrl.protocol !== 'https:') {
+        return fallback.toString();
+      }
+
+      const resolved = new URL(input.path, originUrl.origin);
+      resolved.searchParams.set('orderNo', input.orderNo);
+      return resolved.toString();
+    } catch {
+      return fallback.toString();
+    }
+  }
+
   private verifyWebhookSignature(rawBody: string, signatureHeader?: string) {
     if (!PAYMONGO_WEBHOOK_SECRET) {
       throw new InternalServerErrorException('PAYMONGO_WEBHOOK_SECRET missing');
@@ -154,22 +181,84 @@ export class PaymentService {
     status: string;
     invitationId: number;
     userId: number;
+    userName?: string | null;
+    userEmail?: string | null;
   }) {
-    const eventId = input.eventId ? input.eventId : '-';
-    const message = [
-      '*PayMongo Webhook*',
-      'Event: ' + input.eventType,
-      'Order: ' + input.orderNo,
-      'Status: ' + input.status,
-      'Plan: ' + input.planCode,
-      'Amount: PHP ' + input.amountPhp,
-      'Invitation ID: ' + input.invitationId,
-      'User ID: ' + input.userId,
-      'Event ID: ' + eventId,
-      'At: ' + new Date().toISOString(),
-    ].join('\n');
+    const eventId = input.eventId ?? '-';
+    const userName = input.userName?.trim() || '-';
+    const userEmail = input.userEmail?.trim() || '-';
 
-    await postSlackPaymentWebhookMessage(message);
+    await postSlackPaymentWebhookMessage({
+      text: '새로운 인비테이션이 결제 되었습니다.',
+      attachments: [
+        {
+          color: '#faa708',
+          blocks: [
+            {
+              type: 'header',
+              text: {
+                type: 'plain_text',
+                text: '새로운 인비테이션이 결제 되었습니다.',
+              },
+            },
+            {
+              type: 'section',
+              fields: [
+                {
+                  type: 'mrkdwn',
+                  text: `*User Label*\n*${userName}*`,
+                },
+                {
+                  type: 'mrkdwn',
+                  text: `*User Email*\n${userEmail}`,
+                },
+                {
+                  type: 'mrkdwn',
+                  text: `*Order No*\n${input.orderNo}`,
+                },
+                {
+                  type: 'mrkdwn',
+                  text: `*Plan*\n${input.planCode}`,
+                },
+                {
+                  type: 'mrkdwn',
+                  text: `*Amount*\nPHP ${input.amountPhp.toLocaleString('en-PH')}`,
+                },
+                {
+                  type: 'mrkdwn',
+                  text: `*Status*\n${input.status}`,
+                },
+                {
+                  type: 'mrkdwn',
+                  text: `*Invitation ID*\n${input.invitationId}`,
+                },
+                {
+                  type: 'mrkdwn',
+                  text: `*User ID*\n${input.userId}`,
+                },
+                {
+                  type: 'mrkdwn',
+                  text: `*Event Type*\n${input.eventType}`,
+                },
+                {
+                  type: 'mrkdwn',
+                  text: `*Event ID*\n${eventId}`,
+                },
+              ],
+            },
+            {
+              type: 'context',
+              elements: [
+                {
+                  type: 'mrkdwn',
+                  text: `Processed at ${new Date().toISOString()}`,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    });
   }
 
   async handleWebhookEvent(
@@ -196,15 +285,13 @@ export class PaymentService {
 
     const order = await this.prismaService.invitationOrder.findUnique({
       where: { orderNo },
-      include: { Invitation: true },
+      include: { Invitation: true, User: true },
     });
     if (!order) {
       return { ignored: true };
     }
 
-    const paidEvent =
-      eventType === 'checkout_session.payment.paid' ||
-      eventType === 'payment.paid';
+    const paidEvent = eventType === 'payment.paid';
     const failedEvent =
       eventType === 'checkout_session.payment.failed' ||
       eventType === 'payment.failed' ||
@@ -260,7 +347,6 @@ export class PaymentService {
             },
           });
           finalStatus = 'FAILED';
-          shouldNotifySlack = true;
         }
         return;
       }
@@ -287,6 +373,8 @@ export class PaymentService {
       status: finalStatus,
       invitationId: order.invitationId,
       userId: order.userId,
+      userName: order.User?.email ? order.User.email.split('@')[0] : null,
+      userEmail: order.User?.email,
     });
 
     return { ok: true };
@@ -296,6 +384,7 @@ export class PaymentService {
     userId: number,
     invitationId: number,
     planCode: PlanCode,
+    frontendOrigin?: string,
   ) {
     if (!PAYMONGO_SECRET_KEY) {
       throw new InternalServerErrorException('PAYMONGO_SECRET_KEY missing');
@@ -350,6 +439,19 @@ export class PaymentService {
       return created;
     });
 
+    const successUrl = this.resolveRedirectUrl({
+      frontendOrigin,
+      fallbackUrl: PAYMENT_SUCCESS_URL,
+      path: '/payment/success',
+      orderNo,
+    });
+    const cancelUrl = this.resolveRedirectUrl({
+      frontendOrigin,
+      fallbackUrl: PAYMENT_CANCEL_URL,
+      path: '/payment/cancel',
+      orderNo,
+    });
+
     const authValue = Buffer.from(`${PAYMONGO_SECRET_KEY}:`).toString('base64');
     const paymongoPayload = {
       data: {
@@ -360,8 +462,8 @@ export class PaymentService {
           show_line_items: true,
           description: `Sparklit ${planCode} Plan`,
           payment_method_types: ['gcash', 'card', 'qrph'],
-          success_url: `${PAYMENT_SUCCESS_URL}?orderNo=${orderNo}`,
-          cancel_url: `${PAYMENT_CANCEL_URL}?orderNo=${orderNo}`,
+          success_url: successUrl,
+          cancel_url: cancelUrl,
           metadata: {
             orderNo,
             invitationId: String(invitation.id),

@@ -1,4 +1,4 @@
-import { IsEnum, IsInt, Min } from 'class-validator';
+import { IsEnum, IsInt, IsOptional, IsUrl, Min } from 'class-validator';
 
 enum PlanCode {
   KEEPSAKE = 'KEEPSAKE',
@@ -12,6 +12,10 @@ export class CreateCheckoutDto {
 
   @IsEnum(PlanCode)
   planCode: PlanCode;
+
+  @IsOptional()
+  @IsUrl({ require_tld: false })
+  frontendOrigin?: string;
 }
 
 export { PlanCode };

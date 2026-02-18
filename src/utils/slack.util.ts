@@ -1,10 +1,28 @@
 import { SLACK_PAYMENT_WEBHOOK_URL } from 'src/constants';
 
-type SlackPayload = {
+type SlackTextObject = {
+  type: 'mrkdwn' | 'plain_text';
   text: string;
 };
 
-export const postSlackPaymentWebhookMessage = async (text: string) => {
+type SlackBlock = {
+  type: string;
+  text?: SlackTextObject;
+  fields?: SlackTextObject[];
+  elements?: SlackTextObject[];
+};
+
+type SlackAttachment = {
+  color?: string;
+  blocks?: SlackBlock[];
+};
+
+type SlackPayload = {
+  text?: string;
+  attachments?: SlackAttachment[];
+};
+
+export const postSlackPaymentWebhookMessage = async (payload: SlackPayload) => {
   if (!SLACK_PAYMENT_WEBHOOK_URL) return;
 
   try {
@@ -13,7 +31,7 @@ export const postSlackPaymentWebhookMessage = async (text: string) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ text } as SlackPayload),
+      body: JSON.stringify(payload),
     });
 
     if (!response.ok) {

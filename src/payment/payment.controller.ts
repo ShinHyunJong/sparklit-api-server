@@ -27,11 +27,15 @@ export class PaymentController {
 
   @UseGuards(JwtAuthGuard)
   @Post('checkout')
-  createCheckout(@Req() req, @Body() body: CreateCheckoutDto) {
+  createCheckout(
+    @Req() req: Request & { user: { id: number } },
+    @Body() body: CreateCheckoutDto,
+  ) {
     return this.paymentService.createCheckoutSession(
       req.user.id,
       body.invitationId,
       body.planCode,
+      body.frontendOrigin ?? req.headers.origin,
     );
   }
 
