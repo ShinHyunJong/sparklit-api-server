@@ -397,6 +397,13 @@ export class PaymentService {
       },
       select: {
         id: true,
+        brideFirstName: true,
+        groomFirstName: true,
+        user: {
+          select: {
+            email: true,
+          },
+        },
       },
     });
 
@@ -453,10 +460,20 @@ export class PaymentService {
     });
 
     const authValue = Buffer.from(`${PAYMONGO_SECRET_KEY}:`).toString('base64');
+    const billingName = [
+      invitation.groomFirstName?.trim(),
+      invitation.brideFirstName?.trim(),
+    ]
+      .filter(Boolean)
+      .join(' & ');
+    const billingEmail = invitation.user?.email?.trim() || '';
     const paymongoPayload = {
       data: {
         attributes: {
-          billing: {},
+          billing: {
+            ...(billingName ? { name: billingName } : {}),
+            ...(billingEmail ? { email: billingEmail } : {}),
+          },
           send_email_receipt: false,
           show_description: true,
           show_line_items: true,
