@@ -3,6 +3,7 @@ import {
   BadRequestException,
   Injectable,
   InternalServerErrorException,
+  Logger,
   UnauthorizedException,
 } from '@nestjs/common';
 import cryptoRandomString from 'crypto-random-string';
@@ -47,6 +48,7 @@ type PricePlanRow = {
 export class PaymentService {
   private readonly paymongoCheckoutUrl =
     'https://api.paymongo.com/v1/checkout_sessions';
+  private readonly logger = new Logger(PaymentService.name);
 
   constructor(
     private readonly prismaService: PrismaService,
@@ -179,7 +181,7 @@ export class PaymentService {
     planCode: string;
     amountPhp: number;
     status: string;
-    invitationId: number;
+    invitationAlias?: string | null;
     userId: number;
     userName?: string | null;
     userEmail?: string | null;
@@ -187,9 +189,27 @@ export class PaymentService {
     const eventId = input.eventId ?? '-';
     const userName = input.userName?.trim() || '-';
     const userEmail = input.userEmail?.trim() || '-';
+    const amountLabel = `\u20b1${input.amountPhp.toLocaleString('en-PH')}`;
+    const invitationAlias = input.invitationAlias?.trim() || '';
+    const invitationUrl = invitationAlias
+      ? `https://sparklit.co/${encodeURIComponent(invitationAlias)}`
+      : null;
+    const invitationLink = invitationUrl
+      ? `<${invitationUrl}|View Inviation>`
+      : '-';
+    const processedAtKst = new Intl.DateTimeFormat('ko-KR', {
+      timeZone: 'Asia/Seoul',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+    }).format(new Date());
 
     await postSlackPaymentWebhookMessage({
-      text: '새로운 인비테이션이 결제 되었습니다.',
+      text: `New invitation payment received (${amountLabel}).`,
       attachments: [
         {
           color: '#faa708',
@@ -198,7 +218,7 @@ export class PaymentService {
               type: 'header',
               text: {
                 type: 'plain_text',
-                text: '새로운 인비테이션이 결제 되었습니다.',
+                text: `New invitation payment received (${amountLabel})`,
               },
             },
             {
@@ -222,7 +242,7 @@ export class PaymentService {
                 },
                 {
                   type: 'mrkdwn',
-                  text: `*Amount*\nPHP ${input.amountPhp.toLocaleString('en-PH')}`,
+                  text: `*Amount*\n${amountLabel}`,
                 },
                 {
                   type: 'mrkdwn',
@@ -230,7 +250,7 @@ export class PaymentService {
                 },
                 {
                   type: 'mrkdwn',
-                  text: `*Invitation ID*\n${input.invitationId}`,
+                  text: `*Invitation*\n${invitationLink}`,
                 },
                 {
                   type: 'mrkdwn',
@@ -251,7 +271,7 @@ export class PaymentService {
               elements: [
                 {
                   type: 'mrkdwn',
-                  text: `Processed at ${new Date().toISOString()}`,
+                  text: `Processed at ${processedAtKst} (KST)`,
                 },
               ],
             },
@@ -371,7 +391,7 @@ export class PaymentService {
       planCode: order.planCode,
       amountPhp: order.amountPhp,
       status: finalStatus,
-      invitationId: order.invitationId,
+      invitationAlias: order.Invitation?.uniqueId,
       userId: order.userId,
       userName: order.User?.email ? order.User.email.split('@')[0] : null,
       userEmail: order.User?.email,
@@ -458,6 +478,16 @@ export class PaymentService {
       path: '/payment/cancel',
       orderNo,
     });
+
+    this.logger.log(
+      JSON.stringify({
+        event: 'createCheckoutRedirectUrl',
+        orderNo,
+        frontendOrigin: frontendOrigin ?? null,
+        successUrl,
+        cancelUrl,
+      }),
+    );
 
     const authValue = Buffer.from(`${PAYMONGO_SECRET_KEY}:`).toString('base64');
     const billingName = [
