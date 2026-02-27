@@ -20,4 +20,17 @@ export class MigrationController {
       limit: parsedLimit,
     });
   }
+
+  @Post('/invitations/create-fake-paid-orders')
+  createFakePaidInvitationOrder(
+    @Query('apply') apply?: string,
+    @Query('limit') limit?: string,
+  ) {
+    const shouldApply = apply === 'true';
+    const parsedLimit = limit ? Number(limit) : undefined;
+    return this.migrationService.createFakePaidInvitationOrder({
+      apply: shouldApply,
+      limit: parsedLimit,
+    });
+  }
 }

@@ -230,8 +230,12 @@ model InvitationFaq {
 }
 
 model Admin {
-  id   Int     @id @default(autoincrement()) @db.UnsignedInt
-  name String? @db.VarChar(20)
+  id        Int       @id @default(autoincrement()) @db.UnsignedInt
+  name      String?   @db.VarChar(20)
+  email     String?   @db.VarChar(255)
+  password  String?   @db.VarChar(255)
+  createdAt DateTime? @default(now()) @db.Timestamp(0)
+  updatedAt DateTime? @default(now()) @db.Timestamp(0)
 }
 
 model EmailVerification {
@@ -294,6 +298,22 @@ model PricePlan {
   InvitationOrder InvitationOrder[]
 
   @@index([isActive, displayOrder], map: "idx_price_plan_active_order")
+}
+
+model AuditLog {
+  id          BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
+  actorUserId Int?     @db.UnsignedInt
+  action      String   @db.VarChar(100)
+  targetType  String   @db.VarChar(50)
+  targetId    String?  @db.VarChar(100)
+  ipAddress   String?  @db.VarChar(45)
+  userAgent   String?  @db.VarChar(255)
+  metadata    Json?
+  createdAt   DateTime @default(now())
+
+  @@index([action, createdAt], map: "idx_auditlog_action_created")
+  @@index([actorUserId, createdAt], map: "idx_auditlog_actor_created")
+  @@index([targetType, targetId, createdAt], map: "idx_auditlog_target_created")
 }
 
 enum InvitationOrder_planCode {

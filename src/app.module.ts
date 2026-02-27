@@ -12,6 +12,7 @@ import { PlacesModule } from './place/place.module';
 import { PhotoModule } from './photo/photo.module';
 import { MigrationModule } from './migration/migration.module';
 import { PaymentModule } from './payment/payment.module';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { PaymentModule } from './payment/payment.module';
     PhotoModule,
     MigrationModule,
     PaymentModule,
+    AdminModule,
   ],
   controllers: [AppController, AuthController],
   providers: [

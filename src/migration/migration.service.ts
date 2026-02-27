@@ -24,6 +24,11 @@ type RefreshPlaceAddressParams = {
   limit?: number;
 };
 
+type CreateFakePaidInvitationOrderParams = {
+  apply: boolean;
+  limit?: number;
+};
+
 @Injectable()
 export class MigrationService {
   constructor(
@@ -131,6 +136,106 @@ export class MigrationService {
       }
 
       await this.sleep(120);
+    }
+
+    return result;
+  }
+
+  private createOrderNo() {
+    const random = Math.floor(Math.random() * 1_000_000_000)
+      .toString()
+      .padStart(9, '0');
+    return `SPK-${random}`;
+  }
+
+  async createFakePaidInvitationOrder({
+    apply,
+    limit,
+  }: CreateFakePaidInvitationOrderParams) {
+    const invitationList = await this.prismaService.invitation.findMany({
+      where: { userId: { not: null } },
+      select: {
+        id: true,
+        userId: true,
+      },
+      orderBy: [{ id: 'asc' }],
+      ...(limit ? { take: limit } : {}),
+    });
+
+    const existingOrderList = await this.prismaService.invitationOrder.findMany({
+      where: {
+        invitationId: {
+          in: invitationList.map((invitation) => invitation.id),
+        },
+      },
+      select: { invitationId: true },
+    });
+    const invitationIdWithOrderSet = new Set(
+      existingOrderList.map((order) => order.invitationId),
+    );
+
+    const result = {
+      total: invitationList.length,
+      created: 0,
+      updatedInvitation: 0,
+      skipped: 0,
+      failed: 0,
+      items: [] as Array<{
+        invitationId: number;
+        userId: number | null;
+        orderNo: string;
+      }>,
+    };
+
+    for (const invitation of invitationList) {
+      if (!invitation.userId) {
+        result.skipped += 1;
+        continue;
+      }
+      if (invitationIdWithOrderSet.has(invitation.id)) {
+        result.skipped += 1;
+        continue;
+      }
+
+      try {
+        const orderNo = this.createOrderNo();
+
+        if (apply) {
+          await this.prismaService.$transaction(async (tx) => {
+            await tx.invitationOrder.create({
+              data: {
+                invitationId: invitation.id,
+                userId: invitation.userId,
+                pricePlanId: 2,
+                orderNo,
+                planCode: 'HEIRLOOM',
+                amountPhp: 2499,
+                currency: 'PHP',
+                status: 'PAID',
+                provider: 'sparklit',
+                paidAt: new Date(),
+              },
+            });
+
+            await tx.invitation.update({
+              where: { id: invitation.id },
+              data: {
+                billingStatus: 'PAID',
+              },
+            });
+          });
+        }
+
+        result.created += 1;
+        result.updatedInvitation += 1;
+        result.items.push({
+          invitationId: invitation.id,
+          userId: invitation.userId,
+          orderNo,
+        });
+      } catch {
+        result.failed += 1;
+      }
     }
 
     return result;

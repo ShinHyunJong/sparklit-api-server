@@ -304,7 +304,11 @@ exports.Prisma.InvitationFaqScalarFieldEnum = {
 
 exports.Prisma.AdminScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  name: 'name',
+  email: 'email',
+  password: 'password',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.EmailVerificationScalarFieldEnum = {
@@ -352,6 +356,18 @@ exports.Prisma.PricePlanScalarFieldEnum = {
   displayOrder: 'displayOrder',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AuditLogScalarFieldEnum = {
+  id: 'id',
+  actorUserId: 'actorUserId',
+  action: 'action',
+  targetType: 'targetType',
+  targetId: 'targetId',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  metadata: 'metadata',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -492,7 +508,9 @@ exports.Prisma.InvitationFaqOrderByRelevanceFieldEnum = {
 };
 
 exports.Prisma.AdminOrderByRelevanceFieldEnum = {
-  name: 'name'
+  name: 'name',
+  email: 'email',
+  password: 'password'
 };
 
 exports.Prisma.EmailVerificationOrderByRelevanceFieldEnum = {
@@ -514,6 +532,14 @@ exports.Prisma.PricePlanOrderByRelevanceFieldEnum = {
   name: 'name',
   description: 'description',
   currency: 'currency'
+};
+
+exports.Prisma.AuditLogOrderByRelevanceFieldEnum = {
+  action: 'action',
+  targetType: 'targetType',
+  targetId: 'targetId',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent'
 };
 exports.Invitation_billingStatus = exports.$Enums.Invitation_billingStatus = {
   TRIAL: 'TRIAL',
@@ -558,7 +584,8 @@ exports.Prisma.ModelName = {
   Admin: 'Admin',
   EmailVerification: 'EmailVerification',
   InvitationOrder: 'InvitationOrder',
-  PricePlan: 'PricePlan'
+  PricePlan: 'PricePlan',
+  AuditLog: 'AuditLog'
 };
 
 /**
