@@ -11,10 +11,12 @@ datasource db {
 model User {
   id              Int               @id @default(autoincrement()) @db.UnsignedInt
   email           String?           @unique(map: "email") @db.VarChar(255)
+  name            String?           @db.VarChar(255)
+  country         String?           @db.VarChar(2)
   password        String?           @db.VarChar(255)
+  isAdmin         Boolean?
   createdAt       DateTime?         @default(now()) @db.Timestamp(0)
   updatedAt       DateTime?         @default(now()) @db.Timestamp(0)
-  country         String?           @db.VarChar(2)
   invitationList  Invitation[]
   InvitationOrder InvitationOrder[]
 }
@@ -316,11 +318,6 @@ model AuditLog {
   @@index([targetType, targetId, createdAt], map: "idx_auditlog_target_created")
 }
 
-enum InvitationOrder_planCode {
-  KEEPSAKE
-  HEIRLOOM
-}
-
 enum InvitationOrder_status {
   PENDING
   PAID
@@ -337,7 +334,12 @@ enum Invitation_billingStatus {
   CANCELED
 }
 
+enum InvitationOrder_planCode {
+  STANDARD
+  PREMIUM
+}
+
 enum Invitation_currentPlanCode {
-  KEEPSAKE
-  HEIRLOOM
+  STANDARD
+  PREMIUM
 }

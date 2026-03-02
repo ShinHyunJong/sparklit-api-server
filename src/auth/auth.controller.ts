@@ -21,12 +21,14 @@ export class AuthController {
   register(
     @Body()
     registerBody: {
+      name: string;
       email: string;
       password: string;
       country?: string;
     },
   ) {
     return this.authSerivice.registerUser(
+      registerBody.name,
       registerBody.email,
       registerBody.password,
       registerBody.country,

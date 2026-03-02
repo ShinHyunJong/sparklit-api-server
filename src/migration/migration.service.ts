@@ -208,7 +208,7 @@ export class MigrationService {
                 userId: invitation.userId,
                 pricePlanId: 2,
                 orderNo,
-                planCode: 'HEIRLOOM',
+                planCode: 'PREMIUM',
                 amountPhp: 2499,
                 currency: 'PHP',
                 status: 'PAID',

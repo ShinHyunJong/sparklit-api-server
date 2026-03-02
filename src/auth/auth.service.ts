@@ -94,13 +94,20 @@ export class AuthService {
       select: {
         id: true,
         email: true,
+        name: true,
+        isAdmin: true,
         country: true,
         createdAt: true,
         updatedAt: true,
       },
     });
 
-    return userDetail;
+    if (!userDetail) return userDetail;
+
+    return {
+      ...userDetail,
+      isAdmin: Boolean(userDetail.isAdmin),
+    };
   }
 
   async loginUser(email: string, password: string) {
@@ -112,6 +119,8 @@ export class AuthService {
         id: true,
         password: true,
         email: true,
+        name: true,
+        isAdmin: true,
         country: true,
       },
     });
@@ -123,23 +132,33 @@ export class AuthService {
       user: {
         id: user.id,
         email: user.email,
+        name: user.name,
+        isAdmin: Boolean(user.isAdmin),
         country: user.country,
       },
       tokens,
     };
   }
 
-  async registerUser(email: string, password: string, country?: string) {
+  async registerUser(
+    name: string,
+    email: string,
+    password: string,
+    country?: string,
+  ) {
     const user = await this.prismaService.user.findUnique({
       where: {
         email,
       },
     });
     if (user) throw new HttpException('already exist', 406);
+    const normalizedName = name.trim();
+    if (!normalizedName) throw new HttpException('name required', 400);
     const normalizedCountry = country ? country.trim().toUpperCase() : null;
     const hashed = hash(password);
     const newUser = await this.prismaService.user.create({
       data: {
+        name: normalizedName,
         email,
         password: hashed,
         country: normalizedCountry,
@@ -147,6 +166,8 @@ export class AuthService {
       select: {
         id: true,
         email: true,
+        name: true,
+        isAdmin: true,
         country: true,
       },
     });
@@ -155,6 +176,8 @@ export class AuthService {
       user: {
         id: newUser.id,
         email: newUser.email,
+        name: newUser.name,
+        isAdmin: Boolean(newUser.isAdmin),
         country: newUser.country,
       },
       tokens,

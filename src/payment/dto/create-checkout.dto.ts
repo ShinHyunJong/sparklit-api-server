@@ -1,8 +1,8 @@
 import { IsEnum, IsInt, IsOptional, IsUrl, Min } from 'class-validator';
 
 enum PlanCode {
-  KEEPSAKE = 'KEEPSAKE',
-  HEIRLOOM = 'HEIRLOOM',
+  STANDARD = 'STANDARD',
+  PREMIUM = 'PREMIUM',
 }
 
 export class CreateCheckoutDto {

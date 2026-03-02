@@ -123,10 +123,12 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
+  name: 'name',
+  country: 'country',
   password: 'password',
+  isAdmin: 'isAdmin',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  country: 'country'
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.InvitationScalarFieldEnum = {
@@ -387,8 +389,9 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.UserOrderByRelevanceFieldEnum = {
   email: 'email',
-  password: 'password',
-  country: 'country'
+  name: 'name',
+  country: 'country',
+  password: 'password'
 };
 
 exports.Prisma.JsonNullValueFilter = {
@@ -550,13 +553,13 @@ exports.Invitation_billingStatus = exports.$Enums.Invitation_billingStatus = {
 };
 
 exports.Invitation_currentPlanCode = exports.$Enums.Invitation_currentPlanCode = {
-  KEEPSAKE: 'KEEPSAKE',
-  HEIRLOOM: 'HEIRLOOM'
+  STANDARD: 'STANDARD',
+  PREMIUM: 'PREMIUM'
 };
 
 exports.InvitationOrder_planCode = exports.$Enums.InvitationOrder_planCode = {
-  KEEPSAKE: 'KEEPSAKE',
-  HEIRLOOM: 'HEIRLOOM'
+  STANDARD: 'STANDARD',
+  PREMIUM: 'PREMIUM'
 };
 
 exports.InvitationOrder_status = exports.$Enums.InvitationOrder_status = {

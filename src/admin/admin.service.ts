@@ -1,8 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 
-const excludedUserIdList = [1, 2];
-
 @Injectable()
 export class AdminService {
   constructor(private readonly prismaService: PrismaService) {}
@@ -29,22 +27,22 @@ export class AdminService {
       totalRsvpCount,
     ] = await Promise.all([
       this.prismaService.invitation.count({
-        where: { userId: { notIn: excludedUserIdList } },
+        where: { user: { is: { isAdmin: { not: true } } } },
       }),
       this.prismaService.invitationPlace.count({
-        where: { invitation: { userId: { notIn: excludedUserIdList } } },
+        where: { invitation: { user: { is: { isAdmin: { not: true } } } } },
       }),
       this.prismaService.invitationPhoto.count({
         where: {
           Invitation: {
             is: {
-              userId: { notIn: excludedUserIdList },
+              user: { is: { isAdmin: { not: true } } },
             },
           },
         },
       }),
       this.prismaService.invitationRSVP.count({
-        where: { invitation: { userId: { notIn: excludedUserIdList } } },
+        where: { invitation: { user: { is: { isAdmin: { not: true } } } } },
       }),
     ]);
 
@@ -58,7 +56,7 @@ export class AdminService {
 
   async getInvitationList() {
     const invitationList = await this.prismaService.invitation.findMany({
-      where: { userId: { notIn: excludedUserIdList } },
+      where: { user: { is: { isAdmin: { not: true } } } },
       orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
       select: {
         id: true,
@@ -109,11 +107,24 @@ export class AdminService {
           .flatMap((place) => place.timeList)
           .find((timeItem) => timeItem.time)?.time ?? null;
       const planCode =
-        invitation.currentPlanCode ?? invitation.InvitationOrder[0]?.planCode ?? null;
+        invitation.currentPlanCode ??
+        invitation.InvitationOrder[0]?.planCode ??
+        null;
 
-      const { placeList, InvitationOrder, ...rest } = invitation;
       return {
-        ...rest,
+        id: invitation.id,
+        uniqueId: invitation.uniqueId,
+        templateNo: invitation.templateNo,
+        billingStatus: invitation.billingStatus,
+        currentPlanCode: invitation.currentPlanCode,
+        brideFirstName: invitation.brideFirstName,
+        brideLastName: invitation.brideLastName,
+        groomFirstName: invitation.groomFirstName,
+        groomLastName: invitation.groomLastName,
+        date: invitation.date,
+        createdAt: invitation.createdAt,
+        updatedAt: invitation.updatedAt,
+        user: invitation.user,
         planCode,
         firstPlaceTime,
       };
@@ -124,7 +135,7 @@ export class AdminService {
     const invitation = await this.prismaService.invitation.findFirst({
       where: {
         uniqueId,
-        userId: { notIn: excludedUserIdList },
+        user: { is: { isAdmin: { not: true } } },
       },
       select: {
         id: true,
