@@ -27,22 +27,32 @@ export class AdminService {
       totalRsvpCount,
     ] = await Promise.all([
       this.prismaService.invitation.count({
-        where: { user: { is: { isAdmin: { not: true } } } },
+        where: {
+          user: { OR: [{ isAdmin: { not: true } }, { isAdmin: null }] },
+        },
       }),
       this.prismaService.invitationPlace.count({
-        where: { invitation: { user: { is: { isAdmin: { not: true } } } } },
+        where: {
+          invitation: {
+            user: { OR: [{ isAdmin: { not: true } }, { isAdmin: null }] },
+          },
+        },
       }),
       this.prismaService.invitationPhoto.count({
         where: {
           Invitation: {
             is: {
-              user: { is: { isAdmin: { not: true } } },
+              user: { OR: [{ isAdmin: { not: true } }, { isAdmin: null }] },
             },
           },
         },
       }),
       this.prismaService.invitationRSVP.count({
-        where: { invitation: { user: { is: { isAdmin: { not: true } } } } },
+        where: {
+          invitation: {
+            user: { OR: [{ isAdmin: { not: true } }, { isAdmin: null }] },
+          },
+        },
       }),
     ]);
 
@@ -56,7 +66,11 @@ export class AdminService {
 
   async getInvitationList() {
     const invitationList = await this.prismaService.invitation.findMany({
-      where: { user: { is: { isAdmin: { not: true } } } },
+      where: {
+        user: {
+          OR: [{ isAdmin: { not: true } }, { isAdmin: null }],
+        },
+      },
       orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
       select: {
         id: true,
@@ -95,7 +109,7 @@ export class AdminService {
           select: {
             id: true,
             email: true,
-            country: true,
+            isAdmin: true,
           },
         },
       },
