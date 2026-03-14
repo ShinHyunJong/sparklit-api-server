@@ -145,14 +145,28 @@ export class AdminService {
     });
   }
 
-  async getInvitationRsvpList(uniqueId: string) {
+  async getInvitationRsvpList(invitationIdentifier: string) {
+    const parsedInvitationId = Number(invitationIdentifier);
+    const canUseInvitationId = Number.isInteger(parsedInvitationId) && parsedInvitationId > 0;
     const invitation = await this.prismaService.invitation.findFirst({
       where: {
-        uniqueId,
-        user: { is: { isAdmin: { not: true } } },
+        ...(canUseInvitationId
+          ? {
+              OR: [
+                { id: parsedInvitationId },
+                { uniqueId: invitationIdentifier },
+              ],
+            }
+          : { uniqueId: invitationIdentifier }),
+        user: {
+          is: {
+            OR: [{ isAdmin: { not: true } }, { isAdmin: null }],
+          },
+        },
       },
       select: {
         id: true,
+        uniqueId: true,
       },
     });
 
