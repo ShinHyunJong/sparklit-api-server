@@ -79,6 +79,11 @@ export type InvitationGuest = $Result.DefaultSelection<Prisma.$InvitationGuestPa
  */
 export type InvitationFaq = $Result.DefaultSelection<Prisma.$InvitationFaqPayload>
 /**
+ * Model InvitationEntourage
+ * 
+ */
+export type InvitationEntourage = $Result.DefaultSelection<Prisma.$InvitationEntouragePayload>
+/**
  * Model Admin
  * 
  */
@@ -417,6 +422,16 @@ export class PrismaClient<
     * ```
     */
   get invitationFaq(): Prisma.InvitationFaqDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.invitationEntourage`: Exposes CRUD operations for the **InvitationEntourage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more InvitationEntourages
+    * const invitationEntourages = await prisma.invitationEntourage.findMany()
+    * ```
+    */
+  get invitationEntourage(): Prisma.InvitationEntourageDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.admin`: Exposes CRUD operations for the **Admin** model.
@@ -920,6 +935,7 @@ export namespace Prisma {
     InvitationDressColor: 'InvitationDressColor',
     InvitationGuest: 'InvitationGuest',
     InvitationFaq: 'InvitationFaq',
+    InvitationEntourage: 'InvitationEntourage',
     Admin: 'Admin',
     EmailVerification: 'EmailVerification',
     InvitationOrder: 'InvitationOrder',
@@ -943,7 +959,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "invitation" | "invitationPlace" | "place" | "invitationPlaceTime" | "invitationPhoto" | "invitationCoverPhoto" | "invitationRSVP" | "invitationMusic" | "invitationView" | "invitationDressColor" | "invitationGuest" | "invitationFaq" | "admin" | "emailVerification" | "invitationOrder" | "pricePlan" | "auditLog"
+      modelProps: "user" | "invitation" | "invitationPlace" | "place" | "invitationPlaceTime" | "invitationPhoto" | "invitationCoverPhoto" | "invitationRSVP" | "invitationMusic" | "invitationView" | "invitationDressColor" | "invitationGuest" | "invitationFaq" | "invitationEntourage" | "admin" | "emailVerification" | "invitationOrder" | "pricePlan" | "auditLog"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1805,6 +1821,72 @@ export namespace Prisma {
           }
         }
       }
+      InvitationEntourage: {
+        payload: Prisma.$InvitationEntouragePayload<ExtArgs>
+        fields: Prisma.InvitationEntourageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.InvitationEntourageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationEntouragePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.InvitationEntourageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationEntouragePayload>
+          }
+          findFirst: {
+            args: Prisma.InvitationEntourageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationEntouragePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.InvitationEntourageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationEntouragePayload>
+          }
+          findMany: {
+            args: Prisma.InvitationEntourageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationEntouragePayload>[]
+          }
+          create: {
+            args: Prisma.InvitationEntourageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationEntouragePayload>
+          }
+          createMany: {
+            args: Prisma.InvitationEntourageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.InvitationEntourageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationEntouragePayload>
+          }
+          update: {
+            args: Prisma.InvitationEntourageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationEntouragePayload>
+          }
+          deleteMany: {
+            args: Prisma.InvitationEntourageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.InvitationEntourageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.InvitationEntourageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationEntouragePayload>
+          }
+          aggregate: {
+            args: Prisma.InvitationEntourageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateInvitationEntourage>
+          }
+          groupBy: {
+            args: Prisma.InvitationEntourageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<InvitationEntourageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.InvitationEntourageCountArgs<ExtArgs>
+            result: $Utils.Optional<InvitationEntourageCountAggregateOutputType> | number
+          }
+        }
+      }
       Admin: {
         payload: Prisma.$AdminPayload<ExtArgs>
         fields: Prisma.AdminFieldRefs
@@ -2232,6 +2314,7 @@ export namespace Prisma {
     invitationDressColor?: InvitationDressColorOmit
     invitationGuest?: InvitationGuestOmit
     invitationFaq?: InvitationFaqOmit
+    invitationEntourage?: InvitationEntourageOmit
     admin?: AdminOmit
     emailVerification?: EmailVerificationOmit
     invitationOrder?: InvitationOrderOmit
@@ -2373,6 +2456,7 @@ export namespace Prisma {
   export type InvitationCountOutputType = {
     invitationCoverPhotoList: number
     InvitationDressColor: number
+    invitationEntourageList: number
     faqList: number
     InvitationOrder: number
     photoList: number
@@ -2383,6 +2467,7 @@ export namespace Prisma {
   export type InvitationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     invitationCoverPhotoList?: boolean | InvitationCountOutputTypeCountInvitationCoverPhotoListArgs
     InvitationDressColor?: boolean | InvitationCountOutputTypeCountInvitationDressColorArgs
+    invitationEntourageList?: boolean | InvitationCountOutputTypeCountInvitationEntourageListArgs
     faqList?: boolean | InvitationCountOutputTypeCountFaqListArgs
     InvitationOrder?: boolean | InvitationCountOutputTypeCountInvitationOrderArgs
     photoList?: boolean | InvitationCountOutputTypeCountPhotoListArgs
@@ -2413,6 +2498,13 @@ export namespace Prisma {
    */
   export type InvitationCountOutputTypeCountInvitationDressColorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InvitationDressColorWhereInput
+  }
+
+  /**
+   * InvitationCountOutputType without action
+   */
+  export type InvitationCountOutputTypeCountInvitationEntourageListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationEntourageWhereInput
   }
 
   /**
@@ -4315,6 +4407,7 @@ export namespace Prisma {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
     InvitationDressColor?: boolean | Invitation$InvitationDressColorArgs<ExtArgs>
+    invitationEntourageList?: boolean | Invitation$invitationEntourageListArgs<ExtArgs>
     faqList?: boolean | Invitation$faqListArgs<ExtArgs>
     InvitationOrder?: boolean | Invitation$InvitationOrderArgs<ExtArgs>
     photoList?: boolean | Invitation$photoListArgs<ExtArgs>
@@ -4400,6 +4493,7 @@ export namespace Prisma {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
     InvitationDressColor?: boolean | Invitation$InvitationDressColorArgs<ExtArgs>
+    invitationEntourageList?: boolean | Invitation$invitationEntourageListArgs<ExtArgs>
     faqList?: boolean | Invitation$faqListArgs<ExtArgs>
     InvitationOrder?: boolean | Invitation$InvitationOrderArgs<ExtArgs>
     photoList?: boolean | Invitation$photoListArgs<ExtArgs>
@@ -4414,6 +4508,7 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs> | null
       invitationCoverPhotoList: Prisma.$InvitationCoverPhotoPayload<ExtArgs>[]
       InvitationDressColor: Prisma.$InvitationDressColorPayload<ExtArgs>[]
+      invitationEntourageList: Prisma.$InvitationEntouragePayload<ExtArgs>[]
       faqList: Prisma.$InvitationFaqPayload<ExtArgs>[]
       InvitationOrder: Prisma.$InvitationOrderPayload<ExtArgs>[]
       photoList: Prisma.$InvitationPhotoPayload<ExtArgs>[]
@@ -4831,6 +4926,7 @@ export namespace Prisma {
     user<T extends Invitation$userArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     invitationCoverPhotoList<T extends Invitation$invitationCoverPhotoListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$invitationCoverPhotoListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationCoverPhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     InvitationDressColor<T extends Invitation$InvitationDressColorArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$InvitationDressColorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationDressColorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    invitationEntourageList<T extends Invitation$invitationEntourageListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$invitationEntourageListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationEntouragePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     faqList<T extends Invitation$faqListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$faqListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationFaqPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     InvitationOrder<T extends Invitation$InvitationOrderArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$InvitationOrderArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     photoList<T extends Invitation$photoListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$photoListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -5339,6 +5435,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: InvitationDressColorScalarFieldEnum | InvitationDressColorScalarFieldEnum[]
+  }
+
+  /**
+   * Invitation.invitationEntourageList
+   */
+  export type Invitation$invitationEntourageListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationEntourage
+     */
+    select?: InvitationEntourageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationEntourage
+     */
+    omit?: InvitationEntourageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationEntourageInclude<ExtArgs> | null
+    where?: InvitationEntourageWhereInput
+    orderBy?: InvitationEntourageOrderByWithRelationInput | InvitationEntourageOrderByWithRelationInput[]
+    cursor?: InvitationEntourageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvitationEntourageScalarFieldEnum | InvitationEntourageScalarFieldEnum[]
   }
 
   /**
@@ -16418,6 +16538,999 @@ export namespace Prisma {
 
 
   /**
+   * Model InvitationEntourage
+   */
+
+  export type AggregateInvitationEntourage = {
+    _count: InvitationEntourageCountAggregateOutputType | null
+    _avg: InvitationEntourageAvgAggregateOutputType | null
+    _sum: InvitationEntourageSumAggregateOutputType | null
+    _min: InvitationEntourageMinAggregateOutputType | null
+    _max: InvitationEntourageMaxAggregateOutputType | null
+  }
+
+  export type InvitationEntourageAvgAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    order: number | null
+  }
+
+  export type InvitationEntourageSumAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    order: number | null
+  }
+
+  export type InvitationEntourageMinAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    label: string | null
+    name: string | null
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type InvitationEntourageMaxAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    label: string | null
+    name: string | null
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type InvitationEntourageCountAggregateOutputType = {
+    id: number
+    invitationId: number
+    label: number
+    name: number
+    order: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type InvitationEntourageAvgAggregateInputType = {
+    id?: true
+    invitationId?: true
+    order?: true
+  }
+
+  export type InvitationEntourageSumAggregateInputType = {
+    id?: true
+    invitationId?: true
+    order?: true
+  }
+
+  export type InvitationEntourageMinAggregateInputType = {
+    id?: true
+    invitationId?: true
+    label?: true
+    name?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type InvitationEntourageMaxAggregateInputType = {
+    id?: true
+    invitationId?: true
+    label?: true
+    name?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type InvitationEntourageCountAggregateInputType = {
+    id?: true
+    invitationId?: true
+    label?: true
+    name?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type InvitationEntourageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationEntourage to aggregate.
+     */
+    where?: InvitationEntourageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationEntourages to fetch.
+     */
+    orderBy?: InvitationEntourageOrderByWithRelationInput | InvitationEntourageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: InvitationEntourageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationEntourages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationEntourages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned InvitationEntourages
+    **/
+    _count?: true | InvitationEntourageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: InvitationEntourageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: InvitationEntourageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: InvitationEntourageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: InvitationEntourageMaxAggregateInputType
+  }
+
+  export type GetInvitationEntourageAggregateType<T extends InvitationEntourageAggregateArgs> = {
+        [P in keyof T & keyof AggregateInvitationEntourage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateInvitationEntourage[P]>
+      : GetScalarType<T[P], AggregateInvitationEntourage[P]>
+  }
+
+
+
+
+  export type InvitationEntourageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationEntourageWhereInput
+    orderBy?: InvitationEntourageOrderByWithAggregationInput | InvitationEntourageOrderByWithAggregationInput[]
+    by: InvitationEntourageScalarFieldEnum[] | InvitationEntourageScalarFieldEnum
+    having?: InvitationEntourageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: InvitationEntourageCountAggregateInputType | true
+    _avg?: InvitationEntourageAvgAggregateInputType
+    _sum?: InvitationEntourageSumAggregateInputType
+    _min?: InvitationEntourageMinAggregateInputType
+    _max?: InvitationEntourageMaxAggregateInputType
+  }
+
+  export type InvitationEntourageGroupByOutputType = {
+    id: number
+    invitationId: number
+    label: string
+    name: string
+    order: number
+    createdAt: Date | null
+    updatedAt: Date | null
+    _count: InvitationEntourageCountAggregateOutputType | null
+    _avg: InvitationEntourageAvgAggregateOutputType | null
+    _sum: InvitationEntourageSumAggregateOutputType | null
+    _min: InvitationEntourageMinAggregateOutputType | null
+    _max: InvitationEntourageMaxAggregateOutputType | null
+  }
+
+  type GetInvitationEntourageGroupByPayload<T extends InvitationEntourageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<InvitationEntourageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof InvitationEntourageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], InvitationEntourageGroupByOutputType[P]>
+            : GetScalarType<T[P], InvitationEntourageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type InvitationEntourageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    invitationId?: boolean
+    label?: boolean
+    name?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    invitation?: boolean | InvitationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["invitationEntourage"]>
+
+
+
+  export type InvitationEntourageSelectScalar = {
+    id?: boolean
+    invitationId?: boolean
+    label?: boolean
+    name?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type InvitationEntourageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitationId" | "label" | "name" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["invitationEntourage"]>
+  export type InvitationEntourageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    invitation?: boolean | InvitationDefaultArgs<ExtArgs>
+  }
+
+  export type $InvitationEntouragePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "InvitationEntourage"
+    objects: {
+      invitation: Prisma.$InvitationPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      invitationId: number
+      label: string
+      name: string
+      order: number
+      createdAt: Date | null
+      updatedAt: Date | null
+    }, ExtArgs["result"]["invitationEntourage"]>
+    composites: {}
+  }
+
+  type InvitationEntourageGetPayload<S extends boolean | null | undefined | InvitationEntourageDefaultArgs> = $Result.GetResult<Prisma.$InvitationEntouragePayload, S>
+
+  type InvitationEntourageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<InvitationEntourageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: InvitationEntourageCountAggregateInputType | true
+    }
+
+  export interface InvitationEntourageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['InvitationEntourage'], meta: { name: 'InvitationEntourage' } }
+    /**
+     * Find zero or one InvitationEntourage that matches the filter.
+     * @param {InvitationEntourageFindUniqueArgs} args - Arguments to find a InvitationEntourage
+     * @example
+     * // Get one InvitationEntourage
+     * const invitationEntourage = await prisma.invitationEntourage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends InvitationEntourageFindUniqueArgs>(args: SelectSubset<T, InvitationEntourageFindUniqueArgs<ExtArgs>>): Prisma__InvitationEntourageClient<$Result.GetResult<Prisma.$InvitationEntouragePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one InvitationEntourage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {InvitationEntourageFindUniqueOrThrowArgs} args - Arguments to find a InvitationEntourage
+     * @example
+     * // Get one InvitationEntourage
+     * const invitationEntourage = await prisma.invitationEntourage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends InvitationEntourageFindUniqueOrThrowArgs>(args: SelectSubset<T, InvitationEntourageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__InvitationEntourageClient<$Result.GetResult<Prisma.$InvitationEntouragePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationEntourage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationEntourageFindFirstArgs} args - Arguments to find a InvitationEntourage
+     * @example
+     * // Get one InvitationEntourage
+     * const invitationEntourage = await prisma.invitationEntourage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends InvitationEntourageFindFirstArgs>(args?: SelectSubset<T, InvitationEntourageFindFirstArgs<ExtArgs>>): Prisma__InvitationEntourageClient<$Result.GetResult<Prisma.$InvitationEntouragePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationEntourage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationEntourageFindFirstOrThrowArgs} args - Arguments to find a InvitationEntourage
+     * @example
+     * // Get one InvitationEntourage
+     * const invitationEntourage = await prisma.invitationEntourage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends InvitationEntourageFindFirstOrThrowArgs>(args?: SelectSubset<T, InvitationEntourageFindFirstOrThrowArgs<ExtArgs>>): Prisma__InvitationEntourageClient<$Result.GetResult<Prisma.$InvitationEntouragePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more InvitationEntourages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationEntourageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all InvitationEntourages
+     * const invitationEntourages = await prisma.invitationEntourage.findMany()
+     * 
+     * // Get first 10 InvitationEntourages
+     * const invitationEntourages = await prisma.invitationEntourage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const invitationEntourageWithIdOnly = await prisma.invitationEntourage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends InvitationEntourageFindManyArgs>(args?: SelectSubset<T, InvitationEntourageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationEntouragePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a InvitationEntourage.
+     * @param {InvitationEntourageCreateArgs} args - Arguments to create a InvitationEntourage.
+     * @example
+     * // Create one InvitationEntourage
+     * const InvitationEntourage = await prisma.invitationEntourage.create({
+     *   data: {
+     *     // ... data to create a InvitationEntourage
+     *   }
+     * })
+     * 
+     */
+    create<T extends InvitationEntourageCreateArgs>(args: SelectSubset<T, InvitationEntourageCreateArgs<ExtArgs>>): Prisma__InvitationEntourageClient<$Result.GetResult<Prisma.$InvitationEntouragePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many InvitationEntourages.
+     * @param {InvitationEntourageCreateManyArgs} args - Arguments to create many InvitationEntourages.
+     * @example
+     * // Create many InvitationEntourages
+     * const invitationEntourage = await prisma.invitationEntourage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends InvitationEntourageCreateManyArgs>(args?: SelectSubset<T, InvitationEntourageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a InvitationEntourage.
+     * @param {InvitationEntourageDeleteArgs} args - Arguments to delete one InvitationEntourage.
+     * @example
+     * // Delete one InvitationEntourage
+     * const InvitationEntourage = await prisma.invitationEntourage.delete({
+     *   where: {
+     *     // ... filter to delete one InvitationEntourage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends InvitationEntourageDeleteArgs>(args: SelectSubset<T, InvitationEntourageDeleteArgs<ExtArgs>>): Prisma__InvitationEntourageClient<$Result.GetResult<Prisma.$InvitationEntouragePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one InvitationEntourage.
+     * @param {InvitationEntourageUpdateArgs} args - Arguments to update one InvitationEntourage.
+     * @example
+     * // Update one InvitationEntourage
+     * const invitationEntourage = await prisma.invitationEntourage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends InvitationEntourageUpdateArgs>(args: SelectSubset<T, InvitationEntourageUpdateArgs<ExtArgs>>): Prisma__InvitationEntourageClient<$Result.GetResult<Prisma.$InvitationEntouragePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more InvitationEntourages.
+     * @param {InvitationEntourageDeleteManyArgs} args - Arguments to filter InvitationEntourages to delete.
+     * @example
+     * // Delete a few InvitationEntourages
+     * const { count } = await prisma.invitationEntourage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends InvitationEntourageDeleteManyArgs>(args?: SelectSubset<T, InvitationEntourageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more InvitationEntourages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationEntourageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many InvitationEntourages
+     * const invitationEntourage = await prisma.invitationEntourage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends InvitationEntourageUpdateManyArgs>(args: SelectSubset<T, InvitationEntourageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one InvitationEntourage.
+     * @param {InvitationEntourageUpsertArgs} args - Arguments to update or create a InvitationEntourage.
+     * @example
+     * // Update or create a InvitationEntourage
+     * const invitationEntourage = await prisma.invitationEntourage.upsert({
+     *   create: {
+     *     // ... data to create a InvitationEntourage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the InvitationEntourage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends InvitationEntourageUpsertArgs>(args: SelectSubset<T, InvitationEntourageUpsertArgs<ExtArgs>>): Prisma__InvitationEntourageClient<$Result.GetResult<Prisma.$InvitationEntouragePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of InvitationEntourages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationEntourageCountArgs} args - Arguments to filter InvitationEntourages to count.
+     * @example
+     * // Count the number of InvitationEntourages
+     * const count = await prisma.invitationEntourage.count({
+     *   where: {
+     *     // ... the filter for the InvitationEntourages we want to count
+     *   }
+     * })
+    **/
+    count<T extends InvitationEntourageCountArgs>(
+      args?: Subset<T, InvitationEntourageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], InvitationEntourageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a InvitationEntourage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationEntourageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends InvitationEntourageAggregateArgs>(args: Subset<T, InvitationEntourageAggregateArgs>): Prisma.PrismaPromise<GetInvitationEntourageAggregateType<T>>
+
+    /**
+     * Group by InvitationEntourage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationEntourageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends InvitationEntourageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: InvitationEntourageGroupByArgs['orderBy'] }
+        : { orderBy?: InvitationEntourageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, InvitationEntourageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInvitationEntourageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the InvitationEntourage model
+   */
+  readonly fields: InvitationEntourageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for InvitationEntourage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__InvitationEntourageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    invitation<T extends InvitationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InvitationDefaultArgs<ExtArgs>>): Prisma__InvitationClient<$Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the InvitationEntourage model
+   */
+  interface InvitationEntourageFieldRefs {
+    readonly id: FieldRef<"InvitationEntourage", 'Int'>
+    readonly invitationId: FieldRef<"InvitationEntourage", 'Int'>
+    readonly label: FieldRef<"InvitationEntourage", 'String'>
+    readonly name: FieldRef<"InvitationEntourage", 'String'>
+    readonly order: FieldRef<"InvitationEntourage", 'Int'>
+    readonly createdAt: FieldRef<"InvitationEntourage", 'DateTime'>
+    readonly updatedAt: FieldRef<"InvitationEntourage", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * InvitationEntourage findUnique
+   */
+  export type InvitationEntourageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationEntourage
+     */
+    select?: InvitationEntourageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationEntourage
+     */
+    omit?: InvitationEntourageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationEntourageInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationEntourage to fetch.
+     */
+    where: InvitationEntourageWhereUniqueInput
+  }
+
+  /**
+   * InvitationEntourage findUniqueOrThrow
+   */
+  export type InvitationEntourageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationEntourage
+     */
+    select?: InvitationEntourageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationEntourage
+     */
+    omit?: InvitationEntourageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationEntourageInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationEntourage to fetch.
+     */
+    where: InvitationEntourageWhereUniqueInput
+  }
+
+  /**
+   * InvitationEntourage findFirst
+   */
+  export type InvitationEntourageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationEntourage
+     */
+    select?: InvitationEntourageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationEntourage
+     */
+    omit?: InvitationEntourageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationEntourageInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationEntourage to fetch.
+     */
+    where?: InvitationEntourageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationEntourages to fetch.
+     */
+    orderBy?: InvitationEntourageOrderByWithRelationInput | InvitationEntourageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationEntourages.
+     */
+    cursor?: InvitationEntourageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationEntourages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationEntourages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationEntourages.
+     */
+    distinct?: InvitationEntourageScalarFieldEnum | InvitationEntourageScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationEntourage findFirstOrThrow
+   */
+  export type InvitationEntourageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationEntourage
+     */
+    select?: InvitationEntourageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationEntourage
+     */
+    omit?: InvitationEntourageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationEntourageInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationEntourage to fetch.
+     */
+    where?: InvitationEntourageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationEntourages to fetch.
+     */
+    orderBy?: InvitationEntourageOrderByWithRelationInput | InvitationEntourageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationEntourages.
+     */
+    cursor?: InvitationEntourageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationEntourages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationEntourages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationEntourages.
+     */
+    distinct?: InvitationEntourageScalarFieldEnum | InvitationEntourageScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationEntourage findMany
+   */
+  export type InvitationEntourageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationEntourage
+     */
+    select?: InvitationEntourageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationEntourage
+     */
+    omit?: InvitationEntourageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationEntourageInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationEntourages to fetch.
+     */
+    where?: InvitationEntourageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationEntourages to fetch.
+     */
+    orderBy?: InvitationEntourageOrderByWithRelationInput | InvitationEntourageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing InvitationEntourages.
+     */
+    cursor?: InvitationEntourageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationEntourages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationEntourages.
+     */
+    skip?: number
+    distinct?: InvitationEntourageScalarFieldEnum | InvitationEntourageScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationEntourage create
+   */
+  export type InvitationEntourageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationEntourage
+     */
+    select?: InvitationEntourageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationEntourage
+     */
+    omit?: InvitationEntourageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationEntourageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a InvitationEntourage.
+     */
+    data: XOR<InvitationEntourageCreateInput, InvitationEntourageUncheckedCreateInput>
+  }
+
+  /**
+   * InvitationEntourage createMany
+   */
+  export type InvitationEntourageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many InvitationEntourages.
+     */
+    data: InvitationEntourageCreateManyInput | InvitationEntourageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * InvitationEntourage update
+   */
+  export type InvitationEntourageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationEntourage
+     */
+    select?: InvitationEntourageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationEntourage
+     */
+    omit?: InvitationEntourageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationEntourageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a InvitationEntourage.
+     */
+    data: XOR<InvitationEntourageUpdateInput, InvitationEntourageUncheckedUpdateInput>
+    /**
+     * Choose, which InvitationEntourage to update.
+     */
+    where: InvitationEntourageWhereUniqueInput
+  }
+
+  /**
+   * InvitationEntourage updateMany
+   */
+  export type InvitationEntourageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update InvitationEntourages.
+     */
+    data: XOR<InvitationEntourageUpdateManyMutationInput, InvitationEntourageUncheckedUpdateManyInput>
+    /**
+     * Filter which InvitationEntourages to update
+     */
+    where?: InvitationEntourageWhereInput
+    /**
+     * Limit how many InvitationEntourages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationEntourage upsert
+   */
+  export type InvitationEntourageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationEntourage
+     */
+    select?: InvitationEntourageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationEntourage
+     */
+    omit?: InvitationEntourageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationEntourageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the InvitationEntourage to update in case it exists.
+     */
+    where: InvitationEntourageWhereUniqueInput
+    /**
+     * In case the InvitationEntourage found by the `where` argument doesn't exist, create a new InvitationEntourage with this data.
+     */
+    create: XOR<InvitationEntourageCreateInput, InvitationEntourageUncheckedCreateInput>
+    /**
+     * In case the InvitationEntourage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<InvitationEntourageUpdateInput, InvitationEntourageUncheckedUpdateInput>
+  }
+
+  /**
+   * InvitationEntourage delete
+   */
+  export type InvitationEntourageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationEntourage
+     */
+    select?: InvitationEntourageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationEntourage
+     */
+    omit?: InvitationEntourageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationEntourageInclude<ExtArgs> | null
+    /**
+     * Filter which InvitationEntourage to delete.
+     */
+    where: InvitationEntourageWhereUniqueInput
+  }
+
+  /**
+   * InvitationEntourage deleteMany
+   */
+  export type InvitationEntourageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationEntourages to delete
+     */
+    where?: InvitationEntourageWhereInput
+    /**
+     * Limit how many InvitationEntourages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationEntourage without action
+   */
+  export type InvitationEntourageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationEntourage
+     */
+    select?: InvitationEntourageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationEntourage
+     */
+    omit?: InvitationEntourageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationEntourageInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model Admin
    */
 
@@ -21721,6 +22834,19 @@ export namespace Prisma {
   export type InvitationFaqScalarFieldEnum = (typeof InvitationFaqScalarFieldEnum)[keyof typeof InvitationFaqScalarFieldEnum]
 
 
+  export const InvitationEntourageScalarFieldEnum: {
+    id: 'id',
+    invitationId: 'invitationId',
+    label: 'label',
+    name: 'name',
+    order: 'order',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type InvitationEntourageScalarFieldEnum = (typeof InvitationEntourageScalarFieldEnum)[keyof typeof InvitationEntourageScalarFieldEnum]
+
+
   export const AdminScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -21991,6 +23117,14 @@ export namespace Prisma {
   };
 
   export type InvitationFaqOrderByRelevanceFieldEnum = (typeof InvitationFaqOrderByRelevanceFieldEnum)[keyof typeof InvitationFaqOrderByRelevanceFieldEnum]
+
+
+  export const InvitationEntourageOrderByRelevanceFieldEnum: {
+    label: 'label',
+    name: 'name'
+  };
+
+  export type InvitationEntourageOrderByRelevanceFieldEnum = (typeof InvitationEntourageOrderByRelevanceFieldEnum)[keyof typeof InvitationEntourageOrderByRelevanceFieldEnum]
 
 
   export const AdminOrderByRelevanceFieldEnum: {
@@ -22285,6 +23419,7 @@ export namespace Prisma {
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     invitationCoverPhotoList?: InvitationCoverPhotoListRelationFilter
     InvitationDressColor?: InvitationDressColorListRelationFilter
+    invitationEntourageList?: InvitationEntourageListRelationFilter
     faqList?: InvitationFaqListRelationFilter
     InvitationOrder?: InvitationOrderListRelationFilter
     photoList?: InvitationPhotoListRelationFilter
@@ -22363,6 +23498,7 @@ export namespace Prisma {
     user?: UserOrderByWithRelationInput
     invitationCoverPhotoList?: InvitationCoverPhotoOrderByRelationAggregateInput
     InvitationDressColor?: InvitationDressColorOrderByRelationAggregateInput
+    invitationEntourageList?: InvitationEntourageOrderByRelationAggregateInput
     faqList?: InvitationFaqOrderByRelationAggregateInput
     InvitationOrder?: InvitationOrderOrderByRelationAggregateInput
     photoList?: InvitationPhotoOrderByRelationAggregateInput
@@ -22445,6 +23581,7 @@ export namespace Prisma {
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     invitationCoverPhotoList?: InvitationCoverPhotoListRelationFilter
     InvitationDressColor?: InvitationDressColorListRelationFilter
+    invitationEntourageList?: InvitationEntourageListRelationFilter
     faqList?: InvitationFaqListRelationFilter
     InvitationOrder?: InvitationOrderListRelationFilter
     photoList?: InvitationPhotoListRelationFilter
@@ -23309,6 +24446,74 @@ export namespace Prisma {
     order?: IntNullableWithAggregatesFilter<"InvitationFaq"> | number | null
   }
 
+  export type InvitationEntourageWhereInput = {
+    AND?: InvitationEntourageWhereInput | InvitationEntourageWhereInput[]
+    OR?: InvitationEntourageWhereInput[]
+    NOT?: InvitationEntourageWhereInput | InvitationEntourageWhereInput[]
+    id?: IntFilter<"InvitationEntourage"> | number
+    invitationId?: IntFilter<"InvitationEntourage"> | number
+    label?: StringFilter<"InvitationEntourage"> | string
+    name?: StringFilter<"InvitationEntourage"> | string
+    order?: IntFilter<"InvitationEntourage"> | number
+    createdAt?: DateTimeNullableFilter<"InvitationEntourage"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"InvitationEntourage"> | Date | string | null
+    invitation?: XOR<InvitationScalarRelationFilter, InvitationWhereInput>
+  }
+
+  export type InvitationEntourageOrderByWithRelationInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    label?: SortOrder
+    name?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    invitation?: InvitationOrderByWithRelationInput
+    _relevance?: InvitationEntourageOrderByRelevanceInput
+  }
+
+  export type InvitationEntourageWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: InvitationEntourageWhereInput | InvitationEntourageWhereInput[]
+    OR?: InvitationEntourageWhereInput[]
+    NOT?: InvitationEntourageWhereInput | InvitationEntourageWhereInput[]
+    invitationId?: IntFilter<"InvitationEntourage"> | number
+    label?: StringFilter<"InvitationEntourage"> | string
+    name?: StringFilter<"InvitationEntourage"> | string
+    order?: IntFilter<"InvitationEntourage"> | number
+    createdAt?: DateTimeNullableFilter<"InvitationEntourage"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"InvitationEntourage"> | Date | string | null
+    invitation?: XOR<InvitationScalarRelationFilter, InvitationWhereInput>
+  }, "id">
+
+  export type InvitationEntourageOrderByWithAggregationInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    label?: SortOrder
+    name?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: InvitationEntourageCountOrderByAggregateInput
+    _avg?: InvitationEntourageAvgOrderByAggregateInput
+    _max?: InvitationEntourageMaxOrderByAggregateInput
+    _min?: InvitationEntourageMinOrderByAggregateInput
+    _sum?: InvitationEntourageSumOrderByAggregateInput
+  }
+
+  export type InvitationEntourageScalarWhereWithAggregatesInput = {
+    AND?: InvitationEntourageScalarWhereWithAggregatesInput | InvitationEntourageScalarWhereWithAggregatesInput[]
+    OR?: InvitationEntourageScalarWhereWithAggregatesInput[]
+    NOT?: InvitationEntourageScalarWhereWithAggregatesInput | InvitationEntourageScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"InvitationEntourage"> | number
+    invitationId?: IntWithAggregatesFilter<"InvitationEntourage"> | number
+    label?: StringWithAggregatesFilter<"InvitationEntourage"> | string
+    name?: StringWithAggregatesFilter<"InvitationEntourage"> | string
+    order?: IntWithAggregatesFilter<"InvitationEntourage"> | number
+    createdAt?: DateTimeNullableWithAggregatesFilter<"InvitationEntourage"> | Date | string | null
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"InvitationEntourage"> | Date | string | null
+  }
+
   export type AdminWhereInput = {
     AND?: AdminWhereInput | AdminWhereInput[]
     OR?: AdminWhereInput[]
@@ -23887,6 +25092,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
@@ -23964,6 +25170,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
@@ -24040,6 +25247,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
@@ -24117,6 +25325,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
@@ -25023,6 +26232,72 @@ export namespace Prisma {
     order?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
+  export type InvitationEntourageCreateInput = {
+    label: string
+    name: string
+    order?: number
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    invitation: InvitationCreateNestedOneWithoutInvitationEntourageListInput
+  }
+
+  export type InvitationEntourageUncheckedCreateInput = {
+    id?: number
+    invitationId: number
+    label: string
+    name: string
+    order?: number
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type InvitationEntourageUpdateInput = {
+    label?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    invitation?: InvitationUpdateOneRequiredWithoutInvitationEntourageListNestedInput
+  }
+
+  export type InvitationEntourageUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: IntFieldUpdateOperationsInput | number
+    label?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationEntourageCreateManyInput = {
+    id?: number
+    invitationId: number
+    label: string
+    name: string
+    order?: number
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type InvitationEntourageUpdateManyMutationInput = {
+    label?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationEntourageUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: IntFieldUpdateOperationsInput | number
+    label?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
   export type AdminCreateInput = {
     name?: string | null
     email?: string | null
@@ -25728,6 +27003,12 @@ export namespace Prisma {
     none?: InvitationDressColorWhereInput
   }
 
+  export type InvitationEntourageListRelationFilter = {
+    every?: InvitationEntourageWhereInput
+    some?: InvitationEntourageWhereInput
+    none?: InvitationEntourageWhereInput
+  }
+
   export type InvitationFaqListRelationFilter = {
     every?: InvitationFaqWhereInput
     some?: InvitationFaqWhereInput
@@ -25757,6 +27038,10 @@ export namespace Prisma {
   }
 
   export type InvitationDressColorOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type InvitationEntourageOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -26643,6 +27928,92 @@ export namespace Prisma {
     order?: SortOrder
   }
 
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type InvitationScalarRelationFilter = {
+    is?: InvitationWhereInput
+    isNot?: InvitationWhereInput
+  }
+
+  export type InvitationEntourageOrderByRelevanceInput = {
+    fields: InvitationEntourageOrderByRelevanceFieldEnum | InvitationEntourageOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type InvitationEntourageCountOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    label?: SortOrder
+    name?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type InvitationEntourageAvgOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    order?: SortOrder
+  }
+
+  export type InvitationEntourageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    label?: SortOrder
+    name?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type InvitationEntourageMinOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    label?: SortOrder
+    name?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type InvitationEntourageSumOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    order?: SortOrder
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
   export type AdminOrderByRelevanceInput = {
     fields: AdminOrderByRelevanceFieldEnum | AdminOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -26682,21 +28053,6 @@ export namespace Prisma {
 
   export type AdminSumOrderByAggregateInput = {
     id?: SortOrder
-  }
-
-  export type StringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -26762,24 +28118,6 @@ export namespace Prisma {
     attemptCount?: SortOrder
   }
 
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[]
@@ -26806,11 +28144,6 @@ export namespace Prisma {
     in?: $Enums.InvitationOrder_status[]
     notIn?: $Enums.InvitationOrder_status[]
     not?: NestedEnumInvitationOrder_statusFilter<$PrismaModel> | $Enums.InvitationOrder_status
-  }
-
-  export type InvitationScalarRelationFilter = {
-    is?: InvitationWhereInput
-    isNot?: InvitationWhereInput
   }
 
   export type PricePlanNullableScalarRelationFilter = {
@@ -27191,6 +28524,13 @@ export namespace Prisma {
     connect?: InvitationDressColorWhereUniqueInput | InvitationDressColorWhereUniqueInput[]
   }
 
+  export type InvitationEntourageCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<InvitationEntourageCreateWithoutInvitationInput, InvitationEntourageUncheckedCreateWithoutInvitationInput> | InvitationEntourageCreateWithoutInvitationInput[] | InvitationEntourageUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationEntourageCreateOrConnectWithoutInvitationInput | InvitationEntourageCreateOrConnectWithoutInvitationInput[]
+    createMany?: InvitationEntourageCreateManyInvitationInputEnvelope
+    connect?: InvitationEntourageWhereUniqueInput | InvitationEntourageWhereUniqueInput[]
+  }
+
   export type InvitationFaqCreateNestedManyWithoutInvitationInput = {
     create?: XOR<InvitationFaqCreateWithoutInvitationInput, InvitationFaqUncheckedCreateWithoutInvitationInput> | InvitationFaqCreateWithoutInvitationInput[] | InvitationFaqUncheckedCreateWithoutInvitationInput[]
     connectOrCreate?: InvitationFaqCreateOrConnectWithoutInvitationInput | InvitationFaqCreateOrConnectWithoutInvitationInput[]
@@ -27238,6 +28578,13 @@ export namespace Prisma {
     connectOrCreate?: InvitationDressColorCreateOrConnectWithoutInvitationInput | InvitationDressColorCreateOrConnectWithoutInvitationInput[]
     createMany?: InvitationDressColorCreateManyInvitationInputEnvelope
     connect?: InvitationDressColorWhereUniqueInput | InvitationDressColorWhereUniqueInput[]
+  }
+
+  export type InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<InvitationEntourageCreateWithoutInvitationInput, InvitationEntourageUncheckedCreateWithoutInvitationInput> | InvitationEntourageCreateWithoutInvitationInput[] | InvitationEntourageUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationEntourageCreateOrConnectWithoutInvitationInput | InvitationEntourageCreateOrConnectWithoutInvitationInput[]
+    createMany?: InvitationEntourageCreateManyInvitationInputEnvelope
+    connect?: InvitationEntourageWhereUniqueInput | InvitationEntourageWhereUniqueInput[]
   }
 
   export type InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput = {
@@ -27331,6 +28678,20 @@ export namespace Prisma {
     update?: InvitationDressColorUpdateWithWhereUniqueWithoutInvitationInput | InvitationDressColorUpdateWithWhereUniqueWithoutInvitationInput[]
     updateMany?: InvitationDressColorUpdateManyWithWhereWithoutInvitationInput | InvitationDressColorUpdateManyWithWhereWithoutInvitationInput[]
     deleteMany?: InvitationDressColorScalarWhereInput | InvitationDressColorScalarWhereInput[]
+  }
+
+  export type InvitationEntourageUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<InvitationEntourageCreateWithoutInvitationInput, InvitationEntourageUncheckedCreateWithoutInvitationInput> | InvitationEntourageCreateWithoutInvitationInput[] | InvitationEntourageUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationEntourageCreateOrConnectWithoutInvitationInput | InvitationEntourageCreateOrConnectWithoutInvitationInput[]
+    upsert?: InvitationEntourageUpsertWithWhereUniqueWithoutInvitationInput | InvitationEntourageUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: InvitationEntourageCreateManyInvitationInputEnvelope
+    set?: InvitationEntourageWhereUniqueInput | InvitationEntourageWhereUniqueInput[]
+    disconnect?: InvitationEntourageWhereUniqueInput | InvitationEntourageWhereUniqueInput[]
+    delete?: InvitationEntourageWhereUniqueInput | InvitationEntourageWhereUniqueInput[]
+    connect?: InvitationEntourageWhereUniqueInput | InvitationEntourageWhereUniqueInput[]
+    update?: InvitationEntourageUpdateWithWhereUniqueWithoutInvitationInput | InvitationEntourageUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: InvitationEntourageUpdateManyWithWhereWithoutInvitationInput | InvitationEntourageUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: InvitationEntourageScalarWhereInput | InvitationEntourageScalarWhereInput[]
   }
 
   export type InvitationFaqUpdateManyWithoutInvitationNestedInput = {
@@ -27429,6 +28790,20 @@ export namespace Prisma {
     update?: InvitationDressColorUpdateWithWhereUniqueWithoutInvitationInput | InvitationDressColorUpdateWithWhereUniqueWithoutInvitationInput[]
     updateMany?: InvitationDressColorUpdateManyWithWhereWithoutInvitationInput | InvitationDressColorUpdateManyWithWhereWithoutInvitationInput[]
     deleteMany?: InvitationDressColorScalarWhereInput | InvitationDressColorScalarWhereInput[]
+  }
+
+  export type InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<InvitationEntourageCreateWithoutInvitationInput, InvitationEntourageUncheckedCreateWithoutInvitationInput> | InvitationEntourageCreateWithoutInvitationInput[] | InvitationEntourageUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationEntourageCreateOrConnectWithoutInvitationInput | InvitationEntourageCreateOrConnectWithoutInvitationInput[]
+    upsert?: InvitationEntourageUpsertWithWhereUniqueWithoutInvitationInput | InvitationEntourageUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: InvitationEntourageCreateManyInvitationInputEnvelope
+    set?: InvitationEntourageWhereUniqueInput | InvitationEntourageWhereUniqueInput[]
+    disconnect?: InvitationEntourageWhereUniqueInput | InvitationEntourageWhereUniqueInput[]
+    delete?: InvitationEntourageWhereUniqueInput | InvitationEntourageWhereUniqueInput[]
+    connect?: InvitationEntourageWhereUniqueInput | InvitationEntourageWhereUniqueInput[]
+    update?: InvitationEntourageUpdateWithWhereUniqueWithoutInvitationInput | InvitationEntourageUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: InvitationEntourageUpdateManyWithWhereWithoutInvitationInput | InvitationEntourageUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: InvitationEntourageScalarWhereInput | InvitationEntourageScalarWhereInput[]
   }
 
   export type InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput = {
@@ -27721,8 +29096,22 @@ export namespace Prisma {
     update?: XOR<XOR<InvitationUpdateToOneWithWhereWithoutFaqListInput, InvitationUpdateWithoutFaqListInput>, InvitationUncheckedUpdateWithoutFaqListInput>
   }
 
+  export type InvitationCreateNestedOneWithoutInvitationEntourageListInput = {
+    create?: XOR<InvitationCreateWithoutInvitationEntourageListInput, InvitationUncheckedCreateWithoutInvitationEntourageListInput>
+    connectOrCreate?: InvitationCreateOrConnectWithoutInvitationEntourageListInput
+    connect?: InvitationWhereUniqueInput
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type InvitationUpdateOneRequiredWithoutInvitationEntourageListNestedInput = {
+    create?: XOR<InvitationCreateWithoutInvitationEntourageListInput, InvitationUncheckedCreateWithoutInvitationEntourageListInput>
+    connectOrCreate?: InvitationCreateOrConnectWithoutInvitationEntourageListInput
+    upsert?: InvitationUpsertWithoutInvitationEntourageListInput
+    connect?: InvitationWhereUniqueInput
+    update?: XOR<XOR<InvitationUpdateToOneWithWhereWithoutInvitationEntourageListInput, InvitationUpdateWithoutInvitationEntourageListInput>, InvitationUncheckedUpdateWithoutInvitationEntourageListInput>
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -28079,17 +29468,6 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -28106,6 +29484,17 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -28251,6 +29640,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
@@ -28327,6 +29717,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
@@ -28610,6 +30001,33 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type InvitationEntourageCreateWithoutInvitationInput = {
+    label: string
+    name: string
+    order?: number
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type InvitationEntourageUncheckedCreateWithoutInvitationInput = {
+    id?: number
+    label: string
+    name: string
+    order?: number
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type InvitationEntourageCreateOrConnectWithoutInvitationInput = {
+    where: InvitationEntourageWhereUniqueInput
+    create: XOR<InvitationEntourageCreateWithoutInvitationInput, InvitationEntourageUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type InvitationEntourageCreateManyInvitationInputEnvelope = {
+    data: InvitationEntourageCreateManyInvitationInput | InvitationEntourageCreateManyInvitationInput[]
+    skipDuplicates?: boolean
+  }
+
   export type InvitationFaqCreateWithoutInvitationInput = {
     question?: string | null
     answer?: string | null
@@ -28880,6 +30298,35 @@ export namespace Prisma {
     type?: StringNullableFilter<"InvitationDressColor"> | string | null
   }
 
+  export type InvitationEntourageUpsertWithWhereUniqueWithoutInvitationInput = {
+    where: InvitationEntourageWhereUniqueInput
+    update: XOR<InvitationEntourageUpdateWithoutInvitationInput, InvitationEntourageUncheckedUpdateWithoutInvitationInput>
+    create: XOR<InvitationEntourageCreateWithoutInvitationInput, InvitationEntourageUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type InvitationEntourageUpdateWithWhereUniqueWithoutInvitationInput = {
+    where: InvitationEntourageWhereUniqueInput
+    data: XOR<InvitationEntourageUpdateWithoutInvitationInput, InvitationEntourageUncheckedUpdateWithoutInvitationInput>
+  }
+
+  export type InvitationEntourageUpdateManyWithWhereWithoutInvitationInput = {
+    where: InvitationEntourageScalarWhereInput
+    data: XOR<InvitationEntourageUpdateManyMutationInput, InvitationEntourageUncheckedUpdateManyWithoutInvitationInput>
+  }
+
+  export type InvitationEntourageScalarWhereInput = {
+    AND?: InvitationEntourageScalarWhereInput | InvitationEntourageScalarWhereInput[]
+    OR?: InvitationEntourageScalarWhereInput[]
+    NOT?: InvitationEntourageScalarWhereInput | InvitationEntourageScalarWhereInput[]
+    id?: IntFilter<"InvitationEntourage"> | number
+    invitationId?: IntFilter<"InvitationEntourage"> | number
+    label?: StringFilter<"InvitationEntourage"> | string
+    name?: StringFilter<"InvitationEntourage"> | string
+    order?: IntFilter<"InvitationEntourage"> | number
+    createdAt?: DateTimeNullableFilter<"InvitationEntourage"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"InvitationEntourage"> | Date | string | null
+  }
+
   export type InvitationFaqUpsertWithWhereUniqueWithoutInvitationInput = {
     where: InvitationFaqWhereUniqueInput
     update: XOR<InvitationFaqUpdateWithoutInvitationInput, InvitationFaqUncheckedUpdateWithoutInvitationInput>
@@ -29111,6 +30558,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
@@ -29187,6 +30635,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
@@ -29329,6 +30778,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
@@ -29405,6 +30855,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
@@ -29594,6 +31045,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
@@ -29670,6 +31122,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
@@ -29761,6 +31214,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
@@ -29837,6 +31291,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
@@ -29911,6 +31366,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
@@ -29987,6 +31443,7 @@ export namespace Prisma {
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
@@ -30078,6 +31535,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
@@ -30154,6 +31612,7 @@ export namespace Prisma {
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
@@ -30230,6 +31689,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
@@ -30306,6 +31766,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
@@ -30397,6 +31858,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
@@ -30473,6 +31935,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
@@ -30547,6 +32010,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
@@ -30623,6 +32087,7 @@ export namespace Prisma {
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
@@ -30714,6 +32179,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
@@ -30790,6 +32256,7 @@ export namespace Prisma {
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
@@ -30866,6 +32333,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
@@ -30942,6 +32410,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
@@ -31033,6 +32502,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
@@ -31109,6 +32579,329 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
+    photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type InvitationCreateWithoutInvitationEntourageListInput = {
+    templateNo?: number | null
+    uniqueId?: string | null
+    date?: Date | string | null
+    title?: string | null
+    description?: string | null
+    pointColor?: string | null
+    mainTextColor?: string | null
+    dressCodeGentleman?: string | null
+    dressCodeLady?: string | null
+    bgColor?: string | null
+    musicKey?: string | null
+    musicFilename?: string | null
+    musicFileKey?: string | null
+    notice?: string | null
+    brideFirstName?: string | null
+    brideMiddleName?: string | null
+    dressCodeMainColor?: string | null
+    dressCodeSubColor?: string | null
+    dressCodeThirdColor?: string | null
+    brideLastName?: string | null
+    brideMomName?: string | null
+    greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
+    greetingContent?: string | null
+    brideDadName?: string | null
+    bridePhone?: string | null
+    groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
+    groomMiddleName?: string | null
+    groomLastName?: string | null
+    groomPhone?: string | null
+    primarySponsor?: string | null
+    secondarySponsor?: string | null
+    bankAccount?: string | null
+    maidOfHonor?: string | null
+    groomsMen?: string | null
+    textColor?: string | null
+    timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
+    rsvpHasFood?: boolean | null
+    isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
+    bestMan?: string | null
+    bridesMaids?: string | null
+    wishlistText?: string | null
+    groomMomName?: string | null
+    groomDadName?: string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: string | null
+    ogImageKey?: string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    user?: UserCreateNestedOneWithoutInvitationListInput
+    invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
+    photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
+    placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
+    invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
+  }
+
+  export type InvitationUncheckedCreateWithoutInvitationEntourageListInput = {
+    id?: number
+    templateNo?: number | null
+    uniqueId?: string | null
+    date?: Date | string | null
+    userId?: number | null
+    title?: string | null
+    description?: string | null
+    pointColor?: string | null
+    mainTextColor?: string | null
+    dressCodeGentleman?: string | null
+    dressCodeLady?: string | null
+    bgColor?: string | null
+    musicKey?: string | null
+    musicFilename?: string | null
+    musicFileKey?: string | null
+    notice?: string | null
+    brideFirstName?: string | null
+    brideMiddleName?: string | null
+    dressCodeMainColor?: string | null
+    dressCodeSubColor?: string | null
+    dressCodeThirdColor?: string | null
+    brideLastName?: string | null
+    brideMomName?: string | null
+    greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
+    greetingContent?: string | null
+    brideDadName?: string | null
+    bridePhone?: string | null
+    groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
+    groomMiddleName?: string | null
+    groomLastName?: string | null
+    groomPhone?: string | null
+    primarySponsor?: string | null
+    secondarySponsor?: string | null
+    bankAccount?: string | null
+    maidOfHonor?: string | null
+    groomsMen?: string | null
+    textColor?: string | null
+    timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
+    rsvpHasFood?: boolean | null
+    isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
+    bestMan?: string | null
+    bridesMaids?: string | null
+    wishlistText?: string | null
+    groomMomName?: string | null
+    groomDadName?: string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: string | null
+    ogImageKey?: string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
+    photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
+    invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
+  }
+
+  export type InvitationCreateOrConnectWithoutInvitationEntourageListInput = {
+    where: InvitationWhereUniqueInput
+    create: XOR<InvitationCreateWithoutInvitationEntourageListInput, InvitationUncheckedCreateWithoutInvitationEntourageListInput>
+  }
+
+  export type InvitationUpsertWithoutInvitationEntourageListInput = {
+    update: XOR<InvitationUpdateWithoutInvitationEntourageListInput, InvitationUncheckedUpdateWithoutInvitationEntourageListInput>
+    create: XOR<InvitationCreateWithoutInvitationEntourageListInput, InvitationUncheckedCreateWithoutInvitationEntourageListInput>
+    where?: InvitationWhereInput
+  }
+
+  export type InvitationUpdateToOneWithWhereWithoutInvitationEntourageListInput = {
+    where?: InvitationWhereInput
+    data: XOR<InvitationUpdateWithoutInvitationEntourageListInput, InvitationUncheckedUpdateWithoutInvitationEntourageListInput>
+  }
+
+  export type InvitationUpdateWithoutInvitationEntourageListInput = {
+    templateNo?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    pointColor?: NullableStringFieldUpdateOperationsInput | string | null
+    mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeLady?: NullableStringFieldUpdateOperationsInput | string | null
+    bgColor?: NullableStringFieldUpdateOperationsInput | string | null
+    musicKey?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFileKey?: NullableStringFieldUpdateOperationsInput | string | null
+    notice?: NullableStringFieldUpdateOperationsInput | string | null
+    brideFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeMainColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeSubColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeThirdColor?: NullableStringFieldUpdateOperationsInput | string | null
+    brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
+    brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
+    bestMan?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UserUpdateOneWithoutInvitationListNestedInput
+    invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
+    photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
+    placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
+    invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type InvitationUncheckedUpdateWithoutInvitationEntourageListInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    templateNo?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    pointColor?: NullableStringFieldUpdateOperationsInput | string | null
+    mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeLady?: NullableStringFieldUpdateOperationsInput | string | null
+    bgColor?: NullableStringFieldUpdateOperationsInput | string | null
+    musicKey?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFileKey?: NullableStringFieldUpdateOperationsInput | string | null
+    notice?: NullableStringFieldUpdateOperationsInput | string | null
+    brideFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeMainColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeSubColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeThirdColor?: NullableStringFieldUpdateOperationsInput | string | null
+    brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
+    brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
+    bestMan?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
@@ -31184,6 +32977,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
@@ -31260,6 +33054,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
@@ -31411,6 +33206,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
@@ -31487,6 +33283,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
@@ -31787,6 +33584,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
@@ -31863,6 +33661,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
@@ -32019,6 +33818,15 @@ export namespace Prisma {
     type?: string | null
   }
 
+  export type InvitationEntourageCreateManyInvitationInput = {
+    id?: number
+    label: string
+    name: string
+    order?: number
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
   export type InvitationFaqCreateManyInvitationInput = {
     id?: number
     question?: string | null
@@ -32142,6 +33950,32 @@ export namespace Prisma {
     color?: NullableStringFieldUpdateOperationsInput | string | null
     order?: NullableIntFieldUpdateOperationsInput | number | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type InvitationEntourageUpdateWithoutInvitationInput = {
+    label?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationEntourageUncheckedUpdateWithoutInvitationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    label?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationEntourageUncheckedUpdateManyWithoutInvitationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    label?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type InvitationFaqUpdateWithoutInvitationInput = {

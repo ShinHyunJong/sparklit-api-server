@@ -22,6 +22,7 @@ import { FormDataRequest, MemoryStoredFile } from 'nestjs-form-data';
 import { RsvpDto, UpdateRsvpDto } from './dto/rsvp.dto';
 import { CheckUniqueIdDto, UpdateUniqueIdDto } from './dto/unique-id.dto';
 import { UpdateInvitationMetaDto } from './dto/update-meta.dto';
+import { UpdateEntourageDto } from './dto/update-entourage.dto';
 
 @Controller('invitation')
 export class InvitationController {
@@ -269,13 +270,7 @@ export class InvitationController {
   @Put('/entourage/:uniqueId')
   updateEntourage(
     @Param('uniqueId') uniqueId: string,
-    @Body()
-    body: {
-      bestMan: string;
-      maidOfHonor: string;
-      groomsMen: string;
-      bridesMaids: string;
-    },
+    @Body() body: UpdateEntourageDto,
   ) {
     return this.invitationService.updateEntourage(
       uniqueId,
@@ -283,6 +278,7 @@ export class InvitationController {
       body.maidOfHonor,
       body.groomsMen,
       body.bridesMaids,
+      body.invitationEntourageList ?? [],
     );
   }
 

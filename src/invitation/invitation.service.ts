@@ -172,6 +172,9 @@ export class InvitationService {
         faqList: {
           orderBy: [{ order: 'asc' }, { id: 'asc' }],
         },
+        invitationEntourageList: {
+          orderBy: [{ order: 'asc' }, { id: 'asc' }],
+        },
         photoList: {
           orderBy: {
             order: 'asc',
@@ -528,17 +531,60 @@ export class InvitationService {
     maidOfHonor: string,
     groomsMen: string,
     bridesMaids: string,
+    invitationEntourageList: Array<{
+      label: string;
+      name: string;
+      order?: number;
+    }>,
   ) {
-    const updated = await this.prismaService.invitation.update({
+    const invitation = await this.prismaService.invitation.findUnique({
       where: { uniqueId },
-      data: {
-        bestMan,
-        maidOfHonor,
-        groomsMen,
-        bridesMaids,
-      },
+      select: { id: true },
     });
-    return updated;
+    if (!invitation) {
+      throw new NotFoundException('Invitation not found');
+    }
+
+    const sanitizedInvitationEntourageList = invitationEntourageList
+      .map((item, index) => ({
+        label: item.label.trim(),
+        name: item.name.trim(),
+        order: item.order ?? index,
+      }))
+      .filter((item) => item.label || item.name)
+      .map((item, index) => ({
+        ...item,
+        order: index,
+      }));
+
+    await this.prismaService.$transaction([
+      this.prismaService.invitation.update({
+        where: { uniqueId },
+        data: {
+          bestMan,
+          maidOfHonor,
+          groomsMen,
+          bridesMaids,
+        },
+      }),
+      this.prismaService.invitationEntourage.deleteMany({
+        where: { invitationId: invitation.id },
+      }),
+      ...(sanitizedInvitationEntourageList.length
+        ? [
+            this.prismaService.invitationEntourage.createMany({
+              data: sanitizedInvitationEntourageList.map((item) => ({
+                invitationId: invitation.id,
+                label: item.label,
+                name: item.name,
+                order: item.order,
+              })),
+            }),
+          ]
+        : []),
+    ]);
+
+    return this.findOne(uniqueId);
   }
 
   async postRSVP(uniqueId: string, body: RsvpDto) {
