@@ -70,6 +70,44 @@ export class InvitationService {
     };
   }
 
+  private isWeddingDateEditLocked(invitation: {
+    billingStatus: string | null;
+    currentPlanCode: string | null;
+    date: Date | null;
+    placeList?: Array<unknown>;
+    photoList?: Array<unknown>;
+    _count?: {
+      invitationRSVP?: number;
+    };
+  }) {
+    const isPaid = invitation.billingStatus === 'PAID';
+
+    if (isPaid && invitation.currentPlanCode !== 'PREMIUM') {
+      return true;
+    }
+
+    const isPaidPremium = isPaid && invitation.currentPlanCode === 'PREMIUM';
+
+    if (!isPaidPremium || !invitation.date) {
+      return false;
+    }
+
+    const hasWeddingDatePassedOneDay = !dayjs()
+      .startOf('day')
+      .isBefore(dayjs(invitation.date).startOf('day').add(1, 'day'));
+
+    if (!hasWeddingDatePassedOneDay) {
+      return false;
+    }
+
+    const hasEnoughRsvpResponses =
+      (invitation._count?.invitationRSVP ?? 0) >= 5;
+    const hasPhotos = (invitation.photoList?.length ?? 0) >= 1;
+    const hasPlaces = (invitation.placeList?.length ?? 0) >= 1;
+
+    return hasEnoughRsvpResponses && hasPhotos && hasPlaces;
+  }
+
   async checkUniqueIdAvailability(value: string, currentUniqueId?: string) {
     const normalized = this.normalizeUniqueId(value);
     const normalizedCurrent = currentUniqueId
@@ -180,6 +218,11 @@ export class InvitationService {
             order: 'asc',
           },
         },
+        _count: {
+          select: {
+            invitationRSVP: true,
+          },
+        },
       },
     });
     if (!invitation) return null;
@@ -205,6 +248,7 @@ export class InvitationService {
       ...rest,
       placeList,
       dressCodeColorList: InvitationDressColor ?? [],
+      rsvpResponseCount: invitation._count?.invitationRSVP ?? 0,
       timezone,
     };
   }
@@ -245,6 +289,40 @@ export class InvitationService {
     uniqueId: string,
     updateInvitationDto: UpdateInvitationDto,
   ) {
+    const invitation = await this.prismaService.invitation.findUnique({
+      where: { uniqueId },
+      select: {
+        billingStatus: true,
+        currentPlanCode: true,
+        date: true,
+        placeList: {
+          select: {
+            id: true,
+          },
+        },
+        photoList: {
+          select: {
+            id: true,
+          },
+        },
+        _count: {
+          select: {
+            invitationRSVP: true,
+          },
+        },
+      },
+    });
+
+    if (!invitation) {
+      throw new NotFoundException('Invitation not found');
+    }
+
+    if (this.isWeddingDateEditLocked(invitation)) {
+      throw new BadRequestException(
+        'Wedding date can no longer be changed for this invitation.',
+      );
+    }
+
     const targetDate = dayjs(updateInvitationDto.date);
 
     const updated = await this.prismaService.invitation.update({
