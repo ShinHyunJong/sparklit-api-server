@@ -317,11 +317,11 @@ export class InvitationService {
       throw new NotFoundException('Invitation not found');
     }
 
-    if (this.isWeddingDateEditLocked(invitation)) {
-      throw new BadRequestException(
-        'Wedding date can no longer be changed for this invitation.',
-      );
-    }
+    // if (this.isWeddingDateEditLocked(invitation)) {
+    //   throw new BadRequestException(
+    //     'Wedding date can no longer be changed for this invitation.',
+    //   );
+    // }
 
     const targetDate = dayjs(updateInvitationDto.date);
 

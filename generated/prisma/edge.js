@@ -589,7 +589,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/tony/Desktop/sparklit/development/sparklit-server/generated/prisma",
+      "value": "/Users/pleiades/Desktop/sparklit/dev/sparklit-app/sparklit-api-server/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -603,12 +603,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/tony/Desktop/sparklit/development/sparklit-server/prisma/schema.prisma",
+    "sourceFilePath": "/Users/pleiades/Desktop/sparklit/dev/sparklit-app/sparklit-api-server/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../prisma",
   "clientVersion": "6.7.0",
@@ -617,7 +616,7 @@ const config = {
     "db"
   ],
   "activeProvider": "mysql",
-  "postinstall": false,
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
