@@ -24,6 +24,7 @@ export class AuthController {
       name: string;
       email: string;
       password: string;
+      phone: string;
       country?: string;
     },
   ) {
@@ -31,6 +32,7 @@ export class AuthController {
       registerBody.name,
       registerBody.email,
       registerBody.password,
+      registerBody.phone,
       registerBody.country,
     );
   }

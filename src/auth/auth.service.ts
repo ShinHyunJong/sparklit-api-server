@@ -144,6 +144,7 @@ export class AuthService {
     name: string,
     email: string,
     password: string,
+    phone: string,
     country?: string,
   ) {
     const user = await this.prismaService.user.findUnique({
@@ -154,6 +155,8 @@ export class AuthService {
     if (user) throw new HttpException('already exist', 406);
     const normalizedName = name.trim();
     if (!normalizedName) throw new HttpException('name required', 400);
+    const normalizedPhone = phone?.replace(/[^0-9+]/g, '').trim();
+    if (!normalizedPhone) throw new HttpException('phone required', 400);
     const normalizedCountry = country ? country.trim().toUpperCase() : null;
     const hashed = hash(password);
     const newUser = await this.prismaService.user.create({
@@ -161,6 +164,7 @@ export class AuthService {
         name: normalizedName,
         email,
         password: hashed,
+        phone: normalizedPhone,
         country: normalizedCountry,
       },
       select: {
