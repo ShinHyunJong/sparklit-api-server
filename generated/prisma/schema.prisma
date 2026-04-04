@@ -17,6 +17,7 @@ model User {
   isAdmin         Boolean?
   createdAt       DateTime?         @default(now()) @db.Timestamp(0)
   updatedAt       DateTime?         @default(now()) @db.Timestamp(0)
+  phone           String?           @db.VarChar(50)
   invitationList  Invitation[]
   InvitationOrder InvitationOrder[]
 }

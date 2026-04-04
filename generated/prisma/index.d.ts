@@ -2669,6 +2669,7 @@ export namespace Prisma {
     isAdmin: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    phone: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -2680,6 +2681,7 @@ export namespace Prisma {
     isAdmin: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    phone: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -2691,6 +2693,7 @@ export namespace Prisma {
     isAdmin: number
     createdAt: number
     updatedAt: number
+    phone: number
     _all: number
   }
 
@@ -2712,6 +2715,7 @@ export namespace Prisma {
     isAdmin?: true
     createdAt?: true
     updatedAt?: true
+    phone?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -2723,6 +2727,7 @@ export namespace Prisma {
     isAdmin?: true
     createdAt?: true
     updatedAt?: true
+    phone?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -2734,6 +2739,7 @@ export namespace Prisma {
     isAdmin?: true
     createdAt?: true
     updatedAt?: true
+    phone?: true
     _all?: true
   }
 
@@ -2832,6 +2838,7 @@ export namespace Prisma {
     isAdmin: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    phone: string | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -2862,6 +2869,7 @@ export namespace Prisma {
     isAdmin?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    phone?: boolean
     invitationList?: boolean | User$invitationListArgs<ExtArgs>
     InvitationOrder?: boolean | User$InvitationOrderArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -2878,9 +2886,10 @@ export namespace Prisma {
     isAdmin?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    phone?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "country" | "password" | "isAdmin" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "country" | "password" | "isAdmin" | "createdAt" | "updatedAt" | "phone", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     invitationList?: boolean | User$invitationListArgs<ExtArgs>
     InvitationOrder?: boolean | User$InvitationOrderArgs<ExtArgs>
@@ -2902,6 +2911,7 @@ export namespace Prisma {
       isAdmin: boolean | null
       createdAt: Date | null
       updatedAt: Date | null
+      phone: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -3281,6 +3291,7 @@ export namespace Prisma {
     readonly isAdmin: FieldRef<"User", 'Boolean'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
+    readonly phone: FieldRef<"User", 'String'>
   }
     
 
@@ -22619,7 +22630,8 @@ export namespace Prisma {
     password: 'password',
     isAdmin: 'isAdmin',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    phone: 'phone'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -22958,7 +22970,8 @@ export namespace Prisma {
     email: 'email',
     name: 'name',
     country: 'country',
-    password: 'password'
+    password: 'password',
+    phone: 'phone'
   };
 
   export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
@@ -23281,6 +23294,7 @@ export namespace Prisma {
     isAdmin?: BoolNullableFilter<"User"> | boolean | null
     createdAt?: DateTimeNullableFilter<"User"> | Date | string | null
     updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    phone?: StringNullableFilter<"User"> | string | null
     invitationList?: InvitationListRelationFilter
     InvitationOrder?: InvitationOrderListRelationFilter
   }
@@ -23294,6 +23308,7 @@ export namespace Prisma {
     isAdmin?: SortOrderInput | SortOrder
     createdAt?: SortOrderInput | SortOrder
     updatedAt?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
     invitationList?: InvitationOrderByRelationAggregateInput
     InvitationOrder?: InvitationOrderOrderByRelationAggregateInput
     _relevance?: UserOrderByRelevanceInput
@@ -23311,6 +23326,7 @@ export namespace Prisma {
     isAdmin?: BoolNullableFilter<"User"> | boolean | null
     createdAt?: DateTimeNullableFilter<"User"> | Date | string | null
     updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    phone?: StringNullableFilter<"User"> | string | null
     invitationList?: InvitationListRelationFilter
     InvitationOrder?: InvitationOrderListRelationFilter
   }, "id" | "email">
@@ -23324,6 +23340,7 @@ export namespace Prisma {
     isAdmin?: SortOrderInput | SortOrder
     createdAt?: SortOrderInput | SortOrder
     updatedAt?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -23343,6 +23360,7 @@ export namespace Prisma {
     isAdmin?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
     createdAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     updatedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    phone?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type InvitationWhereInput = {
@@ -24949,6 +24967,7 @@ export namespace Prisma {
     isAdmin?: boolean | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    phone?: string | null
     invitationList?: InvitationCreateNestedManyWithoutUserInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutUserInput
   }
@@ -24962,6 +24981,7 @@ export namespace Prisma {
     isAdmin?: boolean | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    phone?: string | null
     invitationList?: InvitationUncheckedCreateNestedManyWithoutUserInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutUserInput
   }
@@ -24974,6 +24994,7 @@ export namespace Prisma {
     isAdmin?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     invitationList?: InvitationUpdateManyWithoutUserNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutUserNestedInput
   }
@@ -24987,6 +25008,7 @@ export namespace Prisma {
     isAdmin?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     invitationList?: InvitationUncheckedUpdateManyWithoutUserNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -25000,6 +25022,7 @@ export namespace Prisma {
     isAdmin?: boolean | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    phone?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -25010,6 +25033,7 @@ export namespace Prisma {
     isAdmin?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -25021,6 +25045,7 @@ export namespace Prisma {
     isAdmin?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type InvitationCreateInput = {
@@ -26845,6 +26870,7 @@ export namespace Prisma {
     isAdmin?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    phone?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -26860,6 +26886,7 @@ export namespace Prisma {
     isAdmin?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    phone?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -26871,6 +26898,7 @@ export namespace Prisma {
     isAdmin?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    phone?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -29921,6 +29949,7 @@ export namespace Prisma {
     isAdmin?: boolean | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    phone?: string | null
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutUserInput
   }
 
@@ -29933,6 +29962,7 @@ export namespace Prisma {
     isAdmin?: boolean | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    phone?: string | null
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -30222,6 +30252,7 @@ export namespace Prisma {
     isAdmin?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     InvitationOrder?: InvitationOrderUpdateManyWithoutUserNestedInput
   }
 
@@ -30234,6 +30265,7 @@ export namespace Prisma {
     isAdmin?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -33106,6 +33138,7 @@ export namespace Prisma {
     isAdmin?: boolean | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    phone?: string | null
     invitationList?: InvitationCreateNestedManyWithoutUserInput
   }
 
@@ -33118,6 +33151,7 @@ export namespace Prisma {
     isAdmin?: boolean | null
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
+    phone?: string | null
     invitationList?: InvitationUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -33347,6 +33381,7 @@ export namespace Prisma {
     isAdmin?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     invitationList?: InvitationUpdateManyWithoutUserNestedInput
   }
 
@@ -33359,6 +33394,7 @@ export namespace Prisma {
     isAdmin?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     invitationList?: InvitationUncheckedUpdateManyWithoutUserNestedInput
   }
 

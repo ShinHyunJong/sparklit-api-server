@@ -1,4 +1,4 @@
-import { Controller, Get, Param, UseGuards } from '@nestjs/common';
+import { Controller, Delete, Get, Param, UseGuards } from '@nestjs/common';
 import { AdminJwtAuthGuard } from 'src/guards/admin-jwt-auth.guard';
 import { AdminService } from './admin.service';
 
@@ -17,8 +17,23 @@ export class AdminController {
     return this.adminService.getInvitationList();
   }
 
+  @Get('/invitations/trial')
+  getTrialInvitationList() {
+    return this.adminService.getTrialInvitationList();
+  }
+
+  @Get('/user-funnel')
+  getUserFunnel() {
+    return this.adminService.getUserFunnel();
+  }
+
   @Get('/invitations/:uniqueId/rsvps')
   getInvitationRsvpList(@Param('uniqueId') uniqueId: string) {
     return this.adminService.getInvitationRsvpList(uniqueId);
+  }
+
+  @Delete('/invitations/:id')
+  deleteInvitation(@Param('id') id: string) {
+    return this.adminService.deleteInvitationByAdmin(Number(id));
   }
 }

@@ -128,7 +128,8 @@ exports.Prisma.UserScalarFieldEnum = {
   password: 'password',
   isAdmin: 'isAdmin',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  phone: 'phone'
 };
 
 exports.Prisma.InvitationScalarFieldEnum = {
@@ -401,7 +402,8 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   email: 'email',
   name: 'name',
   country: 'country',
-  password: 'password'
+  password: 'password',
+  phone: 'phone'
 };
 
 exports.Prisma.JsonNullValueFilter = {

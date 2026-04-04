@@ -195,6 +195,7 @@ export class InvitationService {
         user: {
           select: {
             country: true,
+            isAdmin: true,
           },
         },
         placeList: {
@@ -237,6 +238,7 @@ export class InvitationService {
     }
 
     const { user, InvitationDressColor, ...rest } = invitation;
+    const isAdminUser = user?.isAdmin === true;
     const placeList = rest.placeList?.map((place) => ({
       ...place,
       timeList: place.timeList?.map((timeItem) => ({
@@ -247,6 +249,7 @@ export class InvitationService {
     return {
       ...rest,
       placeList,
+      watermarkEnabled: isAdminUser ? false : rest.watermarkEnabled,
       dressCodeColorList: InvitationDressColor ?? [],
       rsvpResponseCount: invitation._count?.invitationRSVP ?? 0,
       timezone,
