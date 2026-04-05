@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { getEffectivePlanFeatures } from 'src/constants/planFeatures';
 import { CreatePhotoDto } from './dto/photo.dto';
 import { UploadingImage } from 'src/types/client.type';
 import cryptoRandomString from 'crypto-random-string';
@@ -12,6 +13,25 @@ export class PhotoService {
 
   async uploadPhotoList(invitationId: string, body: CreatePhotoDto) {
     const uploadingPhotos: UploadingImage[] = JSON.parse(body.photoJSON);
+
+    const invitation = await this.prismaService.invitation.findUnique({
+      where: { uniqueId: invitationId },
+      select: { billingStatus: true, currentPlanCode: true },
+    });
+    if (invitation) {
+      const planFeatures = getEffectivePlanFeatures(
+        invitation.billingStatus,
+        invitation.currentPlanCode,
+      );
+      const existingCount = await this.prismaService.invitationPhoto.count({
+        where: { invitationId },
+      });
+      if (existingCount + uploadingPhotos.length > planFeatures.maxPhotos) {
+        throw new BadRequestException(
+          `Photo limit reached (max: ${planFeatures.maxPhotos}). ${planFeatures.maxPhotos < 30 ? 'Upgrade to Premium for up to 30 photos.' : ''}`,
+        );
+      }
+    }
     const originalFileList = body.originalPhotos;
     const croppedFileList = body.croppedPhotos;
     const thumbnailFileList = body.thumbnailPhotos;

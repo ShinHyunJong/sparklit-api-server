@@ -663,4 +663,208 @@ export class PaymentService {
 
     return { updated: true };
   }
+
+  async getUpgradeInfo(userId: number, invitationId: number) {
+    const invitation = await this.prismaService.invitation.findFirst({
+      where: { id: invitationId, userId },
+      select: {
+        billingStatus: true,
+        currentPlanCode: true,
+      },
+    });
+
+    if (!invitation) {
+      throw new BadRequestException('Invitation not found');
+    }
+    if (
+      invitation.billingStatus !== 'PAID' ||
+      invitation.currentPlanCode !== 'STANDARD'
+    ) {
+      throw new BadRequestException(
+        'Upgrade only available for active Standard plans',
+      );
+    }
+
+    const [standardRows, premiumRows] = await Promise.all([
+      this.getPlanPricing('STANDARD' as PlanCode),
+      this.getPlanPricing('PREMIUM' as PlanCode),
+    ]);
+    const standardPlan = standardRows[0];
+    const premiumPlan = premiumRows[0];
+    if (!standardPlan || !premiumPlan) {
+      throw new BadRequestException('Price plan not found');
+    }
+
+    const standardAmount = Number(standardPlan.amountPhp);
+    const premiumAmount = Number(premiumPlan.amountPhp);
+    const differentialAmount = premiumAmount - standardAmount;
+
+    return {
+      standardAmount,
+      premiumAmount,
+      differentialAmount,
+      premiumPlanName: premiumPlan.name,
+    };
+  }
+
+  async createUpgradeCheckoutSession(
+    userId: number,
+    invitationId: number,
+    frontendOrigin?: string,
+  ) {
+    if (!PAYMONGO_SECRET_KEY) {
+      throw new InternalServerErrorException('PAYMONGO_SECRET_KEY missing');
+    }
+
+    const invitation = await this.prismaService.invitation.findFirst({
+      where: { id: invitationId, userId },
+      select: {
+        id: true,
+        billingStatus: true,
+        currentPlanCode: true,
+        brideFirstName: true,
+        groomFirstName: true,
+        user: { select: { email: true } },
+      },
+    });
+
+    if (!invitation) {
+      throw new BadRequestException('Invitation not found');
+    }
+    if (
+      invitation.billingStatus !== 'PAID' ||
+      invitation.currentPlanCode !== 'STANDARD'
+    ) {
+      throw new BadRequestException(
+        'Upgrade only available for active Standard plans',
+      );
+    }
+
+    const [standardRows, premiumRows] = await Promise.all([
+      this.getPlanPricing('STANDARD' as PlanCode),
+      this.getPlanPricing('PREMIUM' as PlanCode),
+    ]);
+    const standardPlan = standardRows[0];
+    const premiumPlan = premiumRows[0];
+    if (!standardPlan || !premiumPlan) {
+      throw new BadRequestException('Price plan not found');
+    }
+
+    const differentialAmount =
+      Number(premiumPlan.amountPhp) - Number(standardPlan.amountPhp);
+    if (differentialAmount <= 0) {
+      throw new BadRequestException('Invalid upgrade pricing');
+    }
+
+    const durationDays =
+      premiumPlan.durationDays == null ? null : Number(premiumPlan.durationDays);
+    const orderNo = this.generateOrderNo();
+
+    const order = await this.prismaService.invitationOrder.create({
+      data: {
+        invitationId: invitation.id,
+        userId,
+        pricePlanId: Number(premiumPlan.id),
+        orderNo,
+        planCode: 'PREMIUM',
+        amountPhp: differentialAmount,
+        durationDays,
+        status: 'PENDING',
+      },
+    });
+
+    const successUrl = this.resolveRedirectUrl({
+      frontendOrigin,
+      fallbackUrl: PAYMENT_SUCCESS_URL,
+      path: '/payment/success',
+      orderNo,
+    });
+    const cancelUrl = this.resolveRedirectUrl({
+      frontendOrigin,
+      fallbackUrl: PAYMENT_CANCEL_URL,
+      path: '/payment/cancel',
+      orderNo,
+    });
+
+    const authValue = Buffer.from(`${PAYMONGO_SECRET_KEY}:`).toString('base64');
+    const billingName = [
+      invitation.groomFirstName?.trim(),
+      invitation.brideFirstName?.trim(),
+    ]
+      .filter(Boolean)
+      .join(' & ');
+    const billingEmail = invitation.user?.email?.trim() || '';
+
+    const paymongoPayload = {
+      data: {
+        attributes: {
+          billing: {
+            ...(billingName ? { name: billingName } : {}),
+            ...(billingEmail ? { email: billingEmail } : {}),
+          },
+          send_email_receipt: false,
+          show_description: true,
+          show_line_items: true,
+          description: 'Sparklit PREMIUM Upgrade',
+          payment_method_types: ['gcash', 'card', 'qrph'],
+          success_url: successUrl,
+          cancel_url: cancelUrl,
+          metadata: {
+            orderNo,
+            invitationId: String(invitation.id),
+            userId: String(userId),
+          },
+          line_items: [
+            {
+              currency: 'PHP',
+              amount: differentialAmount * 100,
+              name: 'Sparklit PREMIUM Upgrade',
+              quantity: 1,
+            },
+          ],
+        },
+      },
+    };
+
+    try {
+      const response = await lastValueFrom(
+        this.httpService.post<PaymongoCheckoutResponse>(
+          this.paymongoCheckoutUrl,
+          paymongoPayload,
+          {
+            headers: {
+              Authorization: `Basic ${authValue}`,
+              'Content-Type': 'application/json',
+            },
+          },
+        ),
+      );
+
+      const checkoutUrl = response.data?.data?.attributes?.checkout_url;
+      const providerPaymentId = response.data?.data?.id ?? null;
+
+      if (!checkoutUrl) {
+        throw new InternalServerErrorException('Checkout URL not found');
+      }
+
+      await this.prismaService.invitationOrder.update({
+        where: { id: order.id },
+        data: {
+          providerPaymentId,
+          rawPayload: response.data as object,
+        },
+      });
+
+      return {
+        orderNo: order.orderNo,
+        checkoutUrl,
+      };
+    } catch (error) {
+      await this.prismaService.invitationOrder.update({
+        where: { id: order.id },
+        data: { status: 'FAILED' },
+      });
+      throw error;
+    }
+  }
 }

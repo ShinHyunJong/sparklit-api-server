@@ -17,6 +17,7 @@ import { postRSVPmail } from 'src/utils/mailjet.util';
 import { MemoryStoredFile } from 'nestjs-form-data';
 import { getTimezoneByCountry } from 'src/helpers/timezone.helper';
 import { formatTimeValue } from 'src/helpers/time.helper';
+import { getEffectivePlanFeatures, PLAN_FEATURES } from 'src/constants/planFeatures';
 
 @Injectable()
 export class InvitationService {
@@ -238,7 +239,6 @@ export class InvitationService {
     }
 
     const { user, InvitationDressColor, ...rest } = invitation;
-    const isAdminUser = user?.isAdmin === true;
     const placeList = rest.placeList?.map((place) => ({
       ...place,
       timeList: place.timeList?.map((timeItem) => ({
@@ -246,13 +246,17 @@ export class InvitationService {
         time: formatTimeValue(timeItem.time),
       })),
     }));
+    const planFeatures = getEffectivePlanFeatures(
+      rest.billingStatus,
+      rest.currentPlanCode,
+    );
     return {
       ...rest,
       placeList,
-      watermarkEnabled: isAdminUser ? false : rest.watermarkEnabled,
       dressCodeColorList: InvitationDressColor ?? [],
       rsvpResponseCount: invitation._count?.invitationRSVP ?? 0,
       timezone,
+      planFeatures,
     };
   }
 
@@ -570,6 +574,15 @@ export class InvitationService {
     const prevInvitationMusic = await this.prismaService.invitation.findUnique({
       where: { uniqueId },
     });
+    const planFeatures = getEffectivePlanFeatures(
+      prevInvitationMusic?.billingStatus,
+      prevInvitationMusic?.currentPlanCode,
+    );
+    if (!planFeatures.allowCustomMusic) {
+      throw new BadRequestException(
+        'Custom music upload is a Premium feature. Upgrade to access custom music.',
+      );
+    }
     if (
       prevInvitationMusic.musicKey &&
       !prevInvitationMusic.musicKey.startsWith('assets')

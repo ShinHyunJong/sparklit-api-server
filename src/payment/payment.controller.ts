@@ -57,4 +57,28 @@ export class PaymentController {
   cancelOrder(@Body() body: CancelOrderDto) {
     return this.paymentService.handleCancelRedirect(body.orderNo);
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('upgrade-info')
+  getUpgradeInfo(
+    @Req() req: Request & { user: { id: number } },
+  ) {
+    const invitationId = Number(
+      (req.query as Record<string, string>).invitationId,
+    );
+    return this.paymentService.getUpgradeInfo(req.user.id, invitationId);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('upgrade')
+  createUpgrade(
+    @Req() req: Request & { user: { id: number } },
+    @Body() body: { invitationId: number; frontendOrigin?: string },
+  ) {
+    return this.paymentService.createUpgradeCheckoutSession(
+      req.user.id,
+      body.invitationId,
+      body.frontendOrigin ?? req.headers.origin,
+    );
+  }
 }

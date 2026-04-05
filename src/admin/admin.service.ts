@@ -278,6 +278,59 @@ export class AdminService {
     });
   }
 
+  async getAdminInvitationList() {
+    const invitations = await this.prismaService.invitation.findMany({
+      where: {
+        user: { isAdmin: true },
+      },
+      orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
+      select: {
+        id: true,
+        uniqueId: true,
+        billingStatus: true,
+        currentPlanCode: true,
+        brideFirstName: true,
+        groomFirstName: true,
+        createdAt: true,
+        user: {
+          select: {
+            email: true,
+          },
+        },
+        _count: {
+          select: {
+            photoList: true,
+            invitationCoverPhotoList: true,
+          },
+        },
+      },
+    });
+
+    return invitations.map((inv) => {
+      const createdAt = inv.createdAt ? new Date(inv.createdAt) : new Date();
+      const trialEndDate = new Date(createdAt);
+      trialEndDate.setDate(trialEndDate.getDate() + 3);
+      trialEndDate.setHours(0, 0, 0, 0);
+      const now = new Date();
+      now.setHours(0, 0, 0, 0);
+      const diffMs = trialEndDate.getTime() - now.getTime();
+      const daysLeft = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+
+      return {
+        id: inv.id,
+        uniqueId: inv.uniqueId,
+        billingStatus: inv.billingStatus,
+        currentPlanCode: inv.currentPlanCode,
+        groomFirstName: inv.groomFirstName,
+        brideFirstName: inv.brideFirstName,
+        email: inv.user?.email ?? null,
+        createdAt: inv.createdAt,
+        daysLeft,
+        photoCount: inv._count.photoList + inv._count.invitationCoverPhotoList,
+      };
+    });
+  }
+
   async deleteInvitationByAdmin(invitationId: number) {
     const invitation = await this.prismaService.invitation.findUnique({
       where: { id: invitationId },
@@ -369,5 +422,36 @@ export class AdminService {
       ...item,
       guestNameList: this.parseGuestNameList(item.guestNameList),
     }));
+  }
+
+  async updateInvitationBillingStatus(
+    invitationId: number,
+    billingStatus: 'TRIAL' | 'PAID',
+    currentPlanCode: 'STANDARD' | 'PREMIUM' | null,
+  ) {
+    const invitation = await this.prismaService.invitation.findUnique({
+      where: { id: invitationId },
+    });
+    if (!invitation) {
+      throw new NotFoundException('Invitation not found.');
+    }
+
+    const isPaid = billingStatus === 'PAID';
+    const now = new Date();
+
+    await this.prismaService.invitation.update({
+      where: { id: invitationId },
+      data: {
+        billingStatus,
+        currentPlanCode: isPaid ? currentPlanCode : null,
+        watermarkEnabled: !isPaid,
+        accessStartedAt: isPaid ? now : null,
+        accessEndsAt: isPaid && currentPlanCode === 'STANDARD'
+          ? new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000)
+          : null,
+      },
+    });
+
+    return { updated: true };
   }
 }
