@@ -22,9 +22,9 @@ export class AdminController {
     return this.adminService.getTrialInvitationList();
   }
 
-  @Get('/invitations/admin')
-  getAdminInvitations() {
-    return this.adminService.getAdminInvitationList();
+  @Get('/invitations/all')
+  getAllInvitations() {
+    return this.adminService.getAllInvitationsForManagement();
   }
 
   @Get('/user-funnel')

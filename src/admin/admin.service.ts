@@ -67,11 +67,6 @@ export class AdminService {
 
   async getInvitationList() {
     const invitationList = await this.prismaService.invitation.findMany({
-      where: {
-        user: {
-          OR: [{ isAdmin: { not: true } }, { isAdmin: null }],
-        },
-      },
       orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
       select: {
         id: true,
@@ -98,14 +93,6 @@ export class AdminService {
             },
           },
         },
-        InvitationOrder: {
-          where: { status: 'PAID' },
-          orderBy: [{ paidAt: 'desc' }, { createdAt: 'desc' }, { id: 'desc' }],
-          take: 1,
-          select: {
-            planCode: true,
-          },
-        },
         user: {
           select: {
             id: true,
@@ -121,10 +108,17 @@ export class AdminService {
         invitation.placeList
           .flatMap((place) => place.timeList)
           .find((timeItem) => timeItem.time)?.time ?? null;
-      const planCode =
-        invitation.currentPlanCode ??
-        invitation.InvitationOrder[0]?.planCode ??
-        null;
+
+      const createdAt = invitation.createdAt
+        ? new Date(invitation.createdAt)
+        : new Date();
+      const trialEndDate = new Date(createdAt);
+      trialEndDate.setDate(trialEndDate.getDate() + 3);
+      trialEndDate.setHours(0, 0, 0, 0);
+      const now = new Date();
+      now.setHours(0, 0, 0, 0);
+      const diffMs = trialEndDate.getTime() - now.getTime();
+      const daysLeft = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
 
       return {
         id: invitation.id,
@@ -140,7 +134,9 @@ export class AdminService {
         createdAt: invitation.createdAt,
         updatedAt: invitation.updatedAt,
         user: invitation.user,
-        planCode,
+        isAdmin: invitation.user?.isAdmin === true,
+        planCode: invitation.currentPlanCode,
+        daysLeft,
         firstPlaceTime,
       };
     });
@@ -278,11 +274,8 @@ export class AdminService {
     });
   }
 
-  async getAdminInvitationList() {
+  async getAllInvitationsForManagement() {
     const invitations = await this.prismaService.invitation.findMany({
-      where: {
-        user: { isAdmin: true },
-      },
       orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
       select: {
         id: true,
@@ -295,6 +288,7 @@ export class AdminService {
         user: {
           select: {
             email: true,
+            isAdmin: true,
           },
         },
         _count: {
@@ -324,6 +318,7 @@ export class AdminService {
         groomFirstName: inv.groomFirstName,
         brideFirstName: inv.brideFirstName,
         email: inv.user?.email ?? null,
+        isAdmin: inv.user?.isAdmin === true,
         createdAt: inv.createdAt,
         daysLeft,
         photoCount: inv._count.photoList + inv._count.invitationCoverPhotoList,
