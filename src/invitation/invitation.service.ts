@@ -189,6 +189,28 @@ export class InvitationService {
     return invitationList;
   }
 
+  async getSamplePreviews(uniqueIds: string[]) {
+    if (uniqueIds.length === 0) return [];
+    const invitations = await this.prismaService.invitation.findMany({
+      where: { uniqueId: { in: uniqueIds } },
+      select: {
+        uniqueId: true,
+        groomFirstName: true,
+        brideFirstName: true,
+        invitationCoverPhotoList: {
+          where: { type: 'main' },
+          take: 1,
+          select: { croppedKey: true },
+        },
+      },
+    });
+    return invitations.map((inv) => ({
+      uniqueId: inv.uniqueId,
+      coupleName: [inv.groomFirstName, inv.brideFirstName].filter(Boolean).join(' & '),
+      mainImageKey: inv.invitationCoverPhotoList[0]?.croppedKey ?? null,
+    }));
+  }
+
   async findOne(uniqueId: string) {
     const invitation = await this.prismaService.invitation.findUnique({
       where: { uniqueId },

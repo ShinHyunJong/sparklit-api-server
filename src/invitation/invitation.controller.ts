@@ -63,6 +63,12 @@ export class InvitationController {
     );
   }
 
+  @Get('samples')
+  getSamples(@Query('ids') ids: string) {
+    const uniqueIds = ids?.split(',').filter(Boolean) ?? [];
+    return this.invitationService.getSamplePreviews(uniqueIds);
+  }
+
   @Get(':uniqueId')
   findOne(@Param('uniqueId') uniqueId: string) {
     return this.invitationService.findOne(uniqueId);
