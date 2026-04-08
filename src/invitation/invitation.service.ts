@@ -83,13 +83,7 @@ export class InvitationService {
   }) {
     const isPaid = invitation.billingStatus === 'PAID';
 
-    if (isPaid && invitation.currentPlanCode !== 'PREMIUM') {
-      return true;
-    }
-
-    const isPaidPremium = isPaid && invitation.currentPlanCode === 'PREMIUM';
-
-    if (!isPaidPremium || !invitation.date) {
+    if (!isPaid || !invitation.date) {
       return false;
     }
 
