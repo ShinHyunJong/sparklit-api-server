@@ -476,7 +476,9 @@ export class AdminService {
       },
       {
         secret: HASH_KEY,
-        expiresIn: '1h',
+        // Short-lived on purpose: admins should finish the edit quickly so
+        // they don't accidentally modify data while another tab is open.
+        expiresIn: '10m',
       },
     );
     return { accessToken };
