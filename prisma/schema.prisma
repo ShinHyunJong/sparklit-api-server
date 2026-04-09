@@ -90,6 +90,10 @@ model Invitation {
   ogImageKey               String?                     @db.VarChar(255)
   createdAt                DateTime?                   @default(now()) @db.Timestamp(0)
   updatedAt                DateTime?                   @default(now()) @db.Timestamp(0)
+  bestManLabel             String?                     @db.VarChar(255)
+  maidOfHonorLabel         String?                     @db.VarChar(255)
+  groomsMenLabel           String?                     @db.VarChar(255)
+  bridesMaidsLabel         String?                     @db.VarChar(255)
   user                     User?                       @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Invitation_ibfk_1")
   invitationCoverPhotoList InvitationCoverPhoto[]
   InvitationDressColor     InvitationDressColor[]

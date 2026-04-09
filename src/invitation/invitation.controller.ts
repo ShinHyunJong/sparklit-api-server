@@ -278,14 +278,7 @@ export class InvitationController {
     @Param('uniqueId') uniqueId: string,
     @Body() body: UpdateEntourageDto,
   ) {
-    return this.invitationService.updateEntourage(
-      uniqueId,
-      body.bestMan,
-      body.maidOfHonor,
-      body.groomsMen,
-      body.bridesMaids,
-      body.invitationEntourageList ?? [],
-    );
+    return this.invitationService.updateEntourage(uniqueId, body);
   }
 
   @UseGuards(JwtAuthGuard)

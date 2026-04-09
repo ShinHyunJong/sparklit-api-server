@@ -637,15 +637,21 @@ export class InvitationService {
 
   async updateEntourage(
     uniqueId: string,
-    bestMan: string,
-    maidOfHonor: string,
-    groomsMen: string,
-    bridesMaids: string,
-    invitationEntourageList: Array<{
-      label: string;
-      name: string;
-      order?: number;
-    }>,
+    body: {
+      bestMan: string;
+      maidOfHonor: string;
+      groomsMen: string;
+      bridesMaids: string;
+      bestManLabel?: string | null;
+      maidOfHonorLabel?: string | null;
+      groomsMenLabel?: string | null;
+      bridesMaidsLabel?: string | null;
+      invitationEntourageList?: Array<{
+        label: string;
+        name: string;
+        order?: number;
+      }>;
+    },
   ) {
     const invitation = await this.prismaService.invitation.findUnique({
       where: { uniqueId },
@@ -655,7 +661,7 @@ export class InvitationService {
       throw new NotFoundException('Invitation not found');
     }
 
-    const sanitizedInvitationEntourageList = invitationEntourageList
+    const sanitizedInvitationEntourageList = (body.invitationEntourageList ?? [])
       .map((item, index) => ({
         label: item.label.trim(),
         name: item.name.trim(),
@@ -667,14 +673,24 @@ export class InvitationService {
         order: index,
       }));
 
+    const normalizeLabel = (value: string | null | undefined) => {
+      if (value == null) return null;
+      const trimmed = value.trim();
+      return trimmed.length > 0 ? trimmed : null;
+    };
+
     await this.prismaService.$transaction([
       this.prismaService.invitation.update({
         where: { uniqueId },
         data: {
-          bestMan,
-          maidOfHonor,
-          groomsMen,
-          bridesMaids,
+          bestMan: body.bestMan,
+          maidOfHonor: body.maidOfHonor,
+          groomsMen: body.groomsMen,
+          bridesMaids: body.bridesMaids,
+          bestManLabel: normalizeLabel(body.bestManLabel),
+          maidOfHonorLabel: normalizeLabel(body.maidOfHonorLabel),
+          groomsMenLabel: normalizeLabel(body.groomsMenLabel),
+          bridesMaidsLabel: normalizeLabel(body.bridesMaidsLabel),
         },
       }),
       this.prismaService.invitationEntourage.deleteMany({

@@ -199,7 +199,11 @@ exports.Prisma.InvitationScalarFieldEnum = {
   endingText: 'endingText',
   ogImageKey: 'ogImageKey',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  bestManLabel: 'bestManLabel',
+  maidOfHonorLabel: 'maidOfHonorLabel',
+  groomsMenLabel: 'groomsMenLabel',
+  bridesMaidsLabel: 'bridesMaidsLabel'
 };
 
 exports.Prisma.InvitationPlaceScalarFieldEnum = {
@@ -462,7 +466,11 @@ exports.Prisma.InvitationOrderByRelevanceFieldEnum = {
   groomMomName: 'groomMomName',
   groomDadName: 'groomDadName',
   endingText: 'endingText',
-  ogImageKey: 'ogImageKey'
+  ogImageKey: 'ogImageKey',
+  bestManLabel: 'bestManLabel',
+  maidOfHonorLabel: 'maidOfHonorLabel',
+  groomsMenLabel: 'groomsMenLabel',
+  bridesMaidsLabel: 'bridesMaidsLabel'
 };
 
 exports.Prisma.InvitationPlaceOrderByRelevanceFieldEnum = {

@@ -43,6 +43,26 @@ export class UpdateEntourageDto {
   bridesMaids: string;
 
   @IsOptional()
+  @IsString()
+  @MaxLength(255)
+  bestManLabel?: string | null;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(255)
+  maidOfHonorLabel?: string | null;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(255)
+  groomsMenLabel?: string | null;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(255)
+  bridesMaidsLabel?: string | null;
+
+  @IsOptional()
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => UpdateInvitationEntourageItemDto)
