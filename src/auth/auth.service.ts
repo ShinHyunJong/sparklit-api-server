@@ -73,6 +73,10 @@ export class AuthService {
    * @param payload
    * @returns
    */
+  // Access token TTL shared with cookie Max-Age on the frontend so the
+  // session invalidates at the same moment on both sides.
+  private readonly accessTokenTtl = '7d';
+
   async getTokens(id: number, payload: string): Promise<Tokens> {
     const accessToken = await this.jwtService.signAsync(
       {
@@ -81,12 +85,13 @@ export class AuthService {
       },
       {
         secret: HASH_KEY,
+        expiresIn: this.accessTokenTtl,
       },
     );
     return { accessToken };
   }
 
-  async getUserDetail(id: number) {
+  async getUserDetail(id: number, isImpersonation = false) {
     const userDetail = await this.prismaService.user.findUnique({
       where: {
         id,
@@ -104,9 +109,28 @@ export class AuthService {
 
     if (!userDetail) return userDetail;
 
+    // Sliding session: every time the client fetches the current user, we
+    // issue a fresh access token so active users never get kicked out.
+    // IMPORTANT: do NOT refresh impersonation sessions — they must stay
+    // bound to the short expiry the admin flow signed them with so a
+    // misplaced admin session cannot silently turn into a week-long login.
+    if (isImpersonation) {
+      return {
+        ...userDetail,
+        isAdmin: Boolean(userDetail.isAdmin),
+        isImpersonation: true,
+      };
+    }
+
+    const { accessToken } = await this.getTokens(
+      userDetail.id,
+      userDetail.email ?? '',
+    );
+
     return {
       ...userDetail,
       isAdmin: Boolean(userDetail.isAdmin),
+      accessToken,
     };
   }
 

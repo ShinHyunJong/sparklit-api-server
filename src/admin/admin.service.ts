@@ -1,10 +1,15 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import { HASH_KEY } from 'src/constants';
 import { deleteFromS3 } from 'src/helpers/s3.helper';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class AdminService {
-  constructor(private readonly prismaService: PrismaService) {}
+  constructor(
+    private readonly prismaService: PrismaService,
+    private readonly jwtService: JwtService,
+  ) {}
 
   private parseGuestNameList(value?: string | null) {
     if (!value) return [];
@@ -450,4 +455,30 @@ export class AdminService {
     return { updated: true };
   }
 
+  /**
+   * Create a short-lived JWT for impersonating a user. Used by the admin
+   * "Edit as User" flow to jump into sparklit-web as that user for a limited
+   * time without knowing their credentials.
+   */
+  async createImpersonationToken(userId: number) {
+    const user = await this.prismaService.user.findUnique({
+      where: { id: userId },
+      select: { id: true, email: true },
+    });
+    if (!user) {
+      throw new NotFoundException(`User not found: ${userId}`);
+    }
+    const accessToken = await this.jwtService.signAsync(
+      {
+        id: user.id,
+        payload: user.email ?? '',
+        impersonation: true,
+      },
+      {
+        secret: HASH_KEY,
+        expiresIn: '1h',
+      },
+    );
+    return { accessToken };
+  }
 }

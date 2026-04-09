@@ -9,7 +9,8 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Get('me')
   getMe(@Req() req) {
-    return this.authSerivice.getUserDetail(req.user.id);
+    const isImpersonation = Boolean(req.user?.impersonation);
+    return this.authSerivice.getUserDetail(req.user.id, isImpersonation);
   }
 
   @Post('login')

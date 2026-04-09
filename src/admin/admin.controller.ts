@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { AdminJwtAuthGuard } from 'src/guards/admin-jwt-auth.guard';
 import { AdminService } from './admin.service';
 
@@ -54,4 +54,12 @@ export class AdminController {
     );
   }
 
+  /**
+   * Issues a short-lived JWT to impersonate the given user. Used by the
+   * admin "Edit as User" flow.
+   */
+  @Post('/impersonate/:userId')
+  impersonate(@Param('userId') userId: string) {
+    return this.adminService.createImpersonationToken(Number(userId));
+  }
 }
