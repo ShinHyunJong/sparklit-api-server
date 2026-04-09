@@ -322,7 +322,9 @@ export class PaymentService {
 
     await this.prismaService.$transaction(async (tx) => {
       if (paidEvent) {
-        if (order.status === 'PAID') {
+        // Only accept paid events for orders still in PENDING state.
+        // This prevents late-arriving webhooks from reactivating CANCELED/FAILED orders.
+        if (order.status !== 'PENDING') {
           return;
         }
 
@@ -417,6 +419,7 @@ export class PaymentService {
       },
       select: {
         id: true,
+        billingStatus: true,
         brideFirstName: true,
         groomFirstName: true,
         user: {
@@ -429,6 +432,12 @@ export class PaymentService {
 
     if (!invitation) {
       throw new BadRequestException('Invitation not found');
+    }
+
+    if (invitation.billingStatus === 'PAID') {
+      throw new BadRequestException(
+        'This invitation has already been paid. Use the upgrade flow if you want to change plans.',
+      );
     }
 
     const pricePlanList = await this.getPlanPricing(planCode);
@@ -605,7 +614,7 @@ export class PaymentService {
     }));
   }
 
-  async handleCancelRedirect(orderNo: string) {
+  async handleCancelRedirect(orderNo: string, userId: number) {
     const trimmedOrderNo = orderNo.trim();
     if (!trimmedOrderNo) {
       throw new BadRequestException('orderNo is required');
@@ -616,12 +625,17 @@ export class PaymentService {
       select: {
         id: true,
         invitationId: true,
+        userId: true,
         status: true,
       },
     });
 
     if (!order) {
       return { updated: false, reason: 'not_found' };
+    }
+
+    if (order.userId !== userId) {
+      throw new UnauthorizedException('You do not own this order');
     }
 
     if (order.status === 'PAID') {
@@ -737,6 +751,22 @@ export class PaymentService {
     ) {
       throw new BadRequestException(
         'Upgrade only available for active Standard plans',
+      );
+    }
+
+    // Prevent duplicate pending upgrade orders for the same invitation.
+    const existingPendingUpgrade =
+      await this.prismaService.invitationOrder.findFirst({
+        where: {
+          invitationId: invitation.id,
+          status: 'PENDING',
+          planCode: 'PREMIUM',
+        },
+        select: { id: true },
+      });
+    if (existingPendingUpgrade) {
+      throw new BadRequestException(
+        'An upgrade checkout is already in progress. Please complete or cancel it first.',
       );
     }
 

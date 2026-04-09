@@ -53,9 +53,13 @@ export class PaymentController {
     return { received: true };
   }
 
+  @UseGuards(JwtAuthGuard)
   @Post('cancel')
-  cancelOrder(@Body() body: CancelOrderDto) {
-    return this.paymentService.handleCancelRedirect(body.orderNo);
+  cancelOrder(
+    @Req() req: Request & { user: { id: number } },
+    @Body() body: CancelOrderDto,
+  ) {
+    return this.paymentService.handleCancelRedirect(body.orderNo, req.user.id);
   }
 
   @UseGuards(JwtAuthGuard)

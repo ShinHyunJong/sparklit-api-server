@@ -21,16 +21,18 @@ export class PhotoController {
   @Post('/:invitationId')
   @FormDataRequest({ storage: MemoryStoredFile })
   uploadPhotoList(
+    @Req() req,
     @Param('invitationId') invitationId: string,
     @Body() body: CreatePhotoDto,
   ) {
-    return this.photoService.uploadPhotoList(invitationId, body);
+    return this.photoService.uploadPhotoList(invitationId, req.user.id, body);
   }
 
   @UseGuards(JwtAuthGuard)
   @Put('/update/:photoId')
   @FormDataRequest({ storage: MemoryStoredFile })
   updatePhoto(
+    @Req() req,
     @Param('photoId') photoId: number,
     @Body()
     {
@@ -49,6 +51,7 @@ export class PhotoController {
   ) {
     return this.photoService.updatePhotoCrop(
       photoId,
+      req.user.id,
       isThumb === 'true',
       file,
       Number(cropX),
@@ -59,13 +62,13 @@ export class PhotoController {
 
   @UseGuards(JwtAuthGuard)
   @Put('/order')
-  updatePhotoOrder(@Body() body: { photoIds: number[] }) {
-    return this.photoService.updatePhotoOrder(body.photoIds);
+  updatePhotoOrder(@Req() req, @Body() body: { photoIds: number[] }) {
+    return this.photoService.updatePhotoOrder(body.photoIds, req.user.id);
   }
 
   @UseGuards(JwtAuthGuard)
   @Delete('/:photoId')
-  deletePhoto(@Param('photoId') photoId: number) {
-    return this.photoService.deletePhoto(photoId);
+  deletePhoto(@Req() req, @Param('photoId') photoId: number) {
+    return this.photoService.deletePhoto(photoId, req.user.id);
   }
 }

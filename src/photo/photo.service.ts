@@ -1,17 +1,69 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { getEffectivePlanFeatures } from 'src/constants/planFeatures';
 import { CreatePhotoDto } from './dto/photo.dto';
 import { UploadingImage } from 'src/types/client.type';
 import cryptoRandomString from 'crypto-random-string';
 import { deleteFromS3, upload2S3 } from 'src/helpers/s3.helper';
+import { assertImageMime } from 'src/helpers/mime.helper';
 import { MemoryStoredFile } from 'nestjs-form-data';
 
 @Injectable()
 export class PhotoService {
   constructor(private readonly prismaService: PrismaService) {}
 
-  async uploadPhotoList(invitationId: string, body: CreatePhotoDto) {
+  /**
+   * Assert that the given user owns the invitation (by uniqueId).
+   */
+  private async assertInvitationOwnership(
+    uniqueId: string,
+    userId: number,
+  ): Promise<void> {
+    const invitation = await this.prismaService.invitation.findUnique({
+      where: { uniqueId },
+      select: { userId: true },
+    });
+    if (!invitation) {
+      throw new NotFoundException('Invitation not found');
+    }
+    if (invitation.userId !== userId) {
+      throw new ForbiddenException('You do not own this invitation');
+    }
+  }
+
+  /**
+   * Assert that the given user owns the invitation that the photo belongs to.
+   */
+  private async assertPhotoOwnership(
+    photoId: number,
+    userId: number,
+  ): Promise<void> {
+    const photo = await this.prismaService.invitationPhoto.findUnique({
+      where: { id: photoId },
+      select: {
+        invitationId: true,
+        Invitation: { select: { userId: true } },
+      },
+    });
+    if (!photo) {
+      throw new NotFoundException('Photo not found');
+    }
+    if (!photo.Invitation || photo.Invitation.userId !== userId) {
+      throw new ForbiddenException('You do not own this photo');
+    }
+  }
+
+  async uploadPhotoList(
+    invitationId: string,
+    userId: number,
+    body: CreatePhotoDto,
+  ) {
+    await this.assertInvitationOwnership(invitationId, userId);
     const uploadingPhotos: UploadingImage[] = JSON.parse(body.photoJSON);
 
     const invitation = await this.prismaService.invitation.findUnique({
@@ -41,6 +93,10 @@ export class PhotoService {
       const originalFile = originalFileList[i];
       const croppedFile = croppedFileList[i];
       const thumbnailFile = thumbnailFileList[i];
+
+      assertImageMime(originalFile.mimeType);
+      assertImageMime(croppedFile.mimeType);
+      assertImageMime(thumbnailFile.mimeType);
 
       //s3Upload
       const originalName = cryptoRandomString({ length: 16 });
@@ -90,12 +146,15 @@ export class PhotoService {
 
   async updatePhotoCrop(
     photoId: number,
+    userId: number,
     isThumb: boolean,
     file: MemoryStoredFile,
     cropX: number,
     cropY: number,
     cropZoom: number,
   ) {
+    await this.assertPhotoOwnership(photoId, userId);
+    assertImageMime(file.mimeType);
     let prevCropX;
     let prevCropY;
     let prevCropZoom;
@@ -144,7 +203,26 @@ export class PhotoService {
     }
   }
 
-  async updatePhotoOrder(photoIds: number[]) {
+  async updatePhotoOrder(photoIds: number[], userId: number) {
+    if (photoIds.length === 0) return;
+    // Verify all photos belong to a single invitation owned by the user.
+    const photos = await this.prismaService.invitationPhoto.findMany({
+      where: { id: { in: photoIds } },
+      select: {
+        id: true,
+        invitationId: true,
+        Invitation: { select: { userId: true } },
+      },
+    });
+    if (photos.length !== photoIds.length) {
+      throw new NotFoundException('Some photos were not found');
+    }
+    const unauthorized = photos.find(
+      (p) => !p.Invitation || p.Invitation.userId !== userId,
+    );
+    if (unauthorized) {
+      throw new ForbiddenException('You do not own all of these photos');
+    }
     for (let i = 0; i < photoIds.length; i++) {
       const photoId = photoIds[i];
       await this.prismaService.invitationPhoto.update({
@@ -154,7 +232,8 @@ export class PhotoService {
     }
   }
 
-  async deletePhoto(photoId: number) {
+  async deletePhoto(photoId: number, userId: number) {
+    await this.assertPhotoOwnership(photoId, userId);
     const photo = await this.prismaService.invitationPhoto.findUnique({
       where: { id: photoId },
     });

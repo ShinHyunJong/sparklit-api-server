@@ -80,13 +80,16 @@ export class InvitationController {
     return this.invitationService.deleteInvitation(uniqueId, req.user.id);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Put(':uniqueId')
   update(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() updateInvitationDto: UpdateInvitationDto,
   ) {
     return this.invitationService.updateInvitation(
       uniqueId,
+      req.user.id,
       updateInvitationDto,
     );
   }
@@ -94,17 +97,24 @@ export class InvitationController {
   @UseGuards(JwtAuthGuard)
   @Put('/greeting/:uniqueId')
   updateGreeting(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body()
     { title, content }: { title: string; content: string },
   ) {
-    return this.invitationService.updateGreeting(uniqueId, title, content);
+    return this.invitationService.updateGreeting(
+      uniqueId,
+      req.user.id,
+      title,
+      content,
+    );
   }
 
   @UseGuards(JwtAuthGuard)
   @Put('/music/upload/:invitationId')
   @FormDataRequest({ storage: MemoryStoredFile })
   uploadMusic(
+    @Req() req,
     @Param('invitationId') invitationId: string,
     @Body()
     {
@@ -113,13 +123,14 @@ export class InvitationController {
       file: MemoryStoredFile;
     },
   ) {
-    return this.invitationService.uploadMusic(invitationId, file);
+    return this.invitationService.uploadMusic(invitationId, req.user.id, file);
   }
 
   @UseGuards(JwtAuthGuard)
   @Put('/og-image/:uniqueId')
   @FormDataRequest({ storage: MemoryStoredFile })
   uploadOgImage(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body()
     {
@@ -128,7 +139,7 @@ export class InvitationController {
       file: MemoryStoredFile;
     },
   ) {
-    return this.invitationService.uploadOgImage(uniqueId, file);
+    return this.invitationService.uploadOgImage(uniqueId, req.user.id, file);
   }
 
   @UseGuards(JwtAuthGuard)
@@ -140,6 +151,7 @@ export class InvitationController {
   @UseGuards(JwtAuthGuard)
   @Put('/music/:invitationId')
   updateMusic(
+    @Req() req,
     @Param('invitationId') invitationId: string,
     @Body()
     {
@@ -148,28 +160,40 @@ export class InvitationController {
       key: string;
     },
   ) {
-    return this.invitationService.updateMusic(invitationId, key);
+    return this.invitationService.updateMusic(invitationId, req.user.id, key);
   }
 
   @UseGuards(JwtAuthGuard)
   @Put('/color/:uniqueId')
   updateColor(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body()
     { color, type }: { color: string; type: string },
   ) {
-    return this.invitationService.updateColor(uniqueId, type, color);
+    return this.invitationService.updateColor(
+      uniqueId,
+      req.user.id,
+      type,
+      color,
+    );
   }
 
   @UseGuards(JwtAuthGuard)
   @Put('/cover-photo/:uniqueId')
   @FormDataRequest({ storage: MemoryStoredFile })
   updateMainPhoto(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Query('type') type: string,
     @Body() body: UpdateMainPhotoDto,
   ) {
-    return this.invitationService.updatePhoto(uniqueId, body, type);
+    return this.invitationService.updatePhoto(
+      uniqueId,
+      req.user.id,
+      body,
+      type,
+    );
   }
 
   @UseGuards(JwtAuthGuard)
@@ -185,10 +209,15 @@ export class InvitationController {
   @UseGuards(JwtAuthGuard)
   @Put('/templateNo/:uniqueId')
   updateTemplateNo(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() body: { templateNo: number },
   ) {
-    return this.invitationService.updateTemplateNo(uniqueId, body.templateNo);
+    return this.invitationService.updateTemplateNo(
+      uniqueId,
+      req.user.id,
+      body.templateNo,
+    );
   }
 
   @UseGuards(JwtAuthGuard)
@@ -235,11 +264,13 @@ export class InvitationController {
   @UseGuards(JwtAuthGuard)
   @Put('/dressCode/:uniqueId')
   updateDressCode(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() body: { dressCodeGentleman: string; dressCodeLady: string },
   ) {
     return this.invitationService.updateDressCode(
       uniqueId,
+      req.user.id,
       body.dressCodeGentleman,
       body.dressCodeLady,
     );
@@ -248,11 +279,13 @@ export class InvitationController {
   @UseGuards(JwtAuthGuard)
   @Put('/dressCodeColor/:uniqueId')
   updateDressCodeColor(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() body: { mainColor: string; subColor: string; thirdColor: string },
   ) {
     return this.invitationService.updateDressCodeColor(
       uniqueId,
+      req.user.id,
       body.mainColor,
       body.subColor,
       body.thirdColor,
@@ -262,11 +295,13 @@ export class InvitationController {
   @UseGuards(JwtAuthGuard)
   @Put('/sponsor/:uniqueId')
   updateSponsor(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() body: { primarySponsor: string; secondarySponsor: string },
   ) {
     return this.invitationService.updateSponsor(
       uniqueId,
+      req.user.id,
       body.primarySponsor,
       body.secondarySponsor,
     );
@@ -275,38 +310,51 @@ export class InvitationController {
   @UseGuards(JwtAuthGuard)
   @Put('/entourage/:uniqueId')
   updateEntourage(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() body: UpdateEntourageDto,
   ) {
-    return this.invitationService.updateEntourage(uniqueId, body);
+    return this.invitationService.updateEntourage(uniqueId, req.user.id, body);
   }
 
   @UseGuards(JwtAuthGuard)
   @Put('/layoutOrder/:uniqueId')
   layoutOrderUpdate(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() body: { layoutOrder: string },
   ) {
-    return this.invitationService.layoutOrderUpdate(uniqueId, body.layoutOrder);
+    return this.invitationService.layoutOrderUpdate(
+      uniqueId,
+      req.user.id,
+      body.layoutOrder,
+    );
   }
 
   @UseGuards(JwtAuthGuard)
   @Put('/notice/:uniqueId')
   updateNotice(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() body: { notice: string },
   ) {
-    return this.invitationService.updateNotice(uniqueId, body.notice);
+    return this.invitationService.updateNotice(
+      uniqueId,
+      req.user.id,
+      body.notice,
+    );
   }
 
   @UseGuards(JwtAuthGuard)
   @Put('/meta/:uniqueId')
   updateMeta(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() body: UpdateInvitationMetaDto,
   ) {
     return this.invitationService.updateMeta(
       uniqueId,
+      req.user.id,
       body.title,
       body.description,
     );
@@ -315,40 +363,55 @@ export class InvitationController {
   @UseGuards(JwtAuthGuard)
   @Put('/rsvpTitle/:uniqueId')
   updateRsvpTitle(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() body: { rsvpTitle: string },
   ) {
-    return this.invitationService.updateRsvpTitle(uniqueId, body.rsvpTitle);
+    return this.invitationService.updateRsvpTitle(
+      uniqueId,
+      req.user.id,
+      body.rsvpTitle,
+    );
   }
 
   @UseGuards(JwtAuthGuard)
   @Put('/rsvpMaxPax/:uniqueId')
   updateRsvpMaxPax(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() body: { rsvpMaxPax: number },
   ) {
-    return this.invitationService.updateRsvpMaxPax(uniqueId, body.rsvpMaxPax);
+    return this.invitationService.updateRsvpMaxPax(
+      uniqueId,
+      req.user.id,
+      body.rsvpMaxPax,
+    );
   }
 
   @UseGuards(JwtAuthGuard)
   @Put('/rsvpDeadline/:uniqueId')
   updateRsvpDeadline(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() body: { rsvpDeadline: string | null },
   ) {
     return this.invitationService.updateRsvpDeadline(
       uniqueId,
+      req.user.id,
       body.rsvpDeadline,
     );
   }
 
+  @UseGuards(JwtAuthGuard)
   @Put('/rsvpDeadlineEnabled/:uniqueId')
   updateRsvpDeadlineEnabled(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() body: { hasRsvpDeadline: boolean },
   ) {
     return this.invitationService.updateHasRsvpDeadline(
       uniqueId,
+      req.user.id,
       body.hasRsvpDeadline,
     );
   }
@@ -356,11 +419,13 @@ export class InvitationController {
   @UseGuards(JwtAuthGuard)
   @Put('/rsvpDeadlineDesc/:uniqueId')
   updateRsvpDeadlineDesc(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() body: { rsvpDeadlineDesc: string },
   ) {
     return this.invitationService.updateRsvpDeadlineDesc(
       uniqueId,
+      req.user.id,
       body.rsvpDeadlineDesc,
     );
   }
@@ -368,33 +433,49 @@ export class InvitationController {
   @UseGuards(JwtAuthGuard)
   @Put('/rsvpHasFood/:uniqueId')
   updateRsvpHasFood(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() body: { rsvpHasFood: boolean },
   ) {
-    return this.invitationService.updateRsvpHasFood(uniqueId, body.rsvpHasFood);
+    return this.invitationService.updateRsvpHasFood(
+      uniqueId,
+      req.user.id,
+      body.rsvpHasFood,
+    );
   }
 
   @UseGuards(JwtAuthGuard)
   @Put('/rsvpPopup/:uniqueId')
   updateRsvpPopup(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() body: { isRsvpPopup: boolean },
   ) {
-    return this.invitationService.updateRsvpPopup(uniqueId, body.isRsvpPopup);
+    return this.invitationService.updateRsvpPopup(
+      uniqueId,
+      req.user.id,
+      body.isRsvpPopup,
+    );
   }
 
   @UseGuards(JwtAuthGuard)
   @Put('/endingText/:uniqueId')
   updateEndingText(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() body: { endingText: string },
   ) {
-    return this.invitationService.updateEndingText(uniqueId, body.endingText);
+    return this.invitationService.updateEndingText(
+      uniqueId,
+      req.user.id,
+      body.endingText,
+    );
   }
 
   @UseGuards(JwtAuthGuard)
   @Put('/monetaryGift/:uniqueId')
   updateMonetaryGift(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body()
     body: {
@@ -405,6 +486,7 @@ export class InvitationController {
   ) {
     return this.invitationService.updateMonetaryGift(
       uniqueId,
+      req.user.id,
       body.bankAccount,
       body.wishlistText,
       body.wishlistUrl,
@@ -414,14 +496,10 @@ export class InvitationController {
   @UseGuards(JwtAuthGuard)
   @Put('/font/:uniqueId')
   updateFont(
+    @Req() req,
     @Param('uniqueId') uniqueId: string,
     @Body() body: { font: string },
   ) {
-    return this.invitationService.updateFont(uniqueId, body.font);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.invitationService.remove(+id);
+    return this.invitationService.updateFont(uniqueId, req.user.id, body.font);
   }
 }
