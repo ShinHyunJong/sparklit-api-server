@@ -1,5 +1,6 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import dayjs from 'dayjs';
 import { HASH_KEY } from 'src/constants';
 import { deleteFromS3 } from 'src/helpers/s3.helper';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -83,9 +84,20 @@ export class AdminService {
         brideLastName: true,
         groomFirstName: true,
         groomLastName: true,
+        groomDadName: true,
+        groomMomName: true,
+        brideDadName: true,
+        brideMomName: true,
+        hasRsvpDeadline: true,
         date: true,
         createdAt: true,
         updatedAt: true,
+        photoList: { select: { id: true } },
+        invitationCoverPhotoList: {
+          where: { type: 'main' },
+          take: 1,
+          select: { croppedKey: true },
+        },
         placeList: {
           orderBy: [{ order: 'asc' }, { id: 'asc' }],
           select: {
@@ -125,6 +137,28 @@ export class AdminService {
       const diffMs = trialEndDate.getTime() - now.getTime();
       const daysLeft = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
 
+      // Edit lock: all conditions must be true
+      const isPaid = invitation.billingStatus === 'PAID';
+      const datePassedOneDay =
+        isPaid && invitation.date
+          ? !dayjs().startOf('day').isBefore(dayjs(invitation.date).startOf('day').add(1, 'day'))
+          : false;
+      const hasPhotos = (invitation.photoList?.length ?? 0) >= 1;
+      const hasPlace = (invitation.placeList?.length ?? 0) >= 1;
+      const hasTime = invitation.placeList.some((p) =>
+        p.timeList.some((t) => t.time != null),
+      );
+      const hasCoupleName =
+        !!invitation.groomFirstName?.trim() && !!invitation.brideFirstName?.trim();
+      const hasParentName = [
+        invitation.groomDadName,
+        invitation.groomMomName,
+        invitation.brideDadName,
+        invitation.brideMomName,
+      ].some((n) => n?.trim());
+      const isEditLocked =
+        isPaid && datePassedOneDay && hasPhotos && hasPlace && hasTime && hasCoupleName && hasParentName;
+
       return {
         id: invitation.id,
         uniqueId: invitation.uniqueId,
@@ -143,6 +177,9 @@ export class AdminService {
         planCode: invitation.currentPlanCode,
         daysLeft,
         firstPlaceTime,
+        isEditLocked,
+        mainPhotoKey: invitation.invitationCoverPhotoList[0]?.croppedKey ?? null,
+        photoCount: invitation.photoList.length,
       };
     });
   }
