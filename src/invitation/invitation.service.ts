@@ -152,9 +152,11 @@ export class InvitationService {
         placeList: { include: { timeList: true } },
         photoList: true,
         _count: { select: { invitationRSVP: true } },
+        user: { select: { isAdmin: true } },
       },
     });
-    if (inv && this.isInvitationEditLocked(inv)) {
+    if (!inv || inv.user?.isAdmin) return;
+    if (this.isInvitationEditLocked(inv)) {
       throw new BadRequestException(
         'This invitation is locked and can no longer be edited.',
       );
@@ -241,13 +243,14 @@ export class InvitationService {
         placeList: { include: { timeList: { select: { id: true, time: true } } } },
         photoList: { select: { id: true } },
         _count: { select: { invitationRSVP: true } },
+        user: { select: { isAdmin: true } },
       },
     });
     return invitationList.map((inv) => {
-      const { placeList, photoList, _count, ...rest } = inv;
+      const { placeList, photoList, _count, user, ...rest } = inv;
       return {
         ...rest,
-        isEditLocked: this.isInvitationEditLocked(inv),
+        isEditLocked: user?.isAdmin ? false : this.isInvitationEditLocked(inv),
       };
     });
   }
@@ -342,7 +345,7 @@ export class InvitationService {
       rsvpResponseCount: invitation._count?.invitationRSVP ?? 0,
       timezone,
       planFeatures,
-      isEditLocked: this.isInvitationEditLocked(invitation),
+      isEditLocked: user?.isAdmin ? false : this.isInvitationEditLocked(invitation),
     };
   }
 

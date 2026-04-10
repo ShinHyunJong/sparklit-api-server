@@ -156,8 +156,10 @@ export class AdminService {
         invitation.brideDadName,
         invitation.brideMomName,
       ].some((n) => n?.trim());
-      const isEditLocked =
-        isPaid && datePassedOneDay && hasPhotos && hasPlace && hasTime && hasCoupleName && hasParentName;
+      const isAdmin = invitation.user?.isAdmin === true;
+      const isEditLocked = isAdmin
+        ? false
+        : isPaid && datePassedOneDay && hasPhotos && hasPlace && hasTime && hasCoupleName && hasParentName;
 
       return {
         id: invitation.id,
