@@ -95,36 +95,70 @@ export class InvitationService {
     };
   }
 
-  private isWeddingDateEditLocked(invitation: {
+  private isInvitationEditLocked(invitation: {
     billingStatus: string | null;
-    currentPlanCode: string | null;
     date: Date | null;
-    placeList?: Array<unknown>;
+    hasRsvpDeadline?: boolean | null;
+    groomFirstName?: string | null;
+    brideFirstName?: string | null;
+    groomDadName?: string | null;
+    groomMomName?: string | null;
+    brideDadName?: string | null;
+    brideMomName?: string | null;
+    placeList?: Array<{ timeList?: Array<{ time?: unknown }> }>;
     photoList?: Array<unknown>;
-    _count?: {
-      invitationRSVP?: number;
-    };
+    _count?: { invitationRSVP?: number };
   }) {
-    const isPaid = invitation.billingStatus === 'PAID';
+    if (invitation.billingStatus !== 'PAID' || !invitation.date) return false;
 
-    if (!isPaid || !invitation.date) {
+    // 1. 결혼일 +1일 경과
+    const today = dayjs().startOf('day');
+    const lockDate = dayjs(invitation.date).startOf('day').add(1, 'day');
+    if (today.isBefore(lockDate)) return false;
+
+    // 2. 사진 1개 이상
+    if ((invitation.photoList?.length ?? 0) < 1) return false;
+
+    // 3. 장소 1개 이상
+    if ((invitation.placeList?.length ?? 0) < 1) return false;
+
+    // 4. 시간 1개 이상
+    const hasTime =
+      invitation.placeList?.some((p) =>
+        p.timeList?.some((t) => t.time != null),
+      ) ?? false;
+    if (!hasTime) return false;
+
+    // 5. 신랑/신부 이름
+    if (!invitation.groomFirstName?.trim() || !invitation.brideFirstName?.trim())
       return false;
+
+    // 6. 부모님 이름 1명 이상
+    const hasParentName = [
+      invitation.groomDadName,
+      invitation.groomMomName,
+      invitation.brideDadName,
+      invitation.brideMomName,
+    ].some((n) => n?.trim());
+    if (!hasParentName) return false;
+
+    return true;
+  }
+
+  private async assertNotLocked(uniqueId: string) {
+    const inv = await this.prismaService.invitation.findUnique({
+      where: { uniqueId },
+      include: {
+        placeList: { include: { timeList: true } },
+        photoList: true,
+        _count: { select: { invitationRSVP: true } },
+      },
+    });
+    if (inv && this.isInvitationEditLocked(inv)) {
+      throw new BadRequestException(
+        'This invitation is locked and can no longer be edited.',
+      );
     }
-
-    const hasWeddingDatePassedOneDay = !dayjs()
-      .startOf('day')
-      .isBefore(dayjs(invitation.date).startOf('day').add(1, 'day'));
-
-    if (!hasWeddingDatePassedOneDay) {
-      return false;
-    }
-
-    const hasEnoughRsvpResponses =
-      (invitation._count?.invitationRSVP ?? 0) >= 5;
-    const hasPhotos = (invitation.photoList?.length ?? 0) >= 1;
-    const hasPlaces = (invitation.placeList?.length ?? 0) >= 1;
-
-    return hasEnoughRsvpResponses && hasPhotos && hasPlaces;
   }
 
   async checkUniqueIdAvailability(value: string, currentUniqueId?: string) {
@@ -203,8 +237,19 @@ export class InvitationService {
   async findAll(userId: number) {
     const invitationList = await this.prismaService.invitation.findMany({
       where: { userId },
+      include: {
+        placeList: { include: { timeList: { select: { id: true, time: true } } } },
+        photoList: { select: { id: true } },
+        _count: { select: { invitationRSVP: true } },
+      },
     });
-    return invitationList;
+    return invitationList.map((inv) => {
+      const { placeList, photoList, _count, ...rest } = inv;
+      return {
+        ...rest,
+        isEditLocked: this.isInvitationEditLocked(inv),
+      };
+    });
   }
 
   async getSamplePreviews(uniqueIds: string[]) {
@@ -297,6 +342,7 @@ export class InvitationService {
       rsvpResponseCount: invitation._count?.invitationRSVP ?? 0,
       timezone,
       planFeatures,
+      isEditLocked: this.isInvitationEditLocked(invitation),
     };
   }
 
@@ -308,6 +354,7 @@ export class InvitationService {
     thirdColor: string,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
@@ -326,6 +373,7 @@ export class InvitationService {
     dressCodeLady: string,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
@@ -342,6 +390,7 @@ export class InvitationService {
     updateInvitationDto: UpdateInvitationDto,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const invitation = await this.prismaService.invitation.findUnique({
       where: { uniqueId },
       select: {
@@ -370,11 +419,7 @@ export class InvitationService {
       throw new NotFoundException('Invitation not found');
     }
 
-    // if (this.isWeddingDateEditLocked(invitation)) {
-    //   throw new BadRequestException(
-    //     'Wedding date can no longer be changed for this invitation.',
-    //   );
-    // }
+    await this.assertNotLocked(uniqueId);
 
     const targetDate = dayjs(updateInvitationDto.date);
 
@@ -395,6 +440,7 @@ export class InvitationService {
     type: string, // 인자로 구분
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const invitation = await this.prismaService.invitation.findUnique({
       where: { uniqueId },
       select: { id: true, ogImageKey: true },
@@ -534,6 +580,7 @@ export class InvitationService {
     content: string,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
@@ -550,6 +597,7 @@ export class InvitationService {
 
   async updateTemplateNo(uniqueId: string, userId: number, templateNo: number) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     await this.prismaService.invitation.update({
       where: {
         uniqueId,
@@ -567,6 +615,7 @@ export class InvitationService {
     color: string,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const colorUpdate = { [type]: color };
 
     await this.prismaService.invitation.update({
@@ -579,6 +628,7 @@ export class InvitationService {
 
   async updateMusic(uniqueId: string, userId: number, s3Key: string) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     await this.prismaService.invitation.update({
       where: {
         uniqueId,
@@ -595,6 +645,7 @@ export class InvitationService {
     file: MemoryStoredFile,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     assertImageMime(file.mimeType);
     const invitation = await this.prismaService.invitation.findUnique({
       where: { uniqueId },
@@ -646,6 +697,7 @@ export class InvitationService {
     file: MemoryStoredFile,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     assertAudioMime(file.mimeType);
     const prevInvitationMusic = await this.prismaService.invitation.findUnique({
       where: { uniqueId },
@@ -687,6 +739,7 @@ export class InvitationService {
     secondarySponsor: string,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
@@ -717,6 +770,7 @@ export class InvitationService {
     },
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const invitation = await this.prismaService.invitation.findUnique({
       where: { uniqueId },
       select: { id: true },
@@ -946,6 +1000,7 @@ export class InvitationService {
 
   async updateNotice(uniqueId: string, userId: number, notice: string) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
@@ -962,6 +1017,7 @@ export class InvitationService {
     description?: string,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
@@ -974,6 +1030,7 @@ export class InvitationService {
 
   async updateRsvpTitle(uniqueId: string, userId: number, rsvpTitle: string) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
@@ -985,6 +1042,7 @@ export class InvitationService {
 
   async updateRsvpMaxPax(uniqueId: string, userId: number, rsvpMaxPax: number) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
@@ -1000,6 +1058,7 @@ export class InvitationService {
     rsvpDeadline: string | null,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     if (rsvpDeadline) {
       const nextDate = new Date(rsvpDeadline);
       if (Number.isNaN(nextDate.getTime())) {
@@ -1022,6 +1081,7 @@ export class InvitationService {
     hasRsvpDeadline: boolean,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
@@ -1076,6 +1136,7 @@ export class InvitationService {
     rsvpDeadlineDesc: string,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
@@ -1091,6 +1152,7 @@ export class InvitationService {
     rsvpHasFood: boolean,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
@@ -1106,6 +1168,7 @@ export class InvitationService {
     isRsvpPopup: boolean,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
@@ -1121,6 +1184,7 @@ export class InvitationService {
     layoutOrder: string,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
@@ -1138,6 +1202,7 @@ export class InvitationService {
     wishlistUrl: string,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
@@ -1151,6 +1216,7 @@ export class InvitationService {
 
   async updateFont(uniqueId: string, userId: number, font: string) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
@@ -1166,6 +1232,7 @@ export class InvitationService {
     endingText: string,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {

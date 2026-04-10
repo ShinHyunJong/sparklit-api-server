@@ -42,6 +42,11 @@ export class AdminController {
     return this.adminService.deleteInvitationByAdmin(Number(id));
   }
 
+  @Delete('/users/:id')
+  deleteUser(@Param('id') id: string) {
+    return this.adminService.deleteUserByAdmin(Number(id));
+  }
+
   @Put('/invitations/:id/billing')
   updateBilling(
     @Param('id') id: string,

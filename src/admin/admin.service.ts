@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { HASH_KEY } from 'src/constants';
 import { deleteFromS3 } from 'src/helpers/s3.helper';
@@ -369,6 +369,41 @@ export class AdminService {
     });
 
     return { deleted: 1, s3KeysDeleted: keysToDelete.length };
+  }
+
+  async deleteUserByAdmin(userId: number) {
+    const user = await this.prismaService.user.findUnique({
+      where: { id: userId },
+      include: {
+        invitationList: {
+          select: { id: true },
+        },
+      },
+    });
+
+    if (!user) {
+      throw new NotFoundException('User not found.');
+    }
+
+    if (user.isAdmin) {
+      throw new BadRequestException('Cannot delete an admin user.');
+    }
+
+    // Delete each invitation (including S3 cleanup) first,
+    // then delete the user.
+    let totalS3Keys = 0;
+    for (const inv of user.invitationList) {
+      const result = await this.deleteInvitationByAdmin(inv.id);
+      totalS3Keys += result.s3KeysDeleted;
+    }
+
+    await this.prismaService.user.delete({ where: { id: userId } });
+
+    return {
+      deleted: 1,
+      invitationsDeleted: user.invitationList.length,
+      s3KeysDeleted: totalS3Keys,
+    };
   }
 
   async getInvitationRsvpList(invitationIdentifier: string) {
