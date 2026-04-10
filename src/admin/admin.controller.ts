@@ -32,6 +32,11 @@ export class AdminController {
     return this.adminService.getUserFunnel();
   }
 
+  @Get('/invitations/map')
+  getInvitationMapMarkers() {
+    return this.adminService.getInvitationMapMarkers();
+  }
+
   @Get('/invitations/:uniqueId/rsvps')
   getInvitationRsvpList(@Param('uniqueId') uniqueId: string) {
     return this.adminService.getInvitationRsvpList(uniqueId);

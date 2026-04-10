@@ -186,6 +186,53 @@ export class AdminService {
     });
   }
 
+  async getInvitationMapMarkers() {
+    const places = await this.prismaService.invitationPlace.findMany({
+      where: {
+        place: { lat: { not: null }, lng: { not: null } },
+        invitation: {
+          user: { OR: [{ isAdmin: { not: true } }, { isAdmin: null }] },
+        },
+      },
+      select: {
+        place: { select: { name: true, address: true, lat: true, lng: true } },
+        invitation: {
+          select: {
+            uniqueId: true,
+            groomFirstName: true,
+            brideFirstName: true,
+            billingStatus: true,
+            currentPlanCode: true,
+            date: true,
+          },
+        },
+      },
+    });
+
+    // Deduplicate by invitation (one marker per invitation, use first place)
+    const seen = new Set<string>();
+    return places
+      .filter((p) => {
+        const uid = p.invitation?.uniqueId;
+        if (!uid || seen.has(uid)) return false;
+        seen.add(uid);
+        return true;
+      })
+      .map((p) => ({
+        uniqueId: p.invitation!.uniqueId,
+        coupleName: [p.invitation!.groomFirstName, p.invitation!.brideFirstName]
+          .filter(Boolean)
+          .join(' & '),
+        billingStatus: p.invitation!.billingStatus,
+        currentPlanCode: p.invitation!.currentPlanCode,
+        date: p.invitation!.date,
+        placeName: p.place?.name ?? null,
+        address: p.place?.address ?? null,
+        lat: p.place!.lat!,
+        lng: p.place!.lng!,
+      }));
+  }
+
   async getUserFunnel() {
     const nonAdminFilter = {
       OR: [{ isAdmin: { not: true } }, { isAdmin: null }],
