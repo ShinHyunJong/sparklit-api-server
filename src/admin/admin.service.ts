@@ -476,12 +476,16 @@ export class AdminService {
     }
 
     // Delete each invitation (including S3 cleanup) first,
-    // then delete the user.
+    // then clean up remaining FK references, then delete the user.
     let totalS3Keys = 0;
     for (const inv of user.invitationList) {
       const result = await this.deleteInvitationByAdmin(inv.id);
       totalS3Keys += result.s3KeysDeleted;
     }
+
+    // Clean up any InvitationOrder rows referencing this user directly
+    // (the userId FK has onDelete: NoAction)
+    await this.prismaService.invitationOrder.deleteMany({ where: { userId } });
 
     await this.prismaService.user.delete({ where: { id: userId } });
 

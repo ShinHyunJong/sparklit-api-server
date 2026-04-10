@@ -183,6 +183,7 @@ export class InvitationService {
   }
 
   async updateUniqueId(uniqueId: string, newUniqueId: string, userId: number) {
+    await this.assertNotLocked(uniqueId);
     const normalized = this.normalizeUniqueId(newUniqueId);
     if (normalized === this.normalizeUniqueId(uniqueId)) {
       return { uniqueId: normalized };
@@ -422,8 +423,6 @@ export class InvitationService {
       throw new NotFoundException('Invitation not found');
     }
 
-    await this.assertNotLocked(uniqueId);
-
     const targetDate = dayjs(updateInvitationDto.date);
 
     const updated = await this.prismaService.invitation.update({
@@ -531,6 +530,7 @@ export class InvitationService {
   }
 
   async deleteCoverPhoto(uniqueId: string, type: string, userId: number) {
+    await this.assertNotLocked(uniqueId);
     const allowedTypes = new Set([
       'main',
       'end',
@@ -675,6 +675,7 @@ export class InvitationService {
   }
 
   async deleteOgImage(uniqueId: string, userId: number) {
+    await this.assertNotLocked(uniqueId);
     const invitation = await this.prismaService.invitation.findFirst({
       where: { uniqueId, userId },
       select: { id: true, ogImageKey: true },
