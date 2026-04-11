@@ -564,6 +564,23 @@ export class AdminService {
     const isPaid = billingStatus === 'PAID';
     const now = new Date();
 
+    // Cancel any lingering PENDING orders first
+    await this.prismaService.invitationOrder.updateMany({
+      where: { invitationId, status: 'PENDING' },
+      data: { status: 'CANCELED' },
+    });
+
+    // Find the matching price plan for the order record
+    const pricePlan = isPaid && currentPlanCode
+      ? await this.prismaService.pricePlan.findFirst({
+          where: { code: currentPlanCode, isActive: true },
+        })
+      : null;
+
+    const durationDays = pricePlan?.durationDays
+      ? Number(pricePlan.durationDays)
+      : null;
+
     await this.prismaService.invitation.update({
       where: { id: invitationId },
       data: {
@@ -571,17 +588,32 @@ export class AdminService {
         currentPlanCode: isPaid ? currentPlanCode : null,
         watermarkEnabled: !isPaid,
         accessStartedAt: isPaid ? now : null,
-        accessEndsAt: isPaid && currentPlanCode === 'STANDARD'
-          ? new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000)
+        accessEndsAt: isPaid && durationDays
+          ? new Date(now.getTime() + durationDays * 24 * 60 * 60 * 1000)
           : null,
       },
     });
 
-    // Cancel any lingering PENDING orders to avoid blocking future checkouts
-    await this.prismaService.invitationOrder.updateMany({
-      where: { invitationId, status: 'PENDING' },
-      data: { status: 'CANCELED' },
-    });
+    // Create a matching InvitationOrder record when setting to PAID
+    if (isPaid && currentPlanCode) {
+      const rand = Math.random().toString(36).slice(2, 12).toUpperCase();
+      const orderNo = `ADM-${Date.now()}-${rand}`;
+
+      await this.prismaService.invitationOrder.create({
+        data: {
+          invitationId,
+          userId: invitation.userId,
+          pricePlanId: pricePlan?.id ?? null,
+          orderNo,
+          planCode: currentPlanCode,
+          amountPhp: pricePlan ? Number(pricePlan.amountPhp) : 0,
+          durationDays,
+          status: 'PAID',
+          paidAt: now,
+          provider: 'admin',
+        },
+      });
+    }
 
     return { updated: true };
   }
