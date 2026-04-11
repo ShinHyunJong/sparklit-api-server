@@ -577,6 +577,12 @@ export class AdminService {
       },
     });
 
+    // Cancel any lingering PENDING orders to avoid blocking future checkouts
+    await this.prismaService.invitationOrder.updateMany({
+      where: { invitationId, status: 'PENDING' },
+      data: { status: 'CANCELED' },
+    });
+
     return { updated: true };
   }
 
