@@ -14,3 +14,5 @@ export const PAYMENT_CANCEL_URL =
   process.env.PAYMENT_CANCEL_URL || 'http://localhost:8080/payment/cancel';
 export const SLACK_PAYMENT_WEBHOOK_URL =
   process.env.SLACK_PAYMENT_WEBHOOK_URL || '';
+export const SLACK_SIGNUP_WEBHOOK_URL =
+  process.env.SLACK_SIGNUP_WEBHOOK_URL || '';

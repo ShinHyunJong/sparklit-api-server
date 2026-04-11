@@ -4,6 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { hash } from 'src/helpers/security';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { postVerificationEmail } from 'src/utils/mailjet.util';
+import { postSlackSignupMessage } from 'src/utils/slack.util';
 
 export type TokenInfo = {
   id: number;
@@ -200,6 +201,15 @@ export class AuthService {
       },
     });
     const tokens = await this.getTokens(newUser.id, newUser.email);
+
+    // Best-effort Slack notification (don't block response)
+    postSlackSignupMessage({
+      name: normalizedName,
+      email,
+      phone: normalizedPhone,
+      country: normalizedCountry ?? 'N/A',
+    }).catch(() => {});
+
     return {
       user: {
         id: newUser.id,

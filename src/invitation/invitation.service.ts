@@ -848,8 +848,20 @@ export class InvitationService {
             email: true,
           },
         },
+        _count: {
+          select: { invitationRSVP: true },
+        },
       },
     });
+
+    if (invitation.billingStatus !== 'PAID') {
+      const currentCount = invitation._count?.invitationRSVP ?? 0;
+      if (currentCount >= 5) {
+        throw new BadRequestException(
+          'RSVP limit reached. Upgrade your plan to receive more responses.',
+        );
+      }
+    }
 
     await this.prismaService.invitationRSVP.create({
       data: {
