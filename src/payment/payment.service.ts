@@ -755,20 +755,15 @@ export class PaymentService {
     }
 
     // Prevent duplicate pending upgrade orders for the same invitation.
-    const existingPendingUpgrade =
-      await this.prismaService.invitationOrder.findFirst({
-        where: {
-          invitationId: invitation.id,
-          status: 'PENDING',
-          planCode: 'PREMIUM',
-        },
-        select: { id: true },
-      });
-    if (existingPendingUpgrade) {
-      throw new BadRequestException(
-        'An upgrade checkout is already in progress. Please complete or cancel it first.',
-      );
-    }
+    // Cancel any stale PENDING upgrade orders before creating a new one
+    await this.prismaService.invitationOrder.updateMany({
+      where: {
+        invitationId: invitation.id,
+        status: 'PENDING',
+        planCode: 'PREMIUM',
+      },
+      data: { status: 'CANCELED' },
+    });
 
     const [standardRows, premiumRows] = await Promise.all([
       this.getPlanPricing('STANDARD' as PlanCode),
