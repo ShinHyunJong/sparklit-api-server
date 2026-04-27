@@ -67,13 +67,16 @@ model Invitation {
   groomsMen                String?                     @db.Text
   textColor                String?                     @db.VarChar(10)
   timezone                 String?                     @db.VarChar(50)
-  rsvpTitle                String?                     @db.VarChar(255)
+  rsvpTitle                String?                     @db.Text
   rsvpMaxPax               Int?
   rsvpDeadline             DateTime?                   @db.Timestamp(0)
   rsvpDeadlineDesc         String?                     @db.Text
   rsvpHasFood              Boolean?
   isRsvpPopup              Boolean?                    @default(false)
   hasRsvpDeadline          Boolean?                    @default(true)
+  isPasswordProtected      Boolean?                    @default(false)
+  universalPassword        String?                     @db.VarChar(100)
+  guestListEnabled         Boolean?                    @default(false)
   billingStatus            Invitation_billingStatus    @default(TRIAL)
   trialEndsAt              DateTime?                   @db.DateTime(0)
   currentPlanCode          Invitation_currentPlanCode?
@@ -82,7 +85,7 @@ model Invitation {
   watermarkEnabled         Boolean                     @default(true)
   bestMan                  String?                     @db.Text
   bridesMaids              String?                     @db.Text
-  wishlistText             String?                     @default("We’ve put together a small wishlist at [Name] for those who would like to help us fill our new home.") @db.VarChar(255)
+  wishlistText             String?                     @db.Text
   groomMomName             String?                     @db.VarChar(50)
   groomDadName             String?                     @db.VarChar(50)
   layoutOrder              Json?
@@ -99,10 +102,12 @@ model Invitation {
   InvitationDressColor     InvitationDressColor[]
   invitationEntourageList  InvitationEntourage[]
   faqList                  InvitationFaq[]
+  InvitationGuestGroup     InvitationGuestGroup[]
   InvitationOrder          InvitationOrder[]
   photoList                InvitationPhoto[]
   placeList                InvitationPlace[]
   invitationRSVP           InvitationRSVP[]
+  InvitationSeatingTable   InvitationSeatingTable[]
 
   @@index([userId], map: "userId")
   @@index([billingStatus], map: "idx_invitation_billing_status")
@@ -183,21 +188,24 @@ model InvitationCoverPhoto {
 }
 
 model InvitationRSVP {
-  id            Int         @id @default(autoincrement()) @db.UnsignedInt
-  invitationId  Int?        @db.UnsignedInt
-  side          String?     @db.VarChar(10)
-  name          String?     @db.VarChar(100)
-  guestNameList String?     @db.Text
-  email         String?     @db.VarChar(255)
-  phone         String?     @db.VarChar(20)
-  remark        String?     @db.Text
-  food          String?     @db.Text
-  pax           Int?
-  attending     Boolean?
-  createdAt     DateTime?   @default(now()) @db.Timestamp(0)
-  invitation    Invitation? @relation(fields: [invitationId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "InvitationRSVP_ibfk_1")
+  id                   Int                   @id @default(autoincrement()) @db.UnsignedInt
+  invitationId         Int?                  @db.UnsignedInt
+  guestGroupId         Int?                  @db.UnsignedInt
+  side                 String?               @db.VarChar(10)
+  name                 String?               @db.VarChar(100)
+  guestNameList        String?               @db.Text
+  email                String?               @db.VarChar(255)
+  phone                String?               @db.VarChar(20)
+  remark               String?               @db.Text
+  food                 String?               @db.Text
+  pax                  Int?
+  attending            Boolean?
+  createdAt            DateTime?             @default(now()) @db.Timestamp(0)
+  invitation           Invitation?           @relation(fields: [invitationId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "InvitationRSVP_ibfk_1")
+  InvitationGuestGroup InvitationGuestGroup? @relation(fields: [guestGroupId], references: [id], onUpdate: NoAction, map: "fk_rsvp_guest_group")
 
   @@index([invitationId], map: "invitationId")
+  @@index([guestGroupId], map: "idx_rsvp_guest_group")
 }
 
 model InvitationMusic {
@@ -338,6 +346,56 @@ model AuditLog {
   @@index([targetType, targetId, createdAt], map: "idx_auditlog_target_created")
 }
 
+model InvitationGuestGroup {
+  id                       Int                              @id @default(autoincrement()) @db.UnsignedInt
+  invitationId             Int                              @db.UnsignedInt
+  name                     String                           @db.VarChar(100)
+  password                 String?                          @db.VarChar(100)
+  side                     InvitationGuestGroup_side?       @default(common)
+  maxPax                   Int?                             @default(1)
+  rsvpTitle                String?                          @db.VarChar(255)
+  layoutOverride           Json?
+  rsvpStatus               InvitationGuestGroup_rsvpStatus? @default(PENDING)
+  rsvpAt                   DateTime?                        @db.DateTime(0)
+  memo                     String?                          @db.Text
+  order                    Int?                             @default(0) @db.UnsignedInt
+  createdAt                DateTime?                        @default(now()) @db.DateTime(0)
+  updatedAt                DateTime?                        @default(now()) @db.DateTime(0)
+  Invitation               Invitation                       @relation(fields: [invitationId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_guest_group_invitation")
+  InvitationRSVP           InvitationRSVP[]
+  InvitationSeatAssignment InvitationSeatAssignment?
+
+  @@index([invitationId], map: "idx_guest_group_invitation")
+  @@index([invitationId, password], map: "idx_guest_group_password")
+}
+
+model InvitationSeatAssignment {
+  id                     Int                    @id @default(autoincrement()) @db.UnsignedInt
+  seatingTableId         Int                    @db.UnsignedInt
+  guestGroupId           Int                    @unique(map: "uk_guest_seat") @db.UnsignedInt
+  seatNumber             Int?                   @db.UnsignedInt
+  createdAt              DateTime?              @default(now()) @db.DateTime(0)
+  InvitationGuestGroup   InvitationGuestGroup   @relation(fields: [guestGroupId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_seat_assignment_guest")
+  InvitationSeatingTable InvitationSeatingTable @relation(fields: [seatingTableId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_seat_assignment_table")
+
+  @@unique([seatingTableId, seatNumber], map: "uk_seat_assignment")
+  @@index([seatingTableId], map: "idx_seat_assignment_table")
+}
+
+model InvitationSeatingTable {
+  id                       Int                        @id @default(autoincrement()) @db.UnsignedInt
+  invitationId             Int                        @db.UnsignedInt
+  name                     String                     @db.VarChar(100)
+  capacity                 Int                        @default(10) @db.UnsignedInt
+  order                    Int?                       @default(0) @db.UnsignedInt
+  createdAt                DateTime?                  @default(now()) @db.DateTime(0)
+  updatedAt                DateTime?                  @default(now()) @db.DateTime(0)
+  InvitationSeatAssignment InvitationSeatAssignment[]
+  Invitation               Invitation                 @relation(fields: [invitationId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_seating_table_invitation")
+
+  @@index([invitationId], map: "idx_seating_table_invitation")
+}
+
 enum InvitationOrder_status {
   PENDING
   PAID
@@ -362,4 +420,16 @@ enum InvitationOrder_planCode {
 enum Invitation_currentPlanCode {
   STANDARD
   PREMIUM
+}
+
+enum InvitationGuestGroup_side {
+  groom
+  bride
+  common
+}
+
+enum InvitationGuestGroup_rsvpStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
 }

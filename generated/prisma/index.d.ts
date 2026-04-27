@@ -108,6 +108,21 @@ export type PricePlan = $Result.DefaultSelection<Prisma.$PricePlanPayload>
  * 
  */
 export type AuditLog = $Result.DefaultSelection<Prisma.$AuditLogPayload>
+/**
+ * Model InvitationGuestGroup
+ * 
+ */
+export type InvitationGuestGroup = $Result.DefaultSelection<Prisma.$InvitationGuestGroupPayload>
+/**
+ * Model InvitationSeatAssignment
+ * 
+ */
+export type InvitationSeatAssignment = $Result.DefaultSelection<Prisma.$InvitationSeatAssignmentPayload>
+/**
+ * Model InvitationSeatingTable
+ * 
+ */
+export type InvitationSeatingTable = $Result.DefaultSelection<Prisma.$InvitationSeatingTablePayload>
 
 /**
  * Enums
@@ -150,6 +165,24 @@ export const Invitation_currentPlanCode: {
 
 export type Invitation_currentPlanCode = (typeof Invitation_currentPlanCode)[keyof typeof Invitation_currentPlanCode]
 
+
+export const InvitationGuestGroup_side: {
+  groom: 'groom',
+  bride: 'bride',
+  common: 'common'
+};
+
+export type InvitationGuestGroup_side = (typeof InvitationGuestGroup_side)[keyof typeof InvitationGuestGroup_side]
+
+
+export const InvitationGuestGroup_rsvpStatus: {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  DECLINED: 'DECLINED'
+};
+
+export type InvitationGuestGroup_rsvpStatus = (typeof InvitationGuestGroup_rsvpStatus)[keyof typeof InvitationGuestGroup_rsvpStatus]
+
 }
 
 export type InvitationOrder_status = $Enums.InvitationOrder_status
@@ -167,6 +200,14 @@ export const InvitationOrder_planCode: typeof $Enums.InvitationOrder_planCode
 export type Invitation_currentPlanCode = $Enums.Invitation_currentPlanCode
 
 export const Invitation_currentPlanCode: typeof $Enums.Invitation_currentPlanCode
+
+export type InvitationGuestGroup_side = $Enums.InvitationGuestGroup_side
+
+export const InvitationGuestGroup_side: typeof $Enums.InvitationGuestGroup_side
+
+export type InvitationGuestGroup_rsvpStatus = $Enums.InvitationGuestGroup_rsvpStatus
+
+export const InvitationGuestGroup_rsvpStatus: typeof $Enums.InvitationGuestGroup_rsvpStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -482,6 +523,36 @@ export class PrismaClient<
     * ```
     */
   get auditLog(): Prisma.AuditLogDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.invitationGuestGroup`: Exposes CRUD operations for the **InvitationGuestGroup** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more InvitationGuestGroups
+    * const invitationGuestGroups = await prisma.invitationGuestGroup.findMany()
+    * ```
+    */
+  get invitationGuestGroup(): Prisma.InvitationGuestGroupDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.invitationSeatAssignment`: Exposes CRUD operations for the **InvitationSeatAssignment** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more InvitationSeatAssignments
+    * const invitationSeatAssignments = await prisma.invitationSeatAssignment.findMany()
+    * ```
+    */
+  get invitationSeatAssignment(): Prisma.InvitationSeatAssignmentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.invitationSeatingTable`: Exposes CRUD operations for the **InvitationSeatingTable** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more InvitationSeatingTables
+    * const invitationSeatingTables = await prisma.invitationSeatingTable.findMany()
+    * ```
+    */
+  get invitationSeatingTable(): Prisma.InvitationSeatingTableDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -940,7 +1011,10 @@ export namespace Prisma {
     EmailVerification: 'EmailVerification',
     InvitationOrder: 'InvitationOrder',
     PricePlan: 'PricePlan',
-    AuditLog: 'AuditLog'
+    AuditLog: 'AuditLog',
+    InvitationGuestGroup: 'InvitationGuestGroup',
+    InvitationSeatAssignment: 'InvitationSeatAssignment',
+    InvitationSeatingTable: 'InvitationSeatingTable'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -959,7 +1033,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "invitation" | "invitationPlace" | "place" | "invitationPlaceTime" | "invitationPhoto" | "invitationCoverPhoto" | "invitationRSVP" | "invitationMusic" | "invitationView" | "invitationDressColor" | "invitationGuest" | "invitationFaq" | "invitationEntourage" | "admin" | "emailVerification" | "invitationOrder" | "pricePlan" | "auditLog"
+      modelProps: "user" | "invitation" | "invitationPlace" | "place" | "invitationPlaceTime" | "invitationPhoto" | "invitationCoverPhoto" | "invitationRSVP" | "invitationMusic" | "invitationView" | "invitationDressColor" | "invitationGuest" | "invitationFaq" | "invitationEntourage" | "admin" | "emailVerification" | "invitationOrder" | "pricePlan" | "auditLog" | "invitationGuestGroup" | "invitationSeatAssignment" | "invitationSeatingTable"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2217,6 +2291,204 @@ export namespace Prisma {
           }
         }
       }
+      InvitationGuestGroup: {
+        payload: Prisma.$InvitationGuestGroupPayload<ExtArgs>
+        fields: Prisma.InvitationGuestGroupFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.InvitationGuestGroupFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestGroupPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.InvitationGuestGroupFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestGroupPayload>
+          }
+          findFirst: {
+            args: Prisma.InvitationGuestGroupFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestGroupPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.InvitationGuestGroupFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestGroupPayload>
+          }
+          findMany: {
+            args: Prisma.InvitationGuestGroupFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestGroupPayload>[]
+          }
+          create: {
+            args: Prisma.InvitationGuestGroupCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestGroupPayload>
+          }
+          createMany: {
+            args: Prisma.InvitationGuestGroupCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.InvitationGuestGroupDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestGroupPayload>
+          }
+          update: {
+            args: Prisma.InvitationGuestGroupUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestGroupPayload>
+          }
+          deleteMany: {
+            args: Prisma.InvitationGuestGroupDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.InvitationGuestGroupUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.InvitationGuestGroupUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationGuestGroupPayload>
+          }
+          aggregate: {
+            args: Prisma.InvitationGuestGroupAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateInvitationGuestGroup>
+          }
+          groupBy: {
+            args: Prisma.InvitationGuestGroupGroupByArgs<ExtArgs>
+            result: $Utils.Optional<InvitationGuestGroupGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.InvitationGuestGroupCountArgs<ExtArgs>
+            result: $Utils.Optional<InvitationGuestGroupCountAggregateOutputType> | number
+          }
+        }
+      }
+      InvitationSeatAssignment: {
+        payload: Prisma.$InvitationSeatAssignmentPayload<ExtArgs>
+        fields: Prisma.InvitationSeatAssignmentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.InvitationSeatAssignmentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatAssignmentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.InvitationSeatAssignmentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatAssignmentPayload>
+          }
+          findFirst: {
+            args: Prisma.InvitationSeatAssignmentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatAssignmentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.InvitationSeatAssignmentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatAssignmentPayload>
+          }
+          findMany: {
+            args: Prisma.InvitationSeatAssignmentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatAssignmentPayload>[]
+          }
+          create: {
+            args: Prisma.InvitationSeatAssignmentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatAssignmentPayload>
+          }
+          createMany: {
+            args: Prisma.InvitationSeatAssignmentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.InvitationSeatAssignmentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatAssignmentPayload>
+          }
+          update: {
+            args: Prisma.InvitationSeatAssignmentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatAssignmentPayload>
+          }
+          deleteMany: {
+            args: Prisma.InvitationSeatAssignmentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.InvitationSeatAssignmentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.InvitationSeatAssignmentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatAssignmentPayload>
+          }
+          aggregate: {
+            args: Prisma.InvitationSeatAssignmentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateInvitationSeatAssignment>
+          }
+          groupBy: {
+            args: Prisma.InvitationSeatAssignmentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<InvitationSeatAssignmentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.InvitationSeatAssignmentCountArgs<ExtArgs>
+            result: $Utils.Optional<InvitationSeatAssignmentCountAggregateOutputType> | number
+          }
+        }
+      }
+      InvitationSeatingTable: {
+        payload: Prisma.$InvitationSeatingTablePayload<ExtArgs>
+        fields: Prisma.InvitationSeatingTableFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.InvitationSeatingTableFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatingTablePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.InvitationSeatingTableFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatingTablePayload>
+          }
+          findFirst: {
+            args: Prisma.InvitationSeatingTableFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatingTablePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.InvitationSeatingTableFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatingTablePayload>
+          }
+          findMany: {
+            args: Prisma.InvitationSeatingTableFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatingTablePayload>[]
+          }
+          create: {
+            args: Prisma.InvitationSeatingTableCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatingTablePayload>
+          }
+          createMany: {
+            args: Prisma.InvitationSeatingTableCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.InvitationSeatingTableDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatingTablePayload>
+          }
+          update: {
+            args: Prisma.InvitationSeatingTableUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatingTablePayload>
+          }
+          deleteMany: {
+            args: Prisma.InvitationSeatingTableDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.InvitationSeatingTableUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.InvitationSeatingTableUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationSeatingTablePayload>
+          }
+          aggregate: {
+            args: Prisma.InvitationSeatingTableAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateInvitationSeatingTable>
+          }
+          groupBy: {
+            args: Prisma.InvitationSeatingTableGroupByArgs<ExtArgs>
+            result: $Utils.Optional<InvitationSeatingTableGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.InvitationSeatingTableCountArgs<ExtArgs>
+            result: $Utils.Optional<InvitationSeatingTableCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2320,6 +2592,9 @@ export namespace Prisma {
     invitationOrder?: InvitationOrderOmit
     pricePlan?: PricePlanOmit
     auditLog?: AuditLogOmit
+    invitationGuestGroup?: InvitationGuestGroupOmit
+    invitationSeatAssignment?: InvitationSeatAssignmentOmit
+    invitationSeatingTable?: InvitationSeatingTableOmit
   }
 
   /* Types for Logging */
@@ -2458,10 +2733,12 @@ export namespace Prisma {
     InvitationDressColor: number
     invitationEntourageList: number
     faqList: number
+    InvitationGuestGroup: number
     InvitationOrder: number
     photoList: number
     placeList: number
     invitationRSVP: number
+    InvitationSeatingTable: number
   }
 
   export type InvitationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2469,10 +2746,12 @@ export namespace Prisma {
     InvitationDressColor?: boolean | InvitationCountOutputTypeCountInvitationDressColorArgs
     invitationEntourageList?: boolean | InvitationCountOutputTypeCountInvitationEntourageListArgs
     faqList?: boolean | InvitationCountOutputTypeCountFaqListArgs
+    InvitationGuestGroup?: boolean | InvitationCountOutputTypeCountInvitationGuestGroupArgs
     InvitationOrder?: boolean | InvitationCountOutputTypeCountInvitationOrderArgs
     photoList?: boolean | InvitationCountOutputTypeCountPhotoListArgs
     placeList?: boolean | InvitationCountOutputTypeCountPlaceListArgs
     invitationRSVP?: boolean | InvitationCountOutputTypeCountInvitationRSVPArgs
+    InvitationSeatingTable?: boolean | InvitationCountOutputTypeCountInvitationSeatingTableArgs
   }
 
   // Custom InputTypes
@@ -2517,6 +2796,13 @@ export namespace Prisma {
   /**
    * InvitationCountOutputType without action
    */
+  export type InvitationCountOutputTypeCountInvitationGuestGroupArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationGuestGroupWhereInput
+  }
+
+  /**
+   * InvitationCountOutputType without action
+   */
   export type InvitationCountOutputTypeCountInvitationOrderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InvitationOrderWhereInput
   }
@@ -2540,6 +2826,13 @@ export namespace Prisma {
    */
   export type InvitationCountOutputTypeCountInvitationRSVPArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InvitationRSVPWhereInput
+  }
+
+  /**
+   * InvitationCountOutputType without action
+   */
+  export type InvitationCountOutputTypeCountInvitationSeatingTableArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationSeatingTableWhereInput
   }
 
 
@@ -2633,6 +2926,68 @@ export namespace Prisma {
    */
   export type PricePlanCountOutputTypeCountInvitationOrderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InvitationOrderWhereInput
+  }
+
+
+  /**
+   * Count Type InvitationGuestGroupCountOutputType
+   */
+
+  export type InvitationGuestGroupCountOutputType = {
+    InvitationRSVP: number
+  }
+
+  export type InvitationGuestGroupCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    InvitationRSVP?: boolean | InvitationGuestGroupCountOutputTypeCountInvitationRSVPArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * InvitationGuestGroupCountOutputType without action
+   */
+  export type InvitationGuestGroupCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuestGroupCountOutputType
+     */
+    select?: InvitationGuestGroupCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * InvitationGuestGroupCountOutputType without action
+   */
+  export type InvitationGuestGroupCountOutputTypeCountInvitationRSVPArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationRSVPWhereInput
+  }
+
+
+  /**
+   * Count Type InvitationSeatingTableCountOutputType
+   */
+
+  export type InvitationSeatingTableCountOutputType = {
+    InvitationSeatAssignment: number
+  }
+
+  export type InvitationSeatingTableCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    InvitationSeatAssignment?: boolean | InvitationSeatingTableCountOutputTypeCountInvitationSeatAssignmentArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * InvitationSeatingTableCountOutputType without action
+   */
+  export type InvitationSeatingTableCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatingTableCountOutputType
+     */
+    select?: InvitationSeatingTableCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * InvitationSeatingTableCountOutputType without action
+   */
+  export type InvitationSeatingTableCountOutputTypeCountInvitationSeatAssignmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationSeatAssignmentWhereInput
   }
 
 
@@ -3785,6 +4140,9 @@ export namespace Prisma {
     rsvpHasFood: boolean | null
     isRsvpPopup: boolean | null
     hasRsvpDeadline: boolean | null
+    isPasswordProtected: boolean | null
+    universalPassword: string | null
+    guestListEnabled: boolean | null
     billingStatus: $Enums.Invitation_billingStatus | null
     trialEndsAt: Date | null
     currentPlanCode: $Enums.Invitation_currentPlanCode | null
@@ -3858,6 +4216,9 @@ export namespace Prisma {
     rsvpHasFood: boolean | null
     isRsvpPopup: boolean | null
     hasRsvpDeadline: boolean | null
+    isPasswordProtected: boolean | null
+    universalPassword: string | null
+    guestListEnabled: boolean | null
     billingStatus: $Enums.Invitation_billingStatus | null
     trialEndsAt: Date | null
     currentPlanCode: $Enums.Invitation_currentPlanCode | null
@@ -3931,6 +4292,9 @@ export namespace Prisma {
     rsvpHasFood: number
     isRsvpPopup: number
     hasRsvpDeadline: number
+    isPasswordProtected: number
+    universalPassword: number
+    guestListEnabled: number
     billingStatus: number
     trialEndsAt: number
     currentPlanCode: number
@@ -4027,6 +4391,9 @@ export namespace Prisma {
     rsvpHasFood?: true
     isRsvpPopup?: true
     hasRsvpDeadline?: true
+    isPasswordProtected?: true
+    universalPassword?: true
+    guestListEnabled?: true
     billingStatus?: true
     trialEndsAt?: true
     currentPlanCode?: true
@@ -4100,6 +4467,9 @@ export namespace Prisma {
     rsvpHasFood?: true
     isRsvpPopup?: true
     hasRsvpDeadline?: true
+    isPasswordProtected?: true
+    universalPassword?: true
+    guestListEnabled?: true
     billingStatus?: true
     trialEndsAt?: true
     currentPlanCode?: true
@@ -4173,6 +4543,9 @@ export namespace Prisma {
     rsvpHasFood?: true
     isRsvpPopup?: true
     hasRsvpDeadline?: true
+    isPasswordProtected?: true
+    universalPassword?: true
+    guestListEnabled?: true
     billingStatus?: true
     trialEndsAt?: true
     currentPlanCode?: true
@@ -4334,6 +4707,9 @@ export namespace Prisma {
     rsvpHasFood: boolean | null
     isRsvpPopup: boolean | null
     hasRsvpDeadline: boolean | null
+    isPasswordProtected: boolean | null
+    universalPassword: string | null
+    guestListEnabled: boolean | null
     billingStatus: $Enums.Invitation_billingStatus
     trialEndsAt: Date | null
     currentPlanCode: $Enums.Invitation_currentPlanCode | null
@@ -4427,6 +4803,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean
     isRsvpPopup?: boolean
     hasRsvpDeadline?: boolean
+    isPasswordProtected?: boolean
+    universalPassword?: boolean
+    guestListEnabled?: boolean
     billingStatus?: boolean
     trialEndsAt?: boolean
     currentPlanCode?: boolean
@@ -4452,10 +4831,12 @@ export namespace Prisma {
     InvitationDressColor?: boolean | Invitation$InvitationDressColorArgs<ExtArgs>
     invitationEntourageList?: boolean | Invitation$invitationEntourageListArgs<ExtArgs>
     faqList?: boolean | Invitation$faqListArgs<ExtArgs>
+    InvitationGuestGroup?: boolean | Invitation$InvitationGuestGroupArgs<ExtArgs>
     InvitationOrder?: boolean | Invitation$InvitationOrderArgs<ExtArgs>
     photoList?: boolean | Invitation$photoListArgs<ExtArgs>
     placeList?: boolean | Invitation$placeListArgs<ExtArgs>
     invitationRSVP?: boolean | Invitation$invitationRSVPArgs<ExtArgs>
+    InvitationSeatingTable?: boolean | Invitation$InvitationSeatingTableArgs<ExtArgs>
     _count?: boolean | InvitationCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["invitation"]>
 
@@ -4513,6 +4894,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean
     isRsvpPopup?: boolean
     hasRsvpDeadline?: boolean
+    isPasswordProtected?: boolean
+    universalPassword?: boolean
+    guestListEnabled?: boolean
     billingStatus?: boolean
     trialEndsAt?: boolean
     currentPlanCode?: boolean
@@ -4535,17 +4919,19 @@ export namespace Prisma {
     bridesMaidsLabel?: boolean
   }
 
-  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpDeadline" | "rsvpDeadlineDesc" | "rsvpHasFood" | "isRsvpPopup" | "hasRsvpDeadline" | "billingStatus" | "trialEndsAt" | "currentPlanCode" | "accessStartedAt" | "accessEndsAt" | "watermarkEnabled" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt" | "bestManLabel" | "maidOfHonorLabel" | "groomsMenLabel" | "bridesMaidsLabel", ExtArgs["result"]["invitation"]>
+  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpDeadline" | "rsvpDeadlineDesc" | "rsvpHasFood" | "isRsvpPopup" | "hasRsvpDeadline" | "isPasswordProtected" | "universalPassword" | "guestListEnabled" | "billingStatus" | "trialEndsAt" | "currentPlanCode" | "accessStartedAt" | "accessEndsAt" | "watermarkEnabled" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt" | "bestManLabel" | "maidOfHonorLabel" | "groomsMenLabel" | "bridesMaidsLabel", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
     InvitationDressColor?: boolean | Invitation$InvitationDressColorArgs<ExtArgs>
     invitationEntourageList?: boolean | Invitation$invitationEntourageListArgs<ExtArgs>
     faqList?: boolean | Invitation$faqListArgs<ExtArgs>
+    InvitationGuestGroup?: boolean | Invitation$InvitationGuestGroupArgs<ExtArgs>
     InvitationOrder?: boolean | Invitation$InvitationOrderArgs<ExtArgs>
     photoList?: boolean | Invitation$photoListArgs<ExtArgs>
     placeList?: boolean | Invitation$placeListArgs<ExtArgs>
     invitationRSVP?: boolean | Invitation$invitationRSVPArgs<ExtArgs>
+    InvitationSeatingTable?: boolean | Invitation$InvitationSeatingTableArgs<ExtArgs>
     _count?: boolean | InvitationCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -4557,10 +4943,12 @@ export namespace Prisma {
       InvitationDressColor: Prisma.$InvitationDressColorPayload<ExtArgs>[]
       invitationEntourageList: Prisma.$InvitationEntouragePayload<ExtArgs>[]
       faqList: Prisma.$InvitationFaqPayload<ExtArgs>[]
+      InvitationGuestGroup: Prisma.$InvitationGuestGroupPayload<ExtArgs>[]
       InvitationOrder: Prisma.$InvitationOrderPayload<ExtArgs>[]
       photoList: Prisma.$InvitationPhotoPayload<ExtArgs>[]
       placeList: Prisma.$InvitationPlacePayload<ExtArgs>[]
       invitationRSVP: Prisma.$InvitationRSVPPayload<ExtArgs>[]
+      InvitationSeatingTable: Prisma.$InvitationSeatingTablePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4614,6 +5002,9 @@ export namespace Prisma {
       rsvpHasFood: boolean | null
       isRsvpPopup: boolean | null
       hasRsvpDeadline: boolean | null
+      isPasswordProtected: boolean | null
+      universalPassword: string | null
+      guestListEnabled: boolean | null
       billingStatus: $Enums.Invitation_billingStatus
       trialEndsAt: Date | null
       currentPlanCode: $Enums.Invitation_currentPlanCode | null
@@ -4979,10 +5370,12 @@ export namespace Prisma {
     InvitationDressColor<T extends Invitation$InvitationDressColorArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$InvitationDressColorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationDressColorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     invitationEntourageList<T extends Invitation$invitationEntourageListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$invitationEntourageListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationEntouragePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     faqList<T extends Invitation$faqListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$faqListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationFaqPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    InvitationGuestGroup<T extends Invitation$InvitationGuestGroupArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$InvitationGuestGroupArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationGuestGroupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     InvitationOrder<T extends Invitation$InvitationOrderArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$InvitationOrderArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     photoList<T extends Invitation$photoListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$photoListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     placeList<T extends Invitation$placeListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$placeListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPlacePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     invitationRSVP<T extends Invitation$invitationRSVPArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$invitationRSVPArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationRSVPPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    InvitationSeatingTable<T extends Invitation$InvitationSeatingTableArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$InvitationSeatingTableArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationSeatingTablePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5063,6 +5456,9 @@ export namespace Prisma {
     readonly rsvpHasFood: FieldRef<"Invitation", 'Boolean'>
     readonly isRsvpPopup: FieldRef<"Invitation", 'Boolean'>
     readonly hasRsvpDeadline: FieldRef<"Invitation", 'Boolean'>
+    readonly isPasswordProtected: FieldRef<"Invitation", 'Boolean'>
+    readonly universalPassword: FieldRef<"Invitation", 'String'>
+    readonly guestListEnabled: FieldRef<"Invitation", 'Boolean'>
     readonly billingStatus: FieldRef<"Invitation", 'Invitation_billingStatus'>
     readonly trialEndsAt: FieldRef<"Invitation", 'DateTime'>
     readonly currentPlanCode: FieldRef<"Invitation", 'Invitation_currentPlanCode'>
@@ -5541,6 +5937,30 @@ export namespace Prisma {
   }
 
   /**
+   * Invitation.InvitationGuestGroup
+   */
+  export type Invitation$InvitationGuestGroupArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuestGroup
+     */
+    select?: InvitationGuestGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuestGroup
+     */
+    omit?: InvitationGuestGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationGuestGroupInclude<ExtArgs> | null
+    where?: InvitationGuestGroupWhereInput
+    orderBy?: InvitationGuestGroupOrderByWithRelationInput | InvitationGuestGroupOrderByWithRelationInput[]
+    cursor?: InvitationGuestGroupWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvitationGuestGroupScalarFieldEnum | InvitationGuestGroupScalarFieldEnum[]
+  }
+
+  /**
    * Invitation.InvitationOrder
    */
   export type Invitation$InvitationOrderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5634,6 +6054,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: InvitationRSVPScalarFieldEnum | InvitationRSVPScalarFieldEnum[]
+  }
+
+  /**
+   * Invitation.InvitationSeatingTable
+   */
+  export type Invitation$InvitationSeatingTableArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatingTable
+     */
+    select?: InvitationSeatingTableSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatingTable
+     */
+    omit?: InvitationSeatingTableOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatingTableInclude<ExtArgs> | null
+    where?: InvitationSeatingTableWhereInput
+    orderBy?: InvitationSeatingTableOrderByWithRelationInput | InvitationSeatingTableOrderByWithRelationInput[]
+    cursor?: InvitationSeatingTableWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvitationSeatingTableScalarFieldEnum | InvitationSeatingTableScalarFieldEnum[]
   }
 
   /**
@@ -10911,18 +11355,21 @@ export namespace Prisma {
   export type InvitationRSVPAvgAggregateOutputType = {
     id: number | null
     invitationId: number | null
+    guestGroupId: number | null
     pax: number | null
   }
 
   export type InvitationRSVPSumAggregateOutputType = {
     id: number | null
     invitationId: number | null
+    guestGroupId: number | null
     pax: number | null
   }
 
   export type InvitationRSVPMinAggregateOutputType = {
     id: number | null
     invitationId: number | null
+    guestGroupId: number | null
     side: string | null
     name: string | null
     guestNameList: string | null
@@ -10938,6 +11385,7 @@ export namespace Prisma {
   export type InvitationRSVPMaxAggregateOutputType = {
     id: number | null
     invitationId: number | null
+    guestGroupId: number | null
     side: string | null
     name: string | null
     guestNameList: string | null
@@ -10953,6 +11401,7 @@ export namespace Prisma {
   export type InvitationRSVPCountAggregateOutputType = {
     id: number
     invitationId: number
+    guestGroupId: number
     side: number
     name: number
     guestNameList: number
@@ -10970,18 +11419,21 @@ export namespace Prisma {
   export type InvitationRSVPAvgAggregateInputType = {
     id?: true
     invitationId?: true
+    guestGroupId?: true
     pax?: true
   }
 
   export type InvitationRSVPSumAggregateInputType = {
     id?: true
     invitationId?: true
+    guestGroupId?: true
     pax?: true
   }
 
   export type InvitationRSVPMinAggregateInputType = {
     id?: true
     invitationId?: true
+    guestGroupId?: true
     side?: true
     name?: true
     guestNameList?: true
@@ -10997,6 +11449,7 @@ export namespace Prisma {
   export type InvitationRSVPMaxAggregateInputType = {
     id?: true
     invitationId?: true
+    guestGroupId?: true
     side?: true
     name?: true
     guestNameList?: true
@@ -11012,6 +11465,7 @@ export namespace Prisma {
   export type InvitationRSVPCountAggregateInputType = {
     id?: true
     invitationId?: true
+    guestGroupId?: true
     side?: true
     name?: true
     guestNameList?: true
@@ -11114,6 +11568,7 @@ export namespace Prisma {
   export type InvitationRSVPGroupByOutputType = {
     id: number
     invitationId: number | null
+    guestGroupId: number | null
     side: string | null
     name: string | null
     guestNameList: string | null
@@ -11148,6 +11603,7 @@ export namespace Prisma {
   export type InvitationRSVPSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     invitationId?: boolean
+    guestGroupId?: boolean
     side?: boolean
     name?: boolean
     guestNameList?: boolean
@@ -11159,6 +11615,7 @@ export namespace Prisma {
     attending?: boolean
     createdAt?: boolean
     invitation?: boolean | InvitationRSVP$invitationArgs<ExtArgs>
+    InvitationGuestGroup?: boolean | InvitationRSVP$InvitationGuestGroupArgs<ExtArgs>
   }, ExtArgs["result"]["invitationRSVP"]>
 
 
@@ -11166,6 +11623,7 @@ export namespace Prisma {
   export type InvitationRSVPSelectScalar = {
     id?: boolean
     invitationId?: boolean
+    guestGroupId?: boolean
     side?: boolean
     name?: boolean
     guestNameList?: boolean
@@ -11178,19 +11636,22 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type InvitationRSVPOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitationId" | "side" | "name" | "guestNameList" | "email" | "phone" | "remark" | "food" | "pax" | "attending" | "createdAt", ExtArgs["result"]["invitationRSVP"]>
+  export type InvitationRSVPOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitationId" | "guestGroupId" | "side" | "name" | "guestNameList" | "email" | "phone" | "remark" | "food" | "pax" | "attending" | "createdAt", ExtArgs["result"]["invitationRSVP"]>
   export type InvitationRSVPInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     invitation?: boolean | InvitationRSVP$invitationArgs<ExtArgs>
+    InvitationGuestGroup?: boolean | InvitationRSVP$InvitationGuestGroupArgs<ExtArgs>
   }
 
   export type $InvitationRSVPPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "InvitationRSVP"
     objects: {
       invitation: Prisma.$InvitationPayload<ExtArgs> | null
+      InvitationGuestGroup: Prisma.$InvitationGuestGroupPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       invitationId: number | null
+      guestGroupId: number | null
       side: string | null
       name: string | null
       guestNameList: string | null
@@ -11542,6 +12003,7 @@ export namespace Prisma {
   export interface Prisma__InvitationRSVPClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     invitation<T extends InvitationRSVP$invitationArgs<ExtArgs> = {}>(args?: Subset<T, InvitationRSVP$invitationArgs<ExtArgs>>): Prisma__InvitationClient<$Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    InvitationGuestGroup<T extends InvitationRSVP$InvitationGuestGroupArgs<ExtArgs> = {}>(args?: Subset<T, InvitationRSVP$InvitationGuestGroupArgs<ExtArgs>>): Prisma__InvitationGuestGroupClient<$Result.GetResult<Prisma.$InvitationGuestGroupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11573,6 +12035,7 @@ export namespace Prisma {
   interface InvitationRSVPFieldRefs {
     readonly id: FieldRef<"InvitationRSVP", 'Int'>
     readonly invitationId: FieldRef<"InvitationRSVP", 'Int'>
+    readonly guestGroupId: FieldRef<"InvitationRSVP", 'Int'>
     readonly side: FieldRef<"InvitationRSVP", 'String'>
     readonly name: FieldRef<"InvitationRSVP", 'String'>
     readonly guestNameList: FieldRef<"InvitationRSVP", 'String'>
@@ -11942,6 +12405,25 @@ export namespace Prisma {
      */
     include?: InvitationInclude<ExtArgs> | null
     where?: InvitationWhereInput
+  }
+
+  /**
+   * InvitationRSVP.InvitationGuestGroup
+   */
+  export type InvitationRSVP$InvitationGuestGroupArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuestGroup
+     */
+    select?: InvitationGuestGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuestGroup
+     */
+    omit?: InvitationGuestGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationGuestGroupInclude<ExtArgs> | null
+    where?: InvitationGuestGroupWhereInput
   }
 
   /**
@@ -22653,6 +23135,3135 @@ export namespace Prisma {
 
 
   /**
+   * Model InvitationGuestGroup
+   */
+
+  export type AggregateInvitationGuestGroup = {
+    _count: InvitationGuestGroupCountAggregateOutputType | null
+    _avg: InvitationGuestGroupAvgAggregateOutputType | null
+    _sum: InvitationGuestGroupSumAggregateOutputType | null
+    _min: InvitationGuestGroupMinAggregateOutputType | null
+    _max: InvitationGuestGroupMaxAggregateOutputType | null
+  }
+
+  export type InvitationGuestGroupAvgAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    maxPax: number | null
+    order: number | null
+  }
+
+  export type InvitationGuestGroupSumAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    maxPax: number | null
+    order: number | null
+  }
+
+  export type InvitationGuestGroupMinAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    name: string | null
+    password: string | null
+    side: $Enums.InvitationGuestGroup_side | null
+    maxPax: number | null
+    rsvpTitle: string | null
+    rsvpStatus: $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt: Date | null
+    memo: string | null
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type InvitationGuestGroupMaxAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    name: string | null
+    password: string | null
+    side: $Enums.InvitationGuestGroup_side | null
+    maxPax: number | null
+    rsvpTitle: string | null
+    rsvpStatus: $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt: Date | null
+    memo: string | null
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type InvitationGuestGroupCountAggregateOutputType = {
+    id: number
+    invitationId: number
+    name: number
+    password: number
+    side: number
+    maxPax: number
+    rsvpTitle: number
+    layoutOverride: number
+    rsvpStatus: number
+    rsvpAt: number
+    memo: number
+    order: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type InvitationGuestGroupAvgAggregateInputType = {
+    id?: true
+    invitationId?: true
+    maxPax?: true
+    order?: true
+  }
+
+  export type InvitationGuestGroupSumAggregateInputType = {
+    id?: true
+    invitationId?: true
+    maxPax?: true
+    order?: true
+  }
+
+  export type InvitationGuestGroupMinAggregateInputType = {
+    id?: true
+    invitationId?: true
+    name?: true
+    password?: true
+    side?: true
+    maxPax?: true
+    rsvpTitle?: true
+    rsvpStatus?: true
+    rsvpAt?: true
+    memo?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type InvitationGuestGroupMaxAggregateInputType = {
+    id?: true
+    invitationId?: true
+    name?: true
+    password?: true
+    side?: true
+    maxPax?: true
+    rsvpTitle?: true
+    rsvpStatus?: true
+    rsvpAt?: true
+    memo?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type InvitationGuestGroupCountAggregateInputType = {
+    id?: true
+    invitationId?: true
+    name?: true
+    password?: true
+    side?: true
+    maxPax?: true
+    rsvpTitle?: true
+    layoutOverride?: true
+    rsvpStatus?: true
+    rsvpAt?: true
+    memo?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type InvitationGuestGroupAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationGuestGroup to aggregate.
+     */
+    where?: InvitationGuestGroupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationGuestGroups to fetch.
+     */
+    orderBy?: InvitationGuestGroupOrderByWithRelationInput | InvitationGuestGroupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: InvitationGuestGroupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationGuestGroups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationGuestGroups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned InvitationGuestGroups
+    **/
+    _count?: true | InvitationGuestGroupCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: InvitationGuestGroupAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: InvitationGuestGroupSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: InvitationGuestGroupMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: InvitationGuestGroupMaxAggregateInputType
+  }
+
+  export type GetInvitationGuestGroupAggregateType<T extends InvitationGuestGroupAggregateArgs> = {
+        [P in keyof T & keyof AggregateInvitationGuestGroup]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateInvitationGuestGroup[P]>
+      : GetScalarType<T[P], AggregateInvitationGuestGroup[P]>
+  }
+
+
+
+
+  export type InvitationGuestGroupGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationGuestGroupWhereInput
+    orderBy?: InvitationGuestGroupOrderByWithAggregationInput | InvitationGuestGroupOrderByWithAggregationInput[]
+    by: InvitationGuestGroupScalarFieldEnum[] | InvitationGuestGroupScalarFieldEnum
+    having?: InvitationGuestGroupScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: InvitationGuestGroupCountAggregateInputType | true
+    _avg?: InvitationGuestGroupAvgAggregateInputType
+    _sum?: InvitationGuestGroupSumAggregateInputType
+    _min?: InvitationGuestGroupMinAggregateInputType
+    _max?: InvitationGuestGroupMaxAggregateInputType
+  }
+
+  export type InvitationGuestGroupGroupByOutputType = {
+    id: number
+    invitationId: number
+    name: string
+    password: string | null
+    side: $Enums.InvitationGuestGroup_side | null
+    maxPax: number | null
+    rsvpTitle: string | null
+    layoutOverride: JsonValue | null
+    rsvpStatus: $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt: Date | null
+    memo: string | null
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    _count: InvitationGuestGroupCountAggregateOutputType | null
+    _avg: InvitationGuestGroupAvgAggregateOutputType | null
+    _sum: InvitationGuestGroupSumAggregateOutputType | null
+    _min: InvitationGuestGroupMinAggregateOutputType | null
+    _max: InvitationGuestGroupMaxAggregateOutputType | null
+  }
+
+  type GetInvitationGuestGroupGroupByPayload<T extends InvitationGuestGroupGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<InvitationGuestGroupGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof InvitationGuestGroupGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], InvitationGuestGroupGroupByOutputType[P]>
+            : GetScalarType<T[P], InvitationGuestGroupGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type InvitationGuestGroupSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    invitationId?: boolean
+    name?: boolean
+    password?: boolean
+    side?: boolean
+    maxPax?: boolean
+    rsvpTitle?: boolean
+    layoutOverride?: boolean
+    rsvpStatus?: boolean
+    rsvpAt?: boolean
+    memo?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    Invitation?: boolean | InvitationDefaultArgs<ExtArgs>
+    InvitationRSVP?: boolean | InvitationGuestGroup$InvitationRSVPArgs<ExtArgs>
+    InvitationSeatAssignment?: boolean | InvitationGuestGroup$InvitationSeatAssignmentArgs<ExtArgs>
+    _count?: boolean | InvitationGuestGroupCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["invitationGuestGroup"]>
+
+
+
+  export type InvitationGuestGroupSelectScalar = {
+    id?: boolean
+    invitationId?: boolean
+    name?: boolean
+    password?: boolean
+    side?: boolean
+    maxPax?: boolean
+    rsvpTitle?: boolean
+    layoutOverride?: boolean
+    rsvpStatus?: boolean
+    rsvpAt?: boolean
+    memo?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type InvitationGuestGroupOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitationId" | "name" | "password" | "side" | "maxPax" | "rsvpTitle" | "layoutOverride" | "rsvpStatus" | "rsvpAt" | "memo" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["invitationGuestGroup"]>
+  export type InvitationGuestGroupInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Invitation?: boolean | InvitationDefaultArgs<ExtArgs>
+    InvitationRSVP?: boolean | InvitationGuestGroup$InvitationRSVPArgs<ExtArgs>
+    InvitationSeatAssignment?: boolean | InvitationGuestGroup$InvitationSeatAssignmentArgs<ExtArgs>
+    _count?: boolean | InvitationGuestGroupCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $InvitationGuestGroupPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "InvitationGuestGroup"
+    objects: {
+      Invitation: Prisma.$InvitationPayload<ExtArgs>
+      InvitationRSVP: Prisma.$InvitationRSVPPayload<ExtArgs>[]
+      InvitationSeatAssignment: Prisma.$InvitationSeatAssignmentPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      invitationId: number
+      name: string
+      password: string | null
+      side: $Enums.InvitationGuestGroup_side | null
+      maxPax: number | null
+      rsvpTitle: string | null
+      layoutOverride: Prisma.JsonValue | null
+      rsvpStatus: $Enums.InvitationGuestGroup_rsvpStatus | null
+      rsvpAt: Date | null
+      memo: string | null
+      order: number | null
+      createdAt: Date | null
+      updatedAt: Date | null
+    }, ExtArgs["result"]["invitationGuestGroup"]>
+    composites: {}
+  }
+
+  type InvitationGuestGroupGetPayload<S extends boolean | null | undefined | InvitationGuestGroupDefaultArgs> = $Result.GetResult<Prisma.$InvitationGuestGroupPayload, S>
+
+  type InvitationGuestGroupCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<InvitationGuestGroupFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: InvitationGuestGroupCountAggregateInputType | true
+    }
+
+  export interface InvitationGuestGroupDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['InvitationGuestGroup'], meta: { name: 'InvitationGuestGroup' } }
+    /**
+     * Find zero or one InvitationGuestGroup that matches the filter.
+     * @param {InvitationGuestGroupFindUniqueArgs} args - Arguments to find a InvitationGuestGroup
+     * @example
+     * // Get one InvitationGuestGroup
+     * const invitationGuestGroup = await prisma.invitationGuestGroup.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends InvitationGuestGroupFindUniqueArgs>(args: SelectSubset<T, InvitationGuestGroupFindUniqueArgs<ExtArgs>>): Prisma__InvitationGuestGroupClient<$Result.GetResult<Prisma.$InvitationGuestGroupPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one InvitationGuestGroup that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {InvitationGuestGroupFindUniqueOrThrowArgs} args - Arguments to find a InvitationGuestGroup
+     * @example
+     * // Get one InvitationGuestGroup
+     * const invitationGuestGroup = await prisma.invitationGuestGroup.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends InvitationGuestGroupFindUniqueOrThrowArgs>(args: SelectSubset<T, InvitationGuestGroupFindUniqueOrThrowArgs<ExtArgs>>): Prisma__InvitationGuestGroupClient<$Result.GetResult<Prisma.$InvitationGuestGroupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationGuestGroup that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationGuestGroupFindFirstArgs} args - Arguments to find a InvitationGuestGroup
+     * @example
+     * // Get one InvitationGuestGroup
+     * const invitationGuestGroup = await prisma.invitationGuestGroup.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends InvitationGuestGroupFindFirstArgs>(args?: SelectSubset<T, InvitationGuestGroupFindFirstArgs<ExtArgs>>): Prisma__InvitationGuestGroupClient<$Result.GetResult<Prisma.$InvitationGuestGroupPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationGuestGroup that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationGuestGroupFindFirstOrThrowArgs} args - Arguments to find a InvitationGuestGroup
+     * @example
+     * // Get one InvitationGuestGroup
+     * const invitationGuestGroup = await prisma.invitationGuestGroup.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends InvitationGuestGroupFindFirstOrThrowArgs>(args?: SelectSubset<T, InvitationGuestGroupFindFirstOrThrowArgs<ExtArgs>>): Prisma__InvitationGuestGroupClient<$Result.GetResult<Prisma.$InvitationGuestGroupPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more InvitationGuestGroups that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationGuestGroupFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all InvitationGuestGroups
+     * const invitationGuestGroups = await prisma.invitationGuestGroup.findMany()
+     * 
+     * // Get first 10 InvitationGuestGroups
+     * const invitationGuestGroups = await prisma.invitationGuestGroup.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const invitationGuestGroupWithIdOnly = await prisma.invitationGuestGroup.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends InvitationGuestGroupFindManyArgs>(args?: SelectSubset<T, InvitationGuestGroupFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationGuestGroupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a InvitationGuestGroup.
+     * @param {InvitationGuestGroupCreateArgs} args - Arguments to create a InvitationGuestGroup.
+     * @example
+     * // Create one InvitationGuestGroup
+     * const InvitationGuestGroup = await prisma.invitationGuestGroup.create({
+     *   data: {
+     *     // ... data to create a InvitationGuestGroup
+     *   }
+     * })
+     * 
+     */
+    create<T extends InvitationGuestGroupCreateArgs>(args: SelectSubset<T, InvitationGuestGroupCreateArgs<ExtArgs>>): Prisma__InvitationGuestGroupClient<$Result.GetResult<Prisma.$InvitationGuestGroupPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many InvitationGuestGroups.
+     * @param {InvitationGuestGroupCreateManyArgs} args - Arguments to create many InvitationGuestGroups.
+     * @example
+     * // Create many InvitationGuestGroups
+     * const invitationGuestGroup = await prisma.invitationGuestGroup.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends InvitationGuestGroupCreateManyArgs>(args?: SelectSubset<T, InvitationGuestGroupCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a InvitationGuestGroup.
+     * @param {InvitationGuestGroupDeleteArgs} args - Arguments to delete one InvitationGuestGroup.
+     * @example
+     * // Delete one InvitationGuestGroup
+     * const InvitationGuestGroup = await prisma.invitationGuestGroup.delete({
+     *   where: {
+     *     // ... filter to delete one InvitationGuestGroup
+     *   }
+     * })
+     * 
+     */
+    delete<T extends InvitationGuestGroupDeleteArgs>(args: SelectSubset<T, InvitationGuestGroupDeleteArgs<ExtArgs>>): Prisma__InvitationGuestGroupClient<$Result.GetResult<Prisma.$InvitationGuestGroupPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one InvitationGuestGroup.
+     * @param {InvitationGuestGroupUpdateArgs} args - Arguments to update one InvitationGuestGroup.
+     * @example
+     * // Update one InvitationGuestGroup
+     * const invitationGuestGroup = await prisma.invitationGuestGroup.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends InvitationGuestGroupUpdateArgs>(args: SelectSubset<T, InvitationGuestGroupUpdateArgs<ExtArgs>>): Prisma__InvitationGuestGroupClient<$Result.GetResult<Prisma.$InvitationGuestGroupPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more InvitationGuestGroups.
+     * @param {InvitationGuestGroupDeleteManyArgs} args - Arguments to filter InvitationGuestGroups to delete.
+     * @example
+     * // Delete a few InvitationGuestGroups
+     * const { count } = await prisma.invitationGuestGroup.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends InvitationGuestGroupDeleteManyArgs>(args?: SelectSubset<T, InvitationGuestGroupDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more InvitationGuestGroups.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationGuestGroupUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many InvitationGuestGroups
+     * const invitationGuestGroup = await prisma.invitationGuestGroup.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends InvitationGuestGroupUpdateManyArgs>(args: SelectSubset<T, InvitationGuestGroupUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one InvitationGuestGroup.
+     * @param {InvitationGuestGroupUpsertArgs} args - Arguments to update or create a InvitationGuestGroup.
+     * @example
+     * // Update or create a InvitationGuestGroup
+     * const invitationGuestGroup = await prisma.invitationGuestGroup.upsert({
+     *   create: {
+     *     // ... data to create a InvitationGuestGroup
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the InvitationGuestGroup we want to update
+     *   }
+     * })
+     */
+    upsert<T extends InvitationGuestGroupUpsertArgs>(args: SelectSubset<T, InvitationGuestGroupUpsertArgs<ExtArgs>>): Prisma__InvitationGuestGroupClient<$Result.GetResult<Prisma.$InvitationGuestGroupPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of InvitationGuestGroups.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationGuestGroupCountArgs} args - Arguments to filter InvitationGuestGroups to count.
+     * @example
+     * // Count the number of InvitationGuestGroups
+     * const count = await prisma.invitationGuestGroup.count({
+     *   where: {
+     *     // ... the filter for the InvitationGuestGroups we want to count
+     *   }
+     * })
+    **/
+    count<T extends InvitationGuestGroupCountArgs>(
+      args?: Subset<T, InvitationGuestGroupCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], InvitationGuestGroupCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a InvitationGuestGroup.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationGuestGroupAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends InvitationGuestGroupAggregateArgs>(args: Subset<T, InvitationGuestGroupAggregateArgs>): Prisma.PrismaPromise<GetInvitationGuestGroupAggregateType<T>>
+
+    /**
+     * Group by InvitationGuestGroup.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationGuestGroupGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends InvitationGuestGroupGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: InvitationGuestGroupGroupByArgs['orderBy'] }
+        : { orderBy?: InvitationGuestGroupGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, InvitationGuestGroupGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInvitationGuestGroupGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the InvitationGuestGroup model
+   */
+  readonly fields: InvitationGuestGroupFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for InvitationGuestGroup.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__InvitationGuestGroupClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Invitation<T extends InvitationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InvitationDefaultArgs<ExtArgs>>): Prisma__InvitationClient<$Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    InvitationRSVP<T extends InvitationGuestGroup$InvitationRSVPArgs<ExtArgs> = {}>(args?: Subset<T, InvitationGuestGroup$InvitationRSVPArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationRSVPPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    InvitationSeatAssignment<T extends InvitationGuestGroup$InvitationSeatAssignmentArgs<ExtArgs> = {}>(args?: Subset<T, InvitationGuestGroup$InvitationSeatAssignmentArgs<ExtArgs>>): Prisma__InvitationSeatAssignmentClient<$Result.GetResult<Prisma.$InvitationSeatAssignmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the InvitationGuestGroup model
+   */
+  interface InvitationGuestGroupFieldRefs {
+    readonly id: FieldRef<"InvitationGuestGroup", 'Int'>
+    readonly invitationId: FieldRef<"InvitationGuestGroup", 'Int'>
+    readonly name: FieldRef<"InvitationGuestGroup", 'String'>
+    readonly password: FieldRef<"InvitationGuestGroup", 'String'>
+    readonly side: FieldRef<"InvitationGuestGroup", 'InvitationGuestGroup_side'>
+    readonly maxPax: FieldRef<"InvitationGuestGroup", 'Int'>
+    readonly rsvpTitle: FieldRef<"InvitationGuestGroup", 'String'>
+    readonly layoutOverride: FieldRef<"InvitationGuestGroup", 'Json'>
+    readonly rsvpStatus: FieldRef<"InvitationGuestGroup", 'InvitationGuestGroup_rsvpStatus'>
+    readonly rsvpAt: FieldRef<"InvitationGuestGroup", 'DateTime'>
+    readonly memo: FieldRef<"InvitationGuestGroup", 'String'>
+    readonly order: FieldRef<"InvitationGuestGroup", 'Int'>
+    readonly createdAt: FieldRef<"InvitationGuestGroup", 'DateTime'>
+    readonly updatedAt: FieldRef<"InvitationGuestGroup", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * InvitationGuestGroup findUnique
+   */
+  export type InvitationGuestGroupFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuestGroup
+     */
+    select?: InvitationGuestGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuestGroup
+     */
+    omit?: InvitationGuestGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationGuestGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationGuestGroup to fetch.
+     */
+    where: InvitationGuestGroupWhereUniqueInput
+  }
+
+  /**
+   * InvitationGuestGroup findUniqueOrThrow
+   */
+  export type InvitationGuestGroupFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuestGroup
+     */
+    select?: InvitationGuestGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuestGroup
+     */
+    omit?: InvitationGuestGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationGuestGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationGuestGroup to fetch.
+     */
+    where: InvitationGuestGroupWhereUniqueInput
+  }
+
+  /**
+   * InvitationGuestGroup findFirst
+   */
+  export type InvitationGuestGroupFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuestGroup
+     */
+    select?: InvitationGuestGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuestGroup
+     */
+    omit?: InvitationGuestGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationGuestGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationGuestGroup to fetch.
+     */
+    where?: InvitationGuestGroupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationGuestGroups to fetch.
+     */
+    orderBy?: InvitationGuestGroupOrderByWithRelationInput | InvitationGuestGroupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationGuestGroups.
+     */
+    cursor?: InvitationGuestGroupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationGuestGroups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationGuestGroups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationGuestGroups.
+     */
+    distinct?: InvitationGuestGroupScalarFieldEnum | InvitationGuestGroupScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationGuestGroup findFirstOrThrow
+   */
+  export type InvitationGuestGroupFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuestGroup
+     */
+    select?: InvitationGuestGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuestGroup
+     */
+    omit?: InvitationGuestGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationGuestGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationGuestGroup to fetch.
+     */
+    where?: InvitationGuestGroupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationGuestGroups to fetch.
+     */
+    orderBy?: InvitationGuestGroupOrderByWithRelationInput | InvitationGuestGroupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationGuestGroups.
+     */
+    cursor?: InvitationGuestGroupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationGuestGroups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationGuestGroups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationGuestGroups.
+     */
+    distinct?: InvitationGuestGroupScalarFieldEnum | InvitationGuestGroupScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationGuestGroup findMany
+   */
+  export type InvitationGuestGroupFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuestGroup
+     */
+    select?: InvitationGuestGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuestGroup
+     */
+    omit?: InvitationGuestGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationGuestGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationGuestGroups to fetch.
+     */
+    where?: InvitationGuestGroupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationGuestGroups to fetch.
+     */
+    orderBy?: InvitationGuestGroupOrderByWithRelationInput | InvitationGuestGroupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing InvitationGuestGroups.
+     */
+    cursor?: InvitationGuestGroupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationGuestGroups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationGuestGroups.
+     */
+    skip?: number
+    distinct?: InvitationGuestGroupScalarFieldEnum | InvitationGuestGroupScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationGuestGroup create
+   */
+  export type InvitationGuestGroupCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuestGroup
+     */
+    select?: InvitationGuestGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuestGroup
+     */
+    omit?: InvitationGuestGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationGuestGroupInclude<ExtArgs> | null
+    /**
+     * The data needed to create a InvitationGuestGroup.
+     */
+    data: XOR<InvitationGuestGroupCreateInput, InvitationGuestGroupUncheckedCreateInput>
+  }
+
+  /**
+   * InvitationGuestGroup createMany
+   */
+  export type InvitationGuestGroupCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many InvitationGuestGroups.
+     */
+    data: InvitationGuestGroupCreateManyInput | InvitationGuestGroupCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * InvitationGuestGroup update
+   */
+  export type InvitationGuestGroupUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuestGroup
+     */
+    select?: InvitationGuestGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuestGroup
+     */
+    omit?: InvitationGuestGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationGuestGroupInclude<ExtArgs> | null
+    /**
+     * The data needed to update a InvitationGuestGroup.
+     */
+    data: XOR<InvitationGuestGroupUpdateInput, InvitationGuestGroupUncheckedUpdateInput>
+    /**
+     * Choose, which InvitationGuestGroup to update.
+     */
+    where: InvitationGuestGroupWhereUniqueInput
+  }
+
+  /**
+   * InvitationGuestGroup updateMany
+   */
+  export type InvitationGuestGroupUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update InvitationGuestGroups.
+     */
+    data: XOR<InvitationGuestGroupUpdateManyMutationInput, InvitationGuestGroupUncheckedUpdateManyInput>
+    /**
+     * Filter which InvitationGuestGroups to update
+     */
+    where?: InvitationGuestGroupWhereInput
+    /**
+     * Limit how many InvitationGuestGroups to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationGuestGroup upsert
+   */
+  export type InvitationGuestGroupUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuestGroup
+     */
+    select?: InvitationGuestGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuestGroup
+     */
+    omit?: InvitationGuestGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationGuestGroupInclude<ExtArgs> | null
+    /**
+     * The filter to search for the InvitationGuestGroup to update in case it exists.
+     */
+    where: InvitationGuestGroupWhereUniqueInput
+    /**
+     * In case the InvitationGuestGroup found by the `where` argument doesn't exist, create a new InvitationGuestGroup with this data.
+     */
+    create: XOR<InvitationGuestGroupCreateInput, InvitationGuestGroupUncheckedCreateInput>
+    /**
+     * In case the InvitationGuestGroup was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<InvitationGuestGroupUpdateInput, InvitationGuestGroupUncheckedUpdateInput>
+  }
+
+  /**
+   * InvitationGuestGroup delete
+   */
+  export type InvitationGuestGroupDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuestGroup
+     */
+    select?: InvitationGuestGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuestGroup
+     */
+    omit?: InvitationGuestGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationGuestGroupInclude<ExtArgs> | null
+    /**
+     * Filter which InvitationGuestGroup to delete.
+     */
+    where: InvitationGuestGroupWhereUniqueInput
+  }
+
+  /**
+   * InvitationGuestGroup deleteMany
+   */
+  export type InvitationGuestGroupDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationGuestGroups to delete
+     */
+    where?: InvitationGuestGroupWhereInput
+    /**
+     * Limit how many InvitationGuestGroups to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationGuestGroup.InvitationRSVP
+   */
+  export type InvitationGuestGroup$InvitationRSVPArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationRSVP
+     */
+    select?: InvitationRSVPSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationRSVP
+     */
+    omit?: InvitationRSVPOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationRSVPInclude<ExtArgs> | null
+    where?: InvitationRSVPWhereInput
+    orderBy?: InvitationRSVPOrderByWithRelationInput | InvitationRSVPOrderByWithRelationInput[]
+    cursor?: InvitationRSVPWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvitationRSVPScalarFieldEnum | InvitationRSVPScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationGuestGroup.InvitationSeatAssignment
+   */
+  export type InvitationGuestGroup$InvitationSeatAssignmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatAssignment
+     */
+    select?: InvitationSeatAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatAssignment
+     */
+    omit?: InvitationSeatAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatAssignmentInclude<ExtArgs> | null
+    where?: InvitationSeatAssignmentWhereInput
+  }
+
+  /**
+   * InvitationGuestGroup without action
+   */
+  export type InvitationGuestGroupDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationGuestGroup
+     */
+    select?: InvitationGuestGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationGuestGroup
+     */
+    omit?: InvitationGuestGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationGuestGroupInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model InvitationSeatAssignment
+   */
+
+  export type AggregateInvitationSeatAssignment = {
+    _count: InvitationSeatAssignmentCountAggregateOutputType | null
+    _avg: InvitationSeatAssignmentAvgAggregateOutputType | null
+    _sum: InvitationSeatAssignmentSumAggregateOutputType | null
+    _min: InvitationSeatAssignmentMinAggregateOutputType | null
+    _max: InvitationSeatAssignmentMaxAggregateOutputType | null
+  }
+
+  export type InvitationSeatAssignmentAvgAggregateOutputType = {
+    id: number | null
+    seatingTableId: number | null
+    guestGroupId: number | null
+    seatNumber: number | null
+  }
+
+  export type InvitationSeatAssignmentSumAggregateOutputType = {
+    id: number | null
+    seatingTableId: number | null
+    guestGroupId: number | null
+    seatNumber: number | null
+  }
+
+  export type InvitationSeatAssignmentMinAggregateOutputType = {
+    id: number | null
+    seatingTableId: number | null
+    guestGroupId: number | null
+    seatNumber: number | null
+    createdAt: Date | null
+  }
+
+  export type InvitationSeatAssignmentMaxAggregateOutputType = {
+    id: number | null
+    seatingTableId: number | null
+    guestGroupId: number | null
+    seatNumber: number | null
+    createdAt: Date | null
+  }
+
+  export type InvitationSeatAssignmentCountAggregateOutputType = {
+    id: number
+    seatingTableId: number
+    guestGroupId: number
+    seatNumber: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type InvitationSeatAssignmentAvgAggregateInputType = {
+    id?: true
+    seatingTableId?: true
+    guestGroupId?: true
+    seatNumber?: true
+  }
+
+  export type InvitationSeatAssignmentSumAggregateInputType = {
+    id?: true
+    seatingTableId?: true
+    guestGroupId?: true
+    seatNumber?: true
+  }
+
+  export type InvitationSeatAssignmentMinAggregateInputType = {
+    id?: true
+    seatingTableId?: true
+    guestGroupId?: true
+    seatNumber?: true
+    createdAt?: true
+  }
+
+  export type InvitationSeatAssignmentMaxAggregateInputType = {
+    id?: true
+    seatingTableId?: true
+    guestGroupId?: true
+    seatNumber?: true
+    createdAt?: true
+  }
+
+  export type InvitationSeatAssignmentCountAggregateInputType = {
+    id?: true
+    seatingTableId?: true
+    guestGroupId?: true
+    seatNumber?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type InvitationSeatAssignmentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationSeatAssignment to aggregate.
+     */
+    where?: InvitationSeatAssignmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationSeatAssignments to fetch.
+     */
+    orderBy?: InvitationSeatAssignmentOrderByWithRelationInput | InvitationSeatAssignmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: InvitationSeatAssignmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationSeatAssignments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationSeatAssignments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned InvitationSeatAssignments
+    **/
+    _count?: true | InvitationSeatAssignmentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: InvitationSeatAssignmentAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: InvitationSeatAssignmentSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: InvitationSeatAssignmentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: InvitationSeatAssignmentMaxAggregateInputType
+  }
+
+  export type GetInvitationSeatAssignmentAggregateType<T extends InvitationSeatAssignmentAggregateArgs> = {
+        [P in keyof T & keyof AggregateInvitationSeatAssignment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateInvitationSeatAssignment[P]>
+      : GetScalarType<T[P], AggregateInvitationSeatAssignment[P]>
+  }
+
+
+
+
+  export type InvitationSeatAssignmentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationSeatAssignmentWhereInput
+    orderBy?: InvitationSeatAssignmentOrderByWithAggregationInput | InvitationSeatAssignmentOrderByWithAggregationInput[]
+    by: InvitationSeatAssignmentScalarFieldEnum[] | InvitationSeatAssignmentScalarFieldEnum
+    having?: InvitationSeatAssignmentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: InvitationSeatAssignmentCountAggregateInputType | true
+    _avg?: InvitationSeatAssignmentAvgAggregateInputType
+    _sum?: InvitationSeatAssignmentSumAggregateInputType
+    _min?: InvitationSeatAssignmentMinAggregateInputType
+    _max?: InvitationSeatAssignmentMaxAggregateInputType
+  }
+
+  export type InvitationSeatAssignmentGroupByOutputType = {
+    id: number
+    seatingTableId: number
+    guestGroupId: number
+    seatNumber: number | null
+    createdAt: Date | null
+    _count: InvitationSeatAssignmentCountAggregateOutputType | null
+    _avg: InvitationSeatAssignmentAvgAggregateOutputType | null
+    _sum: InvitationSeatAssignmentSumAggregateOutputType | null
+    _min: InvitationSeatAssignmentMinAggregateOutputType | null
+    _max: InvitationSeatAssignmentMaxAggregateOutputType | null
+  }
+
+  type GetInvitationSeatAssignmentGroupByPayload<T extends InvitationSeatAssignmentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<InvitationSeatAssignmentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof InvitationSeatAssignmentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], InvitationSeatAssignmentGroupByOutputType[P]>
+            : GetScalarType<T[P], InvitationSeatAssignmentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type InvitationSeatAssignmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    seatingTableId?: boolean
+    guestGroupId?: boolean
+    seatNumber?: boolean
+    createdAt?: boolean
+    InvitationGuestGroup?: boolean | InvitationGuestGroupDefaultArgs<ExtArgs>
+    InvitationSeatingTable?: boolean | InvitationSeatingTableDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["invitationSeatAssignment"]>
+
+
+
+  export type InvitationSeatAssignmentSelectScalar = {
+    id?: boolean
+    seatingTableId?: boolean
+    guestGroupId?: boolean
+    seatNumber?: boolean
+    createdAt?: boolean
+  }
+
+  export type InvitationSeatAssignmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "seatingTableId" | "guestGroupId" | "seatNumber" | "createdAt", ExtArgs["result"]["invitationSeatAssignment"]>
+  export type InvitationSeatAssignmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    InvitationGuestGroup?: boolean | InvitationGuestGroupDefaultArgs<ExtArgs>
+    InvitationSeatingTable?: boolean | InvitationSeatingTableDefaultArgs<ExtArgs>
+  }
+
+  export type $InvitationSeatAssignmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "InvitationSeatAssignment"
+    objects: {
+      InvitationGuestGroup: Prisma.$InvitationGuestGroupPayload<ExtArgs>
+      InvitationSeatingTable: Prisma.$InvitationSeatingTablePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      seatingTableId: number
+      guestGroupId: number
+      seatNumber: number | null
+      createdAt: Date | null
+    }, ExtArgs["result"]["invitationSeatAssignment"]>
+    composites: {}
+  }
+
+  type InvitationSeatAssignmentGetPayload<S extends boolean | null | undefined | InvitationSeatAssignmentDefaultArgs> = $Result.GetResult<Prisma.$InvitationSeatAssignmentPayload, S>
+
+  type InvitationSeatAssignmentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<InvitationSeatAssignmentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: InvitationSeatAssignmentCountAggregateInputType | true
+    }
+
+  export interface InvitationSeatAssignmentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['InvitationSeatAssignment'], meta: { name: 'InvitationSeatAssignment' } }
+    /**
+     * Find zero or one InvitationSeatAssignment that matches the filter.
+     * @param {InvitationSeatAssignmentFindUniqueArgs} args - Arguments to find a InvitationSeatAssignment
+     * @example
+     * // Get one InvitationSeatAssignment
+     * const invitationSeatAssignment = await prisma.invitationSeatAssignment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends InvitationSeatAssignmentFindUniqueArgs>(args: SelectSubset<T, InvitationSeatAssignmentFindUniqueArgs<ExtArgs>>): Prisma__InvitationSeatAssignmentClient<$Result.GetResult<Prisma.$InvitationSeatAssignmentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one InvitationSeatAssignment that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {InvitationSeatAssignmentFindUniqueOrThrowArgs} args - Arguments to find a InvitationSeatAssignment
+     * @example
+     * // Get one InvitationSeatAssignment
+     * const invitationSeatAssignment = await prisma.invitationSeatAssignment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends InvitationSeatAssignmentFindUniqueOrThrowArgs>(args: SelectSubset<T, InvitationSeatAssignmentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__InvitationSeatAssignmentClient<$Result.GetResult<Prisma.$InvitationSeatAssignmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationSeatAssignment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationSeatAssignmentFindFirstArgs} args - Arguments to find a InvitationSeatAssignment
+     * @example
+     * // Get one InvitationSeatAssignment
+     * const invitationSeatAssignment = await prisma.invitationSeatAssignment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends InvitationSeatAssignmentFindFirstArgs>(args?: SelectSubset<T, InvitationSeatAssignmentFindFirstArgs<ExtArgs>>): Prisma__InvitationSeatAssignmentClient<$Result.GetResult<Prisma.$InvitationSeatAssignmentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationSeatAssignment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationSeatAssignmentFindFirstOrThrowArgs} args - Arguments to find a InvitationSeatAssignment
+     * @example
+     * // Get one InvitationSeatAssignment
+     * const invitationSeatAssignment = await prisma.invitationSeatAssignment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends InvitationSeatAssignmentFindFirstOrThrowArgs>(args?: SelectSubset<T, InvitationSeatAssignmentFindFirstOrThrowArgs<ExtArgs>>): Prisma__InvitationSeatAssignmentClient<$Result.GetResult<Prisma.$InvitationSeatAssignmentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more InvitationSeatAssignments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationSeatAssignmentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all InvitationSeatAssignments
+     * const invitationSeatAssignments = await prisma.invitationSeatAssignment.findMany()
+     * 
+     * // Get first 10 InvitationSeatAssignments
+     * const invitationSeatAssignments = await prisma.invitationSeatAssignment.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const invitationSeatAssignmentWithIdOnly = await prisma.invitationSeatAssignment.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends InvitationSeatAssignmentFindManyArgs>(args?: SelectSubset<T, InvitationSeatAssignmentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationSeatAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a InvitationSeatAssignment.
+     * @param {InvitationSeatAssignmentCreateArgs} args - Arguments to create a InvitationSeatAssignment.
+     * @example
+     * // Create one InvitationSeatAssignment
+     * const InvitationSeatAssignment = await prisma.invitationSeatAssignment.create({
+     *   data: {
+     *     // ... data to create a InvitationSeatAssignment
+     *   }
+     * })
+     * 
+     */
+    create<T extends InvitationSeatAssignmentCreateArgs>(args: SelectSubset<T, InvitationSeatAssignmentCreateArgs<ExtArgs>>): Prisma__InvitationSeatAssignmentClient<$Result.GetResult<Prisma.$InvitationSeatAssignmentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many InvitationSeatAssignments.
+     * @param {InvitationSeatAssignmentCreateManyArgs} args - Arguments to create many InvitationSeatAssignments.
+     * @example
+     * // Create many InvitationSeatAssignments
+     * const invitationSeatAssignment = await prisma.invitationSeatAssignment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends InvitationSeatAssignmentCreateManyArgs>(args?: SelectSubset<T, InvitationSeatAssignmentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a InvitationSeatAssignment.
+     * @param {InvitationSeatAssignmentDeleteArgs} args - Arguments to delete one InvitationSeatAssignment.
+     * @example
+     * // Delete one InvitationSeatAssignment
+     * const InvitationSeatAssignment = await prisma.invitationSeatAssignment.delete({
+     *   where: {
+     *     // ... filter to delete one InvitationSeatAssignment
+     *   }
+     * })
+     * 
+     */
+    delete<T extends InvitationSeatAssignmentDeleteArgs>(args: SelectSubset<T, InvitationSeatAssignmentDeleteArgs<ExtArgs>>): Prisma__InvitationSeatAssignmentClient<$Result.GetResult<Prisma.$InvitationSeatAssignmentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one InvitationSeatAssignment.
+     * @param {InvitationSeatAssignmentUpdateArgs} args - Arguments to update one InvitationSeatAssignment.
+     * @example
+     * // Update one InvitationSeatAssignment
+     * const invitationSeatAssignment = await prisma.invitationSeatAssignment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends InvitationSeatAssignmentUpdateArgs>(args: SelectSubset<T, InvitationSeatAssignmentUpdateArgs<ExtArgs>>): Prisma__InvitationSeatAssignmentClient<$Result.GetResult<Prisma.$InvitationSeatAssignmentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more InvitationSeatAssignments.
+     * @param {InvitationSeatAssignmentDeleteManyArgs} args - Arguments to filter InvitationSeatAssignments to delete.
+     * @example
+     * // Delete a few InvitationSeatAssignments
+     * const { count } = await prisma.invitationSeatAssignment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends InvitationSeatAssignmentDeleteManyArgs>(args?: SelectSubset<T, InvitationSeatAssignmentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more InvitationSeatAssignments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationSeatAssignmentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many InvitationSeatAssignments
+     * const invitationSeatAssignment = await prisma.invitationSeatAssignment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends InvitationSeatAssignmentUpdateManyArgs>(args: SelectSubset<T, InvitationSeatAssignmentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one InvitationSeatAssignment.
+     * @param {InvitationSeatAssignmentUpsertArgs} args - Arguments to update or create a InvitationSeatAssignment.
+     * @example
+     * // Update or create a InvitationSeatAssignment
+     * const invitationSeatAssignment = await prisma.invitationSeatAssignment.upsert({
+     *   create: {
+     *     // ... data to create a InvitationSeatAssignment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the InvitationSeatAssignment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends InvitationSeatAssignmentUpsertArgs>(args: SelectSubset<T, InvitationSeatAssignmentUpsertArgs<ExtArgs>>): Prisma__InvitationSeatAssignmentClient<$Result.GetResult<Prisma.$InvitationSeatAssignmentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of InvitationSeatAssignments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationSeatAssignmentCountArgs} args - Arguments to filter InvitationSeatAssignments to count.
+     * @example
+     * // Count the number of InvitationSeatAssignments
+     * const count = await prisma.invitationSeatAssignment.count({
+     *   where: {
+     *     // ... the filter for the InvitationSeatAssignments we want to count
+     *   }
+     * })
+    **/
+    count<T extends InvitationSeatAssignmentCountArgs>(
+      args?: Subset<T, InvitationSeatAssignmentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], InvitationSeatAssignmentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a InvitationSeatAssignment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationSeatAssignmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends InvitationSeatAssignmentAggregateArgs>(args: Subset<T, InvitationSeatAssignmentAggregateArgs>): Prisma.PrismaPromise<GetInvitationSeatAssignmentAggregateType<T>>
+
+    /**
+     * Group by InvitationSeatAssignment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationSeatAssignmentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends InvitationSeatAssignmentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: InvitationSeatAssignmentGroupByArgs['orderBy'] }
+        : { orderBy?: InvitationSeatAssignmentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, InvitationSeatAssignmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInvitationSeatAssignmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the InvitationSeatAssignment model
+   */
+  readonly fields: InvitationSeatAssignmentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for InvitationSeatAssignment.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__InvitationSeatAssignmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    InvitationGuestGroup<T extends InvitationGuestGroupDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InvitationGuestGroupDefaultArgs<ExtArgs>>): Prisma__InvitationGuestGroupClient<$Result.GetResult<Prisma.$InvitationGuestGroupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    InvitationSeatingTable<T extends InvitationSeatingTableDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InvitationSeatingTableDefaultArgs<ExtArgs>>): Prisma__InvitationSeatingTableClient<$Result.GetResult<Prisma.$InvitationSeatingTablePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the InvitationSeatAssignment model
+   */
+  interface InvitationSeatAssignmentFieldRefs {
+    readonly id: FieldRef<"InvitationSeatAssignment", 'Int'>
+    readonly seatingTableId: FieldRef<"InvitationSeatAssignment", 'Int'>
+    readonly guestGroupId: FieldRef<"InvitationSeatAssignment", 'Int'>
+    readonly seatNumber: FieldRef<"InvitationSeatAssignment", 'Int'>
+    readonly createdAt: FieldRef<"InvitationSeatAssignment", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * InvitationSeatAssignment findUnique
+   */
+  export type InvitationSeatAssignmentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatAssignment
+     */
+    select?: InvitationSeatAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatAssignment
+     */
+    omit?: InvitationSeatAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationSeatAssignment to fetch.
+     */
+    where: InvitationSeatAssignmentWhereUniqueInput
+  }
+
+  /**
+   * InvitationSeatAssignment findUniqueOrThrow
+   */
+  export type InvitationSeatAssignmentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatAssignment
+     */
+    select?: InvitationSeatAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatAssignment
+     */
+    omit?: InvitationSeatAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationSeatAssignment to fetch.
+     */
+    where: InvitationSeatAssignmentWhereUniqueInput
+  }
+
+  /**
+   * InvitationSeatAssignment findFirst
+   */
+  export type InvitationSeatAssignmentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatAssignment
+     */
+    select?: InvitationSeatAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatAssignment
+     */
+    omit?: InvitationSeatAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationSeatAssignment to fetch.
+     */
+    where?: InvitationSeatAssignmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationSeatAssignments to fetch.
+     */
+    orderBy?: InvitationSeatAssignmentOrderByWithRelationInput | InvitationSeatAssignmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationSeatAssignments.
+     */
+    cursor?: InvitationSeatAssignmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationSeatAssignments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationSeatAssignments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationSeatAssignments.
+     */
+    distinct?: InvitationSeatAssignmentScalarFieldEnum | InvitationSeatAssignmentScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationSeatAssignment findFirstOrThrow
+   */
+  export type InvitationSeatAssignmentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatAssignment
+     */
+    select?: InvitationSeatAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatAssignment
+     */
+    omit?: InvitationSeatAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationSeatAssignment to fetch.
+     */
+    where?: InvitationSeatAssignmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationSeatAssignments to fetch.
+     */
+    orderBy?: InvitationSeatAssignmentOrderByWithRelationInput | InvitationSeatAssignmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationSeatAssignments.
+     */
+    cursor?: InvitationSeatAssignmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationSeatAssignments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationSeatAssignments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationSeatAssignments.
+     */
+    distinct?: InvitationSeatAssignmentScalarFieldEnum | InvitationSeatAssignmentScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationSeatAssignment findMany
+   */
+  export type InvitationSeatAssignmentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatAssignment
+     */
+    select?: InvitationSeatAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatAssignment
+     */
+    omit?: InvitationSeatAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationSeatAssignments to fetch.
+     */
+    where?: InvitationSeatAssignmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationSeatAssignments to fetch.
+     */
+    orderBy?: InvitationSeatAssignmentOrderByWithRelationInput | InvitationSeatAssignmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing InvitationSeatAssignments.
+     */
+    cursor?: InvitationSeatAssignmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationSeatAssignments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationSeatAssignments.
+     */
+    skip?: number
+    distinct?: InvitationSeatAssignmentScalarFieldEnum | InvitationSeatAssignmentScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationSeatAssignment create
+   */
+  export type InvitationSeatAssignmentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatAssignment
+     */
+    select?: InvitationSeatAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatAssignment
+     */
+    omit?: InvitationSeatAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatAssignmentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a InvitationSeatAssignment.
+     */
+    data: XOR<InvitationSeatAssignmentCreateInput, InvitationSeatAssignmentUncheckedCreateInput>
+  }
+
+  /**
+   * InvitationSeatAssignment createMany
+   */
+  export type InvitationSeatAssignmentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many InvitationSeatAssignments.
+     */
+    data: InvitationSeatAssignmentCreateManyInput | InvitationSeatAssignmentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * InvitationSeatAssignment update
+   */
+  export type InvitationSeatAssignmentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatAssignment
+     */
+    select?: InvitationSeatAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatAssignment
+     */
+    omit?: InvitationSeatAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatAssignmentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a InvitationSeatAssignment.
+     */
+    data: XOR<InvitationSeatAssignmentUpdateInput, InvitationSeatAssignmentUncheckedUpdateInput>
+    /**
+     * Choose, which InvitationSeatAssignment to update.
+     */
+    where: InvitationSeatAssignmentWhereUniqueInput
+  }
+
+  /**
+   * InvitationSeatAssignment updateMany
+   */
+  export type InvitationSeatAssignmentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update InvitationSeatAssignments.
+     */
+    data: XOR<InvitationSeatAssignmentUpdateManyMutationInput, InvitationSeatAssignmentUncheckedUpdateManyInput>
+    /**
+     * Filter which InvitationSeatAssignments to update
+     */
+    where?: InvitationSeatAssignmentWhereInput
+    /**
+     * Limit how many InvitationSeatAssignments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationSeatAssignment upsert
+   */
+  export type InvitationSeatAssignmentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatAssignment
+     */
+    select?: InvitationSeatAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatAssignment
+     */
+    omit?: InvitationSeatAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatAssignmentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the InvitationSeatAssignment to update in case it exists.
+     */
+    where: InvitationSeatAssignmentWhereUniqueInput
+    /**
+     * In case the InvitationSeatAssignment found by the `where` argument doesn't exist, create a new InvitationSeatAssignment with this data.
+     */
+    create: XOR<InvitationSeatAssignmentCreateInput, InvitationSeatAssignmentUncheckedCreateInput>
+    /**
+     * In case the InvitationSeatAssignment was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<InvitationSeatAssignmentUpdateInput, InvitationSeatAssignmentUncheckedUpdateInput>
+  }
+
+  /**
+   * InvitationSeatAssignment delete
+   */
+  export type InvitationSeatAssignmentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatAssignment
+     */
+    select?: InvitationSeatAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatAssignment
+     */
+    omit?: InvitationSeatAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter which InvitationSeatAssignment to delete.
+     */
+    where: InvitationSeatAssignmentWhereUniqueInput
+  }
+
+  /**
+   * InvitationSeatAssignment deleteMany
+   */
+  export type InvitationSeatAssignmentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationSeatAssignments to delete
+     */
+    where?: InvitationSeatAssignmentWhereInput
+    /**
+     * Limit how many InvitationSeatAssignments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationSeatAssignment without action
+   */
+  export type InvitationSeatAssignmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatAssignment
+     */
+    select?: InvitationSeatAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatAssignment
+     */
+    omit?: InvitationSeatAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatAssignmentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model InvitationSeatingTable
+   */
+
+  export type AggregateInvitationSeatingTable = {
+    _count: InvitationSeatingTableCountAggregateOutputType | null
+    _avg: InvitationSeatingTableAvgAggregateOutputType | null
+    _sum: InvitationSeatingTableSumAggregateOutputType | null
+    _min: InvitationSeatingTableMinAggregateOutputType | null
+    _max: InvitationSeatingTableMaxAggregateOutputType | null
+  }
+
+  export type InvitationSeatingTableAvgAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    capacity: number | null
+    order: number | null
+  }
+
+  export type InvitationSeatingTableSumAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    capacity: number | null
+    order: number | null
+  }
+
+  export type InvitationSeatingTableMinAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    name: string | null
+    capacity: number | null
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type InvitationSeatingTableMaxAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    name: string | null
+    capacity: number | null
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type InvitationSeatingTableCountAggregateOutputType = {
+    id: number
+    invitationId: number
+    name: number
+    capacity: number
+    order: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type InvitationSeatingTableAvgAggregateInputType = {
+    id?: true
+    invitationId?: true
+    capacity?: true
+    order?: true
+  }
+
+  export type InvitationSeatingTableSumAggregateInputType = {
+    id?: true
+    invitationId?: true
+    capacity?: true
+    order?: true
+  }
+
+  export type InvitationSeatingTableMinAggregateInputType = {
+    id?: true
+    invitationId?: true
+    name?: true
+    capacity?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type InvitationSeatingTableMaxAggregateInputType = {
+    id?: true
+    invitationId?: true
+    name?: true
+    capacity?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type InvitationSeatingTableCountAggregateInputType = {
+    id?: true
+    invitationId?: true
+    name?: true
+    capacity?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type InvitationSeatingTableAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationSeatingTable to aggregate.
+     */
+    where?: InvitationSeatingTableWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationSeatingTables to fetch.
+     */
+    orderBy?: InvitationSeatingTableOrderByWithRelationInput | InvitationSeatingTableOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: InvitationSeatingTableWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationSeatingTables from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationSeatingTables.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned InvitationSeatingTables
+    **/
+    _count?: true | InvitationSeatingTableCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: InvitationSeatingTableAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: InvitationSeatingTableSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: InvitationSeatingTableMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: InvitationSeatingTableMaxAggregateInputType
+  }
+
+  export type GetInvitationSeatingTableAggregateType<T extends InvitationSeatingTableAggregateArgs> = {
+        [P in keyof T & keyof AggregateInvitationSeatingTable]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateInvitationSeatingTable[P]>
+      : GetScalarType<T[P], AggregateInvitationSeatingTable[P]>
+  }
+
+
+
+
+  export type InvitationSeatingTableGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationSeatingTableWhereInput
+    orderBy?: InvitationSeatingTableOrderByWithAggregationInput | InvitationSeatingTableOrderByWithAggregationInput[]
+    by: InvitationSeatingTableScalarFieldEnum[] | InvitationSeatingTableScalarFieldEnum
+    having?: InvitationSeatingTableScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: InvitationSeatingTableCountAggregateInputType | true
+    _avg?: InvitationSeatingTableAvgAggregateInputType
+    _sum?: InvitationSeatingTableSumAggregateInputType
+    _min?: InvitationSeatingTableMinAggregateInputType
+    _max?: InvitationSeatingTableMaxAggregateInputType
+  }
+
+  export type InvitationSeatingTableGroupByOutputType = {
+    id: number
+    invitationId: number
+    name: string
+    capacity: number
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    _count: InvitationSeatingTableCountAggregateOutputType | null
+    _avg: InvitationSeatingTableAvgAggregateOutputType | null
+    _sum: InvitationSeatingTableSumAggregateOutputType | null
+    _min: InvitationSeatingTableMinAggregateOutputType | null
+    _max: InvitationSeatingTableMaxAggregateOutputType | null
+  }
+
+  type GetInvitationSeatingTableGroupByPayload<T extends InvitationSeatingTableGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<InvitationSeatingTableGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof InvitationSeatingTableGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], InvitationSeatingTableGroupByOutputType[P]>
+            : GetScalarType<T[P], InvitationSeatingTableGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type InvitationSeatingTableSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    invitationId?: boolean
+    name?: boolean
+    capacity?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    InvitationSeatAssignment?: boolean | InvitationSeatingTable$InvitationSeatAssignmentArgs<ExtArgs>
+    Invitation?: boolean | InvitationDefaultArgs<ExtArgs>
+    _count?: boolean | InvitationSeatingTableCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["invitationSeatingTable"]>
+
+
+
+  export type InvitationSeatingTableSelectScalar = {
+    id?: boolean
+    invitationId?: boolean
+    name?: boolean
+    capacity?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type InvitationSeatingTableOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitationId" | "name" | "capacity" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["invitationSeatingTable"]>
+  export type InvitationSeatingTableInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    InvitationSeatAssignment?: boolean | InvitationSeatingTable$InvitationSeatAssignmentArgs<ExtArgs>
+    Invitation?: boolean | InvitationDefaultArgs<ExtArgs>
+    _count?: boolean | InvitationSeatingTableCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $InvitationSeatingTablePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "InvitationSeatingTable"
+    objects: {
+      InvitationSeatAssignment: Prisma.$InvitationSeatAssignmentPayload<ExtArgs>[]
+      Invitation: Prisma.$InvitationPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      invitationId: number
+      name: string
+      capacity: number
+      order: number | null
+      createdAt: Date | null
+      updatedAt: Date | null
+    }, ExtArgs["result"]["invitationSeatingTable"]>
+    composites: {}
+  }
+
+  type InvitationSeatingTableGetPayload<S extends boolean | null | undefined | InvitationSeatingTableDefaultArgs> = $Result.GetResult<Prisma.$InvitationSeatingTablePayload, S>
+
+  type InvitationSeatingTableCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<InvitationSeatingTableFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: InvitationSeatingTableCountAggregateInputType | true
+    }
+
+  export interface InvitationSeatingTableDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['InvitationSeatingTable'], meta: { name: 'InvitationSeatingTable' } }
+    /**
+     * Find zero or one InvitationSeatingTable that matches the filter.
+     * @param {InvitationSeatingTableFindUniqueArgs} args - Arguments to find a InvitationSeatingTable
+     * @example
+     * // Get one InvitationSeatingTable
+     * const invitationSeatingTable = await prisma.invitationSeatingTable.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends InvitationSeatingTableFindUniqueArgs>(args: SelectSubset<T, InvitationSeatingTableFindUniqueArgs<ExtArgs>>): Prisma__InvitationSeatingTableClient<$Result.GetResult<Prisma.$InvitationSeatingTablePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one InvitationSeatingTable that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {InvitationSeatingTableFindUniqueOrThrowArgs} args - Arguments to find a InvitationSeatingTable
+     * @example
+     * // Get one InvitationSeatingTable
+     * const invitationSeatingTable = await prisma.invitationSeatingTable.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends InvitationSeatingTableFindUniqueOrThrowArgs>(args: SelectSubset<T, InvitationSeatingTableFindUniqueOrThrowArgs<ExtArgs>>): Prisma__InvitationSeatingTableClient<$Result.GetResult<Prisma.$InvitationSeatingTablePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationSeatingTable that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationSeatingTableFindFirstArgs} args - Arguments to find a InvitationSeatingTable
+     * @example
+     * // Get one InvitationSeatingTable
+     * const invitationSeatingTable = await prisma.invitationSeatingTable.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends InvitationSeatingTableFindFirstArgs>(args?: SelectSubset<T, InvitationSeatingTableFindFirstArgs<ExtArgs>>): Prisma__InvitationSeatingTableClient<$Result.GetResult<Prisma.$InvitationSeatingTablePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationSeatingTable that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationSeatingTableFindFirstOrThrowArgs} args - Arguments to find a InvitationSeatingTable
+     * @example
+     * // Get one InvitationSeatingTable
+     * const invitationSeatingTable = await prisma.invitationSeatingTable.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends InvitationSeatingTableFindFirstOrThrowArgs>(args?: SelectSubset<T, InvitationSeatingTableFindFirstOrThrowArgs<ExtArgs>>): Prisma__InvitationSeatingTableClient<$Result.GetResult<Prisma.$InvitationSeatingTablePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more InvitationSeatingTables that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationSeatingTableFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all InvitationSeatingTables
+     * const invitationSeatingTables = await prisma.invitationSeatingTable.findMany()
+     * 
+     * // Get first 10 InvitationSeatingTables
+     * const invitationSeatingTables = await prisma.invitationSeatingTable.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const invitationSeatingTableWithIdOnly = await prisma.invitationSeatingTable.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends InvitationSeatingTableFindManyArgs>(args?: SelectSubset<T, InvitationSeatingTableFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationSeatingTablePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a InvitationSeatingTable.
+     * @param {InvitationSeatingTableCreateArgs} args - Arguments to create a InvitationSeatingTable.
+     * @example
+     * // Create one InvitationSeatingTable
+     * const InvitationSeatingTable = await prisma.invitationSeatingTable.create({
+     *   data: {
+     *     // ... data to create a InvitationSeatingTable
+     *   }
+     * })
+     * 
+     */
+    create<T extends InvitationSeatingTableCreateArgs>(args: SelectSubset<T, InvitationSeatingTableCreateArgs<ExtArgs>>): Prisma__InvitationSeatingTableClient<$Result.GetResult<Prisma.$InvitationSeatingTablePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many InvitationSeatingTables.
+     * @param {InvitationSeatingTableCreateManyArgs} args - Arguments to create many InvitationSeatingTables.
+     * @example
+     * // Create many InvitationSeatingTables
+     * const invitationSeatingTable = await prisma.invitationSeatingTable.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends InvitationSeatingTableCreateManyArgs>(args?: SelectSubset<T, InvitationSeatingTableCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a InvitationSeatingTable.
+     * @param {InvitationSeatingTableDeleteArgs} args - Arguments to delete one InvitationSeatingTable.
+     * @example
+     * // Delete one InvitationSeatingTable
+     * const InvitationSeatingTable = await prisma.invitationSeatingTable.delete({
+     *   where: {
+     *     // ... filter to delete one InvitationSeatingTable
+     *   }
+     * })
+     * 
+     */
+    delete<T extends InvitationSeatingTableDeleteArgs>(args: SelectSubset<T, InvitationSeatingTableDeleteArgs<ExtArgs>>): Prisma__InvitationSeatingTableClient<$Result.GetResult<Prisma.$InvitationSeatingTablePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one InvitationSeatingTable.
+     * @param {InvitationSeatingTableUpdateArgs} args - Arguments to update one InvitationSeatingTable.
+     * @example
+     * // Update one InvitationSeatingTable
+     * const invitationSeatingTable = await prisma.invitationSeatingTable.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends InvitationSeatingTableUpdateArgs>(args: SelectSubset<T, InvitationSeatingTableUpdateArgs<ExtArgs>>): Prisma__InvitationSeatingTableClient<$Result.GetResult<Prisma.$InvitationSeatingTablePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more InvitationSeatingTables.
+     * @param {InvitationSeatingTableDeleteManyArgs} args - Arguments to filter InvitationSeatingTables to delete.
+     * @example
+     * // Delete a few InvitationSeatingTables
+     * const { count } = await prisma.invitationSeatingTable.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends InvitationSeatingTableDeleteManyArgs>(args?: SelectSubset<T, InvitationSeatingTableDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more InvitationSeatingTables.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationSeatingTableUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many InvitationSeatingTables
+     * const invitationSeatingTable = await prisma.invitationSeatingTable.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends InvitationSeatingTableUpdateManyArgs>(args: SelectSubset<T, InvitationSeatingTableUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one InvitationSeatingTable.
+     * @param {InvitationSeatingTableUpsertArgs} args - Arguments to update or create a InvitationSeatingTable.
+     * @example
+     * // Update or create a InvitationSeatingTable
+     * const invitationSeatingTable = await prisma.invitationSeatingTable.upsert({
+     *   create: {
+     *     // ... data to create a InvitationSeatingTable
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the InvitationSeatingTable we want to update
+     *   }
+     * })
+     */
+    upsert<T extends InvitationSeatingTableUpsertArgs>(args: SelectSubset<T, InvitationSeatingTableUpsertArgs<ExtArgs>>): Prisma__InvitationSeatingTableClient<$Result.GetResult<Prisma.$InvitationSeatingTablePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of InvitationSeatingTables.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationSeatingTableCountArgs} args - Arguments to filter InvitationSeatingTables to count.
+     * @example
+     * // Count the number of InvitationSeatingTables
+     * const count = await prisma.invitationSeatingTable.count({
+     *   where: {
+     *     // ... the filter for the InvitationSeatingTables we want to count
+     *   }
+     * })
+    **/
+    count<T extends InvitationSeatingTableCountArgs>(
+      args?: Subset<T, InvitationSeatingTableCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], InvitationSeatingTableCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a InvitationSeatingTable.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationSeatingTableAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends InvitationSeatingTableAggregateArgs>(args: Subset<T, InvitationSeatingTableAggregateArgs>): Prisma.PrismaPromise<GetInvitationSeatingTableAggregateType<T>>
+
+    /**
+     * Group by InvitationSeatingTable.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationSeatingTableGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends InvitationSeatingTableGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: InvitationSeatingTableGroupByArgs['orderBy'] }
+        : { orderBy?: InvitationSeatingTableGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, InvitationSeatingTableGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInvitationSeatingTableGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the InvitationSeatingTable model
+   */
+  readonly fields: InvitationSeatingTableFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for InvitationSeatingTable.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__InvitationSeatingTableClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    InvitationSeatAssignment<T extends InvitationSeatingTable$InvitationSeatAssignmentArgs<ExtArgs> = {}>(args?: Subset<T, InvitationSeatingTable$InvitationSeatAssignmentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationSeatAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Invitation<T extends InvitationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InvitationDefaultArgs<ExtArgs>>): Prisma__InvitationClient<$Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the InvitationSeatingTable model
+   */
+  interface InvitationSeatingTableFieldRefs {
+    readonly id: FieldRef<"InvitationSeatingTable", 'Int'>
+    readonly invitationId: FieldRef<"InvitationSeatingTable", 'Int'>
+    readonly name: FieldRef<"InvitationSeatingTable", 'String'>
+    readonly capacity: FieldRef<"InvitationSeatingTable", 'Int'>
+    readonly order: FieldRef<"InvitationSeatingTable", 'Int'>
+    readonly createdAt: FieldRef<"InvitationSeatingTable", 'DateTime'>
+    readonly updatedAt: FieldRef<"InvitationSeatingTable", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * InvitationSeatingTable findUnique
+   */
+  export type InvitationSeatingTableFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatingTable
+     */
+    select?: InvitationSeatingTableSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatingTable
+     */
+    omit?: InvitationSeatingTableOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatingTableInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationSeatingTable to fetch.
+     */
+    where: InvitationSeatingTableWhereUniqueInput
+  }
+
+  /**
+   * InvitationSeatingTable findUniqueOrThrow
+   */
+  export type InvitationSeatingTableFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatingTable
+     */
+    select?: InvitationSeatingTableSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatingTable
+     */
+    omit?: InvitationSeatingTableOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatingTableInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationSeatingTable to fetch.
+     */
+    where: InvitationSeatingTableWhereUniqueInput
+  }
+
+  /**
+   * InvitationSeatingTable findFirst
+   */
+  export type InvitationSeatingTableFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatingTable
+     */
+    select?: InvitationSeatingTableSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatingTable
+     */
+    omit?: InvitationSeatingTableOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatingTableInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationSeatingTable to fetch.
+     */
+    where?: InvitationSeatingTableWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationSeatingTables to fetch.
+     */
+    orderBy?: InvitationSeatingTableOrderByWithRelationInput | InvitationSeatingTableOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationSeatingTables.
+     */
+    cursor?: InvitationSeatingTableWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationSeatingTables from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationSeatingTables.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationSeatingTables.
+     */
+    distinct?: InvitationSeatingTableScalarFieldEnum | InvitationSeatingTableScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationSeatingTable findFirstOrThrow
+   */
+  export type InvitationSeatingTableFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatingTable
+     */
+    select?: InvitationSeatingTableSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatingTable
+     */
+    omit?: InvitationSeatingTableOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatingTableInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationSeatingTable to fetch.
+     */
+    where?: InvitationSeatingTableWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationSeatingTables to fetch.
+     */
+    orderBy?: InvitationSeatingTableOrderByWithRelationInput | InvitationSeatingTableOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationSeatingTables.
+     */
+    cursor?: InvitationSeatingTableWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationSeatingTables from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationSeatingTables.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationSeatingTables.
+     */
+    distinct?: InvitationSeatingTableScalarFieldEnum | InvitationSeatingTableScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationSeatingTable findMany
+   */
+  export type InvitationSeatingTableFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatingTable
+     */
+    select?: InvitationSeatingTableSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatingTable
+     */
+    omit?: InvitationSeatingTableOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatingTableInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationSeatingTables to fetch.
+     */
+    where?: InvitationSeatingTableWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationSeatingTables to fetch.
+     */
+    orderBy?: InvitationSeatingTableOrderByWithRelationInput | InvitationSeatingTableOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing InvitationSeatingTables.
+     */
+    cursor?: InvitationSeatingTableWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationSeatingTables from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationSeatingTables.
+     */
+    skip?: number
+    distinct?: InvitationSeatingTableScalarFieldEnum | InvitationSeatingTableScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationSeatingTable create
+   */
+  export type InvitationSeatingTableCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatingTable
+     */
+    select?: InvitationSeatingTableSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatingTable
+     */
+    omit?: InvitationSeatingTableOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatingTableInclude<ExtArgs> | null
+    /**
+     * The data needed to create a InvitationSeatingTable.
+     */
+    data: XOR<InvitationSeatingTableCreateInput, InvitationSeatingTableUncheckedCreateInput>
+  }
+
+  /**
+   * InvitationSeatingTable createMany
+   */
+  export type InvitationSeatingTableCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many InvitationSeatingTables.
+     */
+    data: InvitationSeatingTableCreateManyInput | InvitationSeatingTableCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * InvitationSeatingTable update
+   */
+  export type InvitationSeatingTableUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatingTable
+     */
+    select?: InvitationSeatingTableSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatingTable
+     */
+    omit?: InvitationSeatingTableOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatingTableInclude<ExtArgs> | null
+    /**
+     * The data needed to update a InvitationSeatingTable.
+     */
+    data: XOR<InvitationSeatingTableUpdateInput, InvitationSeatingTableUncheckedUpdateInput>
+    /**
+     * Choose, which InvitationSeatingTable to update.
+     */
+    where: InvitationSeatingTableWhereUniqueInput
+  }
+
+  /**
+   * InvitationSeatingTable updateMany
+   */
+  export type InvitationSeatingTableUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update InvitationSeatingTables.
+     */
+    data: XOR<InvitationSeatingTableUpdateManyMutationInput, InvitationSeatingTableUncheckedUpdateManyInput>
+    /**
+     * Filter which InvitationSeatingTables to update
+     */
+    where?: InvitationSeatingTableWhereInput
+    /**
+     * Limit how many InvitationSeatingTables to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationSeatingTable upsert
+   */
+  export type InvitationSeatingTableUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatingTable
+     */
+    select?: InvitationSeatingTableSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatingTable
+     */
+    omit?: InvitationSeatingTableOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatingTableInclude<ExtArgs> | null
+    /**
+     * The filter to search for the InvitationSeatingTable to update in case it exists.
+     */
+    where: InvitationSeatingTableWhereUniqueInput
+    /**
+     * In case the InvitationSeatingTable found by the `where` argument doesn't exist, create a new InvitationSeatingTable with this data.
+     */
+    create: XOR<InvitationSeatingTableCreateInput, InvitationSeatingTableUncheckedCreateInput>
+    /**
+     * In case the InvitationSeatingTable was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<InvitationSeatingTableUpdateInput, InvitationSeatingTableUncheckedUpdateInput>
+  }
+
+  /**
+   * InvitationSeatingTable delete
+   */
+  export type InvitationSeatingTableDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatingTable
+     */
+    select?: InvitationSeatingTableSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatingTable
+     */
+    omit?: InvitationSeatingTableOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatingTableInclude<ExtArgs> | null
+    /**
+     * Filter which InvitationSeatingTable to delete.
+     */
+    where: InvitationSeatingTableWhereUniqueInput
+  }
+
+  /**
+   * InvitationSeatingTable deleteMany
+   */
+  export type InvitationSeatingTableDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationSeatingTables to delete
+     */
+    where?: InvitationSeatingTableWhereInput
+    /**
+     * Limit how many InvitationSeatingTables to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationSeatingTable.InvitationSeatAssignment
+   */
+  export type InvitationSeatingTable$InvitationSeatAssignmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatAssignment
+     */
+    select?: InvitationSeatAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatAssignment
+     */
+    omit?: InvitationSeatAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatAssignmentInclude<ExtArgs> | null
+    where?: InvitationSeatAssignmentWhereInput
+    orderBy?: InvitationSeatAssignmentOrderByWithRelationInput | InvitationSeatAssignmentOrderByWithRelationInput[]
+    cursor?: InvitationSeatAssignmentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvitationSeatAssignmentScalarFieldEnum | InvitationSeatAssignmentScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationSeatingTable without action
+   */
+  export type InvitationSeatingTableDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSeatingTable
+     */
+    select?: InvitationSeatingTableSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSeatingTable
+     */
+    omit?: InvitationSeatingTableOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSeatingTableInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -22733,6 +26344,9 @@ export namespace Prisma {
     rsvpHasFood: 'rsvpHasFood',
     isRsvpPopup: 'isRsvpPopup',
     hasRsvpDeadline: 'hasRsvpDeadline',
+    isPasswordProtected: 'isPasswordProtected',
+    universalPassword: 'universalPassword',
+    guestListEnabled: 'guestListEnabled',
     billingStatus: 'billingStatus',
     trialEndsAt: 'trialEndsAt',
     currentPlanCode: 'currentPlanCode',
@@ -22833,6 +26447,7 @@ export namespace Prisma {
   export const InvitationRSVPScalarFieldEnum: {
     id: 'id',
     invitationId: 'invitationId',
+    guestGroupId: 'guestGroupId',
     side: 'side',
     name: 'name',
     guestNameList: 'guestNameList',
@@ -22990,6 +26605,50 @@ export namespace Prisma {
   export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
 
 
+  export const InvitationGuestGroupScalarFieldEnum: {
+    id: 'id',
+    invitationId: 'invitationId',
+    name: 'name',
+    password: 'password',
+    side: 'side',
+    maxPax: 'maxPax',
+    rsvpTitle: 'rsvpTitle',
+    layoutOverride: 'layoutOverride',
+    rsvpStatus: 'rsvpStatus',
+    rsvpAt: 'rsvpAt',
+    memo: 'memo',
+    order: 'order',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type InvitationGuestGroupScalarFieldEnum = (typeof InvitationGuestGroupScalarFieldEnum)[keyof typeof InvitationGuestGroupScalarFieldEnum]
+
+
+  export const InvitationSeatAssignmentScalarFieldEnum: {
+    id: 'id',
+    seatingTableId: 'seatingTableId',
+    guestGroupId: 'guestGroupId',
+    seatNumber: 'seatNumber',
+    createdAt: 'createdAt'
+  };
+
+  export type InvitationSeatAssignmentScalarFieldEnum = (typeof InvitationSeatAssignmentScalarFieldEnum)[keyof typeof InvitationSeatAssignmentScalarFieldEnum]
+
+
+  export const InvitationSeatingTableScalarFieldEnum: {
+    id: 'id',
+    invitationId: 'invitationId',
+    name: 'name',
+    capacity: 'capacity',
+    order: 'order',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type InvitationSeatingTableScalarFieldEnum = (typeof InvitationSeatingTableScalarFieldEnum)[keyof typeof InvitationSeatingTableScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -23081,6 +26740,7 @@ export namespace Prisma {
     timezone: 'timezone',
     rsvpTitle: 'rsvpTitle',
     rsvpDeadlineDesc: 'rsvpDeadlineDesc',
+    universalPassword: 'universalPassword',
     bestMan: 'bestMan',
     bridesMaids: 'bridesMaids',
     wishlistText: 'wishlistText',
@@ -23242,6 +26902,23 @@ export namespace Prisma {
   export type AuditLogOrderByRelevanceFieldEnum = (typeof AuditLogOrderByRelevanceFieldEnum)[keyof typeof AuditLogOrderByRelevanceFieldEnum]
 
 
+  export const InvitationGuestGroupOrderByRelevanceFieldEnum: {
+    name: 'name',
+    password: 'password',
+    rsvpTitle: 'rsvpTitle',
+    memo: 'memo'
+  };
+
+  export type InvitationGuestGroupOrderByRelevanceFieldEnum = (typeof InvitationGuestGroupOrderByRelevanceFieldEnum)[keyof typeof InvitationGuestGroupOrderByRelevanceFieldEnum]
+
+
+  export const InvitationSeatingTableOrderByRelevanceFieldEnum: {
+    name: 'name'
+  };
+
+  export type InvitationSeatingTableOrderByRelevanceFieldEnum = (typeof InvitationSeatingTableOrderByRelevanceFieldEnum)[keyof typeof InvitationSeatingTableOrderByRelevanceFieldEnum]
+
+
   /**
    * Field references
    */
@@ -23328,6 +27005,20 @@ export namespace Prisma {
    * Reference to a field of type 'BigInt'
    */
   export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+    
+
+
+  /**
+   * Reference to a field of type 'InvitationGuestGroup_side'
+   */
+  export type EnumInvitationGuestGroup_sideFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvitationGuestGroup_side'>
+    
+
+
+  /**
+   * Reference to a field of type 'InvitationGuestGroup_rsvpStatus'
+   */
+  export type EnumInvitationGuestGroup_rsvpStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvitationGuestGroup_rsvpStatus'>
     
   /**
    * Deep Input Types
@@ -23470,6 +27161,9 @@ export namespace Prisma {
     rsvpHasFood?: BoolNullableFilter<"Invitation"> | boolean | null
     isRsvpPopup?: BoolNullableFilter<"Invitation"> | boolean | null
     hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
+    isPasswordProtected?: BoolNullableFilter<"Invitation"> | boolean | null
+    universalPassword?: StringNullableFilter<"Invitation"> | string | null
+    guestListEnabled?: BoolNullableFilter<"Invitation"> | boolean | null
     billingStatus?: EnumInvitation_billingStatusFilter<"Invitation"> | $Enums.Invitation_billingStatus
     trialEndsAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     currentPlanCode?: EnumInvitation_currentPlanCodeNullableFilter<"Invitation"> | $Enums.Invitation_currentPlanCode | null
@@ -23495,10 +27189,12 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorListRelationFilter
     invitationEntourageList?: InvitationEntourageListRelationFilter
     faqList?: InvitationFaqListRelationFilter
+    InvitationGuestGroup?: InvitationGuestGroupListRelationFilter
     InvitationOrder?: InvitationOrderListRelationFilter
     photoList?: InvitationPhotoListRelationFilter
     placeList?: InvitationPlaceListRelationFilter
     invitationRSVP?: InvitationRSVPListRelationFilter
+    InvitationSeatingTable?: InvitationSeatingTableListRelationFilter
   }
 
   export type InvitationOrderByWithRelationInput = {
@@ -23553,6 +27249,9 @@ export namespace Prisma {
     rsvpHasFood?: SortOrderInput | SortOrder
     isRsvpPopup?: SortOrderInput | SortOrder
     hasRsvpDeadline?: SortOrderInput | SortOrder
+    isPasswordProtected?: SortOrderInput | SortOrder
+    universalPassword?: SortOrderInput | SortOrder
+    guestListEnabled?: SortOrderInput | SortOrder
     billingStatus?: SortOrder
     trialEndsAt?: SortOrderInput | SortOrder
     currentPlanCode?: SortOrderInput | SortOrder
@@ -23578,10 +27277,12 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorOrderByRelationAggregateInput
     invitationEntourageList?: InvitationEntourageOrderByRelationAggregateInput
     faqList?: InvitationFaqOrderByRelationAggregateInput
+    InvitationGuestGroup?: InvitationGuestGroupOrderByRelationAggregateInput
     InvitationOrder?: InvitationOrderOrderByRelationAggregateInput
     photoList?: InvitationPhotoOrderByRelationAggregateInput
     placeList?: InvitationPlaceOrderByRelationAggregateInput
     invitationRSVP?: InvitationRSVPOrderByRelationAggregateInput
+    InvitationSeatingTable?: InvitationSeatingTableOrderByRelationAggregateInput
     _relevance?: InvitationOrderByRelevanceInput
   }
 
@@ -23640,6 +27341,9 @@ export namespace Prisma {
     rsvpHasFood?: BoolNullableFilter<"Invitation"> | boolean | null
     isRsvpPopup?: BoolNullableFilter<"Invitation"> | boolean | null
     hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
+    isPasswordProtected?: BoolNullableFilter<"Invitation"> | boolean | null
+    universalPassword?: StringNullableFilter<"Invitation"> | string | null
+    guestListEnabled?: BoolNullableFilter<"Invitation"> | boolean | null
     billingStatus?: EnumInvitation_billingStatusFilter<"Invitation"> | $Enums.Invitation_billingStatus
     trialEndsAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     currentPlanCode?: EnumInvitation_currentPlanCodeNullableFilter<"Invitation"> | $Enums.Invitation_currentPlanCode | null
@@ -23665,10 +27369,12 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorListRelationFilter
     invitationEntourageList?: InvitationEntourageListRelationFilter
     faqList?: InvitationFaqListRelationFilter
+    InvitationGuestGroup?: InvitationGuestGroupListRelationFilter
     InvitationOrder?: InvitationOrderListRelationFilter
     photoList?: InvitationPhotoListRelationFilter
     placeList?: InvitationPlaceListRelationFilter
     invitationRSVP?: InvitationRSVPListRelationFilter
+    InvitationSeatingTable?: InvitationSeatingTableListRelationFilter
   }, "id" | "uniqueId">
 
   export type InvitationOrderByWithAggregationInput = {
@@ -23723,6 +27429,9 @@ export namespace Prisma {
     rsvpHasFood?: SortOrderInput | SortOrder
     isRsvpPopup?: SortOrderInput | SortOrder
     hasRsvpDeadline?: SortOrderInput | SortOrder
+    isPasswordProtected?: SortOrderInput | SortOrder
+    universalPassword?: SortOrderInput | SortOrder
+    guestListEnabled?: SortOrderInput | SortOrder
     billingStatus?: SortOrder
     trialEndsAt?: SortOrderInput | SortOrder
     currentPlanCode?: SortOrderInput | SortOrder
@@ -23805,6 +27514,9 @@ export namespace Prisma {
     rsvpHasFood?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
     isRsvpPopup?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
     hasRsvpDeadline?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
+    isPasswordProtected?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
+    universalPassword?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    guestListEnabled?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
     billingStatus?: EnumInvitation_billingStatusWithAggregatesFilter<"Invitation"> | $Enums.Invitation_billingStatus
     trialEndsAt?: DateTimeNullableWithAggregatesFilter<"Invitation"> | Date | string | null
     currentPlanCode?: EnumInvitation_currentPlanCodeNullableWithAggregatesFilter<"Invitation"> | $Enums.Invitation_currentPlanCode | null
@@ -24214,6 +27926,7 @@ export namespace Prisma {
     NOT?: InvitationRSVPWhereInput | InvitationRSVPWhereInput[]
     id?: IntFilter<"InvitationRSVP"> | number
     invitationId?: IntNullableFilter<"InvitationRSVP"> | number | null
+    guestGroupId?: IntNullableFilter<"InvitationRSVP"> | number | null
     side?: StringNullableFilter<"InvitationRSVP"> | string | null
     name?: StringNullableFilter<"InvitationRSVP"> | string | null
     guestNameList?: StringNullableFilter<"InvitationRSVP"> | string | null
@@ -24225,11 +27938,13 @@ export namespace Prisma {
     attending?: BoolNullableFilter<"InvitationRSVP"> | boolean | null
     createdAt?: DateTimeNullableFilter<"InvitationRSVP"> | Date | string | null
     invitation?: XOR<InvitationNullableScalarRelationFilter, InvitationWhereInput> | null
+    InvitationGuestGroup?: XOR<InvitationGuestGroupNullableScalarRelationFilter, InvitationGuestGroupWhereInput> | null
   }
 
   export type InvitationRSVPOrderByWithRelationInput = {
     id?: SortOrder
     invitationId?: SortOrderInput | SortOrder
+    guestGroupId?: SortOrderInput | SortOrder
     side?: SortOrderInput | SortOrder
     name?: SortOrderInput | SortOrder
     guestNameList?: SortOrderInput | SortOrder
@@ -24241,6 +27956,7 @@ export namespace Prisma {
     attending?: SortOrderInput | SortOrder
     createdAt?: SortOrderInput | SortOrder
     invitation?: InvitationOrderByWithRelationInput
+    InvitationGuestGroup?: InvitationGuestGroupOrderByWithRelationInput
     _relevance?: InvitationRSVPOrderByRelevanceInput
   }
 
@@ -24250,6 +27966,7 @@ export namespace Prisma {
     OR?: InvitationRSVPWhereInput[]
     NOT?: InvitationRSVPWhereInput | InvitationRSVPWhereInput[]
     invitationId?: IntNullableFilter<"InvitationRSVP"> | number | null
+    guestGroupId?: IntNullableFilter<"InvitationRSVP"> | number | null
     side?: StringNullableFilter<"InvitationRSVP"> | string | null
     name?: StringNullableFilter<"InvitationRSVP"> | string | null
     guestNameList?: StringNullableFilter<"InvitationRSVP"> | string | null
@@ -24261,11 +27978,13 @@ export namespace Prisma {
     attending?: BoolNullableFilter<"InvitationRSVP"> | boolean | null
     createdAt?: DateTimeNullableFilter<"InvitationRSVP"> | Date | string | null
     invitation?: XOR<InvitationNullableScalarRelationFilter, InvitationWhereInput> | null
+    InvitationGuestGroup?: XOR<InvitationGuestGroupNullableScalarRelationFilter, InvitationGuestGroupWhereInput> | null
   }, "id">
 
   export type InvitationRSVPOrderByWithAggregationInput = {
     id?: SortOrder
     invitationId?: SortOrderInput | SortOrder
+    guestGroupId?: SortOrderInput | SortOrder
     side?: SortOrderInput | SortOrder
     name?: SortOrderInput | SortOrder
     guestNameList?: SortOrderInput | SortOrder
@@ -24289,6 +28008,7 @@ export namespace Prisma {
     NOT?: InvitationRSVPScalarWhereWithAggregatesInput | InvitationRSVPScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"InvitationRSVP"> | number
     invitationId?: IntNullableWithAggregatesFilter<"InvitationRSVP"> | number | null
+    guestGroupId?: IntNullableWithAggregatesFilter<"InvitationRSVP"> | number | null
     side?: StringNullableWithAggregatesFilter<"InvitationRSVP"> | string | null
     name?: StringNullableWithAggregatesFilter<"InvitationRSVP"> | string | null
     guestNameList?: StringNullableWithAggregatesFilter<"InvitationRSVP"> | string | null
@@ -25031,6 +28751,247 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"AuditLog"> | Date | string
   }
 
+  export type InvitationGuestGroupWhereInput = {
+    AND?: InvitationGuestGroupWhereInput | InvitationGuestGroupWhereInput[]
+    OR?: InvitationGuestGroupWhereInput[]
+    NOT?: InvitationGuestGroupWhereInput | InvitationGuestGroupWhereInput[]
+    id?: IntFilter<"InvitationGuestGroup"> | number
+    invitationId?: IntFilter<"InvitationGuestGroup"> | number
+    name?: StringFilter<"InvitationGuestGroup"> | string
+    password?: StringNullableFilter<"InvitationGuestGroup"> | string | null
+    side?: EnumInvitationGuestGroup_sideNullableFilter<"InvitationGuestGroup"> | $Enums.InvitationGuestGroup_side | null
+    maxPax?: IntNullableFilter<"InvitationGuestGroup"> | number | null
+    rsvpTitle?: StringNullableFilter<"InvitationGuestGroup"> | string | null
+    layoutOverride?: JsonNullableFilter<"InvitationGuestGroup">
+    rsvpStatus?: EnumInvitationGuestGroup_rsvpStatusNullableFilter<"InvitationGuestGroup"> | $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: DateTimeNullableFilter<"InvitationGuestGroup"> | Date | string | null
+    memo?: StringNullableFilter<"InvitationGuestGroup"> | string | null
+    order?: IntNullableFilter<"InvitationGuestGroup"> | number | null
+    createdAt?: DateTimeNullableFilter<"InvitationGuestGroup"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"InvitationGuestGroup"> | Date | string | null
+    Invitation?: XOR<InvitationScalarRelationFilter, InvitationWhereInput>
+    InvitationRSVP?: InvitationRSVPListRelationFilter
+    InvitationSeatAssignment?: XOR<InvitationSeatAssignmentNullableScalarRelationFilter, InvitationSeatAssignmentWhereInput> | null
+  }
+
+  export type InvitationGuestGroupOrderByWithRelationInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    name?: SortOrder
+    password?: SortOrderInput | SortOrder
+    side?: SortOrderInput | SortOrder
+    maxPax?: SortOrderInput | SortOrder
+    rsvpTitle?: SortOrderInput | SortOrder
+    layoutOverride?: SortOrderInput | SortOrder
+    rsvpStatus?: SortOrderInput | SortOrder
+    rsvpAt?: SortOrderInput | SortOrder
+    memo?: SortOrderInput | SortOrder
+    order?: SortOrderInput | SortOrder
+    createdAt?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    Invitation?: InvitationOrderByWithRelationInput
+    InvitationRSVP?: InvitationRSVPOrderByRelationAggregateInput
+    InvitationSeatAssignment?: InvitationSeatAssignmentOrderByWithRelationInput
+    _relevance?: InvitationGuestGroupOrderByRelevanceInput
+  }
+
+  export type InvitationGuestGroupWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: InvitationGuestGroupWhereInput | InvitationGuestGroupWhereInput[]
+    OR?: InvitationGuestGroupWhereInput[]
+    NOT?: InvitationGuestGroupWhereInput | InvitationGuestGroupWhereInput[]
+    invitationId?: IntFilter<"InvitationGuestGroup"> | number
+    name?: StringFilter<"InvitationGuestGroup"> | string
+    password?: StringNullableFilter<"InvitationGuestGroup"> | string | null
+    side?: EnumInvitationGuestGroup_sideNullableFilter<"InvitationGuestGroup"> | $Enums.InvitationGuestGroup_side | null
+    maxPax?: IntNullableFilter<"InvitationGuestGroup"> | number | null
+    rsvpTitle?: StringNullableFilter<"InvitationGuestGroup"> | string | null
+    layoutOverride?: JsonNullableFilter<"InvitationGuestGroup">
+    rsvpStatus?: EnumInvitationGuestGroup_rsvpStatusNullableFilter<"InvitationGuestGroup"> | $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: DateTimeNullableFilter<"InvitationGuestGroup"> | Date | string | null
+    memo?: StringNullableFilter<"InvitationGuestGroup"> | string | null
+    order?: IntNullableFilter<"InvitationGuestGroup"> | number | null
+    createdAt?: DateTimeNullableFilter<"InvitationGuestGroup"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"InvitationGuestGroup"> | Date | string | null
+    Invitation?: XOR<InvitationScalarRelationFilter, InvitationWhereInput>
+    InvitationRSVP?: InvitationRSVPListRelationFilter
+    InvitationSeatAssignment?: XOR<InvitationSeatAssignmentNullableScalarRelationFilter, InvitationSeatAssignmentWhereInput> | null
+  }, "id">
+
+  export type InvitationGuestGroupOrderByWithAggregationInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    name?: SortOrder
+    password?: SortOrderInput | SortOrder
+    side?: SortOrderInput | SortOrder
+    maxPax?: SortOrderInput | SortOrder
+    rsvpTitle?: SortOrderInput | SortOrder
+    layoutOverride?: SortOrderInput | SortOrder
+    rsvpStatus?: SortOrderInput | SortOrder
+    rsvpAt?: SortOrderInput | SortOrder
+    memo?: SortOrderInput | SortOrder
+    order?: SortOrderInput | SortOrder
+    createdAt?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: InvitationGuestGroupCountOrderByAggregateInput
+    _avg?: InvitationGuestGroupAvgOrderByAggregateInput
+    _max?: InvitationGuestGroupMaxOrderByAggregateInput
+    _min?: InvitationGuestGroupMinOrderByAggregateInput
+    _sum?: InvitationGuestGroupSumOrderByAggregateInput
+  }
+
+  export type InvitationGuestGroupScalarWhereWithAggregatesInput = {
+    AND?: InvitationGuestGroupScalarWhereWithAggregatesInput | InvitationGuestGroupScalarWhereWithAggregatesInput[]
+    OR?: InvitationGuestGroupScalarWhereWithAggregatesInput[]
+    NOT?: InvitationGuestGroupScalarWhereWithAggregatesInput | InvitationGuestGroupScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"InvitationGuestGroup"> | number
+    invitationId?: IntWithAggregatesFilter<"InvitationGuestGroup"> | number
+    name?: StringWithAggregatesFilter<"InvitationGuestGroup"> | string
+    password?: StringNullableWithAggregatesFilter<"InvitationGuestGroup"> | string | null
+    side?: EnumInvitationGuestGroup_sideNullableWithAggregatesFilter<"InvitationGuestGroup"> | $Enums.InvitationGuestGroup_side | null
+    maxPax?: IntNullableWithAggregatesFilter<"InvitationGuestGroup"> | number | null
+    rsvpTitle?: StringNullableWithAggregatesFilter<"InvitationGuestGroup"> | string | null
+    layoutOverride?: JsonNullableWithAggregatesFilter<"InvitationGuestGroup">
+    rsvpStatus?: EnumInvitationGuestGroup_rsvpStatusNullableWithAggregatesFilter<"InvitationGuestGroup"> | $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: DateTimeNullableWithAggregatesFilter<"InvitationGuestGroup"> | Date | string | null
+    memo?: StringNullableWithAggregatesFilter<"InvitationGuestGroup"> | string | null
+    order?: IntNullableWithAggregatesFilter<"InvitationGuestGroup"> | number | null
+    createdAt?: DateTimeNullableWithAggregatesFilter<"InvitationGuestGroup"> | Date | string | null
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"InvitationGuestGroup"> | Date | string | null
+  }
+
+  export type InvitationSeatAssignmentWhereInput = {
+    AND?: InvitationSeatAssignmentWhereInput | InvitationSeatAssignmentWhereInput[]
+    OR?: InvitationSeatAssignmentWhereInput[]
+    NOT?: InvitationSeatAssignmentWhereInput | InvitationSeatAssignmentWhereInput[]
+    id?: IntFilter<"InvitationSeatAssignment"> | number
+    seatingTableId?: IntFilter<"InvitationSeatAssignment"> | number
+    guestGroupId?: IntFilter<"InvitationSeatAssignment"> | number
+    seatNumber?: IntNullableFilter<"InvitationSeatAssignment"> | number | null
+    createdAt?: DateTimeNullableFilter<"InvitationSeatAssignment"> | Date | string | null
+    InvitationGuestGroup?: XOR<InvitationGuestGroupScalarRelationFilter, InvitationGuestGroupWhereInput>
+    InvitationSeatingTable?: XOR<InvitationSeatingTableScalarRelationFilter, InvitationSeatingTableWhereInput>
+  }
+
+  export type InvitationSeatAssignmentOrderByWithRelationInput = {
+    id?: SortOrder
+    seatingTableId?: SortOrder
+    guestGroupId?: SortOrder
+    seatNumber?: SortOrderInput | SortOrder
+    createdAt?: SortOrderInput | SortOrder
+    InvitationGuestGroup?: InvitationGuestGroupOrderByWithRelationInput
+    InvitationSeatingTable?: InvitationSeatingTableOrderByWithRelationInput
+  }
+
+  export type InvitationSeatAssignmentWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    guestGroupId?: number
+    seatingTableId_seatNumber?: InvitationSeatAssignmentSeatingTableIdSeatNumberCompoundUniqueInput
+    AND?: InvitationSeatAssignmentWhereInput | InvitationSeatAssignmentWhereInput[]
+    OR?: InvitationSeatAssignmentWhereInput[]
+    NOT?: InvitationSeatAssignmentWhereInput | InvitationSeatAssignmentWhereInput[]
+    seatingTableId?: IntFilter<"InvitationSeatAssignment"> | number
+    seatNumber?: IntNullableFilter<"InvitationSeatAssignment"> | number | null
+    createdAt?: DateTimeNullableFilter<"InvitationSeatAssignment"> | Date | string | null
+    InvitationGuestGroup?: XOR<InvitationGuestGroupScalarRelationFilter, InvitationGuestGroupWhereInput>
+    InvitationSeatingTable?: XOR<InvitationSeatingTableScalarRelationFilter, InvitationSeatingTableWhereInput>
+  }, "id" | "guestGroupId" | "seatingTableId_seatNumber">
+
+  export type InvitationSeatAssignmentOrderByWithAggregationInput = {
+    id?: SortOrder
+    seatingTableId?: SortOrder
+    guestGroupId?: SortOrder
+    seatNumber?: SortOrderInput | SortOrder
+    createdAt?: SortOrderInput | SortOrder
+    _count?: InvitationSeatAssignmentCountOrderByAggregateInput
+    _avg?: InvitationSeatAssignmentAvgOrderByAggregateInput
+    _max?: InvitationSeatAssignmentMaxOrderByAggregateInput
+    _min?: InvitationSeatAssignmentMinOrderByAggregateInput
+    _sum?: InvitationSeatAssignmentSumOrderByAggregateInput
+  }
+
+  export type InvitationSeatAssignmentScalarWhereWithAggregatesInput = {
+    AND?: InvitationSeatAssignmentScalarWhereWithAggregatesInput | InvitationSeatAssignmentScalarWhereWithAggregatesInput[]
+    OR?: InvitationSeatAssignmentScalarWhereWithAggregatesInput[]
+    NOT?: InvitationSeatAssignmentScalarWhereWithAggregatesInput | InvitationSeatAssignmentScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"InvitationSeatAssignment"> | number
+    seatingTableId?: IntWithAggregatesFilter<"InvitationSeatAssignment"> | number
+    guestGroupId?: IntWithAggregatesFilter<"InvitationSeatAssignment"> | number
+    seatNumber?: IntNullableWithAggregatesFilter<"InvitationSeatAssignment"> | number | null
+    createdAt?: DateTimeNullableWithAggregatesFilter<"InvitationSeatAssignment"> | Date | string | null
+  }
+
+  export type InvitationSeatingTableWhereInput = {
+    AND?: InvitationSeatingTableWhereInput | InvitationSeatingTableWhereInput[]
+    OR?: InvitationSeatingTableWhereInput[]
+    NOT?: InvitationSeatingTableWhereInput | InvitationSeatingTableWhereInput[]
+    id?: IntFilter<"InvitationSeatingTable"> | number
+    invitationId?: IntFilter<"InvitationSeatingTable"> | number
+    name?: StringFilter<"InvitationSeatingTable"> | string
+    capacity?: IntFilter<"InvitationSeatingTable"> | number
+    order?: IntNullableFilter<"InvitationSeatingTable"> | number | null
+    createdAt?: DateTimeNullableFilter<"InvitationSeatingTable"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"InvitationSeatingTable"> | Date | string | null
+    InvitationSeatAssignment?: InvitationSeatAssignmentListRelationFilter
+    Invitation?: XOR<InvitationScalarRelationFilter, InvitationWhereInput>
+  }
+
+  export type InvitationSeatingTableOrderByWithRelationInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    name?: SortOrder
+    capacity?: SortOrder
+    order?: SortOrderInput | SortOrder
+    createdAt?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    InvitationSeatAssignment?: InvitationSeatAssignmentOrderByRelationAggregateInput
+    Invitation?: InvitationOrderByWithRelationInput
+    _relevance?: InvitationSeatingTableOrderByRelevanceInput
+  }
+
+  export type InvitationSeatingTableWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: InvitationSeatingTableWhereInput | InvitationSeatingTableWhereInput[]
+    OR?: InvitationSeatingTableWhereInput[]
+    NOT?: InvitationSeatingTableWhereInput | InvitationSeatingTableWhereInput[]
+    invitationId?: IntFilter<"InvitationSeatingTable"> | number
+    name?: StringFilter<"InvitationSeatingTable"> | string
+    capacity?: IntFilter<"InvitationSeatingTable"> | number
+    order?: IntNullableFilter<"InvitationSeatingTable"> | number | null
+    createdAt?: DateTimeNullableFilter<"InvitationSeatingTable"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"InvitationSeatingTable"> | Date | string | null
+    InvitationSeatAssignment?: InvitationSeatAssignmentListRelationFilter
+    Invitation?: XOR<InvitationScalarRelationFilter, InvitationWhereInput>
+  }, "id">
+
+  export type InvitationSeatingTableOrderByWithAggregationInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    name?: SortOrder
+    capacity?: SortOrder
+    order?: SortOrderInput | SortOrder
+    createdAt?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: InvitationSeatingTableCountOrderByAggregateInput
+    _avg?: InvitationSeatingTableAvgOrderByAggregateInput
+    _max?: InvitationSeatingTableMaxOrderByAggregateInput
+    _min?: InvitationSeatingTableMinOrderByAggregateInput
+    _sum?: InvitationSeatingTableSumOrderByAggregateInput
+  }
+
+  export type InvitationSeatingTableScalarWhereWithAggregatesInput = {
+    AND?: InvitationSeatingTableScalarWhereWithAggregatesInput | InvitationSeatingTableScalarWhereWithAggregatesInput[]
+    OR?: InvitationSeatingTableScalarWhereWithAggregatesInput[]
+    NOT?: InvitationSeatingTableScalarWhereWithAggregatesInput | InvitationSeatingTableScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"InvitationSeatingTable"> | number
+    invitationId?: IntWithAggregatesFilter<"InvitationSeatingTable"> | number
+    name?: StringWithAggregatesFilter<"InvitationSeatingTable"> | string
+    capacity?: IntWithAggregatesFilter<"InvitationSeatingTable"> | number
+    order?: IntNullableWithAggregatesFilter<"InvitationSeatingTable"> | number | null
+    createdAt?: DateTimeNullableWithAggregatesFilter<"InvitationSeatingTable"> | Date | string | null
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"InvitationSeatingTable"> | Date | string | null
+  }
+
   export type UserCreateInput = {
     email?: string | null
     name?: string | null
@@ -25170,6 +29131,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -25195,10 +29159,12 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateInput = {
@@ -25253,6 +29219,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -25277,10 +29246,12 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUpdateInput = {
@@ -25333,6 +29304,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -25358,10 +29332,12 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateInput = {
@@ -25416,6 +29392,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -25440,10 +29419,12 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationCreateManyInput = {
@@ -25498,6 +29479,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -25570,6 +29554,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -25644,6 +29631,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -26065,11 +30055,13 @@ export namespace Prisma {
     attending?: boolean | null
     createdAt?: Date | string | null
     invitation?: InvitationCreateNestedOneWithoutInvitationRSVPInput
+    InvitationGuestGroup?: InvitationGuestGroupCreateNestedOneWithoutInvitationRSVPInput
   }
 
   export type InvitationRSVPUncheckedCreateInput = {
     id?: number
     invitationId?: number | null
+    guestGroupId?: number | null
     side?: string | null
     name?: string | null
     guestNameList?: string | null
@@ -26094,11 +30086,13 @@ export namespace Prisma {
     attending?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     invitation?: InvitationUpdateOneWithoutInvitationRSVPNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUpdateOneWithoutInvitationRSVPNestedInput
   }
 
   export type InvitationRSVPUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     invitationId?: NullableIntFieldUpdateOperationsInput | number | null
+    guestGroupId?: NullableIntFieldUpdateOperationsInput | number | null
     side?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     guestNameList?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26114,6 +30108,7 @@ export namespace Prisma {
   export type InvitationRSVPCreateManyInput = {
     id?: number
     invitationId?: number | null
+    guestGroupId?: number | null
     side?: string | null
     name?: string | null
     guestNameList?: string | null
@@ -26142,6 +30137,7 @@ export namespace Prisma {
   export type InvitationRSVPUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     invitationId?: NullableIntFieldUpdateOperationsInput | number | null
+    guestGroupId?: NullableIntFieldUpdateOperationsInput | number | null
     side?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     guestNameList?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26888,6 +30884,250 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type InvitationGuestGroupCreateInput = {
+    name: string
+    password?: string | null
+    side?: $Enums.InvitationGuestGroup_side | null
+    maxPax?: number | null
+    rsvpTitle?: string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: Date | string | null
+    memo?: string | null
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    Invitation: InvitationCreateNestedOneWithoutInvitationGuestGroupInput
+    InvitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationGuestGroupInput
+    InvitationSeatAssignment?: InvitationSeatAssignmentCreateNestedOneWithoutInvitationGuestGroupInput
+  }
+
+  export type InvitationGuestGroupUncheckedCreateInput = {
+    id?: number
+    invitationId: number
+    name: string
+    password?: string | null
+    side?: $Enums.InvitationGuestGroup_side | null
+    maxPax?: number | null
+    rsvpTitle?: string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: Date | string | null
+    memo?: string | null
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    InvitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationGuestGroupInput
+    InvitationSeatAssignment?: InvitationSeatAssignmentUncheckedCreateNestedOneWithoutInvitationGuestGroupInput
+  }
+
+  export type InvitationGuestGroupUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    side?: NullableEnumInvitationGuestGroup_sideFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_side | null
+    maxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: NullableEnumInvitationGuestGroup_rsvpStatusFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Invitation?: InvitationUpdateOneRequiredWithoutInvitationGuestGroupNestedInput
+    InvitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationGuestGroupNestedInput
+    InvitationSeatAssignment?: InvitationSeatAssignmentUpdateOneWithoutInvitationGuestGroupNestedInput
+  }
+
+  export type InvitationGuestGroupUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    side?: NullableEnumInvitationGuestGroup_sideFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_side | null
+    maxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: NullableEnumInvitationGuestGroup_rsvpStatusFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    InvitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationGuestGroupNestedInput
+    InvitationSeatAssignment?: InvitationSeatAssignmentUncheckedUpdateOneWithoutInvitationGuestGroupNestedInput
+  }
+
+  export type InvitationGuestGroupCreateManyInput = {
+    id?: number
+    invitationId: number
+    name: string
+    password?: string | null
+    side?: $Enums.InvitationGuestGroup_side | null
+    maxPax?: number | null
+    rsvpTitle?: string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: Date | string | null
+    memo?: string | null
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type InvitationGuestGroupUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    side?: NullableEnumInvitationGuestGroup_sideFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_side | null
+    maxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: NullableEnumInvitationGuestGroup_rsvpStatusFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationGuestGroupUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    side?: NullableEnumInvitationGuestGroup_sideFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_side | null
+    maxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: NullableEnumInvitationGuestGroup_rsvpStatusFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationSeatAssignmentCreateInput = {
+    seatNumber?: number | null
+    createdAt?: Date | string | null
+    InvitationGuestGroup: InvitationGuestGroupCreateNestedOneWithoutInvitationSeatAssignmentInput
+    InvitationSeatingTable: InvitationSeatingTableCreateNestedOneWithoutInvitationSeatAssignmentInput
+  }
+
+  export type InvitationSeatAssignmentUncheckedCreateInput = {
+    id?: number
+    seatingTableId: number
+    guestGroupId: number
+    seatNumber?: number | null
+    createdAt?: Date | string | null
+  }
+
+  export type InvitationSeatAssignmentUpdateInput = {
+    seatNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    InvitationGuestGroup?: InvitationGuestGroupUpdateOneRequiredWithoutInvitationSeatAssignmentNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUpdateOneRequiredWithoutInvitationSeatAssignmentNestedInput
+  }
+
+  export type InvitationSeatAssignmentUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    seatingTableId?: IntFieldUpdateOperationsInput | number
+    guestGroupId?: IntFieldUpdateOperationsInput | number
+    seatNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationSeatAssignmentCreateManyInput = {
+    id?: number
+    seatingTableId: number
+    guestGroupId: number
+    seatNumber?: number | null
+    createdAt?: Date | string | null
+  }
+
+  export type InvitationSeatAssignmentUpdateManyMutationInput = {
+    seatNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationSeatAssignmentUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    seatingTableId?: IntFieldUpdateOperationsInput | number
+    guestGroupId?: IntFieldUpdateOperationsInput | number
+    seatNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationSeatingTableCreateInput = {
+    name: string
+    capacity?: number
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    InvitationSeatAssignment?: InvitationSeatAssignmentCreateNestedManyWithoutInvitationSeatingTableInput
+    Invitation: InvitationCreateNestedOneWithoutInvitationSeatingTableInput
+  }
+
+  export type InvitationSeatingTableUncheckedCreateInput = {
+    id?: number
+    invitationId: number
+    name: string
+    capacity?: number
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    InvitationSeatAssignment?: InvitationSeatAssignmentUncheckedCreateNestedManyWithoutInvitationSeatingTableInput
+  }
+
+  export type InvitationSeatingTableUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    capacity?: IntFieldUpdateOperationsInput | number
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    InvitationSeatAssignment?: InvitationSeatAssignmentUpdateManyWithoutInvitationSeatingTableNestedInput
+    Invitation?: InvitationUpdateOneRequiredWithoutInvitationSeatingTableNestedInput
+  }
+
+  export type InvitationSeatingTableUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    capacity?: IntFieldUpdateOperationsInput | number
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    InvitationSeatAssignment?: InvitationSeatAssignmentUncheckedUpdateManyWithoutInvitationSeatingTableNestedInput
+  }
+
+  export type InvitationSeatingTableCreateManyInput = {
+    id?: number
+    invitationId: number
+    name: string
+    capacity?: number
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type InvitationSeatingTableUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    capacity?: IntFieldUpdateOperationsInput | number
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationSeatingTableUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    capacity?: IntFieldUpdateOperationsInput | number
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -27143,6 +31383,12 @@ export namespace Prisma {
     none?: InvitationFaqWhereInput
   }
 
+  export type InvitationGuestGroupListRelationFilter = {
+    every?: InvitationGuestGroupWhereInput
+    some?: InvitationGuestGroupWhereInput
+    none?: InvitationGuestGroupWhereInput
+  }
+
   export type InvitationPhotoListRelationFilter = {
     every?: InvitationPhotoWhereInput
     some?: InvitationPhotoWhereInput
@@ -27161,6 +31407,12 @@ export namespace Prisma {
     none?: InvitationRSVPWhereInput
   }
 
+  export type InvitationSeatingTableListRelationFilter = {
+    every?: InvitationSeatingTableWhereInput
+    some?: InvitationSeatingTableWhereInput
+    none?: InvitationSeatingTableWhereInput
+  }
+
   export type InvitationCoverPhotoOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -27177,6 +31429,10 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type InvitationGuestGroupOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type InvitationPhotoOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -27186,6 +31442,10 @@ export namespace Prisma {
   }
 
   export type InvitationRSVPOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type InvitationSeatingTableOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -27247,6 +31507,9 @@ export namespace Prisma {
     rsvpHasFood?: SortOrder
     isRsvpPopup?: SortOrder
     hasRsvpDeadline?: SortOrder
+    isPasswordProtected?: SortOrder
+    universalPassword?: SortOrder
+    guestListEnabled?: SortOrder
     billingStatus?: SortOrder
     trialEndsAt?: SortOrder
     currentPlanCode?: SortOrder
@@ -27331,6 +31594,9 @@ export namespace Prisma {
     rsvpHasFood?: SortOrder
     isRsvpPopup?: SortOrder
     hasRsvpDeadline?: SortOrder
+    isPasswordProtected?: SortOrder
+    universalPassword?: SortOrder
+    guestListEnabled?: SortOrder
     billingStatus?: SortOrder
     trialEndsAt?: SortOrder
     currentPlanCode?: SortOrder
@@ -27404,6 +31670,9 @@ export namespace Prisma {
     rsvpHasFood?: SortOrder
     isRsvpPopup?: SortOrder
     hasRsvpDeadline?: SortOrder
+    isPasswordProtected?: SortOrder
+    universalPassword?: SortOrder
+    guestListEnabled?: SortOrder
     billingStatus?: SortOrder
     trialEndsAt?: SortOrder
     currentPlanCode?: SortOrder
@@ -27840,6 +32109,11 @@ export namespace Prisma {
     height?: SortOrder
   }
 
+  export type InvitationGuestGroupNullableScalarRelationFilter = {
+    is?: InvitationGuestGroupWhereInput | null
+    isNot?: InvitationGuestGroupWhereInput | null
+  }
+
   export type InvitationRSVPOrderByRelevanceInput = {
     fields: InvitationRSVPOrderByRelevanceFieldEnum | InvitationRSVPOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -27849,6 +32123,7 @@ export namespace Prisma {
   export type InvitationRSVPCountOrderByAggregateInput = {
     id?: SortOrder
     invitationId?: SortOrder
+    guestGroupId?: SortOrder
     side?: SortOrder
     name?: SortOrder
     guestNameList?: SortOrder
@@ -27864,12 +32139,14 @@ export namespace Prisma {
   export type InvitationRSVPAvgOrderByAggregateInput = {
     id?: SortOrder
     invitationId?: SortOrder
+    guestGroupId?: SortOrder
     pax?: SortOrder
   }
 
   export type InvitationRSVPMaxOrderByAggregateInput = {
     id?: SortOrder
     invitationId?: SortOrder
+    guestGroupId?: SortOrder
     side?: SortOrder
     name?: SortOrder
     guestNameList?: SortOrder
@@ -27885,6 +32162,7 @@ export namespace Prisma {
   export type InvitationRSVPMinOrderByAggregateInput = {
     id?: SortOrder
     invitationId?: SortOrder
+    guestGroupId?: SortOrder
     side?: SortOrder
     name?: SortOrder
     guestNameList?: SortOrder
@@ -27900,6 +32178,7 @@ export namespace Prisma {
   export type InvitationRSVPSumOrderByAggregateInput = {
     id?: SortOrder
     invitationId?: SortOrder
+    guestGroupId?: SortOrder
     pax?: SortOrder
   }
 
@@ -28540,6 +32819,227 @@ export namespace Prisma {
     _max?: NestedBigIntFilter<$PrismaModel>
   }
 
+  export type EnumInvitationGuestGroup_sideNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationGuestGroup_side | EnumInvitationGuestGroup_sideFieldRefInput<$PrismaModel> | null
+    in?: $Enums.InvitationGuestGroup_side[] | null
+    notIn?: $Enums.InvitationGuestGroup_side[] | null
+    not?: NestedEnumInvitationGuestGroup_sideNullableFilter<$PrismaModel> | $Enums.InvitationGuestGroup_side | null
+  }
+
+  export type EnumInvitationGuestGroup_rsvpStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationGuestGroup_rsvpStatus | EnumInvitationGuestGroup_rsvpStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.InvitationGuestGroup_rsvpStatus[] | null
+    notIn?: $Enums.InvitationGuestGroup_rsvpStatus[] | null
+    not?: NestedEnumInvitationGuestGroup_rsvpStatusNullableFilter<$PrismaModel> | $Enums.InvitationGuestGroup_rsvpStatus | null
+  }
+
+  export type InvitationSeatAssignmentNullableScalarRelationFilter = {
+    is?: InvitationSeatAssignmentWhereInput | null
+    isNot?: InvitationSeatAssignmentWhereInput | null
+  }
+
+  export type InvitationGuestGroupOrderByRelevanceInput = {
+    fields: InvitationGuestGroupOrderByRelevanceFieldEnum | InvitationGuestGroupOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type InvitationGuestGroupCountOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    name?: SortOrder
+    password?: SortOrder
+    side?: SortOrder
+    maxPax?: SortOrder
+    rsvpTitle?: SortOrder
+    layoutOverride?: SortOrder
+    rsvpStatus?: SortOrder
+    rsvpAt?: SortOrder
+    memo?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type InvitationGuestGroupAvgOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    maxPax?: SortOrder
+    order?: SortOrder
+  }
+
+  export type InvitationGuestGroupMaxOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    name?: SortOrder
+    password?: SortOrder
+    side?: SortOrder
+    maxPax?: SortOrder
+    rsvpTitle?: SortOrder
+    rsvpStatus?: SortOrder
+    rsvpAt?: SortOrder
+    memo?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type InvitationGuestGroupMinOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    name?: SortOrder
+    password?: SortOrder
+    side?: SortOrder
+    maxPax?: SortOrder
+    rsvpTitle?: SortOrder
+    rsvpStatus?: SortOrder
+    rsvpAt?: SortOrder
+    memo?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type InvitationGuestGroupSumOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    maxPax?: SortOrder
+    order?: SortOrder
+  }
+
+  export type EnumInvitationGuestGroup_sideNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationGuestGroup_side | EnumInvitationGuestGroup_sideFieldRefInput<$PrismaModel> | null
+    in?: $Enums.InvitationGuestGroup_side[] | null
+    notIn?: $Enums.InvitationGuestGroup_side[] | null
+    not?: NestedEnumInvitationGuestGroup_sideNullableWithAggregatesFilter<$PrismaModel> | $Enums.InvitationGuestGroup_side | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumInvitationGuestGroup_sideNullableFilter<$PrismaModel>
+    _max?: NestedEnumInvitationGuestGroup_sideNullableFilter<$PrismaModel>
+  }
+
+  export type EnumInvitationGuestGroup_rsvpStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationGuestGroup_rsvpStatus | EnumInvitationGuestGroup_rsvpStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.InvitationGuestGroup_rsvpStatus[] | null
+    notIn?: $Enums.InvitationGuestGroup_rsvpStatus[] | null
+    not?: NestedEnumInvitationGuestGroup_rsvpStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.InvitationGuestGroup_rsvpStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumInvitationGuestGroup_rsvpStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumInvitationGuestGroup_rsvpStatusNullableFilter<$PrismaModel>
+  }
+
+  export type InvitationGuestGroupScalarRelationFilter = {
+    is?: InvitationGuestGroupWhereInput
+    isNot?: InvitationGuestGroupWhereInput
+  }
+
+  export type InvitationSeatingTableScalarRelationFilter = {
+    is?: InvitationSeatingTableWhereInput
+    isNot?: InvitationSeatingTableWhereInput
+  }
+
+  export type InvitationSeatAssignmentSeatingTableIdSeatNumberCompoundUniqueInput = {
+    seatingTableId: number
+    seatNumber: number
+  }
+
+  export type InvitationSeatAssignmentCountOrderByAggregateInput = {
+    id?: SortOrder
+    seatingTableId?: SortOrder
+    guestGroupId?: SortOrder
+    seatNumber?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type InvitationSeatAssignmentAvgOrderByAggregateInput = {
+    id?: SortOrder
+    seatingTableId?: SortOrder
+    guestGroupId?: SortOrder
+    seatNumber?: SortOrder
+  }
+
+  export type InvitationSeatAssignmentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    seatingTableId?: SortOrder
+    guestGroupId?: SortOrder
+    seatNumber?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type InvitationSeatAssignmentMinOrderByAggregateInput = {
+    id?: SortOrder
+    seatingTableId?: SortOrder
+    guestGroupId?: SortOrder
+    seatNumber?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type InvitationSeatAssignmentSumOrderByAggregateInput = {
+    id?: SortOrder
+    seatingTableId?: SortOrder
+    guestGroupId?: SortOrder
+    seatNumber?: SortOrder
+  }
+
+  export type InvitationSeatAssignmentListRelationFilter = {
+    every?: InvitationSeatAssignmentWhereInput
+    some?: InvitationSeatAssignmentWhereInput
+    none?: InvitationSeatAssignmentWhereInput
+  }
+
+  export type InvitationSeatAssignmentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type InvitationSeatingTableOrderByRelevanceInput = {
+    fields: InvitationSeatingTableOrderByRelevanceFieldEnum | InvitationSeatingTableOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type InvitationSeatingTableCountOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    name?: SortOrder
+    capacity?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type InvitationSeatingTableAvgOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    capacity?: SortOrder
+    order?: SortOrder
+  }
+
+  export type InvitationSeatingTableMaxOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    name?: SortOrder
+    capacity?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type InvitationSeatingTableMinOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    name?: SortOrder
+    capacity?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type InvitationSeatingTableSumOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    capacity?: SortOrder
+    order?: SortOrder
+  }
+
   export type InvitationCreateNestedManyWithoutUserInput = {
     create?: XOR<InvitationCreateWithoutUserInput, InvitationUncheckedCreateWithoutUserInput> | InvitationCreateWithoutUserInput[] | InvitationUncheckedCreateWithoutUserInput[]
     connectOrCreate?: InvitationCreateOrConnectWithoutUserInput | InvitationCreateOrConnectWithoutUserInput[]
@@ -28678,6 +33178,13 @@ export namespace Prisma {
     connect?: InvitationFaqWhereUniqueInput | InvitationFaqWhereUniqueInput[]
   }
 
+  export type InvitationGuestGroupCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<InvitationGuestGroupCreateWithoutInvitationInput, InvitationGuestGroupUncheckedCreateWithoutInvitationInput> | InvitationGuestGroupCreateWithoutInvitationInput[] | InvitationGuestGroupUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationGuestGroupCreateOrConnectWithoutInvitationInput | InvitationGuestGroupCreateOrConnectWithoutInvitationInput[]
+    createMany?: InvitationGuestGroupCreateManyInvitationInputEnvelope
+    connect?: InvitationGuestGroupWhereUniqueInput | InvitationGuestGroupWhereUniqueInput[]
+  }
+
   export type InvitationOrderCreateNestedManyWithoutInvitationInput = {
     create?: XOR<InvitationOrderCreateWithoutInvitationInput, InvitationOrderUncheckedCreateWithoutInvitationInput> | InvitationOrderCreateWithoutInvitationInput[] | InvitationOrderUncheckedCreateWithoutInvitationInput[]
     connectOrCreate?: InvitationOrderCreateOrConnectWithoutInvitationInput | InvitationOrderCreateOrConnectWithoutInvitationInput[]
@@ -28704,6 +33211,13 @@ export namespace Prisma {
     connectOrCreate?: InvitationRSVPCreateOrConnectWithoutInvitationInput | InvitationRSVPCreateOrConnectWithoutInvitationInput[]
     createMany?: InvitationRSVPCreateManyInvitationInputEnvelope
     connect?: InvitationRSVPWhereUniqueInput | InvitationRSVPWhereUniqueInput[]
+  }
+
+  export type InvitationSeatingTableCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<InvitationSeatingTableCreateWithoutInvitationInput, InvitationSeatingTableUncheckedCreateWithoutInvitationInput> | InvitationSeatingTableCreateWithoutInvitationInput[] | InvitationSeatingTableUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationSeatingTableCreateOrConnectWithoutInvitationInput | InvitationSeatingTableCreateOrConnectWithoutInvitationInput[]
+    createMany?: InvitationSeatingTableCreateManyInvitationInputEnvelope
+    connect?: InvitationSeatingTableWhereUniqueInput | InvitationSeatingTableWhereUniqueInput[]
   }
 
   export type InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput = {
@@ -28734,6 +33248,13 @@ export namespace Prisma {
     connect?: InvitationFaqWhereUniqueInput | InvitationFaqWhereUniqueInput[]
   }
 
+  export type InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<InvitationGuestGroupCreateWithoutInvitationInput, InvitationGuestGroupUncheckedCreateWithoutInvitationInput> | InvitationGuestGroupCreateWithoutInvitationInput[] | InvitationGuestGroupUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationGuestGroupCreateOrConnectWithoutInvitationInput | InvitationGuestGroupCreateOrConnectWithoutInvitationInput[]
+    createMany?: InvitationGuestGroupCreateManyInvitationInputEnvelope
+    connect?: InvitationGuestGroupWhereUniqueInput | InvitationGuestGroupWhereUniqueInput[]
+  }
+
   export type InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput = {
     create?: XOR<InvitationOrderCreateWithoutInvitationInput, InvitationOrderUncheckedCreateWithoutInvitationInput> | InvitationOrderCreateWithoutInvitationInput[] | InvitationOrderUncheckedCreateWithoutInvitationInput[]
     connectOrCreate?: InvitationOrderCreateOrConnectWithoutInvitationInput | InvitationOrderCreateOrConnectWithoutInvitationInput[]
@@ -28760,6 +33281,13 @@ export namespace Prisma {
     connectOrCreate?: InvitationRSVPCreateOrConnectWithoutInvitationInput | InvitationRSVPCreateOrConnectWithoutInvitationInput[]
     createMany?: InvitationRSVPCreateManyInvitationInputEnvelope
     connect?: InvitationRSVPWhereUniqueInput | InvitationRSVPWhereUniqueInput[]
+  }
+
+  export type InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<InvitationSeatingTableCreateWithoutInvitationInput, InvitationSeatingTableUncheckedCreateWithoutInvitationInput> | InvitationSeatingTableCreateWithoutInvitationInput[] | InvitationSeatingTableUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationSeatingTableCreateOrConnectWithoutInvitationInput | InvitationSeatingTableCreateOrConnectWithoutInvitationInput[]
+    createMany?: InvitationSeatingTableCreateManyInvitationInputEnvelope
+    connect?: InvitationSeatingTableWhereUniqueInput | InvitationSeatingTableWhereUniqueInput[]
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -28848,6 +33376,20 @@ export namespace Prisma {
     deleteMany?: InvitationFaqScalarWhereInput | InvitationFaqScalarWhereInput[]
   }
 
+  export type InvitationGuestGroupUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<InvitationGuestGroupCreateWithoutInvitationInput, InvitationGuestGroupUncheckedCreateWithoutInvitationInput> | InvitationGuestGroupCreateWithoutInvitationInput[] | InvitationGuestGroupUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationGuestGroupCreateOrConnectWithoutInvitationInput | InvitationGuestGroupCreateOrConnectWithoutInvitationInput[]
+    upsert?: InvitationGuestGroupUpsertWithWhereUniqueWithoutInvitationInput | InvitationGuestGroupUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: InvitationGuestGroupCreateManyInvitationInputEnvelope
+    set?: InvitationGuestGroupWhereUniqueInput | InvitationGuestGroupWhereUniqueInput[]
+    disconnect?: InvitationGuestGroupWhereUniqueInput | InvitationGuestGroupWhereUniqueInput[]
+    delete?: InvitationGuestGroupWhereUniqueInput | InvitationGuestGroupWhereUniqueInput[]
+    connect?: InvitationGuestGroupWhereUniqueInput | InvitationGuestGroupWhereUniqueInput[]
+    update?: InvitationGuestGroupUpdateWithWhereUniqueWithoutInvitationInput | InvitationGuestGroupUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: InvitationGuestGroupUpdateManyWithWhereWithoutInvitationInput | InvitationGuestGroupUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: InvitationGuestGroupScalarWhereInput | InvitationGuestGroupScalarWhereInput[]
+  }
+
   export type InvitationOrderUpdateManyWithoutInvitationNestedInput = {
     create?: XOR<InvitationOrderCreateWithoutInvitationInput, InvitationOrderUncheckedCreateWithoutInvitationInput> | InvitationOrderCreateWithoutInvitationInput[] | InvitationOrderUncheckedCreateWithoutInvitationInput[]
     connectOrCreate?: InvitationOrderCreateOrConnectWithoutInvitationInput | InvitationOrderCreateOrConnectWithoutInvitationInput[]
@@ -28902,6 +33444,20 @@ export namespace Prisma {
     update?: InvitationRSVPUpdateWithWhereUniqueWithoutInvitationInput | InvitationRSVPUpdateWithWhereUniqueWithoutInvitationInput[]
     updateMany?: InvitationRSVPUpdateManyWithWhereWithoutInvitationInput | InvitationRSVPUpdateManyWithWhereWithoutInvitationInput[]
     deleteMany?: InvitationRSVPScalarWhereInput | InvitationRSVPScalarWhereInput[]
+  }
+
+  export type InvitationSeatingTableUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<InvitationSeatingTableCreateWithoutInvitationInput, InvitationSeatingTableUncheckedCreateWithoutInvitationInput> | InvitationSeatingTableCreateWithoutInvitationInput[] | InvitationSeatingTableUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationSeatingTableCreateOrConnectWithoutInvitationInput | InvitationSeatingTableCreateOrConnectWithoutInvitationInput[]
+    upsert?: InvitationSeatingTableUpsertWithWhereUniqueWithoutInvitationInput | InvitationSeatingTableUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: InvitationSeatingTableCreateManyInvitationInputEnvelope
+    set?: InvitationSeatingTableWhereUniqueInput | InvitationSeatingTableWhereUniqueInput[]
+    disconnect?: InvitationSeatingTableWhereUniqueInput | InvitationSeatingTableWhereUniqueInput[]
+    delete?: InvitationSeatingTableWhereUniqueInput | InvitationSeatingTableWhereUniqueInput[]
+    connect?: InvitationSeatingTableWhereUniqueInput | InvitationSeatingTableWhereUniqueInput[]
+    update?: InvitationSeatingTableUpdateWithWhereUniqueWithoutInvitationInput | InvitationSeatingTableUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: InvitationSeatingTableUpdateManyWithWhereWithoutInvitationInput | InvitationSeatingTableUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: InvitationSeatingTableScalarWhereInput | InvitationSeatingTableScalarWhereInput[]
   }
 
   export type InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput = {
@@ -28960,6 +33516,20 @@ export namespace Prisma {
     deleteMany?: InvitationFaqScalarWhereInput | InvitationFaqScalarWhereInput[]
   }
 
+  export type InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<InvitationGuestGroupCreateWithoutInvitationInput, InvitationGuestGroupUncheckedCreateWithoutInvitationInput> | InvitationGuestGroupCreateWithoutInvitationInput[] | InvitationGuestGroupUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationGuestGroupCreateOrConnectWithoutInvitationInput | InvitationGuestGroupCreateOrConnectWithoutInvitationInput[]
+    upsert?: InvitationGuestGroupUpsertWithWhereUniqueWithoutInvitationInput | InvitationGuestGroupUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: InvitationGuestGroupCreateManyInvitationInputEnvelope
+    set?: InvitationGuestGroupWhereUniqueInput | InvitationGuestGroupWhereUniqueInput[]
+    disconnect?: InvitationGuestGroupWhereUniqueInput | InvitationGuestGroupWhereUniqueInput[]
+    delete?: InvitationGuestGroupWhereUniqueInput | InvitationGuestGroupWhereUniqueInput[]
+    connect?: InvitationGuestGroupWhereUniqueInput | InvitationGuestGroupWhereUniqueInput[]
+    update?: InvitationGuestGroupUpdateWithWhereUniqueWithoutInvitationInput | InvitationGuestGroupUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: InvitationGuestGroupUpdateManyWithWhereWithoutInvitationInput | InvitationGuestGroupUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: InvitationGuestGroupScalarWhereInput | InvitationGuestGroupScalarWhereInput[]
+  }
+
   export type InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput = {
     create?: XOR<InvitationOrderCreateWithoutInvitationInput, InvitationOrderUncheckedCreateWithoutInvitationInput> | InvitationOrderCreateWithoutInvitationInput[] | InvitationOrderUncheckedCreateWithoutInvitationInput[]
     connectOrCreate?: InvitationOrderCreateOrConnectWithoutInvitationInput | InvitationOrderCreateOrConnectWithoutInvitationInput[]
@@ -29014,6 +33584,20 @@ export namespace Prisma {
     update?: InvitationRSVPUpdateWithWhereUniqueWithoutInvitationInput | InvitationRSVPUpdateWithWhereUniqueWithoutInvitationInput[]
     updateMany?: InvitationRSVPUpdateManyWithWhereWithoutInvitationInput | InvitationRSVPUpdateManyWithWhereWithoutInvitationInput[]
     deleteMany?: InvitationRSVPScalarWhereInput | InvitationRSVPScalarWhereInput[]
+  }
+
+  export type InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<InvitationSeatingTableCreateWithoutInvitationInput, InvitationSeatingTableUncheckedCreateWithoutInvitationInput> | InvitationSeatingTableCreateWithoutInvitationInput[] | InvitationSeatingTableUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationSeatingTableCreateOrConnectWithoutInvitationInput | InvitationSeatingTableCreateOrConnectWithoutInvitationInput[]
+    upsert?: InvitationSeatingTableUpsertWithWhereUniqueWithoutInvitationInput | InvitationSeatingTableUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: InvitationSeatingTableCreateManyInvitationInputEnvelope
+    set?: InvitationSeatingTableWhereUniqueInput | InvitationSeatingTableWhereUniqueInput[]
+    disconnect?: InvitationSeatingTableWhereUniqueInput | InvitationSeatingTableWhereUniqueInput[]
+    delete?: InvitationSeatingTableWhereUniqueInput | InvitationSeatingTableWhereUniqueInput[]
+    connect?: InvitationSeatingTableWhereUniqueInput | InvitationSeatingTableWhereUniqueInput[]
+    update?: InvitationSeatingTableUpdateWithWhereUniqueWithoutInvitationInput | InvitationSeatingTableUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: InvitationSeatingTableUpdateManyWithWhereWithoutInvitationInput | InvitationSeatingTableUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: InvitationSeatingTableScalarWhereInput | InvitationSeatingTableScalarWhereInput[]
   }
 
   export type PlaceCreateNestedOneWithoutInvitationPlaceListInput = {
@@ -29194,6 +33778,12 @@ export namespace Prisma {
     connect?: InvitationWhereUniqueInput
   }
 
+  export type InvitationGuestGroupCreateNestedOneWithoutInvitationRSVPInput = {
+    create?: XOR<InvitationGuestGroupCreateWithoutInvitationRSVPInput, InvitationGuestGroupUncheckedCreateWithoutInvitationRSVPInput>
+    connectOrCreate?: InvitationGuestGroupCreateOrConnectWithoutInvitationRSVPInput
+    connect?: InvitationGuestGroupWhereUniqueInput
+  }
+
   export type InvitationUpdateOneWithoutInvitationRSVPNestedInput = {
     create?: XOR<InvitationCreateWithoutInvitationRSVPInput, InvitationUncheckedCreateWithoutInvitationRSVPInput>
     connectOrCreate?: InvitationCreateOrConnectWithoutInvitationRSVPInput
@@ -29202,6 +33792,16 @@ export namespace Prisma {
     delete?: InvitationWhereInput | boolean
     connect?: InvitationWhereUniqueInput
     update?: XOR<XOR<InvitationUpdateToOneWithWhereWithoutInvitationRSVPInput, InvitationUpdateWithoutInvitationRSVPInput>, InvitationUncheckedUpdateWithoutInvitationRSVPInput>
+  }
+
+  export type InvitationGuestGroupUpdateOneWithoutInvitationRSVPNestedInput = {
+    create?: XOR<InvitationGuestGroupCreateWithoutInvitationRSVPInput, InvitationGuestGroupUncheckedCreateWithoutInvitationRSVPInput>
+    connectOrCreate?: InvitationGuestGroupCreateOrConnectWithoutInvitationRSVPInput
+    upsert?: InvitationGuestGroupUpsertWithoutInvitationRSVPInput
+    disconnect?: InvitationGuestGroupWhereInput | boolean
+    delete?: InvitationGuestGroupWhereInput | boolean
+    connect?: InvitationGuestGroupWhereUniqueInput
+    update?: XOR<XOR<InvitationGuestGroupUpdateToOneWithWhereWithoutInvitationRSVPInput, InvitationGuestGroupUpdateWithoutInvitationRSVPInput>, InvitationGuestGroupUncheckedUpdateWithoutInvitationRSVPInput>
   }
 
   export type InvitationCreateNestedOneWithoutInvitationDressColorInput = {
@@ -29358,6 +33958,186 @@ export namespace Prisma {
     decrement?: bigint | number
     multiply?: bigint | number
     divide?: bigint | number
+  }
+
+  export type InvitationCreateNestedOneWithoutInvitationGuestGroupInput = {
+    create?: XOR<InvitationCreateWithoutInvitationGuestGroupInput, InvitationUncheckedCreateWithoutInvitationGuestGroupInput>
+    connectOrCreate?: InvitationCreateOrConnectWithoutInvitationGuestGroupInput
+    connect?: InvitationWhereUniqueInput
+  }
+
+  export type InvitationRSVPCreateNestedManyWithoutInvitationGuestGroupInput = {
+    create?: XOR<InvitationRSVPCreateWithoutInvitationGuestGroupInput, InvitationRSVPUncheckedCreateWithoutInvitationGuestGroupInput> | InvitationRSVPCreateWithoutInvitationGuestGroupInput[] | InvitationRSVPUncheckedCreateWithoutInvitationGuestGroupInput[]
+    connectOrCreate?: InvitationRSVPCreateOrConnectWithoutInvitationGuestGroupInput | InvitationRSVPCreateOrConnectWithoutInvitationGuestGroupInput[]
+    createMany?: InvitationRSVPCreateManyInvitationGuestGroupInputEnvelope
+    connect?: InvitationRSVPWhereUniqueInput | InvitationRSVPWhereUniqueInput[]
+  }
+
+  export type InvitationSeatAssignmentCreateNestedOneWithoutInvitationGuestGroupInput = {
+    create?: XOR<InvitationSeatAssignmentCreateWithoutInvitationGuestGroupInput, InvitationSeatAssignmentUncheckedCreateWithoutInvitationGuestGroupInput>
+    connectOrCreate?: InvitationSeatAssignmentCreateOrConnectWithoutInvitationGuestGroupInput
+    connect?: InvitationSeatAssignmentWhereUniqueInput
+  }
+
+  export type InvitationRSVPUncheckedCreateNestedManyWithoutInvitationGuestGroupInput = {
+    create?: XOR<InvitationRSVPCreateWithoutInvitationGuestGroupInput, InvitationRSVPUncheckedCreateWithoutInvitationGuestGroupInput> | InvitationRSVPCreateWithoutInvitationGuestGroupInput[] | InvitationRSVPUncheckedCreateWithoutInvitationGuestGroupInput[]
+    connectOrCreate?: InvitationRSVPCreateOrConnectWithoutInvitationGuestGroupInput | InvitationRSVPCreateOrConnectWithoutInvitationGuestGroupInput[]
+    createMany?: InvitationRSVPCreateManyInvitationGuestGroupInputEnvelope
+    connect?: InvitationRSVPWhereUniqueInput | InvitationRSVPWhereUniqueInput[]
+  }
+
+  export type InvitationSeatAssignmentUncheckedCreateNestedOneWithoutInvitationGuestGroupInput = {
+    create?: XOR<InvitationSeatAssignmentCreateWithoutInvitationGuestGroupInput, InvitationSeatAssignmentUncheckedCreateWithoutInvitationGuestGroupInput>
+    connectOrCreate?: InvitationSeatAssignmentCreateOrConnectWithoutInvitationGuestGroupInput
+    connect?: InvitationSeatAssignmentWhereUniqueInput
+  }
+
+  export type NullableEnumInvitationGuestGroup_sideFieldUpdateOperationsInput = {
+    set?: $Enums.InvitationGuestGroup_side | null
+  }
+
+  export type NullableEnumInvitationGuestGroup_rsvpStatusFieldUpdateOperationsInput = {
+    set?: $Enums.InvitationGuestGroup_rsvpStatus | null
+  }
+
+  export type InvitationUpdateOneRequiredWithoutInvitationGuestGroupNestedInput = {
+    create?: XOR<InvitationCreateWithoutInvitationGuestGroupInput, InvitationUncheckedCreateWithoutInvitationGuestGroupInput>
+    connectOrCreate?: InvitationCreateOrConnectWithoutInvitationGuestGroupInput
+    upsert?: InvitationUpsertWithoutInvitationGuestGroupInput
+    connect?: InvitationWhereUniqueInput
+    update?: XOR<XOR<InvitationUpdateToOneWithWhereWithoutInvitationGuestGroupInput, InvitationUpdateWithoutInvitationGuestGroupInput>, InvitationUncheckedUpdateWithoutInvitationGuestGroupInput>
+  }
+
+  export type InvitationRSVPUpdateManyWithoutInvitationGuestGroupNestedInput = {
+    create?: XOR<InvitationRSVPCreateWithoutInvitationGuestGroupInput, InvitationRSVPUncheckedCreateWithoutInvitationGuestGroupInput> | InvitationRSVPCreateWithoutInvitationGuestGroupInput[] | InvitationRSVPUncheckedCreateWithoutInvitationGuestGroupInput[]
+    connectOrCreate?: InvitationRSVPCreateOrConnectWithoutInvitationGuestGroupInput | InvitationRSVPCreateOrConnectWithoutInvitationGuestGroupInput[]
+    upsert?: InvitationRSVPUpsertWithWhereUniqueWithoutInvitationGuestGroupInput | InvitationRSVPUpsertWithWhereUniqueWithoutInvitationGuestGroupInput[]
+    createMany?: InvitationRSVPCreateManyInvitationGuestGroupInputEnvelope
+    set?: InvitationRSVPWhereUniqueInput | InvitationRSVPWhereUniqueInput[]
+    disconnect?: InvitationRSVPWhereUniqueInput | InvitationRSVPWhereUniqueInput[]
+    delete?: InvitationRSVPWhereUniqueInput | InvitationRSVPWhereUniqueInput[]
+    connect?: InvitationRSVPWhereUniqueInput | InvitationRSVPWhereUniqueInput[]
+    update?: InvitationRSVPUpdateWithWhereUniqueWithoutInvitationGuestGroupInput | InvitationRSVPUpdateWithWhereUniqueWithoutInvitationGuestGroupInput[]
+    updateMany?: InvitationRSVPUpdateManyWithWhereWithoutInvitationGuestGroupInput | InvitationRSVPUpdateManyWithWhereWithoutInvitationGuestGroupInput[]
+    deleteMany?: InvitationRSVPScalarWhereInput | InvitationRSVPScalarWhereInput[]
+  }
+
+  export type InvitationSeatAssignmentUpdateOneWithoutInvitationGuestGroupNestedInput = {
+    create?: XOR<InvitationSeatAssignmentCreateWithoutInvitationGuestGroupInput, InvitationSeatAssignmentUncheckedCreateWithoutInvitationGuestGroupInput>
+    connectOrCreate?: InvitationSeatAssignmentCreateOrConnectWithoutInvitationGuestGroupInput
+    upsert?: InvitationSeatAssignmentUpsertWithoutInvitationGuestGroupInput
+    disconnect?: InvitationSeatAssignmentWhereInput | boolean
+    delete?: InvitationSeatAssignmentWhereInput | boolean
+    connect?: InvitationSeatAssignmentWhereUniqueInput
+    update?: XOR<XOR<InvitationSeatAssignmentUpdateToOneWithWhereWithoutInvitationGuestGroupInput, InvitationSeatAssignmentUpdateWithoutInvitationGuestGroupInput>, InvitationSeatAssignmentUncheckedUpdateWithoutInvitationGuestGroupInput>
+  }
+
+  export type InvitationRSVPUncheckedUpdateManyWithoutInvitationGuestGroupNestedInput = {
+    create?: XOR<InvitationRSVPCreateWithoutInvitationGuestGroupInput, InvitationRSVPUncheckedCreateWithoutInvitationGuestGroupInput> | InvitationRSVPCreateWithoutInvitationGuestGroupInput[] | InvitationRSVPUncheckedCreateWithoutInvitationGuestGroupInput[]
+    connectOrCreate?: InvitationRSVPCreateOrConnectWithoutInvitationGuestGroupInput | InvitationRSVPCreateOrConnectWithoutInvitationGuestGroupInput[]
+    upsert?: InvitationRSVPUpsertWithWhereUniqueWithoutInvitationGuestGroupInput | InvitationRSVPUpsertWithWhereUniqueWithoutInvitationGuestGroupInput[]
+    createMany?: InvitationRSVPCreateManyInvitationGuestGroupInputEnvelope
+    set?: InvitationRSVPWhereUniqueInput | InvitationRSVPWhereUniqueInput[]
+    disconnect?: InvitationRSVPWhereUniqueInput | InvitationRSVPWhereUniqueInput[]
+    delete?: InvitationRSVPWhereUniqueInput | InvitationRSVPWhereUniqueInput[]
+    connect?: InvitationRSVPWhereUniqueInput | InvitationRSVPWhereUniqueInput[]
+    update?: InvitationRSVPUpdateWithWhereUniqueWithoutInvitationGuestGroupInput | InvitationRSVPUpdateWithWhereUniqueWithoutInvitationGuestGroupInput[]
+    updateMany?: InvitationRSVPUpdateManyWithWhereWithoutInvitationGuestGroupInput | InvitationRSVPUpdateManyWithWhereWithoutInvitationGuestGroupInput[]
+    deleteMany?: InvitationRSVPScalarWhereInput | InvitationRSVPScalarWhereInput[]
+  }
+
+  export type InvitationSeatAssignmentUncheckedUpdateOneWithoutInvitationGuestGroupNestedInput = {
+    create?: XOR<InvitationSeatAssignmentCreateWithoutInvitationGuestGroupInput, InvitationSeatAssignmentUncheckedCreateWithoutInvitationGuestGroupInput>
+    connectOrCreate?: InvitationSeatAssignmentCreateOrConnectWithoutInvitationGuestGroupInput
+    upsert?: InvitationSeatAssignmentUpsertWithoutInvitationGuestGroupInput
+    disconnect?: InvitationSeatAssignmentWhereInput | boolean
+    delete?: InvitationSeatAssignmentWhereInput | boolean
+    connect?: InvitationSeatAssignmentWhereUniqueInput
+    update?: XOR<XOR<InvitationSeatAssignmentUpdateToOneWithWhereWithoutInvitationGuestGroupInput, InvitationSeatAssignmentUpdateWithoutInvitationGuestGroupInput>, InvitationSeatAssignmentUncheckedUpdateWithoutInvitationGuestGroupInput>
+  }
+
+  export type InvitationGuestGroupCreateNestedOneWithoutInvitationSeatAssignmentInput = {
+    create?: XOR<InvitationGuestGroupCreateWithoutInvitationSeatAssignmentInput, InvitationGuestGroupUncheckedCreateWithoutInvitationSeatAssignmentInput>
+    connectOrCreate?: InvitationGuestGroupCreateOrConnectWithoutInvitationSeatAssignmentInput
+    connect?: InvitationGuestGroupWhereUniqueInput
+  }
+
+  export type InvitationSeatingTableCreateNestedOneWithoutInvitationSeatAssignmentInput = {
+    create?: XOR<InvitationSeatingTableCreateWithoutInvitationSeatAssignmentInput, InvitationSeatingTableUncheckedCreateWithoutInvitationSeatAssignmentInput>
+    connectOrCreate?: InvitationSeatingTableCreateOrConnectWithoutInvitationSeatAssignmentInput
+    connect?: InvitationSeatingTableWhereUniqueInput
+  }
+
+  export type InvitationGuestGroupUpdateOneRequiredWithoutInvitationSeatAssignmentNestedInput = {
+    create?: XOR<InvitationGuestGroupCreateWithoutInvitationSeatAssignmentInput, InvitationGuestGroupUncheckedCreateWithoutInvitationSeatAssignmentInput>
+    connectOrCreate?: InvitationGuestGroupCreateOrConnectWithoutInvitationSeatAssignmentInput
+    upsert?: InvitationGuestGroupUpsertWithoutInvitationSeatAssignmentInput
+    connect?: InvitationGuestGroupWhereUniqueInput
+    update?: XOR<XOR<InvitationGuestGroupUpdateToOneWithWhereWithoutInvitationSeatAssignmentInput, InvitationGuestGroupUpdateWithoutInvitationSeatAssignmentInput>, InvitationGuestGroupUncheckedUpdateWithoutInvitationSeatAssignmentInput>
+  }
+
+  export type InvitationSeatingTableUpdateOneRequiredWithoutInvitationSeatAssignmentNestedInput = {
+    create?: XOR<InvitationSeatingTableCreateWithoutInvitationSeatAssignmentInput, InvitationSeatingTableUncheckedCreateWithoutInvitationSeatAssignmentInput>
+    connectOrCreate?: InvitationSeatingTableCreateOrConnectWithoutInvitationSeatAssignmentInput
+    upsert?: InvitationSeatingTableUpsertWithoutInvitationSeatAssignmentInput
+    connect?: InvitationSeatingTableWhereUniqueInput
+    update?: XOR<XOR<InvitationSeatingTableUpdateToOneWithWhereWithoutInvitationSeatAssignmentInput, InvitationSeatingTableUpdateWithoutInvitationSeatAssignmentInput>, InvitationSeatingTableUncheckedUpdateWithoutInvitationSeatAssignmentInput>
+  }
+
+  export type InvitationSeatAssignmentCreateNestedManyWithoutInvitationSeatingTableInput = {
+    create?: XOR<InvitationSeatAssignmentCreateWithoutInvitationSeatingTableInput, InvitationSeatAssignmentUncheckedCreateWithoutInvitationSeatingTableInput> | InvitationSeatAssignmentCreateWithoutInvitationSeatingTableInput[] | InvitationSeatAssignmentUncheckedCreateWithoutInvitationSeatingTableInput[]
+    connectOrCreate?: InvitationSeatAssignmentCreateOrConnectWithoutInvitationSeatingTableInput | InvitationSeatAssignmentCreateOrConnectWithoutInvitationSeatingTableInput[]
+    createMany?: InvitationSeatAssignmentCreateManyInvitationSeatingTableInputEnvelope
+    connect?: InvitationSeatAssignmentWhereUniqueInput | InvitationSeatAssignmentWhereUniqueInput[]
+  }
+
+  export type InvitationCreateNestedOneWithoutInvitationSeatingTableInput = {
+    create?: XOR<InvitationCreateWithoutInvitationSeatingTableInput, InvitationUncheckedCreateWithoutInvitationSeatingTableInput>
+    connectOrCreate?: InvitationCreateOrConnectWithoutInvitationSeatingTableInput
+    connect?: InvitationWhereUniqueInput
+  }
+
+  export type InvitationSeatAssignmentUncheckedCreateNestedManyWithoutInvitationSeatingTableInput = {
+    create?: XOR<InvitationSeatAssignmentCreateWithoutInvitationSeatingTableInput, InvitationSeatAssignmentUncheckedCreateWithoutInvitationSeatingTableInput> | InvitationSeatAssignmentCreateWithoutInvitationSeatingTableInput[] | InvitationSeatAssignmentUncheckedCreateWithoutInvitationSeatingTableInput[]
+    connectOrCreate?: InvitationSeatAssignmentCreateOrConnectWithoutInvitationSeatingTableInput | InvitationSeatAssignmentCreateOrConnectWithoutInvitationSeatingTableInput[]
+    createMany?: InvitationSeatAssignmentCreateManyInvitationSeatingTableInputEnvelope
+    connect?: InvitationSeatAssignmentWhereUniqueInput | InvitationSeatAssignmentWhereUniqueInput[]
+  }
+
+  export type InvitationSeatAssignmentUpdateManyWithoutInvitationSeatingTableNestedInput = {
+    create?: XOR<InvitationSeatAssignmentCreateWithoutInvitationSeatingTableInput, InvitationSeatAssignmentUncheckedCreateWithoutInvitationSeatingTableInput> | InvitationSeatAssignmentCreateWithoutInvitationSeatingTableInput[] | InvitationSeatAssignmentUncheckedCreateWithoutInvitationSeatingTableInput[]
+    connectOrCreate?: InvitationSeatAssignmentCreateOrConnectWithoutInvitationSeatingTableInput | InvitationSeatAssignmentCreateOrConnectWithoutInvitationSeatingTableInput[]
+    upsert?: InvitationSeatAssignmentUpsertWithWhereUniqueWithoutInvitationSeatingTableInput | InvitationSeatAssignmentUpsertWithWhereUniqueWithoutInvitationSeatingTableInput[]
+    createMany?: InvitationSeatAssignmentCreateManyInvitationSeatingTableInputEnvelope
+    set?: InvitationSeatAssignmentWhereUniqueInput | InvitationSeatAssignmentWhereUniqueInput[]
+    disconnect?: InvitationSeatAssignmentWhereUniqueInput | InvitationSeatAssignmentWhereUniqueInput[]
+    delete?: InvitationSeatAssignmentWhereUniqueInput | InvitationSeatAssignmentWhereUniqueInput[]
+    connect?: InvitationSeatAssignmentWhereUniqueInput | InvitationSeatAssignmentWhereUniqueInput[]
+    update?: InvitationSeatAssignmentUpdateWithWhereUniqueWithoutInvitationSeatingTableInput | InvitationSeatAssignmentUpdateWithWhereUniqueWithoutInvitationSeatingTableInput[]
+    updateMany?: InvitationSeatAssignmentUpdateManyWithWhereWithoutInvitationSeatingTableInput | InvitationSeatAssignmentUpdateManyWithWhereWithoutInvitationSeatingTableInput[]
+    deleteMany?: InvitationSeatAssignmentScalarWhereInput | InvitationSeatAssignmentScalarWhereInput[]
+  }
+
+  export type InvitationUpdateOneRequiredWithoutInvitationSeatingTableNestedInput = {
+    create?: XOR<InvitationCreateWithoutInvitationSeatingTableInput, InvitationUncheckedCreateWithoutInvitationSeatingTableInput>
+    connectOrCreate?: InvitationCreateOrConnectWithoutInvitationSeatingTableInput
+    upsert?: InvitationUpsertWithoutInvitationSeatingTableInput
+    connect?: InvitationWhereUniqueInput
+    update?: XOR<XOR<InvitationUpdateToOneWithWhereWithoutInvitationSeatingTableInput, InvitationUpdateWithoutInvitationSeatingTableInput>, InvitationUncheckedUpdateWithoutInvitationSeatingTableInput>
+  }
+
+  export type InvitationSeatAssignmentUncheckedUpdateManyWithoutInvitationSeatingTableNestedInput = {
+    create?: XOR<InvitationSeatAssignmentCreateWithoutInvitationSeatingTableInput, InvitationSeatAssignmentUncheckedCreateWithoutInvitationSeatingTableInput> | InvitationSeatAssignmentCreateWithoutInvitationSeatingTableInput[] | InvitationSeatAssignmentUncheckedCreateWithoutInvitationSeatingTableInput[]
+    connectOrCreate?: InvitationSeatAssignmentCreateOrConnectWithoutInvitationSeatingTableInput | InvitationSeatAssignmentCreateOrConnectWithoutInvitationSeatingTableInput[]
+    upsert?: InvitationSeatAssignmentUpsertWithWhereUniqueWithoutInvitationSeatingTableInput | InvitationSeatAssignmentUpsertWithWhereUniqueWithoutInvitationSeatingTableInput[]
+    createMany?: InvitationSeatAssignmentCreateManyInvitationSeatingTableInputEnvelope
+    set?: InvitationSeatAssignmentWhereUniqueInput | InvitationSeatAssignmentWhereUniqueInput[]
+    disconnect?: InvitationSeatAssignmentWhereUniqueInput | InvitationSeatAssignmentWhereUniqueInput[]
+    delete?: InvitationSeatAssignmentWhereUniqueInput | InvitationSeatAssignmentWhereUniqueInput[]
+    connect?: InvitationSeatAssignmentWhereUniqueInput | InvitationSeatAssignmentWhereUniqueInput[]
+    update?: InvitationSeatAssignmentUpdateWithWhereUniqueWithoutInvitationSeatingTableInput | InvitationSeatAssignmentUpdateWithWhereUniqueWithoutInvitationSeatingTableInput[]
+    updateMany?: InvitationSeatAssignmentUpdateManyWithWhereWithoutInvitationSeatingTableInput | InvitationSeatAssignmentUpdateManyWithWhereWithoutInvitationSeatingTableInput[]
+    deleteMany?: InvitationSeatAssignmentScalarWhereInput | InvitationSeatAssignmentScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -29712,6 +34492,40 @@ export namespace Prisma {
     _max?: NestedBigIntFilter<$PrismaModel>
   }
 
+  export type NestedEnumInvitationGuestGroup_sideNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationGuestGroup_side | EnumInvitationGuestGroup_sideFieldRefInput<$PrismaModel> | null
+    in?: $Enums.InvitationGuestGroup_side[] | null
+    notIn?: $Enums.InvitationGuestGroup_side[] | null
+    not?: NestedEnumInvitationGuestGroup_sideNullableFilter<$PrismaModel> | $Enums.InvitationGuestGroup_side | null
+  }
+
+  export type NestedEnumInvitationGuestGroup_rsvpStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationGuestGroup_rsvpStatus | EnumInvitationGuestGroup_rsvpStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.InvitationGuestGroup_rsvpStatus[] | null
+    notIn?: $Enums.InvitationGuestGroup_rsvpStatus[] | null
+    not?: NestedEnumInvitationGuestGroup_rsvpStatusNullableFilter<$PrismaModel> | $Enums.InvitationGuestGroup_rsvpStatus | null
+  }
+
+  export type NestedEnumInvitationGuestGroup_sideNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationGuestGroup_side | EnumInvitationGuestGroup_sideFieldRefInput<$PrismaModel> | null
+    in?: $Enums.InvitationGuestGroup_side[] | null
+    notIn?: $Enums.InvitationGuestGroup_side[] | null
+    not?: NestedEnumInvitationGuestGroup_sideNullableWithAggregatesFilter<$PrismaModel> | $Enums.InvitationGuestGroup_side | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumInvitationGuestGroup_sideNullableFilter<$PrismaModel>
+    _max?: NestedEnumInvitationGuestGroup_sideNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumInvitationGuestGroup_rsvpStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationGuestGroup_rsvpStatus | EnumInvitationGuestGroup_rsvpStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.InvitationGuestGroup_rsvpStatus[] | null
+    notIn?: $Enums.InvitationGuestGroup_rsvpStatus[] | null
+    not?: NestedEnumInvitationGuestGroup_rsvpStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.InvitationGuestGroup_rsvpStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumInvitationGuestGroup_rsvpStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumInvitationGuestGroup_rsvpStatusNullableFilter<$PrismaModel>
+  }
+
   export type InvitationCreateWithoutUserInput = {
     templateNo?: number | null
     uniqueId?: string | null
@@ -29762,6 +34576,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -29786,10 +34603,12 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutUserInput = {
@@ -29843,6 +34662,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -29867,10 +34689,12 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutUserInput = {
@@ -30003,6 +34827,9 @@ export namespace Prisma {
     rsvpHasFood?: BoolNullableFilter<"Invitation"> | boolean | null
     isRsvpPopup?: BoolNullableFilter<"Invitation"> | boolean | null
     hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
+    isPasswordProtected?: BoolNullableFilter<"Invitation"> | boolean | null
+    universalPassword?: StringNullableFilter<"Invitation"> | string | null
+    guestListEnabled?: BoolNullableFilter<"Invitation"> | boolean | null
     billingStatus?: EnumInvitation_billingStatusFilter<"Invitation"> | $Enums.Invitation_billingStatus
     trialEndsAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
     currentPlanCode?: EnumInvitation_currentPlanCodeNullableFilter<"Invitation"> | $Enums.Invitation_currentPlanCode | null
@@ -30205,6 +35032,51 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type InvitationGuestGroupCreateWithoutInvitationInput = {
+    name: string
+    password?: string | null
+    side?: $Enums.InvitationGuestGroup_side | null
+    maxPax?: number | null
+    rsvpTitle?: string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: Date | string | null
+    memo?: string | null
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    InvitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationGuestGroupInput
+    InvitationSeatAssignment?: InvitationSeatAssignmentCreateNestedOneWithoutInvitationGuestGroupInput
+  }
+
+  export type InvitationGuestGroupUncheckedCreateWithoutInvitationInput = {
+    id?: number
+    name: string
+    password?: string | null
+    side?: $Enums.InvitationGuestGroup_side | null
+    maxPax?: number | null
+    rsvpTitle?: string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: Date | string | null
+    memo?: string | null
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    InvitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationGuestGroupInput
+    InvitationSeatAssignment?: InvitationSeatAssignmentUncheckedCreateNestedOneWithoutInvitationGuestGroupInput
+  }
+
+  export type InvitationGuestGroupCreateOrConnectWithoutInvitationInput = {
+    where: InvitationGuestGroupWhereUniqueInput
+    create: XOR<InvitationGuestGroupCreateWithoutInvitationInput, InvitationGuestGroupUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type InvitationGuestGroupCreateManyInvitationInputEnvelope = {
+    data: InvitationGuestGroupCreateManyInvitationInput | InvitationGuestGroupCreateManyInvitationInput[]
+    skipDuplicates?: boolean
+  }
+
   export type InvitationOrderCreateWithoutInvitationInput = {
     orderNo: string
     planCode: $Enums.InvitationOrder_planCode
@@ -30331,10 +35203,12 @@ export namespace Prisma {
     pax?: number | null
     attending?: boolean | null
     createdAt?: Date | string | null
+    InvitationGuestGroup?: InvitationGuestGroupCreateNestedOneWithoutInvitationRSVPInput
   }
 
   export type InvitationRSVPUncheckedCreateWithoutInvitationInput = {
     id?: number
+    guestGroupId?: number | null
     side?: string | null
     name?: string | null
     guestNameList?: string | null
@@ -30354,6 +35228,35 @@ export namespace Prisma {
 
   export type InvitationRSVPCreateManyInvitationInputEnvelope = {
     data: InvitationRSVPCreateManyInvitationInput | InvitationRSVPCreateManyInvitationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type InvitationSeatingTableCreateWithoutInvitationInput = {
+    name: string
+    capacity?: number
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    InvitationSeatAssignment?: InvitationSeatAssignmentCreateNestedManyWithoutInvitationSeatingTableInput
+  }
+
+  export type InvitationSeatingTableUncheckedCreateWithoutInvitationInput = {
+    id?: number
+    name: string
+    capacity?: number
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    InvitationSeatAssignment?: InvitationSeatAssignmentUncheckedCreateNestedManyWithoutInvitationSeatingTableInput
+  }
+
+  export type InvitationSeatingTableCreateOrConnectWithoutInvitationInput = {
+    where: InvitationSeatingTableWhereUniqueInput
+    create: XOR<InvitationSeatingTableCreateWithoutInvitationInput, InvitationSeatingTableUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type InvitationSeatingTableCreateManyInvitationInputEnvelope = {
+    data: InvitationSeatingTableCreateManyInvitationInput | InvitationSeatingTableCreateManyInvitationInput[]
     skipDuplicates?: boolean
   }
 
@@ -30510,6 +35413,42 @@ export namespace Prisma {
     order?: IntNullableFilter<"InvitationFaq"> | number | null
   }
 
+  export type InvitationGuestGroupUpsertWithWhereUniqueWithoutInvitationInput = {
+    where: InvitationGuestGroupWhereUniqueInput
+    update: XOR<InvitationGuestGroupUpdateWithoutInvitationInput, InvitationGuestGroupUncheckedUpdateWithoutInvitationInput>
+    create: XOR<InvitationGuestGroupCreateWithoutInvitationInput, InvitationGuestGroupUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type InvitationGuestGroupUpdateWithWhereUniqueWithoutInvitationInput = {
+    where: InvitationGuestGroupWhereUniqueInput
+    data: XOR<InvitationGuestGroupUpdateWithoutInvitationInput, InvitationGuestGroupUncheckedUpdateWithoutInvitationInput>
+  }
+
+  export type InvitationGuestGroupUpdateManyWithWhereWithoutInvitationInput = {
+    where: InvitationGuestGroupScalarWhereInput
+    data: XOR<InvitationGuestGroupUpdateManyMutationInput, InvitationGuestGroupUncheckedUpdateManyWithoutInvitationInput>
+  }
+
+  export type InvitationGuestGroupScalarWhereInput = {
+    AND?: InvitationGuestGroupScalarWhereInput | InvitationGuestGroupScalarWhereInput[]
+    OR?: InvitationGuestGroupScalarWhereInput[]
+    NOT?: InvitationGuestGroupScalarWhereInput | InvitationGuestGroupScalarWhereInput[]
+    id?: IntFilter<"InvitationGuestGroup"> | number
+    invitationId?: IntFilter<"InvitationGuestGroup"> | number
+    name?: StringFilter<"InvitationGuestGroup"> | string
+    password?: StringNullableFilter<"InvitationGuestGroup"> | string | null
+    side?: EnumInvitationGuestGroup_sideNullableFilter<"InvitationGuestGroup"> | $Enums.InvitationGuestGroup_side | null
+    maxPax?: IntNullableFilter<"InvitationGuestGroup"> | number | null
+    rsvpTitle?: StringNullableFilter<"InvitationGuestGroup"> | string | null
+    layoutOverride?: JsonNullableFilter<"InvitationGuestGroup">
+    rsvpStatus?: EnumInvitationGuestGroup_rsvpStatusNullableFilter<"InvitationGuestGroup"> | $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: DateTimeNullableFilter<"InvitationGuestGroup"> | Date | string | null
+    memo?: StringNullableFilter<"InvitationGuestGroup"> | string | null
+    order?: IntNullableFilter<"InvitationGuestGroup"> | number | null
+    createdAt?: DateTimeNullableFilter<"InvitationGuestGroup"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"InvitationGuestGroup"> | Date | string | null
+  }
+
   export type InvitationOrderUpsertWithWhereUniqueWithoutInvitationInput = {
     where: InvitationOrderWhereUniqueInput
     update: XOR<InvitationOrderUpdateWithoutInvitationInput, InvitationOrderUncheckedUpdateWithoutInvitationInput>
@@ -30611,6 +35550,7 @@ export namespace Prisma {
     NOT?: InvitationRSVPScalarWhereInput | InvitationRSVPScalarWhereInput[]
     id?: IntFilter<"InvitationRSVP"> | number
     invitationId?: IntNullableFilter<"InvitationRSVP"> | number | null
+    guestGroupId?: IntNullableFilter<"InvitationRSVP"> | number | null
     side?: StringNullableFilter<"InvitationRSVP"> | string | null
     name?: StringNullableFilter<"InvitationRSVP"> | string | null
     guestNameList?: StringNullableFilter<"InvitationRSVP"> | string | null
@@ -30621,6 +35561,35 @@ export namespace Prisma {
     pax?: IntNullableFilter<"InvitationRSVP"> | number | null
     attending?: BoolNullableFilter<"InvitationRSVP"> | boolean | null
     createdAt?: DateTimeNullableFilter<"InvitationRSVP"> | Date | string | null
+  }
+
+  export type InvitationSeatingTableUpsertWithWhereUniqueWithoutInvitationInput = {
+    where: InvitationSeatingTableWhereUniqueInput
+    update: XOR<InvitationSeatingTableUpdateWithoutInvitationInput, InvitationSeatingTableUncheckedUpdateWithoutInvitationInput>
+    create: XOR<InvitationSeatingTableCreateWithoutInvitationInput, InvitationSeatingTableUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type InvitationSeatingTableUpdateWithWhereUniqueWithoutInvitationInput = {
+    where: InvitationSeatingTableWhereUniqueInput
+    data: XOR<InvitationSeatingTableUpdateWithoutInvitationInput, InvitationSeatingTableUncheckedUpdateWithoutInvitationInput>
+  }
+
+  export type InvitationSeatingTableUpdateManyWithWhereWithoutInvitationInput = {
+    where: InvitationSeatingTableScalarWhereInput
+    data: XOR<InvitationSeatingTableUpdateManyMutationInput, InvitationSeatingTableUncheckedUpdateManyWithoutInvitationInput>
+  }
+
+  export type InvitationSeatingTableScalarWhereInput = {
+    AND?: InvitationSeatingTableScalarWhereInput | InvitationSeatingTableScalarWhereInput[]
+    OR?: InvitationSeatingTableScalarWhereInput[]
+    NOT?: InvitationSeatingTableScalarWhereInput | InvitationSeatingTableScalarWhereInput[]
+    id?: IntFilter<"InvitationSeatingTable"> | number
+    invitationId?: IntFilter<"InvitationSeatingTable"> | number
+    name?: StringFilter<"InvitationSeatingTable"> | string
+    capacity?: IntFilter<"InvitationSeatingTable"> | number
+    order?: IntNullableFilter<"InvitationSeatingTable"> | number | null
+    createdAt?: DateTimeNullableFilter<"InvitationSeatingTable"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"InvitationSeatingTable"> | Date | string | null
   }
 
   export type PlaceCreateWithoutInvitationPlaceListInput = {
@@ -30695,6 +35664,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -30720,9 +35692,11 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutPlaceListInput = {
@@ -30777,6 +35751,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -30801,9 +35778,11 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutPlaceListInput = {
@@ -30923,6 +35902,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -30948,9 +35930,11 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutPlaceListInput = {
@@ -31005,6 +35989,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -31029,9 +36016,11 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationPlaceTimeUpsertWithWhereUniqueWithoutInvitationPlaceInput = {
@@ -31198,6 +36187,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -31223,9 +36215,11 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutPhotoListInput = {
@@ -31280,6 +36274,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -31304,9 +36301,11 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutPhotoListInput = {
@@ -31375,6 +36374,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -31400,9 +36402,11 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutPhotoListInput = {
@@ -31457,6 +36461,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -31481,9 +36488,11 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationCreateWithoutInvitationCoverPhotoListInput = {
@@ -31536,6 +36545,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -31560,10 +36572,12 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutInvitationCoverPhotoListInput = {
@@ -31618,6 +36632,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -31641,10 +36658,12 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutInvitationCoverPhotoListInput = {
@@ -31713,6 +36732,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -31737,10 +36759,12 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutInvitationCoverPhotoListInput = {
@@ -31795,6 +36819,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -31818,10 +36845,12 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationCreateWithoutInvitationRSVPInput = {
@@ -31874,6 +36903,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -31899,9 +36931,11 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutInvitationRSVPInput = {
@@ -31956,6 +36990,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -31980,14 +37017,56 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutInvitationRSVPInput = {
     where: InvitationWhereUniqueInput
     create: XOR<InvitationCreateWithoutInvitationRSVPInput, InvitationUncheckedCreateWithoutInvitationRSVPInput>
+  }
+
+  export type InvitationGuestGroupCreateWithoutInvitationRSVPInput = {
+    name: string
+    password?: string | null
+    side?: $Enums.InvitationGuestGroup_side | null
+    maxPax?: number | null
+    rsvpTitle?: string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: Date | string | null
+    memo?: string | null
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    Invitation: InvitationCreateNestedOneWithoutInvitationGuestGroupInput
+    InvitationSeatAssignment?: InvitationSeatAssignmentCreateNestedOneWithoutInvitationGuestGroupInput
+  }
+
+  export type InvitationGuestGroupUncheckedCreateWithoutInvitationRSVPInput = {
+    id?: number
+    invitationId: number
+    name: string
+    password?: string | null
+    side?: $Enums.InvitationGuestGroup_side | null
+    maxPax?: number | null
+    rsvpTitle?: string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: Date | string | null
+    memo?: string | null
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    InvitationSeatAssignment?: InvitationSeatAssignmentUncheckedCreateNestedOneWithoutInvitationGuestGroupInput
+  }
+
+  export type InvitationGuestGroupCreateOrConnectWithoutInvitationRSVPInput = {
+    where: InvitationGuestGroupWhereUniqueInput
+    create: XOR<InvitationGuestGroupCreateWithoutInvitationRSVPInput, InvitationGuestGroupUncheckedCreateWithoutInvitationRSVPInput>
   }
 
   export type InvitationUpsertWithoutInvitationRSVPInput = {
@@ -32051,6 +37130,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -32076,9 +37158,11 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutInvitationRSVPInput = {
@@ -32133,6 +37217,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -32157,9 +37244,57 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type InvitationGuestGroupUpsertWithoutInvitationRSVPInput = {
+    update: XOR<InvitationGuestGroupUpdateWithoutInvitationRSVPInput, InvitationGuestGroupUncheckedUpdateWithoutInvitationRSVPInput>
+    create: XOR<InvitationGuestGroupCreateWithoutInvitationRSVPInput, InvitationGuestGroupUncheckedCreateWithoutInvitationRSVPInput>
+    where?: InvitationGuestGroupWhereInput
+  }
+
+  export type InvitationGuestGroupUpdateToOneWithWhereWithoutInvitationRSVPInput = {
+    where?: InvitationGuestGroupWhereInput
+    data: XOR<InvitationGuestGroupUpdateWithoutInvitationRSVPInput, InvitationGuestGroupUncheckedUpdateWithoutInvitationRSVPInput>
+  }
+
+  export type InvitationGuestGroupUpdateWithoutInvitationRSVPInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    side?: NullableEnumInvitationGuestGroup_sideFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_side | null
+    maxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: NullableEnumInvitationGuestGroup_rsvpStatusFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Invitation?: InvitationUpdateOneRequiredWithoutInvitationGuestGroupNestedInput
+    InvitationSeatAssignment?: InvitationSeatAssignmentUpdateOneWithoutInvitationGuestGroupNestedInput
+  }
+
+  export type InvitationGuestGroupUncheckedUpdateWithoutInvitationRSVPInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    side?: NullableEnumInvitationGuestGroup_sideFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_side | null
+    maxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: NullableEnumInvitationGuestGroup_rsvpStatusFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    InvitationSeatAssignment?: InvitationSeatAssignmentUncheckedUpdateOneWithoutInvitationGuestGroupNestedInput
   }
 
   export type InvitationCreateWithoutInvitationDressColorInput = {
@@ -32212,6 +37347,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -32236,10 +37374,12 @@ export namespace Prisma {
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutInvitationDressColorInput = {
@@ -32294,6 +37434,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -32317,10 +37460,12 @@ export namespace Prisma {
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutInvitationDressColorInput = {
@@ -32389,6 +37534,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -32413,10 +37561,12 @@ export namespace Prisma {
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutInvitationDressColorInput = {
@@ -32471,6 +37621,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -32494,10 +37647,12 @@ export namespace Prisma {
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationCreateWithoutFaqListInput = {
@@ -32550,6 +37705,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -32574,10 +37732,12 @@ export namespace Prisma {
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutFaqListInput = {
@@ -32632,6 +37792,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -32655,10 +37818,12 @@ export namespace Prisma {
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutFaqListInput = {
@@ -32727,6 +37892,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -32751,10 +37919,12 @@ export namespace Prisma {
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutFaqListInput = {
@@ -32809,6 +37979,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -32832,10 +38005,12 @@ export namespace Prisma {
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationCreateWithoutInvitationEntourageListInput = {
@@ -32888,6 +38063,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -32912,10 +38090,12 @@ export namespace Prisma {
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutInvitationEntourageListInput = {
@@ -32970,6 +38150,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -32993,10 +38176,12 @@ export namespace Prisma {
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutInvitationEntourageListInput = {
@@ -33065,6 +38250,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -33089,10 +38277,12 @@ export namespace Prisma {
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutInvitationEntourageListInput = {
@@ -33147,6 +38337,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -33170,10 +38363,12 @@ export namespace Prisma {
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationCreateWithoutInvitationOrderInput = {
@@ -33226,6 +38421,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -33251,9 +38449,11 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutInvitationOrderInput = {
@@ -33308,6 +38508,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -33332,9 +38535,11 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutInvitationOrderInput = {
@@ -33465,6 +38670,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -33490,9 +38698,11 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutInvitationOrderInput = {
@@ -33547,6 +38757,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -33571,9 +38784,11 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type PricePlanUpsertWithoutInvitationOrderInput = {
@@ -33715,6 +38930,1009 @@ export namespace Prisma {
     data: XOR<InvitationOrderUpdateManyMutationInput, InvitationOrderUncheckedUpdateManyWithoutPricePlanInput>
   }
 
+  export type InvitationCreateWithoutInvitationGuestGroupInput = {
+    templateNo?: number | null
+    uniqueId?: string | null
+    date?: Date | string | null
+    title?: string | null
+    description?: string | null
+    pointColor?: string | null
+    mainTextColor?: string | null
+    dressCodeGentleman?: string | null
+    dressCodeLady?: string | null
+    bgColor?: string | null
+    musicKey?: string | null
+    musicFilename?: string | null
+    musicFileKey?: string | null
+    notice?: string | null
+    brideFirstName?: string | null
+    brideMiddleName?: string | null
+    dressCodeMainColor?: string | null
+    dressCodeSubColor?: string | null
+    dressCodeThirdColor?: string | null
+    brideLastName?: string | null
+    brideMomName?: string | null
+    greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
+    greetingContent?: string | null
+    brideDadName?: string | null
+    bridePhone?: string | null
+    groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
+    groomMiddleName?: string | null
+    groomLastName?: string | null
+    groomPhone?: string | null
+    primarySponsor?: string | null
+    secondarySponsor?: string | null
+    bankAccount?: string | null
+    maidOfHonor?: string | null
+    groomsMen?: string | null
+    textColor?: string | null
+    timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
+    rsvpHasFood?: boolean | null
+    isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
+    bestMan?: string | null
+    bridesMaids?: string | null
+    wishlistText?: string | null
+    groomMomName?: string | null
+    groomDadName?: string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: string | null
+    ogImageKey?: string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    bestManLabel?: string | null
+    maidOfHonorLabel?: string | null
+    groomsMenLabel?: string | null
+    bridesMaidsLabel?: string | null
+    user?: UserCreateNestedOneWithoutInvitationListInput
+    invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
+    photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
+    placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
+    invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
+  }
+
+  export type InvitationUncheckedCreateWithoutInvitationGuestGroupInput = {
+    id?: number
+    templateNo?: number | null
+    uniqueId?: string | null
+    date?: Date | string | null
+    userId?: number | null
+    title?: string | null
+    description?: string | null
+    pointColor?: string | null
+    mainTextColor?: string | null
+    dressCodeGentleman?: string | null
+    dressCodeLady?: string | null
+    bgColor?: string | null
+    musicKey?: string | null
+    musicFilename?: string | null
+    musicFileKey?: string | null
+    notice?: string | null
+    brideFirstName?: string | null
+    brideMiddleName?: string | null
+    dressCodeMainColor?: string | null
+    dressCodeSubColor?: string | null
+    dressCodeThirdColor?: string | null
+    brideLastName?: string | null
+    brideMomName?: string | null
+    greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
+    greetingContent?: string | null
+    brideDadName?: string | null
+    bridePhone?: string | null
+    groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
+    groomMiddleName?: string | null
+    groomLastName?: string | null
+    groomPhone?: string | null
+    primarySponsor?: string | null
+    secondarySponsor?: string | null
+    bankAccount?: string | null
+    maidOfHonor?: string | null
+    groomsMen?: string | null
+    textColor?: string | null
+    timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
+    rsvpHasFood?: boolean | null
+    isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
+    bestMan?: string | null
+    bridesMaids?: string | null
+    wishlistText?: string | null
+    groomMomName?: string | null
+    groomDadName?: string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: string | null
+    ogImageKey?: string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    bestManLabel?: string | null
+    maidOfHonorLabel?: string | null
+    groomsMenLabel?: string | null
+    bridesMaidsLabel?: string | null
+    invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
+    photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
+    invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
+  }
+
+  export type InvitationCreateOrConnectWithoutInvitationGuestGroupInput = {
+    where: InvitationWhereUniqueInput
+    create: XOR<InvitationCreateWithoutInvitationGuestGroupInput, InvitationUncheckedCreateWithoutInvitationGuestGroupInput>
+  }
+
+  export type InvitationRSVPCreateWithoutInvitationGuestGroupInput = {
+    side?: string | null
+    name?: string | null
+    guestNameList?: string | null
+    email?: string | null
+    phone?: string | null
+    remark?: string | null
+    food?: string | null
+    pax?: number | null
+    attending?: boolean | null
+    createdAt?: Date | string | null
+    invitation?: InvitationCreateNestedOneWithoutInvitationRSVPInput
+  }
+
+  export type InvitationRSVPUncheckedCreateWithoutInvitationGuestGroupInput = {
+    id?: number
+    invitationId?: number | null
+    side?: string | null
+    name?: string | null
+    guestNameList?: string | null
+    email?: string | null
+    phone?: string | null
+    remark?: string | null
+    food?: string | null
+    pax?: number | null
+    attending?: boolean | null
+    createdAt?: Date | string | null
+  }
+
+  export type InvitationRSVPCreateOrConnectWithoutInvitationGuestGroupInput = {
+    where: InvitationRSVPWhereUniqueInput
+    create: XOR<InvitationRSVPCreateWithoutInvitationGuestGroupInput, InvitationRSVPUncheckedCreateWithoutInvitationGuestGroupInput>
+  }
+
+  export type InvitationRSVPCreateManyInvitationGuestGroupInputEnvelope = {
+    data: InvitationRSVPCreateManyInvitationGuestGroupInput | InvitationRSVPCreateManyInvitationGuestGroupInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type InvitationSeatAssignmentCreateWithoutInvitationGuestGroupInput = {
+    seatNumber?: number | null
+    createdAt?: Date | string | null
+    InvitationSeatingTable: InvitationSeatingTableCreateNestedOneWithoutInvitationSeatAssignmentInput
+  }
+
+  export type InvitationSeatAssignmentUncheckedCreateWithoutInvitationGuestGroupInput = {
+    id?: number
+    seatingTableId: number
+    seatNumber?: number | null
+    createdAt?: Date | string | null
+  }
+
+  export type InvitationSeatAssignmentCreateOrConnectWithoutInvitationGuestGroupInput = {
+    where: InvitationSeatAssignmentWhereUniqueInput
+    create: XOR<InvitationSeatAssignmentCreateWithoutInvitationGuestGroupInput, InvitationSeatAssignmentUncheckedCreateWithoutInvitationGuestGroupInput>
+  }
+
+  export type InvitationUpsertWithoutInvitationGuestGroupInput = {
+    update: XOR<InvitationUpdateWithoutInvitationGuestGroupInput, InvitationUncheckedUpdateWithoutInvitationGuestGroupInput>
+    create: XOR<InvitationCreateWithoutInvitationGuestGroupInput, InvitationUncheckedCreateWithoutInvitationGuestGroupInput>
+    where?: InvitationWhereInput
+  }
+
+  export type InvitationUpdateToOneWithWhereWithoutInvitationGuestGroupInput = {
+    where?: InvitationWhereInput
+    data: XOR<InvitationUpdateWithoutInvitationGuestGroupInput, InvitationUncheckedUpdateWithoutInvitationGuestGroupInput>
+  }
+
+  export type InvitationUpdateWithoutInvitationGuestGroupInput = {
+    templateNo?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    pointColor?: NullableStringFieldUpdateOperationsInput | string | null
+    mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeLady?: NullableStringFieldUpdateOperationsInput | string | null
+    bgColor?: NullableStringFieldUpdateOperationsInput | string | null
+    musicKey?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFileKey?: NullableStringFieldUpdateOperationsInput | string | null
+    notice?: NullableStringFieldUpdateOperationsInput | string | null
+    brideFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeMainColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeSubColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeThirdColor?: NullableStringFieldUpdateOperationsInput | string | null
+    brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
+    brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
+    bestMan?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bestManLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonorLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneWithoutInvitationListNestedInput
+    invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
+    photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
+    placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
+    invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type InvitationUncheckedUpdateWithoutInvitationGuestGroupInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    templateNo?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    pointColor?: NullableStringFieldUpdateOperationsInput | string | null
+    mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeLady?: NullableStringFieldUpdateOperationsInput | string | null
+    bgColor?: NullableStringFieldUpdateOperationsInput | string | null
+    musicKey?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFileKey?: NullableStringFieldUpdateOperationsInput | string | null
+    notice?: NullableStringFieldUpdateOperationsInput | string | null
+    brideFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeMainColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeSubColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeThirdColor?: NullableStringFieldUpdateOperationsInput | string | null
+    brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
+    brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
+    bestMan?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bestManLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonorLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
+    photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type InvitationRSVPUpsertWithWhereUniqueWithoutInvitationGuestGroupInput = {
+    where: InvitationRSVPWhereUniqueInput
+    update: XOR<InvitationRSVPUpdateWithoutInvitationGuestGroupInput, InvitationRSVPUncheckedUpdateWithoutInvitationGuestGroupInput>
+    create: XOR<InvitationRSVPCreateWithoutInvitationGuestGroupInput, InvitationRSVPUncheckedCreateWithoutInvitationGuestGroupInput>
+  }
+
+  export type InvitationRSVPUpdateWithWhereUniqueWithoutInvitationGuestGroupInput = {
+    where: InvitationRSVPWhereUniqueInput
+    data: XOR<InvitationRSVPUpdateWithoutInvitationGuestGroupInput, InvitationRSVPUncheckedUpdateWithoutInvitationGuestGroupInput>
+  }
+
+  export type InvitationRSVPUpdateManyWithWhereWithoutInvitationGuestGroupInput = {
+    where: InvitationRSVPScalarWhereInput
+    data: XOR<InvitationRSVPUpdateManyMutationInput, InvitationRSVPUncheckedUpdateManyWithoutInvitationGuestGroupInput>
+  }
+
+  export type InvitationSeatAssignmentUpsertWithoutInvitationGuestGroupInput = {
+    update: XOR<InvitationSeatAssignmentUpdateWithoutInvitationGuestGroupInput, InvitationSeatAssignmentUncheckedUpdateWithoutInvitationGuestGroupInput>
+    create: XOR<InvitationSeatAssignmentCreateWithoutInvitationGuestGroupInput, InvitationSeatAssignmentUncheckedCreateWithoutInvitationGuestGroupInput>
+    where?: InvitationSeatAssignmentWhereInput
+  }
+
+  export type InvitationSeatAssignmentUpdateToOneWithWhereWithoutInvitationGuestGroupInput = {
+    where?: InvitationSeatAssignmentWhereInput
+    data: XOR<InvitationSeatAssignmentUpdateWithoutInvitationGuestGroupInput, InvitationSeatAssignmentUncheckedUpdateWithoutInvitationGuestGroupInput>
+  }
+
+  export type InvitationSeatAssignmentUpdateWithoutInvitationGuestGroupInput = {
+    seatNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    InvitationSeatingTable?: InvitationSeatingTableUpdateOneRequiredWithoutInvitationSeatAssignmentNestedInput
+  }
+
+  export type InvitationSeatAssignmentUncheckedUpdateWithoutInvitationGuestGroupInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    seatingTableId?: IntFieldUpdateOperationsInput | number
+    seatNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationGuestGroupCreateWithoutInvitationSeatAssignmentInput = {
+    name: string
+    password?: string | null
+    side?: $Enums.InvitationGuestGroup_side | null
+    maxPax?: number | null
+    rsvpTitle?: string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: Date | string | null
+    memo?: string | null
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    Invitation: InvitationCreateNestedOneWithoutInvitationGuestGroupInput
+    InvitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationGuestGroupInput
+  }
+
+  export type InvitationGuestGroupUncheckedCreateWithoutInvitationSeatAssignmentInput = {
+    id?: number
+    invitationId: number
+    name: string
+    password?: string | null
+    side?: $Enums.InvitationGuestGroup_side | null
+    maxPax?: number | null
+    rsvpTitle?: string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: Date | string | null
+    memo?: string | null
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    InvitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationGuestGroupInput
+  }
+
+  export type InvitationGuestGroupCreateOrConnectWithoutInvitationSeatAssignmentInput = {
+    where: InvitationGuestGroupWhereUniqueInput
+    create: XOR<InvitationGuestGroupCreateWithoutInvitationSeatAssignmentInput, InvitationGuestGroupUncheckedCreateWithoutInvitationSeatAssignmentInput>
+  }
+
+  export type InvitationSeatingTableCreateWithoutInvitationSeatAssignmentInput = {
+    name: string
+    capacity?: number
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    Invitation: InvitationCreateNestedOneWithoutInvitationSeatingTableInput
+  }
+
+  export type InvitationSeatingTableUncheckedCreateWithoutInvitationSeatAssignmentInput = {
+    id?: number
+    invitationId: number
+    name: string
+    capacity?: number
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type InvitationSeatingTableCreateOrConnectWithoutInvitationSeatAssignmentInput = {
+    where: InvitationSeatingTableWhereUniqueInput
+    create: XOR<InvitationSeatingTableCreateWithoutInvitationSeatAssignmentInput, InvitationSeatingTableUncheckedCreateWithoutInvitationSeatAssignmentInput>
+  }
+
+  export type InvitationGuestGroupUpsertWithoutInvitationSeatAssignmentInput = {
+    update: XOR<InvitationGuestGroupUpdateWithoutInvitationSeatAssignmentInput, InvitationGuestGroupUncheckedUpdateWithoutInvitationSeatAssignmentInput>
+    create: XOR<InvitationGuestGroupCreateWithoutInvitationSeatAssignmentInput, InvitationGuestGroupUncheckedCreateWithoutInvitationSeatAssignmentInput>
+    where?: InvitationGuestGroupWhereInput
+  }
+
+  export type InvitationGuestGroupUpdateToOneWithWhereWithoutInvitationSeatAssignmentInput = {
+    where?: InvitationGuestGroupWhereInput
+    data: XOR<InvitationGuestGroupUpdateWithoutInvitationSeatAssignmentInput, InvitationGuestGroupUncheckedUpdateWithoutInvitationSeatAssignmentInput>
+  }
+
+  export type InvitationGuestGroupUpdateWithoutInvitationSeatAssignmentInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    side?: NullableEnumInvitationGuestGroup_sideFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_side | null
+    maxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: NullableEnumInvitationGuestGroup_rsvpStatusFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Invitation?: InvitationUpdateOneRequiredWithoutInvitationGuestGroupNestedInput
+    InvitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationGuestGroupNestedInput
+  }
+
+  export type InvitationGuestGroupUncheckedUpdateWithoutInvitationSeatAssignmentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    side?: NullableEnumInvitationGuestGroup_sideFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_side | null
+    maxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: NullableEnumInvitationGuestGroup_rsvpStatusFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    InvitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationGuestGroupNestedInput
+  }
+
+  export type InvitationSeatingTableUpsertWithoutInvitationSeatAssignmentInput = {
+    update: XOR<InvitationSeatingTableUpdateWithoutInvitationSeatAssignmentInput, InvitationSeatingTableUncheckedUpdateWithoutInvitationSeatAssignmentInput>
+    create: XOR<InvitationSeatingTableCreateWithoutInvitationSeatAssignmentInput, InvitationSeatingTableUncheckedCreateWithoutInvitationSeatAssignmentInput>
+    where?: InvitationSeatingTableWhereInput
+  }
+
+  export type InvitationSeatingTableUpdateToOneWithWhereWithoutInvitationSeatAssignmentInput = {
+    where?: InvitationSeatingTableWhereInput
+    data: XOR<InvitationSeatingTableUpdateWithoutInvitationSeatAssignmentInput, InvitationSeatingTableUncheckedUpdateWithoutInvitationSeatAssignmentInput>
+  }
+
+  export type InvitationSeatingTableUpdateWithoutInvitationSeatAssignmentInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    capacity?: IntFieldUpdateOperationsInput | number
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Invitation?: InvitationUpdateOneRequiredWithoutInvitationSeatingTableNestedInput
+  }
+
+  export type InvitationSeatingTableUncheckedUpdateWithoutInvitationSeatAssignmentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    capacity?: IntFieldUpdateOperationsInput | number
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationSeatAssignmentCreateWithoutInvitationSeatingTableInput = {
+    seatNumber?: number | null
+    createdAt?: Date | string | null
+    InvitationGuestGroup: InvitationGuestGroupCreateNestedOneWithoutInvitationSeatAssignmentInput
+  }
+
+  export type InvitationSeatAssignmentUncheckedCreateWithoutInvitationSeatingTableInput = {
+    id?: number
+    guestGroupId: number
+    seatNumber?: number | null
+    createdAt?: Date | string | null
+  }
+
+  export type InvitationSeatAssignmentCreateOrConnectWithoutInvitationSeatingTableInput = {
+    where: InvitationSeatAssignmentWhereUniqueInput
+    create: XOR<InvitationSeatAssignmentCreateWithoutInvitationSeatingTableInput, InvitationSeatAssignmentUncheckedCreateWithoutInvitationSeatingTableInput>
+  }
+
+  export type InvitationSeatAssignmentCreateManyInvitationSeatingTableInputEnvelope = {
+    data: InvitationSeatAssignmentCreateManyInvitationSeatingTableInput | InvitationSeatAssignmentCreateManyInvitationSeatingTableInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type InvitationCreateWithoutInvitationSeatingTableInput = {
+    templateNo?: number | null
+    uniqueId?: string | null
+    date?: Date | string | null
+    title?: string | null
+    description?: string | null
+    pointColor?: string | null
+    mainTextColor?: string | null
+    dressCodeGentleman?: string | null
+    dressCodeLady?: string | null
+    bgColor?: string | null
+    musicKey?: string | null
+    musicFilename?: string | null
+    musicFileKey?: string | null
+    notice?: string | null
+    brideFirstName?: string | null
+    brideMiddleName?: string | null
+    dressCodeMainColor?: string | null
+    dressCodeSubColor?: string | null
+    dressCodeThirdColor?: string | null
+    brideLastName?: string | null
+    brideMomName?: string | null
+    greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
+    greetingContent?: string | null
+    brideDadName?: string | null
+    bridePhone?: string | null
+    groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
+    groomMiddleName?: string | null
+    groomLastName?: string | null
+    groomPhone?: string | null
+    primarySponsor?: string | null
+    secondarySponsor?: string | null
+    bankAccount?: string | null
+    maidOfHonor?: string | null
+    groomsMen?: string | null
+    textColor?: string | null
+    timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
+    rsvpHasFood?: boolean | null
+    isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
+    bestMan?: string | null
+    bridesMaids?: string | null
+    wishlistText?: string | null
+    groomMomName?: string | null
+    groomDadName?: string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: string | null
+    ogImageKey?: string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    bestManLabel?: string | null
+    maidOfHonorLabel?: string | null
+    groomsMenLabel?: string | null
+    bridesMaidsLabel?: string | null
+    user?: UserCreateNestedOneWithoutInvitationListInput
+    invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
+    photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
+    placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
+    invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
+  }
+
+  export type InvitationUncheckedCreateWithoutInvitationSeatingTableInput = {
+    id?: number
+    templateNo?: number | null
+    uniqueId?: string | null
+    date?: Date | string | null
+    userId?: number | null
+    title?: string | null
+    description?: string | null
+    pointColor?: string | null
+    mainTextColor?: string | null
+    dressCodeGentleman?: string | null
+    dressCodeLady?: string | null
+    bgColor?: string | null
+    musicKey?: string | null
+    musicFilename?: string | null
+    musicFileKey?: string | null
+    notice?: string | null
+    brideFirstName?: string | null
+    brideMiddleName?: string | null
+    dressCodeMainColor?: string | null
+    dressCodeSubColor?: string | null
+    dressCodeThirdColor?: string | null
+    brideLastName?: string | null
+    brideMomName?: string | null
+    greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
+    greetingContent?: string | null
+    brideDadName?: string | null
+    bridePhone?: string | null
+    groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
+    groomMiddleName?: string | null
+    groomLastName?: string | null
+    groomPhone?: string | null
+    primarySponsor?: string | null
+    secondarySponsor?: string | null
+    bankAccount?: string | null
+    maidOfHonor?: string | null
+    groomsMen?: string | null
+    textColor?: string | null
+    timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
+    rsvpHasFood?: boolean | null
+    isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
+    bestMan?: string | null
+    bridesMaids?: string | null
+    wishlistText?: string | null
+    groomMomName?: string | null
+    groomDadName?: string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: string | null
+    ogImageKey?: string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    bestManLabel?: string | null
+    maidOfHonorLabel?: string | null
+    groomsMenLabel?: string | null
+    bridesMaidsLabel?: string | null
+    invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
+    photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
+    invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
+  }
+
+  export type InvitationCreateOrConnectWithoutInvitationSeatingTableInput = {
+    where: InvitationWhereUniqueInput
+    create: XOR<InvitationCreateWithoutInvitationSeatingTableInput, InvitationUncheckedCreateWithoutInvitationSeatingTableInput>
+  }
+
+  export type InvitationSeatAssignmentUpsertWithWhereUniqueWithoutInvitationSeatingTableInput = {
+    where: InvitationSeatAssignmentWhereUniqueInput
+    update: XOR<InvitationSeatAssignmentUpdateWithoutInvitationSeatingTableInput, InvitationSeatAssignmentUncheckedUpdateWithoutInvitationSeatingTableInput>
+    create: XOR<InvitationSeatAssignmentCreateWithoutInvitationSeatingTableInput, InvitationSeatAssignmentUncheckedCreateWithoutInvitationSeatingTableInput>
+  }
+
+  export type InvitationSeatAssignmentUpdateWithWhereUniqueWithoutInvitationSeatingTableInput = {
+    where: InvitationSeatAssignmentWhereUniqueInput
+    data: XOR<InvitationSeatAssignmentUpdateWithoutInvitationSeatingTableInput, InvitationSeatAssignmentUncheckedUpdateWithoutInvitationSeatingTableInput>
+  }
+
+  export type InvitationSeatAssignmentUpdateManyWithWhereWithoutInvitationSeatingTableInput = {
+    where: InvitationSeatAssignmentScalarWhereInput
+    data: XOR<InvitationSeatAssignmentUpdateManyMutationInput, InvitationSeatAssignmentUncheckedUpdateManyWithoutInvitationSeatingTableInput>
+  }
+
+  export type InvitationSeatAssignmentScalarWhereInput = {
+    AND?: InvitationSeatAssignmentScalarWhereInput | InvitationSeatAssignmentScalarWhereInput[]
+    OR?: InvitationSeatAssignmentScalarWhereInput[]
+    NOT?: InvitationSeatAssignmentScalarWhereInput | InvitationSeatAssignmentScalarWhereInput[]
+    id?: IntFilter<"InvitationSeatAssignment"> | number
+    seatingTableId?: IntFilter<"InvitationSeatAssignment"> | number
+    guestGroupId?: IntFilter<"InvitationSeatAssignment"> | number
+    seatNumber?: IntNullableFilter<"InvitationSeatAssignment"> | number | null
+    createdAt?: DateTimeNullableFilter<"InvitationSeatAssignment"> | Date | string | null
+  }
+
+  export type InvitationUpsertWithoutInvitationSeatingTableInput = {
+    update: XOR<InvitationUpdateWithoutInvitationSeatingTableInput, InvitationUncheckedUpdateWithoutInvitationSeatingTableInput>
+    create: XOR<InvitationCreateWithoutInvitationSeatingTableInput, InvitationUncheckedCreateWithoutInvitationSeatingTableInput>
+    where?: InvitationWhereInput
+  }
+
+  export type InvitationUpdateToOneWithWhereWithoutInvitationSeatingTableInput = {
+    where?: InvitationWhereInput
+    data: XOR<InvitationUpdateWithoutInvitationSeatingTableInput, InvitationUncheckedUpdateWithoutInvitationSeatingTableInput>
+  }
+
+  export type InvitationUpdateWithoutInvitationSeatingTableInput = {
+    templateNo?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    pointColor?: NullableStringFieldUpdateOperationsInput | string | null
+    mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeLady?: NullableStringFieldUpdateOperationsInput | string | null
+    bgColor?: NullableStringFieldUpdateOperationsInput | string | null
+    musicKey?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFileKey?: NullableStringFieldUpdateOperationsInput | string | null
+    notice?: NullableStringFieldUpdateOperationsInput | string | null
+    brideFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeMainColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeSubColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeThirdColor?: NullableStringFieldUpdateOperationsInput | string | null
+    brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
+    brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
+    bestMan?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bestManLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonorLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneWithoutInvitationListNestedInput
+    invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
+    photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
+    placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
+    invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type InvitationUncheckedUpdateWithoutInvitationSeatingTableInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    templateNo?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    pointColor?: NullableStringFieldUpdateOperationsInput | string | null
+    mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeLady?: NullableStringFieldUpdateOperationsInput | string | null
+    bgColor?: NullableStringFieldUpdateOperationsInput | string | null
+    musicKey?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFileKey?: NullableStringFieldUpdateOperationsInput | string | null
+    notice?: NullableStringFieldUpdateOperationsInput | string | null
+    brideFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeMainColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeSubColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeThirdColor?: NullableStringFieldUpdateOperationsInput | string | null
+    brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
+    brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
+    bestMan?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bestManLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonorLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
+    photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+  }
+
   export type InvitationCreateManyUserInput = {
     id?: number
     templateNo?: number | null
@@ -33766,6 +39984,9 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
     currentPlanCode?: $Enums.Invitation_currentPlanCode | null
@@ -33858,6 +40079,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -33882,10 +40106,12 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutUserInput = {
@@ -33939,6 +40165,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -33963,10 +40192,12 @@ export namespace Prisma {
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateManyWithoutUserInput = {
@@ -34020,6 +40251,9 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
@@ -34138,6 +40372,22 @@ export namespace Prisma {
     order?: number | null
   }
 
+  export type InvitationGuestGroupCreateManyInvitationInput = {
+    id?: number
+    name: string
+    password?: string | null
+    side?: $Enums.InvitationGuestGroup_side | null
+    maxPax?: number | null
+    rsvpTitle?: string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: Date | string | null
+    memo?: string | null
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
   export type InvitationOrderCreateManyInvitationInput = {
     id?: number
     userId: number
@@ -34183,6 +40433,7 @@ export namespace Prisma {
 
   export type InvitationRSVPCreateManyInvitationInput = {
     id?: number
+    guestGroupId?: number | null
     side?: string | null
     name?: string | null
     guestNameList?: string | null
@@ -34193,6 +40444,15 @@ export namespace Prisma {
     pax?: number | null
     attending?: boolean | null
     createdAt?: Date | string | null
+  }
+
+  export type InvitationSeatingTableCreateManyInvitationInput = {
+    id?: number
+    name: string
+    capacity?: number
+    order?: number | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
   }
 
   export type InvitationCoverPhotoUpdateWithoutInvitationInput = {
@@ -34300,6 +40560,57 @@ export namespace Prisma {
     question?: NullableStringFieldUpdateOperationsInput | string | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     order?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type InvitationGuestGroupUpdateWithoutInvitationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    side?: NullableEnumInvitationGuestGroup_sideFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_side | null
+    maxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: NullableEnumInvitationGuestGroup_rsvpStatusFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    InvitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationGuestGroupNestedInput
+    InvitationSeatAssignment?: InvitationSeatAssignmentUpdateOneWithoutInvitationGuestGroupNestedInput
+  }
+
+  export type InvitationGuestGroupUncheckedUpdateWithoutInvitationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    side?: NullableEnumInvitationGuestGroup_sideFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_side | null
+    maxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: NullableEnumInvitationGuestGroup_rsvpStatusFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    InvitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationGuestGroupNestedInput
+    InvitationSeatAssignment?: InvitationSeatAssignmentUncheckedUpdateOneWithoutInvitationGuestGroupNestedInput
+  }
+
+  export type InvitationGuestGroupUncheckedUpdateManyWithoutInvitationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    side?: NullableEnumInvitationGuestGroup_sideFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_side | null
+    maxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOverride?: NullableJsonNullValueInput | InputJsonValue
+    rsvpStatus?: NullableEnumInvitationGuestGroup_rsvpStatusFieldUpdateOperationsInput | $Enums.InvitationGuestGroup_rsvpStatus | null
+    rsvpAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type InvitationOrderUpdateWithoutInvitationInput = {
@@ -34441,10 +40752,12 @@ export namespace Prisma {
     pax?: NullableIntFieldUpdateOperationsInput | number | null
     attending?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    InvitationGuestGroup?: InvitationGuestGroupUpdateOneWithoutInvitationRSVPNestedInput
   }
 
   export type InvitationRSVPUncheckedUpdateWithoutInvitationInput = {
     id?: IntFieldUpdateOperationsInput | number
+    guestGroupId?: NullableIntFieldUpdateOperationsInput | number | null
     side?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     guestNameList?: NullableStringFieldUpdateOperationsInput | string | null
@@ -34459,6 +40772,7 @@ export namespace Prisma {
 
   export type InvitationRSVPUncheckedUpdateManyWithoutInvitationInput = {
     id?: IntFieldUpdateOperationsInput | number
+    guestGroupId?: NullableIntFieldUpdateOperationsInput | number | null
     side?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     guestNameList?: NullableStringFieldUpdateOperationsInput | string | null
@@ -34469,6 +40783,34 @@ export namespace Prisma {
     pax?: NullableIntFieldUpdateOperationsInput | number | null
     attending?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationSeatingTableUpdateWithoutInvitationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    capacity?: IntFieldUpdateOperationsInput | number
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    InvitationSeatAssignment?: InvitationSeatAssignmentUpdateManyWithoutInvitationSeatingTableNestedInput
+  }
+
+  export type InvitationSeatingTableUncheckedUpdateWithoutInvitationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    capacity?: IntFieldUpdateOperationsInput | number
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    InvitationSeatAssignment?: InvitationSeatAssignmentUncheckedUpdateManyWithoutInvitationSeatingTableNestedInput
+  }
+
+  export type InvitationSeatingTableUncheckedUpdateManyWithoutInvitationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    capacity?: IntFieldUpdateOperationsInput | number
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type InvitationPlaceTimeCreateManyInvitationPlaceInput = {
@@ -34604,6 +40946,92 @@ export namespace Prisma {
     rawPayload?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InvitationRSVPCreateManyInvitationGuestGroupInput = {
+    id?: number
+    invitationId?: number | null
+    side?: string | null
+    name?: string | null
+    guestNameList?: string | null
+    email?: string | null
+    phone?: string | null
+    remark?: string | null
+    food?: string | null
+    pax?: number | null
+    attending?: boolean | null
+    createdAt?: Date | string | null
+  }
+
+  export type InvitationRSVPUpdateWithoutInvitationGuestGroupInput = {
+    side?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    guestNameList?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    food?: NullableStringFieldUpdateOperationsInput | string | null
+    pax?: NullableIntFieldUpdateOperationsInput | number | null
+    attending?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    invitation?: InvitationUpdateOneWithoutInvitationRSVPNestedInput
+  }
+
+  export type InvitationRSVPUncheckedUpdateWithoutInvitationGuestGroupInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: NullableIntFieldUpdateOperationsInput | number | null
+    side?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    guestNameList?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    food?: NullableStringFieldUpdateOperationsInput | string | null
+    pax?: NullableIntFieldUpdateOperationsInput | number | null
+    attending?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationRSVPUncheckedUpdateManyWithoutInvitationGuestGroupInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: NullableIntFieldUpdateOperationsInput | number | null
+    side?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    guestNameList?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    food?: NullableStringFieldUpdateOperationsInput | string | null
+    pax?: NullableIntFieldUpdateOperationsInput | number | null
+    attending?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationSeatAssignmentCreateManyInvitationSeatingTableInput = {
+    id?: number
+    guestGroupId: number
+    seatNumber?: number | null
+    createdAt?: Date | string | null
+  }
+
+  export type InvitationSeatAssignmentUpdateWithoutInvitationSeatingTableInput = {
+    seatNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    InvitationGuestGroup?: InvitationGuestGroupUpdateOneRequiredWithoutInvitationSeatAssignmentNestedInput
+  }
+
+  export type InvitationSeatAssignmentUncheckedUpdateWithoutInvitationSeatingTableInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    guestGroupId?: IntFieldUpdateOperationsInput | number
+    seatNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationSeatAssignmentUncheckedUpdateManyWithoutInvitationSeatingTableInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    guestGroupId?: IntFieldUpdateOperationsInput | number
+    seatNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 

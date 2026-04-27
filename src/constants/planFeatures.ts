@@ -1,7 +1,28 @@
 export const PLAN_FEATURES = {
-  TRIAL: { maxPhotos: 20, allowCustomMusic: false },
-  STANDARD: { maxPhotos: 20, allowCustomMusic: false },
-  PREMIUM: { maxPhotos: 30, allowCustomMusic: true },
+  TRIAL: {
+    maxPhotos: 20,
+    allowCustomMusic: false,
+    allowPasswordProtection: false,
+    maxGuests: 0,
+    allowLayoutOverride: false,
+    allowSeatingTable: false,
+  },
+  STANDARD: {
+    maxPhotos: 20,
+    allowCustomMusic: false,
+    allowPasswordProtection: false,
+    maxGuests: 50,
+    allowLayoutOverride: false,
+    allowSeatingTable: false,
+  },
+  PREMIUM: {
+    maxPhotos: 30,
+    allowCustomMusic: true,
+    allowPasswordProtection: true,
+    maxGuests: -1, // unlimited
+    allowLayoutOverride: true,
+    allowSeatingTable: true,
+  },
 } as const;
 
 export type PlanFeatures = (typeof PLAN_FEATURES)[keyof typeof PLAN_FEATURES];

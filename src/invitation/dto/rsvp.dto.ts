@@ -41,6 +41,11 @@ export class RsvpDto {
   @IsArray()
   @IsString({ each: true })
   guestNameList?: string[];
+
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  guestGroupId?: number;
 }
 
 export class UpdateRsvpDto {

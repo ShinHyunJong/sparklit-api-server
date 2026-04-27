@@ -184,6 +184,9 @@ exports.Prisma.InvitationScalarFieldEnum = {
   rsvpHasFood: 'rsvpHasFood',
   isRsvpPopup: 'isRsvpPopup',
   hasRsvpDeadline: 'hasRsvpDeadline',
+  isPasswordProtected: 'isPasswordProtected',
+  universalPassword: 'universalPassword',
+  guestListEnabled: 'guestListEnabled',
   billingStatus: 'billingStatus',
   trialEndsAt: 'trialEndsAt',
   currentPlanCode: 'currentPlanCode',
@@ -266,6 +269,7 @@ exports.Prisma.InvitationCoverPhotoScalarFieldEnum = {
 exports.Prisma.InvitationRSVPScalarFieldEnum = {
   id: 'id',
   invitationId: 'invitationId',
+  guestGroupId: 'guestGroupId',
   side: 'side',
   name: 'name',
   guestNameList: 'guestNameList',
@@ -387,6 +391,41 @@ exports.Prisma.AuditLogScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.InvitationGuestGroupScalarFieldEnum = {
+  id: 'id',
+  invitationId: 'invitationId',
+  name: 'name',
+  password: 'password',
+  side: 'side',
+  maxPax: 'maxPax',
+  rsvpTitle: 'rsvpTitle',
+  layoutOverride: 'layoutOverride',
+  rsvpStatus: 'rsvpStatus',
+  rsvpAt: 'rsvpAt',
+  memo: 'memo',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.InvitationSeatAssignmentScalarFieldEnum = {
+  id: 'id',
+  seatingTableId: 'seatingTableId',
+  guestGroupId: 'guestGroupId',
+  seatNumber: 'seatNumber',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.InvitationSeatingTableScalarFieldEnum = {
+  id: 'id',
+  invitationId: 'invitationId',
+  name: 'name',
+  capacity: 'capacity',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -460,6 +499,7 @@ exports.Prisma.InvitationOrderByRelevanceFieldEnum = {
   timezone: 'timezone',
   rsvpTitle: 'rsvpTitle',
   rsvpDeadlineDesc: 'rsvpDeadlineDesc',
+  universalPassword: 'universalPassword',
   bestMan: 'bestMan',
   bridesMaids: 'bridesMaids',
   wishlistText: 'wishlistText',
@@ -569,6 +609,17 @@ exports.Prisma.AuditLogOrderByRelevanceFieldEnum = {
   ipAddress: 'ipAddress',
   userAgent: 'userAgent'
 };
+
+exports.Prisma.InvitationGuestGroupOrderByRelevanceFieldEnum = {
+  name: 'name',
+  password: 'password',
+  rsvpTitle: 'rsvpTitle',
+  memo: 'memo'
+};
+
+exports.Prisma.InvitationSeatingTableOrderByRelevanceFieldEnum = {
+  name: 'name'
+};
 exports.Invitation_billingStatus = exports.$Enums.Invitation_billingStatus = {
   TRIAL: 'TRIAL',
   PENDING: 'PENDING',
@@ -595,6 +646,18 @@ exports.InvitationOrder_status = exports.$Enums.InvitationOrder_status = {
   EXPIRED: 'EXPIRED'
 };
 
+exports.InvitationGuestGroup_side = exports.$Enums.InvitationGuestGroup_side = {
+  groom: 'groom',
+  bride: 'bride',
+  common: 'common'
+};
+
+exports.InvitationGuestGroup_rsvpStatus = exports.$Enums.InvitationGuestGroup_rsvpStatus = {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  DECLINED: 'DECLINED'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Invitation: 'Invitation',
@@ -614,7 +677,10 @@ exports.Prisma.ModelName = {
   EmailVerification: 'EmailVerification',
   InvitationOrder: 'InvitationOrder',
   PricePlan: 'PricePlan',
-  AuditLog: 'AuditLog'
+  AuditLog: 'AuditLog',
+  InvitationGuestGroup: 'InvitationGuestGroup',
+  InvitationSeatAssignment: 'InvitationSeatAssignment',
+  InvitationSeatingTable: 'InvitationSeatingTable'
 };
 
 /**

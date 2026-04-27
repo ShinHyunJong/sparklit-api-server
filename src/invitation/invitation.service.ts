@@ -232,6 +232,8 @@ export class InvitationService {
         date: weddingDate,
         rsvpDeadline,
         hasRsvpDeadline: true,
+        wishlistText:
+          'We’ve put together a small wishlist at [Name] for those who would like to help us fill our new home.',
       },
     });
     return created;
@@ -866,6 +868,7 @@ export class InvitationService {
     await this.prismaService.invitationRSVP.create({
       data: {
         invitationId: invitation.id,
+        guestGroupId: body.guestGroupId ?? null,
         name: body.name,
         email: body.email,
         side: body.side,
@@ -877,6 +880,18 @@ export class InvitationService {
         guestNameList: this.serializeGuestNameList(body.guestNameList),
       },
     });
+
+    // Update guest group RSVP status if linked
+    if (body.guestGroupId) {
+      await this.prismaService.invitationGuestGroup.update({
+        where: { id: body.guestGroupId },
+        data: {
+          rsvpStatus: body.attending ? 'ACCEPTED' : 'DECLINED',
+          rsvpAt: new Date(),
+        },
+      }).catch(() => {}); // best effort
+    }
+
     const name = `${invitation.groomFirstName} & ${invitation.brideFirstName}`;
     const result = await postRSVPmail(invitation.user.email, name, {
       attendanceStatus: body.attending ? 'Attending' : 'Not Attending',
