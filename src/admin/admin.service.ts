@@ -646,4 +646,80 @@ export class AdminService {
     );
     return { accessToken };
   }
+
+  // ─── Theme Statistics ───
+  // "Active" = PAID invitation that has been actually customized (has names,
+  // a main cover photo, or any gallery photo). Computed at query time so the
+  // definition lives in one place — same pattern as `isInvitationEditLocked`.
+  private isInvitationActive(invitation: {
+    billingStatus: string | null;
+    groomFirstName: string | null;
+    brideFirstName: string | null;
+    invitationCoverPhotoList: Array<{ type: string }>;
+    photoList: Array<{ id: number }>;
+  }): boolean {
+    if (invitation.billingStatus !== 'PAID') return false;
+    const hasNames =
+      !!invitation.groomFirstName?.trim() ||
+      !!invitation.brideFirstName?.trim();
+    const hasMainPhoto = invitation.invitationCoverPhotoList.some(
+      (p) => p.type === 'main',
+    );
+    const hasGalleryPhoto = invitation.photoList.length > 0;
+    return hasNames || hasMainPhoto || hasGalleryPhoto;
+  }
+
+  async getThemeStats() {
+    const invitations = await this.prismaService.invitation.findMany({
+      where: {
+        billingStatus: 'PAID',
+        user: { OR: [{ isAdmin: { not: true } }, { isAdmin: null }] },
+      },
+      select: {
+        templateNo: true,
+        baseFont: true,
+        bgColor: true,
+        pointColor: true,
+        textColor: true,
+        billingStatus: true,
+        groomFirstName: true,
+        brideFirstName: true,
+        invitationCoverPhotoList: { select: { type: true } },
+        photoList: { select: { id: true } },
+      },
+    });
+
+    const active = invitations.filter((inv) => this.isInvitationActive(inv));
+
+    const tally = <T extends string | number | null>(
+      key: keyof (typeof active)[number],
+      options?: { skipUnset?: boolean },
+    ): Array<{ value: string; count: number }> => {
+      const counts = new Map<string, number>();
+      for (const inv of active) {
+        const raw = inv[key] as T;
+        const isUnset = raw === null || raw === undefined || raw === '';
+        if (isUnset && options?.skipUnset) continue;
+        const value = isUnset ? '(unset)' : String(raw);
+        counts.set(value, (counts.get(value) ?? 0) + 1);
+      }
+      return Array.from(counts.entries())
+        .map(([value, count]) => ({ value, count }))
+        .sort((a, b) => b.count - a.count);
+    };
+
+    const topN = (
+      items: Array<{ value: string; count: number }>,
+      n: number,
+    ) => items.slice(0, n);
+
+    return {
+      total: active.length,
+      templateNo: tally('templateNo'),
+      baseFont: tally('baseFont', { skipUnset: true }),
+      bgColor: topN(tally('bgColor', { skipUnset: true }), 10),
+      pointColor: topN(tally('pointColor', { skipUnset: true }), 10),
+      textColor: topN(tally('textColor', { skipUnset: true }), 10),
+    };
+  }
 }

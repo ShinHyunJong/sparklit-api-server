@@ -32,6 +32,11 @@ export class AdminController {
     return this.adminService.getUserFunnel();
   }
 
+  @Get('/stats/theme')
+  getThemeStats() {
+    return this.adminService.getThemeStats();
+  }
+
   @Get('/invitations/map')
   getInvitationMapMarkers() {
     return this.adminService.getInvitationMapMarkers();
