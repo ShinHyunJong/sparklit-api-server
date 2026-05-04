@@ -89,6 +89,11 @@ export class UpdateGuestSettingsDto {
 export class VerifyPasswordDto {
   @IsString()
   password: string;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(100)
+  name?: string;
 }
 
 export class LinkRsvpDto {

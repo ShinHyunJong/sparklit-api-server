@@ -54,8 +54,19 @@ export class GuestGroupService {
   }
 
   // ─── Verify Password (Public) ───
+  //
+  // Access policy:
+  //   isPasswordProtected = false                       → OPEN
+  //   isPasswordProtected = true  + universalPassword   → COMMON   (match universal)
+  //   isPasswordProtected = true  + no universalPassword → SPECIFIC (match per-guest name + password)
+  //
+  // Name match is normalized (lowercase + all whitespace stripped).
 
-  async verifyPassword(uniqueId: string, password: string) {
+  private normalizeName(value: string | null | undefined): string {
+    return (value ?? '').toLowerCase().replace(/\s+/g, '');
+  }
+
+  async verifyPassword(uniqueId: string, password: string, name?: string) {
     const invitation = await this.prismaService.invitation.findUnique({
       where: { uniqueId },
       select: {
@@ -69,30 +80,39 @@ export class GuestGroupService {
       throw new NotFoundException('Invitation not found');
     }
 
+    // OPEN
     if (!invitation.isPasswordProtected) {
       return { verified: true, guestGroup: null };
     }
 
-    // Check universal password first
-    if (
-      invitation.universalPassword &&
-      invitation.universalPassword === password
-    ) {
-      return { verified: true, guestGroup: null };
+    // COMMON — universalPassword present
+    if (invitation.universalPassword) {
+      if (invitation.universalPassword === password) {
+        return { verified: true, guestGroup: null };
+      }
+      return { verified: false, guestGroup: null };
     }
 
-    // Check individual guest group password
-    const guestGroup =
-      await this.prismaService.invitationGuestGroup.findFirst({
-        where: { invitationId: invitation.id, password },
-        select: {
-          id: true,
-          name: true,
-          maxPax: true,
-          rsvpTitle: true,
-          layoutOverride: true,
-        },
-      });
+    // SPECIFIC — per-guest name + password
+    const normalizedName = this.normalizeName(name);
+    if (!normalizedName) {
+      return { verified: false, guestGroup: null };
+    }
+
+    const candidates = await this.prismaService.invitationGuestGroup.findMany({
+      where: { invitationId: invitation.id, password },
+      select: {
+        id: true,
+        name: true,
+        maxPax: true,
+        rsvpTitle: true,
+        layoutOverride: true,
+      },
+    });
+
+    const guestGroup = candidates.find(
+      (g) => this.normalizeName(g.name) === normalizedName,
+    );
 
     if (!guestGroup) {
       return { verified: false, guestGroup: null };

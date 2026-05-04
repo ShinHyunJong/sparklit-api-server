@@ -30,7 +30,11 @@ export class GuestGroupController {
     @Param('uniqueId') uniqueId: string,
     @Body() body: VerifyPasswordDto,
   ) {
-    return this.guestGroupService.verifyPassword(uniqueId, body.password);
+    return this.guestGroupService.verifyPassword(
+      uniqueId,
+      body.password,
+      body.name,
+    );
   }
 
   // ─── Authenticated: guest settings ───
