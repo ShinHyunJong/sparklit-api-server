@@ -426,6 +426,19 @@ exports.Prisma.InvitationSeatingTableScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.InvitationPaymentMethodScalarFieldEnum = {
+  id: 'id',
+  invitationId: 'invitationId',
+  type: 'type',
+  accountName: 'accountName',
+  accountNumber: 'accountNumber',
+  qrImageKey: 'qrImageKey',
+  memo: 'memo',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -620,6 +633,13 @@ exports.Prisma.InvitationGuestGroupOrderByRelevanceFieldEnum = {
 exports.Prisma.InvitationSeatingTableOrderByRelevanceFieldEnum = {
   name: 'name'
 };
+
+exports.Prisma.InvitationPaymentMethodOrderByRelevanceFieldEnum = {
+  accountName: 'accountName',
+  accountNumber: 'accountNumber',
+  qrImageKey: 'qrImageKey',
+  memo: 'memo'
+};
 exports.Invitation_billingStatus = exports.$Enums.Invitation_billingStatus = {
   TRIAL: 'TRIAL',
   PENDING: 'PENDING',
@@ -658,6 +678,12 @@ exports.InvitationGuestGroup_rsvpStatus = exports.$Enums.InvitationGuestGroup_rs
   DECLINED: 'DECLINED'
 };
 
+exports.InvitationPaymentMethod_type = exports.$Enums.InvitationPaymentMethod_type = {
+  GCASH: 'GCASH',
+  BPI: 'BPI',
+  BDO: 'BDO'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Invitation: 'Invitation',
@@ -680,7 +706,8 @@ exports.Prisma.ModelName = {
   AuditLog: 'AuditLog',
   InvitationGuestGroup: 'InvitationGuestGroup',
   InvitationSeatAssignment: 'InvitationSeatAssignment',
-  InvitationSeatingTable: 'InvitationSeatingTable'
+  InvitationSeatingTable: 'InvitationSeatingTable',
+  InvitationPaymentMethod: 'InvitationPaymentMethod'
 };
 
 /**

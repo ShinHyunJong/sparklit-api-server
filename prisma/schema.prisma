@@ -104,6 +104,7 @@ model Invitation {
   faqList                  InvitationFaq[]
   InvitationGuestGroup     InvitationGuestGroup[]
   InvitationOrder          InvitationOrder[]
+  InvitationPaymentMethod  InvitationPaymentMethod[]
   photoList                InvitationPhoto[]
   placeList                InvitationPlace[]
   invitationRSVP           InvitationRSVP[]
@@ -396,6 +397,23 @@ model InvitationSeatingTable {
   @@index([invitationId], map: "idx_seating_table_invitation")
 }
 
+model InvitationPaymentMethod {
+  id            Int                          @id @default(autoincrement()) @db.UnsignedInt
+  invitationId  Int                          @db.UnsignedInt
+  type          InvitationPaymentMethod_type
+  accountName   String?                      @db.VarChar(100)
+  accountNumber String?                      @db.VarChar(100)
+  qrImageKey    String?                      @db.VarChar(255)
+  memo          String?                      @db.Text
+  order         Int                          @default(0) @db.UnsignedInt
+  createdAt     DateTime                     @default(now()) @db.DateTime(0)
+  updatedAt     DateTime                     @default(now()) @db.DateTime(0)
+  Invitation    Invitation                   @relation(fields: [invitationId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_payment_method_invitation")
+
+  @@index([invitationId], map: "idx_payment_method_invitation")
+  @@index([invitationId, order], map: "idx_payment_method_invitation_order")
+}
+
 enum InvitationOrder_status {
   PENDING
   PAID
@@ -432,4 +450,10 @@ enum InvitationGuestGroup_rsvpStatus {
   PENDING
   ACCEPTED
   DECLINED
+}
+
+enum InvitationPaymentMethod_type {
+  GCASH
+  BPI
+  BDO
 }

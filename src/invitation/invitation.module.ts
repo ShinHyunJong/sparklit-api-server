@@ -9,6 +9,8 @@ import { InvitationMigrationController } from './invitation.migration.controller
 import { InvitationMigrationService } from './invitation.migration.service';
 import { GuestGroupController } from './guest-group.controller';
 import { GuestGroupService } from './guest-group.service';
+import { PaymentMethodController } from './payment-method.controller';
+import { PaymentMethodService } from './payment-method.service';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { NestjsFormDataModule, MemoryStoredFile } from 'nestjs-form-data';
 
@@ -20,6 +22,7 @@ import { NestjsFormDataModule, MemoryStoredFile } from 'nestjs-form-data';
     InvitationFaqController,
     InvitationMigrationController,
     GuestGroupController,
+    PaymentMethodController,
   ],
   providers: [
     InvitationService,
@@ -27,6 +30,7 @@ import { NestjsFormDataModule, MemoryStoredFile } from 'nestjs-form-data';
     InvitationFaqService,
     InvitationMigrationService,
     GuestGroupService,
+    PaymentMethodService,
     PrismaService,
   ],
 })

@@ -123,6 +123,11 @@ export type InvitationSeatAssignment = $Result.DefaultSelection<Prisma.$Invitati
  * 
  */
 export type InvitationSeatingTable = $Result.DefaultSelection<Prisma.$InvitationSeatingTablePayload>
+/**
+ * Model InvitationPaymentMethod
+ * 
+ */
+export type InvitationPaymentMethod = $Result.DefaultSelection<Prisma.$InvitationPaymentMethodPayload>
 
 /**
  * Enums
@@ -183,6 +188,15 @@ export const InvitationGuestGroup_rsvpStatus: {
 
 export type InvitationGuestGroup_rsvpStatus = (typeof InvitationGuestGroup_rsvpStatus)[keyof typeof InvitationGuestGroup_rsvpStatus]
 
+
+export const InvitationPaymentMethod_type: {
+  GCASH: 'GCASH',
+  BPI: 'BPI',
+  BDO: 'BDO'
+};
+
+export type InvitationPaymentMethod_type = (typeof InvitationPaymentMethod_type)[keyof typeof InvitationPaymentMethod_type]
+
 }
 
 export type InvitationOrder_status = $Enums.InvitationOrder_status
@@ -208,6 +222,10 @@ export const InvitationGuestGroup_side: typeof $Enums.InvitationGuestGroup_side
 export type InvitationGuestGroup_rsvpStatus = $Enums.InvitationGuestGroup_rsvpStatus
 
 export const InvitationGuestGroup_rsvpStatus: typeof $Enums.InvitationGuestGroup_rsvpStatus
+
+export type InvitationPaymentMethod_type = $Enums.InvitationPaymentMethod_type
+
+export const InvitationPaymentMethod_type: typeof $Enums.InvitationPaymentMethod_type
 
 /**
  * ##  Prisma Client ʲˢ
@@ -553,6 +571,16 @@ export class PrismaClient<
     * ```
     */
   get invitationSeatingTable(): Prisma.InvitationSeatingTableDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.invitationPaymentMethod`: Exposes CRUD operations for the **InvitationPaymentMethod** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more InvitationPaymentMethods
+    * const invitationPaymentMethods = await prisma.invitationPaymentMethod.findMany()
+    * ```
+    */
+  get invitationPaymentMethod(): Prisma.InvitationPaymentMethodDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1014,7 +1042,8 @@ export namespace Prisma {
     AuditLog: 'AuditLog',
     InvitationGuestGroup: 'InvitationGuestGroup',
     InvitationSeatAssignment: 'InvitationSeatAssignment',
-    InvitationSeatingTable: 'InvitationSeatingTable'
+    InvitationSeatingTable: 'InvitationSeatingTable',
+    InvitationPaymentMethod: 'InvitationPaymentMethod'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1033,7 +1062,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "invitation" | "invitationPlace" | "place" | "invitationPlaceTime" | "invitationPhoto" | "invitationCoverPhoto" | "invitationRSVP" | "invitationMusic" | "invitationView" | "invitationDressColor" | "invitationGuest" | "invitationFaq" | "invitationEntourage" | "admin" | "emailVerification" | "invitationOrder" | "pricePlan" | "auditLog" | "invitationGuestGroup" | "invitationSeatAssignment" | "invitationSeatingTable"
+      modelProps: "user" | "invitation" | "invitationPlace" | "place" | "invitationPlaceTime" | "invitationPhoto" | "invitationCoverPhoto" | "invitationRSVP" | "invitationMusic" | "invitationView" | "invitationDressColor" | "invitationGuest" | "invitationFaq" | "invitationEntourage" | "admin" | "emailVerification" | "invitationOrder" | "pricePlan" | "auditLog" | "invitationGuestGroup" | "invitationSeatAssignment" | "invitationSeatingTable" | "invitationPaymentMethod"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2489,6 +2518,72 @@ export namespace Prisma {
           }
         }
       }
+      InvitationPaymentMethod: {
+        payload: Prisma.$InvitationPaymentMethodPayload<ExtArgs>
+        fields: Prisma.InvitationPaymentMethodFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.InvitationPaymentMethodFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationPaymentMethodPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.InvitationPaymentMethodFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationPaymentMethodPayload>
+          }
+          findFirst: {
+            args: Prisma.InvitationPaymentMethodFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationPaymentMethodPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.InvitationPaymentMethodFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationPaymentMethodPayload>
+          }
+          findMany: {
+            args: Prisma.InvitationPaymentMethodFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationPaymentMethodPayload>[]
+          }
+          create: {
+            args: Prisma.InvitationPaymentMethodCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationPaymentMethodPayload>
+          }
+          createMany: {
+            args: Prisma.InvitationPaymentMethodCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.InvitationPaymentMethodDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationPaymentMethodPayload>
+          }
+          update: {
+            args: Prisma.InvitationPaymentMethodUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationPaymentMethodPayload>
+          }
+          deleteMany: {
+            args: Prisma.InvitationPaymentMethodDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.InvitationPaymentMethodUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.InvitationPaymentMethodUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitationPaymentMethodPayload>
+          }
+          aggregate: {
+            args: Prisma.InvitationPaymentMethodAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateInvitationPaymentMethod>
+          }
+          groupBy: {
+            args: Prisma.InvitationPaymentMethodGroupByArgs<ExtArgs>
+            result: $Utils.Optional<InvitationPaymentMethodGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.InvitationPaymentMethodCountArgs<ExtArgs>
+            result: $Utils.Optional<InvitationPaymentMethodCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2595,6 +2690,7 @@ export namespace Prisma {
     invitationGuestGroup?: InvitationGuestGroupOmit
     invitationSeatAssignment?: InvitationSeatAssignmentOmit
     invitationSeatingTable?: InvitationSeatingTableOmit
+    invitationPaymentMethod?: InvitationPaymentMethodOmit
   }
 
   /* Types for Logging */
@@ -2735,6 +2831,7 @@ export namespace Prisma {
     faqList: number
     InvitationGuestGroup: number
     InvitationOrder: number
+    InvitationPaymentMethod: number
     photoList: number
     placeList: number
     invitationRSVP: number
@@ -2748,6 +2845,7 @@ export namespace Prisma {
     faqList?: boolean | InvitationCountOutputTypeCountFaqListArgs
     InvitationGuestGroup?: boolean | InvitationCountOutputTypeCountInvitationGuestGroupArgs
     InvitationOrder?: boolean | InvitationCountOutputTypeCountInvitationOrderArgs
+    InvitationPaymentMethod?: boolean | InvitationCountOutputTypeCountInvitationPaymentMethodArgs
     photoList?: boolean | InvitationCountOutputTypeCountPhotoListArgs
     placeList?: boolean | InvitationCountOutputTypeCountPlaceListArgs
     invitationRSVP?: boolean | InvitationCountOutputTypeCountInvitationRSVPArgs
@@ -2805,6 +2903,13 @@ export namespace Prisma {
    */
   export type InvitationCountOutputTypeCountInvitationOrderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InvitationOrderWhereInput
+  }
+
+  /**
+   * InvitationCountOutputType without action
+   */
+  export type InvitationCountOutputTypeCountInvitationPaymentMethodArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationPaymentMethodWhereInput
   }
 
   /**
@@ -4833,6 +4938,7 @@ export namespace Prisma {
     faqList?: boolean | Invitation$faqListArgs<ExtArgs>
     InvitationGuestGroup?: boolean | Invitation$InvitationGuestGroupArgs<ExtArgs>
     InvitationOrder?: boolean | Invitation$InvitationOrderArgs<ExtArgs>
+    InvitationPaymentMethod?: boolean | Invitation$InvitationPaymentMethodArgs<ExtArgs>
     photoList?: boolean | Invitation$photoListArgs<ExtArgs>
     placeList?: boolean | Invitation$placeListArgs<ExtArgs>
     invitationRSVP?: boolean | Invitation$invitationRSVPArgs<ExtArgs>
@@ -4928,6 +5034,7 @@ export namespace Prisma {
     faqList?: boolean | Invitation$faqListArgs<ExtArgs>
     InvitationGuestGroup?: boolean | Invitation$InvitationGuestGroupArgs<ExtArgs>
     InvitationOrder?: boolean | Invitation$InvitationOrderArgs<ExtArgs>
+    InvitationPaymentMethod?: boolean | Invitation$InvitationPaymentMethodArgs<ExtArgs>
     photoList?: boolean | Invitation$photoListArgs<ExtArgs>
     placeList?: boolean | Invitation$placeListArgs<ExtArgs>
     invitationRSVP?: boolean | Invitation$invitationRSVPArgs<ExtArgs>
@@ -4945,6 +5052,7 @@ export namespace Prisma {
       faqList: Prisma.$InvitationFaqPayload<ExtArgs>[]
       InvitationGuestGroup: Prisma.$InvitationGuestGroupPayload<ExtArgs>[]
       InvitationOrder: Prisma.$InvitationOrderPayload<ExtArgs>[]
+      InvitationPaymentMethod: Prisma.$InvitationPaymentMethodPayload<ExtArgs>[]
       photoList: Prisma.$InvitationPhotoPayload<ExtArgs>[]
       placeList: Prisma.$InvitationPlacePayload<ExtArgs>[]
       invitationRSVP: Prisma.$InvitationRSVPPayload<ExtArgs>[]
@@ -5372,6 +5480,7 @@ export namespace Prisma {
     faqList<T extends Invitation$faqListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$faqListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationFaqPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     InvitationGuestGroup<T extends Invitation$InvitationGuestGroupArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$InvitationGuestGroupArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationGuestGroupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     InvitationOrder<T extends Invitation$InvitationOrderArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$InvitationOrderArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    InvitationPaymentMethod<T extends Invitation$InvitationPaymentMethodArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$InvitationPaymentMethodArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPaymentMethodPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     photoList<T extends Invitation$photoListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$photoListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     placeList<T extends Invitation$placeListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$placeListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPlacePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     invitationRSVP<T extends Invitation$invitationRSVPArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$invitationRSVPArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationRSVPPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -5982,6 +6091,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: InvitationOrderScalarFieldEnum | InvitationOrderScalarFieldEnum[]
+  }
+
+  /**
+   * Invitation.InvitationPaymentMethod
+   */
+  export type Invitation$InvitationPaymentMethodArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationPaymentMethod
+     */
+    select?: InvitationPaymentMethodSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationPaymentMethod
+     */
+    omit?: InvitationPaymentMethodOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationPaymentMethodInclude<ExtArgs> | null
+    where?: InvitationPaymentMethodWhereInput
+    orderBy?: InvitationPaymentMethodOrderByWithRelationInput | InvitationPaymentMethodOrderByWithRelationInput[]
+    cursor?: InvitationPaymentMethodWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvitationPaymentMethodScalarFieldEnum | InvitationPaymentMethodScalarFieldEnum[]
   }
 
   /**
@@ -26264,6 +26397,1032 @@ export namespace Prisma {
 
 
   /**
+   * Model InvitationPaymentMethod
+   */
+
+  export type AggregateInvitationPaymentMethod = {
+    _count: InvitationPaymentMethodCountAggregateOutputType | null
+    _avg: InvitationPaymentMethodAvgAggregateOutputType | null
+    _sum: InvitationPaymentMethodSumAggregateOutputType | null
+    _min: InvitationPaymentMethodMinAggregateOutputType | null
+    _max: InvitationPaymentMethodMaxAggregateOutputType | null
+  }
+
+  export type InvitationPaymentMethodAvgAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    order: number | null
+  }
+
+  export type InvitationPaymentMethodSumAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    order: number | null
+  }
+
+  export type InvitationPaymentMethodMinAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    type: $Enums.InvitationPaymentMethod_type | null
+    accountName: string | null
+    accountNumber: string | null
+    qrImageKey: string | null
+    memo: string | null
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type InvitationPaymentMethodMaxAggregateOutputType = {
+    id: number | null
+    invitationId: number | null
+    type: $Enums.InvitationPaymentMethod_type | null
+    accountName: string | null
+    accountNumber: string | null
+    qrImageKey: string | null
+    memo: string | null
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type InvitationPaymentMethodCountAggregateOutputType = {
+    id: number
+    invitationId: number
+    type: number
+    accountName: number
+    accountNumber: number
+    qrImageKey: number
+    memo: number
+    order: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type InvitationPaymentMethodAvgAggregateInputType = {
+    id?: true
+    invitationId?: true
+    order?: true
+  }
+
+  export type InvitationPaymentMethodSumAggregateInputType = {
+    id?: true
+    invitationId?: true
+    order?: true
+  }
+
+  export type InvitationPaymentMethodMinAggregateInputType = {
+    id?: true
+    invitationId?: true
+    type?: true
+    accountName?: true
+    accountNumber?: true
+    qrImageKey?: true
+    memo?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type InvitationPaymentMethodMaxAggregateInputType = {
+    id?: true
+    invitationId?: true
+    type?: true
+    accountName?: true
+    accountNumber?: true
+    qrImageKey?: true
+    memo?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type InvitationPaymentMethodCountAggregateInputType = {
+    id?: true
+    invitationId?: true
+    type?: true
+    accountName?: true
+    accountNumber?: true
+    qrImageKey?: true
+    memo?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type InvitationPaymentMethodAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationPaymentMethod to aggregate.
+     */
+    where?: InvitationPaymentMethodWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationPaymentMethods to fetch.
+     */
+    orderBy?: InvitationPaymentMethodOrderByWithRelationInput | InvitationPaymentMethodOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: InvitationPaymentMethodWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationPaymentMethods from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationPaymentMethods.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned InvitationPaymentMethods
+    **/
+    _count?: true | InvitationPaymentMethodCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: InvitationPaymentMethodAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: InvitationPaymentMethodSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: InvitationPaymentMethodMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: InvitationPaymentMethodMaxAggregateInputType
+  }
+
+  export type GetInvitationPaymentMethodAggregateType<T extends InvitationPaymentMethodAggregateArgs> = {
+        [P in keyof T & keyof AggregateInvitationPaymentMethod]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateInvitationPaymentMethod[P]>
+      : GetScalarType<T[P], AggregateInvitationPaymentMethod[P]>
+  }
+
+
+
+
+  export type InvitationPaymentMethodGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationPaymentMethodWhereInput
+    orderBy?: InvitationPaymentMethodOrderByWithAggregationInput | InvitationPaymentMethodOrderByWithAggregationInput[]
+    by: InvitationPaymentMethodScalarFieldEnum[] | InvitationPaymentMethodScalarFieldEnum
+    having?: InvitationPaymentMethodScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: InvitationPaymentMethodCountAggregateInputType | true
+    _avg?: InvitationPaymentMethodAvgAggregateInputType
+    _sum?: InvitationPaymentMethodSumAggregateInputType
+    _min?: InvitationPaymentMethodMinAggregateInputType
+    _max?: InvitationPaymentMethodMaxAggregateInputType
+  }
+
+  export type InvitationPaymentMethodGroupByOutputType = {
+    id: number
+    invitationId: number
+    type: $Enums.InvitationPaymentMethod_type
+    accountName: string | null
+    accountNumber: string | null
+    qrImageKey: string | null
+    memo: string | null
+    order: number
+    createdAt: Date
+    updatedAt: Date
+    _count: InvitationPaymentMethodCountAggregateOutputType | null
+    _avg: InvitationPaymentMethodAvgAggregateOutputType | null
+    _sum: InvitationPaymentMethodSumAggregateOutputType | null
+    _min: InvitationPaymentMethodMinAggregateOutputType | null
+    _max: InvitationPaymentMethodMaxAggregateOutputType | null
+  }
+
+  type GetInvitationPaymentMethodGroupByPayload<T extends InvitationPaymentMethodGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<InvitationPaymentMethodGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof InvitationPaymentMethodGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], InvitationPaymentMethodGroupByOutputType[P]>
+            : GetScalarType<T[P], InvitationPaymentMethodGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type InvitationPaymentMethodSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    invitationId?: boolean
+    type?: boolean
+    accountName?: boolean
+    accountNumber?: boolean
+    qrImageKey?: boolean
+    memo?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    Invitation?: boolean | InvitationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["invitationPaymentMethod"]>
+
+
+
+  export type InvitationPaymentMethodSelectScalar = {
+    id?: boolean
+    invitationId?: boolean
+    type?: boolean
+    accountName?: boolean
+    accountNumber?: boolean
+    qrImageKey?: boolean
+    memo?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type InvitationPaymentMethodOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitationId" | "type" | "accountName" | "accountNumber" | "qrImageKey" | "memo" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["invitationPaymentMethod"]>
+  export type InvitationPaymentMethodInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Invitation?: boolean | InvitationDefaultArgs<ExtArgs>
+  }
+
+  export type $InvitationPaymentMethodPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "InvitationPaymentMethod"
+    objects: {
+      Invitation: Prisma.$InvitationPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      invitationId: number
+      type: $Enums.InvitationPaymentMethod_type
+      accountName: string | null
+      accountNumber: string | null
+      qrImageKey: string | null
+      memo: string | null
+      order: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["invitationPaymentMethod"]>
+    composites: {}
+  }
+
+  type InvitationPaymentMethodGetPayload<S extends boolean | null | undefined | InvitationPaymentMethodDefaultArgs> = $Result.GetResult<Prisma.$InvitationPaymentMethodPayload, S>
+
+  type InvitationPaymentMethodCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<InvitationPaymentMethodFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: InvitationPaymentMethodCountAggregateInputType | true
+    }
+
+  export interface InvitationPaymentMethodDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['InvitationPaymentMethod'], meta: { name: 'InvitationPaymentMethod' } }
+    /**
+     * Find zero or one InvitationPaymentMethod that matches the filter.
+     * @param {InvitationPaymentMethodFindUniqueArgs} args - Arguments to find a InvitationPaymentMethod
+     * @example
+     * // Get one InvitationPaymentMethod
+     * const invitationPaymentMethod = await prisma.invitationPaymentMethod.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends InvitationPaymentMethodFindUniqueArgs>(args: SelectSubset<T, InvitationPaymentMethodFindUniqueArgs<ExtArgs>>): Prisma__InvitationPaymentMethodClient<$Result.GetResult<Prisma.$InvitationPaymentMethodPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one InvitationPaymentMethod that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {InvitationPaymentMethodFindUniqueOrThrowArgs} args - Arguments to find a InvitationPaymentMethod
+     * @example
+     * // Get one InvitationPaymentMethod
+     * const invitationPaymentMethod = await prisma.invitationPaymentMethod.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends InvitationPaymentMethodFindUniqueOrThrowArgs>(args: SelectSubset<T, InvitationPaymentMethodFindUniqueOrThrowArgs<ExtArgs>>): Prisma__InvitationPaymentMethodClient<$Result.GetResult<Prisma.$InvitationPaymentMethodPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationPaymentMethod that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationPaymentMethodFindFirstArgs} args - Arguments to find a InvitationPaymentMethod
+     * @example
+     * // Get one InvitationPaymentMethod
+     * const invitationPaymentMethod = await prisma.invitationPaymentMethod.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends InvitationPaymentMethodFindFirstArgs>(args?: SelectSubset<T, InvitationPaymentMethodFindFirstArgs<ExtArgs>>): Prisma__InvitationPaymentMethodClient<$Result.GetResult<Prisma.$InvitationPaymentMethodPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first InvitationPaymentMethod that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationPaymentMethodFindFirstOrThrowArgs} args - Arguments to find a InvitationPaymentMethod
+     * @example
+     * // Get one InvitationPaymentMethod
+     * const invitationPaymentMethod = await prisma.invitationPaymentMethod.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends InvitationPaymentMethodFindFirstOrThrowArgs>(args?: SelectSubset<T, InvitationPaymentMethodFindFirstOrThrowArgs<ExtArgs>>): Prisma__InvitationPaymentMethodClient<$Result.GetResult<Prisma.$InvitationPaymentMethodPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more InvitationPaymentMethods that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationPaymentMethodFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all InvitationPaymentMethods
+     * const invitationPaymentMethods = await prisma.invitationPaymentMethod.findMany()
+     * 
+     * // Get first 10 InvitationPaymentMethods
+     * const invitationPaymentMethods = await prisma.invitationPaymentMethod.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const invitationPaymentMethodWithIdOnly = await prisma.invitationPaymentMethod.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends InvitationPaymentMethodFindManyArgs>(args?: SelectSubset<T, InvitationPaymentMethodFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPaymentMethodPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a InvitationPaymentMethod.
+     * @param {InvitationPaymentMethodCreateArgs} args - Arguments to create a InvitationPaymentMethod.
+     * @example
+     * // Create one InvitationPaymentMethod
+     * const InvitationPaymentMethod = await prisma.invitationPaymentMethod.create({
+     *   data: {
+     *     // ... data to create a InvitationPaymentMethod
+     *   }
+     * })
+     * 
+     */
+    create<T extends InvitationPaymentMethodCreateArgs>(args: SelectSubset<T, InvitationPaymentMethodCreateArgs<ExtArgs>>): Prisma__InvitationPaymentMethodClient<$Result.GetResult<Prisma.$InvitationPaymentMethodPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many InvitationPaymentMethods.
+     * @param {InvitationPaymentMethodCreateManyArgs} args - Arguments to create many InvitationPaymentMethods.
+     * @example
+     * // Create many InvitationPaymentMethods
+     * const invitationPaymentMethod = await prisma.invitationPaymentMethod.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends InvitationPaymentMethodCreateManyArgs>(args?: SelectSubset<T, InvitationPaymentMethodCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a InvitationPaymentMethod.
+     * @param {InvitationPaymentMethodDeleteArgs} args - Arguments to delete one InvitationPaymentMethod.
+     * @example
+     * // Delete one InvitationPaymentMethod
+     * const InvitationPaymentMethod = await prisma.invitationPaymentMethod.delete({
+     *   where: {
+     *     // ... filter to delete one InvitationPaymentMethod
+     *   }
+     * })
+     * 
+     */
+    delete<T extends InvitationPaymentMethodDeleteArgs>(args: SelectSubset<T, InvitationPaymentMethodDeleteArgs<ExtArgs>>): Prisma__InvitationPaymentMethodClient<$Result.GetResult<Prisma.$InvitationPaymentMethodPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one InvitationPaymentMethod.
+     * @param {InvitationPaymentMethodUpdateArgs} args - Arguments to update one InvitationPaymentMethod.
+     * @example
+     * // Update one InvitationPaymentMethod
+     * const invitationPaymentMethod = await prisma.invitationPaymentMethod.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends InvitationPaymentMethodUpdateArgs>(args: SelectSubset<T, InvitationPaymentMethodUpdateArgs<ExtArgs>>): Prisma__InvitationPaymentMethodClient<$Result.GetResult<Prisma.$InvitationPaymentMethodPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more InvitationPaymentMethods.
+     * @param {InvitationPaymentMethodDeleteManyArgs} args - Arguments to filter InvitationPaymentMethods to delete.
+     * @example
+     * // Delete a few InvitationPaymentMethods
+     * const { count } = await prisma.invitationPaymentMethod.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends InvitationPaymentMethodDeleteManyArgs>(args?: SelectSubset<T, InvitationPaymentMethodDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more InvitationPaymentMethods.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationPaymentMethodUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many InvitationPaymentMethods
+     * const invitationPaymentMethod = await prisma.invitationPaymentMethod.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends InvitationPaymentMethodUpdateManyArgs>(args: SelectSubset<T, InvitationPaymentMethodUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one InvitationPaymentMethod.
+     * @param {InvitationPaymentMethodUpsertArgs} args - Arguments to update or create a InvitationPaymentMethod.
+     * @example
+     * // Update or create a InvitationPaymentMethod
+     * const invitationPaymentMethod = await prisma.invitationPaymentMethod.upsert({
+     *   create: {
+     *     // ... data to create a InvitationPaymentMethod
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the InvitationPaymentMethod we want to update
+     *   }
+     * })
+     */
+    upsert<T extends InvitationPaymentMethodUpsertArgs>(args: SelectSubset<T, InvitationPaymentMethodUpsertArgs<ExtArgs>>): Prisma__InvitationPaymentMethodClient<$Result.GetResult<Prisma.$InvitationPaymentMethodPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of InvitationPaymentMethods.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationPaymentMethodCountArgs} args - Arguments to filter InvitationPaymentMethods to count.
+     * @example
+     * // Count the number of InvitationPaymentMethods
+     * const count = await prisma.invitationPaymentMethod.count({
+     *   where: {
+     *     // ... the filter for the InvitationPaymentMethods we want to count
+     *   }
+     * })
+    **/
+    count<T extends InvitationPaymentMethodCountArgs>(
+      args?: Subset<T, InvitationPaymentMethodCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], InvitationPaymentMethodCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a InvitationPaymentMethod.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationPaymentMethodAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends InvitationPaymentMethodAggregateArgs>(args: Subset<T, InvitationPaymentMethodAggregateArgs>): Prisma.PrismaPromise<GetInvitationPaymentMethodAggregateType<T>>
+
+    /**
+     * Group by InvitationPaymentMethod.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InvitationPaymentMethodGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends InvitationPaymentMethodGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: InvitationPaymentMethodGroupByArgs['orderBy'] }
+        : { orderBy?: InvitationPaymentMethodGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, InvitationPaymentMethodGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInvitationPaymentMethodGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the InvitationPaymentMethod model
+   */
+  readonly fields: InvitationPaymentMethodFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for InvitationPaymentMethod.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__InvitationPaymentMethodClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Invitation<T extends InvitationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InvitationDefaultArgs<ExtArgs>>): Prisma__InvitationClient<$Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the InvitationPaymentMethod model
+   */
+  interface InvitationPaymentMethodFieldRefs {
+    readonly id: FieldRef<"InvitationPaymentMethod", 'Int'>
+    readonly invitationId: FieldRef<"InvitationPaymentMethod", 'Int'>
+    readonly type: FieldRef<"InvitationPaymentMethod", 'InvitationPaymentMethod_type'>
+    readonly accountName: FieldRef<"InvitationPaymentMethod", 'String'>
+    readonly accountNumber: FieldRef<"InvitationPaymentMethod", 'String'>
+    readonly qrImageKey: FieldRef<"InvitationPaymentMethod", 'String'>
+    readonly memo: FieldRef<"InvitationPaymentMethod", 'String'>
+    readonly order: FieldRef<"InvitationPaymentMethod", 'Int'>
+    readonly createdAt: FieldRef<"InvitationPaymentMethod", 'DateTime'>
+    readonly updatedAt: FieldRef<"InvitationPaymentMethod", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * InvitationPaymentMethod findUnique
+   */
+  export type InvitationPaymentMethodFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationPaymentMethod
+     */
+    select?: InvitationPaymentMethodSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationPaymentMethod
+     */
+    omit?: InvitationPaymentMethodOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationPaymentMethodInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationPaymentMethod to fetch.
+     */
+    where: InvitationPaymentMethodWhereUniqueInput
+  }
+
+  /**
+   * InvitationPaymentMethod findUniqueOrThrow
+   */
+  export type InvitationPaymentMethodFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationPaymentMethod
+     */
+    select?: InvitationPaymentMethodSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationPaymentMethod
+     */
+    omit?: InvitationPaymentMethodOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationPaymentMethodInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationPaymentMethod to fetch.
+     */
+    where: InvitationPaymentMethodWhereUniqueInput
+  }
+
+  /**
+   * InvitationPaymentMethod findFirst
+   */
+  export type InvitationPaymentMethodFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationPaymentMethod
+     */
+    select?: InvitationPaymentMethodSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationPaymentMethod
+     */
+    omit?: InvitationPaymentMethodOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationPaymentMethodInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationPaymentMethod to fetch.
+     */
+    where?: InvitationPaymentMethodWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationPaymentMethods to fetch.
+     */
+    orderBy?: InvitationPaymentMethodOrderByWithRelationInput | InvitationPaymentMethodOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationPaymentMethods.
+     */
+    cursor?: InvitationPaymentMethodWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationPaymentMethods from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationPaymentMethods.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationPaymentMethods.
+     */
+    distinct?: InvitationPaymentMethodScalarFieldEnum | InvitationPaymentMethodScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationPaymentMethod findFirstOrThrow
+   */
+  export type InvitationPaymentMethodFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationPaymentMethod
+     */
+    select?: InvitationPaymentMethodSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationPaymentMethod
+     */
+    omit?: InvitationPaymentMethodOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationPaymentMethodInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationPaymentMethod to fetch.
+     */
+    where?: InvitationPaymentMethodWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationPaymentMethods to fetch.
+     */
+    orderBy?: InvitationPaymentMethodOrderByWithRelationInput | InvitationPaymentMethodOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for InvitationPaymentMethods.
+     */
+    cursor?: InvitationPaymentMethodWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationPaymentMethods from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationPaymentMethods.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of InvitationPaymentMethods.
+     */
+    distinct?: InvitationPaymentMethodScalarFieldEnum | InvitationPaymentMethodScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationPaymentMethod findMany
+   */
+  export type InvitationPaymentMethodFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationPaymentMethod
+     */
+    select?: InvitationPaymentMethodSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationPaymentMethod
+     */
+    omit?: InvitationPaymentMethodOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationPaymentMethodInclude<ExtArgs> | null
+    /**
+     * Filter, which InvitationPaymentMethods to fetch.
+     */
+    where?: InvitationPaymentMethodWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of InvitationPaymentMethods to fetch.
+     */
+    orderBy?: InvitationPaymentMethodOrderByWithRelationInput | InvitationPaymentMethodOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing InvitationPaymentMethods.
+     */
+    cursor?: InvitationPaymentMethodWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` InvitationPaymentMethods from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` InvitationPaymentMethods.
+     */
+    skip?: number
+    distinct?: InvitationPaymentMethodScalarFieldEnum | InvitationPaymentMethodScalarFieldEnum[]
+  }
+
+  /**
+   * InvitationPaymentMethod create
+   */
+  export type InvitationPaymentMethodCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationPaymentMethod
+     */
+    select?: InvitationPaymentMethodSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationPaymentMethod
+     */
+    omit?: InvitationPaymentMethodOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationPaymentMethodInclude<ExtArgs> | null
+    /**
+     * The data needed to create a InvitationPaymentMethod.
+     */
+    data: XOR<InvitationPaymentMethodCreateInput, InvitationPaymentMethodUncheckedCreateInput>
+  }
+
+  /**
+   * InvitationPaymentMethod createMany
+   */
+  export type InvitationPaymentMethodCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many InvitationPaymentMethods.
+     */
+    data: InvitationPaymentMethodCreateManyInput | InvitationPaymentMethodCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * InvitationPaymentMethod update
+   */
+  export type InvitationPaymentMethodUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationPaymentMethod
+     */
+    select?: InvitationPaymentMethodSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationPaymentMethod
+     */
+    omit?: InvitationPaymentMethodOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationPaymentMethodInclude<ExtArgs> | null
+    /**
+     * The data needed to update a InvitationPaymentMethod.
+     */
+    data: XOR<InvitationPaymentMethodUpdateInput, InvitationPaymentMethodUncheckedUpdateInput>
+    /**
+     * Choose, which InvitationPaymentMethod to update.
+     */
+    where: InvitationPaymentMethodWhereUniqueInput
+  }
+
+  /**
+   * InvitationPaymentMethod updateMany
+   */
+  export type InvitationPaymentMethodUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update InvitationPaymentMethods.
+     */
+    data: XOR<InvitationPaymentMethodUpdateManyMutationInput, InvitationPaymentMethodUncheckedUpdateManyInput>
+    /**
+     * Filter which InvitationPaymentMethods to update
+     */
+    where?: InvitationPaymentMethodWhereInput
+    /**
+     * Limit how many InvitationPaymentMethods to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationPaymentMethod upsert
+   */
+  export type InvitationPaymentMethodUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationPaymentMethod
+     */
+    select?: InvitationPaymentMethodSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationPaymentMethod
+     */
+    omit?: InvitationPaymentMethodOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationPaymentMethodInclude<ExtArgs> | null
+    /**
+     * The filter to search for the InvitationPaymentMethod to update in case it exists.
+     */
+    where: InvitationPaymentMethodWhereUniqueInput
+    /**
+     * In case the InvitationPaymentMethod found by the `where` argument doesn't exist, create a new InvitationPaymentMethod with this data.
+     */
+    create: XOR<InvitationPaymentMethodCreateInput, InvitationPaymentMethodUncheckedCreateInput>
+    /**
+     * In case the InvitationPaymentMethod was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<InvitationPaymentMethodUpdateInput, InvitationPaymentMethodUncheckedUpdateInput>
+  }
+
+  /**
+   * InvitationPaymentMethod delete
+   */
+  export type InvitationPaymentMethodDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationPaymentMethod
+     */
+    select?: InvitationPaymentMethodSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationPaymentMethod
+     */
+    omit?: InvitationPaymentMethodOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationPaymentMethodInclude<ExtArgs> | null
+    /**
+     * Filter which InvitationPaymentMethod to delete.
+     */
+    where: InvitationPaymentMethodWhereUniqueInput
+  }
+
+  /**
+   * InvitationPaymentMethod deleteMany
+   */
+  export type InvitationPaymentMethodDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which InvitationPaymentMethods to delete
+     */
+    where?: InvitationPaymentMethodWhereInput
+    /**
+     * Limit how many InvitationPaymentMethods to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * InvitationPaymentMethod without action
+   */
+  export type InvitationPaymentMethodDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationPaymentMethod
+     */
+    select?: InvitationPaymentMethodSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationPaymentMethod
+     */
+    omit?: InvitationPaymentMethodOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationPaymentMethodInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -26649,6 +27808,22 @@ export namespace Prisma {
   export type InvitationSeatingTableScalarFieldEnum = (typeof InvitationSeatingTableScalarFieldEnum)[keyof typeof InvitationSeatingTableScalarFieldEnum]
 
 
+  export const InvitationPaymentMethodScalarFieldEnum: {
+    id: 'id',
+    invitationId: 'invitationId',
+    type: 'type',
+    accountName: 'accountName',
+    accountNumber: 'accountNumber',
+    qrImageKey: 'qrImageKey',
+    memo: 'memo',
+    order: 'order',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type InvitationPaymentMethodScalarFieldEnum = (typeof InvitationPaymentMethodScalarFieldEnum)[keyof typeof InvitationPaymentMethodScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -26919,6 +28094,16 @@ export namespace Prisma {
   export type InvitationSeatingTableOrderByRelevanceFieldEnum = (typeof InvitationSeatingTableOrderByRelevanceFieldEnum)[keyof typeof InvitationSeatingTableOrderByRelevanceFieldEnum]
 
 
+  export const InvitationPaymentMethodOrderByRelevanceFieldEnum: {
+    accountName: 'accountName',
+    accountNumber: 'accountNumber',
+    qrImageKey: 'qrImageKey',
+    memo: 'memo'
+  };
+
+  export type InvitationPaymentMethodOrderByRelevanceFieldEnum = (typeof InvitationPaymentMethodOrderByRelevanceFieldEnum)[keyof typeof InvitationPaymentMethodOrderByRelevanceFieldEnum]
+
+
   /**
    * Field references
    */
@@ -27019,6 +28204,13 @@ export namespace Prisma {
    * Reference to a field of type 'InvitationGuestGroup_rsvpStatus'
    */
   export type EnumInvitationGuestGroup_rsvpStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvitationGuestGroup_rsvpStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'InvitationPaymentMethod_type'
+   */
+  export type EnumInvitationPaymentMethod_typeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvitationPaymentMethod_type'>
     
   /**
    * Deep Input Types
@@ -27191,6 +28383,7 @@ export namespace Prisma {
     faqList?: InvitationFaqListRelationFilter
     InvitationGuestGroup?: InvitationGuestGroupListRelationFilter
     InvitationOrder?: InvitationOrderListRelationFilter
+    InvitationPaymentMethod?: InvitationPaymentMethodListRelationFilter
     photoList?: InvitationPhotoListRelationFilter
     placeList?: InvitationPlaceListRelationFilter
     invitationRSVP?: InvitationRSVPListRelationFilter
@@ -27279,6 +28472,7 @@ export namespace Prisma {
     faqList?: InvitationFaqOrderByRelationAggregateInput
     InvitationGuestGroup?: InvitationGuestGroupOrderByRelationAggregateInput
     InvitationOrder?: InvitationOrderOrderByRelationAggregateInput
+    InvitationPaymentMethod?: InvitationPaymentMethodOrderByRelationAggregateInput
     photoList?: InvitationPhotoOrderByRelationAggregateInput
     placeList?: InvitationPlaceOrderByRelationAggregateInput
     invitationRSVP?: InvitationRSVPOrderByRelationAggregateInput
@@ -27371,6 +28565,7 @@ export namespace Prisma {
     faqList?: InvitationFaqListRelationFilter
     InvitationGuestGroup?: InvitationGuestGroupListRelationFilter
     InvitationOrder?: InvitationOrderListRelationFilter
+    InvitationPaymentMethod?: InvitationPaymentMethodListRelationFilter
     photoList?: InvitationPhotoListRelationFilter
     placeList?: InvitationPlaceListRelationFilter
     invitationRSVP?: InvitationRSVPListRelationFilter
@@ -28992,6 +30187,89 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableWithAggregatesFilter<"InvitationSeatingTable"> | Date | string | null
   }
 
+  export type InvitationPaymentMethodWhereInput = {
+    AND?: InvitationPaymentMethodWhereInput | InvitationPaymentMethodWhereInput[]
+    OR?: InvitationPaymentMethodWhereInput[]
+    NOT?: InvitationPaymentMethodWhereInput | InvitationPaymentMethodWhereInput[]
+    id?: IntFilter<"InvitationPaymentMethod"> | number
+    invitationId?: IntFilter<"InvitationPaymentMethod"> | number
+    type?: EnumInvitationPaymentMethod_typeFilter<"InvitationPaymentMethod"> | $Enums.InvitationPaymentMethod_type
+    accountName?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
+    accountNumber?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
+    qrImageKey?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
+    memo?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
+    order?: IntFilter<"InvitationPaymentMethod"> | number
+    createdAt?: DateTimeFilter<"InvitationPaymentMethod"> | Date | string
+    updatedAt?: DateTimeFilter<"InvitationPaymentMethod"> | Date | string
+    Invitation?: XOR<InvitationScalarRelationFilter, InvitationWhereInput>
+  }
+
+  export type InvitationPaymentMethodOrderByWithRelationInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    type?: SortOrder
+    accountName?: SortOrderInput | SortOrder
+    accountNumber?: SortOrderInput | SortOrder
+    qrImageKey?: SortOrderInput | SortOrder
+    memo?: SortOrderInput | SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    Invitation?: InvitationOrderByWithRelationInput
+    _relevance?: InvitationPaymentMethodOrderByRelevanceInput
+  }
+
+  export type InvitationPaymentMethodWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: InvitationPaymentMethodWhereInput | InvitationPaymentMethodWhereInput[]
+    OR?: InvitationPaymentMethodWhereInput[]
+    NOT?: InvitationPaymentMethodWhereInput | InvitationPaymentMethodWhereInput[]
+    invitationId?: IntFilter<"InvitationPaymentMethod"> | number
+    type?: EnumInvitationPaymentMethod_typeFilter<"InvitationPaymentMethod"> | $Enums.InvitationPaymentMethod_type
+    accountName?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
+    accountNumber?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
+    qrImageKey?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
+    memo?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
+    order?: IntFilter<"InvitationPaymentMethod"> | number
+    createdAt?: DateTimeFilter<"InvitationPaymentMethod"> | Date | string
+    updatedAt?: DateTimeFilter<"InvitationPaymentMethod"> | Date | string
+    Invitation?: XOR<InvitationScalarRelationFilter, InvitationWhereInput>
+  }, "id">
+
+  export type InvitationPaymentMethodOrderByWithAggregationInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    type?: SortOrder
+    accountName?: SortOrderInput | SortOrder
+    accountNumber?: SortOrderInput | SortOrder
+    qrImageKey?: SortOrderInput | SortOrder
+    memo?: SortOrderInput | SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: InvitationPaymentMethodCountOrderByAggregateInput
+    _avg?: InvitationPaymentMethodAvgOrderByAggregateInput
+    _max?: InvitationPaymentMethodMaxOrderByAggregateInput
+    _min?: InvitationPaymentMethodMinOrderByAggregateInput
+    _sum?: InvitationPaymentMethodSumOrderByAggregateInput
+  }
+
+  export type InvitationPaymentMethodScalarWhereWithAggregatesInput = {
+    AND?: InvitationPaymentMethodScalarWhereWithAggregatesInput | InvitationPaymentMethodScalarWhereWithAggregatesInput[]
+    OR?: InvitationPaymentMethodScalarWhereWithAggregatesInput[]
+    NOT?: InvitationPaymentMethodScalarWhereWithAggregatesInput | InvitationPaymentMethodScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"InvitationPaymentMethod"> | number
+    invitationId?: IntWithAggregatesFilter<"InvitationPaymentMethod"> | number
+    type?: EnumInvitationPaymentMethod_typeWithAggregatesFilter<"InvitationPaymentMethod"> | $Enums.InvitationPaymentMethod_type
+    accountName?: StringNullableWithAggregatesFilter<"InvitationPaymentMethod"> | string | null
+    accountNumber?: StringNullableWithAggregatesFilter<"InvitationPaymentMethod"> | string | null
+    qrImageKey?: StringNullableWithAggregatesFilter<"InvitationPaymentMethod"> | string | null
+    memo?: StringNullableWithAggregatesFilter<"InvitationPaymentMethod"> | string | null
+    order?: IntWithAggregatesFilter<"InvitationPaymentMethod"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"InvitationPaymentMethod"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"InvitationPaymentMethod"> | Date | string
+  }
+
   export type UserCreateInput = {
     email?: string | null
     name?: string | null
@@ -29161,6 +30439,7 @@ export namespace Prisma {
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -29248,6 +30527,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -29334,6 +30614,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -29421,6 +30702,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -31128,6 +32410,93 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type InvitationPaymentMethodCreateInput = {
+    type: $Enums.InvitationPaymentMethod_type
+    accountName?: string | null
+    accountNumber?: string | null
+    qrImageKey?: string | null
+    memo?: string | null
+    order?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Invitation: InvitationCreateNestedOneWithoutInvitationPaymentMethodInput
+  }
+
+  export type InvitationPaymentMethodUncheckedCreateInput = {
+    id?: number
+    invitationId: number
+    type: $Enums.InvitationPaymentMethod_type
+    accountName?: string | null
+    accountNumber?: string | null
+    qrImageKey?: string | null
+    memo?: string | null
+    order?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InvitationPaymentMethodUpdateInput = {
+    type?: EnumInvitationPaymentMethod_typeFieldUpdateOperationsInput | $Enums.InvitationPaymentMethod_type
+    accountName?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    qrImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Invitation?: InvitationUpdateOneRequiredWithoutInvitationPaymentMethodNestedInput
+  }
+
+  export type InvitationPaymentMethodUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: IntFieldUpdateOperationsInput | number
+    type?: EnumInvitationPaymentMethod_typeFieldUpdateOperationsInput | $Enums.InvitationPaymentMethod_type
+    accountName?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    qrImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InvitationPaymentMethodCreateManyInput = {
+    id?: number
+    invitationId: number
+    type: $Enums.InvitationPaymentMethod_type
+    accountName?: string | null
+    accountNumber?: string | null
+    qrImageKey?: string | null
+    memo?: string | null
+    order?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InvitationPaymentMethodUpdateManyMutationInput = {
+    type?: EnumInvitationPaymentMethod_typeFieldUpdateOperationsInput | $Enums.InvitationPaymentMethod_type
+    accountName?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    qrImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InvitationPaymentMethodUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    invitationId?: IntFieldUpdateOperationsInput | number
+    type?: EnumInvitationPaymentMethod_typeFieldUpdateOperationsInput | $Enums.InvitationPaymentMethod_type
+    accountName?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    qrImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -31389,6 +32758,12 @@ export namespace Prisma {
     none?: InvitationGuestGroupWhereInput
   }
 
+  export type InvitationPaymentMethodListRelationFilter = {
+    every?: InvitationPaymentMethodWhereInput
+    some?: InvitationPaymentMethodWhereInput
+    none?: InvitationPaymentMethodWhereInput
+  }
+
   export type InvitationPhotoListRelationFilter = {
     every?: InvitationPhotoWhereInput
     some?: InvitationPhotoWhereInput
@@ -31430,6 +32805,10 @@ export namespace Prisma {
   }
 
   export type InvitationGuestGroupOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type InvitationPaymentMethodOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -33040,6 +34419,80 @@ export namespace Prisma {
     order?: SortOrder
   }
 
+  export type EnumInvitationPaymentMethod_typeFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationPaymentMethod_type | EnumInvitationPaymentMethod_typeFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationPaymentMethod_type[]
+    notIn?: $Enums.InvitationPaymentMethod_type[]
+    not?: NestedEnumInvitationPaymentMethod_typeFilter<$PrismaModel> | $Enums.InvitationPaymentMethod_type
+  }
+
+  export type InvitationPaymentMethodOrderByRelevanceInput = {
+    fields: InvitationPaymentMethodOrderByRelevanceFieldEnum | InvitationPaymentMethodOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type InvitationPaymentMethodCountOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    type?: SortOrder
+    accountName?: SortOrder
+    accountNumber?: SortOrder
+    qrImageKey?: SortOrder
+    memo?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type InvitationPaymentMethodAvgOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    order?: SortOrder
+  }
+
+  export type InvitationPaymentMethodMaxOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    type?: SortOrder
+    accountName?: SortOrder
+    accountNumber?: SortOrder
+    qrImageKey?: SortOrder
+    memo?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type InvitationPaymentMethodMinOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    type?: SortOrder
+    accountName?: SortOrder
+    accountNumber?: SortOrder
+    qrImageKey?: SortOrder
+    memo?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type InvitationPaymentMethodSumOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    order?: SortOrder
+  }
+
+  export type EnumInvitationPaymentMethod_typeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationPaymentMethod_type | EnumInvitationPaymentMethod_typeFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationPaymentMethod_type[]
+    notIn?: $Enums.InvitationPaymentMethod_type[]
+    not?: NestedEnumInvitationPaymentMethod_typeWithAggregatesFilter<$PrismaModel> | $Enums.InvitationPaymentMethod_type
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumInvitationPaymentMethod_typeFilter<$PrismaModel>
+    _max?: NestedEnumInvitationPaymentMethod_typeFilter<$PrismaModel>
+  }
+
   export type InvitationCreateNestedManyWithoutUserInput = {
     create?: XOR<InvitationCreateWithoutUserInput, InvitationUncheckedCreateWithoutUserInput> | InvitationCreateWithoutUserInput[] | InvitationUncheckedCreateWithoutUserInput[]
     connectOrCreate?: InvitationCreateOrConnectWithoutUserInput | InvitationCreateOrConnectWithoutUserInput[]
@@ -33192,6 +34645,13 @@ export namespace Prisma {
     connect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
   }
 
+  export type InvitationPaymentMethodCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<InvitationPaymentMethodCreateWithoutInvitationInput, InvitationPaymentMethodUncheckedCreateWithoutInvitationInput> | InvitationPaymentMethodCreateWithoutInvitationInput[] | InvitationPaymentMethodUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationPaymentMethodCreateOrConnectWithoutInvitationInput | InvitationPaymentMethodCreateOrConnectWithoutInvitationInput[]
+    createMany?: InvitationPaymentMethodCreateManyInvitationInputEnvelope
+    connect?: InvitationPaymentMethodWhereUniqueInput | InvitationPaymentMethodWhereUniqueInput[]
+  }
+
   export type InvitationPhotoCreateNestedManyWithoutInvitationInput = {
     create?: XOR<InvitationPhotoCreateWithoutInvitationInput, InvitationPhotoUncheckedCreateWithoutInvitationInput> | InvitationPhotoCreateWithoutInvitationInput[] | InvitationPhotoUncheckedCreateWithoutInvitationInput[]
     connectOrCreate?: InvitationPhotoCreateOrConnectWithoutInvitationInput | InvitationPhotoCreateOrConnectWithoutInvitationInput[]
@@ -33260,6 +34720,13 @@ export namespace Prisma {
     connectOrCreate?: InvitationOrderCreateOrConnectWithoutInvitationInput | InvitationOrderCreateOrConnectWithoutInvitationInput[]
     createMany?: InvitationOrderCreateManyInvitationInputEnvelope
     connect?: InvitationOrderWhereUniqueInput | InvitationOrderWhereUniqueInput[]
+  }
+
+  export type InvitationPaymentMethodUncheckedCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<InvitationPaymentMethodCreateWithoutInvitationInput, InvitationPaymentMethodUncheckedCreateWithoutInvitationInput> | InvitationPaymentMethodCreateWithoutInvitationInput[] | InvitationPaymentMethodUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationPaymentMethodCreateOrConnectWithoutInvitationInput | InvitationPaymentMethodCreateOrConnectWithoutInvitationInput[]
+    createMany?: InvitationPaymentMethodCreateManyInvitationInputEnvelope
+    connect?: InvitationPaymentMethodWhereUniqueInput | InvitationPaymentMethodWhereUniqueInput[]
   }
 
   export type InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput = {
@@ -33404,6 +34871,20 @@ export namespace Prisma {
     deleteMany?: InvitationOrderScalarWhereInput | InvitationOrderScalarWhereInput[]
   }
 
+  export type InvitationPaymentMethodUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<InvitationPaymentMethodCreateWithoutInvitationInput, InvitationPaymentMethodUncheckedCreateWithoutInvitationInput> | InvitationPaymentMethodCreateWithoutInvitationInput[] | InvitationPaymentMethodUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationPaymentMethodCreateOrConnectWithoutInvitationInput | InvitationPaymentMethodCreateOrConnectWithoutInvitationInput[]
+    upsert?: InvitationPaymentMethodUpsertWithWhereUniqueWithoutInvitationInput | InvitationPaymentMethodUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: InvitationPaymentMethodCreateManyInvitationInputEnvelope
+    set?: InvitationPaymentMethodWhereUniqueInput | InvitationPaymentMethodWhereUniqueInput[]
+    disconnect?: InvitationPaymentMethodWhereUniqueInput | InvitationPaymentMethodWhereUniqueInput[]
+    delete?: InvitationPaymentMethodWhereUniqueInput | InvitationPaymentMethodWhereUniqueInput[]
+    connect?: InvitationPaymentMethodWhereUniqueInput | InvitationPaymentMethodWhereUniqueInput[]
+    update?: InvitationPaymentMethodUpdateWithWhereUniqueWithoutInvitationInput | InvitationPaymentMethodUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: InvitationPaymentMethodUpdateManyWithWhereWithoutInvitationInput | InvitationPaymentMethodUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: InvitationPaymentMethodScalarWhereInput | InvitationPaymentMethodScalarWhereInput[]
+  }
+
   export type InvitationPhotoUpdateManyWithoutInvitationNestedInput = {
     create?: XOR<InvitationPhotoCreateWithoutInvitationInput, InvitationPhotoUncheckedCreateWithoutInvitationInput> | InvitationPhotoCreateWithoutInvitationInput[] | InvitationPhotoUncheckedCreateWithoutInvitationInput[]
     connectOrCreate?: InvitationPhotoCreateOrConnectWithoutInvitationInput | InvitationPhotoCreateOrConnectWithoutInvitationInput[]
@@ -33542,6 +35023,20 @@ export namespace Prisma {
     update?: InvitationOrderUpdateWithWhereUniqueWithoutInvitationInput | InvitationOrderUpdateWithWhereUniqueWithoutInvitationInput[]
     updateMany?: InvitationOrderUpdateManyWithWhereWithoutInvitationInput | InvitationOrderUpdateManyWithWhereWithoutInvitationInput[]
     deleteMany?: InvitationOrderScalarWhereInput | InvitationOrderScalarWhereInput[]
+  }
+
+  export type InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<InvitationPaymentMethodCreateWithoutInvitationInput, InvitationPaymentMethodUncheckedCreateWithoutInvitationInput> | InvitationPaymentMethodCreateWithoutInvitationInput[] | InvitationPaymentMethodUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationPaymentMethodCreateOrConnectWithoutInvitationInput | InvitationPaymentMethodCreateOrConnectWithoutInvitationInput[]
+    upsert?: InvitationPaymentMethodUpsertWithWhereUniqueWithoutInvitationInput | InvitationPaymentMethodUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: InvitationPaymentMethodCreateManyInvitationInputEnvelope
+    set?: InvitationPaymentMethodWhereUniqueInput | InvitationPaymentMethodWhereUniqueInput[]
+    disconnect?: InvitationPaymentMethodWhereUniqueInput | InvitationPaymentMethodWhereUniqueInput[]
+    delete?: InvitationPaymentMethodWhereUniqueInput | InvitationPaymentMethodWhereUniqueInput[]
+    connect?: InvitationPaymentMethodWhereUniqueInput | InvitationPaymentMethodWhereUniqueInput[]
+    update?: InvitationPaymentMethodUpdateWithWhereUniqueWithoutInvitationInput | InvitationPaymentMethodUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: InvitationPaymentMethodUpdateManyWithWhereWithoutInvitationInput | InvitationPaymentMethodUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: InvitationPaymentMethodScalarWhereInput | InvitationPaymentMethodScalarWhereInput[]
   }
 
   export type InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput = {
@@ -34140,6 +35635,24 @@ export namespace Prisma {
     deleteMany?: InvitationSeatAssignmentScalarWhereInput | InvitationSeatAssignmentScalarWhereInput[]
   }
 
+  export type InvitationCreateNestedOneWithoutInvitationPaymentMethodInput = {
+    create?: XOR<InvitationCreateWithoutInvitationPaymentMethodInput, InvitationUncheckedCreateWithoutInvitationPaymentMethodInput>
+    connectOrCreate?: InvitationCreateOrConnectWithoutInvitationPaymentMethodInput
+    connect?: InvitationWhereUniqueInput
+  }
+
+  export type EnumInvitationPaymentMethod_typeFieldUpdateOperationsInput = {
+    set?: $Enums.InvitationPaymentMethod_type
+  }
+
+  export type InvitationUpdateOneRequiredWithoutInvitationPaymentMethodNestedInput = {
+    create?: XOR<InvitationCreateWithoutInvitationPaymentMethodInput, InvitationUncheckedCreateWithoutInvitationPaymentMethodInput>
+    connectOrCreate?: InvitationCreateOrConnectWithoutInvitationPaymentMethodInput
+    upsert?: InvitationUpsertWithoutInvitationPaymentMethodInput
+    connect?: InvitationWhereUniqueInput
+    update?: XOR<XOR<InvitationUpdateToOneWithWhereWithoutInvitationPaymentMethodInput, InvitationUpdateWithoutInvitationPaymentMethodInput>, InvitationUncheckedUpdateWithoutInvitationPaymentMethodInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -34526,6 +36039,23 @@ export namespace Prisma {
     _max?: NestedEnumInvitationGuestGroup_rsvpStatusNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumInvitationPaymentMethod_typeFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationPaymentMethod_type | EnumInvitationPaymentMethod_typeFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationPaymentMethod_type[]
+    notIn?: $Enums.InvitationPaymentMethod_type[]
+    not?: NestedEnumInvitationPaymentMethod_typeFilter<$PrismaModel> | $Enums.InvitationPaymentMethod_type
+  }
+
+  export type NestedEnumInvitationPaymentMethod_typeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationPaymentMethod_type | EnumInvitationPaymentMethod_typeFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationPaymentMethod_type[]
+    notIn?: $Enums.InvitationPaymentMethod_type[]
+    not?: NestedEnumInvitationPaymentMethod_typeWithAggregatesFilter<$PrismaModel> | $Enums.InvitationPaymentMethod_type
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumInvitationPaymentMethod_typeFilter<$PrismaModel>
+    _max?: NestedEnumInvitationPaymentMethod_typeFilter<$PrismaModel>
+  }
+
   export type InvitationCreateWithoutUserInput = {
     templateNo?: number | null
     uniqueId?: string | null
@@ -34605,6 +36135,7 @@ export namespace Prisma {
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -34691,6 +36222,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -35126,6 +36658,39 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type InvitationPaymentMethodCreateWithoutInvitationInput = {
+    type: $Enums.InvitationPaymentMethod_type
+    accountName?: string | null
+    accountNumber?: string | null
+    qrImageKey?: string | null
+    memo?: string | null
+    order?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InvitationPaymentMethodUncheckedCreateWithoutInvitationInput = {
+    id?: number
+    type: $Enums.InvitationPaymentMethod_type
+    accountName?: string | null
+    accountNumber?: string | null
+    qrImageKey?: string | null
+    memo?: string | null
+    order?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InvitationPaymentMethodCreateOrConnectWithoutInvitationInput = {
+    where: InvitationPaymentMethodWhereUniqueInput
+    create: XOR<InvitationPaymentMethodCreateWithoutInvitationInput, InvitationPaymentMethodUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type InvitationPaymentMethodCreateManyInvitationInputEnvelope = {
+    data: InvitationPaymentMethodCreateManyInvitationInput | InvitationPaymentMethodCreateManyInvitationInput[]
+    skipDuplicates?: boolean
+  }
+
   export type InvitationPhotoCreateWithoutInvitationInput = {
     width?: number | null
     height?: number | null
@@ -35465,6 +37030,38 @@ export namespace Prisma {
     data: XOR<InvitationOrderUpdateManyMutationInput, InvitationOrderUncheckedUpdateManyWithoutInvitationInput>
   }
 
+  export type InvitationPaymentMethodUpsertWithWhereUniqueWithoutInvitationInput = {
+    where: InvitationPaymentMethodWhereUniqueInput
+    update: XOR<InvitationPaymentMethodUpdateWithoutInvitationInput, InvitationPaymentMethodUncheckedUpdateWithoutInvitationInput>
+    create: XOR<InvitationPaymentMethodCreateWithoutInvitationInput, InvitationPaymentMethodUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type InvitationPaymentMethodUpdateWithWhereUniqueWithoutInvitationInput = {
+    where: InvitationPaymentMethodWhereUniqueInput
+    data: XOR<InvitationPaymentMethodUpdateWithoutInvitationInput, InvitationPaymentMethodUncheckedUpdateWithoutInvitationInput>
+  }
+
+  export type InvitationPaymentMethodUpdateManyWithWhereWithoutInvitationInput = {
+    where: InvitationPaymentMethodScalarWhereInput
+    data: XOR<InvitationPaymentMethodUpdateManyMutationInput, InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationInput>
+  }
+
+  export type InvitationPaymentMethodScalarWhereInput = {
+    AND?: InvitationPaymentMethodScalarWhereInput | InvitationPaymentMethodScalarWhereInput[]
+    OR?: InvitationPaymentMethodScalarWhereInput[]
+    NOT?: InvitationPaymentMethodScalarWhereInput | InvitationPaymentMethodScalarWhereInput[]
+    id?: IntFilter<"InvitationPaymentMethod"> | number
+    invitationId?: IntFilter<"InvitationPaymentMethod"> | number
+    type?: EnumInvitationPaymentMethod_typeFilter<"InvitationPaymentMethod"> | $Enums.InvitationPaymentMethod_type
+    accountName?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
+    accountNumber?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
+    qrImageKey?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
+    memo?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
+    order?: IntFilter<"InvitationPaymentMethod"> | number
+    createdAt?: DateTimeFilter<"InvitationPaymentMethod"> | Date | string
+    updatedAt?: DateTimeFilter<"InvitationPaymentMethod"> | Date | string
+  }
+
   export type InvitationPhotoUpsertWithWhereUniqueWithoutInvitationInput = {
     where: InvitationPhotoWhereUniqueInput
     update: XOR<InvitationPhotoUpdateWithoutInvitationInput, InvitationPhotoUncheckedUpdateWithoutInvitationInput>
@@ -35694,6 +37291,7 @@ export namespace Prisma {
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
@@ -35780,6 +37378,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
@@ -35932,6 +37531,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
@@ -36018,6 +37618,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
@@ -36217,6 +37818,7 @@ export namespace Prisma {
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
@@ -36303,6 +37905,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
@@ -36404,6 +38007,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
@@ -36490,6 +38094,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
@@ -36574,6 +38179,7 @@ export namespace Prisma {
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -36660,6 +38266,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -36761,6 +38368,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -36847,6 +38455,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -36933,6 +38542,7 @@ export namespace Prisma {
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
@@ -37019,6 +38629,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
@@ -37160,6 +38771,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
@@ -37246,6 +38858,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
@@ -37376,6 +38989,7 @@ export namespace Prisma {
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -37462,6 +39076,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -37563,6 +39178,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -37649,6 +39265,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -37734,6 +39351,7 @@ export namespace Prisma {
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -37820,6 +39438,7 @@ export namespace Prisma {
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -37921,6 +39540,7 @@ export namespace Prisma {
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -38007,6 +39627,7 @@ export namespace Prisma {
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -38092,6 +39713,7 @@ export namespace Prisma {
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -38178,6 +39800,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -38279,6 +39902,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -38365,6 +39989,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -38450,6 +40075,7 @@ export namespace Prisma {
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -38536,6 +40162,7 @@ export namespace Prisma {
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -38699,6 +40326,7 @@ export namespace Prisma {
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -38785,6 +40413,7 @@ export namespace Prisma {
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -39009,6 +40638,7 @@ export namespace Prisma {
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -39095,6 +40725,7 @@ export namespace Prisma {
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -39253,6 +40884,7 @@ export namespace Prisma {
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -39339,6 +40971,7 @@ export namespace Prisma {
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -39628,6 +41261,7 @@ export namespace Prisma {
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
@@ -39714,6 +41348,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedCreateNestedManyWithoutInvitationInput
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
@@ -39842,6 +41477,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -39928,9 +41564,372 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type InvitationCreateWithoutInvitationPaymentMethodInput = {
+    templateNo?: number | null
+    uniqueId?: string | null
+    date?: Date | string | null
+    title?: string | null
+    description?: string | null
+    pointColor?: string | null
+    mainTextColor?: string | null
+    dressCodeGentleman?: string | null
+    dressCodeLady?: string | null
+    bgColor?: string | null
+    musicKey?: string | null
+    musicFilename?: string | null
+    musicFileKey?: string | null
+    notice?: string | null
+    brideFirstName?: string | null
+    brideMiddleName?: string | null
+    dressCodeMainColor?: string | null
+    dressCodeSubColor?: string | null
+    dressCodeThirdColor?: string | null
+    brideLastName?: string | null
+    brideMomName?: string | null
+    greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
+    greetingContent?: string | null
+    brideDadName?: string | null
+    bridePhone?: string | null
+    groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
+    groomMiddleName?: string | null
+    groomLastName?: string | null
+    groomPhone?: string | null
+    primarySponsor?: string | null
+    secondarySponsor?: string | null
+    bankAccount?: string | null
+    maidOfHonor?: string | null
+    groomsMen?: string | null
+    textColor?: string | null
+    timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
+    rsvpHasFood?: boolean | null
+    isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
+    bestMan?: string | null
+    bridesMaids?: string | null
+    wishlistText?: string | null
+    groomMomName?: string | null
+    groomDadName?: string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: string | null
+    ogImageKey?: string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    bestManLabel?: string | null
+    maidOfHonorLabel?: string | null
+    groomsMenLabel?: string | null
+    bridesMaidsLabel?: string | null
+    user?: UserCreateNestedOneWithoutInvitationListInput
+    invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
+    photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
+    placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
+    invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
+  }
+
+  export type InvitationUncheckedCreateWithoutInvitationPaymentMethodInput = {
+    id?: number
+    templateNo?: number | null
+    uniqueId?: string | null
+    date?: Date | string | null
+    userId?: number | null
+    title?: string | null
+    description?: string | null
+    pointColor?: string | null
+    mainTextColor?: string | null
+    dressCodeGentleman?: string | null
+    dressCodeLady?: string | null
+    bgColor?: string | null
+    musicKey?: string | null
+    musicFilename?: string | null
+    musicFileKey?: string | null
+    notice?: string | null
+    brideFirstName?: string | null
+    brideMiddleName?: string | null
+    dressCodeMainColor?: string | null
+    dressCodeSubColor?: string | null
+    dressCodeThirdColor?: string | null
+    brideLastName?: string | null
+    brideMomName?: string | null
+    greetingTitle?: string | null
+    isGroomMomHidden?: boolean | null
+    isGroomDadHidden?: number | null
+    isBrideDadHidden?: number | null
+    isBrideMomHidden?: number | null
+    greetingContent?: string | null
+    brideDadName?: string | null
+    bridePhone?: string | null
+    groomFirstName?: string | null
+    wishlistUrl?: string | null
+    baseFont?: string | null
+    groomMiddleName?: string | null
+    groomLastName?: string | null
+    groomPhone?: string | null
+    primarySponsor?: string | null
+    secondarySponsor?: string | null
+    bankAccount?: string | null
+    maidOfHonor?: string | null
+    groomsMen?: string | null
+    textColor?: string | null
+    timezone?: string | null
+    rsvpTitle?: string | null
+    rsvpMaxPax?: number | null
+    rsvpDeadline?: Date | string | null
+    rsvpDeadlineDesc?: string | null
+    rsvpHasFood?: boolean | null
+    isRsvpPopup?: boolean | null
+    hasRsvpDeadline?: boolean | null
+    isPasswordProtected?: boolean | null
+    universalPassword?: string | null
+    guestListEnabled?: boolean | null
+    billingStatus?: $Enums.Invitation_billingStatus
+    trialEndsAt?: Date | string | null
+    currentPlanCode?: $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: Date | string | null
+    accessEndsAt?: Date | string | null
+    watermarkEnabled?: boolean
+    bestMan?: string | null
+    bridesMaids?: string | null
+    wishlistText?: string | null
+    groomMomName?: string | null
+    groomDadName?: string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: string | null
+    ogImageKey?: string | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    bestManLabel?: string | null
+    maidOfHonorLabel?: string | null
+    groomsMenLabel?: string | null
+    bridesMaidsLabel?: string | null
+    invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
+    invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
+    faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
+    photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
+    placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
+    invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
+  }
+
+  export type InvitationCreateOrConnectWithoutInvitationPaymentMethodInput = {
+    where: InvitationWhereUniqueInput
+    create: XOR<InvitationCreateWithoutInvitationPaymentMethodInput, InvitationUncheckedCreateWithoutInvitationPaymentMethodInput>
+  }
+
+  export type InvitationUpsertWithoutInvitationPaymentMethodInput = {
+    update: XOR<InvitationUpdateWithoutInvitationPaymentMethodInput, InvitationUncheckedUpdateWithoutInvitationPaymentMethodInput>
+    create: XOR<InvitationCreateWithoutInvitationPaymentMethodInput, InvitationUncheckedCreateWithoutInvitationPaymentMethodInput>
+    where?: InvitationWhereInput
+  }
+
+  export type InvitationUpdateToOneWithWhereWithoutInvitationPaymentMethodInput = {
+    where?: InvitationWhereInput
+    data: XOR<InvitationUpdateWithoutInvitationPaymentMethodInput, InvitationUncheckedUpdateWithoutInvitationPaymentMethodInput>
+  }
+
+  export type InvitationUpdateWithoutInvitationPaymentMethodInput = {
+    templateNo?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    pointColor?: NullableStringFieldUpdateOperationsInput | string | null
+    mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeLady?: NullableStringFieldUpdateOperationsInput | string | null
+    bgColor?: NullableStringFieldUpdateOperationsInput | string | null
+    musicKey?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFileKey?: NullableStringFieldUpdateOperationsInput | string | null
+    notice?: NullableStringFieldUpdateOperationsInput | string | null
+    brideFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeMainColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeSubColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeThirdColor?: NullableStringFieldUpdateOperationsInput | string | null
+    brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
+    brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
+    bestMan?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bestManLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonorLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneWithoutInvitationListNestedInput
+    invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
+    photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
+    placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
+    invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type InvitationUncheckedUpdateWithoutInvitationPaymentMethodInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    templateNo?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    pointColor?: NullableStringFieldUpdateOperationsInput | string | null
+    mainTextColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeGentleman?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeLady?: NullableStringFieldUpdateOperationsInput | string | null
+    bgColor?: NullableStringFieldUpdateOperationsInput | string | null
+    musicKey?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    musicFileKey?: NullableStringFieldUpdateOperationsInput | string | null
+    notice?: NullableStringFieldUpdateOperationsInput | string | null
+    brideFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeMainColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeSubColor?: NullableStringFieldUpdateOperationsInput | string | null
+    dressCodeThirdColor?: NullableStringFieldUpdateOperationsInput | string | null
+    brideLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    brideMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    greetingTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    isGroomMomHidden?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isGroomDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideDadHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    isBrideMomHidden?: NullableIntFieldUpdateOperationsInput | number | null
+    greetingContent?: NullableStringFieldUpdateOperationsInput | string | null
+    brideDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    bridePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    groomFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    baseFont?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMiddleName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    primarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsor?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonor?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMen?: NullableStringFieldUpdateOperationsInput | string | null
+    textColor?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpMaxPax?: NullableIntFieldUpdateOperationsInput | number | null
+    rsvpDeadline?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rsvpDeadlineDesc?: NullableStringFieldUpdateOperationsInput | string | null
+    rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPlanCode?: NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput | $Enums.Invitation_currentPlanCode | null
+    accessStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    watermarkEnabled?: BoolFieldUpdateOperationsInput | boolean
+    bestMan?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaids?: NullableStringFieldUpdateOperationsInput | string | null
+    wishlistText?: NullableStringFieldUpdateOperationsInput | string | null
+    groomMomName?: NullableStringFieldUpdateOperationsInput | string | null
+    groomDadName?: NullableStringFieldUpdateOperationsInput | string | null
+    layoutOrder?: NullableJsonNullValueInput | InputJsonValue
+    endingText?: NullableStringFieldUpdateOperationsInput | string | null
+    ogImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bestManLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    maidOfHonorLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
+    faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
+    photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
+    placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationCreateManyUserInput = {
@@ -40108,6 +42107,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
@@ -40194,6 +42194,7 @@ export namespace Prisma {
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
+    InvitationPaymentMethod?: InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationNestedInput
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
@@ -40404,6 +42405,18 @@ export namespace Prisma {
     providerPaymentId?: string | null
     providerEventId?: string | null
     rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InvitationPaymentMethodCreateManyInvitationInput = {
+    id?: number
+    type: $Enums.InvitationPaymentMethod_type
+    accountName?: string | null
+    accountNumber?: string | null
+    qrImageKey?: string | null
+    memo?: string | null
+    order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -40668,6 +42681,41 @@ export namespace Prisma {
     providerPaymentId?: NullableStringFieldUpdateOperationsInput | string | null
     providerEventId?: NullableStringFieldUpdateOperationsInput | string | null
     rawPayload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InvitationPaymentMethodUpdateWithoutInvitationInput = {
+    type?: EnumInvitationPaymentMethod_typeFieldUpdateOperationsInput | $Enums.InvitationPaymentMethod_type
+    accountName?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    qrImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InvitationPaymentMethodUncheckedUpdateWithoutInvitationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    type?: EnumInvitationPaymentMethod_typeFieldUpdateOperationsInput | $Enums.InvitationPaymentMethod_type
+    accountName?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    qrImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    type?: EnumInvitationPaymentMethod_typeFieldUpdateOperationsInput | $Enums.InvitationPaymentMethod_type
+    accountName?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    qrImageKey?: NullableStringFieldUpdateOperationsInput | string | null
+    memo?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
