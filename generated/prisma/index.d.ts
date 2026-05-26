@@ -191,8 +191,21 @@ export type InvitationGuestGroup_rsvpStatus = (typeof InvitationGuestGroup_rsvpS
 
 export const InvitationPaymentMethod_type: {
   GCASH: 'GCASH',
+  MAYA: 'MAYA',
+  AUB: 'AUB',
+  BANKCOM: 'BANKCOM',
+  BDO: 'BDO',
   BPI: 'BPI',
-  BDO: 'BDO'
+  CHINABANK: 'CHINABANK',
+  EASTWEST: 'EASTWEST',
+  GOTYME: 'GOTYME',
+  METROBANK: 'METROBANK',
+  PBCOM: 'PBCOM',
+  PNB: 'PNB',
+  RCBC: 'RCBC',
+  SEABANK: 'SEABANK',
+  SECURITY_BANK: 'SECURITY_BANK',
+  UNIONBANK: 'UNIONBANK'
 };
 
 export type InvitationPaymentMethod_type = (typeof InvitationPaymentMethod_type)[keyof typeof InvitationPaymentMethod_type]

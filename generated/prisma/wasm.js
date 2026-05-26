@@ -680,8 +680,21 @@ exports.InvitationGuestGroup_rsvpStatus = exports.$Enums.InvitationGuestGroup_rs
 
 exports.InvitationPaymentMethod_type = exports.$Enums.InvitationPaymentMethod_type = {
   GCASH: 'GCASH',
+  MAYA: 'MAYA',
+  AUB: 'AUB',
+  BANKCOM: 'BANKCOM',
+  BDO: 'BDO',
   BPI: 'BPI',
-  BDO: 'BDO'
+  CHINABANK: 'CHINABANK',
+  EASTWEST: 'EASTWEST',
+  GOTYME: 'GOTYME',
+  METROBANK: 'METROBANK',
+  PBCOM: 'PBCOM',
+  PNB: 'PNB',
+  RCBC: 'RCBC',
+  SEABANK: 'SEABANK',
+  SECURITY_BANK: 'SECURITY_BANK',
+  UNIONBANK: 'UNIONBANK'
 };
 
 exports.Prisma.ModelName = {

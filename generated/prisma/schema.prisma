@@ -454,6 +454,19 @@ enum InvitationGuestGroup_rsvpStatus {
 
 enum InvitationPaymentMethod_type {
   GCASH
-  BPI
+  MAYA
+  AUB
+  BANKCOM
   BDO
+  BPI
+  CHINABANK
+  EASTWEST
+  GOTYME
+  METROBANK
+  PBCOM
+  PNB
+  RCBC
+  SEABANK
+  SECURITY_BANK
+  UNIONBANK
 }

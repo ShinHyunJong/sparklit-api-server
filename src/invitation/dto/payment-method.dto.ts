@@ -7,7 +7,26 @@ import {
   Min,
 } from 'class-validator';
 
-const PAYMENT_TYPES = ['GCASH', 'BPI', 'BDO'] as const;
+const PAYMENT_TYPES = [
+  // E-wallets
+  'GCASH',
+  'MAYA',
+  // Banks
+  'AUB',
+  'BANKCOM',
+  'BDO',
+  'BPI',
+  'CHINABANK',
+  'EASTWEST',
+  'GOTYME',
+  'METROBANK',
+  'PBCOM',
+  'PNB',
+  'RCBC',
+  'SEABANK',
+  'SECURITY_BANK',
+  'UNIONBANK',
+] as const;
 export type PaymentMethodType = (typeof PAYMENT_TYPES)[number];
 
 export class CreatePaymentMethodDto {
