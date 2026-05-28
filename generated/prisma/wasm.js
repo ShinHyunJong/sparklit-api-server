@@ -206,7 +206,8 @@ exports.Prisma.InvitationScalarFieldEnum = {
   bestManLabel: 'bestManLabel',
   maidOfHonorLabel: 'maidOfHonorLabel',
   groomsMenLabel: 'groomsMenLabel',
-  bridesMaidsLabel: 'bridesMaidsLabel'
+  bridesMaidsLabel: 'bridesMaidsLabel',
+  sponsorColumns: 'sponsorColumns'
 };
 
 exports.Prisma.InvitationPlaceScalarFieldEnum = {

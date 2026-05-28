@@ -743,14 +743,20 @@ export class InvitationService {
     userId: number,
     primarySponsor: string,
     secondarySponsor: string,
+    sponsorColumns?: number,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
     await this.assertNotLocked(uniqueId);
+    const normalizedColumns =
+      sponsorColumns === 2 ? 2 : sponsorColumns === 1 ? 1 : undefined;
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
         primarySponsor,
         secondarySponsor,
+        ...(normalizedColumns !== undefined && {
+          sponsorColumns: normalizedColumns,
+        }),
       },
     });
     return updated;

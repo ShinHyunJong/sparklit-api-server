@@ -297,13 +297,19 @@ export class InvitationController {
   updateSponsor(
     @Req() req,
     @Param('uniqueId') uniqueId: string,
-    @Body() body: { primarySponsor: string; secondarySponsor: string },
+    @Body()
+    body: {
+      primarySponsor: string;
+      secondarySponsor: string;
+      sponsorColumns?: number;
+    },
   ) {
     return this.invitationService.updateSponsor(
       uniqueId,
       req.user.id,
       body.primarySponsor,
       body.secondarySponsor,
+      body.sponsorColumns,
     );
   }
 

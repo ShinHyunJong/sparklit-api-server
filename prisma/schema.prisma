@@ -97,6 +97,7 @@ model Invitation {
   maidOfHonorLabel         String?                     @db.VarChar(255)
   groomsMenLabel           String?                     @db.VarChar(255)
   bridesMaidsLabel         String?                     @db.VarChar(255)
+  sponsorColumns           Int                         @default(1) @db.UnsignedTinyInt
   user                     User?                       @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Invitation_ibfk_1")
   invitationCoverPhotoList InvitationCoverPhoto[]
   InvitationDressColor     InvitationDressColor[]
