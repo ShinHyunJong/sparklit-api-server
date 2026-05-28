@@ -4195,6 +4195,7 @@ export namespace Prisma {
     isBrideMomHidden: number | null
     rsvpMaxPax: number | null
     sponsorColumns: number | null
+    secondarySponsorColumns: number | null
   }
 
   export type InvitationSumAggregateOutputType = {
@@ -4206,6 +4207,7 @@ export namespace Prisma {
     isBrideMomHidden: number | null
     rsvpMaxPax: number | null
     sponsorColumns: number | null
+    secondarySponsorColumns: number | null
   }
 
   export type InvitationMinAggregateOutputType = {
@@ -4283,6 +4285,9 @@ export namespace Prisma {
     groomsMenLabel: string | null
     bridesMaidsLabel: string | null
     sponsorColumns: number | null
+    secondarySponsorColumns: number | null
+    primarySponsorRight: string | null
+    secondarySponsorRight: string | null
   }
 
   export type InvitationMaxAggregateOutputType = {
@@ -4360,6 +4365,9 @@ export namespace Prisma {
     groomsMenLabel: string | null
     bridesMaidsLabel: string | null
     sponsorColumns: number | null
+    secondarySponsorColumns: number | null
+    primarySponsorRight: string | null
+    secondarySponsorRight: string | null
   }
 
   export type InvitationCountAggregateOutputType = {
@@ -4438,6 +4446,9 @@ export namespace Prisma {
     groomsMenLabel: number
     bridesMaidsLabel: number
     sponsorColumns: number
+    secondarySponsorColumns: number
+    primarySponsorRight: number
+    secondarySponsorRight: number
     _all: number
   }
 
@@ -4451,6 +4462,7 @@ export namespace Prisma {
     isBrideMomHidden?: true
     rsvpMaxPax?: true
     sponsorColumns?: true
+    secondarySponsorColumns?: true
   }
 
   export type InvitationSumAggregateInputType = {
@@ -4462,6 +4474,7 @@ export namespace Prisma {
     isBrideMomHidden?: true
     rsvpMaxPax?: true
     sponsorColumns?: true
+    secondarySponsorColumns?: true
   }
 
   export type InvitationMinAggregateInputType = {
@@ -4539,6 +4552,9 @@ export namespace Prisma {
     groomsMenLabel?: true
     bridesMaidsLabel?: true
     sponsorColumns?: true
+    secondarySponsorColumns?: true
+    primarySponsorRight?: true
+    secondarySponsorRight?: true
   }
 
   export type InvitationMaxAggregateInputType = {
@@ -4616,6 +4632,9 @@ export namespace Prisma {
     groomsMenLabel?: true
     bridesMaidsLabel?: true
     sponsorColumns?: true
+    secondarySponsorColumns?: true
+    primarySponsorRight?: true
+    secondarySponsorRight?: true
   }
 
   export type InvitationCountAggregateInputType = {
@@ -4694,6 +4713,9 @@ export namespace Prisma {
     groomsMenLabel?: true
     bridesMaidsLabel?: true
     sponsorColumns?: true
+    secondarySponsorColumns?: true
+    primarySponsorRight?: true
+    secondarySponsorRight?: true
     _all?: true
   }
 
@@ -4859,6 +4881,9 @@ export namespace Prisma {
     groomsMenLabel: string | null
     bridesMaidsLabel: string | null
     sponsorColumns: number
+    secondarySponsorColumns: number
+    primarySponsorRight: string | null
+    secondarySponsorRight: string | null
     _count: InvitationCountAggregateOutputType | null
     _avg: InvitationAvgAggregateOutputType | null
     _sum: InvitationSumAggregateOutputType | null
@@ -4956,6 +4981,9 @@ export namespace Prisma {
     groomsMenLabel?: boolean
     bridesMaidsLabel?: boolean
     sponsorColumns?: boolean
+    secondarySponsorColumns?: boolean
+    primarySponsorRight?: boolean
+    secondarySponsorRight?: boolean
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
     InvitationDressColor?: boolean | Invitation$InvitationDressColorArgs<ExtArgs>
@@ -5049,9 +5077,12 @@ export namespace Prisma {
     groomsMenLabel?: boolean
     bridesMaidsLabel?: boolean
     sponsorColumns?: boolean
+    secondarySponsorColumns?: boolean
+    primarySponsorRight?: boolean
+    secondarySponsorRight?: boolean
   }
 
-  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpDeadline" | "rsvpDeadlineDesc" | "rsvpHasFood" | "isRsvpPopup" | "hasRsvpDeadline" | "isPasswordProtected" | "universalPassword" | "guestListEnabled" | "billingStatus" | "trialEndsAt" | "currentPlanCode" | "accessStartedAt" | "accessEndsAt" | "watermarkEnabled" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt" | "bestManLabel" | "maidOfHonorLabel" | "groomsMenLabel" | "bridesMaidsLabel" | "sponsorColumns", ExtArgs["result"]["invitation"]>
+  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpDeadline" | "rsvpDeadlineDesc" | "rsvpHasFood" | "isRsvpPopup" | "hasRsvpDeadline" | "isPasswordProtected" | "universalPassword" | "guestListEnabled" | "billingStatus" | "trialEndsAt" | "currentPlanCode" | "accessStartedAt" | "accessEndsAt" | "watermarkEnabled" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt" | "bestManLabel" | "maidOfHonorLabel" | "groomsMenLabel" | "bridesMaidsLabel" | "sponsorColumns" | "secondarySponsorColumns" | "primarySponsorRight" | "secondarySponsorRight", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
@@ -5160,6 +5191,9 @@ export namespace Prisma {
       groomsMenLabel: string | null
       bridesMaidsLabel: string | null
       sponsorColumns: number
+      secondarySponsorColumns: number
+      primarySponsorRight: string | null
+      secondarySponsorRight: string | null
     }, ExtArgs["result"]["invitation"]>
     composites: {}
   }
@@ -5616,6 +5650,9 @@ export namespace Prisma {
     readonly groomsMenLabel: FieldRef<"Invitation", 'String'>
     readonly bridesMaidsLabel: FieldRef<"Invitation", 'String'>
     readonly sponsorColumns: FieldRef<"Invitation", 'Int'>
+    readonly secondarySponsorColumns: FieldRef<"Invitation", 'Int'>
+    readonly primarySponsorRight: FieldRef<"Invitation", 'String'>
+    readonly secondarySponsorRight: FieldRef<"Invitation", 'String'>
   }
     
 
@@ -27554,7 +27591,10 @@ export namespace Prisma {
     maidOfHonorLabel: 'maidOfHonorLabel',
     groomsMenLabel: 'groomsMenLabel',
     bridesMaidsLabel: 'bridesMaidsLabel',
-    sponsorColumns: 'sponsorColumns'
+    sponsorColumns: 'sponsorColumns',
+    secondarySponsorColumns: 'secondarySponsorColumns',
+    primarySponsorRight: 'primarySponsorRight',
+    secondarySponsorRight: 'secondarySponsorRight'
   };
 
   export type InvitationScalarFieldEnum = (typeof InvitationScalarFieldEnum)[keyof typeof InvitationScalarFieldEnum]
@@ -27955,7 +27995,9 @@ export namespace Prisma {
     bestManLabel: 'bestManLabel',
     maidOfHonorLabel: 'maidOfHonorLabel',
     groomsMenLabel: 'groomsMenLabel',
-    bridesMaidsLabel: 'bridesMaidsLabel'
+    bridesMaidsLabel: 'bridesMaidsLabel',
+    primarySponsorRight: 'primarySponsorRight',
+    secondarySponsorRight: 'secondarySponsorRight'
   };
 
   export type InvitationOrderByRelevanceFieldEnum = (typeof InvitationOrderByRelevanceFieldEnum)[keyof typeof InvitationOrderByRelevanceFieldEnum]
@@ -28406,6 +28448,9 @@ export namespace Prisma {
     groomsMenLabel?: StringNullableFilter<"Invitation"> | string | null
     bridesMaidsLabel?: StringNullableFilter<"Invitation"> | string | null
     sponsorColumns?: IntFilter<"Invitation"> | number
+    secondarySponsorColumns?: IntFilter<"Invitation"> | number
+    primarySponsorRight?: StringNullableFilter<"Invitation"> | string | null
+    secondarySponsorRight?: StringNullableFilter<"Invitation"> | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     invitationCoverPhotoList?: InvitationCoverPhotoListRelationFilter
     InvitationDressColor?: InvitationDressColorListRelationFilter
@@ -28496,6 +28541,9 @@ export namespace Prisma {
     groomsMenLabel?: SortOrderInput | SortOrder
     bridesMaidsLabel?: SortOrderInput | SortOrder
     sponsorColumns?: SortOrder
+    secondarySponsorColumns?: SortOrder
+    primarySponsorRight?: SortOrderInput | SortOrder
+    secondarySponsorRight?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     invitationCoverPhotoList?: InvitationCoverPhotoOrderByRelationAggregateInput
     InvitationDressColor?: InvitationDressColorOrderByRelationAggregateInput
@@ -28590,6 +28638,9 @@ export namespace Prisma {
     groomsMenLabel?: StringNullableFilter<"Invitation"> | string | null
     bridesMaidsLabel?: StringNullableFilter<"Invitation"> | string | null
     sponsorColumns?: IntFilter<"Invitation"> | number
+    secondarySponsorColumns?: IntFilter<"Invitation"> | number
+    primarySponsorRight?: StringNullableFilter<"Invitation"> | string | null
+    secondarySponsorRight?: StringNullableFilter<"Invitation"> | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     invitationCoverPhotoList?: InvitationCoverPhotoListRelationFilter
     InvitationDressColor?: InvitationDressColorListRelationFilter
@@ -28680,6 +28731,9 @@ export namespace Prisma {
     groomsMenLabel?: SortOrderInput | SortOrder
     bridesMaidsLabel?: SortOrderInput | SortOrder
     sponsorColumns?: SortOrder
+    secondarySponsorColumns?: SortOrder
+    primarySponsorRight?: SortOrderInput | SortOrder
+    secondarySponsorRight?: SortOrderInput | SortOrder
     _count?: InvitationCountOrderByAggregateInput
     _avg?: InvitationAvgOrderByAggregateInput
     _max?: InvitationMaxOrderByAggregateInput
@@ -28766,6 +28820,9 @@ export namespace Prisma {
     groomsMenLabel?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     bridesMaidsLabel?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     sponsorColumns?: IntWithAggregatesFilter<"Invitation"> | number
+    secondarySponsorColumns?: IntWithAggregatesFilter<"Invitation"> | number
+    primarySponsorRight?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    secondarySponsorRight?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
   }
 
   export type InvitationPlaceWhereInput = {
@@ -30467,6 +30524,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -30557,6 +30617,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
@@ -30644,6 +30707,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -30734,6 +30800,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
@@ -30823,6 +30892,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
   }
 
   export type InvitationUpdateManyMutationInput = {
@@ -30899,6 +30971,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type InvitationUncheckedUpdateManyInput = {
@@ -30977,6 +31052,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type InvitationPlaceCreateInput = {
@@ -32951,6 +33029,9 @@ export namespace Prisma {
     groomsMenLabel?: SortOrder
     bridesMaidsLabel?: SortOrder
     sponsorColumns?: SortOrder
+    secondarySponsorColumns?: SortOrder
+    primarySponsorRight?: SortOrder
+    secondarySponsorRight?: SortOrder
   }
 
   export type InvitationAvgOrderByAggregateInput = {
@@ -32962,6 +33043,7 @@ export namespace Prisma {
     isBrideMomHidden?: SortOrder
     rsvpMaxPax?: SortOrder
     sponsorColumns?: SortOrder
+    secondarySponsorColumns?: SortOrder
   }
 
   export type InvitationMaxOrderByAggregateInput = {
@@ -33039,6 +33121,9 @@ export namespace Prisma {
     groomsMenLabel?: SortOrder
     bridesMaidsLabel?: SortOrder
     sponsorColumns?: SortOrder
+    secondarySponsorColumns?: SortOrder
+    primarySponsorRight?: SortOrder
+    secondarySponsorRight?: SortOrder
   }
 
   export type InvitationMinOrderByAggregateInput = {
@@ -33116,6 +33201,9 @@ export namespace Prisma {
     groomsMenLabel?: SortOrder
     bridesMaidsLabel?: SortOrder
     sponsorColumns?: SortOrder
+    secondarySponsorColumns?: SortOrder
+    primarySponsorRight?: SortOrder
+    secondarySponsorRight?: SortOrder
   }
 
   export type InvitationSumOrderByAggregateInput = {
@@ -33127,6 +33215,7 @@ export namespace Prisma {
     isBrideMomHidden?: SortOrder
     rsvpMaxPax?: SortOrder
     sponsorColumns?: SortOrder
+    secondarySponsorColumns?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -36176,6 +36265,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
@@ -36264,6 +36356,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
@@ -36431,6 +36526,9 @@ export namespace Prisma {
     groomsMenLabel?: StringNullableFilter<"Invitation"> | string | null
     bridesMaidsLabel?: StringNullableFilter<"Invitation"> | string | null
     sponsorColumns?: IntFilter<"Invitation"> | number
+    secondarySponsorColumns?: IntFilter<"Invitation"> | number
+    primarySponsorRight?: StringNullableFilter<"Invitation"> | string | null
+    secondarySponsorRight?: StringNullableFilter<"Invitation"> | string | null
   }
 
   export type InvitationOrderUpsertWithWhereUniqueWithoutUserInput = {
@@ -37334,6 +37432,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -37423,6 +37524,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
@@ -37576,6 +37680,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -37665,6 +37772,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
@@ -37865,6 +37975,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -37954,6 +38067,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
@@ -38056,6 +38172,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -38145,6 +38264,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
@@ -38231,6 +38353,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
@@ -38320,6 +38445,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
@@ -38422,6 +38550,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
@@ -38511,6 +38642,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
@@ -38597,6 +38731,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -38686,6 +38823,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
@@ -38828,6 +38968,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -38917,6 +39060,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
@@ -39049,6 +39195,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
@@ -39138,6 +39287,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
@@ -39240,6 +39392,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
@@ -39329,6 +39484,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
@@ -39415,6 +39573,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -39504,6 +39665,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
@@ -39606,6 +39770,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -39695,6 +39862,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
@@ -39781,6 +39951,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -39870,6 +40043,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
@@ -39972,6 +40148,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -40061,6 +40240,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
@@ -40147,6 +40329,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -40236,6 +40421,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
@@ -40400,6 +40588,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -40489,6 +40680,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
@@ -40714,6 +40908,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -40803,6 +41000,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
@@ -40962,6 +41162,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -41051,6 +41254,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
@@ -41340,6 +41546,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -41429,6 +41638,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
@@ -41558,6 +41770,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -41647,6 +41862,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
@@ -41733,6 +41951,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -41822,6 +42043,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
@@ -41924,6 +42148,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -42013,6 +42240,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
@@ -42100,6 +42330,9 @@ export namespace Prisma {
     groomsMenLabel?: string | null
     bridesMaidsLabel?: string | null
     sponsorColumns?: number
+    secondarySponsorColumns?: number
+    primarySponsorRight?: string | null
+    secondarySponsorRight?: string | null
   }
 
   export type InvitationOrderCreateManyUserInput = {
@@ -42196,6 +42429,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
@@ -42284,6 +42520,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
@@ -42372,6 +42611,9 @@ export namespace Prisma {
     groomsMenLabel?: NullableStringFieldUpdateOperationsInput | string | null
     bridesMaidsLabel?: NullableStringFieldUpdateOperationsInput | string | null
     sponsorColumns?: IntFieldUpdateOperationsInput | number
+    secondarySponsorColumns?: IntFieldUpdateOperationsInput | number
+    primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
+    secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type InvitationOrderUpdateWithoutUserInput = {

@@ -302,6 +302,9 @@ export class InvitationController {
       primarySponsor: string;
       secondarySponsor: string;
       sponsorColumns?: number;
+      secondarySponsorColumns?: number;
+      primarySponsorRight?: string | null;
+      secondarySponsorRight?: string | null;
     },
   ) {
     return this.invitationService.updateSponsor(
@@ -310,6 +313,9 @@ export class InvitationController {
       body.primarySponsor,
       body.secondarySponsor,
       body.sponsorColumns,
+      body.secondarySponsorColumns,
+      body.primarySponsorRight,
+      body.secondarySponsorRight,
     );
   }
 

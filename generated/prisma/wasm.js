@@ -207,7 +207,10 @@ exports.Prisma.InvitationScalarFieldEnum = {
   maidOfHonorLabel: 'maidOfHonorLabel',
   groomsMenLabel: 'groomsMenLabel',
   bridesMaidsLabel: 'bridesMaidsLabel',
-  sponsorColumns: 'sponsorColumns'
+  sponsorColumns: 'sponsorColumns',
+  secondarySponsorColumns: 'secondarySponsorColumns',
+  primarySponsorRight: 'primarySponsorRight',
+  secondarySponsorRight: 'secondarySponsorRight'
 };
 
 exports.Prisma.InvitationPlaceScalarFieldEnum = {
@@ -524,7 +527,9 @@ exports.Prisma.InvitationOrderByRelevanceFieldEnum = {
   bestManLabel: 'bestManLabel',
   maidOfHonorLabel: 'maidOfHonorLabel',
   groomsMenLabel: 'groomsMenLabel',
-  bridesMaidsLabel: 'bridesMaidsLabel'
+  bridesMaidsLabel: 'bridesMaidsLabel',
+  primarySponsorRight: 'primarySponsorRight',
+  secondarySponsorRight: 'secondarySponsorRight'
 };
 
 exports.Prisma.InvitationPlaceOrderByRelevanceFieldEnum = {

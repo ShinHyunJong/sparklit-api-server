@@ -744,18 +744,32 @@ export class InvitationService {
     primarySponsor: string,
     secondarySponsor: string,
     sponsorColumns?: number,
+    secondarySponsorColumns?: number,
+    primarySponsorRight?: string | null,
+    secondarySponsorRight?: string | null,
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
     await this.assertNotLocked(uniqueId);
-    const normalizedColumns =
-      sponsorColumns === 2 ? 2 : sponsorColumns === 1 ? 1 : undefined;
+    const normalize = (v?: number) =>
+      v === 2 ? 2 : v === 1 ? 1 : undefined;
+    const primaryColumns = normalize(sponsorColumns);
+    const secondaryColumns = normalize(secondarySponsorColumns);
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },
       data: {
         primarySponsor,
         secondarySponsor,
-        ...(normalizedColumns !== undefined && {
-          sponsorColumns: normalizedColumns,
+        ...(primaryColumns !== undefined && {
+          sponsorColumns: primaryColumns,
+        }),
+        ...(secondaryColumns !== undefined && {
+          secondarySponsorColumns: secondaryColumns,
+        }),
+        ...(primarySponsorRight !== undefined && {
+          primarySponsorRight: primarySponsorRight,
+        }),
+        ...(secondarySponsorRight !== undefined && {
+          secondarySponsorRight: secondarySponsorRight,
         }),
       },
     });
