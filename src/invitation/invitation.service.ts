@@ -1277,6 +1277,116 @@ export class InvitationService {
     return updated;
   }
 
+  async completeOnboarding(uniqueId: string, userId: number) {
+    await this.assertInvitationOwnership(uniqueId, userId);
+    const updated = await this.prismaService.invitation.update({
+      where: { uniqueId },
+      data: {
+        onboardingCompletedAt: new Date(),
+      },
+    });
+    return updated;
+  }
+
+  async getOnboardingStatus(uniqueId: string, userId: number) {
+    await this.assertInvitationOwnership(uniqueId, userId);
+    const inv = await this.prismaService.invitation.findUnique({
+      where: { uniqueId },
+      select: { onboardingCompletedAt: true },
+    });
+    return {
+      completed: !!inv?.onboardingCompletedAt,
+      onboardingCompletedAt: inv?.onboardingCompletedAt ?? null,
+    };
+  }
+
+  async getOnboardingData(uniqueId: string, userId: number) {
+    await this.assertInvitationOwnership(uniqueId, userId);
+    const inv = await this.prismaService.invitation.findUnique({
+      where: { uniqueId },
+      select: {
+        groomFirstName: true,
+        groomLastName: true,
+        brideFirstName: true,
+        brideLastName: true,
+        date: true,
+        templateNo: true,
+        invitationCoverPhotoList: {
+          where: { type: 'main' },
+          select: { croppedKey: true },
+          take: 1,
+        },
+        placeList: {
+          select: {
+            place: {
+              select: { name: true, address: true },
+            },
+          },
+          take: 1,
+        },
+      },
+    });
+
+    if (!inv) {
+      throw new NotFoundException('Invitation not found');
+    }
+
+    const mainPhoto = inv.invitationCoverPhotoList[0] ?? null;
+    const firstPlace = inv.placeList[0]?.place ?? null;
+
+    return {
+      groomFirstName: inv.groomFirstName ?? '',
+      groomLastName: inv.groomLastName ?? '',
+      brideFirstName: inv.brideFirstName ?? '',
+      brideLastName: inv.brideLastName ?? '',
+      date: inv.date ? inv.date.toISOString() : null,
+      templateNo: inv.templateNo ?? null,
+      mainPhotoCroppedKey: mainPhoto?.croppedKey ?? null,
+      placeName: firstPlace?.name ?? null,
+      placeAddress: firstPlace?.address ?? null,
+    };
+  }
+
+  async updateOnboardingStep(
+    uniqueId: string,
+    userId: number,
+    body: {
+      groomFirstName?: string;
+      groomLastName?: string;
+      brideFirstName?: string;
+      brideLastName?: string;
+      date?: string | null;
+      templateNo?: number;
+    },
+  ) {
+    await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
+
+    const data: Record<string, unknown> = {};
+    if (body.groomFirstName !== undefined)
+      data.groomFirstName = body.groomFirstName;
+    if (body.groomLastName !== undefined)
+      data.groomLastName = body.groomLastName;
+    if (body.brideFirstName !== undefined)
+      data.brideFirstName = body.brideFirstName;
+    if (body.brideLastName !== undefined)
+      data.brideLastName = body.brideLastName;
+    if (body.date !== undefined) {
+      data.date = body.date ? new Date(body.date) : null;
+    }
+    if (body.templateNo !== undefined) data.templateNo = body.templateNo;
+
+    if (Object.keys(data).length === 0) {
+      return this.prismaService.invitation.findUnique({ where: { uniqueId } });
+    }
+
+    const updated = await this.prismaService.invitation.update({
+      where: { uniqueId },
+      data,
+    });
+    return updated;
+  }
+
   async updateEndingText(
     uniqueId: string,
     userId: number,

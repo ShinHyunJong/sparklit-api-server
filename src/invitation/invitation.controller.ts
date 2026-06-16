@@ -514,4 +514,44 @@ export class InvitationController {
   ) {
     return this.invitationService.updateFont(uniqueId, req.user.id, body.font);
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('/onboarding/status/:uniqueId')
+  getOnboardingStatus(@Req() req, @Param('uniqueId') uniqueId: string) {
+    return this.invitationService.getOnboardingStatus(uniqueId, req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('/onboarding/data/:uniqueId')
+  getOnboardingData(@Req() req, @Param('uniqueId') uniqueId: string) {
+    return this.invitationService.getOnboardingData(uniqueId, req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('/onboarding/complete/:uniqueId')
+  completeOnboarding(@Req() req, @Param('uniqueId') uniqueId: string) {
+    return this.invitationService.completeOnboarding(uniqueId, req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('/onboarding/step/:uniqueId')
+  updateOnboardingStep(
+    @Req() req,
+    @Param('uniqueId') uniqueId: string,
+    @Body()
+    body: {
+      groomFirstName?: string;
+      groomLastName?: string;
+      brideFirstName?: string;
+      brideLastName?: string;
+      date?: string | null;
+      templateNo?: number;
+    },
+  ) {
+    return this.invitationService.updateOnboardingStep(
+      uniqueId,
+      req.user.id,
+      body,
+    );
+  }
 }

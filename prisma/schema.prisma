@@ -101,6 +101,7 @@ model Invitation {
   secondarySponsorColumns  Int                         @default(1) @db.UnsignedTinyInt
   primarySponsorRight      String?                     @db.Text
   secondarySponsorRight    String?                     @db.Text
+  onboardingCompletedAt    DateTime?                   @db.DateTime(0)
   user                     User?                       @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Invitation_ibfk_1")
   invitationCoverPhotoList InvitationCoverPhoto[]
   InvitationDressColor     InvitationDressColor[]

@@ -210,7 +210,8 @@ exports.Prisma.InvitationScalarFieldEnum = {
   sponsorColumns: 'sponsorColumns',
   secondarySponsorColumns: 'secondarySponsorColumns',
   primarySponsorRight: 'primarySponsorRight',
-  secondarySponsorRight: 'secondarySponsorRight'
+  secondarySponsorRight: 'secondarySponsorRight',
+  onboardingCompletedAt: 'onboardingCompletedAt'
 };
 
 exports.Prisma.InvitationPlaceScalarFieldEnum = {
