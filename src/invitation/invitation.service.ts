@@ -1321,6 +1321,11 @@ export class InvitationService {
             place: {
               select: { name: true, address: true },
             },
+            timeList: {
+              select: { time: true, name: true },
+              orderBy: { id: 'asc' },
+              take: 1,
+            },
           },
           take: 1,
         },
@@ -1332,7 +1337,9 @@ export class InvitationService {
     }
 
     const mainPhoto = inv.invitationCoverPhotoList[0] ?? null;
-    const firstPlace = inv.placeList[0]?.place ?? null;
+    const firstPlaceEntry = inv.placeList[0] ?? null;
+    const firstPlace = firstPlaceEntry?.place ?? null;
+    const firstTime = firstPlaceEntry?.timeList?.[0] ?? null;
 
     return {
       groomFirstName: inv.groomFirstName ?? '',
@@ -1344,6 +1351,10 @@ export class InvitationService {
       mainPhotoCroppedKey: mainPhoto?.croppedKey ?? null,
       placeName: firstPlace?.name ?? null,
       placeAddress: firstPlace?.address ?? null,
+      eventName: firstTime?.name ?? null,
+      // "HH:MM:SS" string so the client time formatter parses it directly
+      // (matches the format the onboarding time input sends).
+      eventTime: firstTime?.time ? formatTimeValue(firstTime.time) : null,
     };
   }
 

@@ -64,8 +64,13 @@ export class PlacesService {
       });
 
     if (exisingInvitationPlace) {
-      // 이미 추가된 장소라면 그대로 반환하여 멱등성을 보장 (온보딩 단계 재진입 대응)
-      return exisingInvitationPlace;
+      // 이미 추가된 장소라면 그대로 반환하여 멱등성을 보장 (온보딩 단계 재진입 대응).
+      // 클라이언트가 시간 입력을 이어갈 수 있도록 timeList도 함께 반환.
+      const timeList = await this.prismaService.invitationPlaceTime.findMany({
+        where: { invitationPlaceId: exisingInvitationPlace.id },
+        orderBy: { id: 'asc' },
+      });
+      return { ...exisingInvitationPlace, timeList };
     }
 
     const prevInvitationPlaceCount =
@@ -81,14 +86,16 @@ export class PlacesService {
       },
     });
 
-    await this.prismaService.invitationPlaceTime.create({
-      data: {
-        invitationPlaceId: invitationPlace.id,
-        time: buildTimeDate('12:00:00'),
-      },
-    });
+    const invitationPlaceTime =
+      await this.prismaService.invitationPlaceTime.create({
+        data: {
+          invitationPlaceId: invitationPlace.id,
+          time: buildTimeDate('12:00:00'),
+        },
+      });
 
-    return invitationPlace;
+    // Return the created time so the client can immediately set its name/time.
+    return { ...invitationPlace, timeList: [invitationPlaceTime] };
   }
 
   async postPlaceTime(invitationPlaceId: number) {
