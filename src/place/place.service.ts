@@ -64,10 +64,8 @@ export class PlacesService {
       });
 
     if (exisingInvitationPlace) {
-      throw new HttpException(
-        '초대장에 이미 추가된 장소입니다.',
-        HttpStatus.CONFLICT,
-      );
+      // 이미 추가된 장소라면 그대로 반환하여 멱등성을 보장 (온보딩 단계 재진입 대응)
+      return exisingInvitationPlace;
     }
 
     const prevInvitationPlaceCount =
