@@ -634,13 +634,22 @@ export class InvitationService {
   async updateMusic(uniqueId: string, userId: number, s3Key: string) {
     await this.assertInvitationOwnership(uniqueId, userId);
     await this.assertNotLocked(uniqueId);
+    // Preset tracks live under `assets/`. Selecting a preset must clear any
+    // previously-uploaded custom track fields so they don't linger as a ghost.
+    const isPreset = s3Key.startsWith('assets');
     await this.prismaService.invitation.update({
       where: {
         uniqueId,
       },
-      data: {
-        musicKey: s3Key,
-      },
+      data: isPreset
+        ? {
+            musicKey: s3Key,
+            musicFileKey: null,
+            musicFilename: null,
+          }
+        : {
+            musicKey: s3Key,
+          },
     });
   }
 
