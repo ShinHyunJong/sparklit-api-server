@@ -19,8 +19,8 @@ export class CreateGuestGroupDto {
   password?: string;
 
   @IsOptional()
-  @IsEnum(['groom', 'bride', 'common'])
-  side?: 'groom' | 'bride' | 'common';
+  @IsEnum(['groom', 'bride', 'both'])
+  side?: 'groom' | 'bride' | 'both';
 
   @IsOptional()
   @IsInt()
@@ -52,8 +52,8 @@ export class UpdateGuestGroupDto {
   password?: string;
 
   @IsOptional()
-  @IsEnum(['groom', 'bride', 'common'])
-  side?: 'groom' | 'bride' | 'common';
+  @IsEnum(['groom', 'bride', 'both'])
+  side?: 'groom' | 'bride' | 'both';
 
   @IsOptional()
   @IsInt()

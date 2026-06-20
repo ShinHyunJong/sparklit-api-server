@@ -174,7 +174,7 @@ export type Invitation_currentPlanCode = (typeof Invitation_currentPlanCode)[key
 export const InvitationGuestGroup_side: {
   groom: 'groom',
   bride: 'bride',
-  common: 'common'
+  both: 'both'
 };
 
 export type InvitationGuestGroup_side = (typeof InvitationGuestGroup_side)[keyof typeof InvitationGuestGroup_side]

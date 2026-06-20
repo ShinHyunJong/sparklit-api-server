@@ -357,7 +357,7 @@ model InvitationGuestGroup {
   invitationId             Int                              @db.UnsignedInt
   name                     String                           @db.VarChar(100)
   password                 String?                          @db.VarChar(100)
-  side                     InvitationGuestGroup_side?       @default(common)
+  side                     InvitationGuestGroup_side?       @default(both)
   maxPax                   Int?                             @default(1)
   rsvpTitle                String?                          @db.VarChar(255)
   layoutOverride           Json?
@@ -448,7 +448,7 @@ enum Invitation_currentPlanCode {
 enum InvitationGuestGroup_side {
   groom
   bride
-  common
+  both
 }
 
 enum InvitationGuestGroup_rsvpStatus {

@@ -36,3 +36,6 @@ lerna-debug.log*
 !.vscode/extensions.json
 # Local one-off scripts (DB inspection, backfills, etc.)
 /scripts
+
+# Manual SQL migrations are applied directly to the DB, not tracked in git.
+*.sql

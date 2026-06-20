@@ -676,7 +676,7 @@ exports.InvitationOrder_status = exports.$Enums.InvitationOrder_status = {
 exports.InvitationGuestGroup_side = exports.$Enums.InvitationGuestGroup_side = {
   groom: 'groom',
   bride: 'bride',
-  common: 'common'
+  both: 'both'
 };
 
 exports.InvitationGuestGroup_rsvpStatus = exports.$Enums.InvitationGuestGroup_rsvpStatus = {

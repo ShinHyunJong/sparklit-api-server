@@ -155,7 +155,7 @@ export class GuestGroupService {
     data: {
       name: string;
       password?: string;
-      side?: 'groom' | 'bride' | 'common';
+      side?: 'groom' | 'bride' | 'both';
       maxPax?: number;
       rsvpTitle?: string;
       layoutOverride?: any;
@@ -175,7 +175,7 @@ export class GuestGroupService {
         invitationId: invitation.id,
         name: data.name,
         password: data.password ?? null,
-        side: (data.side as any) ?? 'common',
+        side: (data.side as any) ?? 'both',
         maxPax: data.maxPax ?? 1,
         rsvpTitle: data.rsvpTitle ?? null,
         layoutOverride: data.layoutOverride ?? undefined,
@@ -192,7 +192,7 @@ export class GuestGroupService {
     data: {
       name?: string;
       password?: string;
-      side?: 'groom' | 'bride' | 'common';
+      side?: 'groom' | 'bride' | 'both';
       maxPax?: number;
       rsvpTitle?: string;
       layoutOverride?: any;
