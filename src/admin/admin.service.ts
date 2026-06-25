@@ -71,9 +71,14 @@ export class AdminService {
     };
   }
 
-  async getInvitationList() {
+  async getInvitationList(upcomingOnly = false) {
+    // "Upcoming only": weddings dated today-or-later, soonest first.
+    const startOfToday = dayjs().startOf('day').toDate();
     const invitationList = await this.prismaService.invitation.findMany({
-      orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
+      where: upcomingOnly ? { date: { gte: startOfToday } } : undefined,
+      orderBy: upcomingOnly
+        ? [{ date: 'asc' }, { id: 'asc' }]
+        : [{ createdAt: 'desc' }, { id: 'desc' }],
       select: {
         id: true,
         uniqueId: true,
@@ -114,6 +119,7 @@ export class AdminService {
           select: {
             id: true,
             email: true,
+            phone: true,
             isAdmin: true,
           },
         },

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { AdminJwtAuthGuard } from 'src/guards/admin-jwt-auth.guard';
 import { AdminService } from './admin.service';
 
@@ -13,8 +13,8 @@ export class AdminController {
   }
 
   @Get('/invitations')
-  getInvitationList() {
-    return this.adminService.getInvitationList();
+  getInvitationList(@Query('upcoming') upcoming?: string) {
+    return this.adminService.getInvitationList(upcoming === 'true');
   }
 
   @Get('/invitations/trial')
