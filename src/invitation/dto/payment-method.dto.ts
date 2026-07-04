@@ -26,12 +26,20 @@ const PAYMENT_TYPES = [
   'SEABANK',
   'SECURITY_BANK',
   'UNIONBANK',
+  // Free-text bank/wallet not in the preset list; name stored in customLabel.
+  'OTHER',
 ] as const;
 export type PaymentMethodType = (typeof PAYMENT_TYPES)[number];
 
 export class CreatePaymentMethodDto {
   @IsEnum(PAYMENT_TYPES)
   type: PaymentMethodType;
+
+  // Free-text bank/wallet name, used when type is 'OTHER'.
+  @IsOptional()
+  @IsString()
+  @MaxLength(100)
+  customLabel?: string;
 
   @IsOptional()
   @IsString()
@@ -62,6 +70,11 @@ export class UpdatePaymentMethodDto {
   @IsOptional()
   @IsEnum(PAYMENT_TYPES)
   type?: PaymentMethodType;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(100)
+  customLabel?: string;
 
   @IsOptional()
   @IsString()

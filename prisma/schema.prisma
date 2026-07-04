@@ -406,6 +406,7 @@ model InvitationPaymentMethod {
   id            Int                          @id @default(autoincrement()) @db.UnsignedInt
   invitationId  Int                          @db.UnsignedInt
   type          InvitationPaymentMethod_type
+  customLabel   String?                      @db.VarChar(100)
   accountName   String?                      @db.VarChar(100)
   accountNumber String?                      @db.VarChar(100)
   qrImageKey    String?                      @db.VarChar(255)
@@ -474,4 +475,5 @@ enum InvitationPaymentMethod_type {
   SEABANK
   SECURITY_BANK
   UNIONBANK
+  OTHER
 }

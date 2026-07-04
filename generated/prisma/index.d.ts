@@ -205,7 +205,8 @@ export const InvitationPaymentMethod_type: {
   RCBC: 'RCBC',
   SEABANK: 'SEABANK',
   SECURITY_BANK: 'SECURITY_BANK',
-  UNIONBANK: 'UNIONBANK'
+  UNIONBANK: 'UNIONBANK',
+  OTHER: 'OTHER'
 };
 
 export type InvitationPaymentMethod_type = (typeof InvitationPaymentMethod_type)[keyof typeof InvitationPaymentMethod_type]
@@ -26500,6 +26501,7 @@ export namespace Prisma {
     id: number | null
     invitationId: number | null
     type: $Enums.InvitationPaymentMethod_type | null
+    customLabel: string | null
     accountName: string | null
     accountNumber: string | null
     qrImageKey: string | null
@@ -26513,6 +26515,7 @@ export namespace Prisma {
     id: number | null
     invitationId: number | null
     type: $Enums.InvitationPaymentMethod_type | null
+    customLabel: string | null
     accountName: string | null
     accountNumber: string | null
     qrImageKey: string | null
@@ -26526,6 +26529,7 @@ export namespace Prisma {
     id: number
     invitationId: number
     type: number
+    customLabel: number
     accountName: number
     accountNumber: number
     qrImageKey: number
@@ -26553,6 +26557,7 @@ export namespace Prisma {
     id?: true
     invitationId?: true
     type?: true
+    customLabel?: true
     accountName?: true
     accountNumber?: true
     qrImageKey?: true
@@ -26566,6 +26571,7 @@ export namespace Prisma {
     id?: true
     invitationId?: true
     type?: true
+    customLabel?: true
     accountName?: true
     accountNumber?: true
     qrImageKey?: true
@@ -26579,6 +26585,7 @@ export namespace Prisma {
     id?: true
     invitationId?: true
     type?: true
+    customLabel?: true
     accountName?: true
     accountNumber?: true
     qrImageKey?: true
@@ -26679,6 +26686,7 @@ export namespace Prisma {
     id: number
     invitationId: number
     type: $Enums.InvitationPaymentMethod_type
+    customLabel: string | null
     accountName: string | null
     accountNumber: string | null
     qrImageKey: string | null
@@ -26711,6 +26719,7 @@ export namespace Prisma {
     id?: boolean
     invitationId?: boolean
     type?: boolean
+    customLabel?: boolean
     accountName?: boolean
     accountNumber?: boolean
     qrImageKey?: boolean
@@ -26727,6 +26736,7 @@ export namespace Prisma {
     id?: boolean
     invitationId?: boolean
     type?: boolean
+    customLabel?: boolean
     accountName?: boolean
     accountNumber?: boolean
     qrImageKey?: boolean
@@ -26736,7 +26746,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type InvitationPaymentMethodOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitationId" | "type" | "accountName" | "accountNumber" | "qrImageKey" | "memo" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["invitationPaymentMethod"]>
+  export type InvitationPaymentMethodOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitationId" | "type" | "customLabel" | "accountName" | "accountNumber" | "qrImageKey" | "memo" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["invitationPaymentMethod"]>
   export type InvitationPaymentMethodInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Invitation?: boolean | InvitationDefaultArgs<ExtArgs>
   }
@@ -26750,6 +26760,7 @@ export namespace Prisma {
       id: number
       invitationId: number
       type: $Enums.InvitationPaymentMethod_type
+      customLabel: string | null
       accountName: string | null
       accountNumber: string | null
       qrImageKey: string | null
@@ -27130,6 +27141,7 @@ export namespace Prisma {
     readonly id: FieldRef<"InvitationPaymentMethod", 'Int'>
     readonly invitationId: FieldRef<"InvitationPaymentMethod", 'Int'>
     readonly type: FieldRef<"InvitationPaymentMethod", 'InvitationPaymentMethod_type'>
+    readonly customLabel: FieldRef<"InvitationPaymentMethod", 'String'>
     readonly accountName: FieldRef<"InvitationPaymentMethod", 'String'>
     readonly accountNumber: FieldRef<"InvitationPaymentMethod", 'String'>
     readonly qrImageKey: FieldRef<"InvitationPaymentMethod", 'String'>
@@ -27893,6 +27905,7 @@ export namespace Prisma {
     id: 'id',
     invitationId: 'invitationId',
     type: 'type',
+    customLabel: 'customLabel',
     accountName: 'accountName',
     accountNumber: 'accountNumber',
     qrImageKey: 'qrImageKey',
@@ -28178,6 +28191,7 @@ export namespace Prisma {
 
 
   export const InvitationPaymentMethodOrderByRelevanceFieldEnum: {
+    customLabel: 'customLabel',
     accountName: 'accountName',
     accountNumber: 'accountNumber',
     qrImageKey: 'qrImageKey',
@@ -30302,6 +30316,7 @@ export namespace Prisma {
     id?: IntFilter<"InvitationPaymentMethod"> | number
     invitationId?: IntFilter<"InvitationPaymentMethod"> | number
     type?: EnumInvitationPaymentMethod_typeFilter<"InvitationPaymentMethod"> | $Enums.InvitationPaymentMethod_type
+    customLabel?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
     accountName?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
     accountNumber?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
     qrImageKey?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
@@ -30316,6 +30331,7 @@ export namespace Prisma {
     id?: SortOrder
     invitationId?: SortOrder
     type?: SortOrder
+    customLabel?: SortOrderInput | SortOrder
     accountName?: SortOrderInput | SortOrder
     accountNumber?: SortOrderInput | SortOrder
     qrImageKey?: SortOrderInput | SortOrder
@@ -30334,6 +30350,7 @@ export namespace Prisma {
     NOT?: InvitationPaymentMethodWhereInput | InvitationPaymentMethodWhereInput[]
     invitationId?: IntFilter<"InvitationPaymentMethod"> | number
     type?: EnumInvitationPaymentMethod_typeFilter<"InvitationPaymentMethod"> | $Enums.InvitationPaymentMethod_type
+    customLabel?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
     accountName?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
     accountNumber?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
     qrImageKey?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
@@ -30348,6 +30365,7 @@ export namespace Prisma {
     id?: SortOrder
     invitationId?: SortOrder
     type?: SortOrder
+    customLabel?: SortOrderInput | SortOrder
     accountName?: SortOrderInput | SortOrder
     accountNumber?: SortOrderInput | SortOrder
     qrImageKey?: SortOrderInput | SortOrder
@@ -30369,6 +30387,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"InvitationPaymentMethod"> | number
     invitationId?: IntWithAggregatesFilter<"InvitationPaymentMethod"> | number
     type?: EnumInvitationPaymentMethod_typeWithAggregatesFilter<"InvitationPaymentMethod"> | $Enums.InvitationPaymentMethod_type
+    customLabel?: StringNullableWithAggregatesFilter<"InvitationPaymentMethod"> | string | null
     accountName?: StringNullableWithAggregatesFilter<"InvitationPaymentMethod"> | string | null
     accountNumber?: StringNullableWithAggregatesFilter<"InvitationPaymentMethod"> | string | null
     qrImageKey?: StringNullableWithAggregatesFilter<"InvitationPaymentMethod"> | string | null
@@ -32555,6 +32574,7 @@ export namespace Prisma {
 
   export type InvitationPaymentMethodCreateInput = {
     type: $Enums.InvitationPaymentMethod_type
+    customLabel?: string | null
     accountName?: string | null
     accountNumber?: string | null
     qrImageKey?: string | null
@@ -32569,6 +32589,7 @@ export namespace Prisma {
     id?: number
     invitationId: number
     type: $Enums.InvitationPaymentMethod_type
+    customLabel?: string | null
     accountName?: string | null
     accountNumber?: string | null
     qrImageKey?: string | null
@@ -32580,6 +32601,7 @@ export namespace Prisma {
 
   export type InvitationPaymentMethodUpdateInput = {
     type?: EnumInvitationPaymentMethod_typeFieldUpdateOperationsInput | $Enums.InvitationPaymentMethod_type
+    customLabel?: NullableStringFieldUpdateOperationsInput | string | null
     accountName?: NullableStringFieldUpdateOperationsInput | string | null
     accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
     qrImageKey?: NullableStringFieldUpdateOperationsInput | string | null
@@ -32594,6 +32616,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     invitationId?: IntFieldUpdateOperationsInput | number
     type?: EnumInvitationPaymentMethod_typeFieldUpdateOperationsInput | $Enums.InvitationPaymentMethod_type
+    customLabel?: NullableStringFieldUpdateOperationsInput | string | null
     accountName?: NullableStringFieldUpdateOperationsInput | string | null
     accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
     qrImageKey?: NullableStringFieldUpdateOperationsInput | string | null
@@ -32607,6 +32630,7 @@ export namespace Prisma {
     id?: number
     invitationId: number
     type: $Enums.InvitationPaymentMethod_type
+    customLabel?: string | null
     accountName?: string | null
     accountNumber?: string | null
     qrImageKey?: string | null
@@ -32618,6 +32642,7 @@ export namespace Prisma {
 
   export type InvitationPaymentMethodUpdateManyMutationInput = {
     type?: EnumInvitationPaymentMethod_typeFieldUpdateOperationsInput | $Enums.InvitationPaymentMethod_type
+    customLabel?: NullableStringFieldUpdateOperationsInput | string | null
     accountName?: NullableStringFieldUpdateOperationsInput | string | null
     accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
     qrImageKey?: NullableStringFieldUpdateOperationsInput | string | null
@@ -32631,6 +32656,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     invitationId?: IntFieldUpdateOperationsInput | number
     type?: EnumInvitationPaymentMethod_typeFieldUpdateOperationsInput | $Enums.InvitationPaymentMethod_type
+    customLabel?: NullableStringFieldUpdateOperationsInput | string | null
     accountName?: NullableStringFieldUpdateOperationsInput | string | null
     accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
     qrImageKey?: NullableStringFieldUpdateOperationsInput | string | null
@@ -34598,6 +34624,7 @@ export namespace Prisma {
     id?: SortOrder
     invitationId?: SortOrder
     type?: SortOrder
+    customLabel?: SortOrder
     accountName?: SortOrder
     accountNumber?: SortOrder
     qrImageKey?: SortOrder
@@ -34617,6 +34644,7 @@ export namespace Prisma {
     id?: SortOrder
     invitationId?: SortOrder
     type?: SortOrder
+    customLabel?: SortOrder
     accountName?: SortOrder
     accountNumber?: SortOrder
     qrImageKey?: SortOrder
@@ -34630,6 +34658,7 @@ export namespace Prisma {
     id?: SortOrder
     invitationId?: SortOrder
     type?: SortOrder
+    customLabel?: SortOrder
     accountName?: SortOrder
     accountNumber?: SortOrder
     qrImageKey?: SortOrder
@@ -36837,6 +36866,7 @@ export namespace Prisma {
 
   export type InvitationPaymentMethodCreateWithoutInvitationInput = {
     type: $Enums.InvitationPaymentMethod_type
+    customLabel?: string | null
     accountName?: string | null
     accountNumber?: string | null
     qrImageKey?: string | null
@@ -36849,6 +36879,7 @@ export namespace Prisma {
   export type InvitationPaymentMethodUncheckedCreateWithoutInvitationInput = {
     id?: number
     type: $Enums.InvitationPaymentMethod_type
+    customLabel?: string | null
     accountName?: string | null
     accountNumber?: string | null
     qrImageKey?: string | null
@@ -37230,6 +37261,7 @@ export namespace Prisma {
     id?: IntFilter<"InvitationPaymentMethod"> | number
     invitationId?: IntFilter<"InvitationPaymentMethod"> | number
     type?: EnumInvitationPaymentMethod_typeFilter<"InvitationPaymentMethod"> | $Enums.InvitationPaymentMethod_type
+    customLabel?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
     accountName?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
     accountNumber?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
     qrImageKey?: StringNullableFilter<"InvitationPaymentMethod"> | string | null
@@ -42829,6 +42861,7 @@ export namespace Prisma {
   export type InvitationPaymentMethodCreateManyInvitationInput = {
     id?: number
     type: $Enums.InvitationPaymentMethod_type
+    customLabel?: string | null
     accountName?: string | null
     accountNumber?: string | null
     qrImageKey?: string | null
@@ -43104,6 +43137,7 @@ export namespace Prisma {
 
   export type InvitationPaymentMethodUpdateWithoutInvitationInput = {
     type?: EnumInvitationPaymentMethod_typeFieldUpdateOperationsInput | $Enums.InvitationPaymentMethod_type
+    customLabel?: NullableStringFieldUpdateOperationsInput | string | null
     accountName?: NullableStringFieldUpdateOperationsInput | string | null
     accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
     qrImageKey?: NullableStringFieldUpdateOperationsInput | string | null
@@ -43116,6 +43150,7 @@ export namespace Prisma {
   export type InvitationPaymentMethodUncheckedUpdateWithoutInvitationInput = {
     id?: IntFieldUpdateOperationsInput | number
     type?: EnumInvitationPaymentMethod_typeFieldUpdateOperationsInput | $Enums.InvitationPaymentMethod_type
+    customLabel?: NullableStringFieldUpdateOperationsInput | string | null
     accountName?: NullableStringFieldUpdateOperationsInput | string | null
     accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
     qrImageKey?: NullableStringFieldUpdateOperationsInput | string | null
@@ -43128,6 +43163,7 @@ export namespace Prisma {
   export type InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationInput = {
     id?: IntFieldUpdateOperationsInput | number
     type?: EnumInvitationPaymentMethod_typeFieldUpdateOperationsInput | $Enums.InvitationPaymentMethod_type
+    customLabel?: NullableStringFieldUpdateOperationsInput | string | null
     accountName?: NullableStringFieldUpdateOperationsInput | string | null
     accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
     qrImageKey?: NullableStringFieldUpdateOperationsInput | string | null

@@ -54,6 +54,7 @@ export class PaymentMethodService {
       select: {
         id: true,
         type: true,
+        customLabel: true,
         accountName: true,
         accountNumber: true,
         qrImageKey: true,
@@ -81,6 +82,7 @@ export class PaymentMethodService {
       data: {
         invitationId: invitation.id,
         type: data.type,
+        customLabel: data.customLabel,
         accountName: data.accountName,
         accountNumber: data.accountNumber,
         qrImageKey: data.qrImageKey,
@@ -111,6 +113,9 @@ export class PaymentMethodService {
       where: { id: methodId },
       data: {
         ...(data.type !== undefined && { type: data.type }),
+        ...(data.customLabel !== undefined && {
+          customLabel: data.customLabel,
+        }),
         ...(data.accountName !== undefined && { accountName: data.accountName }),
         ...(data.accountNumber !== undefined && {
           accountNumber: data.accountNumber,

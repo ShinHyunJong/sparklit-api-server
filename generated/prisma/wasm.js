@@ -435,6 +435,7 @@ exports.Prisma.InvitationPaymentMethodScalarFieldEnum = {
   id: 'id',
   invitationId: 'invitationId',
   type: 'type',
+  customLabel: 'customLabel',
   accountName: 'accountName',
   accountNumber: 'accountNumber',
   qrImageKey: 'qrImageKey',
@@ -642,6 +643,7 @@ exports.Prisma.InvitationSeatingTableOrderByRelevanceFieldEnum = {
 };
 
 exports.Prisma.InvitationPaymentMethodOrderByRelevanceFieldEnum = {
+  customLabel: 'customLabel',
   accountName: 'accountName',
   accountNumber: 'accountNumber',
   qrImageKey: 'qrImageKey',
@@ -701,7 +703,8 @@ exports.InvitationPaymentMethod_type = exports.$Enums.InvitationPaymentMethod_ty
   RCBC: 'RCBC',
   SEABANK: 'SEABANK',
   SECURITY_BANK: 'SECURITY_BANK',
-  UNIONBANK: 'UNIONBANK'
+  UNIONBANK: 'UNIONBANK',
+  OTHER: 'OTHER'
 };
 
 exports.Prisma.ModelName = {
