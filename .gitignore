@@ -39,3 +39,4 @@ lerna-debug.log*
 
 # Manual SQL migrations are applied directly to the DB, not tracked in git.
 *.sql
+!prisma/migrations/manual/*.sql
