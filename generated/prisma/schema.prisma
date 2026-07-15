@@ -106,6 +106,10 @@ model Invitation {
   primarySponsorRight      String?                     @db.Text
   secondarySponsorRight    String?                     @db.Text
   onboardingCompletedAt    DateTime?                   @db.DateTime(0)
+  openingEnabled           Boolean                     @default(false)
+  openingText1             String?                     @db.VarChar(100)
+  openingText2             String?                     @db.VarChar(100)
+  openingText3             String?                     @db.VarChar(100)
   user                     User?                       @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Invitation_ibfk_1")
   invitationCoverPhotoList InvitationCoverPhoto[]
   InvitationDressColor     InvitationDressColor[]
