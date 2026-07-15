@@ -1070,6 +1070,34 @@ export class InvitationService {
     return updated;
   }
 
+  async updateOpening(
+    uniqueId: string,
+    userId: number,
+    body: {
+      openingEnabled?: boolean;
+      openingText1?: string | null;
+      openingText2?: string | null;
+      openingText3?: string | null;
+    },
+  ) {
+    await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
+    const normalizeText = (value?: string | null) => {
+      const trimmed = value?.trim();
+      return trimmed ? trimmed.slice(0, 100) : null;
+    };
+    const updated = await this.prismaService.invitation.update({
+      where: { uniqueId },
+      data: {
+        openingEnabled: body.openingEnabled === true,
+        openingText1: normalizeText(body.openingText1),
+        openingText2: normalizeText(body.openingText2),
+        openingText3: normalizeText(body.openingText3),
+      },
+    });
+    return updated;
+  }
+
   async updateMeta(
     uniqueId: string,
     userId: number,
