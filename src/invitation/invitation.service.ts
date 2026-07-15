@@ -467,7 +467,8 @@ export class InvitationService {
     const croppedExtension = croppedFile.mimeType.split('/')[1];
 
     // S3 경로 구성 (type에 따라 상위 폴더가 cover 또는 end로 분기)
-    const folder = type === 'main' ? 'cover' : 'end';
+    const folder =
+      type === 'main' ? 'cover' : type?.startsWith('opening') ? 'opening' : 'end';
 
     const originalKey = `invitations/${uniqueId}/${folder}/original/${originalName}.${originalExtension}`;
     const croppedKey = `invitations/${uniqueId}/${folder}/cropped/${croppedName}.${croppedExtension}`;
@@ -538,6 +539,9 @@ export class InvitationService {
       'end',
       'dressCodeGentleman',
       'dressCodeLady',
+      'opening1',
+      'opening2',
+      'opening3',
     ]);
     if (!allowedTypes.has(type)) {
       throw new BadRequestException('Invalid cover photo type');
