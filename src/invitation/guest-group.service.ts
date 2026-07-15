@@ -28,6 +28,7 @@ export class GuestGroupService {
     data: {
       isPasswordProtected?: boolean;
       universalPassword?: string;
+      accessMode?: string;
       guestListEnabled?: boolean;
     },
   ) {
@@ -41,6 +42,9 @@ export class GuestGroupService {
         ...(data.universalPassword !== undefined && {
           universalPassword: data.universalPassword,
         }),
+        ...(data.accessMode !== undefined && {
+          accessMode: data.accessMode,
+        }),
         ...(data.guestListEnabled !== undefined && {
           guestListEnabled: data.guestListEnabled,
         }),
@@ -48,6 +52,7 @@ export class GuestGroupService {
       select: {
         isPasswordProtected: true,
         universalPassword: true,
+        accessMode: true,
         guestListEnabled: true,
       },
     });

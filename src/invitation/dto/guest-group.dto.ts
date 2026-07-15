@@ -83,6 +83,11 @@ export class UpdateGuestSettingsDto {
   universalPassword?: string;
 
   @IsOptional()
+  @IsString()
+  @MaxLength(20)
+  accessMode?: string;
+
+  @IsOptional()
   guestListEnabled?: boolean;
 }
 

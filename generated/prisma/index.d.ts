@@ -4265,6 +4265,7 @@ export namespace Prisma {
     hasRsvpDeadline: boolean | null
     isPasswordProtected: boolean | null
     universalPassword: string | null
+    accessMode: string | null
     guestListEnabled: boolean | null
     billingStatus: $Enums.Invitation_billingStatus | null
     trialEndsAt: Date | null
@@ -4346,6 +4347,7 @@ export namespace Prisma {
     hasRsvpDeadline: boolean | null
     isPasswordProtected: boolean | null
     universalPassword: string | null
+    accessMode: string | null
     guestListEnabled: boolean | null
     billingStatus: $Enums.Invitation_billingStatus | null
     trialEndsAt: Date | null
@@ -4427,6 +4429,7 @@ export namespace Prisma {
     hasRsvpDeadline: number
     isPasswordProtected: number
     universalPassword: number
+    accessMode: number
     guestListEnabled: number
     billingStatus: number
     trialEndsAt: number
@@ -4535,6 +4538,7 @@ export namespace Prisma {
     hasRsvpDeadline?: true
     isPasswordProtected?: true
     universalPassword?: true
+    accessMode?: true
     guestListEnabled?: true
     billingStatus?: true
     trialEndsAt?: true
@@ -4616,6 +4620,7 @@ export namespace Prisma {
     hasRsvpDeadline?: true
     isPasswordProtected?: true
     universalPassword?: true
+    accessMode?: true
     guestListEnabled?: true
     billingStatus?: true
     trialEndsAt?: true
@@ -4697,6 +4702,7 @@ export namespace Prisma {
     hasRsvpDeadline?: true
     isPasswordProtected?: true
     universalPassword?: true
+    accessMode?: true
     guestListEnabled?: true
     billingStatus?: true
     trialEndsAt?: true
@@ -4866,6 +4872,7 @@ export namespace Prisma {
     hasRsvpDeadline: boolean | null
     isPasswordProtected: boolean | null
     universalPassword: string | null
+    accessMode: string | null
     guestListEnabled: boolean | null
     billingStatus: $Enums.Invitation_billingStatus
     trialEndsAt: Date | null
@@ -4967,6 +4974,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean
     isPasswordProtected?: boolean
     universalPassword?: boolean
+    accessMode?: boolean
     guestListEnabled?: boolean
     billingStatus?: boolean
     trialEndsAt?: boolean
@@ -5064,6 +5072,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean
     isPasswordProtected?: boolean
     universalPassword?: boolean
+    accessMode?: boolean
     guestListEnabled?: boolean
     billingStatus?: boolean
     trialEndsAt?: boolean
@@ -5092,7 +5101,7 @@ export namespace Prisma {
     onboardingCompletedAt?: boolean
   }
 
-  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpDeadline" | "rsvpDeadlineDesc" | "rsvpHasFood" | "isRsvpPopup" | "hasRsvpDeadline" | "isPasswordProtected" | "universalPassword" | "guestListEnabled" | "billingStatus" | "trialEndsAt" | "currentPlanCode" | "accessStartedAt" | "accessEndsAt" | "watermarkEnabled" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt" | "bestManLabel" | "maidOfHonorLabel" | "groomsMenLabel" | "bridesMaidsLabel" | "sponsorColumns" | "secondarySponsorColumns" | "primarySponsorRight" | "secondarySponsorRight" | "onboardingCompletedAt", ExtArgs["result"]["invitation"]>
+  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpDeadline" | "rsvpDeadlineDesc" | "rsvpHasFood" | "isRsvpPopup" | "hasRsvpDeadline" | "isPasswordProtected" | "universalPassword" | "accessMode" | "guestListEnabled" | "billingStatus" | "trialEndsAt" | "currentPlanCode" | "accessStartedAt" | "accessEndsAt" | "watermarkEnabled" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt" | "bestManLabel" | "maidOfHonorLabel" | "groomsMenLabel" | "bridesMaidsLabel" | "sponsorColumns" | "secondarySponsorColumns" | "primarySponsorRight" | "secondarySponsorRight" | "onboardingCompletedAt", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
@@ -5179,6 +5188,7 @@ export namespace Prisma {
       hasRsvpDeadline: boolean | null
       isPasswordProtected: boolean | null
       universalPassword: string | null
+      accessMode: string | null
       guestListEnabled: boolean | null
       billingStatus: $Enums.Invitation_billingStatus
       trialEndsAt: Date | null
@@ -5639,6 +5649,7 @@ export namespace Prisma {
     readonly hasRsvpDeadline: FieldRef<"Invitation", 'Boolean'>
     readonly isPasswordProtected: FieldRef<"Invitation", 'Boolean'>
     readonly universalPassword: FieldRef<"Invitation", 'String'>
+    readonly accessMode: FieldRef<"Invitation", 'String'>
     readonly guestListEnabled: FieldRef<"Invitation", 'Boolean'>
     readonly billingStatus: FieldRef<"Invitation", 'Invitation_billingStatus'>
     readonly trialEndsAt: FieldRef<"Invitation", 'DateTime'>
@@ -27593,6 +27604,7 @@ export namespace Prisma {
     hasRsvpDeadline: 'hasRsvpDeadline',
     isPasswordProtected: 'isPasswordProtected',
     universalPassword: 'universalPassword',
+    accessMode: 'accessMode',
     guestListEnabled: 'guestListEnabled',
     billingStatus: 'billingStatus',
     trialEndsAt: 'trialEndsAt',
@@ -28010,6 +28022,7 @@ export namespace Prisma {
     rsvpTitle: 'rsvpTitle',
     rsvpDeadlineDesc: 'rsvpDeadlineDesc',
     universalPassword: 'universalPassword',
+    accessMode: 'accessMode',
     bestMan: 'bestMan',
     bridesMaids: 'bridesMaids',
     wishlistText: 'wishlistText',
@@ -28452,6 +28465,7 @@ export namespace Prisma {
     hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
     isPasswordProtected?: BoolNullableFilter<"Invitation"> | boolean | null
     universalPassword?: StringNullableFilter<"Invitation"> | string | null
+    accessMode?: StringNullableFilter<"Invitation"> | string | null
     guestListEnabled?: BoolNullableFilter<"Invitation"> | boolean | null
     billingStatus?: EnumInvitation_billingStatusFilter<"Invitation"> | $Enums.Invitation_billingStatus
     trialEndsAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
@@ -28546,6 +28560,7 @@ export namespace Prisma {
     hasRsvpDeadline?: SortOrderInput | SortOrder
     isPasswordProtected?: SortOrderInput | SortOrder
     universalPassword?: SortOrderInput | SortOrder
+    accessMode?: SortOrderInput | SortOrder
     guestListEnabled?: SortOrderInput | SortOrder
     billingStatus?: SortOrder
     trialEndsAt?: SortOrderInput | SortOrder
@@ -28644,6 +28659,7 @@ export namespace Prisma {
     hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
     isPasswordProtected?: BoolNullableFilter<"Invitation"> | boolean | null
     universalPassword?: StringNullableFilter<"Invitation"> | string | null
+    accessMode?: StringNullableFilter<"Invitation"> | string | null
     guestListEnabled?: BoolNullableFilter<"Invitation"> | boolean | null
     billingStatus?: EnumInvitation_billingStatusFilter<"Invitation"> | $Enums.Invitation_billingStatus
     trialEndsAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
@@ -28738,6 +28754,7 @@ export namespace Prisma {
     hasRsvpDeadline?: SortOrderInput | SortOrder
     isPasswordProtected?: SortOrderInput | SortOrder
     universalPassword?: SortOrderInput | SortOrder
+    accessMode?: SortOrderInput | SortOrder
     guestListEnabled?: SortOrderInput | SortOrder
     billingStatus?: SortOrder
     trialEndsAt?: SortOrderInput | SortOrder
@@ -28828,6 +28845,7 @@ export namespace Prisma {
     hasRsvpDeadline?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
     isPasswordProtected?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
     universalPassword?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    accessMode?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     guestListEnabled?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
     billingStatus?: EnumInvitation_billingStatusWithAggregatesFilter<"Invitation"> | $Enums.Invitation_billingStatus
     trialEndsAt?: DateTimeNullableWithAggregatesFilter<"Invitation"> | Date | string | null
@@ -30538,6 +30556,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -30632,6 +30651,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -30723,6 +30743,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -30817,6 +30838,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -30910,6 +30932,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -30990,6 +31013,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -31072,6 +31096,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -33057,6 +33082,7 @@ export namespace Prisma {
     hasRsvpDeadline?: SortOrder
     isPasswordProtected?: SortOrder
     universalPassword?: SortOrder
+    accessMode?: SortOrder
     guestListEnabled?: SortOrder
     billingStatus?: SortOrder
     trialEndsAt?: SortOrder
@@ -33151,6 +33177,7 @@ export namespace Prisma {
     hasRsvpDeadline?: SortOrder
     isPasswordProtected?: SortOrder
     universalPassword?: SortOrder
+    accessMode?: SortOrder
     guestListEnabled?: SortOrder
     billingStatus?: SortOrder
     trialEndsAt?: SortOrder
@@ -33232,6 +33259,7 @@ export namespace Prisma {
     hasRsvpDeadline?: SortOrder
     isPasswordProtected?: SortOrder
     universalPassword?: SortOrder
+    accessMode?: SortOrder
     guestListEnabled?: SortOrder
     billingStatus?: SortOrder
     trialEndsAt?: SortOrder
@@ -36299,6 +36327,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -36391,6 +36420,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -36562,6 +36592,7 @@ export namespace Prisma {
     hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
     isPasswordProtected?: BoolNullableFilter<"Invitation"> | boolean | null
     universalPassword?: StringNullableFilter<"Invitation"> | string | null
+    accessMode?: StringNullableFilter<"Invitation"> | string | null
     guestListEnabled?: BoolNullableFilter<"Invitation"> | boolean | null
     billingStatus?: EnumInvitation_billingStatusFilter<"Invitation"> | $Enums.Invitation_billingStatus
     trialEndsAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
@@ -37472,6 +37503,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -37565,6 +37597,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -37722,6 +37755,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -37815,6 +37849,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -38019,6 +38054,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -38112,6 +38148,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -38218,6 +38255,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -38311,6 +38349,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -38401,6 +38440,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -38494,6 +38534,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -38600,6 +38641,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -38693,6 +38735,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -38783,6 +38826,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -38876,6 +38920,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -39022,6 +39067,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -39115,6 +39161,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -39251,6 +39298,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -39344,6 +39392,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -39450,6 +39499,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -39543,6 +39593,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -39633,6 +39684,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -39726,6 +39778,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -39832,6 +39885,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -39925,6 +39979,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -40015,6 +40070,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -40108,6 +40164,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -40214,6 +40271,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -40307,6 +40365,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -40397,6 +40456,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -40490,6 +40550,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -40658,6 +40719,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -40751,6 +40813,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -40980,6 +41043,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -41073,6 +41137,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -41236,6 +41301,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -41329,6 +41395,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -41622,6 +41689,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -41715,6 +41783,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -41848,6 +41917,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -41941,6 +42011,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -42031,6 +42102,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -42124,6 +42196,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -42230,6 +42303,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -42323,6 +42397,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -42414,6 +42489,7 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
+    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -42514,6 +42590,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -42606,6 +42683,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -42698,6 +42776,7 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null

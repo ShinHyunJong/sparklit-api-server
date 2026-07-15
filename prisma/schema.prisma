@@ -76,6 +76,10 @@ model Invitation {
   hasRsvpDeadline          Boolean?                    @default(true)
   isPasswordProtected      Boolean?                    @default(false)
   universalPassword        String?                     @db.VarChar(100)
+  // Access mode within Private: 'common' | 'specific'. Stored explicitly so a
+  // Common invitation whose shared password hasn't been typed yet is not
+  // mistaken for Specific (which is otherwise inferred from an empty password).
+  accessMode               String?                     @db.VarChar(20)
   guestListEnabled         Boolean?                    @default(false)
   billingStatus            Invitation_billingStatus    @default(TRIAL)
   trialEndsAt              DateTime?                   @db.DateTime(0)
