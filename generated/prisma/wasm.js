@@ -329,6 +329,18 @@ exports.Prisma.InvitationEntourageScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.InvitationSponsorScalarFieldEnum = {
+  id: 'id',
+  invitationId: 'invitationId',
+  label: 'label',
+  labelRight: 'labelRight',
+  nameLeft: 'nameLeft',
+  nameRight: 'nameRight',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.AdminScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -598,6 +610,13 @@ exports.Prisma.InvitationEntourageOrderByRelevanceFieldEnum = {
   name: 'name'
 };
 
+exports.Prisma.InvitationSponsorOrderByRelevanceFieldEnum = {
+  label: 'label',
+  labelRight: 'labelRight',
+  nameLeft: 'nameLeft',
+  nameRight: 'nameRight'
+};
+
 exports.Prisma.AdminOrderByRelevanceFieldEnum = {
   name: 'name',
   email: 'email',
@@ -724,6 +743,7 @@ exports.Prisma.ModelName = {
   InvitationGuest: 'InvitationGuest',
   InvitationFaq: 'InvitationFaq',
   InvitationEntourage: 'InvitationEntourage',
+  InvitationSponsor: 'InvitationSponsor',
   Admin: 'Admin',
   EmailVerification: 'EmailVerification',
   InvitationOrder: 'InvitationOrder',

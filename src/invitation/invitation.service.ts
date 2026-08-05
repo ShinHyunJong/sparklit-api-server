@@ -306,6 +306,9 @@ export class InvitationService {
         invitationEntourageList: {
           orderBy: [{ order: 'asc' }, { id: 'asc' }],
         },
+        invitationSponsorList: {
+          orderBy: [{ order: 'asc' }, { id: 'asc' }],
+        },
         photoList: {
           orderBy: {
             order: 'asc',
@@ -751,7 +754,9 @@ export class InvitationService {
     uniqueId: string,
     userId: number,
     primarySponsor: string,
-    secondarySponsor: string,
+    // Secondary now lives in InvitationSponsor rows. Omitting it leaves the
+    // legacy text untouched instead of clearing it.
+    secondarySponsor: string | undefined,
     sponsorColumns?: number,
     secondarySponsorColumns?: number,
     primarySponsorRight?: string | null,
@@ -767,7 +772,7 @@ export class InvitationService {
       where: { uniqueId },
       data: {
         primarySponsor,
-        secondarySponsor,
+        ...(secondarySponsor !== undefined && { secondarySponsor }),
         ...(primaryColumns !== undefined && {
           sponsorColumns: primaryColumns,
         }),
@@ -858,6 +863,76 @@ export class InvitationService {
                 invitationId: invitation.id,
                 label: item.label,
                 name: item.name,
+                order: item.order,
+              })),
+            }),
+          ]
+        : []),
+    ]);
+
+    return this.findOne(uniqueId);
+  }
+
+  async updateSponsorList(
+    uniqueId: string,
+    userId: number,
+    body: {
+      invitationSponsorList?: Array<{
+        label: string;
+        labelRight?: string;
+        nameLeft: string;
+        nameRight: string;
+        order?: number;
+      }>;
+      secondarySponsorColumns?: number;
+    },
+  ) {
+    await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
+    const invitation = await this.prismaService.invitation.findUnique({
+      where: { uniqueId },
+      select: { id: true },
+    });
+    if (!invitation) {
+      throw new NotFoundException('Invitation not found');
+    }
+
+    // A row survives if it carries a label or a name on either side. Names keep
+    // their newlines — several people can share one role.
+    const sanitizedSponsorList = (body.invitationSponsorList ?? [])
+      .map((item) => ({
+        label: (item.label ?? '').trim(),
+        labelRight: (item.labelRight ?? '').trim(),
+        nameLeft: (item.nameLeft ?? '').trim(),
+        nameRight: (item.nameRight ?? '').trim(),
+      }))
+      .filter(
+        (item) =>
+          item.label || item.labelRight || item.nameLeft || item.nameRight,
+      )
+      .map((item, index) => ({ ...item, order: index }));
+
+    await this.prismaService.$transaction([
+      ...(body.secondarySponsorColumns !== undefined
+        ? [
+            this.prismaService.invitation.update({
+              where: { uniqueId },
+              data: { secondarySponsorColumns: body.secondarySponsorColumns },
+            }),
+          ]
+        : []),
+      this.prismaService.invitationSponsor.deleteMany({
+        where: { invitationId: invitation.id },
+      }),
+      ...(sanitizedSponsorList.length
+        ? [
+            this.prismaService.invitationSponsor.createMany({
+              data: sanitizedSponsorList.map((item) => ({
+                invitationId: invitation.id,
+                label: item.label,
+                labelRight: item.labelRight,
+                nameLeft: item.nameLeft,
+                nameRight: item.nameRight,
                 order: item.order,
               })),
             }),

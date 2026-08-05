@@ -23,6 +23,7 @@ import { RsvpDto, UpdateRsvpDto } from './dto/rsvp.dto';
 import { CheckUniqueIdDto, UpdateUniqueIdDto } from './dto/unique-id.dto';
 import { UpdateInvitationMetaDto } from './dto/update-meta.dto';
 import { UpdateEntourageDto } from './dto/update-entourage.dto';
+import { UpdateSponsorListDto } from './dto/update-sponsor-list.dto';
 
 @Controller('invitation')
 export class InvitationController {
@@ -300,7 +301,7 @@ export class InvitationController {
     @Body()
     body: {
       primarySponsor: string;
-      secondarySponsor: string;
+      secondarySponsor?: string;
       sponsorColumns?: number;
       secondarySponsorColumns?: number;
       primarySponsorRight?: string | null;
@@ -327,6 +328,16 @@ export class InvitationController {
     @Body() body: UpdateEntourageDto,
   ) {
     return this.invitationService.updateEntourage(uniqueId, req.user.id, body);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('/sponsorList/:uniqueId')
+  updateSponsorList(
+    @Req() req,
+    @Param('uniqueId') uniqueId: string,
+    @Body() body: UpdateSponsorListDto,
+  ) {
+    return this.invitationService.updateSponsorList(uniqueId, req.user.id, body);
   }
 
   @UseGuards(JwtAuthGuard)
