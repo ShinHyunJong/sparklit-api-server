@@ -76,10 +76,6 @@ model Invitation {
   hasRsvpDeadline          Boolean?                    @default(true)
   isPasswordProtected      Boolean?                    @default(false)
   universalPassword        String?                     @db.VarChar(100)
-  // Access mode within Private: 'common' | 'specific'. Stored explicitly so a
-  // Common invitation whose shared password hasn't been typed yet is not
-  // mistaken for Specific (which is otherwise inferred from an empty password).
-  accessMode               String?                     @db.VarChar(20)
   guestListEnabled         Boolean?                    @default(false)
   billingStatus            Invitation_billingStatus    @default(TRIAL)
   trialEndsAt              DateTime?                   @db.DateTime(0)
@@ -106,11 +102,22 @@ model Invitation {
   primarySponsorRight      String?                     @db.Text
   secondarySponsorRight    String?                     @db.Text
   onboardingCompletedAt    DateTime?                   @db.DateTime(0)
+  // Access mode within Private: 'common' | 'specific'. Stored explicitly so a
+  // Common invitation whose shared password hasn't been typed yet is not
+  // mistaken for Specific (which is otherwise inferred from an empty password).
+  accessMode               String?                     @db.VarChar(20)
+  openingEnabled           Boolean                     @default(false)
+  openingText1             String?                     @db.VarChar(100)
+  openingText2             String?                     @db.VarChar(100)
+  openingText3             String?                     @db.VarChar(100)
+  // When true the main section renders the uploaded cover photo alone
+  // (full width, original aspect ratio, no template text) and templateNo
+  // is ignored. templateNo is preserved so turning this off restores it.
+  useCustomMainPhoto       Boolean?                    @default(false)
   user                     User?                       @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Invitation_ibfk_1")
   invitationCoverPhotoList InvitationCoverPhoto[]
   InvitationDressColor     InvitationDressColor[]
   invitationEntourageList  InvitationEntourage[]
-  invitationSponsorList    InvitationSponsor[]
   faqList                  InvitationFaq[]
   InvitationGuestGroup     InvitationGuestGroup[]
   InvitationOrder          InvitationOrder[]
@@ -119,6 +126,7 @@ model Invitation {
   placeList                InvitationPlace[]
   invitationRSVP           InvitationRSVP[]
   InvitationSeatingTable   InvitationSeatingTable[]
+  invitationSponsorList    InvitationSponsor[]
 
   @@index([userId], map: "userId")
   @@index([billingStatus], map: "idx_invitation_billing_status")
@@ -270,16 +278,13 @@ model InvitationEntourage {
   @@index([invitationId, order], map: "idx_invitation_entourage_invitation_order")
 }
 
-// Free-form secondary sponsor rows. A row is one role (label) with the names
-// shown on each side; nameRight is only rendered when the section is 2-column.
-// An empty label renders as names only, matching the legacy text behaviour.
 model InvitationSponsor {
   id           Int        @id @default(autoincrement()) @db.UnsignedInt
   invitationId Int        @db.UnsignedInt
   label        String     @default("") @db.VarChar(100)
   labelRight   String     @default("") @db.VarChar(100)
-  nameLeft     String     @default("") @db.Text
-  nameRight    String     @default("") @db.Text
+  nameLeft     String     @db.Text
+  nameRight    String     @db.Text
   order        Int        @default(0) @db.UnsignedInt
   createdAt    DateTime?  @default(now()) @db.Timestamp(0)
   updatedAt    DateTime?  @default(now()) @db.Timestamp(0)

@@ -19,6 +19,7 @@ import { MemoryStoredFile } from 'nestjs-form-data';
 import { getTimezoneByCountry } from 'src/helpers/timezone.helper';
 import { formatTimeValue } from 'src/helpers/time.helper';
 import { assertAudioMime, assertImageMime } from 'src/helpers/mime.helper';
+import { compressOriginal } from 'src/helpers/image.helper';
 import { getEffectivePlanFeatures, PLAN_FEATURES } from 'src/constants/planFeatures';
 
 @Injectable()
@@ -461,22 +462,27 @@ export class InvitationService {
     assertImageMime(originalFile.mimeType);
     assertImageMime(croppedFile.mimeType);
     const photoJSON = JSON.parse(body.photoJSON);
-    const { crop, zoom, width, height } = photoJSON;
+    const { crop, zoom } = photoJSON;
+
+    // 원본은 최대 1024px로 축소/압축해 보관한다. 커스텀 메인 사진은 이 원본을
+    // 그대로 표시하므로, 저장하는 width/height는 클라이언트가 보낸 원본 크기가
+    // 아니라 압축 후 실제 크기여야 한다.
+    const compressed = await compressOriginal(originalFile.buffer);
 
     // 파일 이름 랜덤 생성
     const originalName = cryptoRandomString({ length: 16 });
-    const originalExtension = originalFile.mimeType.split('/')[1];
     const croppedName = cryptoRandomString({ length: 16 });
     const croppedExtension = croppedFile.mimeType.split('/')[1];
 
     // S3 경로 구성 (type에 따라 상위 폴더가 cover 또는 end로 분기)
     const folder = type === 'main' ? 'cover' : 'end';
 
-    const originalKey = `invitations/${uniqueId}/${folder}/original/${originalName}.${originalExtension}`;
+    // compressOriginal은 항상 jpeg로 인코딩하므로 확장자를 고정한다
+    const originalKey = `invitations/${uniqueId}/${folder}/original/${originalName}.jpeg`;
     const croppedKey = `invitations/${uniqueId}/${folder}/cropped/${croppedName}.${croppedExtension}`;
 
     // S3 업로드
-    await upload2S3(originalKey, originalFile.buffer);
+    await upload2S3(originalKey, compressed.buffer);
     await upload2S3(croppedKey, croppedFile.buffer);
 
     // 해당 타입의 기존 데이터가 있는지 확인
@@ -495,8 +501,8 @@ export class InvitationService {
       cropX: crop.x,
       cropY: crop.y,
       cropZoom: zoom,
-      width: width,
-      height: height,
+      width: compressed.width,
+      height: compressed.height,
     };
 
     if (!invitationCover) {
@@ -612,6 +618,27 @@ export class InvitationService {
       },
       data: {
         templateNo,
+      },
+    });
+  }
+
+  /**
+   * 메인 영역을 업로드한 커버 사진 한 장으로만 렌더링할지 토글한다.
+   * templateNo는 건드리지 않으므로 토글을 끄면 이전 템플릿이 그대로 복원된다.
+   */
+  async updateCustomMainPhoto(
+    uniqueId: string,
+    userId: number,
+    useCustomMainPhoto: boolean,
+  ) {
+    await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
+    await this.prismaService.invitation.update({
+      where: {
+        uniqueId,
+      },
+      data: {
+        useCustomMainPhoto,
       },
     });
   }

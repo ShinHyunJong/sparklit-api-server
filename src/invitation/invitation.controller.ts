@@ -222,6 +222,20 @@ export class InvitationController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Put('/custom-main-photo/:uniqueId')
+  updateCustomMainPhoto(
+    @Req() req,
+    @Param('uniqueId') uniqueId: string,
+    @Body() body: { useCustomMainPhoto: boolean },
+  ) {
+    return this.invitationService.updateCustomMainPhoto(
+      uniqueId,
+      req.user.id,
+      body.useCustomMainPhoto,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Get('/rsvp/:uniqueId')
   getRSVP(@Req() req, @Param('uniqueId') uniqueId: string) {
     return this.invitationService.getRSVPlist(uniqueId, req.user.id);

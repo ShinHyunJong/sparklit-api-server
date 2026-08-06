@@ -2925,7 +2925,6 @@ export namespace Prisma {
     invitationCoverPhotoList: number
     InvitationDressColor: number
     invitationEntourageList: number
-    invitationSponsorList: number
     faqList: number
     InvitationGuestGroup: number
     InvitationOrder: number
@@ -2934,13 +2933,13 @@ export namespace Prisma {
     placeList: number
     invitationRSVP: number
     InvitationSeatingTable: number
+    invitationSponsorList: number
   }
 
   export type InvitationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     invitationCoverPhotoList?: boolean | InvitationCountOutputTypeCountInvitationCoverPhotoListArgs
     InvitationDressColor?: boolean | InvitationCountOutputTypeCountInvitationDressColorArgs
     invitationEntourageList?: boolean | InvitationCountOutputTypeCountInvitationEntourageListArgs
-    invitationSponsorList?: boolean | InvitationCountOutputTypeCountInvitationSponsorListArgs
     faqList?: boolean | InvitationCountOutputTypeCountFaqListArgs
     InvitationGuestGroup?: boolean | InvitationCountOutputTypeCountInvitationGuestGroupArgs
     InvitationOrder?: boolean | InvitationCountOutputTypeCountInvitationOrderArgs
@@ -2949,6 +2948,7 @@ export namespace Prisma {
     placeList?: boolean | InvitationCountOutputTypeCountPlaceListArgs
     invitationRSVP?: boolean | InvitationCountOutputTypeCountInvitationRSVPArgs
     InvitationSeatingTable?: boolean | InvitationCountOutputTypeCountInvitationSeatingTableArgs
+    invitationSponsorList?: boolean | InvitationCountOutputTypeCountInvitationSponsorListArgs
   }
 
   // Custom InputTypes
@@ -2981,13 +2981,6 @@ export namespace Prisma {
    */
   export type InvitationCountOutputTypeCountInvitationEntourageListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InvitationEntourageWhereInput
-  }
-
-  /**
-   * InvitationCountOutputType without action
-   */
-  export type InvitationCountOutputTypeCountInvitationSponsorListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: InvitationSponsorWhereInput
   }
 
   /**
@@ -3044,6 +3037,13 @@ export namespace Prisma {
    */
   export type InvitationCountOutputTypeCountInvitationSeatingTableArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InvitationSeatingTableWhereInput
+  }
+
+  /**
+   * InvitationCountOutputType without action
+   */
+  export type InvitationCountOutputTypeCountInvitationSponsorListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationSponsorWhereInput
   }
 
 
@@ -4357,7 +4357,6 @@ export namespace Prisma {
     hasRsvpDeadline: boolean | null
     isPasswordProtected: boolean | null
     universalPassword: string | null
-    accessMode: string | null
     guestListEnabled: boolean | null
     billingStatus: $Enums.Invitation_billingStatus | null
     trialEndsAt: Date | null
@@ -4383,6 +4382,12 @@ export namespace Prisma {
     primarySponsorRight: string | null
     secondarySponsorRight: string | null
     onboardingCompletedAt: Date | null
+    accessMode: string | null
+    openingEnabled: boolean | null
+    openingText1: string | null
+    openingText2: string | null
+    openingText3: string | null
+    useCustomMainPhoto: boolean | null
   }
 
   export type InvitationMaxAggregateOutputType = {
@@ -4439,7 +4444,6 @@ export namespace Prisma {
     hasRsvpDeadline: boolean | null
     isPasswordProtected: boolean | null
     universalPassword: string | null
-    accessMode: string | null
     guestListEnabled: boolean | null
     billingStatus: $Enums.Invitation_billingStatus | null
     trialEndsAt: Date | null
@@ -4465,6 +4469,12 @@ export namespace Prisma {
     primarySponsorRight: string | null
     secondarySponsorRight: string | null
     onboardingCompletedAt: Date | null
+    accessMode: string | null
+    openingEnabled: boolean | null
+    openingText1: string | null
+    openingText2: string | null
+    openingText3: string | null
+    useCustomMainPhoto: boolean | null
   }
 
   export type InvitationCountAggregateOutputType = {
@@ -4521,7 +4531,6 @@ export namespace Prisma {
     hasRsvpDeadline: number
     isPasswordProtected: number
     universalPassword: number
-    accessMode: number
     guestListEnabled: number
     billingStatus: number
     trialEndsAt: number
@@ -4548,6 +4557,12 @@ export namespace Prisma {
     primarySponsorRight: number
     secondarySponsorRight: number
     onboardingCompletedAt: number
+    accessMode: number
+    openingEnabled: number
+    openingText1: number
+    openingText2: number
+    openingText3: number
+    useCustomMainPhoto: number
     _all: number
   }
 
@@ -4630,7 +4645,6 @@ export namespace Prisma {
     hasRsvpDeadline?: true
     isPasswordProtected?: true
     universalPassword?: true
-    accessMode?: true
     guestListEnabled?: true
     billingStatus?: true
     trialEndsAt?: true
@@ -4656,6 +4670,12 @@ export namespace Prisma {
     primarySponsorRight?: true
     secondarySponsorRight?: true
     onboardingCompletedAt?: true
+    accessMode?: true
+    openingEnabled?: true
+    openingText1?: true
+    openingText2?: true
+    openingText3?: true
+    useCustomMainPhoto?: true
   }
 
   export type InvitationMaxAggregateInputType = {
@@ -4712,7 +4732,6 @@ export namespace Prisma {
     hasRsvpDeadline?: true
     isPasswordProtected?: true
     universalPassword?: true
-    accessMode?: true
     guestListEnabled?: true
     billingStatus?: true
     trialEndsAt?: true
@@ -4738,6 +4757,12 @@ export namespace Prisma {
     primarySponsorRight?: true
     secondarySponsorRight?: true
     onboardingCompletedAt?: true
+    accessMode?: true
+    openingEnabled?: true
+    openingText1?: true
+    openingText2?: true
+    openingText3?: true
+    useCustomMainPhoto?: true
   }
 
   export type InvitationCountAggregateInputType = {
@@ -4794,7 +4819,6 @@ export namespace Prisma {
     hasRsvpDeadline?: true
     isPasswordProtected?: true
     universalPassword?: true
-    accessMode?: true
     guestListEnabled?: true
     billingStatus?: true
     trialEndsAt?: true
@@ -4821,6 +4845,12 @@ export namespace Prisma {
     primarySponsorRight?: true
     secondarySponsorRight?: true
     onboardingCompletedAt?: true
+    accessMode?: true
+    openingEnabled?: true
+    openingText1?: true
+    openingText2?: true
+    openingText3?: true
+    useCustomMainPhoto?: true
     _all?: true
   }
 
@@ -4964,7 +4994,6 @@ export namespace Prisma {
     hasRsvpDeadline: boolean | null
     isPasswordProtected: boolean | null
     universalPassword: string | null
-    accessMode: string | null
     guestListEnabled: boolean | null
     billingStatus: $Enums.Invitation_billingStatus
     trialEndsAt: Date | null
@@ -4991,6 +5020,12 @@ export namespace Prisma {
     primarySponsorRight: string | null
     secondarySponsorRight: string | null
     onboardingCompletedAt: Date | null
+    accessMode: string | null
+    openingEnabled: boolean
+    openingText1: string | null
+    openingText2: string | null
+    openingText3: string | null
+    useCustomMainPhoto: boolean | null
     _count: InvitationCountAggregateOutputType | null
     _avg: InvitationAvgAggregateOutputType | null
     _sum: InvitationSumAggregateOutputType | null
@@ -5066,7 +5101,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean
     isPasswordProtected?: boolean
     universalPassword?: boolean
-    accessMode?: boolean
     guestListEnabled?: boolean
     billingStatus?: boolean
     trialEndsAt?: boolean
@@ -5093,11 +5127,16 @@ export namespace Prisma {
     primarySponsorRight?: boolean
     secondarySponsorRight?: boolean
     onboardingCompletedAt?: boolean
+    accessMode?: boolean
+    openingEnabled?: boolean
+    openingText1?: boolean
+    openingText2?: boolean
+    openingText3?: boolean
+    useCustomMainPhoto?: boolean
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
     InvitationDressColor?: boolean | Invitation$InvitationDressColorArgs<ExtArgs>
     invitationEntourageList?: boolean | Invitation$invitationEntourageListArgs<ExtArgs>
-    invitationSponsorList?: boolean | Invitation$invitationSponsorListArgs<ExtArgs>
     faqList?: boolean | Invitation$faqListArgs<ExtArgs>
     InvitationGuestGroup?: boolean | Invitation$InvitationGuestGroupArgs<ExtArgs>
     InvitationOrder?: boolean | Invitation$InvitationOrderArgs<ExtArgs>
@@ -5106,6 +5145,7 @@ export namespace Prisma {
     placeList?: boolean | Invitation$placeListArgs<ExtArgs>
     invitationRSVP?: boolean | Invitation$invitationRSVPArgs<ExtArgs>
     InvitationSeatingTable?: boolean | Invitation$InvitationSeatingTableArgs<ExtArgs>
+    invitationSponsorList?: boolean | Invitation$invitationSponsorListArgs<ExtArgs>
     _count?: boolean | InvitationCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["invitation"]>
 
@@ -5165,7 +5205,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean
     isPasswordProtected?: boolean
     universalPassword?: boolean
-    accessMode?: boolean
     guestListEnabled?: boolean
     billingStatus?: boolean
     trialEndsAt?: boolean
@@ -5192,15 +5231,20 @@ export namespace Prisma {
     primarySponsorRight?: boolean
     secondarySponsorRight?: boolean
     onboardingCompletedAt?: boolean
+    accessMode?: boolean
+    openingEnabled?: boolean
+    openingText1?: boolean
+    openingText2?: boolean
+    openingText3?: boolean
+    useCustomMainPhoto?: boolean
   }
 
-  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpDeadline" | "rsvpDeadlineDesc" | "rsvpHasFood" | "isRsvpPopup" | "hasRsvpDeadline" | "isPasswordProtected" | "universalPassword" | "accessMode" | "guestListEnabled" | "billingStatus" | "trialEndsAt" | "currentPlanCode" | "accessStartedAt" | "accessEndsAt" | "watermarkEnabled" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt" | "bestManLabel" | "maidOfHonorLabel" | "groomsMenLabel" | "bridesMaidsLabel" | "sponsorColumns" | "secondarySponsorColumns" | "primarySponsorRight" | "secondarySponsorRight" | "onboardingCompletedAt", ExtArgs["result"]["invitation"]>
+  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpDeadline" | "rsvpDeadlineDesc" | "rsvpHasFood" | "isRsvpPopup" | "hasRsvpDeadline" | "isPasswordProtected" | "universalPassword" | "guestListEnabled" | "billingStatus" | "trialEndsAt" | "currentPlanCode" | "accessStartedAt" | "accessEndsAt" | "watermarkEnabled" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt" | "bestManLabel" | "maidOfHonorLabel" | "groomsMenLabel" | "bridesMaidsLabel" | "sponsorColumns" | "secondarySponsorColumns" | "primarySponsorRight" | "secondarySponsorRight" | "onboardingCompletedAt" | "accessMode" | "openingEnabled" | "openingText1" | "openingText2" | "openingText3" | "useCustomMainPhoto", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
     InvitationDressColor?: boolean | Invitation$InvitationDressColorArgs<ExtArgs>
     invitationEntourageList?: boolean | Invitation$invitationEntourageListArgs<ExtArgs>
-    invitationSponsorList?: boolean | Invitation$invitationSponsorListArgs<ExtArgs>
     faqList?: boolean | Invitation$faqListArgs<ExtArgs>
     InvitationGuestGroup?: boolean | Invitation$InvitationGuestGroupArgs<ExtArgs>
     InvitationOrder?: boolean | Invitation$InvitationOrderArgs<ExtArgs>
@@ -5209,6 +5253,7 @@ export namespace Prisma {
     placeList?: boolean | Invitation$placeListArgs<ExtArgs>
     invitationRSVP?: boolean | Invitation$invitationRSVPArgs<ExtArgs>
     InvitationSeatingTable?: boolean | Invitation$InvitationSeatingTableArgs<ExtArgs>
+    invitationSponsorList?: boolean | Invitation$invitationSponsorListArgs<ExtArgs>
     _count?: boolean | InvitationCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -5219,7 +5264,6 @@ export namespace Prisma {
       invitationCoverPhotoList: Prisma.$InvitationCoverPhotoPayload<ExtArgs>[]
       InvitationDressColor: Prisma.$InvitationDressColorPayload<ExtArgs>[]
       invitationEntourageList: Prisma.$InvitationEntouragePayload<ExtArgs>[]
-      invitationSponsorList: Prisma.$InvitationSponsorPayload<ExtArgs>[]
       faqList: Prisma.$InvitationFaqPayload<ExtArgs>[]
       InvitationGuestGroup: Prisma.$InvitationGuestGroupPayload<ExtArgs>[]
       InvitationOrder: Prisma.$InvitationOrderPayload<ExtArgs>[]
@@ -5228,6 +5272,7 @@ export namespace Prisma {
       placeList: Prisma.$InvitationPlacePayload<ExtArgs>[]
       invitationRSVP: Prisma.$InvitationRSVPPayload<ExtArgs>[]
       InvitationSeatingTable: Prisma.$InvitationSeatingTablePayload<ExtArgs>[]
+      invitationSponsorList: Prisma.$InvitationSponsorPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5283,7 +5328,6 @@ export namespace Prisma {
       hasRsvpDeadline: boolean | null
       isPasswordProtected: boolean | null
       universalPassword: string | null
-      accessMode: string | null
       guestListEnabled: boolean | null
       billingStatus: $Enums.Invitation_billingStatus
       trialEndsAt: Date | null
@@ -5310,6 +5354,12 @@ export namespace Prisma {
       primarySponsorRight: string | null
       secondarySponsorRight: string | null
       onboardingCompletedAt: Date | null
+      accessMode: string | null
+      openingEnabled: boolean
+      openingText1: string | null
+      openingText2: string | null
+      openingText3: string | null
+      useCustomMainPhoto: boolean | null
     }, ExtArgs["result"]["invitation"]>
     composites: {}
   }
@@ -5654,7 +5704,6 @@ export namespace Prisma {
     invitationCoverPhotoList<T extends Invitation$invitationCoverPhotoListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$invitationCoverPhotoListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationCoverPhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     InvitationDressColor<T extends Invitation$InvitationDressColorArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$InvitationDressColorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationDressColorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     invitationEntourageList<T extends Invitation$invitationEntourageListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$invitationEntourageListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationEntouragePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    invitationSponsorList<T extends Invitation$invitationSponsorListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$invitationSponsorListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationSponsorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     faqList<T extends Invitation$faqListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$faqListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationFaqPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     InvitationGuestGroup<T extends Invitation$InvitationGuestGroupArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$InvitationGuestGroupArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationGuestGroupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     InvitationOrder<T extends Invitation$InvitationOrderArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$InvitationOrderArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -5663,6 +5712,7 @@ export namespace Prisma {
     placeList<T extends Invitation$placeListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$placeListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPlacePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     invitationRSVP<T extends Invitation$invitationRSVPArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$invitationRSVPArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationRSVPPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     InvitationSeatingTable<T extends Invitation$InvitationSeatingTableArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$InvitationSeatingTableArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationSeatingTablePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    invitationSponsorList<T extends Invitation$invitationSponsorListArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$invitationSponsorListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationSponsorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5745,7 +5795,6 @@ export namespace Prisma {
     readonly hasRsvpDeadline: FieldRef<"Invitation", 'Boolean'>
     readonly isPasswordProtected: FieldRef<"Invitation", 'Boolean'>
     readonly universalPassword: FieldRef<"Invitation", 'String'>
-    readonly accessMode: FieldRef<"Invitation", 'String'>
     readonly guestListEnabled: FieldRef<"Invitation", 'Boolean'>
     readonly billingStatus: FieldRef<"Invitation", 'Invitation_billingStatus'>
     readonly trialEndsAt: FieldRef<"Invitation", 'DateTime'>
@@ -5772,6 +5821,12 @@ export namespace Prisma {
     readonly primarySponsorRight: FieldRef<"Invitation", 'String'>
     readonly secondarySponsorRight: FieldRef<"Invitation", 'String'>
     readonly onboardingCompletedAt: FieldRef<"Invitation", 'DateTime'>
+    readonly accessMode: FieldRef<"Invitation", 'String'>
+    readonly openingEnabled: FieldRef<"Invitation", 'Boolean'>
+    readonly openingText1: FieldRef<"Invitation", 'String'>
+    readonly openingText2: FieldRef<"Invitation", 'String'>
+    readonly openingText3: FieldRef<"Invitation", 'String'>
+    readonly useCustomMainPhoto: FieldRef<"Invitation", 'Boolean'>
   }
     
 
@@ -6206,30 +6261,6 @@ export namespace Prisma {
   }
 
   /**
-   * Invitation.invitationSponsorList
-   */
-  export type Invitation$invitationSponsorListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the InvitationSponsor
-     */
-    select?: InvitationSponsorSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the InvitationSponsor
-     */
-    omit?: InvitationSponsorOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: InvitationSponsorInclude<ExtArgs> | null
-    where?: InvitationSponsorWhereInput
-    orderBy?: InvitationSponsorOrderByWithRelationInput | InvitationSponsorOrderByWithRelationInput[]
-    cursor?: InvitationSponsorWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: InvitationSponsorScalarFieldEnum | InvitationSponsorScalarFieldEnum[]
-  }
-
-  /**
    * Invitation.faqList
    */
   export type Invitation$faqListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6419,6 +6450,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: InvitationSeatingTableScalarFieldEnum | InvitationSeatingTableScalarFieldEnum[]
+  }
+
+  /**
+   * Invitation.invitationSponsorList
+   */
+  export type Invitation$invitationSponsorListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvitationSponsor
+     */
+    select?: InvitationSponsorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InvitationSponsor
+     */
+    omit?: InvitationSponsorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationSponsorInclude<ExtArgs> | null
+    where?: InvitationSponsorWhereInput
+    orderBy?: InvitationSponsorOrderByWithRelationInput | InvitationSponsorOrderByWithRelationInput[]
+    cursor?: InvitationSponsorWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvitationSponsorScalarFieldEnum | InvitationSponsorScalarFieldEnum[]
   }
 
   /**
@@ -28739,7 +28794,6 @@ export namespace Prisma {
     hasRsvpDeadline: 'hasRsvpDeadline',
     isPasswordProtected: 'isPasswordProtected',
     universalPassword: 'universalPassword',
-    accessMode: 'accessMode',
     guestListEnabled: 'guestListEnabled',
     billingStatus: 'billingStatus',
     trialEndsAt: 'trialEndsAt',
@@ -28765,7 +28819,13 @@ export namespace Prisma {
     secondarySponsorColumns: 'secondarySponsorColumns',
     primarySponsorRight: 'primarySponsorRight',
     secondarySponsorRight: 'secondarySponsorRight',
-    onboardingCompletedAt: 'onboardingCompletedAt'
+    onboardingCompletedAt: 'onboardingCompletedAt',
+    accessMode: 'accessMode',
+    openingEnabled: 'openingEnabled',
+    openingText1: 'openingText1',
+    openingText2: 'openingText2',
+    openingText3: 'openingText3',
+    useCustomMainPhoto: 'useCustomMainPhoto'
   };
 
   export type InvitationScalarFieldEnum = (typeof InvitationScalarFieldEnum)[keyof typeof InvitationScalarFieldEnum]
@@ -29172,7 +29232,6 @@ export namespace Prisma {
     rsvpTitle: 'rsvpTitle',
     rsvpDeadlineDesc: 'rsvpDeadlineDesc',
     universalPassword: 'universalPassword',
-    accessMode: 'accessMode',
     bestMan: 'bestMan',
     bridesMaids: 'bridesMaids',
     wishlistText: 'wishlistText',
@@ -29185,7 +29244,11 @@ export namespace Prisma {
     groomsMenLabel: 'groomsMenLabel',
     bridesMaidsLabel: 'bridesMaidsLabel',
     primarySponsorRight: 'primarySponsorRight',
-    secondarySponsorRight: 'secondarySponsorRight'
+    secondarySponsorRight: 'secondarySponsorRight',
+    accessMode: 'accessMode',
+    openingText1: 'openingText1',
+    openingText2: 'openingText2',
+    openingText3: 'openingText3'
   };
 
   export type InvitationOrderByRelevanceFieldEnum = (typeof InvitationOrderByRelevanceFieldEnum)[keyof typeof InvitationOrderByRelevanceFieldEnum]
@@ -29625,7 +29688,6 @@ export namespace Prisma {
     hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
     isPasswordProtected?: BoolNullableFilter<"Invitation"> | boolean | null
     universalPassword?: StringNullableFilter<"Invitation"> | string | null
-    accessMode?: StringNullableFilter<"Invitation"> | string | null
     guestListEnabled?: BoolNullableFilter<"Invitation"> | boolean | null
     billingStatus?: EnumInvitation_billingStatusFilter<"Invitation"> | $Enums.Invitation_billingStatus
     trialEndsAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
@@ -29652,11 +29714,16 @@ export namespace Prisma {
     primarySponsorRight?: StringNullableFilter<"Invitation"> | string | null
     secondarySponsorRight?: StringNullableFilter<"Invitation"> | string | null
     onboardingCompletedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    accessMode?: StringNullableFilter<"Invitation"> | string | null
+    openingEnabled?: BoolFilter<"Invitation"> | boolean
+    openingText1?: StringNullableFilter<"Invitation"> | string | null
+    openingText2?: StringNullableFilter<"Invitation"> | string | null
+    openingText3?: StringNullableFilter<"Invitation"> | string | null
+    useCustomMainPhoto?: BoolNullableFilter<"Invitation"> | boolean | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     invitationCoverPhotoList?: InvitationCoverPhotoListRelationFilter
     InvitationDressColor?: InvitationDressColorListRelationFilter
     invitationEntourageList?: InvitationEntourageListRelationFilter
-    invitationSponsorList?: InvitationSponsorListRelationFilter
     faqList?: InvitationFaqListRelationFilter
     InvitationGuestGroup?: InvitationGuestGroupListRelationFilter
     InvitationOrder?: InvitationOrderListRelationFilter
@@ -29665,6 +29732,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceListRelationFilter
     invitationRSVP?: InvitationRSVPListRelationFilter
     InvitationSeatingTable?: InvitationSeatingTableListRelationFilter
+    invitationSponsorList?: InvitationSponsorListRelationFilter
   }
 
   export type InvitationOrderByWithRelationInput = {
@@ -29721,7 +29789,6 @@ export namespace Prisma {
     hasRsvpDeadline?: SortOrderInput | SortOrder
     isPasswordProtected?: SortOrderInput | SortOrder
     universalPassword?: SortOrderInput | SortOrder
-    accessMode?: SortOrderInput | SortOrder
     guestListEnabled?: SortOrderInput | SortOrder
     billingStatus?: SortOrder
     trialEndsAt?: SortOrderInput | SortOrder
@@ -29748,11 +29815,16 @@ export namespace Prisma {
     primarySponsorRight?: SortOrderInput | SortOrder
     secondarySponsorRight?: SortOrderInput | SortOrder
     onboardingCompletedAt?: SortOrderInput | SortOrder
+    accessMode?: SortOrderInput | SortOrder
+    openingEnabled?: SortOrder
+    openingText1?: SortOrderInput | SortOrder
+    openingText2?: SortOrderInput | SortOrder
+    openingText3?: SortOrderInput | SortOrder
+    useCustomMainPhoto?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     invitationCoverPhotoList?: InvitationCoverPhotoOrderByRelationAggregateInput
     InvitationDressColor?: InvitationDressColorOrderByRelationAggregateInput
     invitationEntourageList?: InvitationEntourageOrderByRelationAggregateInput
-    invitationSponsorList?: InvitationSponsorOrderByRelationAggregateInput
     faqList?: InvitationFaqOrderByRelationAggregateInput
     InvitationGuestGroup?: InvitationGuestGroupOrderByRelationAggregateInput
     InvitationOrder?: InvitationOrderOrderByRelationAggregateInput
@@ -29761,6 +29833,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceOrderByRelationAggregateInput
     invitationRSVP?: InvitationRSVPOrderByRelationAggregateInput
     InvitationSeatingTable?: InvitationSeatingTableOrderByRelationAggregateInput
+    invitationSponsorList?: InvitationSponsorOrderByRelationAggregateInput
     _relevance?: InvitationOrderByRelevanceInput
   }
 
@@ -29821,7 +29894,6 @@ export namespace Prisma {
     hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
     isPasswordProtected?: BoolNullableFilter<"Invitation"> | boolean | null
     universalPassword?: StringNullableFilter<"Invitation"> | string | null
-    accessMode?: StringNullableFilter<"Invitation"> | string | null
     guestListEnabled?: BoolNullableFilter<"Invitation"> | boolean | null
     billingStatus?: EnumInvitation_billingStatusFilter<"Invitation"> | $Enums.Invitation_billingStatus
     trialEndsAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
@@ -29848,11 +29920,16 @@ export namespace Prisma {
     primarySponsorRight?: StringNullableFilter<"Invitation"> | string | null
     secondarySponsorRight?: StringNullableFilter<"Invitation"> | string | null
     onboardingCompletedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    accessMode?: StringNullableFilter<"Invitation"> | string | null
+    openingEnabled?: BoolFilter<"Invitation"> | boolean
+    openingText1?: StringNullableFilter<"Invitation"> | string | null
+    openingText2?: StringNullableFilter<"Invitation"> | string | null
+    openingText3?: StringNullableFilter<"Invitation"> | string | null
+    useCustomMainPhoto?: BoolNullableFilter<"Invitation"> | boolean | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     invitationCoverPhotoList?: InvitationCoverPhotoListRelationFilter
     InvitationDressColor?: InvitationDressColorListRelationFilter
     invitationEntourageList?: InvitationEntourageListRelationFilter
-    invitationSponsorList?: InvitationSponsorListRelationFilter
     faqList?: InvitationFaqListRelationFilter
     InvitationGuestGroup?: InvitationGuestGroupListRelationFilter
     InvitationOrder?: InvitationOrderListRelationFilter
@@ -29861,6 +29938,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceListRelationFilter
     invitationRSVP?: InvitationRSVPListRelationFilter
     InvitationSeatingTable?: InvitationSeatingTableListRelationFilter
+    invitationSponsorList?: InvitationSponsorListRelationFilter
   }, "id" | "uniqueId">
 
   export type InvitationOrderByWithAggregationInput = {
@@ -29917,7 +29995,6 @@ export namespace Prisma {
     hasRsvpDeadline?: SortOrderInput | SortOrder
     isPasswordProtected?: SortOrderInput | SortOrder
     universalPassword?: SortOrderInput | SortOrder
-    accessMode?: SortOrderInput | SortOrder
     guestListEnabled?: SortOrderInput | SortOrder
     billingStatus?: SortOrder
     trialEndsAt?: SortOrderInput | SortOrder
@@ -29944,6 +30021,12 @@ export namespace Prisma {
     primarySponsorRight?: SortOrderInput | SortOrder
     secondarySponsorRight?: SortOrderInput | SortOrder
     onboardingCompletedAt?: SortOrderInput | SortOrder
+    accessMode?: SortOrderInput | SortOrder
+    openingEnabled?: SortOrder
+    openingText1?: SortOrderInput | SortOrder
+    openingText2?: SortOrderInput | SortOrder
+    openingText3?: SortOrderInput | SortOrder
+    useCustomMainPhoto?: SortOrderInput | SortOrder
     _count?: InvitationCountOrderByAggregateInput
     _avg?: InvitationAvgOrderByAggregateInput
     _max?: InvitationMaxOrderByAggregateInput
@@ -30008,7 +30091,6 @@ export namespace Prisma {
     hasRsvpDeadline?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
     isPasswordProtected?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
     universalPassword?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
-    accessMode?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     guestListEnabled?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
     billingStatus?: EnumInvitation_billingStatusWithAggregatesFilter<"Invitation"> | $Enums.Invitation_billingStatus
     trialEndsAt?: DateTimeNullableWithAggregatesFilter<"Invitation"> | Date | string | null
@@ -30035,6 +30117,12 @@ export namespace Prisma {
     primarySponsorRight?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     secondarySponsorRight?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     onboardingCompletedAt?: DateTimeNullableWithAggregatesFilter<"Invitation"> | Date | string | null
+    accessMode?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    openingEnabled?: BoolWithAggregatesFilter<"Invitation"> | boolean
+    openingText1?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    openingText2?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    openingText3?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    useCustomMainPhoto?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
   }
 
   export type InvitationPlaceWhereInput = {
@@ -31797,7 +31885,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -31824,11 +31911,16 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
@@ -31837,6 +31929,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateInput = {
@@ -31893,7 +31986,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -31920,10 +32012,15 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
@@ -31932,6 +32029,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUpdateInput = {
@@ -31986,7 +32084,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -32013,11 +32110,16 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
@@ -32026,6 +32128,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateInput = {
@@ -32082,7 +32185,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -32109,10 +32211,15 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
@@ -32121,6 +32228,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationCreateManyInput = {
@@ -32177,7 +32285,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -32204,6 +32311,12 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
   }
 
   export type InvitationUpdateManyMutationInput = {
@@ -32258,7 +32371,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -32285,6 +32397,12 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type InvitationUncheckedUpdateManyInput = {
@@ -32341,7 +32459,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -32368,6 +32485,12 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type InvitationPlaceCreateInput = {
@@ -33136,8 +33259,8 @@ export namespace Prisma {
   export type InvitationSponsorCreateInput = {
     label?: string
     labelRight?: string
-    nameLeft?: string
-    nameRight?: string
+    nameLeft: string
+    nameRight: string
     order?: number
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
@@ -33149,8 +33272,8 @@ export namespace Prisma {
     invitationId: number
     label?: string
     labelRight?: string
-    nameLeft?: string
-    nameRight?: string
+    nameLeft: string
+    nameRight: string
     order?: number
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
@@ -33184,8 +33307,8 @@ export namespace Prisma {
     invitationId: number
     label?: string
     labelRight?: string
-    nameLeft?: string
-    nameRight?: string
+    nameLeft: string
+    nameRight: string
     order?: number
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
@@ -34265,12 +34388,6 @@ export namespace Prisma {
     none?: InvitationEntourageWhereInput
   }
 
-  export type InvitationSponsorListRelationFilter = {
-    every?: InvitationSponsorWhereInput
-    some?: InvitationSponsorWhereInput
-    none?: InvitationSponsorWhereInput
-  }
-
   export type InvitationFaqListRelationFilter = {
     every?: InvitationFaqWhereInput
     some?: InvitationFaqWhereInput
@@ -34313,6 +34430,12 @@ export namespace Prisma {
     none?: InvitationSeatingTableWhereInput
   }
 
+  export type InvitationSponsorListRelationFilter = {
+    every?: InvitationSponsorWhereInput
+    some?: InvitationSponsorWhereInput
+    none?: InvitationSponsorWhereInput
+  }
+
   export type InvitationCoverPhotoOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -34322,10 +34445,6 @@ export namespace Prisma {
   }
 
   export type InvitationEntourageOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type InvitationSponsorOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -34354,6 +34473,10 @@ export namespace Prisma {
   }
 
   export type InvitationSeatingTableOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type InvitationSponsorOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -34417,7 +34540,6 @@ export namespace Prisma {
     hasRsvpDeadline?: SortOrder
     isPasswordProtected?: SortOrder
     universalPassword?: SortOrder
-    accessMode?: SortOrder
     guestListEnabled?: SortOrder
     billingStatus?: SortOrder
     trialEndsAt?: SortOrder
@@ -34444,6 +34566,12 @@ export namespace Prisma {
     primarySponsorRight?: SortOrder
     secondarySponsorRight?: SortOrder
     onboardingCompletedAt?: SortOrder
+    accessMode?: SortOrder
+    openingEnabled?: SortOrder
+    openingText1?: SortOrder
+    openingText2?: SortOrder
+    openingText3?: SortOrder
+    useCustomMainPhoto?: SortOrder
   }
 
   export type InvitationAvgOrderByAggregateInput = {
@@ -34512,7 +34640,6 @@ export namespace Prisma {
     hasRsvpDeadline?: SortOrder
     isPasswordProtected?: SortOrder
     universalPassword?: SortOrder
-    accessMode?: SortOrder
     guestListEnabled?: SortOrder
     billingStatus?: SortOrder
     trialEndsAt?: SortOrder
@@ -34538,6 +34665,12 @@ export namespace Prisma {
     primarySponsorRight?: SortOrder
     secondarySponsorRight?: SortOrder
     onboardingCompletedAt?: SortOrder
+    accessMode?: SortOrder
+    openingEnabled?: SortOrder
+    openingText1?: SortOrder
+    openingText2?: SortOrder
+    openingText3?: SortOrder
+    useCustomMainPhoto?: SortOrder
   }
 
   export type InvitationMinOrderByAggregateInput = {
@@ -34594,7 +34727,6 @@ export namespace Prisma {
     hasRsvpDeadline?: SortOrder
     isPasswordProtected?: SortOrder
     universalPassword?: SortOrder
-    accessMode?: SortOrder
     guestListEnabled?: SortOrder
     billingStatus?: SortOrder
     trialEndsAt?: SortOrder
@@ -34620,6 +34752,12 @@ export namespace Prisma {
     primarySponsorRight?: SortOrder
     secondarySponsorRight?: SortOrder
     onboardingCompletedAt?: SortOrder
+    accessMode?: SortOrder
+    openingEnabled?: SortOrder
+    openingText1?: SortOrder
+    openingText2?: SortOrder
+    openingText3?: SortOrder
+    useCustomMainPhoto?: SortOrder
   }
 
   export type InvitationSumOrderByAggregateInput = {
@@ -36232,13 +36370,6 @@ export namespace Prisma {
     connect?: InvitationEntourageWhereUniqueInput | InvitationEntourageWhereUniqueInput[]
   }
 
-  export type InvitationSponsorCreateNestedManyWithoutInvitationInput = {
-    create?: XOR<InvitationSponsorCreateWithoutInvitationInput, InvitationSponsorUncheckedCreateWithoutInvitationInput> | InvitationSponsorCreateWithoutInvitationInput[] | InvitationSponsorUncheckedCreateWithoutInvitationInput[]
-    connectOrCreate?: InvitationSponsorCreateOrConnectWithoutInvitationInput | InvitationSponsorCreateOrConnectWithoutInvitationInput[]
-    createMany?: InvitationSponsorCreateManyInvitationInputEnvelope
-    connect?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
-  }
-
   export type InvitationFaqCreateNestedManyWithoutInvitationInput = {
     create?: XOR<InvitationFaqCreateWithoutInvitationInput, InvitationFaqUncheckedCreateWithoutInvitationInput> | InvitationFaqCreateWithoutInvitationInput[] | InvitationFaqUncheckedCreateWithoutInvitationInput[]
     connectOrCreate?: InvitationFaqCreateOrConnectWithoutInvitationInput | InvitationFaqCreateOrConnectWithoutInvitationInput[]
@@ -36295,6 +36426,13 @@ export namespace Prisma {
     connect?: InvitationSeatingTableWhereUniqueInput | InvitationSeatingTableWhereUniqueInput[]
   }
 
+  export type InvitationSponsorCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<InvitationSponsorCreateWithoutInvitationInput, InvitationSponsorUncheckedCreateWithoutInvitationInput> | InvitationSponsorCreateWithoutInvitationInput[] | InvitationSponsorUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationSponsorCreateOrConnectWithoutInvitationInput | InvitationSponsorCreateOrConnectWithoutInvitationInput[]
+    createMany?: InvitationSponsorCreateManyInvitationInputEnvelope
+    connect?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
+  }
+
   export type InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput = {
     create?: XOR<InvitationCoverPhotoCreateWithoutInvitationInput, InvitationCoverPhotoUncheckedCreateWithoutInvitationInput> | InvitationCoverPhotoCreateWithoutInvitationInput[] | InvitationCoverPhotoUncheckedCreateWithoutInvitationInput[]
     connectOrCreate?: InvitationCoverPhotoCreateOrConnectWithoutInvitationInput | InvitationCoverPhotoCreateOrConnectWithoutInvitationInput[]
@@ -36314,13 +36452,6 @@ export namespace Prisma {
     connectOrCreate?: InvitationEntourageCreateOrConnectWithoutInvitationInput | InvitationEntourageCreateOrConnectWithoutInvitationInput[]
     createMany?: InvitationEntourageCreateManyInvitationInputEnvelope
     connect?: InvitationEntourageWhereUniqueInput | InvitationEntourageWhereUniqueInput[]
-  }
-
-  export type InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput = {
-    create?: XOR<InvitationSponsorCreateWithoutInvitationInput, InvitationSponsorUncheckedCreateWithoutInvitationInput> | InvitationSponsorCreateWithoutInvitationInput[] | InvitationSponsorUncheckedCreateWithoutInvitationInput[]
-    connectOrCreate?: InvitationSponsorCreateOrConnectWithoutInvitationInput | InvitationSponsorCreateOrConnectWithoutInvitationInput[]
-    createMany?: InvitationSponsorCreateManyInvitationInputEnvelope
-    connect?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
   }
 
   export type InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput = {
@@ -36377,6 +36508,13 @@ export namespace Prisma {
     connectOrCreate?: InvitationSeatingTableCreateOrConnectWithoutInvitationInput | InvitationSeatingTableCreateOrConnectWithoutInvitationInput[]
     createMany?: InvitationSeatingTableCreateManyInvitationInputEnvelope
     connect?: InvitationSeatingTableWhereUniqueInput | InvitationSeatingTableWhereUniqueInput[]
+  }
+
+  export type InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<InvitationSponsorCreateWithoutInvitationInput, InvitationSponsorUncheckedCreateWithoutInvitationInput> | InvitationSponsorCreateWithoutInvitationInput[] | InvitationSponsorUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationSponsorCreateOrConnectWithoutInvitationInput | InvitationSponsorCreateOrConnectWithoutInvitationInput[]
+    createMany?: InvitationSponsorCreateManyInvitationInputEnvelope
+    connect?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -36449,20 +36587,6 @@ export namespace Prisma {
     update?: InvitationEntourageUpdateWithWhereUniqueWithoutInvitationInput | InvitationEntourageUpdateWithWhereUniqueWithoutInvitationInput[]
     updateMany?: InvitationEntourageUpdateManyWithWhereWithoutInvitationInput | InvitationEntourageUpdateManyWithWhereWithoutInvitationInput[]
     deleteMany?: InvitationEntourageScalarWhereInput | InvitationEntourageScalarWhereInput[]
-  }
-
-  export type InvitationSponsorUpdateManyWithoutInvitationNestedInput = {
-    create?: XOR<InvitationSponsorCreateWithoutInvitationInput, InvitationSponsorUncheckedCreateWithoutInvitationInput> | InvitationSponsorCreateWithoutInvitationInput[] | InvitationSponsorUncheckedCreateWithoutInvitationInput[]
-    connectOrCreate?: InvitationSponsorCreateOrConnectWithoutInvitationInput | InvitationSponsorCreateOrConnectWithoutInvitationInput[]
-    upsert?: InvitationSponsorUpsertWithWhereUniqueWithoutInvitationInput | InvitationSponsorUpsertWithWhereUniqueWithoutInvitationInput[]
-    createMany?: InvitationSponsorCreateManyInvitationInputEnvelope
-    set?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
-    disconnect?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
-    delete?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
-    connect?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
-    update?: InvitationSponsorUpdateWithWhereUniqueWithoutInvitationInput | InvitationSponsorUpdateWithWhereUniqueWithoutInvitationInput[]
-    updateMany?: InvitationSponsorUpdateManyWithWhereWithoutInvitationInput | InvitationSponsorUpdateManyWithWhereWithoutInvitationInput[]
-    deleteMany?: InvitationSponsorScalarWhereInput | InvitationSponsorScalarWhereInput[]
   }
 
   export type InvitationFaqUpdateManyWithoutInvitationNestedInput = {
@@ -36577,6 +36701,20 @@ export namespace Prisma {
     deleteMany?: InvitationSeatingTableScalarWhereInput | InvitationSeatingTableScalarWhereInput[]
   }
 
+  export type InvitationSponsorUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<InvitationSponsorCreateWithoutInvitationInput, InvitationSponsorUncheckedCreateWithoutInvitationInput> | InvitationSponsorCreateWithoutInvitationInput[] | InvitationSponsorUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationSponsorCreateOrConnectWithoutInvitationInput | InvitationSponsorCreateOrConnectWithoutInvitationInput[]
+    upsert?: InvitationSponsorUpsertWithWhereUniqueWithoutInvitationInput | InvitationSponsorUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: InvitationSponsorCreateManyInvitationInputEnvelope
+    set?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
+    disconnect?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
+    delete?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
+    connect?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
+    update?: InvitationSponsorUpdateWithWhereUniqueWithoutInvitationInput | InvitationSponsorUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: InvitationSponsorUpdateManyWithWhereWithoutInvitationInput | InvitationSponsorUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: InvitationSponsorScalarWhereInput | InvitationSponsorScalarWhereInput[]
+  }
+
   export type InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput = {
     create?: XOR<InvitationCoverPhotoCreateWithoutInvitationInput, InvitationCoverPhotoUncheckedCreateWithoutInvitationInput> | InvitationCoverPhotoCreateWithoutInvitationInput[] | InvitationCoverPhotoUncheckedCreateWithoutInvitationInput[]
     connectOrCreate?: InvitationCoverPhotoCreateOrConnectWithoutInvitationInput | InvitationCoverPhotoCreateOrConnectWithoutInvitationInput[]
@@ -36617,20 +36755,6 @@ export namespace Prisma {
     update?: InvitationEntourageUpdateWithWhereUniqueWithoutInvitationInput | InvitationEntourageUpdateWithWhereUniqueWithoutInvitationInput[]
     updateMany?: InvitationEntourageUpdateManyWithWhereWithoutInvitationInput | InvitationEntourageUpdateManyWithWhereWithoutInvitationInput[]
     deleteMany?: InvitationEntourageScalarWhereInput | InvitationEntourageScalarWhereInput[]
-  }
-
-  export type InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput = {
-    create?: XOR<InvitationSponsorCreateWithoutInvitationInput, InvitationSponsorUncheckedCreateWithoutInvitationInput> | InvitationSponsorCreateWithoutInvitationInput[] | InvitationSponsorUncheckedCreateWithoutInvitationInput[]
-    connectOrCreate?: InvitationSponsorCreateOrConnectWithoutInvitationInput | InvitationSponsorCreateOrConnectWithoutInvitationInput[]
-    upsert?: InvitationSponsorUpsertWithWhereUniqueWithoutInvitationInput | InvitationSponsorUpsertWithWhereUniqueWithoutInvitationInput[]
-    createMany?: InvitationSponsorCreateManyInvitationInputEnvelope
-    set?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
-    disconnect?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
-    delete?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
-    connect?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
-    update?: InvitationSponsorUpdateWithWhereUniqueWithoutInvitationInput | InvitationSponsorUpdateWithWhereUniqueWithoutInvitationInput[]
-    updateMany?: InvitationSponsorUpdateManyWithWhereWithoutInvitationInput | InvitationSponsorUpdateManyWithWhereWithoutInvitationInput[]
-    deleteMany?: InvitationSponsorScalarWhereInput | InvitationSponsorScalarWhereInput[]
   }
 
   export type InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput = {
@@ -36743,6 +36867,20 @@ export namespace Prisma {
     update?: InvitationSeatingTableUpdateWithWhereUniqueWithoutInvitationInput | InvitationSeatingTableUpdateWithWhereUniqueWithoutInvitationInput[]
     updateMany?: InvitationSeatingTableUpdateManyWithWhereWithoutInvitationInput | InvitationSeatingTableUpdateManyWithWhereWithoutInvitationInput[]
     deleteMany?: InvitationSeatingTableScalarWhereInput | InvitationSeatingTableScalarWhereInput[]
+  }
+
+  export type InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<InvitationSponsorCreateWithoutInvitationInput, InvitationSponsorUncheckedCreateWithoutInvitationInput> | InvitationSponsorCreateWithoutInvitationInput[] | InvitationSponsorUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: InvitationSponsorCreateOrConnectWithoutInvitationInput | InvitationSponsorCreateOrConnectWithoutInvitationInput[]
+    upsert?: InvitationSponsorUpsertWithWhereUniqueWithoutInvitationInput | InvitationSponsorUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: InvitationSponsorCreateManyInvitationInputEnvelope
+    set?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
+    disconnect?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
+    delete?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
+    connect?: InvitationSponsorWhereUniqueInput | InvitationSponsorWhereUniqueInput[]
+    update?: InvitationSponsorUpdateWithWhereUniqueWithoutInvitationInput | InvitationSponsorUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: InvitationSponsorUpdateManyWithWhereWithoutInvitationInput | InvitationSponsorUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: InvitationSponsorScalarWhereInput | InvitationSponsorScalarWhereInput[]
   }
 
   export type PlaceCreateNestedOneWithoutInvitationPlaceListInput = {
@@ -37772,7 +37910,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -37799,10 +37936,15 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
@@ -37811,6 +37953,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutUserInput = {
@@ -37866,7 +38009,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -37893,10 +38035,15 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
@@ -37905,6 +38052,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutUserInput = {
@@ -38039,7 +38187,6 @@ export namespace Prisma {
     hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
     isPasswordProtected?: BoolNullableFilter<"Invitation"> | boolean | null
     universalPassword?: StringNullableFilter<"Invitation"> | string | null
-    accessMode?: StringNullableFilter<"Invitation"> | string | null
     guestListEnabled?: BoolNullableFilter<"Invitation"> | boolean | null
     billingStatus?: EnumInvitation_billingStatusFilter<"Invitation"> | $Enums.Invitation_billingStatus
     trialEndsAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
@@ -38066,6 +38213,12 @@ export namespace Prisma {
     primarySponsorRight?: StringNullableFilter<"Invitation"> | string | null
     secondarySponsorRight?: StringNullableFilter<"Invitation"> | string | null
     onboardingCompletedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    accessMode?: StringNullableFilter<"Invitation"> | string | null
+    openingEnabled?: BoolFilter<"Invitation"> | boolean
+    openingText1?: StringNullableFilter<"Invitation"> | string | null
+    openingText2?: StringNullableFilter<"Invitation"> | string | null
+    openingText3?: StringNullableFilter<"Invitation"> | string | null
+    useCustomMainPhoto?: BoolNullableFilter<"Invitation"> | boolean | null
   }
 
   export type InvitationOrderUpsertWithWhereUniqueWithoutUserInput = {
@@ -38222,37 +38375,6 @@ export namespace Prisma {
 
   export type InvitationEntourageCreateManyInvitationInputEnvelope = {
     data: InvitationEntourageCreateManyInvitationInput | InvitationEntourageCreateManyInvitationInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type InvitationSponsorCreateWithoutInvitationInput = {
-    label?: string
-    labelRight?: string
-    nameLeft?: string
-    nameRight?: string
-    order?: number
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-  }
-
-  export type InvitationSponsorUncheckedCreateWithoutInvitationInput = {
-    id?: number
-    label?: string
-    labelRight?: string
-    nameLeft?: string
-    nameRight?: string
-    order?: number
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-  }
-
-  export type InvitationSponsorCreateOrConnectWithoutInvitationInput = {
-    where: InvitationSponsorWhereUniqueInput
-    create: XOR<InvitationSponsorCreateWithoutInvitationInput, InvitationSponsorUncheckedCreateWithoutInvitationInput>
-  }
-
-  export type InvitationSponsorCreateManyInvitationInputEnvelope = {
-    data: InvitationSponsorCreateManyInvitationInput | InvitationSponsorCreateManyInvitationInput[]
     skipDuplicates?: boolean
   }
 
@@ -38542,6 +38664,37 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type InvitationSponsorCreateWithoutInvitationInput = {
+    label?: string
+    labelRight?: string
+    nameLeft: string
+    nameRight: string
+    order?: number
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type InvitationSponsorUncheckedCreateWithoutInvitationInput = {
+    id?: number
+    label?: string
+    labelRight?: string
+    nameLeft: string
+    nameRight: string
+    order?: number
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type InvitationSponsorCreateOrConnectWithoutInvitationInput = {
+    where: InvitationSponsorWhereUniqueInput
+    create: XOR<InvitationSponsorCreateWithoutInvitationInput, InvitationSponsorUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type InvitationSponsorCreateManyInvitationInputEnvelope = {
+    data: InvitationSponsorCreateManyInvitationInput | InvitationSponsorCreateManyInvitationInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithoutInvitationListInput = {
     update: XOR<UserUpdateWithoutInvitationListInput, UserUncheckedUpdateWithoutInvitationListInput>
     create: XOR<UserCreateWithoutInvitationListInput, UserUncheckedCreateWithoutInvitationListInput>
@@ -38666,37 +38819,6 @@ export namespace Prisma {
     order?: IntFilter<"InvitationEntourage"> | number
     createdAt?: DateTimeNullableFilter<"InvitationEntourage"> | Date | string | null
     updatedAt?: DateTimeNullableFilter<"InvitationEntourage"> | Date | string | null
-  }
-
-  export type InvitationSponsorUpsertWithWhereUniqueWithoutInvitationInput = {
-    where: InvitationSponsorWhereUniqueInput
-    update: XOR<InvitationSponsorUpdateWithoutInvitationInput, InvitationSponsorUncheckedUpdateWithoutInvitationInput>
-    create: XOR<InvitationSponsorCreateWithoutInvitationInput, InvitationSponsorUncheckedCreateWithoutInvitationInput>
-  }
-
-  export type InvitationSponsorUpdateWithWhereUniqueWithoutInvitationInput = {
-    where: InvitationSponsorWhereUniqueInput
-    data: XOR<InvitationSponsorUpdateWithoutInvitationInput, InvitationSponsorUncheckedUpdateWithoutInvitationInput>
-  }
-
-  export type InvitationSponsorUpdateManyWithWhereWithoutInvitationInput = {
-    where: InvitationSponsorScalarWhereInput
-    data: XOR<InvitationSponsorUpdateManyMutationInput, InvitationSponsorUncheckedUpdateManyWithoutInvitationInput>
-  }
-
-  export type InvitationSponsorScalarWhereInput = {
-    AND?: InvitationSponsorScalarWhereInput | InvitationSponsorScalarWhereInput[]
-    OR?: InvitationSponsorScalarWhereInput[]
-    NOT?: InvitationSponsorScalarWhereInput | InvitationSponsorScalarWhereInput[]
-    id?: IntFilter<"InvitationSponsor"> | number
-    invitationId?: IntFilter<"InvitationSponsor"> | number
-    label?: StringFilter<"InvitationSponsor"> | string
-    labelRight?: StringFilter<"InvitationSponsor"> | string
-    nameLeft?: StringFilter<"InvitationSponsor"> | string
-    nameRight?: StringFilter<"InvitationSponsor"> | string
-    order?: IntFilter<"InvitationSponsor"> | number
-    createdAt?: DateTimeNullableFilter<"InvitationSponsor"> | Date | string | null
-    updatedAt?: DateTimeNullableFilter<"InvitationSponsor"> | Date | string | null
   }
 
   export type InvitationFaqUpsertWithWhereUniqueWithoutInvitationInput = {
@@ -38938,6 +39060,37 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"InvitationSeatingTable"> | Date | string | null
   }
 
+  export type InvitationSponsorUpsertWithWhereUniqueWithoutInvitationInput = {
+    where: InvitationSponsorWhereUniqueInput
+    update: XOR<InvitationSponsorUpdateWithoutInvitationInput, InvitationSponsorUncheckedUpdateWithoutInvitationInput>
+    create: XOR<InvitationSponsorCreateWithoutInvitationInput, InvitationSponsorUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type InvitationSponsorUpdateWithWhereUniqueWithoutInvitationInput = {
+    where: InvitationSponsorWhereUniqueInput
+    data: XOR<InvitationSponsorUpdateWithoutInvitationInput, InvitationSponsorUncheckedUpdateWithoutInvitationInput>
+  }
+
+  export type InvitationSponsorUpdateManyWithWhereWithoutInvitationInput = {
+    where: InvitationSponsorScalarWhereInput
+    data: XOR<InvitationSponsorUpdateManyMutationInput, InvitationSponsorUncheckedUpdateManyWithoutInvitationInput>
+  }
+
+  export type InvitationSponsorScalarWhereInput = {
+    AND?: InvitationSponsorScalarWhereInput | InvitationSponsorScalarWhereInput[]
+    OR?: InvitationSponsorScalarWhereInput[]
+    NOT?: InvitationSponsorScalarWhereInput | InvitationSponsorScalarWhereInput[]
+    id?: IntFilter<"InvitationSponsor"> | number
+    invitationId?: IntFilter<"InvitationSponsor"> | number
+    label?: StringFilter<"InvitationSponsor"> | string
+    labelRight?: StringFilter<"InvitationSponsor"> | string
+    nameLeft?: StringFilter<"InvitationSponsor"> | string
+    nameRight?: StringFilter<"InvitationSponsor"> | string
+    order?: IntFilter<"InvitationSponsor"> | number
+    createdAt?: DateTimeNullableFilter<"InvitationSponsor"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"InvitationSponsor"> | Date | string | null
+  }
+
   export type PlaceCreateWithoutInvitationPlaceListInput = {
     googlePlaceId?: string | null
     name?: string | null
@@ -39012,7 +39165,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -39039,11 +39191,16 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
@@ -39051,6 +39208,7 @@ export namespace Prisma {
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutPlaceListInput = {
@@ -39107,7 +39265,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -39134,10 +39291,15 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
@@ -39145,6 +39307,7 @@ export namespace Prisma {
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutPlaceListInput = {
@@ -39266,7 +39429,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -39293,11 +39455,16 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
@@ -39305,6 +39472,7 @@ export namespace Prisma {
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutPlaceListInput = {
@@ -39361,7 +39529,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -39388,10 +39555,15 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
@@ -39399,6 +39571,7 @@ export namespace Prisma {
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationPlaceTimeUpsertWithWhereUniqueWithoutInvitationPlaceInput = {
@@ -39567,7 +39740,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -39594,11 +39766,16 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
@@ -39606,6 +39783,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutPhotoListInput = {
@@ -39662,7 +39840,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -39689,10 +39866,15 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
@@ -39700,6 +39882,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutPhotoListInput = {
@@ -39770,7 +39953,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -39797,11 +39979,16 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
@@ -39809,6 +39996,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutPhotoListInput = {
@@ -39865,7 +40053,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -39892,10 +40079,15 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
@@ -39903,6 +40095,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationCreateWithoutInvitationCoverPhotoListInput = {
@@ -39957,7 +40150,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -39984,10 +40176,15 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
@@ -39996,6 +40193,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutInvitationCoverPhotoListInput = {
@@ -40052,7 +40250,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -40079,9 +40276,14 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
@@ -40090,6 +40292,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutInvitationCoverPhotoListInput = {
@@ -40160,7 +40363,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -40187,10 +40389,15 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
@@ -40199,6 +40406,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutInvitationCoverPhotoListInput = {
@@ -40255,7 +40463,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -40282,9 +40489,14 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
@@ -40293,6 +40505,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationCreateWithoutInvitationRSVPInput = {
@@ -40347,7 +40560,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -40374,11 +40586,16 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
@@ -40386,6 +40603,7 @@ export namespace Prisma {
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutInvitationRSVPInput = {
@@ -40442,7 +40660,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -40469,10 +40686,15 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
@@ -40480,6 +40702,7 @@ export namespace Prisma {
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutInvitationRSVPInput = {
@@ -40590,7 +40813,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -40617,11 +40839,16 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
@@ -40629,6 +40856,7 @@ export namespace Prisma {
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutInvitationRSVPInput = {
@@ -40685,7 +40913,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -40712,10 +40939,15 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
@@ -40723,6 +40955,7 @@ export namespace Prisma {
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationGuestGroupUpsertWithoutInvitationRSVPInput = {
@@ -40823,7 +41056,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -40850,10 +41082,15 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
@@ -40862,6 +41099,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutInvitationDressColorInput = {
@@ -40918,7 +41156,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -40945,9 +41182,14 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
@@ -40956,6 +41198,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutInvitationDressColorInput = {
@@ -41026,7 +41269,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -41053,10 +41295,15 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
@@ -41065,6 +41312,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutInvitationDressColorInput = {
@@ -41121,7 +41369,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -41148,9 +41395,14 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
@@ -41159,6 +41411,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationCreateWithoutFaqListInput = {
@@ -41213,7 +41466,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -41240,11 +41492,16 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     InvitationPaymentMethod?: InvitationPaymentMethodCreateNestedManyWithoutInvitationInput
@@ -41252,6 +41509,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutFaqListInput = {
@@ -41308,7 +41566,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -41335,10 +41592,15 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     InvitationPaymentMethod?: InvitationPaymentMethodUncheckedCreateNestedManyWithoutInvitationInput
@@ -41346,6 +41608,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutFaqListInput = {
@@ -41416,7 +41679,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -41443,11 +41705,16 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     InvitationPaymentMethod?: InvitationPaymentMethodUpdateManyWithoutInvitationNestedInput
@@ -41455,6 +41722,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutFaqListInput = {
@@ -41511,7 +41779,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -41538,10 +41805,15 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationPaymentMethod?: InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationNestedInput
@@ -41549,6 +41821,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationCreateWithoutInvitationEntourageListInput = {
@@ -41603,7 +41876,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -41630,10 +41902,15 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
@@ -41642,6 +41919,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutInvitationEntourageListInput = {
@@ -41698,7 +41976,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -41725,9 +42002,14 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
@@ -41736,6 +42018,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutInvitationEntourageListInput = {
@@ -41806,7 +42089,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -41833,10 +42115,15 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
@@ -41845,6 +42132,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutInvitationEntourageListInput = {
@@ -41901,7 +42189,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -41928,9 +42215,14 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
@@ -41939,6 +42231,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationCreateWithoutInvitationSponsorListInput = {
@@ -41993,7 +42286,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -42020,6 +42312,12 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -42088,7 +42386,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -42115,6 +42412,12 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
@@ -42196,7 +42499,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -42223,6 +42525,12 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -42291,7 +42599,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -42318,6 +42625,12 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
@@ -42383,7 +42696,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -42410,11 +42722,16 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationPaymentMethod?: InvitationPaymentMethodCreateNestedManyWithoutInvitationInput
@@ -42422,6 +42739,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutInvitationOrderInput = {
@@ -42478,7 +42796,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -42505,10 +42822,15 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationPaymentMethod?: InvitationPaymentMethodUncheckedCreateNestedManyWithoutInvitationInput
@@ -42516,6 +42838,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutInvitationOrderInput = {
@@ -42648,7 +42971,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -42675,11 +42997,16 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationPaymentMethod?: InvitationPaymentMethodUpdateManyWithoutInvitationNestedInput
@@ -42687,6 +43014,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutInvitationOrderInput = {
@@ -42743,7 +43071,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -42770,10 +43097,15 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationPaymentMethod?: InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationNestedInput
@@ -42781,6 +43113,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type PricePlanUpsertWithoutInvitationOrderInput = {
@@ -42974,7 +43307,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -43001,11 +43333,16 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
     InvitationPaymentMethod?: InvitationPaymentMethodCreateNestedManyWithoutInvitationInput
@@ -43013,6 +43350,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutInvitationGuestGroupInput = {
@@ -43069,7 +43407,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -43096,10 +43433,15 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
     InvitationPaymentMethod?: InvitationPaymentMethodUncheckedCreateNestedManyWithoutInvitationInput
@@ -43107,6 +43449,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutInvitationGuestGroupInput = {
@@ -43234,7 +43577,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -43261,11 +43603,16 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
     InvitationPaymentMethod?: InvitationPaymentMethodUpdateManyWithoutInvitationNestedInput
@@ -43273,6 +43620,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutInvitationGuestGroupInput = {
@@ -43329,7 +43677,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -43356,10 +43703,15 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationPaymentMethod?: InvitationPaymentMethodUncheckedUpdateManyWithoutInvitationNestedInput
@@ -43367,6 +43719,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationRSVPUpsertWithWhereUniqueWithoutInvitationGuestGroupInput = {
@@ -43624,7 +43977,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -43651,11 +44003,16 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
@@ -43663,6 +44020,7 @@ export namespace Prisma {
     photoList?: InvitationPhotoCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutInvitationSeatingTableInput = {
@@ -43719,7 +44077,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -43746,10 +44103,15 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
@@ -43757,6 +44119,7 @@ export namespace Prisma {
     photoList?: InvitationPhotoUncheckedCreateNestedManyWithoutInvitationInput
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutInvitationSeatingTableInput = {
@@ -43854,7 +44217,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -43881,11 +44243,16 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
@@ -43893,6 +44260,7 @@ export namespace Prisma {
     photoList?: InvitationPhotoUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutInvitationSeatingTableInput = {
@@ -43949,7 +44317,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -43976,10 +44343,15 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
@@ -43987,6 +44359,7 @@ export namespace Prisma {
     photoList?: InvitationPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationCreateWithoutInvitationPaymentMethodInput = {
@@ -44041,7 +44414,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -44068,11 +44440,16 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderCreateNestedManyWithoutInvitationInput
@@ -44080,6 +44457,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationUncheckedCreateWithoutInvitationPaymentMethodInput = {
@@ -44136,7 +44514,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -44163,10 +44540,15 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
-    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
     faqList?: InvitationFaqUncheckedCreateNestedManyWithoutInvitationInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedCreateNestedManyWithoutInvitationInput
     InvitationOrder?: InvitationOrderUncheckedCreateNestedManyWithoutInvitationInput
@@ -44174,6 +44556,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedCreateNestedManyWithoutInvitationInput
     invitationRSVP?: InvitationRSVPUncheckedCreateNestedManyWithoutInvitationInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedCreateNestedManyWithoutInvitationInput
+    invitationSponsorList?: InvitationSponsorUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type InvitationCreateOrConnectWithoutInvitationPaymentMethodInput = {
@@ -44244,7 +44627,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -44271,11 +44653,16 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
@@ -44283,6 +44670,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutInvitationPaymentMethodInput = {
@@ -44339,7 +44727,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -44366,10 +44753,15 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
@@ -44377,6 +44769,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationCreateManyUserInput = {
@@ -44432,7 +44825,6 @@ export namespace Prisma {
     hasRsvpDeadline?: boolean | null
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
-    accessMode?: string | null
     guestListEnabled?: boolean | null
     billingStatus?: $Enums.Invitation_billingStatus
     trialEndsAt?: Date | string | null
@@ -44459,6 +44851,12 @@ export namespace Prisma {
     primarySponsorRight?: string | null
     secondarySponsorRight?: string | null
     onboardingCompletedAt?: Date | string | null
+    accessMode?: string | null
+    openingEnabled?: boolean
+    openingText1?: string | null
+    openingText2?: string | null
+    openingText3?: string | null
+    useCustomMainPhoto?: boolean | null
   }
 
   export type InvitationOrderCreateManyUserInput = {
@@ -44533,7 +44931,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -44560,10 +44957,15 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUpdateManyWithoutInvitationNestedInput
@@ -44572,6 +44974,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutUserInput = {
@@ -44627,7 +45030,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -44654,10 +45056,15 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
-    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
     faqList?: InvitationFaqUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationGuestGroup?: InvitationGuestGroupUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationOrder?: InvitationOrderUncheckedUpdateManyWithoutInvitationNestedInput
@@ -44666,6 +45073,7 @@ export namespace Prisma {
     placeList?: InvitationPlaceUncheckedUpdateManyWithoutInvitationNestedInput
     invitationRSVP?: InvitationRSVPUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationSeatingTable?: InvitationSeatingTableUncheckedUpdateManyWithoutInvitationNestedInput
+    invitationSponsorList?: InvitationSponsorUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type InvitationUncheckedUpdateManyWithoutUserInput = {
@@ -44721,7 +45129,6 @@ export namespace Prisma {
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
-    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     billingStatus?: EnumInvitation_billingStatusFieldUpdateOperationsInput | $Enums.Invitation_billingStatus
     trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -44748,6 +45155,12 @@ export namespace Prisma {
     primarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     secondarySponsorRight?: NullableStringFieldUpdateOperationsInput | string | null
     onboardingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    accessMode?: NullableStringFieldUpdateOperationsInput | string | null
+    openingEnabled?: BoolFieldUpdateOperationsInput | boolean
+    openingText1?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText2?: NullableStringFieldUpdateOperationsInput | string | null
+    openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type InvitationOrderUpdateWithoutUserInput = {
@@ -44834,17 +45247,6 @@ export namespace Prisma {
     id?: number
     label: string
     name: string
-    order?: number
-    createdAt?: Date | string | null
-    updatedAt?: Date | string | null
-  }
-
-  export type InvitationSponsorCreateManyInvitationInput = {
-    id?: number
-    label?: string
-    labelRight?: string
-    nameLeft?: string
-    nameRight?: string
     order?: number
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
@@ -44953,6 +45355,17 @@ export namespace Prisma {
     updatedAt?: Date | string | null
   }
 
+  export type InvitationSponsorCreateManyInvitationInput = {
+    id?: number
+    label?: string
+    labelRight?: string
+    nameLeft: string
+    nameRight: string
+    order?: number
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
   export type InvitationCoverPhotoUpdateWithoutInvitationInput = {
     originalKey?: NullableStringFieldUpdateOperationsInput | string | null
     croppedKey?: NullableStringFieldUpdateOperationsInput | string | null
@@ -45035,38 +45448,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     label?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    order?: IntFieldUpdateOperationsInput | number
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type InvitationSponsorUpdateWithoutInvitationInput = {
-    label?: StringFieldUpdateOperationsInput | string
-    labelRight?: StringFieldUpdateOperationsInput | string
-    nameLeft?: StringFieldUpdateOperationsInput | string
-    nameRight?: StringFieldUpdateOperationsInput | string
-    order?: IntFieldUpdateOperationsInput | number
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type InvitationSponsorUncheckedUpdateWithoutInvitationInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    label?: StringFieldUpdateOperationsInput | string
-    labelRight?: StringFieldUpdateOperationsInput | string
-    nameLeft?: StringFieldUpdateOperationsInput | string
-    nameRight?: StringFieldUpdateOperationsInput | string
-    order?: IntFieldUpdateOperationsInput | number
-    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type InvitationSponsorUncheckedUpdateManyWithoutInvitationInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    label?: StringFieldUpdateOperationsInput | string
-    labelRight?: StringFieldUpdateOperationsInput | string
-    nameLeft?: StringFieldUpdateOperationsInput | string
-    nameRight?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -45377,6 +45758,38 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
     order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationSponsorUpdateWithoutInvitationInput = {
+    label?: StringFieldUpdateOperationsInput | string
+    labelRight?: StringFieldUpdateOperationsInput | string
+    nameLeft?: StringFieldUpdateOperationsInput | string
+    nameRight?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationSponsorUncheckedUpdateWithoutInvitationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    label?: StringFieldUpdateOperationsInput | string
+    labelRight?: StringFieldUpdateOperationsInput | string
+    nameLeft?: StringFieldUpdateOperationsInput | string
+    nameRight?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type InvitationSponsorUncheckedUpdateManyWithoutInvitationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    label?: StringFieldUpdateOperationsInput | string
+    labelRight?: StringFieldUpdateOperationsInput | string
+    nameLeft?: StringFieldUpdateOperationsInput | string
+    nameRight?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }

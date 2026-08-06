@@ -186,7 +186,6 @@ exports.Prisma.InvitationScalarFieldEnum = {
   hasRsvpDeadline: 'hasRsvpDeadline',
   isPasswordProtected: 'isPasswordProtected',
   universalPassword: 'universalPassword',
-  accessMode: 'accessMode',
   guestListEnabled: 'guestListEnabled',
   billingStatus: 'billingStatus',
   trialEndsAt: 'trialEndsAt',
@@ -212,7 +211,13 @@ exports.Prisma.InvitationScalarFieldEnum = {
   secondarySponsorColumns: 'secondarySponsorColumns',
   primarySponsorRight: 'primarySponsorRight',
   secondarySponsorRight: 'secondarySponsorRight',
-  onboardingCompletedAt: 'onboardingCompletedAt'
+  onboardingCompletedAt: 'onboardingCompletedAt',
+  accessMode: 'accessMode',
+  openingEnabled: 'openingEnabled',
+  openingText1: 'openingText1',
+  openingText2: 'openingText2',
+  openingText3: 'openingText3',
+  useCustomMainPhoto: 'useCustomMainPhoto'
 };
 
 exports.Prisma.InvitationPlaceScalarFieldEnum = {
@@ -532,7 +537,6 @@ exports.Prisma.InvitationOrderByRelevanceFieldEnum = {
   rsvpTitle: 'rsvpTitle',
   rsvpDeadlineDesc: 'rsvpDeadlineDesc',
   universalPassword: 'universalPassword',
-  accessMode: 'accessMode',
   bestMan: 'bestMan',
   bridesMaids: 'bridesMaids',
   wishlistText: 'wishlistText',
@@ -545,7 +549,11 @@ exports.Prisma.InvitationOrderByRelevanceFieldEnum = {
   groomsMenLabel: 'groomsMenLabel',
   bridesMaidsLabel: 'bridesMaidsLabel',
   primarySponsorRight: 'primarySponsorRight',
-  secondarySponsorRight: 'secondarySponsorRight'
+  secondarySponsorRight: 'secondarySponsorRight',
+  accessMode: 'accessMode',
+  openingText1: 'openingText1',
+  openingText2: 'openingText2',
+  openingText3: 'openingText3'
 };
 
 exports.Prisma.InvitationPlaceOrderByRelevanceFieldEnum = {
