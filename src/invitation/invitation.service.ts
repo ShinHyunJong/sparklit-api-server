@@ -25,6 +25,15 @@ import { getEffectivePlanFeatures, PLAN_FEATURES } from 'src/constants/planFeatu
 @Injectable()
 export class InvitationService {
   constructor(private readonly prismaService: PrismaService) {}
+  // InvitationCoverPhoto.type으로 허용되는 값. 'main'은 템플릿이 쓰는 커버
+  // 사진이고 'customMain'은 커스텀 메인 사진 전용이라 서로 독립적이다.
+  private static readonly coverPhotoTypes = new Set([
+    'main',
+    'customMain',
+    'end',
+    'dressCodeGentleman',
+    'dressCodeLady',
+  ]);
   private readonly reservedUniqueIds = [
     'studio',
     'auth',
@@ -449,6 +458,9 @@ export class InvitationService {
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
     await this.assertNotLocked(uniqueId);
+    if (!InvitationService.coverPhotoTypes.has(type)) {
+      throw new BadRequestException('Invalid cover photo type');
+    }
     const invitation = await this.prismaService.invitation.findUnique({
       where: { uniqueId },
       select: { id: true, ogImageKey: true },
@@ -474,8 +486,9 @@ export class InvitationService {
     const croppedName = cryptoRandomString({ length: 16 });
     const croppedExtension = croppedFile.mimeType.split('/')[1];
 
-    // S3 경로 구성 (type에 따라 상위 폴더가 cover 또는 end로 분기)
-    const folder = type === 'main' ? 'cover' : 'end';
+    // S3 경로 구성 (type에 따라 상위 폴더가 cover / custom-main / end로 분기)
+    const folder =
+      type === 'main' ? 'cover' : type === 'customMain' ? 'custom-main' : 'end';
 
     // compressOriginal은 항상 jpeg로 인코딩하므로 확장자를 고정한다
     const originalKey = `invitations/${uniqueId}/${folder}/original/${originalName}.jpeg`;
@@ -542,13 +555,7 @@ export class InvitationService {
 
   async deleteCoverPhoto(uniqueId: string, type: string, userId: number) {
     await this.assertNotLocked(uniqueId);
-    const allowedTypes = new Set([
-      'main',
-      'end',
-      'dressCodeGentleman',
-      'dressCodeLady',
-    ]);
-    if (!allowedTypes.has(type)) {
+    if (!InvitationService.coverPhotoTypes.has(type)) {
       throw new BadRequestException('Invalid cover photo type');
     }
 
