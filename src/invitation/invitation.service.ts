@@ -33,6 +33,9 @@ export class InvitationService {
     'end',
     'dressCodeGentleman',
     'dressCodeLady',
+    'opening1',
+    'opening2',
+    'opening3',
   ]);
   private readonly reservedUniqueIds = [
     'studio',
@@ -486,9 +489,15 @@ export class InvitationService {
     const croppedName = cryptoRandomString({ length: 16 });
     const croppedExtension = croppedFile.mimeType.split('/')[1];
 
-    // S3 경로 구성 (type에 따라 상위 폴더가 cover / custom-main / end로 분기)
+    // S3 경로 구성 (type에 따라 상위 폴더가 cover / custom-main / opening / end로 분기)
     const folder =
-      type === 'main' ? 'cover' : type === 'customMain' ? 'custom-main' : 'end';
+      type === 'main'
+        ? 'cover'
+        : type === 'customMain'
+          ? 'custom-main'
+          : type?.startsWith('opening')
+            ? 'opening'
+            : 'end';
 
     // compressOriginal은 항상 jpeg로 인코딩하므로 확장자를 고정한다
     const originalKey = `invitations/${uniqueId}/${folder}/original/${originalName}.jpeg`;
@@ -1174,6 +1183,34 @@ export class InvitationService {
       where: { uniqueId },
       data: {
         notice,
+      },
+    });
+    return updated;
+  }
+
+  async updateOpening(
+    uniqueId: string,
+    userId: number,
+    body: {
+      openingEnabled?: boolean;
+      openingText1?: string | null;
+      openingText2?: string | null;
+      openingText3?: string | null;
+    },
+  ) {
+    await this.assertInvitationOwnership(uniqueId, userId);
+    await this.assertNotLocked(uniqueId);
+    const normalizeText = (value?: string | null) => {
+      const trimmed = value?.trim();
+      return trimmed ? trimmed.slice(0, 100) : null;
+    };
+    const updated = await this.prismaService.invitation.update({
+      where: { uniqueId },
+      data: {
+        openingEnabled: body.openingEnabled === true,
+        openingText1: normalizeText(body.openingText1),
+        openingText2: normalizeText(body.openingText2),
+        openingText3: normalizeText(body.openingText3),
       },
     });
     return updated;

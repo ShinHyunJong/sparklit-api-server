@@ -40,4 +40,6 @@ lerna-debug.log*
 # Manual SQL migrations and one-off backfill scripts are applied directly to
 # the DB, not tracked in git.
 *.sql
-prisma/migrations/manual/
+# ...except the manual migration SQLs, which are tracked so deploys can apply
+# them in order (see the deploy runbook).
+!prisma/migrations/manual/*.sql

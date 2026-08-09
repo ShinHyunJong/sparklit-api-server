@@ -383,6 +383,22 @@ export class InvitationController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Put('/opening/:uniqueId')
+  updateOpening(
+    @Req() req,
+    @Param('uniqueId') uniqueId: string,
+    @Body()
+    body: {
+      openingEnabled?: boolean;
+      openingText1?: string | null;
+      openingText2?: string | null;
+      openingText3?: string | null;
+    },
+  ) {
+    return this.invitationService.updateOpening(uniqueId, req.user.id, body);
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Put('/meta/:uniqueId')
   updateMeta(
     @Req() req,
