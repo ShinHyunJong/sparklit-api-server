@@ -393,6 +393,7 @@ export class InvitationController {
       openingText1?: string | null;
       openingText2?: string | null;
       openingText3?: string | null;
+      openingStyle?: { textColor?: string; fontScale?: string } | null;
     },
   ) {
     return this.invitationService.updateOpening(uniqueId, req.user.id, body);

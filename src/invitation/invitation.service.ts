@@ -7,6 +7,7 @@ import {
 import { CreateInvitationDto } from './dto/create-invitation.dto';
 import cryptoRandomString from 'crypto-random-string';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { Prisma } from '../../generated/prisma/client';
 import {
   UpdateInvitationDto,
   UpdateMainPhotoDto,
@@ -1196,11 +1197,14 @@ export class InvitationService {
       openingText1?: string | null;
       openingText2?: string | null;
       openingText3?: string | null;
+      openingStyle?: { textColor?: string; fontScale?: string } | null;
     },
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
     await this.assertNotLocked(uniqueId);
     const normalizeText = (value?: string | null) => {
+      // Authors may break a phrase into two lines, so newlines survive trim;
+      // only the surrounding whitespace goes.
       const trimmed = value?.trim();
       return trimmed ? trimmed.slice(0, 100) : null;
     };
@@ -1211,9 +1215,37 @@ export class InvitationService {
         openingText1: normalizeText(body.openingText1),
         openingText2: normalizeText(body.openingText2),
         openingText3: normalizeText(body.openingText3),
+        openingStyle: this.normalizeOpeningStyle(body.openingStyle),
       },
     });
     return updated;
+  }
+
+  /**
+   * Keeps only the recognised presentation options, so a malformed or
+   * hand-crafted payload can't put arbitrary JSON on the row. Returns
+   * Prisma.JsonNull when nothing valid is left, which clears the column.
+   */
+  private normalizeOpeningStyle(
+    style?: { textColor?: string; fontScale?: string } | null,
+  ) {
+    if (!style || typeof style !== 'object') return Prisma.JsonNull;
+
+    const normalized: { textColor?: string; fontScale?: string } = {};
+    if (
+      typeof style.textColor === 'string' &&
+      /^#[0-9a-f]{6}$/i.test(style.textColor.trim())
+    ) {
+      normalized.textColor = style.textColor.trim().toLowerCase();
+    }
+    if (
+      typeof style.fontScale === 'string' &&
+      ['small', 'medium', 'large'].includes(style.fontScale)
+    ) {
+      normalized.fontScale = style.fontScale;
+    }
+
+    return Object.keys(normalized).length > 0 ? normalized : Prisma.JsonNull;
   }
 
   async updateMeta(

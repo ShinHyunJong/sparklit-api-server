@@ -4562,6 +4562,7 @@ export namespace Prisma {
     openingText1: number
     openingText2: number
     openingText3: number
+    openingStyle: number
     useCustomMainPhoto: number
     _all: number
   }
@@ -4850,6 +4851,7 @@ export namespace Prisma {
     openingText1?: true
     openingText2?: true
     openingText3?: true
+    openingStyle?: true
     useCustomMainPhoto?: true
     _all?: true
   }
@@ -5025,6 +5027,7 @@ export namespace Prisma {
     openingText1: string | null
     openingText2: string | null
     openingText3: string | null
+    openingStyle: JsonValue | null
     useCustomMainPhoto: boolean | null
     _count: InvitationCountAggregateOutputType | null
     _avg: InvitationAvgAggregateOutputType | null
@@ -5132,6 +5135,7 @@ export namespace Prisma {
     openingText1?: boolean
     openingText2?: boolean
     openingText3?: boolean
+    openingStyle?: boolean
     useCustomMainPhoto?: boolean
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
@@ -5236,10 +5240,11 @@ export namespace Prisma {
     openingText1?: boolean
     openingText2?: boolean
     openingText3?: boolean
+    openingStyle?: boolean
     useCustomMainPhoto?: boolean
   }
 
-  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpDeadline" | "rsvpDeadlineDesc" | "rsvpHasFood" | "isRsvpPopup" | "hasRsvpDeadline" | "isPasswordProtected" | "universalPassword" | "guestListEnabled" | "billingStatus" | "trialEndsAt" | "currentPlanCode" | "accessStartedAt" | "accessEndsAt" | "watermarkEnabled" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt" | "bestManLabel" | "maidOfHonorLabel" | "groomsMenLabel" | "bridesMaidsLabel" | "sponsorColumns" | "secondarySponsorColumns" | "primarySponsorRight" | "secondarySponsorRight" | "onboardingCompletedAt" | "accessMode" | "openingEnabled" | "openingText1" | "openingText2" | "openingText3" | "useCustomMainPhoto", ExtArgs["result"]["invitation"]>
+  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpDeadline" | "rsvpDeadlineDesc" | "rsvpHasFood" | "isRsvpPopup" | "hasRsvpDeadline" | "isPasswordProtected" | "universalPassword" | "guestListEnabled" | "billingStatus" | "trialEndsAt" | "currentPlanCode" | "accessStartedAt" | "accessEndsAt" | "watermarkEnabled" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt" | "bestManLabel" | "maidOfHonorLabel" | "groomsMenLabel" | "bridesMaidsLabel" | "sponsorColumns" | "secondarySponsorColumns" | "primarySponsorRight" | "secondarySponsorRight" | "onboardingCompletedAt" | "accessMode" | "openingEnabled" | "openingText1" | "openingText2" | "openingText3" | "openingStyle" | "useCustomMainPhoto", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
@@ -5359,6 +5364,7 @@ export namespace Prisma {
       openingText1: string | null
       openingText2: string | null
       openingText3: string | null
+      openingStyle: Prisma.JsonValue | null
       useCustomMainPhoto: boolean | null
     }, ExtArgs["result"]["invitation"]>
     composites: {}
@@ -5826,6 +5832,7 @@ export namespace Prisma {
     readonly openingText1: FieldRef<"Invitation", 'String'>
     readonly openingText2: FieldRef<"Invitation", 'String'>
     readonly openingText3: FieldRef<"Invitation", 'String'>
+    readonly openingStyle: FieldRef<"Invitation", 'Json'>
     readonly useCustomMainPhoto: FieldRef<"Invitation", 'Boolean'>
   }
     
@@ -28825,6 +28832,7 @@ export namespace Prisma {
     openingText1: 'openingText1',
     openingText2: 'openingText2',
     openingText3: 'openingText3',
+    openingStyle: 'openingStyle',
     useCustomMainPhoto: 'useCustomMainPhoto'
   };
 
@@ -29719,6 +29727,7 @@ export namespace Prisma {
     openingText1?: StringNullableFilter<"Invitation"> | string | null
     openingText2?: StringNullableFilter<"Invitation"> | string | null
     openingText3?: StringNullableFilter<"Invitation"> | string | null
+    openingStyle?: JsonNullableFilter<"Invitation">
     useCustomMainPhoto?: BoolNullableFilter<"Invitation"> | boolean | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     invitationCoverPhotoList?: InvitationCoverPhotoListRelationFilter
@@ -29820,6 +29829,7 @@ export namespace Prisma {
     openingText1?: SortOrderInput | SortOrder
     openingText2?: SortOrderInput | SortOrder
     openingText3?: SortOrderInput | SortOrder
+    openingStyle?: SortOrderInput | SortOrder
     useCustomMainPhoto?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     invitationCoverPhotoList?: InvitationCoverPhotoOrderByRelationAggregateInput
@@ -29925,6 +29935,7 @@ export namespace Prisma {
     openingText1?: StringNullableFilter<"Invitation"> | string | null
     openingText2?: StringNullableFilter<"Invitation"> | string | null
     openingText3?: StringNullableFilter<"Invitation"> | string | null
+    openingStyle?: JsonNullableFilter<"Invitation">
     useCustomMainPhoto?: BoolNullableFilter<"Invitation"> | boolean | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     invitationCoverPhotoList?: InvitationCoverPhotoListRelationFilter
@@ -30026,6 +30037,7 @@ export namespace Prisma {
     openingText1?: SortOrderInput | SortOrder
     openingText2?: SortOrderInput | SortOrder
     openingText3?: SortOrderInput | SortOrder
+    openingStyle?: SortOrderInput | SortOrder
     useCustomMainPhoto?: SortOrderInput | SortOrder
     _count?: InvitationCountOrderByAggregateInput
     _avg?: InvitationAvgOrderByAggregateInput
@@ -30122,6 +30134,7 @@ export namespace Prisma {
     openingText1?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     openingText2?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     openingText3?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    openingStyle?: JsonNullableWithAggregatesFilter<"Invitation">
     useCustomMainPhoto?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
   }
 
@@ -31916,6 +31929,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
@@ -32017,6 +32031,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
@@ -32115,6 +32130,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
@@ -32216,6 +32232,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
@@ -32316,6 +32333,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
   }
 
@@ -32402,6 +32420,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
@@ -32490,6 +32509,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
@@ -34571,6 +34591,7 @@ export namespace Prisma {
     openingText1?: SortOrder
     openingText2?: SortOrder
     openingText3?: SortOrder
+    openingStyle?: SortOrder
     useCustomMainPhoto?: SortOrder
   }
 
@@ -37941,6 +37962,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -38040,6 +38062,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
@@ -38218,6 +38241,7 @@ export namespace Prisma {
     openingText1?: StringNullableFilter<"Invitation"> | string | null
     openingText2?: StringNullableFilter<"Invitation"> | string | null
     openingText3?: StringNullableFilter<"Invitation"> | string | null
+    openingStyle?: JsonNullableFilter<"Invitation">
     useCustomMainPhoto?: BoolNullableFilter<"Invitation"> | boolean | null
   }
 
@@ -39196,6 +39220,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
@@ -39296,6 +39321,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
@@ -39460,6 +39486,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
@@ -39560,6 +39587,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
@@ -39771,6 +39799,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
@@ -39871,6 +39900,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
@@ -39984,6 +40014,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
@@ -40084,6 +40115,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
@@ -40181,6 +40213,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     InvitationDressColor?: InvitationDressColorCreateNestedManyWithoutInvitationInput
@@ -40281,6 +40314,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
@@ -40394,6 +40428,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -40494,6 +40529,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
@@ -40591,6 +40627,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
@@ -40691,6 +40728,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
@@ -40844,6 +40882,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
@@ -40944,6 +40983,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
@@ -41087,6 +41127,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
@@ -41187,6 +41228,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     invitationEntourageList?: InvitationEntourageUncheckedCreateNestedManyWithoutInvitationInput
@@ -41300,6 +41342,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
@@ -41400,6 +41443,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     invitationEntourageList?: InvitationEntourageUncheckedUpdateManyWithoutInvitationNestedInput
@@ -41497,6 +41541,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
@@ -41597,6 +41642,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
@@ -41710,6 +41756,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
@@ -41810,6 +41857,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
@@ -41907,6 +41955,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
@@ -42007,6 +42056,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
@@ -42120,6 +42170,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
@@ -42220,6 +42271,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
@@ -42317,6 +42369,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
@@ -42417,6 +42470,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
@@ -42530,6 +42584,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
@@ -42630,6 +42685,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
@@ -42727,6 +42783,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
@@ -42827,6 +42884,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
@@ -43002,6 +43060,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
@@ -43102,6 +43161,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
@@ -43338,6 +43398,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
@@ -43438,6 +43499,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
@@ -43608,6 +43670,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
@@ -43708,6 +43771,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
@@ -44008,6 +44072,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
@@ -44108,6 +44173,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
@@ -44248,6 +44314,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
@@ -44348,6 +44415,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
@@ -44445,6 +44513,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     user?: UserCreateNestedOneWithoutInvitationListInput
     invitationCoverPhotoList?: InvitationCoverPhotoCreateNestedManyWithoutInvitationInput
@@ -44545,6 +44614,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedCreateNestedManyWithoutInvitationInput
     InvitationDressColor?: InvitationDressColorUncheckedCreateNestedManyWithoutInvitationInput
@@ -44658,6 +44728,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     user?: UserUpdateOneWithoutInvitationListNestedInput
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
@@ -44758,6 +44829,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
@@ -44856,6 +44928,7 @@ export namespace Prisma {
     openingText1?: string | null
     openingText2?: string | null
     openingText3?: string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: boolean | null
   }
 
@@ -44962,6 +45035,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUpdateManyWithoutInvitationNestedInput
@@ -45061,6 +45135,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
     invitationCoverPhotoList?: InvitationCoverPhotoUncheckedUpdateManyWithoutInvitationNestedInput
     InvitationDressColor?: InvitationDressColorUncheckedUpdateManyWithoutInvitationNestedInput
@@ -45160,6 +45235,7 @@ export namespace Prisma {
     openingText1?: NullableStringFieldUpdateOperationsInput | string | null
     openingText2?: NullableStringFieldUpdateOperationsInput | string | null
     openingText3?: NullableStringFieldUpdateOperationsInput | string | null
+    openingStyle?: NullableJsonNullValueInput | InputJsonValue
     useCustomMainPhoto?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 

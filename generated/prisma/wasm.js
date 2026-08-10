@@ -217,6 +217,7 @@ exports.Prisma.InvitationScalarFieldEnum = {
   openingText1: 'openingText1',
   openingText2: 'openingText2',
   openingText3: 'openingText3',
+  openingStyle: 'openingStyle',
   useCustomMainPhoto: 'useCustomMainPhoto'
 };
 

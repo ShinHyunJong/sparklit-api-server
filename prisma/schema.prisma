@@ -110,6 +110,10 @@ model Invitation {
   openingText1             String?                     @db.VarChar(100)
   openingText2             String?                     @db.VarChar(100)
   openingText3             String?                     @db.VarChar(100)
+  // Presentation options for the opening animation, e.g. { "textColor": "#ffffff" }.
+  // Stored as JSON so new options (font size, speed, alignment, ...) can be
+  // added without a migration. Unknown keys are ignored by the renderer.
+  openingStyle             Json?
   // When true the main section renders the uploaded cover photo alone
   // (full width, original aspect ratio, no template text) and templateNo
   // is ignored. templateNo is preserved so turning this off restores it.

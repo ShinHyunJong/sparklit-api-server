@@ -1,3 +1,4 @@
+import { Prisma } from '../../generated/prisma/client';
 import { InvitationService } from './invitation.service';
 
 describe('InvitationService.updateOpening', () => {
@@ -34,6 +35,7 @@ describe('InvitationService.updateOpening', () => {
         openingText1: 'HELLO',
         openingText2: null,
         openingText3: null,
+        openingStyle: Prisma.JsonNull,
       },
     });
     expect(result).toEqual({ id: 1, openingEnabled: true });
@@ -52,7 +54,48 @@ describe('InvitationService.updateOpening', () => {
         openingText1: 'spaced',
         openingText2: null,
         openingText3: null,
+        openingStyle: Prisma.JsonNull,
       },
     });
+  });
+
+  it('keeps an author line break inside a phrase', async () => {
+    await service.updateOpening('uid-1', 42, {
+      openingText1: '  WE ARE\nGETTING MARRIED  ',
+    });
+
+    expect(fakePrisma.invitation.update).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: expect.objectContaining({
+          openingText1: 'WE ARE\nGETTING MARRIED',
+        }),
+      }),
+    );
+  });
+
+  it('stores recognised style options', async () => {
+    await service.updateOpening('uid-1', 42, {
+      openingStyle: { textColor: '#FF8800', fontScale: 'large' },
+    });
+
+    expect(fakePrisma.invitation.update).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: expect.objectContaining({
+          openingStyle: { textColor: '#ff8800', fontScale: 'large' },
+        }),
+      }),
+    );
+  });
+
+  it('drops malformed style values instead of persisting them', async () => {
+    await service.updateOpening('uid-1', 42, {
+      openingStyle: { textColor: 'red', fontScale: 'huge' } as any,
+    });
+
+    expect(fakePrisma.invitation.update).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: expect.objectContaining({ openingStyle: Prisma.JsonNull }),
+      }),
+    );
   });
 });
