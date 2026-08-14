@@ -121,6 +121,7 @@ model Invitation {
   user                     User?                       @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Invitation_ibfk_1")
   invitationCoverPhotoList InvitationCoverPhoto[]
   InvitationDressColor     InvitationDressColor[]
+  dressCodeGroupList       InvitationDressCodeGroup[]
   invitationEntourageList  InvitationEntourage[]
   faqList                  InvitationFaq[]
   InvitationGuestGroup     InvitationGuestGroup[]
@@ -242,14 +243,33 @@ model InvitationView {
 }
 
 model InvitationDressColor {
-  id           Int         @id @default(autoincrement()) @db.UnsignedInt
-  invitationId Int?        @db.UnsignedInt
-  color        String?     @db.VarChar(10)
-  order        Int?        @db.UnsignedInt
-  type         String?     @db.VarChar(20)
-  Invitation   Invitation? @relation(fields: [invitationId], references: [id], onDelete: Cascade, map: "InvitationDressColor_ibfk_1")
+  id           Int                       @id @default(autoincrement()) @db.UnsignedInt
+  invitationId Int?                      @db.UnsignedInt
+  groupId      Int?                      @db.UnsignedInt
+  color        String?                   @db.VarChar(10)
+  order        Int?                      @db.UnsignedInt
+  type         String?                   @db.VarChar(20)
+  Invitation   Invitation?               @relation(fields: [invitationId], references: [id], onDelete: Cascade, map: "InvitationDressColor_ibfk_1")
+  group        InvitationDressCodeGroup? @relation(fields: [groupId], references: [id], onDelete: Cascade, map: "InvitationDressColor_ibfk_2")
 
   @@index([invitationId], map: "invitationId")
+  @@index([groupId], map: "InvitationDressColor_groupId")
+}
+
+model InvitationDressCodeGroup {
+  id           Int                    @id @default(autoincrement()) @db.UnsignedInt
+  invitationId Int                    @db.UnsignedInt
+  label        String?                @db.VarChar(100)
+  description  String?                @db.Text
+  photoKey     String?                @db.VarChar(255)
+  order        Int                    @default(0) @db.UnsignedInt
+  createdAt    DateTime?              @default(now()) @db.Timestamp(0)
+  updatedAt    DateTime?              @default(now()) @db.Timestamp(0)
+  invitation   Invitation             @relation(fields: [invitationId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "InvitationDressCodeGroup_ibfk_1")
+  colors       InvitationDressColor[]
+
+  @@index([invitationId], map: "idx_dress_code_group_invitation_id")
+  @@index([invitationId, order], map: "idx_dress_code_group_invitation_order")
 }
 
 model InvitationGuest {

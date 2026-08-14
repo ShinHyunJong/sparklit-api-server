@@ -314,6 +314,15 @@ export class InvitationService {
         InvitationDressColor: {
           orderBy: [{ type: 'asc' }, { order: 'asc' }, { id: 'asc' }],
         },
+        dressCodeGroupList: {
+          orderBy: [{ order: 'asc' }, { id: 'asc' }],
+          include: {
+            colors: {
+              orderBy: [{ order: 'asc' }, { id: 'asc' }],
+              select: { id: true, color: true, order: true },
+            },
+          },
+        },
         faqList: {
           orderBy: [{ order: 'asc' }, { id: 'asc' }],
         },

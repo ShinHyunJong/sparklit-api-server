@@ -3,6 +3,8 @@ import { InvitationService } from './invitation.service';
 import { InvitationController } from './invitation.controller';
 import { InvitationColorController } from './invitation.color.controller';
 import { InvitationColorService } from './invitation.color.service';
+import { DressCodeGroupController } from './dress-code-group.controller';
+import { DressCodeGroupService } from './dress-code-group.service';
 import { InvitationFaqController } from './invitation.faq.controller';
 import { InvitationFaqService } from './invitation.faq.service';
 import { InvitationMigrationController } from './invitation.migration.controller';
@@ -19,6 +21,7 @@ import { NestjsFormDataModule, MemoryStoredFile } from 'nestjs-form-data';
   controllers: [
     InvitationController,
     InvitationColorController,
+    DressCodeGroupController,
     InvitationFaqController,
     InvitationMigrationController,
     GuestGroupController,
@@ -27,6 +30,7 @@ import { NestjsFormDataModule, MemoryStoredFile } from 'nestjs-form-data';
   providers: [
     InvitationService,
     InvitationColorService,
+    DressCodeGroupService,
     InvitationFaqService,
     InvitationMigrationService,
     GuestGroupService,

@@ -307,9 +307,21 @@ exports.Prisma.InvitationViewScalarFieldEnum = {
 exports.Prisma.InvitationDressColorScalarFieldEnum = {
   id: 'id',
   invitationId: 'invitationId',
+  groupId: 'groupId',
   color: 'color',
   order: 'order',
   type: 'type'
+};
+
+exports.Prisma.InvitationDressCodeGroupScalarFieldEnum = {
+  id: 'id',
+  invitationId: 'invitationId',
+  label: 'label',
+  description: 'description',
+  photoKey: 'photoKey',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.InvitationGuestScalarFieldEnum = {
@@ -605,6 +617,12 @@ exports.Prisma.InvitationDressColorOrderByRelevanceFieldEnum = {
   type: 'type'
 };
 
+exports.Prisma.InvitationDressCodeGroupOrderByRelevanceFieldEnum = {
+  label: 'label',
+  description: 'description',
+  photoKey: 'photoKey'
+};
+
 exports.Prisma.InvitationGuestOrderByRelevanceFieldEnum = {
   name: 'name'
 };
@@ -749,6 +767,7 @@ exports.Prisma.ModelName = {
   InvitationMusic: 'InvitationMusic',
   InvitationView: 'InvitationView',
   InvitationDressColor: 'InvitationDressColor',
+  InvitationDressCodeGroup: 'InvitationDressCodeGroup',
   InvitationGuest: 'InvitationGuest',
   InvitationFaq: 'InvitationFaq',
   InvitationEntourage: 'InvitationEntourage',
