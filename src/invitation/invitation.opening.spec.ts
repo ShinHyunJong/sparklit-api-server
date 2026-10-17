@@ -75,13 +75,21 @@ describe('InvitationService.updateOpening', () => {
 
   it('stores recognised style options', async () => {
     await service.updateOpening('uid-1', 42, {
-      openingStyle: { textColor: '#FF8800', fontScale: 'large' },
+      openingStyle: {
+        textColor: '#FF8800',
+        fontScale: 'large',
+        textAlign: 'left',
+      },
     });
 
     expect(fakePrisma.invitation.update).toHaveBeenCalledWith(
       expect.objectContaining({
         data: expect.objectContaining({
-          openingStyle: { textColor: '#ff8800', fontScale: 'large' },
+          openingStyle: {
+            textColor: '#ff8800',
+            fontScale: 'large',
+            textAlign: 'left',
+          },
         }),
       }),
     );
@@ -89,7 +97,11 @@ describe('InvitationService.updateOpening', () => {
 
   it('drops malformed style values instead of persisting them', async () => {
     await service.updateOpening('uid-1', 42, {
-      openingStyle: { textColor: 'red', fontScale: 'huge' } as any,
+      openingStyle: {
+        textColor: 'red',
+        fontScale: 'huge',
+        textAlign: 'justify',
+      } as any,
     });
 
     expect(fakePrisma.invitation.update).toHaveBeenCalledWith(

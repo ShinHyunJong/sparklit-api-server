@@ -1206,7 +1206,11 @@ export class InvitationService {
       openingText1?: string | null;
       openingText2?: string | null;
       openingText3?: string | null;
-      openingStyle?: { textColor?: string; fontScale?: string } | null;
+      openingStyle?: {
+        textColor?: string;
+        fontScale?: string;
+        textAlign?: string;
+      } | null;
     },
   ) {
     await this.assertInvitationOwnership(uniqueId, userId);
@@ -1236,11 +1240,19 @@ export class InvitationService {
    * Prisma.JsonNull when nothing valid is left, which clears the column.
    */
   private normalizeOpeningStyle(
-    style?: { textColor?: string; fontScale?: string } | null,
+    style?: {
+      textColor?: string;
+      fontScale?: string;
+      textAlign?: string;
+    } | null,
   ) {
     if (!style || typeof style !== 'object') return Prisma.JsonNull;
 
-    const normalized: { textColor?: string; fontScale?: string } = {};
+    const normalized: {
+      textColor?: string;
+      fontScale?: string;
+      textAlign?: string;
+    } = {};
     if (
       typeof style.textColor === 'string' &&
       /^#[0-9a-f]{6}$/i.test(style.textColor.trim())
@@ -1252,6 +1264,12 @@ export class InvitationService {
       ['small', 'medium', 'large'].includes(style.fontScale)
     ) {
       normalized.fontScale = style.fontScale;
+    }
+    if (
+      typeof style.textAlign === 'string' &&
+      ['left', 'center', 'right'].includes(style.textAlign)
+    ) {
+      normalized.textAlign = style.textAlign;
     }
 
     return Object.keys(normalized).length > 0 ? normalized : Prisma.JsonNull;
