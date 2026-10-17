@@ -1,0 +1,11 @@
+-- Splits invitation visibility into two independent switches. Previously it was
+-- either/or: isPasswordProtected=1 meant the original link was locked.
+--
+--   isPublic            → original link (/[uid]) opens without a password
+--   isPasswordProtected → Private ON (password gate; private link /[uid]/p)
+--
+-- At least one of the two must be on (enforced in guest-group.service).
+--
+-- Every existing invitation starts Public (DEFAULT 1). Private was never used
+-- in production, so no row needs its original link locked.
+ALTER TABLE `Invitation` ADD COLUMN `isPublic` TINYINT(1) NOT NULL DEFAULT 1;

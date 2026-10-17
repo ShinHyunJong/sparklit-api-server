@@ -184,6 +184,7 @@ exports.Prisma.InvitationScalarFieldEnum = {
   rsvpHasFood: 'rsvpHasFood',
   isRsvpPopup: 'isRsvpPopup',
   hasRsvpDeadline: 'hasRsvpDeadline',
+  isPublic: 'isPublic',
   isPasswordProtected: 'isPasswordProtected',
   universalPassword: 'universalPassword',
   guestListEnabled: 'guestListEnabled',

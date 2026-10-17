@@ -22,10 +22,15 @@ export class GuestGroupService {
 
   // ─── Guest Settings ───
 
+  // Public (isPublic) and Private (isPasswordProtected) are independent
+  // switches, but at least one must stay on. Turning one off is guarded on the
+  // other being on *in the same UPDATE*, so two quick toggles can't race into a
+  // both-off row.
   async updateGuestSettings(
     uniqueId: string,
     userId: number,
     data: {
+      isPublic?: boolean;
       isPasswordProtected?: boolean;
       universalPassword?: string;
       accessMode?: string;
@@ -33,9 +38,27 @@ export class GuestGroupService {
     },
   ) {
     await this.assertOwnership(uniqueId, userId);
-    return this.prismaService.invitation.update({
-      where: { uniqueId },
+
+    const turningPublicOff = data.isPublic === false;
+    const turningPrivateOff = data.isPasswordProtected === false;
+    if (turningPublicOff && turningPrivateOff) {
+      throw new BadRequestException(
+        'Public and Private cannot both be turned off',
+      );
+    }
+
+    const { count } = await this.prismaService.invitation.updateMany({
+      where: {
+        uniqueId,
+        ...(turningPublicOff &&
+          data.isPasswordProtected === undefined && {
+            isPasswordProtected: true,
+          }),
+        ...(turningPrivateOff &&
+          data.isPublic === undefined && { isPublic: true }),
+      },
       data: {
+        ...(data.isPublic !== undefined && { isPublic: data.isPublic }),
         ...(data.isPasswordProtected !== undefined && {
           isPasswordProtected: data.isPasswordProtected,
         }),
@@ -49,13 +72,33 @@ export class GuestGroupService {
           guestListEnabled: data.guestListEnabled,
         }),
       },
+    });
+
+    const saved = await this.prismaService.invitation.findUnique({
+      where: { uniqueId },
       select: {
+        isPublic: true,
         isPasswordProtected: true,
         universalPassword: true,
         accessMode: true,
         guestListEnabled: true,
       },
     });
+
+    // No row matched: either the guard failed (the other switch is off) or
+    // MySQL reported an unchanged row as 0 affected. Only the former is an
+    // error — it's the case where the switch we tried to turn off is still on.
+    if (
+      count === 0 &&
+      ((turningPublicOff && saved?.isPublic) ||
+        (turningPrivateOff && saved?.isPasswordProtected))
+    ) {
+      throw new BadRequestException(
+        'At least one of Public or Private must stay on',
+      );
+    }
+
+    return saved;
   }
 
   // ─── Verify Password (Public) ───

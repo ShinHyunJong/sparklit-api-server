@@ -1,5 +1,6 @@
 import {
   IsArray,
+  IsBoolean,
   IsEnum,
   IsInt,
   IsOptional,
@@ -74,6 +75,10 @@ export class UpdateGuestGroupDto {
 }
 
 export class UpdateGuestSettingsDto {
+  @IsOptional()
+  @IsBoolean()
+  isPublic?: boolean;
+
   @IsOptional()
   isPasswordProtected?: boolean;
 

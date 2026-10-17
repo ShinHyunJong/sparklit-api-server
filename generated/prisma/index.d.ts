@@ -4478,6 +4478,7 @@ export namespace Prisma {
     rsvpHasFood: boolean | null
     isRsvpPopup: boolean | null
     hasRsvpDeadline: boolean | null
+    isPublic: boolean | null
     isPasswordProtected: boolean | null
     universalPassword: string | null
     guestListEnabled: boolean | null
@@ -4565,6 +4566,7 @@ export namespace Prisma {
     rsvpHasFood: boolean | null
     isRsvpPopup: boolean | null
     hasRsvpDeadline: boolean | null
+    isPublic: boolean | null
     isPasswordProtected: boolean | null
     universalPassword: string | null
     guestListEnabled: boolean | null
@@ -4652,6 +4654,7 @@ export namespace Prisma {
     rsvpHasFood: number
     isRsvpPopup: number
     hasRsvpDeadline: number
+    isPublic: number
     isPasswordProtected: number
     universalPassword: number
     guestListEnabled: number
@@ -4767,6 +4770,7 @@ export namespace Prisma {
     rsvpHasFood?: true
     isRsvpPopup?: true
     hasRsvpDeadline?: true
+    isPublic?: true
     isPasswordProtected?: true
     universalPassword?: true
     guestListEnabled?: true
@@ -4854,6 +4858,7 @@ export namespace Prisma {
     rsvpHasFood?: true
     isRsvpPopup?: true
     hasRsvpDeadline?: true
+    isPublic?: true
     isPasswordProtected?: true
     universalPassword?: true
     guestListEnabled?: true
@@ -4941,6 +4946,7 @@ export namespace Prisma {
     rsvpHasFood?: true
     isRsvpPopup?: true
     hasRsvpDeadline?: true
+    isPublic?: true
     isPasswordProtected?: true
     universalPassword?: true
     guestListEnabled?: true
@@ -5117,6 +5123,7 @@ export namespace Prisma {
     rsvpHasFood: boolean | null
     isRsvpPopup: boolean | null
     hasRsvpDeadline: boolean | null
+    isPublic: boolean
     isPasswordProtected: boolean | null
     universalPassword: string | null
     guestListEnabled: boolean | null
@@ -5225,6 +5232,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean
     isRsvpPopup?: boolean
     hasRsvpDeadline?: boolean
+    isPublic?: boolean
     isPasswordProtected?: boolean
     universalPassword?: boolean
     guestListEnabled?: boolean
@@ -5331,6 +5339,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean
     isRsvpPopup?: boolean
     hasRsvpDeadline?: boolean
+    isPublic?: boolean
     isPasswordProtected?: boolean
     universalPassword?: boolean
     guestListEnabled?: boolean
@@ -5368,7 +5377,7 @@ export namespace Prisma {
     useCustomMainPhoto?: boolean
   }
 
-  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpDeadline" | "rsvpDeadlineDesc" | "rsvpHasFood" | "isRsvpPopup" | "hasRsvpDeadline" | "isPasswordProtected" | "universalPassword" | "guestListEnabled" | "billingStatus" | "trialEndsAt" | "currentPlanCode" | "accessStartedAt" | "accessEndsAt" | "watermarkEnabled" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt" | "bestManLabel" | "maidOfHonorLabel" | "groomsMenLabel" | "bridesMaidsLabel" | "sponsorColumns" | "secondarySponsorColumns" | "primarySponsorRight" | "secondarySponsorRight" | "onboardingCompletedAt" | "accessMode" | "openingEnabled" | "openingText1" | "openingText2" | "openingText3" | "openingStyle" | "useCustomMainPhoto", ExtArgs["result"]["invitation"]>
+  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateNo" | "uniqueId" | "date" | "userId" | "title" | "description" | "pointColor" | "mainTextColor" | "dressCodeGentleman" | "dressCodeLady" | "bgColor" | "musicKey" | "musicFilename" | "musicFileKey" | "notice" | "brideFirstName" | "brideMiddleName" | "dressCodeMainColor" | "dressCodeSubColor" | "dressCodeThirdColor" | "brideLastName" | "brideMomName" | "greetingTitle" | "isGroomMomHidden" | "isGroomDadHidden" | "isBrideDadHidden" | "isBrideMomHidden" | "greetingContent" | "brideDadName" | "bridePhone" | "groomFirstName" | "wishlistUrl" | "baseFont" | "groomMiddleName" | "groomLastName" | "groomPhone" | "primarySponsor" | "secondarySponsor" | "bankAccount" | "maidOfHonor" | "groomsMen" | "textColor" | "timezone" | "rsvpTitle" | "rsvpMaxPax" | "rsvpDeadline" | "rsvpDeadlineDesc" | "rsvpHasFood" | "isRsvpPopup" | "hasRsvpDeadline" | "isPublic" | "isPasswordProtected" | "universalPassword" | "guestListEnabled" | "billingStatus" | "trialEndsAt" | "currentPlanCode" | "accessStartedAt" | "accessEndsAt" | "watermarkEnabled" | "bestMan" | "bridesMaids" | "wishlistText" | "groomMomName" | "groomDadName" | "layoutOrder" | "endingText" | "ogImageKey" | "createdAt" | "updatedAt" | "bestManLabel" | "maidOfHonorLabel" | "groomsMenLabel" | "bridesMaidsLabel" | "sponsorColumns" | "secondarySponsorColumns" | "primarySponsorRight" | "secondarySponsorRight" | "onboardingCompletedAt" | "accessMode" | "openingEnabled" | "openingText1" | "openingText2" | "openingText3" | "openingStyle" | "useCustomMainPhoto", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Invitation$userArgs<ExtArgs>
     invitationCoverPhotoList?: boolean | Invitation$invitationCoverPhotoListArgs<ExtArgs>
@@ -5457,6 +5466,7 @@ export namespace Prisma {
       rsvpHasFood: boolean | null
       isRsvpPopup: boolean | null
       hasRsvpDeadline: boolean | null
+      isPublic: boolean
       isPasswordProtected: boolean | null
       universalPassword: string | null
       guestListEnabled: boolean | null
@@ -5926,6 +5936,7 @@ export namespace Prisma {
     readonly rsvpHasFood: FieldRef<"Invitation", 'Boolean'>
     readonly isRsvpPopup: FieldRef<"Invitation", 'Boolean'>
     readonly hasRsvpDeadline: FieldRef<"Invitation", 'Boolean'>
+    readonly isPublic: FieldRef<"Invitation", 'Boolean'>
     readonly isPasswordProtected: FieldRef<"Invitation", 'Boolean'>
     readonly universalPassword: FieldRef<"Invitation", 'String'>
     readonly guestListEnabled: FieldRef<"Invitation", 'Boolean'>
@@ -30022,6 +30033,7 @@ export namespace Prisma {
     rsvpHasFood: 'rsvpHasFood',
     isRsvpPopup: 'isRsvpPopup',
     hasRsvpDeadline: 'hasRsvpDeadline',
+    isPublic: 'isPublic',
     isPasswordProtected: 'isPasswordProtected',
     universalPassword: 'universalPassword',
     guestListEnabled: 'guestListEnabled',
@@ -30941,6 +30953,7 @@ export namespace Prisma {
     rsvpHasFood?: BoolNullableFilter<"Invitation"> | boolean | null
     isRsvpPopup?: BoolNullableFilter<"Invitation"> | boolean | null
     hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
+    isPublic?: BoolFilter<"Invitation"> | boolean
     isPasswordProtected?: BoolNullableFilter<"Invitation"> | boolean | null
     universalPassword?: StringNullableFilter<"Invitation"> | string | null
     guestListEnabled?: BoolNullableFilter<"Invitation"> | boolean | null
@@ -31044,6 +31057,7 @@ export namespace Prisma {
     rsvpHasFood?: SortOrderInput | SortOrder
     isRsvpPopup?: SortOrderInput | SortOrder
     hasRsvpDeadline?: SortOrderInput | SortOrder
+    isPublic?: SortOrder
     isPasswordProtected?: SortOrderInput | SortOrder
     universalPassword?: SortOrderInput | SortOrder
     guestListEnabled?: SortOrderInput | SortOrder
@@ -31151,6 +31165,7 @@ export namespace Prisma {
     rsvpHasFood?: BoolNullableFilter<"Invitation"> | boolean | null
     isRsvpPopup?: BoolNullableFilter<"Invitation"> | boolean | null
     hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
+    isPublic?: BoolFilter<"Invitation"> | boolean
     isPasswordProtected?: BoolNullableFilter<"Invitation"> | boolean | null
     universalPassword?: StringNullableFilter<"Invitation"> | string | null
     guestListEnabled?: BoolNullableFilter<"Invitation"> | boolean | null
@@ -31254,6 +31269,7 @@ export namespace Prisma {
     rsvpHasFood?: SortOrderInput | SortOrder
     isRsvpPopup?: SortOrderInput | SortOrder
     hasRsvpDeadline?: SortOrderInput | SortOrder
+    isPublic?: SortOrder
     isPasswordProtected?: SortOrderInput | SortOrder
     universalPassword?: SortOrderInput | SortOrder
     guestListEnabled?: SortOrderInput | SortOrder
@@ -31351,6 +31367,7 @@ export namespace Prisma {
     rsvpHasFood?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
     isRsvpPopup?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
     hasRsvpDeadline?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
+    isPublic?: BoolWithAggregatesFilter<"Invitation"> | boolean
     isPasswordProtected?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
     universalPassword?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
     guestListEnabled?: BoolNullableWithAggregatesFilter<"Invitation"> | boolean | null
@@ -33230,6 +33247,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -33333,6 +33351,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -33433,6 +33452,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -33536,6 +33556,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -33638,6 +33659,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -33725,6 +33747,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -33814,6 +33837,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -35764,6 +35788,11 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type EnumInvitation_billingStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.Invitation_billingStatus | EnumInvitation_billingStatusFieldRefInput<$PrismaModel>
     in?: $Enums.Invitation_billingStatus[]
@@ -35776,11 +35805,6 @@ export namespace Prisma {
     in?: $Enums.Invitation_currentPlanCode[] | null
     notIn?: $Enums.Invitation_currentPlanCode[] | null
     not?: NestedEnumInvitation_currentPlanCodeNullableFilter<$PrismaModel> | $Enums.Invitation_currentPlanCode | null
-  }
-
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
   export type JsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -35989,6 +36013,7 @@ export namespace Prisma {
     rsvpHasFood?: SortOrder
     isRsvpPopup?: SortOrder
     hasRsvpDeadline?: SortOrder
+    isPublic?: SortOrder
     isPasswordProtected?: SortOrder
     universalPassword?: SortOrder
     guestListEnabled?: SortOrder
@@ -36090,6 +36115,7 @@ export namespace Prisma {
     rsvpHasFood?: SortOrder
     isRsvpPopup?: SortOrder
     hasRsvpDeadline?: SortOrder
+    isPublic?: SortOrder
     isPasswordProtected?: SortOrder
     universalPassword?: SortOrder
     guestListEnabled?: SortOrder
@@ -36177,6 +36203,7 @@ export namespace Prisma {
     rsvpHasFood?: SortOrder
     isRsvpPopup?: SortOrder
     hasRsvpDeadline?: SortOrder
+    isPublic?: SortOrder
     isPasswordProtected?: SortOrder
     universalPassword?: SortOrder
     guestListEnabled?: SortOrder
@@ -36240,6 +36267,14 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type EnumInvitation_billingStatusWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.Invitation_billingStatus | EnumInvitation_billingStatusFieldRefInput<$PrismaModel>
     in?: $Enums.Invitation_billingStatus[]
@@ -36258,14 +36293,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumInvitation_currentPlanCodeNullableFilter<$PrismaModel>
     _max?: NestedEnumInvitation_currentPlanCodeNullableFilter<$PrismaModel>
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
   export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -38052,16 +38079,16 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type EnumInvitation_billingStatusFieldUpdateOperationsInput = {
     set?: $Enums.Invitation_billingStatus
   }
 
   export type NullableEnumInvitation_currentPlanCodeFieldUpdateOperationsInput = {
     set?: $Enums.Invitation_currentPlanCode | null
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type UserUpdateOneWithoutInvitationListNestedInput = {
@@ -39202,6 +39229,11 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedEnumInvitation_billingStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.Invitation_billingStatus | EnumInvitation_billingStatusFieldRefInput<$PrismaModel>
     in?: $Enums.Invitation_billingStatus[]
@@ -39214,11 +39246,6 @@ export namespace Prisma {
     in?: $Enums.Invitation_currentPlanCode[] | null
     notIn?: $Enums.Invitation_currentPlanCode[] | null
     not?: NestedEnumInvitation_currentPlanCodeNullableFilter<$PrismaModel> | $Enums.Invitation_currentPlanCode | null
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -39248,6 +39275,14 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NestedEnumInvitation_billingStatusWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.Invitation_billingStatus | EnumInvitation_billingStatusFieldRefInput<$PrismaModel>
     in?: $Enums.Invitation_billingStatus[]
@@ -39266,14 +39301,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumInvitation_currentPlanCodeNullableFilter<$PrismaModel>
     _max?: NestedEnumInvitation_currentPlanCodeNullableFilter<$PrismaModel>
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
   export type NestedJsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -39535,6 +39562,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -39636,6 +39664,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -39816,6 +39845,7 @@ export namespace Prisma {
     rsvpHasFood?: BoolNullableFilter<"Invitation"> | boolean | null
     isRsvpPopup?: BoolNullableFilter<"Invitation"> | boolean | null
     hasRsvpDeadline?: BoolNullableFilter<"Invitation"> | boolean | null
+    isPublic?: BoolFilter<"Invitation"> | boolean
     isPasswordProtected?: BoolNullableFilter<"Invitation"> | boolean | null
     universalPassword?: StringNullableFilter<"Invitation"> | string | null
     guestListEnabled?: BoolNullableFilter<"Invitation"> | boolean | null
@@ -40859,6 +40889,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -40961,6 +40992,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -41127,6 +41159,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -41229,6 +41262,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -41442,6 +41476,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -41544,6 +41579,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -41659,6 +41695,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -41761,6 +41798,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -41860,6 +41898,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -41962,6 +42001,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -42077,6 +42117,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -42179,6 +42220,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -42278,6 +42320,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -42380,6 +42423,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -42535,6 +42579,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -42637,6 +42682,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -42782,6 +42828,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -42884,6 +42931,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -43025,6 +43073,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -43127,6 +43176,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -43258,6 +43308,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -43360,6 +43411,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -43500,6 +43552,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -43602,6 +43655,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -43717,6 +43771,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -43819,6 +43874,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -43934,6 +43990,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -44036,6 +44093,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -44135,6 +44193,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -44237,6 +44296,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -44352,6 +44412,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -44454,6 +44515,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -44553,6 +44615,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -44655,6 +44718,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -44770,6 +44834,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -44872,6 +44937,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -44971,6 +45037,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -45073,6 +45140,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -45250,6 +45318,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -45352,6 +45421,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -45590,6 +45660,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -45692,6 +45763,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -45864,6 +45936,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -45966,6 +46039,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -46268,6 +46342,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -46370,6 +46445,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -46512,6 +46588,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -46614,6 +46691,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -46713,6 +46791,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -46815,6 +46894,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -46930,6 +47010,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -47032,6 +47113,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -47132,6 +47214,7 @@ export namespace Prisma {
     rsvpHasFood?: boolean | null
     isRsvpPopup?: boolean | null
     hasRsvpDeadline?: boolean | null
+    isPublic?: boolean
     isPasswordProtected?: boolean | null
     universalPassword?: string | null
     guestListEnabled?: boolean | null
@@ -47239,6 +47322,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -47340,6 +47424,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -47441,6 +47526,7 @@ export namespace Prisma {
     rsvpHasFood?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isRsvpPopup?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hasRsvpDeadline?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     isPasswordProtected?: NullableBoolFieldUpdateOperationsInput | boolean | null
     universalPassword?: NullableStringFieldUpdateOperationsInput | string | null
     guestListEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null

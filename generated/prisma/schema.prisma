@@ -74,6 +74,10 @@ model Invitation {
   rsvpHasFood              Boolean?
   isRsvpPopup              Boolean?                    @default(false)
   hasRsvpDeadline          Boolean?                    @default(true)
+  // Public / Private are independent switches; at least one is always on.
+  //   isPublic            → original link opens without a password
+  //   isPasswordProtected → Private ON (password gate; `/[uid]/p` private link)
+  isPublic                 Boolean                     @default(true)
   isPasswordProtected      Boolean?                    @default(false)
   universalPassword        String?                     @db.VarChar(100)
   guestListEnabled         Boolean?                    @default(false)
