@@ -1216,10 +1216,21 @@ export class InvitationService {
     await this.assertInvitationOwnership(uniqueId, userId);
     await this.assertNotLocked(uniqueId);
     const normalizeText = (value?: string | null) => {
-      // Authors may break a phrase into two lines, so newlines survive trim;
-      // only the surrounding whitespace goes.
-      const trimmed = value?.trim();
-      return trimmed ? trimmed.slice(0, 100) : null;
+      if (!value) return null; // nothing typed → the default phrase
+      // Spaces only: the author blanked this phrase on purpose. Stored as a
+      // single space so it renders empty instead of falling back to default.
+      if (!value.trim()) return ' ';
+      // Authors may break a phrase into two lines, so newlines survive: each
+      // line is trimmed and trailing blank lines dropped, but one leading
+      // blank line is kept — it means "show this on the second line".
+      const lines = value
+        .replace(/\r/g, '')
+        .split('\n')
+        .map((line) => line.trim());
+      while (lines.length > 0 && !lines[lines.length - 1]) lines.pop();
+      while (lines.length > 1 && !lines[0] && !lines[1]) lines.shift();
+      const text = lines.join('\n');
+      return text.trim() ? text.slice(0, 100) : null;
     };
     const updated = await this.prismaService.invitation.update({
       where: { uniqueId },

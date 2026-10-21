@@ -73,6 +73,41 @@ describe('InvitationService.updateOpening', () => {
     );
   });
 
+  it('keeps a leading blank line so a phrase written on line 2 stays there', async () => {
+    await service.updateOpening('uid-1', 42, {
+      openingText1: '\n  FOREVER  \n\n',
+      openingText2: '\r\nTOGETHER',
+    });
+
+    expect(fakePrisma.invitation.update).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: expect.objectContaining({
+          openingText1: '\nFOREVER',
+          openingText2: '\nTOGETHER',
+        }),
+      }),
+    );
+  });
+
+  it('stores a whitespace-only phrase as an intentional blank, not the default', async () => {
+    await service.updateOpening('uid-1', 42, {
+      openingText1: '   ',
+      openingText2: ' \n \n',
+      openingText3: '',
+    });
+
+    expect(fakePrisma.invitation.update).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: expect.objectContaining({
+          // ' ' = author left it blank on purpose; null/'' = use the default.
+          openingText1: ' ',
+          openingText2: ' ',
+          openingText3: null,
+        }),
+      }),
+    );
+  });
+
   it('stores recognised style options', async () => {
     await service.updateOpening('uid-1', 42, {
       openingStyle: {
